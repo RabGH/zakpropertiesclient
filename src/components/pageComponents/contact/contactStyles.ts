@@ -16,6 +16,7 @@ export const getContactStyles = () => {
       },
       "@media (max-width: 768px)": {
         height: "90vh",
+        pl: 0,
       },
       "@media (max-width: 480px)": {
         height: "95vh",

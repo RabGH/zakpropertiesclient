@@ -131,7 +131,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
                       <Typography variant="h1" sx={styles.zakSubTitle}>
                         {project.description}
                       </Typography>
-                    </Box> //! 2 h1s not good
+                    </Box>
                   </Box>
                 </Box>
               ))}
