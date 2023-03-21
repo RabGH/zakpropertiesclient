@@ -1,0 +1,54 @@
+/* ========== All Styles ========== */
+
+:root {
+    --color-primary: #f7f7f7; /* off white */
+    --color-secondary: #1E3C72 /* deep blue */
+    --color-hover: #AFEEEE; /* light turquoise */
+
+    --color-gold: #FFD700 /* gold */
+    --color-coral: #FFA07A; /* light coral */
+    --color-orange: #FFB347 /* pastel orange */
+    --color-accent: #fc5185; /* bright pink */
+
+    --color-primary: #333333; /* dark gray */
+    --color-light-gray: #bfbfbf; /* light gray */
+    --color-black: #000000;
+    --color-white: #ffffff;
+
+
+
+    
+}
+
+
+/* ========== Font Styles ========== */
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto-Medium.ttf');
+    font-weight: medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto-Light.ttf');
+    font-weight: light;
+    font-style: normal;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f7f7; /* set your desired color here */
+    margin: 0;
+  }
+  
