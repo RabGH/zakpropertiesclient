@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { urlFor } from '../../../sanity'
+import { urlFor } from '../../../../zakpropertiesclient/sanity'
 
 interface ImageSlugProps {
     identifier: string,

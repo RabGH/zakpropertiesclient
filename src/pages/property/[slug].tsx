@@ -2,7 +2,7 @@ import { sanityClient } from "../../../sanity";
 import { isMultiple } from "../../../utils";
 import Link from 'next/link';
 
-import { Box, Divider, Typography, Card, CardMedia, Grid } from '@mui/material';
+import { Box, Divider, Typography, Card } from '@mui/material';
 import GeneralButton from '../../components/general/GButton'
 
 import ImageSlug from '../../components/slugComponents/ImageSlug'
@@ -56,75 +56,125 @@ const Property = ({
 }: PropertyProps) => {
 
     const mainContainer = {
-
+        p: 2,
+        maxWidth: 1200,
+        margin: '0 auto',
     }
 
     const titleContainer = {
-
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     }
 
     const titleStyle = {
-
+        fontWeight: '',
     }
 
     const priceStyle = {
-
+        ml: 2,
+        fontSize: '1.5rem',
     }
 
     const imageSection = {
-
+        position: 'relative',
     }
 
     const mainImageStyles = {
-
+        width: '100%',
+        height: '500px',
+        objectFit: 'cover',
+        borderRadius: '5px',
+        transition: 'all 0.3s ease-in-out',
+        '&:hover': {
+        transform: 'scale(1.01)',
+        },
     }
     
     const subImagesStyles = {
-
+        width: '80px',
+        height: '80px',
+        objectFit: 'cover',
+        borderRadius: '5px',
+        ml: '10px',
+        boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease-in-out',
+        '&:hover': {
+        transform: 'scale(1.1)',
+        },
     }
 
     const mainSection = {
-
+        mt: 2,
     }
 
     const amenityStyles = {
-
+        maxWidth: 700,
+        margin: '0 auto'
     }
 
     const bodyStyles = {
-
+        mt: 2,
     }
 
     const staticStyles = {
-
+        lineHeight: '1.5',
     }
 
     const priceBox = {
-
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        bg: '#f5f5f5',
+        p: 3,
+        mt: 3,
+        borderRadius: '5px',
     }
 
     const priceButtonPos = {
-
+        mt: 2,
     }
 
     const dividerStyles = {
-
+        mt: 2,
     }
 
     const mapCard = {
-
+        width: '100%',
+        height: '500px',
+        borderRadius: '5px',
+        overflow: 'hidden',
+        padding: '1rem',
     }
 
     const mapCardPos = {
-
+        mt: 3,
     }
 
     const squareFootageStyles = {
-
+        mt: 3,
+        lineHeight: '1.5',
     }
 
     const imageCardStyles = {
+        mt: 3,
+        borderRadius: '5px',
+        boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+        overflow: 'hidden',
+    }
 
+    const amenitiesCardStyles = {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        mt: 2,
+        fontSize: '1rem',
+    }
+
+    const mainBodySlug = {
+        fontSize: '1rem',
     }
 
     return (
@@ -135,17 +185,18 @@ const Property = ({
                     {title}
                 </Typography>
                 <Typography variant='h6' sx={priceStyle}>
-                    {totalPrice}
+                    AED {totalPrice}
                 </Typography>
             </Box>
-
             <Card sx={imageCardStyles}>
-                <Box sx={imageSection}>
-                    <Box sx={mainImageStyles}>
-                        <ImageSlug identifier='main-image' image={mainImage} />
-                    </Box>
+                    <Box sx={imageSection}>
+                        <Box sx={mainImageStyles}>
+                        <ImageSlug identifier="main-image" image={mainImage} />
+                        </Box>
                     <Box sx={subImagesStyles}>
-                        {images.map((image, index) => <ImageSlug key={index} identifier="sub-image" image={image} />)}
+                        {images.map((image, index) => 
+                        <ImageSlug key={index} identifier="sub-image" image={image} />)}
+
                     </Box>
                 </Box>
             </Card>
@@ -153,48 +204,49 @@ const Property = ({
             <Divider sx={dividerStyles} />
             
             <Box sx={mainSection}>
-                <Typography variant='body1'>
+                <Typography variant='body2' sx={mainBodySlug}>
                     {propertyType}
                 </Typography>
-                <Typography variant='body1'>
-                    {bedrooms} bedroom{isMultiple(bedrooms)} * {bathrooms} bathroom{isMultiple(bathrooms)}
+                <Typography variant='body2' sx={mainBodySlug}>
+                    {bedrooms} bedroom{isMultiple(bedrooms)}
                 </Typography>
+                <Typography variant='body2' sx={mainBodySlug}>
+                    {bathrooms} bathroom{isMultiple(bathrooms)}
+                </Typography>
+
             </Box>
 
             <Box sx={bodyStyles}>
-                <Box sx={amenityStyles}>
-                    {amenities}
-                </Box>
                 <Box sx={staticStyles}>
-                    <Typography variant='body1'>
+                    <Typography variant='body2' sx={mainBodySlug}>
                         {description}
                     </Typography>
                     <Box sx={squareFootageStyles}>
-                        <Typography variant='body1'>
-                            Main Area: {squareFootage}
+                        <Typography variant='body2' sx={mainBodySlug}>
+                            Main Area: {squareFootage} sqrft
                         </Typography>
-                        <Typography variant='body1'>
-                            Plotted Area: {plottedArea}
+                        <Typography variant='body2' sx={mainBodySlug}>
+                            Plotted Area: {plottedArea} sqrft
                         </Typography>
-                        <Typography variant='body1'>
-                            Built Up Area: {builtUpArea}
+                        <Typography variant='body2' sx={mainBodySlug}>
+                            Built Up Area: {builtUpArea} sqrft
                         </Typography>
                     </Box>
-                    <Typography variant='body1'>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Aut beatae quisquam eum. Libero, veritatis iste. 
-                        Adipisci dicta, nihil sit vel praesentium quod 
-                        provident libero, molestias soluta officiis debitis 
-                        tempora cum?
-                    </Typography>
                 </Box>
             </Box>
 
             <Divider sx={dividerStyles} />
 
+            <Box sx={amenityStyles}>
+                <Card sx={{ p: 2 }}>
+                    <Typography variant='h3' >Amenities</Typography>
+                    <Box sx={amenitiesCardStyles}>{amenities}</Box>
+                </Card>
+            </Box>
+
             <Box sx={priceBox}>
                 <Typography variant='h5'>
-                    {totalPrice}
+                    Price: AED {totalPrice}
                 </Typography>
                 <Box sx={priceButtonPos}>
                 <Link href='/contact'>
