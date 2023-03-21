@@ -1,57 +1,48 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
-import Slide from '@mui/material/Slide';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Image from 'next/image';
 import { styled } from '@mui/material/styles';
+import { useScrollTrigger } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 import NoBgLogo from '../../assets/images/logo/logoNoBg.png';
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-interface HideOnScrollProps {
-  window?: () => Window;
+interface ElevationScrollProps {
   children: React.ReactElement;
 }
 
-const HideOnScroll = ({ children }: HideOnScrollProps): JSX.Element => {
-  const [lastScrollTop, setLastScrollTop] = React.useState<number>(0);
-  const [hidden, setHidden] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setHidden(scrollTop > lastScrollTop && scrollTop > 60);
-      setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop); 
-    };
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll);
-    }
+const ElevationScroll = ({ children }: ElevationScrollProps): JSX.Element => {
+    const theme = useTheme();
+    const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 60,
+    target: typeof window !== 'undefined' ? window : undefined,
+  });
 
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, [lastScrollTop]);
 
-  return (
-    <Slide appear={false} direction="down" in={!hidden}>
-      <div>{children}</div>
-    </Slide>
-  );
+  return React.cloneElement(children, {
+    elevation: trigger ? 4 : 0,
+    sx: {
+      backgroundColor: trigger ? theme.palette.primary.light : 'transparent',
+      transition: 'all 0.3s ease-out', // add a transition to the Box component
+    },
+  });
 };
 
 const StyledAppBar = styled(AppBar)({
-  transition: 'height 0.5s',
-  height: '15rem'
+  height: '6rem',
+  backgroundColor: 'transparent',
+  boxShadow: 'none',
+  position: 'fixed',
 });
 
 const StyledToolbar = styled(Toolbar)({
@@ -64,21 +55,21 @@ const StyledImage = styled(Image)({
   width: 'auto'
 });
 
+
 export default function ElevateAppBar(props: Props): JSX.Element {
   return (
     <React.Fragment>
       <CssBaseline />
-      <HideOnScroll {...props}>
-        <StyledAppBar>
-          <StyledToolbar>
-            <StyledImage src={NoBgLogo} alt='' />
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              My Awesome App
-            </Typography>
-          </StyledToolbar>
-        </StyledAppBar>
-      </HideOnScroll>
-      <Toolbar />
+      <Box sx={{ flexGrow: 1 }}>
+        <ElevationScroll {...props}>
+          <StyledAppBar position="sticky">
+            <StyledToolbar>
+              <StyledImage src={NoBgLogo} alt='' />
+            </StyledToolbar>
+          </StyledAppBar>
+        </ElevationScroll>
+        <Toolbar />
+      </Box>
     </React.Fragment>
   );
 }

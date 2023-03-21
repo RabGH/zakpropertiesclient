@@ -13,13 +13,12 @@ function HomeImage() {
 
   const mainContainer = {
     position: 'relative',
-    textAlign: 'left',
     color: 'white',
     height: '100vh',
   };
 
   const imgContainer = {
-    mt: '5rem',
+    mt: '-13rem',
     opacity: '100%',
   };
 
@@ -52,7 +51,7 @@ function HomeImage() {
   const innerImage = {
     // backgroundColor: 'rgba(135, 235, 147, 0.1)',
     // boxShadow: "0px 2px 5px rgba(0, 0, 0, 1)",
-    borderRadius: '20rem',
+    // borderRadius: '20rem',
   };
 
   const topTitle = {

@@ -3,7 +3,6 @@ import { Container, Typography, Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles'
 import Divider from '@mui/material/Divider';
 import Header from '../components/pageComponents/home/homeHeader/HeaderHome';
-import HomeImageCards from '../components/pageComponents/home/homeBody/HomeImageCards';
 
 function Home() {
     const muiTheme = useTheme();
@@ -25,10 +24,6 @@ function Home() {
     const mainContainer = {
     };
 
-    const homeCards = {
-      mt: '1rem',
-      mb: '5rem',
-    };
 
   return (
     <Box sx={mainContainer}>
