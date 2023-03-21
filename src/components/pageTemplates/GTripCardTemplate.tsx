@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import GeneralImageCard from '../../general/GImageCard';
+import GeneralImageCard from '../general/GImageCard';
 // import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 
 interface TripImageCardProps {

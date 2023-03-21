@@ -4,7 +4,26 @@ import { useTheme } from '@mui/material/styles'
 import Divider from '@mui/material/Divider';
 import Header from '../components/pageComponents/home/homeHeader/HeaderHome';
 
-function Home() {
+import PropertyCardSlug from '../components/slugComponents/PropertyCardSlugs';
+import { getServerSideProps } from '../components/slugComponents/CardDataSlug';
+
+interface Property {
+  _id: string;
+  title: string;
+  mainImage?: string;
+  slug: {
+    current: string;
+  }
+  propertyType: string;
+  totalPrice: number;
+  squareFootage: number;
+}
+
+interface HomeProps {
+properties: Property[];
+}
+
+function Home({ properties }: HomeProps) {
     const muiTheme = useTheme();
 
     const aboutProject = {
@@ -23,6 +42,10 @@ function Home() {
 
     const mainContainer = {
     };
+
+    const propertyCards = {
+
+    }
 
 
   return (
@@ -46,8 +69,13 @@ function Home() {
           A landscaped courtyard and a private swimming pool will become one of your favourite places to relax, whilst the basement floor can become your private sports or entertainment hub.
         </Typography>
       </Container>
+      <Box sx={propertyCards}>
+        <PropertyCardSlug properties={properties} />
+      </Box>
     </Box>
   );
 }
 
 export default Home;
+
+export { getServerSideProps };
