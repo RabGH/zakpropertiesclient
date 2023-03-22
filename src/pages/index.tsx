@@ -4,26 +4,32 @@ import { useTheme } from '@mui/material/styles'
 import Divider from '@mui/material/Divider';
 import HomeImage from '../components/pageComponents/home/homeHeader/ImageHome';
 
+import { PropertyProps, ProjectProps } from '../../types'
+
 import PropertyCardSlug from '../components/slugComponents/cardSlugs/propertyCardSlugs/PropertyCardSlugs';
+import ProjectsCardSlug from '../components/slugComponents/cardSlugs/projectCardSlugs/ProjectCardSlugs';
+
 import { getServerSideProps } from '../components/slugComponents/cardSlugs/propertyCardSlugs/PropertyDataSlug';
 
-interface Property {
-  _id: string;
-  title: string;
-  mainImage?: string;
-  slug: {
-    current: string;
-  }
-  propertyType: string;
-  totalPrice: number;
-  squareFootage: number;
-}
+
+// interface Property {
+//   _id: string;
+//   title: string;
+//   mainImage?: string;
+//   slug: {
+//     current: string;
+//   }
+//   propertyType: string;
+//   totalPrice: number;
+//   squareFootage: number;
+// }
 
 interface HomeProps {
-properties: Property[];
+properties: PropertyProps[];
+projects: ProjectProps[];
 }
 
-function Home({ properties }: HomeProps) {
+function Home({ properties, projects }: HomeProps) {
     const muiTheme = useTheme();
 
     const aboutProject = {
@@ -45,7 +51,11 @@ function Home({ properties }: HomeProps) {
 
     const propertyCards = {
 
-    }
+    };
+
+    const projectCards = {
+
+    };
 
 
   return (
@@ -74,6 +84,11 @@ function Home({ properties }: HomeProps) {
           <PropertyCardSlug properties={properties} />
         </Box>
       </Grid>
+      <Box sx={projectCards}>
+        <Grid container spacing={3} direction='column'>
+          <ProjectsCardSlug projects={projects} />
+        </Grid>
+      </Box>
     </Box>
   );
 }

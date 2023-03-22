@@ -1,24 +1,13 @@
-import HomeCardSlug from './PropertyCardSlugs'
+import PropertyCardSlug from './PropertyCardSlugs'
 import { sanityClient } from '../../../../../sanity';
+import { PropertyProps } from '../../../../../types'
 
-interface Property {
-    _id: string;
-    title: string;
-    mainImage?: string;
-    slug: {
-      current: string;
-    }
-    propertyType: string;
-    totalPrice: number;
-    squareFootage: number;
+interface PropertyCardDataProps {
+    properties?: PropertyProps[];
 }
 
-interface CardDataProps {
-    properties?: Property[];
-}
-
-export default function CardDataSlug({ properties }: CardDataProps) {
-    return <HomeCardSlug properties={properties} />;
+export default function PropertyCardDataSlug({ properties }: PropertyCardDataProps) {
+    return <PropertyCardSlug properties={properties} />;
   }
 
 export async function getServerSideProps() {

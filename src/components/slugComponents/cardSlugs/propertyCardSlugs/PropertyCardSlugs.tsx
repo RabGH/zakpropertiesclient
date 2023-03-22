@@ -17,11 +17,11 @@ interface Property {
   squareFootage: number;
 }
 
-interface CardBodyProps {
+interface PropertyCardBodyProps {
   properties?: Property[];
 }
 
-const CardBodyData = ({ properties }: CardBodyProps) => {
+const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
 
   const main = {
     display: 'flex',
@@ -135,4 +135,4 @@ const CardBodyData = ({ properties }: CardBodyProps) => {
   );
 }
 
-export default CardBodyData;
+export default PropertyCardBodyData;

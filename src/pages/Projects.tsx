@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles'
 import Divider from '@mui/material/Divider';
-import Header from '../components/pageComponents/home/homeHeader/HeaderHome';
 
 function Home() {
     const muiTheme = useTheme();
@@ -27,7 +26,6 @@ function Home() {
 
   return (
     <Box sx={mainContainer}>
-      <Header />
       <Container sx={contentProject}>
        <Divider component='div' role='presentation' sx={aboutProject}>
          <Typography variant='h5' component='div'>
