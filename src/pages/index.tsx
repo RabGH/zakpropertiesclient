@@ -12,18 +12,6 @@ import ProjectsCardSlug from '../components/slugComponents/cardSlugs/projectCard
 import { getServerSideProps } from '../components/slugComponents/cardSlugs/propertyCardSlugs/PropertyDataSlug';
 
 
-// interface Property {
-//   _id: string;
-//   title: string;
-//   mainImage?: string;
-//   slug: {
-//     current: string;
-//   }
-//   propertyType: string;
-//   totalPrice: number;
-//   squareFootage: number;
-// }
-
 interface HomeProps {
 properties: PropertyProps[];
 projects: ProjectProps[];

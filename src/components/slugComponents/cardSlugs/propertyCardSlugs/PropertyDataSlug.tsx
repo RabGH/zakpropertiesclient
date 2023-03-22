@@ -16,15 +16,15 @@ const properties = await sanityClient.fetch(query);
 
 if (!properties.length) {
     return {
-    props: {
-        properties: [],
-    },
+        props: {
+            properties: [],
+        },
     };
-} else {
-    return {
-    props: {
-        properties,
-    },
-    };
-}
+    } else {
+        return {
+            props: {
+                properties,
+            },
+        };
+    }
 }
