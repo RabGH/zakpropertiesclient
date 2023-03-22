@@ -1,5 +1,5 @@
 import HomeCardSlug from './PropertyCardSlugs'
-import { sanityClient } from '../../../sanity';
+import { sanityClient } from '../../../../../sanity';
 
 interface Property {
     _id: string;

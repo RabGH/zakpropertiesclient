@@ -1,11 +1,11 @@
 import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import { Container, Typography, Box, Grid } from '@mui/material';
 import { useTheme } from '@mui/material/styles'
 import Divider from '@mui/material/Divider';
-import Header from '../components/pageComponents/home/homeHeader/HeaderHome';
+import HomeImage from '../components/pageComponents/home/homeHeader/ImageHome';
 
-import PropertyCardSlug from '../components/slugComponents/PropertyCardSlugs';
-import { getServerSideProps } from '../components/slugComponents/CardDataSlug';
+import PropertyCardSlug from '../components/slugComponents/cardSlugs/propertyCardSlugs/PropertyCardSlugs';
+import { getServerSideProps } from '../components/slugComponents/cardSlugs/propertyCardSlugs/PropertyDataSlug';
 
 interface Property {
   _id: string;
@@ -50,7 +50,7 @@ function Home({ properties }: HomeProps) {
 
   return (
     <Box sx={mainContainer}>
-      <Header />
+      <HomeImage />
       <Container sx={contentProject}>
        <Divider component='div' role='presentation' sx={aboutProject}>
          <Typography variant='h5' component='div'>
@@ -69,9 +69,11 @@ function Home({ properties }: HomeProps) {
           A landscaped courtyard and a private swimming pool will become one of your favourite places to relax, whilst the basement floor can become your private sports or entertainment hub.
         </Typography>
       </Container>
-      <Box sx={propertyCards}>
-        <PropertyCardSlug properties={properties} />
-      </Box>
+      <Grid container spacing={3} direction='column'>
+        <Box sx={propertyCards}>
+          <PropertyCardSlug properties={properties} />
+        </Box>
+      </Grid>
     </Box>
   );
 }

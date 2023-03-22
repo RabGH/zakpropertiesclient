@@ -1,5 +1,5 @@
-import { sanityClient, urlFor } from '../../../sanity';
-import { isMultiple } from '../../../utils';
+import { sanityClient, urlFor } from '../../../../../sanity';
+import { isMultiple, formatPrice, formatArea } from '../../../../../utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -30,15 +30,23 @@ const CardBodyData = ({ properties }: CardBodyProps) => {
     minHeight: '100vh',
   };
 
+  const featuredTitlePos = {
+    mt: '1rem',
+    ml: '1rem',
+    mb: '1rem',
+    fontSize: '1.5rem',
+  };
+
   const feedContainer = {
-    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
   };
 
   const feed = {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gridTemplateColumns: '1fr 1fr 1fr',
     gap: '1rem',
-    marginTop: '2rem',
+    marginBottom: '2rem',
   };
   
   const cardStyles = {
@@ -51,19 +59,30 @@ const CardBodyData = ({ properties }: CardBodyProps) => {
     '&:hover': {
       boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)',
     },
-    padding: '3rem',
+    padding: '1rem',
+  };
+
+  const propertyTypeStyles = {
+    paddingBottom: '0.7rem',
   };
 
   const propertyTitleCard = {
-    padding: '1rem',
-    textAlign: 'center',
-    fontSize: '1.5rem',
+    fontSize: '1rem',
+    paddingBottom: '0.7rem',
+  };
+
+  const properyAreaCard = {
+    paddingBottom: '0.3rem',
   };
 
   const propertyPriceCard = {
-    padding: '1rem',
-    textAlign: 'center',
-    fontSize: '1.2rem',
+    paddingBottom: '0.7rem',
+    fontSize: '0.9rem',
+  };
+
+  const cardInfoStyles = {
+    display: 'flex',
+    flexDirection: 'column',
   };
 
   return (
@@ -72,7 +91,8 @@ const CardBodyData = ({ properties }: CardBodyProps) => {
         <Container>
           <Box sx={main}>
             <Box sx={feedContainer}>
-              <Typography variant='h3'>
+              <Divider />
+              <Typography variant='h4' sx={featuredTitlePos}>
                 Featured Properties
               </Typography>
               <Box sx={feed}>
@@ -83,18 +103,27 @@ const CardBodyData = ({ properties }: CardBodyProps) => {
                         <Image
                           src={urlFor(property.mainImage).auto('format').url()}
                           alt={property.title}
-                          width={600}
-                          height={335}
+                          width={330}
+                          height={270}
                           style={{ borderRadius: '10px' }}
                         />
                       )}
-                      <Typography variant='h3' sx={propertyTitleCard}>
-                        {property.title}
-                      </Typography>
-                      <Typography variant='h5' sx={propertyPriceCard}>
-                        AED{property.totalPrice}
-                      </Typography>
+                      <Box sx={cardInfoStyles}>
+                        <Typography variant='body2' sx={propertyTypeStyles}>
+                          {property.propertyType}
+                        </Typography>
+                        <Typography variant='h3' sx={propertyTitleCard}>
+                          {property.title}
+                        </Typography>
+                        <Typography variant='body2' sx={properyAreaCard}>
+                         Area {formatArea(property.squareFootage)}
+                        </Typography>
+                        <Typography variant='h5' sx={propertyPriceCard}>
+                          {formatPrice(property.totalPrice)}
+                        </Typography>
+                      </Box>
                     </Card>
+                    <Divider />
                   </Link>
                 ))}
               </Box>

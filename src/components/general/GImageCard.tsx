@@ -6,13 +6,14 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image'
+import type { StaticImageData } from 'next/image'
 
 interface Props {
   title: string;
   description: string;
   buttonText?: string;
   buttonOnClick?: () => void;
-  image: string;
+  image: string | StaticImageData;
   sx?: React.CSSProperties;
 }
 
@@ -34,9 +35,10 @@ const GeneralImageCard: React.FC<Props> = ({
     maxWidth: 500,
     display: 'flex',
     flexDirection: 'column',
-    // boxShadow: '0px 2px 5px rgba(0, 0, 0, 1)',
+    borderRadius: '15px',
+    boxShadow: '0px 2px 5px rgba(0, 0, 0, 1)',
     ml: '10rem',
-    backgroundColor: muiTheme.palette.primary.dark,
+    backgroundColor: muiTheme.palette.primary.light,
     transition: 'background-color 1s ease, box-shadow 1s ease',
     '&:hover': {
       backgroundColor: muiTheme.palette.primary.light,
@@ -45,8 +47,6 @@ const GeneralImageCard: React.FC<Props> = ({
   };
 
   const cardMedia = {
-    height: '400px',
-    boxShadow: '0px 2px 5px rgba(0, 0, 0, 1)',
   };
 
   const cardContent = {
@@ -59,7 +59,7 @@ const GeneralImageCard: React.FC<Props> = ({
   const cardTitle = {
     paddingBottom: '1rem',
     transition: 'color 1s ease',
-    color: muiTheme.palette.secondary.light,
+    color: muiTheme.palette.secondary.dark,
     fontWeight: 'bold',
     '&:hover': {
       color: 'white'
@@ -91,6 +91,7 @@ const GeneralImageCard: React.FC<Props> = ({
     <Box sx={mainContainer}>
       <Card sx={mainCard}>
         <CardActionArea>
+          <Box sx={cardMedia}>
           <Image
             src={image}
             alt=""
@@ -98,6 +99,7 @@ const GeneralImageCard: React.FC<Props> = ({
             width={400}
             height={400}
           />
+          </Box>
           <CardContent sx={cardContent}>
             <Typography gutterBottom variant="h5" component="div" sx={cardTitle}>
               {title}

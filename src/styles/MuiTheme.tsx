@@ -24,12 +24,6 @@ export const themeOptions: ThemeOptions = {
   },
   typography: {
 
-    fontFamily: 'Roboto, sans-serif',
-    fontWeightLight: 300,
-    fontWeightMedium: 500,
-    fontWeightRegular: 400,
-    fontWeightBold: 700,
-
     h1: {
         color: "#1e3b72",
     },

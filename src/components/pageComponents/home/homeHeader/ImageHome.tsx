@@ -1,24 +1,22 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import MainJouri from '../../../../assets/images/project_images/project2/jouri-hills-1.jpg'
 import { useTheme } from '@mui/material/styles'
+import Image from 'next/image';
 import GeneralButton from '../../../general/GButton';
-import LogoImage from '../../../../assets/images/logo/logoNoBg.png'
-import Image from 'next/image'
-
+import LogoImage from '../../../../assets/images/logo/logoNoBg.png';
+import MainJouri from '../../../../assets/images/project_images/project2/jouri-hills-1.jpg';
+import GeneralImageCard from './../../../general/GImageCard';
 
 
 function HomeImage() {
   const muiTheme = useTheme();
 
   const mainContainer = {
-    position: 'relative',
-    color: 'white',
     height: '100vh',
   };
 
   const imgContainer = {
-    mt: '-13rem',
+    mt: '-4rem',
     opacity: '100%',
   };
 
@@ -27,61 +25,62 @@ function HomeImage() {
     zIndex: 1,
     marginTop: '1rem',
     width: '22rem',
-    // boxShadow: "0px 2px 5px rgba(0, 0, 0, 1)",
-    // backgroundColor: muiTheme.palette.secondary.dark,
     borderRadius: 15,
     color: 'white',
     fontWeight: 'bold',
-    // '&:hover': {
-    //   backgroundColor: muiTheme.palette.secondary.main,
-    //   color: 'white'
-    // },
-    // ml: '8.5rem',
   };
 
   const boxContainer = {
-    position: 'absolute', 
-    top: '50%', 
-    left: '50%', 
-    transform: 'translate(-50%, -50%)',
     display: 'flex',
-    flexDirection: 'column',
+    position: 'absolute',
+    zIndex: '10',
+    top: '25%',
+    left: '20%',
   };
 
   const innerImage = {
-    // backgroundColor: 'rgba(135, 235, 147, 0.1)',
-    // boxShadow: "0px 2px 5px rgba(0, 0, 0, 1)",
-    // borderRadius: '20rem',
+    padding: '2rem',
   };
 
   const topTitle = {
     color: 'white',
-    // fontWeight: 'bold',
+    fontSize: '1.5rem',
+    marginBottom: '1rem',
+    fontWeight: 'bold',
   };
 
   const bottomTitle = {
     color: 'white',
+    fontSize: '4.5rem',
+    fontWeight: 'bold',
+    marginBottom: '1rem',
+  };
+
+  const titleContainer = {
+    mt: '5rem',
+  };
+
+  const cardContainer = {
 
   };
-  // rgba(135, 235, 147, 0.1) green
-  // rgba(55, 96, 184, 0.1) blue
+
+  const cardMediaStyles = {
+
+  };
+
   return (
     <Box sx={mainContainer}>
-      <Box sx={imgContainer}>
-        <Image src={MainJouri} alt='' />
-      </Box>
-        <Box sx={boxContainer}>
-          <Box sx={innerImage}>
-            {/* <img src={LogoImage} alt='logo'/> */}
-            <Typography variant='h5' component='div' sx={topTitle}>
-              New Development
-            </Typography>
-            <Typography variant='h1' component='div' sx={bottomTitle}>
-              JouriHills
-            </Typography>
-          </Box>
+      <Box sx={boxContainer}>
+        <Box sx={titleContainer}>
+          <Typography variant='h5' component='div' sx={topTitle}>
+            New Development
+          </Typography>
+          <Typography variant='h1' component='div' sx={bottomTitle}>
+            Jouri Hills
+          </Typography>
+  
           <GeneralButton
-            variant='outlined'
+            variant='contained'
             size='large'
             onClick={() => (window.location.href = '/contact')}
             sx={buttonStyle}
@@ -89,8 +88,20 @@ function HomeImage() {
             Learn More
           </GeneralButton>
         </Box>
+  
+        <Box sx={innerImage}>
+          <Box sx={cardContainer}>
+            <GeneralImageCard title='Zak Properties' description='Properties to search' image={LogoImage} sx={cardMediaStyles} />
+          </Box>
+        </Box>
+      </Box>
+  
+      <Box sx={imgContainer}>
+        <Image src={MainJouri} alt='' />
+      </Box>
     </Box>
   );
+  
 }
 
 export default HomeImage;
