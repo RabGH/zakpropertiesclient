@@ -46,3 +46,9 @@ export interface Project {
       lng?: number;
     };
 }
+
+export interface PageContext {
+  query: {
+      slug: string;
+  }
+}

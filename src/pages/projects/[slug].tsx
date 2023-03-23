@@ -17,13 +17,14 @@ const MapSlug = dynamic(() => import('../../components/slugComponents/MapSlug'),
 });
 
 
-import { Project, Property } from '../../../types'
+import { Project, Property, PageContext } from '../../../types'
 
-interface PageContext {
-    query: {
-        slug: string;
-    }
+interface PropertyList {
+    properties: Property[];
 }
+
+type ProjectsProps = Project & PropertyList;
+  
 
 const Projects = ({
     title,
@@ -36,7 +37,7 @@ const Projects = ({
     amenities,
     location,
     properties,
-}: Project) => {
+}: ProjectsProps) => {
 
     const mainContainer = {
 
@@ -205,7 +206,7 @@ const Projects = ({
                         <Box key={property._id} sx={mainPropertiesContainer}>
                             <Box sx={PropertiesCardPos}>
                                 <Card>
-                                    {property.mainPropertyImage && property.mainPropertyImage.asset && (
+                                    {property.mainPropertyImage && (
                                         <Image width={800} height={600} src={urlFor(property.mainPropertyImage).auto('format').url()} alt={property.title} />
                                     )}
                                     <Typography variant='h1'>
