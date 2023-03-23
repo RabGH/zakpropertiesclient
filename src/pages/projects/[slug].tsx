@@ -33,7 +33,7 @@ const Projects = ({
     totalPrice,
     description,
     squareFootage,
-    images,
+    projectImages,
     amenities,
     location,
     properties,
@@ -151,7 +151,7 @@ const Projects = ({
                         <ImageSlug identifier='main-image' image={mainProjectImage} />
                     </Box>
                     <Box sx={subImagesStyles}>
-                        {images.map((image, index) => 
+                        {projectImages.map((image, index) => 
                         <ImageSlug key={index} identifier='sub-image' image={image} />)}
                     </Box>
                 </Box>
@@ -247,7 +247,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         totalPrice,
         description,
         squareFootage,
-        images,
+        projectImages,
         amenities,
         location,
         properties[]->{
@@ -276,7 +276,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
                 location: projects.location,
                 development: projects.development,
                 mainProjectImage: projects.mainProjectImage || null,
-                images: projects.images,
+                projectImages: projects.projectImages,
                 totalPrice: projects.totalPrice,
                 description: projects.description,
                 squareFootage: projects.squareFootage,

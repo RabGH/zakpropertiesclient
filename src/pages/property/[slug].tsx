@@ -31,7 +31,7 @@ const Property = ({
     squareFootage,
     plottedArea,
     builtUpArea,
-    images,
+    propertyImages,
     amenities,
     location,
 }: PropertyProps) => {
@@ -175,7 +175,7 @@ const Property = ({
                             <ImageSlug identifier="main-image" image={mainPropertyImage} />
                         </Box>
                     <Box sx={subImagesStyles}>
-                        {images.map((image, index) => 
+                        {propertyImages.map((image, index) => 
                         <ImageSlug key={index} identifier="sub-image" image={image} />)}
 
                     </Box>
@@ -262,7 +262,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
       location,
       propertyType,
       mainPropertyImage,
-      images,
+      propertyImages,
       totalPrice,
       bathrooms,
       bedrooms,
@@ -286,7 +286,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
           location: property.location,
           propertyType: property.propertyType,
           mainPropertyImage: property.mainPropertyImage || null,
-          images: property.images,
+          propertyImages: property.propertyImages,
           totalPrice: property.totalPrice,
           bathrooms: property.bathrooms,
           bedrooms: property.bedrooms,

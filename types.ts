@@ -10,7 +10,7 @@ export interface Property {
     squareFootage: number;
     plottedArea: number;
     builtUpArea: number;
-    images: string[];
+    propertyImages: string[];
     amenities: string[];
     slug: {
             current: string;
@@ -30,7 +30,7 @@ export interface Project {
     totalPrice: number;
     description: string;
     squareFootage: number;
-    images: string[];
+    projectImages: string[];
     amenities: string[];
 
     properties: {
