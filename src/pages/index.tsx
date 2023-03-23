@@ -4,17 +4,21 @@ import { useTheme } from '@mui/material/styles'
 import Divider from '@mui/material/Divider';
 import HomeImage from '../components/pageComponents/home/homeHeader/ImageHome';
 
-import { PropertyProps, ProjectProps } from '../../types'
+import { sanityClient } from '../../sanity';
+import { Property, Project } from '../../types'
 
-import PropertyCardSlug from '../components/slugComponents/cardSlugs/propertyCardSlugs/PropertyCardSlugs';
-import ProjectsCardSlug from '../components/slugComponents/cardSlugs/projectCardSlugs/ProjectCardSlugs';
+import PropertyCardSlug from '../components/slugComponents/cardSlugs/PropertyCardSlugs'
+import ProjectCardSlug from '../components/slugComponents/cardSlugs/ProjectCardSlugs'
 
-import { getServerSideProps } from '../components/slugComponents/cardSlugs/propertyCardSlugs/PropertyDataSlug';
+
+// import PropertyProps from './props/propertyProps';
+// import ProjectProps from './props/projectProps';
+
 
 
 interface HomeProps {
-properties: PropertyProps[];
-projects: ProjectProps[];
+properties: Property[];
+projects: Project[];
 }
 
 function Home({ properties, projects }: HomeProps) {
@@ -72,15 +76,31 @@ function Home({ properties, projects }: HomeProps) {
           <PropertyCardSlug properties={properties} />
         </Box>
       </Grid>
-      <Box sx={projectCards}>
-        <Grid container spacing={3} direction='column'>
-          <ProjectsCardSlug projects={projects} />
-        </Grid>
-      </Box>
+      <Grid container spacing={3} direction='column'>
+        <Box sx={projectCards}>
+            <ProjectCardSlug projects={projects} />
+        </Box>
+      </Grid>
     </Box>
   );
 }
 
-export default Home;
+export async function getServerSideProps() {
+  const propertyQuery = '*[_type == "property"]';
+  const projectQuery = '*[_type == "projects"]';
+  const [properties, projects] = await Promise.all([
 
-export { getServerSideProps };
+    sanityClient.fetch<Property[]>(propertyQuery),
+    sanityClient.fetch<Project[]>(projectQuery),
+
+    ]);
+    
+      return {
+        props: {
+        properties,
+        projects,
+      },
+    };
+}
+
+export default Home;

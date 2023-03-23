@@ -1,13 +1,13 @@
-import { sanityClient, urlFor } from '../../../../../sanity';
-import { isMultiple, formatPrice, formatArea } from '../../../../../utils';
-import { ProjectProps } from '../../../../../types';
+import { sanityClient, urlFor } from '../../../../sanity';
+import { isMultiple, formatPrice, formatArea } from '../../../../utils';
+import { Project } from '../../../../types';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { Box, Typography, Container, Card, Divider } from '@mui/material';
 
 interface ProjectsCardBodyProps {
-    projects?: ProjectProps[];
+    projects?: Project[];
 }
 
 const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
@@ -16,7 +16,7 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '100vh',
+        minHeight: '50vh',
     };
 
     const featuredTitlePos = {
@@ -86,9 +86,9 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                             {projects?.map((projects) => (
                                 <Link key={projects._id} href={`projects/${projects.slug.current}`}>
                                     <Card sx={cardStyles}>
-                                        {projects.mainImage && (
+                                        {projects.mainProjectImage && (
                                           <Image
-                                              src={urlFor(projects.mainImage).auto('format').url()}
+                                              src={urlFor(projects.mainProjectImage).auto('format').url()}
                                               alt={projects.title}
                                               width={330}
                                               height={270}

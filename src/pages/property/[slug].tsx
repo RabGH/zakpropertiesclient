@@ -1,5 +1,5 @@
 import { sanityClient } from "../../../sanity";
-import { isMultiple } from "../../../utils";
+import { isMultiple, formatPrice, formatArea } from '../../../utils';
 import Link from 'next/link';
 
 import { Box, Divider, Typography, Card } from '@mui/material';
@@ -12,37 +12,18 @@ const MapSlug = dynamic(() => import('../../components/slugComponents/MapSlug'),
     ssr: false,
 });
 
+import { Property as PropertyProps } from '../../../types'
 
-interface PropertyProps {
-    title: string;
-    propertyType: string;
-    mainImage: string;
-    totalPrice: number;
-    bathrooms: number;
-    bedrooms: number;
-    description: string;
-    squareFootage: number;
-    plottedArea: number;
-    builtUpArea: number;
-    images: string[];
-    amenities: string[];
-  
-    location: {
-      lat?: number;
-      lng?: number;
-    };
-}
 interface PageContext {
     query: {
         slug: string;
     }
 }
 
-
 const Property = ({
     title,
     propertyType,
-    mainImage,
+    mainPropertyImage,
     totalPrice,
     bathrooms,
     bedrooms,
@@ -185,13 +166,13 @@ const Property = ({
                     {title}
                 </Typography>
                 <Typography variant='h6' sx={priceStyle}>
-                    AED {totalPrice}
+                    {formatPrice(totalPrice)}
                 </Typography>
             </Box>
             <Card sx={imageCardStyles}>
                     <Box sx={imageSection}>
                         <Box sx={mainImageStyles}>
-                        <ImageSlug identifier="main-image" image={mainImage} />
+                            <ImageSlug identifier="main-image" image={mainPropertyImage} />
                         </Box>
                     <Box sx={subImagesStyles}>
                         {images.map((image, index) => 
@@ -223,13 +204,13 @@ const Property = ({
                     </Typography>
                     <Box sx={squareFootageStyles}>
                         <Typography variant='body2' sx={mainBodySlug}>
-                            Main Area: {squareFootage} sqrft
+                            Main Area: {formatArea(squareFootage)} sqrft
                         </Typography>
                         <Typography variant='body2' sx={mainBodySlug}>
-                            Plotted Area: {plottedArea} sqrft
+                            Plotted Area: {formatArea(plottedArea)} sqrft
                         </Typography>
                         <Typography variant='body2' sx={mainBodySlug}>
-                            Built Up Area: {builtUpArea} sqrft
+                            Built Up Area: {formatArea(builtUpArea)} sqrft
                         </Typography>
                     </Box>
                 </Box>
@@ -246,7 +227,7 @@ const Property = ({
 
             <Box sx={priceBox}>
                 <Typography variant='h5'>
-                    Price: AED {totalPrice}
+                    {formatPrice(totalPrice)}
                 </Typography>
                 <Box sx={priceButtonPos}>
                 <Link href='/contact'>
@@ -280,7 +261,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
       title,
       location,
       propertyType,
-      mainImage,
+      mainPropertyImage,
       images,
       totalPrice,
       bathrooms,
@@ -304,7 +285,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
           title: property.title,
           location: property.location,
           propertyType: property.propertyType,
-          mainImage: property.mainImage || null,
+          mainPropertyImage: property.mainPropertyImage || null,
           images: property.images,
           totalPrice: property.totalPrice,
           bathrooms: property.bathrooms,

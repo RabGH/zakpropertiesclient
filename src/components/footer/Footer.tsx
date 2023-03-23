@@ -74,19 +74,19 @@ function Footer() {
           </GeneralButton>
         </Link>
 
-        <Link href='/project1'>
+        <Link href='/projects/a-smaller-project-not-as-big-as-the-rest-but-decent'>
           <GeneralButton variant='contained' sx={linkStyles}>
               Project1
           </GeneralButton>
         </Link>
 
-        <Link href='/project2'>
+        <Link href='/projects/another-bigger-even-biggest-project-huge'>
           <GeneralButton variant='contained' sx={linkStyles}>
               Project2
           </GeneralButton>
         </Link>
 
-        <Link href='/project3'>
+        <Link href='/projects/big-project-big-gains'>
           <GeneralButton variant='contained' sx={linkStyles}>
               Project3
           </GeneralButton>

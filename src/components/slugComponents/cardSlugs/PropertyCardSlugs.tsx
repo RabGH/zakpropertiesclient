@@ -1,5 +1,5 @@
-import { sanityClient, urlFor } from '../../../../../sanity';
-import { isMultiple, formatPrice, formatArea } from '../../../../../utils';
+import { sanityClient, urlFor } from '../../../../sanity';
+import { isMultiple, formatPrice, formatArea } from '../../../../utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,7 +8,7 @@ import { Box, Typography, Container, Card, Divider } from '@mui/material';
 interface Property {
   _id: string;
   title: string;
-  mainImage?: string;
+  mainPropertyImage?: string;
   slug: {
     current: string;
   }
@@ -99,9 +99,9 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
                 {properties?.map((property) => (
                   <Link key={property._id} href={`property/${property.slug.current}`}>
                     <Card sx={cardStyles}>
-                      {property.mainImage && (
+                      {property.mainPropertyImage && (
                         <Image
-                          src={urlFor(property.mainImage).auto('format').url()}
+                          src={urlFor(property.mainPropertyImage).auto('format').url()}
                           alt={property.title}
                           width={330}
                           height={270}
@@ -123,7 +123,6 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
                         </Typography>
                       </Box>
                     </Card>
-                    <Divider />
                   </Link>
                 ))}
               </Box>
