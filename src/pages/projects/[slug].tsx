@@ -142,7 +142,7 @@ const Projects = ({
                     {title}
                 </Typography>
                 <Typography variant='h6' sx={priceStyle}>
-                    AED {totalPrice}
+                    {formatPrice(totalPrice)}
                 </Typography>
             </Box>
             <Card sx={imageCardStyles}>
@@ -165,7 +165,7 @@ const Projects = ({
 
                 <Box sx={bodyStyles}>
                     <Typography variant='body2' sx={squareFootageStyles}>
-                        {squareFootage}
+                        {formatArea(squareFootage)}
                     </Typography>
                     <Typography variant='body2' sx={descriptionStyles}>
                         {description}
@@ -188,7 +188,7 @@ const Projects = ({
 
             <Box sx={priceBox}>
                 <Typography variant='h5'>
-                    Price: AED {totalPrice}
+                    Price: {formatPrice(totalPrice)}
                 </Typography>
                 <Box sx={priceButtonPos}>
                 <Link href='/contact'>
@@ -213,7 +213,7 @@ const Projects = ({
                                         {property.title}
                                     </Typography>
                                     <Typography variant='h6'>
-                                        AED {property.totalPrice}
+                                        AED {formatPrice(property.totalPrice)}
                                     </Typography>
                                 </Card>
                             </Box>
