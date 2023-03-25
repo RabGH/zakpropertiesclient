@@ -19,7 +19,7 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
 
   const imgContainer = {
     position: "absolute",
-    top: '-65px',
+    top: "-65px",
     left: 0,
     right: 0,
     bottom: 0,
@@ -45,7 +45,7 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
   const searchBarBox = {
     maxWidth: 800,
     width: "100%",
-    mt: '20rem',
+    mt: "20rem",
   };
 
   const [open, setOpen] = useState(false);
@@ -57,10 +57,10 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
   return (
     <Box sx={mainContainer}>
       <Box sx={imgContainer}>
-        <Image src={MainJouri} alt='' style={{ objectFit: "cover" }} />
+        <Image src={MainJouri} alt="" style={{ objectFit: "cover" }} />
       </Box>
       <Box sx={logoContainer}>
-        <Image src={LogoImage} alt='' />
+        <Image src={LogoImage} alt="" />
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
         <Box sx={searchBarContainer}>

@@ -1,14 +1,22 @@
-import * as React from 'react';
-import { Box, Container, Typography, Card, CardContent, Grid, Button } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import * as React from "react";
+import {
+  Box,
+  Container,
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+  Button,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const AboutPage: React.FC = () => {
   const theme = useTheme();
   const mainContainer = {
-    backgroundColor: theme.palette.background.default, 
+    backgroundColor: theme.palette.background.default,
     py: 8,
-    height: '80vh',
-    mt: '6rem',
+    height: "80vh",
+    mt: "6rem",
   };
 
   return (
@@ -26,12 +34,15 @@ const AboutPage: React.FC = () => {
                   Who We Are
                 </Typography>
                 <Typography variant="body2" sx={{ mb: 2 }}>
-                  We are a leading real estate company based in the UAE, specializing in the promotion and sale of properties,
-                  off-plan properties, project properties, property investments, and more.
+                  We are a leading real estate company based in the UAE,
+                  specializing in the promotion and sale of properties, off-plan
+                  properties, project properties, property investments, and
+                  more.
                 </Typography>
                 <Typography variant="body2">
-                  Our team of experienced professionals is dedicated to helping clients find the perfect property and making
-                  the buying or selling process as smooth and stress-free as possible.
+                  Our team of experienced professionals is dedicated to helping
+                  clients find the perfect property and making the buying or
+                  selling process as smooth and stress-free as possible.
                 </Typography>
               </CardContent>
             </Card>
@@ -44,11 +55,13 @@ const AboutPage: React.FC = () => {
                   Our Mission
                 </Typography>
                 <Typography variant="body2" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our clients, with a focus on integrity, honesty,
-                  and professionalism.
+                  Our mission is to provide the best real estate services to our
+                  clients, with a focus on integrity, honesty, and
+                  professionalism.
                 </Typography>
                 <Typography variant="body2">
-                  We strive to exceed our clients&apos; expectations by providing expert guidance and support throughout the entire
+                  We strive to exceed our clients&apos; expectations by
+                  providing expert guidance and support throughout the entire
                   buying or selling process.
                 </Typography>
               </CardContent>
@@ -56,13 +69,14 @@ const AboutPage: React.FC = () => {
           </Grid>
         </Grid>
 
-        <Box sx={{ mt: 8, textAlign: 'center' }}>
+        <Box sx={{ mt: 8, textAlign: "center" }}>
           <Typography variant="h4" component="h2" gutterBottom>
             Contact Us
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 2 }}>
-            Have a question or need help with buying or selling a property? We&apos;re here to help!
+            Have a question or need help with buying or selling a property?
+            We&apos;re here to help!
           </Typography>
 
           <Button variant="contained" color="primary">

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import React from "react";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 interface GeneralCardProps {
   title: string;
@@ -7,7 +7,11 @@ interface GeneralCardProps {
   content: string;
 }
 
-const GeneralCard: React.FC<GeneralCardProps> = ({ title, imageSrc, content }) => {
+const GeneralCard: React.FC<GeneralCardProps> = ({
+  title,
+  imageSrc,
+  content,
+}) => {
   return (
     <Card>
       <CardMedia component="img" src={imageSrc} />

@@ -1,12 +1,12 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions, Box } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import Image from 'next/image'
-import type { StaticImageData } from 'next/image'
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions, Box } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 interface Props {
   title: string;
@@ -26,65 +26,63 @@ const GeneralImageCard: React.FC<Props> = ({
 }) => {
   const muiTheme = useTheme();
 
-
   const mainContainer = {
-    height: '60vh',
+    height: "60vh",
   };
 
   const mainCard = {
     maxWidth: 500,
-    display: 'flex',
-    flexDirection: 'column',
-    borderRadius: '15px',
-    boxShadow: '0px 2px 5px rgba(0, 0, 0, 1)',
-    ml: '10rem',
+    display: "flex",
+    flexDirection: "column",
+    borderRadius: "15px",
+    boxShadow: "0px 2px 5px rgba(0, 0, 0, 1)",
+    ml: "10rem",
     backgroundColor: muiTheme.palette.primary.light,
-    transition: 'background-color 1s ease, box-shadow 1s ease',
-    '&:hover': {
+    transition: "background-color 1s ease, box-shadow 1s ease",
+    "&:hover": {
       backgroundColor: muiTheme.palette.primary.light,
-      boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.4)',
-    }
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.4)",
+    },
   };
 
-  const cardMedia = {
-  };
+  const cardMedia = {};
 
   const cardContent = {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     flexGrow: 1,
     zIndex: 1,
   };
 
   const cardTitle = {
-    paddingBottom: '1rem',
-    transition: 'color 1s ease',
+    paddingBottom: "1rem",
+    transition: "color 1s ease",
     color: muiTheme.palette.secondary.dark,
-    fontWeight: 'bold',
-    '&:hover': {
-      color: 'white'
+    fontWeight: "bold",
+    "&:hover": {
+      color: "white",
     },
   };
 
   const cardDescription = {
-    fontWeight: 'bold',
-    fontSize: '1rem',
-    color: 'white',
+    fontWeight: "bold",
+    fontSize: "1rem",
+    color: "white",
     flexGrow: 1,
   };
 
   const linkButton = {
-    fontWeight: 'bold',
-    color: 'white',
-    '&:hover': {
+    fontWeight: "bold",
+    color: "white",
+    "&:hover": {
       color: muiTheme.palette.secondary.main,
     },
   };
 
   const actionButton = {
-    display: 'flex',
-    justifyContent: 'center',
-    paddingBottom: '1rem',
+    display: "flex",
+    justifyContent: "center",
+    paddingBottom: "1rem",
   };
 
   return (
@@ -92,16 +90,21 @@ const GeneralImageCard: React.FC<Props> = ({
       <Card sx={mainCard}>
         <CardActionArea>
           <Box sx={cardMedia}>
-          <Image
-            src={image}
-            alt=""
-            layout="responsive"
-            width={400}
-            height={400}
-          />
+            <Image
+              src={image}
+              alt=""
+              layout="responsive"
+              width={400}
+              height={400}
+            />
           </Box>
           <CardContent sx={cardContent}>
-            <Typography gutterBottom variant="h5" component="div" sx={cardTitle}>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              sx={cardTitle}
+            >
               {title}
             </Typography>
             <Typography

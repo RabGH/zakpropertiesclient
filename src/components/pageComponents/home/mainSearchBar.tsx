@@ -26,9 +26,7 @@ function SearchBar(props: SearchBarProps) {
     value: string
   ) => {
     if (selectedType === "Properties") {
-      const property = properties.find(
-        (property) => property.title === value
-      );
+      const property = properties.find((property) => property.title === value);
       if (property) {
         router.push(`/property/${property.slug.current}`);
       }
@@ -39,9 +37,7 @@ function SearchBar(props: SearchBarProps) {
       }
     } else {
       // If All is selected, search in both properties and projects
-      const property = properties.find(
-        (property) => property.title === value
-      );
+      const property = properties.find((property) => property.title === value);
       const project = projects.find((project) => project.title === value);
       if (property) {
         router.push(`/property/${property.slug.current}`);
@@ -50,7 +46,6 @@ function SearchBar(props: SearchBarProps) {
       }
     }
   };
-  
 
   const getLabel = (type: string) => {
     if (type === "All") {
@@ -61,7 +56,7 @@ function SearchBar(props: SearchBarProps) {
       return `Total Projects: ${projects.length}`;
     }
   };
-  
+
   const propertyOptions = properties.map((property) => property.title);
   const projectOptions = projects.map((project) => project.title);
   const options = ["All", "Properties", "Projects"];
@@ -98,7 +93,6 @@ function SearchBar(props: SearchBarProps) {
     "& .MuiInputLabel-root.Mui-focused": {
       color: useTheme().palette.secondary.light,
     },
-    
   };
 
   const autoSelectStyles = {
@@ -123,7 +117,6 @@ function SearchBar(props: SearchBarProps) {
     "& .MuiInputLabel-root.Mui-focused": {
       color: useTheme().palette.secondary.light,
     },
-    
   };
 
   const searchBarWrapper = {
