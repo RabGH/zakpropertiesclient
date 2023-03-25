@@ -85,6 +85,14 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
     flexDirection: 'column',
   };
 
+  if (!properties) {
+    return null;
+  }
+
+  // Filter properties by propertyType
+  const villasAndTownhouses = properties.filter(property => property.propertyType === 'Villa/Townhouse');
+  const apartments = properties.filter(property => property.propertyType === 'Apartment');
+
   return (
     <>
       {properties && (
@@ -93,8 +101,9 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
             <Box sx={feedContainer}>
               <Divider />
               <Typography variant='h4' sx={featuredTitlePos}>
-                Featured Properties
+                Villas and Townhouses
               </Typography>
+              <Divider />
               <Box sx={feed}>
                 {properties?.map((property) => (
                   <Link key={property._id} href={`property/${property.slug.current}`}>

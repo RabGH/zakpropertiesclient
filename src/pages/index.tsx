@@ -23,6 +23,7 @@ function Home({ properties, projects }: HomeProps) {
 
   const contentProject = {
     height: "35vh",
+    fontSize: '1rem'
   };
 
   const boxContentProject = {
@@ -60,7 +61,7 @@ function Home({ properties, projects }: HomeProps) {
             Luxury Living in A Golfing Haven A Stylish Enclave Of 294 Luxury
             Homes
           </Typography>
-          <Typography variant="h6" component="div" sx={contentProject}>
+          <Typography variant="body2" component="div" sx={contentProject}>
             Jouri Hills is a new residential project, which will be located in
             Jumeirah Golf Estates, a world-class residential golf destination
             with luxury homes and leisure facilities. The developer of the

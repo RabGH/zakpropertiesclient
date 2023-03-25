@@ -43,7 +43,7 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
   };
 
   const searchBarBox = {
-    maxWidth: 800,
+    maxWidth: 750,
     width: "100%",
     mt: "20rem",
   };

@@ -65,8 +65,8 @@ function SearchBar(props: SearchBarProps) {
     display: "flex",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.3)",
-    padding: "8px",
-    borderRadius: "4px",
+    padding: "3px",
+    borderRadius: "5px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
     zIndex: 10,
   };
