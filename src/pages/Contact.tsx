@@ -4,7 +4,7 @@ import GeneralButton from '../components/general/GButton';
 import { Typography, Box, Container, Grid } from '@mui/material';
 
 import Image from 'next/image'
-import logoContact from '../assets/images/logo/logoNoBg.png'
+import logoContact from '../../public/images/logo/logoNoBg.png'
 
 import { useTheme } from '@mui/material/styles'
 

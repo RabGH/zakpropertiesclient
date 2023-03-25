@@ -13,17 +13,26 @@ interface HomeHeaderProps {
 
 function HomeHeader({ properties, projects }: HomeHeaderProps) {
   const mainContainer = {
-    height: "100vh",
+    height: "50vh",
     position: "relative",
   };
 
   const imgContainer = {
     position: "absolute",
-    top: "-65px",
+    top: '-65px',
     left: 0,
     right: 0,
-    bottom: "40%",
+    bottom: 0,
     overflow: "hidden",
+    zIndex: -1,
+  };
+
+  const logoContainer = {
+    position: "absolute",
+    top: "40%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    zIndex: 1,
   };
 
   const searchBarContainer = {
@@ -34,25 +43,28 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
   };
 
   const searchBarBox = {
-    maxWidth: 600,
+    maxWidth: 800,
     width: "100%",
+    mt: '20rem',
   };
 
-  const [open, setOpen] = useState(false); // Add state for handling toggle
+  const [open, setOpen] = useState(false);
 
   const handleToggle = () => {
     setOpen(!open);
-  }; // Define handleToggle function
+  };
 
   return (
     <Box sx={mainContainer}>
       <Box sx={imgContainer}>
-        <Image src={MainJouri} alt="" style={{ objectFit: "cover" }} />
+        <Image src={MainJouri} alt='' style={{ objectFit: "cover" }} />
+      </Box>
+      <Box sx={logoContainer}>
+        <Image src={LogoImage} alt='' />
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
         <Box sx={searchBarContainer}>
           <Box sx={searchBarBox}>
-            {/* Pass handleToggle to SearchBar */}
             <SearchBar
               properties={properties}
               projects={projects}
@@ -60,7 +72,6 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
             />
           </Box>
         </Box>
-        {/* Add the rest of your content here */}
       </Box>
     </Box>
   );
