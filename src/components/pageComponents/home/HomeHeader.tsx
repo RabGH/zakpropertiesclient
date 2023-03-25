@@ -25,6 +25,29 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
     bottom: 0,
     overflow: "hidden",
     zIndex: -1,
+    backgroundColor: "(0, 0, 0, 0.1)",
+    "&::after": {
+      content: "''",
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom: "-10px",
+      height: "40px",
+      zIndex: 1,
+      background:
+        "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 100%)",
+      backdropFilter: "blur(0.5px)",
+    },
+    "&::before": {
+      content: "''",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.3)",
+      zIndex: 1,
+    },
   };
 
   const logoContainer = {
@@ -33,6 +56,7 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
     left: "50%",
     transform: "translate(-50%, -50%)",
     zIndex: 1,
+    filter: "invert(1)",
   };
 
   const searchBarContainer = {

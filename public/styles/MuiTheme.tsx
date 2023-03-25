@@ -66,7 +66,7 @@ export const themeOptions: ThemeOptions = {
     h5: {
       fontFamily: "Roboto",
       fontSize: "1.25rem",
-      fontWeight: 600,
+      fontWeight: 400,
       color: "#1e6572",
       lineHeight: 1.2,
       margin: "0",
