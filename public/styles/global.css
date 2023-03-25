@@ -19,33 +19,7 @@
 
 /* ========== Font Styles ========== */
 
-/* @font-face {
-    font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto-Medium.ttf');
-    font-weight: medium;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto-Light.ttf');
-    font-weight: light;
-    font-style: normal;
-} */
-
 *, *::before, *::after {
-    /* margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    /* list-style: none; */
     text-decoration: none;
-    /* box-sizing: border-box;  */
 }
 
-/* body { */
-    /* background-color: #f7f7f7; set your desired color here */
-    /* margin: 0; */
-    /* font-family: 'Bangers', cursive; */
-/* } */
-  

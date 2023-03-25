@@ -112,7 +112,7 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
                         <Typography variant='body2' sx={propertyTypeStyles}>
                           {property.propertyType}
                         </Typography>
-                        <Typography variant='h3' sx={propertyTitleCard}>
+                        <Typography variant='h6' sx={propertyTitleCard}>
                           {property.title}
                         </Typography>
                         <Typography variant='body2' sx={properyAreaCard}>

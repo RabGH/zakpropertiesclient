@@ -70,6 +70,7 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
 
     const projectPriceCard = {
         paddingBottom: '0.7rem',
+        fontSize: '0.9rem',
     };
 
     return (
@@ -99,13 +100,13 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                                             <Typography variant='body2' sx={projectTypeStyles}>
                                                 {projects.development}
                                             </Typography>
-                                            <Typography variant='body2' sx={projectTitleCard}>
+                                            <Typography variant='h6' sx={projectTitleCard}>
                                                 {projects.title}
                                             </Typography>
                                             <Typography variant='body2' sx={projectAreaCard}>
                                                 Area {formatArea(projects.squareFootage)}
                                             </Typography>
-                                            <Typography variant='body2' sx={projectPriceCard}>
+                                            <Typography variant='h5' sx={projectPriceCard}>
                                                 {formatPrice(projects.totalPrice)}
                                             </Typography>
                                         </Box>

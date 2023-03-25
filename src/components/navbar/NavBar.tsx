@@ -8,7 +8,7 @@ import { styled } from '@mui/material/styles';
 import { useScrollTrigger } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-import NoBgLogo from '../../assets/images/logo/logoNoBg.png';
+import NoBgLogo from '../../../public/images/logo/logoNoBg.png';
 
 interface Props {
   children?: React.ReactNode;
