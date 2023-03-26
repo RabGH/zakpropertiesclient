@@ -17,9 +17,9 @@ function Socials() {
   };
 
   const socialIcons = {
-    fontSize: "25px",
+    fontSize: "20px",
     marginBottom: "0.5rem",
-    color: muiTheme.palette.secondary.dark,
+    color: 'white',
     "&:hover": {
       color: muiTheme.palette.secondary.light,
     },

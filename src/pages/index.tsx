@@ -23,7 +23,7 @@ function Home({ properties, projects }: HomeProps) {
 
   const contentProject = {
     height: "35vh",
-    fontSize: '1rem'
+    fontSize: "1rem",
   };
 
   const boxContentProject = {
@@ -35,10 +35,17 @@ function Home({ properties, projects }: HomeProps) {
 
   const aboutProjectDivider = {
     color: "black",
+    borderBottomWidth: 5,
+  };
+
+  const aboutTitle = { 
+    fontSize: "1.3rem", 
   };
 
   const titleProject = {
-    m: "1rem",
+    m: "1.5rem",
+    ml: "1rem",
+    fontSize: "1.5rem",
   };
 
   const mainContainer = {};
@@ -53,7 +60,7 @@ function Home({ properties, projects }: HomeProps) {
       <Container sx={contentProject}>
         <Box sx={boxContentProject}>
           <Divider component="div" role="presentation" sx={aboutProjectDivider}>
-            <Typography variant="h5" component="div">
+            <Typography variant="h5" component="div" sx={aboutTitle}>
               About The Project
             </Typography>
           </Divider>

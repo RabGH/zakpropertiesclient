@@ -13,7 +13,7 @@ interface HomeHeaderProps {
 
 function HomeHeader({ properties, projects }: HomeHeaderProps) {
   const mainContainer = {
-    height: "50vh",
+    height: "65vh",
     position: "relative",
   };
 
@@ -25,17 +25,16 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
     bottom: 0,
     overflow: "hidden",
     zIndex: -1,
-    backgroundColor: "(0, 0, 0, 0.1)",
     "&::after": {
       content: "''",
       position: "absolute",
       left: 0,
       right: 0,
       bottom: "-10px",
-      height: "40px",
+      height: "60px",
       zIndex: 1,
       background:
-        "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 100%)",
+        "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 100%)",
       backdropFilter: "blur(0.5px)",
     },
     "&::before": {
@@ -45,7 +44,7 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: "rgba(0, 0, 0, 0.3)",
+      backgroundColor: "rgba(0, 0, 0, 0.4)",
       zIndex: 1,
     },
   };

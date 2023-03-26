@@ -23,7 +23,9 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
         mt: '1rem',
         ml: '1rem',
         mb: '1rem',
-        fontSize: '1.5rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     };
 
     const feedContainer = {
@@ -79,10 +81,11 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
             <Container>
                 <Box sx={main}>
                     <Box sx={feedContainer}>
-                        <Divider />
-                        <Typography variant='h4' sx={featuredTitlePos}>
-                            Featured Projects
-                        </Typography>
+                        <Divider>
+                            <Typography variant='h5' sx={featuredTitlePos}>
+                                Featured Projects
+                            </Typography>
+                        </Divider>
                         <Box sx={feed}>
                             {projects?.map((projects) => (
                                 <Link key={projects._id} href={`projects/${projects.slug.current}`}>

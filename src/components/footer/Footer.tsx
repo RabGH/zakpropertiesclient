@@ -29,28 +29,22 @@ function Footer() {
   const linkStyles = {
     backgroundColor: "transparent",
     boxShadow: "none",
-    color: muiTheme.palette.secondary.dark,
+    color: 'white',
     textDecoration: "none",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     textTransform: "capitalize",
-    fontSize: "18px",
+    fontSize: "15px",
     margin: "0 0px",
     "&:hover": {
-      color: muiTheme.palette.secondary.light,
+      color: muiTheme.palette.error.dark,
       backgroundColor: "transparent",
       boxShadow: "none",
       textDecoration: "none",
     },
   };
 
-  const buttonStyles = {
-    fontWeight: "bold",
-    color: muiTheme.palette.primary.main,
-  };
-
   const copyRightStyles = {
-    color: muiTheme.palette.secondary.dark,
-    fontWeight: "bold",
+    color: 'white',
   };
 
   return (
@@ -96,11 +90,6 @@ function Footer() {
         <Typography variant="h6" gutterBottom></Typography>
         <Socials />
       </Box>
-      {/* <Link href='/contact'>
-        <GeneralButton variant='outlined' sx={buttonStyles}>
-          Contact Us
-        </GeneralButton>
-      </Link> */}
       <Typography variant="body2" align="center" sx={copyRightStyles}>
         © 2023 ZakProperties. All Rights Reserved.
       </Typography>

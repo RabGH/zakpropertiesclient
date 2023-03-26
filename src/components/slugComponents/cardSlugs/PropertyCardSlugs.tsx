@@ -34,7 +34,9 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
     mt: '1rem',
     ml: '1rem',
     mb: '1rem',
-    fontSize: '1.5rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   };
 
   const feedContainer = {
@@ -99,11 +101,11 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
         <Container>
           <Box sx={main}>
             <Box sx={feedContainer}>
-              <Divider />
-              <Typography variant='h4' sx={featuredTitlePos}>
-                Villas and Townhouses
-              </Typography>
-              <Divider />
+              <Divider>
+                <Typography variant='h5' sx={featuredTitlePos}>
+                  Villas and Townhouses
+                </Typography>
+              </Divider>
               <Box sx={feed}>
                 {properties?.map((property) => (
                   <Link key={property._id} href={`property/${property.slug.current}`}>

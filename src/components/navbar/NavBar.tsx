@@ -50,6 +50,7 @@ const StyledToolbar = styled(Toolbar)({
 const StyledImage = styled(Image)({
   height: "8rem",
   width: "auto",
+  // filter: "invert(1)",
 });
 
 export default function ElevateAppBar(props: Props): JSX.Element {

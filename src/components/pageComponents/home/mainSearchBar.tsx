@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Autocomplete, TextField, Box, useTheme } from "@mui/material";
 import { Property, Project } from "../../../../types";
 import { useRouter } from "next/router";
-
 interface SearchBarProps {
   properties: Property[];
   projects: Project[];
@@ -64,10 +63,7 @@ function SearchBar(props: SearchBarProps) {
   const mainBox = {
     display: "flex",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.3)",
     padding: "3px",
-    borderRadius: "5px",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
     zIndex: 10,
   };
 
@@ -80,23 +76,23 @@ function SearchBar(props: SearchBarProps) {
     "& .MuiInputLabel-root": {
       color: "white",
     },
-    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "rgba(0, 0, 0, 0.3)",
-      borderWidth: "2px",
-    },
+    // "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+    //   borderColor: "rgba(30, 59, 114, 0.3)",
+    //   borderWidth: "0px",
+    // },
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderColor: "black",
     },
     "& .MuiOutlinedInput-root": {
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
+      backgroundColor: "rgba(30, 59, 114, 0.7)",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: useTheme().palette.secondary.light,
+      color: 'white',
     },
   };
 
   const autoSelectStyles = {
-    width: "175px",
+    width: "170px",
     flexGrow: 1,
     "& .MuiInputBase-input": {
       color: "white",
@@ -104,18 +100,18 @@ function SearchBar(props: SearchBarProps) {
     "& .MuiInputLabel-root": {
       color: "white",
     },
-    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "rgba(0, 0, 0, 0.3)",
-      borderWidth: "2px",
-    },
+    // "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+    //   borderColor: "rgba(30, 59, 114, 0.3)",
+    //   borderWidth: "0px",
+    // },
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderColor: "black",
     },
     "& .MuiOutlinedInput-root": {
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
+      backgroundColor: "rgba(30, 59, 114, 0.7)",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: useTheme().palette.secondary.light,
+      color: 'white',
     },
   };
 
