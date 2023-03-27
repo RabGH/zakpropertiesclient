@@ -101,7 +101,7 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                                         )}
                                         <Box sx={cardInfoStyles}>
                                             <Typography variant='body2' sx={projectTypeStyles}>
-                                                {projects.development}
+                                                {projects.projectPropertyTypes}
                                             </Typography>
                                             <Typography variant='h6' sx={projectTitleCard}>
                                                 {projects.title}

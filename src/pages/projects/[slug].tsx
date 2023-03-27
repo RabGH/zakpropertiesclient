@@ -29,7 +29,10 @@ type ProjectsProps = Project & PropertyList;
 
 const Projects = ({
   title,
-  development,
+  projectPropertyTypes,
+  unitType,
+  projectOffPlan,
+  mainDeveloper,
   mainProjectImage,
   totalPrice,
   description,
@@ -46,14 +49,6 @@ const Projects = ({
   const titleStyle = {};
 
   const priceStyle = {};
-
-  const imageCardStyles = {};
-
-  const imageSection = {};
-
-  const mainImageStyles = {};
-
-  const subImagesStyles = {};
 
   const dividerStyles = {};
 
@@ -86,18 +81,7 @@ const Projects = ({
   const PropertiesCardPos = {};
 
   const propertyContainer = {};
-
-  const getImageObjects = (mainProjectImage: string, projectImages: string[]) => {
-    const imageObjects = projectImages.map((image) => ({ image: image }));
-    if (mainProjectImage) {
-      imageObjects.unshift({ image: mainProjectImage });
-    }
-    return imageObjects;
-  };
   
-  const projectImageObjects = getImageObjects(mainProjectImage, projectImages);
-  
-
   return (
     <Box sx={mainContainer}>
       <Box sx={titleContainer}>
@@ -108,15 +92,35 @@ const Projects = ({
           {formatPrice(totalPrice)}
         </Typography>
       </Box>
-      <ImageCarousel mainImage={mainProjectImage} images={projectImageObjects} />
-
+      <ImageCarousel mainImage={mainProjectImage} subImages={projectImages} />
 
       <Divider sx={dividerStyles} />
 
       <Box sx={mainSection}>
         <Typography variant="body2" sx={mainBodyStyles}>
-          {development}
+          {projectPropertyTypes}
         </Typography>
+
+        <Box>
+          <Typography>{unitType}</Typography>
+        </Box>
+
+        <Box>
+          <Typography>{mainDeveloper}</Typography>
+        </Box>
+
+        <Box>
+          {typeof projectOffPlan === 'object' && projectOffPlan.offplan ? (
+            <Box>
+              <Typography>Off-plan project</Typography>
+              {projectOffPlan.completionDate && (
+                <Typography>Completion date: {projectOffPlan.completionDate}</Typography>
+              )}
+            </Box>
+          ) : (
+            <Typography>Not an off-plan project</Typography>
+          )}
+        </Box>
 
         <Box sx={bodyStyles}>
           <Typography variant="body2" sx={squareFootageStyles}>
@@ -165,7 +169,7 @@ const Projects = ({
                 )}
                 <Typography variant="h1">{property.title}</Typography>
                 <Typography variant="h6">
-                  AED {formatPrice(property.totalPrice)}
+                  {formatPrice(property.totalPrice)}
                 </Typography>
               </Card>
             </Box>
@@ -196,7 +200,10 @@ export const getServerSideProps = async (pageContext: PageContext) => {
 
   const query = `*[ _type == "projects" && slug.current == $pageSlug][0]{
         title,
-        development,
+        projectPropertyTypes,
+        unitType,
+        projectOffPlan,
+        mainDeveloper,
         mainProjectImage,
         totalPrice,
         description,
@@ -227,7 +234,10 @@ export const getServerSideProps = async (pageContext: PageContext) => {
       props: {
         title: projects.title,
         location: projects.location,
-        development: projects.development,
+        projectPropertyTypes: projects.projectPropertyTypes,
+        mainDeveloper: projects.mainDeveloper,
+        projectOffPlan: projects.projectOffPlan || null,
+        unitType: projects.unitType,
         mainProjectImage: projects.mainProjectImage || null,
         projectImages: projects.projectImages,
         totalPrice: projects.totalPrice,

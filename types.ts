@@ -25,7 +25,10 @@ export interface Property {
 export interface Project {
   _id: string;
   title: string;
-  development: string[];
+  projectPropertyTypes: string[];
+  unitType: string;
+  mainDeveloper: string;
+  projectOffPlan: boolean | { offplan?: boolean; completionDate?: string };
   mainProjectImage: string;
   totalPrice: number;
   description: string;

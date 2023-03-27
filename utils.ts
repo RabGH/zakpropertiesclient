@@ -6,7 +6,7 @@ export function formatNumberWithCommas(num: number): string {
 }
 
 export function formatPrice(price: number): string {
-  return `AED ${formatNumberWithCommas(price)}`;
+  return `AED: ${formatNumberWithCommas(price)}`;
 }
 
 export function formatArea(area: number): string {

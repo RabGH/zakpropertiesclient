@@ -5,6 +5,10 @@ import Link from "next/link";
 import { Box, Divider, Typography, Card } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 
+import { BiBed } from 'react-icons/bi';
+import { BiBath } from 'react-icons/bi';
+
+import AmenitiesCard from '../../components/slugComponents/AmenitiesSlug';
 
 import dynamic from "next/dynamic";
 const MapSlug = dynamic(
@@ -38,6 +42,11 @@ const Property = ({
   amenities,
   location,
 }: PropertyProps) => {
+
+  const dividerStyles = {
+    m: 10,
+  };
+
   const mainContainer = {
     p: 2,
     maxWidth: 1200,
@@ -56,16 +65,29 @@ const Property = ({
 
   const priceStyle = {
     ml: 2,
-    fontSize: "1.5rem",
+    fontSize: "1.3rem",
+  };
+
+  const mainImageContainer = {
+    border: '1px solid #00000000',
+    backgroundColor: '#1B1B1B10',
+    borderRadius: '10px',
   };
 
   const mainSection = {
     mt: 2,
   };
 
-  const amenityStyles = {
-    maxWidth: 700,
-    margin: "0 auto",
+  const propertyTypeStyles = {
+    fontSize: "2rem",
+  };
+
+  const propertyBedStyles = {
+    fontSize: "1rem",
+  };
+
+  const propertyBathroomStyles = {
+    fontSize: "1rem",
   };
 
   const bodyStyles = {
@@ -75,6 +97,33 @@ const Property = ({
   const staticStyles = {
     lineHeight: "1.5",
   };
+
+  const propertyDescStyles = {
+    fontSize: "1.3rem",
+  };
+
+  const squareFootageStyles = {
+    mt: 3,
+    lineHeight: "1.5",
+  };
+
+  const propertyMainAreaStyles = {
+    fontSize: "1rem",
+  };
+
+  const propertyPlottedAreaStyles = {
+    fontSize: "1rem",
+  };
+
+  const propertyBuiltAreaStyles = {
+    fontSize: "1rem",
+  };
+
+  const amenityStyles = {
+    maxWidth: 700,
+    margin: "0 auto",
+  };
+
 
   const priceBox = {
     display: "flex",
@@ -90,8 +139,8 @@ const Property = ({
     mt: 2,
   };
 
-  const dividerStyles = {
-    mt: 2,
+  const mapCardPos = {
+    mt: 3,
   };
 
   const mapCard = {
@@ -102,76 +151,53 @@ const Property = ({
     padding: "1rem",
   };
 
-  const mapCardPos = {
-    mt: 3,
-  };
-
-  const squareFootageStyles = {
-    mt: 3,
-    lineHeight: "1.5",
-  };
-
-  const amenitiesCardStyles = {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    alignItems: "center",
-    mt: 2,
-    fontSize: "1rem",
-  };
-
-  const mainBodySlug = {
-    fontSize: "1rem",
-  };
-
-  const getImageObjects = (mainPropertyImage: string, propertyImages: string[]) => {
-    const imageObjects = propertyImages.map((image) => ({ image }));
-    if (mainPropertyImage) {
-      imageObjects.unshift({ image: mainPropertyImage });
-    }
-    return imageObjects;
-  };
-  
-  const propertyImageObjects = getImageObjects(mainPropertyImage, propertyImages);
   return (
     <Box sx={mainContainer}>
       <Box sx={titleContainer}>
-        <Typography variant="h1" sx={titleStyle}>
+        <Typography variant="h2" sx={titleStyle}>
           {title}
         </Typography>
-        <Typography variant="h6" sx={priceStyle}>
+        <Typography variant="h3" sx={priceStyle}>
           {formatPrice(totalPrice)}
         </Typography>
       </Box>
-      {propertyImages && (
-      <ImageCarousel mainImage={mainPropertyImage} images={propertyImageObjects} />
-    )}
+
+      <Box sx={mainImageContainer}>
+        <ImageCarousel mainImage={mainPropertyImage} subImages={propertyImages} />
+  
+      </Box>      
+      <Divider sx={dividerStyles} />
+
       <Box sx={mainSection}>
-        <Typography variant="body2" sx={mainBodySlug}>
+        <Typography variant="h5" sx={propertyTypeStyles}>
           {propertyType}
         </Typography>
-        <Typography variant="body2" sx={mainBodySlug}>
-          {bedrooms} bedroom{isMultiple(bedrooms)}
+        <Typography variant="body2" sx={propertyBedStyles}>
+          {bedrooms} bedroom{isMultiple(bedrooms)} <BiBed />
         </Typography>
-        <Typography variant="body2" sx={mainBodySlug}>
-          {bathrooms} bathroom{isMultiple(bathrooms)}
+        <Typography variant="body2" sx={propertyBathroomStyles}>
+          {bathrooms} bathroom{isMultiple(bathrooms)} <BiBath />
         </Typography>
       </Box>
 
       <Box sx={bodyStyles}>
         <Box sx={staticStyles}>
-          <Typography variant="body2" sx={mainBodySlug}>
-            {description}
+          <Typography variant="body1" sx={propertyDescStyles}>
+            Aliqua pariatur labore velit aute sunt et laboris non 
+            pariatur ut sit officia sunt mollit. Mollit amet dolor ex 
+            Lorem mollit cillum mollit veniam qui dolor cupidatat cupidatat 
+            consectetur aute. Veniam commodo nisi ipsum do enim id in mollit
+             velit proident exercitation veniam. {description}
           </Typography>
           <Box sx={squareFootageStyles}>
-            <Typography variant="body2" sx={mainBodySlug}>
-              Main Area: {formatArea(squareFootage)} sqrft
+            <Typography variant="body2" sx={propertyMainAreaStyles}>
+              Main Area {formatArea(squareFootage)}
             </Typography>
-            <Typography variant="body2" sx={mainBodySlug}>
-              Plotted Area: {formatArea(plottedArea)} sqrft
+            <Typography variant="body2" sx={propertyPlottedAreaStyles}>
+              Plotted Area {formatArea(plottedArea)}
             </Typography>
-            <Typography variant="body2" sx={mainBodySlug}>
-              Built Up Area: {formatArea(builtUpArea)} sqrft
+            <Typography variant="body2" sx={propertyBuiltAreaStyles}>
+              Built Up Area {formatArea(builtUpArea)}
             </Typography>
           </Box>
         </Box>
@@ -180,11 +206,10 @@ const Property = ({
       <Divider sx={dividerStyles} />
 
       <Box sx={amenityStyles}>
-        <Card sx={{ p: 2 }}>
-          <Typography variant="h3">Amenities</Typography>
-          <Box sx={amenitiesCardStyles}>{amenities}</Box>
-        </Card>
+        <AmenitiesCard amenities={amenities}/>
       </Box>
+
+      <Divider sx={dividerStyles} />
 
       <Box sx={priceBox}>
         <Typography variant="h5">{formatPrice(totalPrice)}</Typography>

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import LogoImage from "../../../../public/images/logo/logoNoBg.png";
+
+import LogoImage1 from "../../../../public/images/logo/logoNoBg.png";
+import LogoImage2 from "../../../../public/images/logo/Zak_logo1.png";
+import LogoImage3 from "../../../../public/images/logo/Zak_logo2.png";
+
 import MainJouri from "../../../../public/images/project_images/project2/jouri-hills-1.jpg";
 import { Property, Project } from "../../../../types";
 import SearchBar from "./mainSearchBar";
@@ -44,18 +48,18 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: "rgba(0, 0, 0, 0.4)",
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
       zIndex: 1,
     },
   };
 
   const logoContainer = {
     position: "absolute",
-    top: "40%",
+    top: "45%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     zIndex: 1,
-    // filter: "invert(1)",
+    filter: "invert(1)",
   };
 
   const searchBarContainer = {
@@ -71,17 +75,17 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
     mt: "20rem",
   };
 
-  const zakTitle = {
-    fontSize: "1rem",
-    fontWeight: "",
-    ml: "",
-  };
+  // const zakTitle = {
+  //   fontSize: "1rem",
+  //   fontWeight: "",
+  //   ml: "",
+  // };
 
-  const zakSubTitle = {
-    fontSize: "",
-    fontWeight: "",
-    ml: "",
-  };
+  // const zakSubTitle = {
+  //   fontSize: "",
+  //   fontWeight: "",
+  //   ml: "",
+  // };
 
   const [open, setOpen] = useState(false);
 
@@ -95,13 +99,9 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
         <Image src={MainJouri} alt="" style={{ objectFit: "cover" }} />
       </Box>
       <Box sx={logoContainer}>
-        {/* <Image src={LogoImage} alt="" /> */}
-        <Typography variant="h1" sx={zakTitle}>
-          ZAK
-        </Typography>
-        <Typography variant="h2" sx={zakSubTitle}>
-          PROPERTIES
-        </Typography>
+        {/* <Image src={LogoImage1} alt="" /> */}
+        {/* <Image src={LogoImage2} alt="" /> */}
+        <Image src={LogoImage3} alt="" style={{ width: '1100px', height: 'auto' }} />
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
         <Box sx={searchBarContainer}>

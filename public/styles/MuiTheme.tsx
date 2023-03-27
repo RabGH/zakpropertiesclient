@@ -81,15 +81,13 @@ export const themeOptions: ThemeOptions = {
     },
     body1: {
       fontFamily: "Roboto",
-      fontSize: "0.875rem",
-      fontWeight: 400,
+      fontWeight: 100,
       color: "#000000",
       lineHeight: 1.5,
       margin: "0",
     },
     body2: {
       fontFamily: "Roboto",
-      fontSize: "0.875rem",
       fontWeight: 400,
       color: "#000000",
       lineHeight: 1.5,

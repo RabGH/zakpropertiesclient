@@ -1,66 +1,176 @@
-import { useState } from "react";
-import ImageGallery, {
-  ReactImageGalleryItem,
-  ReactImageGalleryProps,
-} from "react-image-gallery";
-import { urlFor } from "../../../sanity";
-import { Box } from "@mui/material";
-// import Image from 'next/image';
-
+import { useState, useRef } from "react";
+import { Box, Grid, IconButton, Paper } from "@mui/material";
+import { styled } from "@mui/system";
+import {
+  IoMdArrowDroprightCircle,
+  IoMdArrowDropleftCircle,
+} from "react-icons/io";
+import { sanityClient, urlFor } from "../../../sanity";
 
 interface ImageCarouselProps {
-  images: Array<{ image: string }>;
   mainImage: string;
+  subImages: string[];
 }
 
-interface CustomImageGalleryProps extends ReactImageGalleryProps {
-  onClickThumbnail: (index: number) => void;
-}
+const MainImage = styled("img")({
+  height: "500px",
+  width: "100%",
+  objectFit: "cover",
+});
 
-const ImageCarousel = ({ mainImage, images }: ImageCarouselProps) => {
-  const [selectedImage, setSelectedImage] = useState(mainImage || (images && images[0]?.image));
+const SubImage = styled("img")({
+  height: "100px",
+  width: "100%",
+});
 
-  const galleryItems: ReactImageGalleryItem[] = [
-    {
-      original: urlFor(mainImage).auto("format").url(),
-      thumbnail: urlFor(mainImage).auto("format").width(200).url(),
-    },
-    ...(images && images.length
-      ? images.map((image) => ({
-          original: urlFor(image.image).auto("format").url(),
-          thumbnail: urlFor(image.image).auto("format").width(200).url(),
-        }))
-      : []),
-  ];
+const mainContainerBox = {
+  maxWidth: "800px",
+  margin: "0 auto",
+};
 
-  const handleImageSelect = (index: number) => {
-    setSelectedImage(index === 0 ? mainImage : images[index - 1]?.image);
+const subImageBox = {
+  position: "relative",
+  overflowX: "auto",
+  overflowY: "hidden",
+  whiteSpace: "nowrap",
+  display: "flex",
+  alignItems: "center",
+  marginTop: "10px",
+  marginBottom: "10px",
+  // border: '1px solid rgba(0, 0, 0)',
+  padding: '0.3rem',
+  backgroundColor: '#fff',
+  borderRadius: '5px',
+};
+
+const mainImageBox = {
+  position: "relative",
+  // border: '1px solid rgba(0, 0, 0)',
+  paddingTop: '0.3rem',
+  paddingRight: '0.3rem',
+  paddingLeft: '0.3rem',
+  mt: '0.7rem',
+  backgroundColor: '#fff',
+  borderRadius: '5px',
+};
+
+const ImageCarousel = ({ mainImage, subImages }: ImageCarouselProps) => {
+  const [currentImage, setCurrentImage] = useState(mainImage);
+  const subImageUrls = subImages.map((image) => urlFor(image).url());
+
+  const subImageListRef = useRef<HTMLDivElement>(null);
+  const [subImageListPosition, setSubImageListPosition] = useState(0);
+
+  const handleImageClick = (image: string) => {
+    setCurrentImage(image);
   };
 
-  if (!selectedImage) {
-    return null;
-  }
+  const handleNextClick = () => {
+    const subImageListWidth = subImageListRef.current?.offsetWidth || 0;
+    const subImageListScrollWidth = subImageListRef.current?.scrollWidth || 0;
+    const subImageListMaxPosition = subImageListScrollWidth - subImageListWidth;
 
-  const imageUrl = urlFor(selectedImage).auto("format").url();
+    if (subImageListPosition < subImageListMaxPosition) {
+      setSubImageListPosition(subImageListPosition + 200);
+    }
+  };
+
+  const handlePrevClick = () => {
+    if (subImageListPosition > 0) {
+      setSubImageListPosition(subImageListPosition - 200);
+    }
+  };
 
   return (
-    <>
-      <Box className="image-carousel">
-        <div className="main-image">
-        <img src={imageUrl} alt="" width={800} height={600} />        </div>
-        <ImageGallery
-          thumbnailPosition="left"
-          showPlayButton={false}
-          showNav={false}
-          showFullscreenButton={false}
-          {...({
-            onClickThumbnail: handleImageSelect,
-          } as CustomImageGalleryProps)}
-          items={galleryItems}
-        />
+    <Box sx={mainContainerBox}>
+      <Box sx={mainImageBox}>
+        <MainImage src={urlFor(currentImage).url()} alt="Main Image" />
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
+            right: "10px",
+          }}
+        >
+          <IconButton
+            onClick={() =>
+              handleImageClick(
+                subImageUrls[
+                  (subImageUrls.indexOf(urlFor(currentImage).url()) + 1) %
+                    subImageUrls.length
+                ]
+              )
+            }
+          >
+            <IoMdArrowDroprightCircle size={40} />
+          </IconButton>
+        </Box>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
+            left: "10px",
+          }}
+        >
+          <IconButton
+            onClick={() =>
+              handleImageClick(
+                subImageUrls[
+                  (subImageUrls.indexOf(urlFor(currentImage).url()) -
+                    1 +
+                    subImageUrls.length) %
+                    subImageUrls.length
+                ]
+              )
+            }
+          >
+            <IoMdArrowDropleftCircle size={40} />
+          </IconButton>
+        </Box>
       </Box>
-    </>
-  );
+      <Box sx={{ position: "relative" }}>
+        <IconButton
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "0",
+            transform: "translateY(-50%)",
+            zIndex: 1,
+          }}
+          onClick={handlePrevClick}
+        >
+          {/* <IoMdArrowDropleftCircle size={30} /> */}
+      </IconButton>
+      <Box
+        sx={subImageBox}
+        ref={subImageListRef}
+      >
+        {subImages.map((image, index) => (
+          <SubImage
+            src={urlFor(image).url()}
+            alt={`Sub Image ${index}`}
+            key={`sub-image-${index}`}
+            onClick={() => handleImageClick(image)}
+          />
+        ))}
+      </Box>
+      <IconButton
+        sx={{
+          position: "absolute",
+          top: "50%",
+          right: "0",
+          transform: "translateY(-50%)",
+          zIndex: 1,
+        }}
+        onClick={handleNextClick}
+      >
+        {/* <IoMdArrowDroprightCircle size={30} /> */}
+      </IconButton>
+    </Box>
+  </Box>
+);
 };
 
 export default ImageCarousel;
