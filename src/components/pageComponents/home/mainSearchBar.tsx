@@ -71,20 +71,20 @@ function SearchBar(props: SearchBarProps) {
     width: "600px",
     flexGrow: 1,
     "& .MuiInputBase-input": {
-      color: "white",
+      color: "black",
     },
     "& .MuiInputLabel-root": {
-      color: "white",
+      color: "black",
     },
     // "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
     //   borderColor: "rgba(30, 59, 114, 0.3)",
     //   borderWidth: "0px",
     // },
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "black",
+      borderColor: "white",
     },
     "& .MuiOutlinedInput-root": {
-      backgroundColor: "rgba(30, 59, 114, 0.7)",
+      backgroundColor: "rgba(255, 255, 255, 0.7)",
     },
     "& .MuiInputLabel-root.Mui-focused": {
       color: 'white',
@@ -95,10 +95,10 @@ function SearchBar(props: SearchBarProps) {
     width: "170px",
     flexGrow: 1,
     "& .MuiInputBase-input": {
-      color: "white",
+      color: "black",
     },
     "& .MuiInputLabel-root": {
-      color: "white",
+      color: "black",
     },
     // "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
     //   borderColor: "rgba(30, 59, 114, 0.3)",
@@ -108,7 +108,7 @@ function SearchBar(props: SearchBarProps) {
       borderColor: "black",
     },
     "& .MuiOutlinedInput-root": {
-      backgroundColor: "rgba(30, 59, 114, 0.7)",
+      backgroundColor: "rgba(255, 255, 255, 0.7)",
     },
     "& .MuiInputLabel-root.Mui-focused": {
       color: 'white',

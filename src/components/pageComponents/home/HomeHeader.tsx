@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import LogoImage from "../../../../public/images/logo/logoNoBg.png";
 import MainJouri from "../../../../public/images/project_images/project2/jouri-hills-1.jpg";
@@ -55,7 +55,7 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
     left: "50%",
     transform: "translate(-50%, -50%)",
     zIndex: 1,
-    filter: "invert(1)",
+    // filter: "invert(1)",
   };
 
   const searchBarContainer = {
@@ -71,6 +71,18 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
     mt: "20rem",
   };
 
+  const zakTitle = {
+    fontSize: "1rem",
+    fontWeight: "",
+    ml: "",
+  };
+
+  const zakSubTitle = {
+    fontSize: "",
+    fontWeight: "",
+    ml: "",
+  };
+
   const [open, setOpen] = useState(false);
 
   const handleToggle = () => {
@@ -83,7 +95,13 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
         <Image src={MainJouri} alt="" style={{ objectFit: "cover" }} />
       </Box>
       <Box sx={logoContainer}>
-        <Image src={LogoImage} alt="" />
+        {/* <Image src={LogoImage} alt="" /> */}
+        <Typography variant="h1" sx={zakTitle}>
+          ZAK
+        </Typography>
+        <Typography variant="h2" sx={zakSubTitle}>
+          PROPERTIES
+        </Typography>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
         <Box sx={searchBarContainer}>

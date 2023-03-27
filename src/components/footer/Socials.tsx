@@ -21,7 +21,7 @@ function Socials() {
     marginBottom: "0.5rem",
     color: 'white',
     "&:hover": {
-      color: muiTheme.palette.secondary.light,
+      color: muiTheme.palette.error.dark,
     },
   };
 

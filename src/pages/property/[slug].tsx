@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Box, Divider, Typography, Card } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 
-import ImageSlug from "../../components/slugComponents/ImageSlug";
 
 import dynamic from "next/dynamic";
 const MapSlug = dynamic(
@@ -16,6 +15,7 @@ const MapSlug = dynamic(
 );
 
 import { Property as PropertyProps } from "../../../types";
+import ImageCarousel from "../../components/slugComponents/ImageGallery";
 
 interface PageContext {
   query: {
@@ -57,35 +57,6 @@ const Property = ({
   const priceStyle = {
     ml: 2,
     fontSize: "1.5rem",
-  };
-
-  const imageSection = {
-    position: "relative",
-  };
-
-  const mainImageStyles = {
-    width: "100%",
-    height: "500px",
-    objectFit: "cover",
-    borderRadius: "5px",
-    transition: "all 0.3s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.01)",
-    },
-  };
-
-  const subImagesStyles = {
-    width: "80px",
-    height: "80px",
-    objectFit: "cover",
-    borderRadius: "5px",
-    ml: "10px",
-    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-    cursor: "pointer",
-    transition: "all 0.3s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.1)",
-    },
   };
 
   const mainSection = {
@@ -140,13 +111,6 @@ const Property = ({
     lineHeight: "1.5",
   };
 
-  const imageCardStyles = {
-    mt: 3,
-    borderRadius: "5px",
-    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-    overflow: "hidden",
-  };
-
   const amenitiesCardStyles = {
     display: "flex",
     flexWrap: "wrap",
@@ -160,6 +124,15 @@ const Property = ({
     fontSize: "1rem",
   };
 
+  const getImageObjects = (mainPropertyImage: string, propertyImages: string[]) => {
+    const imageObjects = propertyImages.map((image) => ({ image }));
+    if (mainPropertyImage) {
+      imageObjects.unshift({ image: mainPropertyImage });
+    }
+    return imageObjects;
+  };
+  
+  const propertyImageObjects = getImageObjects(mainPropertyImage, propertyImages);
   return (
     <Box sx={mainContainer}>
       <Box sx={titleContainer}>
@@ -170,21 +143,9 @@ const Property = ({
           {formatPrice(totalPrice)}
         </Typography>
       </Box>
-      <Card sx={imageCardStyles}>
-        <Box sx={imageSection}>
-          <Box sx={mainImageStyles}>
-            <ImageSlug identifier="main-image" image={mainPropertyImage} />
-          </Box>
-          <Box sx={subImagesStyles}>
-            {propertyImages.map((image, index) => (
-              <ImageSlug key={index} identifier="sub-image" image={image} />
-            ))}
-          </Box>
-        </Box>
-      </Card>
-
-      <Divider sx={dividerStyles} />
-
+      {propertyImages && (
+      <ImageCarousel mainImage={mainPropertyImage} images={propertyImageObjects} />
+    )}
       <Box sx={mainSection}>
         <Typography variant="body2" sx={mainBodySlug}>
           {propertyType}
@@ -282,7 +243,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         location: property.location,
         propertyType: property.propertyType,
         mainPropertyImage: property.mainPropertyImage || null,
-        propertyImages: property.propertyImages,
+        propertyImages: property.propertyImages || null,
         totalPrice: property.totalPrice,
         bathrooms: property.bathrooms,
         bedrooms: property.bedrooms,

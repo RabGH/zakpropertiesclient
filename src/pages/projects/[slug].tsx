@@ -9,7 +9,7 @@ import Image from "next/image";
 import { Box, Divider, Typography, Card } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 
-import ImageSlug from "../../components/slugComponents/ImageSlug";
+import ImageCarousel from "../../components/slugComponents/ImageGallery";
 
 import dynamic from "next/dynamic";
 const MapSlug = dynamic(
@@ -87,6 +87,17 @@ const Projects = ({
 
   const propertyContainer = {};
 
+  const getImageObjects = (mainProjectImage: string, projectImages: string[]) => {
+    const imageObjects = projectImages.map((image) => ({ image: image }));
+    if (mainProjectImage) {
+      imageObjects.unshift({ image: mainProjectImage });
+    }
+    return imageObjects;
+  };
+  
+  const projectImageObjects = getImageObjects(mainProjectImage, projectImages);
+  
+
   return (
     <Box sx={mainContainer}>
       <Box sx={titleContainer}>
@@ -97,18 +108,9 @@ const Projects = ({
           {formatPrice(totalPrice)}
         </Typography>
       </Box>
-      <Card sx={imageCardStyles}>
-        <Box sx={imageSection}>
-          <Box sx={mainImageStyles}>
-            <ImageSlug identifier="main-image" image={mainProjectImage} />
-          </Box>
-          <Box sx={subImagesStyles}>
-            {projectImages.map((image, index) => (
-              <ImageSlug key={index} identifier="sub-image" image={image} />
-            ))}
-          </Box>
-        </Box>
-      </Card>
+      <ImageCarousel mainImage={mainProjectImage} images={projectImageObjects} />
+
+
       <Divider sx={dividerStyles} />
 
       <Box sx={mainSection}>
