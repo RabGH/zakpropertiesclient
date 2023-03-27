@@ -74,12 +74,18 @@ const Property = ({
     borderRadius: '10px',
   };
 
+  const mainBodyCard = {
+    padding: '2rem',
+  };
+
   const mainSection = {
     mt: 2,
   };
 
   const propertyTypeStyles = {
-    fontSize: "2rem",
+    fontSize: "1.3rem",
+    mb: '1rem',
+    mt: '1rem',
   };
 
   const propertyBedStyles = {
@@ -92,6 +98,9 @@ const Property = ({
 
   const bodyStyles = {
     mt: 2,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   };
 
   const staticStyles = {
@@ -122,21 +131,11 @@ const Property = ({
   const amenityStyles = {
     maxWidth: 700,
     margin: "0 auto",
-  };
-
-
-  const priceBox = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    bg: "#f5f5f5",
-    p: 3,
-    mt: 3,
-    borderRadius: "5px",
+    // mt: '3rem',
   };
 
   const priceButtonPos = {
-    mt: 2,
+    mt: '3rem',
   };
 
   const mapCardPos = {
@@ -153,71 +152,70 @@ const Property = ({
 
   return (
     <Box sx={mainContainer}>
-      <Box sx={titleContainer}>
-        <Typography variant="h2" sx={titleStyle}>
-          {title}
-        </Typography>
-        <Typography variant="h3" sx={priceStyle}>
-          {formatPrice(totalPrice)}
-        </Typography>
-      </Box>
 
       <Box sx={mainImageContainer}>
         <ImageCarousel mainImage={mainPropertyImage} subImages={propertyImages} />
-  
-      </Box>      
+      </Box>   
+
       <Divider sx={dividerStyles} />
 
-      <Box sx={mainSection}>
-        <Typography variant="h5" sx={propertyTypeStyles}>
-          {propertyType}
-        </Typography>
-        <Typography variant="body2" sx={propertyBedStyles}>
-          {bedrooms} bedroom{isMultiple(bedrooms)} <BiBed />
-        </Typography>
-        <Typography variant="body2" sx={propertyBathroomStyles}>
-          {bathrooms} bathroom{isMultiple(bathrooms)} <BiBath />
-        </Typography>
-      </Box>
-
-      <Box sx={bodyStyles}>
-        <Box sx={staticStyles}>
-          <Typography variant="body1" sx={propertyDescStyles}>
-            Aliqua pariatur labore velit aute sunt et laboris non 
-            pariatur ut sit officia sunt mollit. Mollit amet dolor ex 
-            Lorem mollit cillum mollit veniam qui dolor cupidatat cupidatat 
-            consectetur aute. Veniam commodo nisi ipsum do enim id in mollit
-             velit proident exercitation veniam. {description}
+      <Card sx={mainBodyCard}>
+        <Box sx={titleContainer}>
+          <Typography variant="h2" sx={titleStyle}>
+            {title}
           </Typography>
-          <Box sx={squareFootageStyles}>
-            <Typography variant="body2" sx={propertyMainAreaStyles}>
-              Main Area {formatArea(squareFootage)}
-            </Typography>
-            <Typography variant="body2" sx={propertyPlottedAreaStyles}>
-              Plotted Area {formatArea(plottedArea)}
-            </Typography>
-            <Typography variant="body2" sx={propertyBuiltAreaStyles}>
-              Built Up Area {formatArea(builtUpArea)}
+          <Typography variant="h3" sx={priceStyle}>
+            {formatPrice(totalPrice)}
+          </Typography>
+        </Box>
+        
+        <Box sx={mainSection}>
+          <Typography variant="h5" sx={propertyTypeStyles}>
+            {propertyType}
+          </Typography>
+          
+          <Typography variant="body2" sx={propertyBedStyles}>
+            {bedrooms} bedroom{isMultiple(bedrooms)} <BiBed />
+          </Typography>
+          <Typography variant="body2" sx={propertyBathroomStyles}>
+            {bathrooms} bathroom{isMultiple(bathrooms)} <BiBath />
+          </Typography>
+        </Box>
+        
+        <Box sx={squareFootageStyles}>
+              <Typography variant="body2" sx={propertyMainAreaStyles}>
+                Main Area {formatArea(squareFootage)}
+              </Typography>
+              <Typography variant="body2" sx={propertyPlottedAreaStyles}>
+                Plotted Area {formatArea(plottedArea)}
+              </Typography>
+              <Typography variant="body2" sx={propertyBuiltAreaStyles}>
+                Built Up Area {formatArea(builtUpArea)}
+              </Typography>
+        </Box>
+        
+        <Box sx={bodyStyles}>
+          <Box sx={staticStyles}>
+            <Typography variant="body1" sx={propertyDescStyles}>
+              Aliqua pariatur labore velit aute sunt et laboris non 
+              pariatur ut sit officia sunt mollit. Mollit amet dolor ex 
+              Lorem mollit cillum mollit veniam qui dolor cupidatat cupidatat 
+              consectetur aute. Veniam commodo nisi ipsum do enim id in mollit
+               velit proident exercitation veniam. {description}
             </Typography>
           </Box>
+          <Box sx={priceButtonPos}>
+            <Link href="/contact">
+              <GeneralButton variant="contained">Contact</GeneralButton>
+            </Link>
+          </Box>
         </Box>
-      </Box>
+      </Card>
 
       <Divider sx={dividerStyles} />
 
       <Box sx={amenityStyles}>
         <AmenitiesCard amenities={amenities}/>
-      </Box>
-
-      <Divider sx={dividerStyles} />
-
-      <Box sx={priceBox}>
-        <Typography variant="h5">{formatPrice(totalPrice)}</Typography>
-        <Box sx={priceButtonPos}>
-          <Link href="/contact">
-            <GeneralButton variant="contained">Contact</GeneralButton>
-          </Link>
-        </Box>
       </Box>
 
       <Divider sx={dividerStyles} />

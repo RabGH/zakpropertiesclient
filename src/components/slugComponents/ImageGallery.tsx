@@ -16,11 +16,14 @@ const MainImage = styled("img")({
   height: "500px",
   width: "100%",
   objectFit: "cover",
+  border: "1px solid #00000050",
 });
 
 const SubImage = styled("img")({
   height: "100px",
   width: "100%",
+  border: "1px solid #00000050",
+  margin: "0.3rem",
 });
 
 const mainContainerBox = {
