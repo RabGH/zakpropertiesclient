@@ -1,7 +1,6 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import { styled } from "@mui/material/styles";
@@ -30,7 +29,7 @@ const ElevationScroll = ({ children }: ElevationScrollProps): JSX.Element => {
     elevation: trigger ? 4 : 0,
     sx: {
       backgroundColor: trigger ? theme.palette.primary.light : "transparent",
-      transition: "all 0.3s ease-out", // add a transition to the Box component
+      transition: "all 0.9s ease-out",
     },
   });
 };
@@ -50,14 +49,12 @@ const StyledToolbar = styled(Toolbar)({
 const StyledImage = styled(Image)({
   height: "8rem",
   width: "auto",
-  filter: "invert(1)",
 });
 
 export default function ElevateAppBar(props: Props): JSX.Element {
   return (
     <React.Fragment>
-      <CssBaseline />
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ marginTop:'-4rem' }}>
         <ElevationScroll {...props}>
           <StyledAppBar position="sticky">
             <StyledToolbar>

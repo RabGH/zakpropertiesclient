@@ -17,30 +17,18 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '50vh',
-    };
-
-    const featuredTitlePos = {
+      };
+    
+      const featuredTitlePos = {
         mt: '1rem',
         ml: '1rem',
         mb: '1rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-    };
-
-    const feedContainer = {
-        display: 'flex',
-        flexDirection: 'column'
-    };
-
-    const feed = {
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr 1fr',
-        gap: '1rem',
-        marginBottom: '2rem',
-    };
-
-    const cardStyles = {
+      };
+      
+      const cardStyles = {
         boxShadow: 'none',
         borderRadius: '10px',
         overflow: 'hidden',
@@ -48,55 +36,62 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
         cursor: 'pointer',
         backgroundColor: 'transparent',
         '&:hover': {
-        boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)',
+          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)',
         },
         padding: '1rem',
-    };
-
-    const cardInfoStyles = {
-        display: 'flex',
-        flexDirection: 'column',
-    };
-
-    const projectTypeStyles = {
+      };
+    
+      const projectTypeStyles = {
         paddingBottom: '0.7rem',
-    };
-
-    const projectTitleCard = {
+      };
+    
+      const projectTitleCard = {
+        fontSize: '1rem',
         paddingBottom: '0.7rem',
-    };
-
-    const projectAreaCard = {
-        paddingBottom: '0.7rem',
-    };
-
-    const projectPriceCard = {
+      };
+    
+      const projectAreaCard = {
+        paddingBottom: '0.3rem',
+      };
+    
+      const projectPriceCard = {
         paddingBottom: '0.7rem',
         fontSize: '0.9rem',
-    };
+      };
+    
+      const cardInfoStyles = {
+        display: 'flex',
+        flexDirection: 'column',
+      };
+    
+      const mainBox = {
+        display: 'flex',
+        flexDirection: 'row',
+        mb: '2rem'
+      };
 
     return (
         <>
         {projects && (
             <Container>
                 <Box sx={main}>
-                    <Box sx={feedContainer}>
+                    <Box>
                         <Divider>
                             <Typography variant='h5' sx={featuredTitlePos}>
                                 Featured Projects
                             </Typography>
                         </Divider>
-                        <Box sx={feed}>
-                            {projects?.map((projects) => (
+                        <Box sx={mainBox}>
+                            {projects?.slice(0,6).map((projects) => (
                                 <Link key={projects._id} href={`projects/${projects.slug.current}`}>
                                     <Card sx={cardStyles}>
                                         {projects.mainProjectImage && (
                                           <Image
                                               src={urlFor(projects.mainProjectImage).auto('format').url()}
                                               alt={projects.title}
-                                              width={330}
-                                              height={270}
-                                              style={{ borderRadius: '10px' }}
+                                              width={360}
+                                              height={250}
+                                              style={{ borderRadius: '10px' }}                                          
                                           />
                                         )}
                                         <Box sx={cardInfoStyles}>

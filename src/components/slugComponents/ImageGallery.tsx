@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
-import { Box, Grid, IconButton, Paper } from "@mui/material";
+import { Box, IconButton, Paper } from "@mui/material";
 import { styled } from "@mui/system";
 import {
   IoMdArrowDroprightCircle,
   IoMdArrowDropleftCircle,
 } from "react-icons/io";
-import { sanityClient, urlFor } from "../../../sanity";
+import { urlFor } from "../../../sanity";
 
 interface ImageCarouselProps {
   mainImage: string;
@@ -29,6 +29,7 @@ const SubImage = styled("img")({
 const mainContainerBox = {
   maxWidth: "800px",
   margin: "0 auto",
+  width: '100vw',
 };
 
 const subImageBox = {

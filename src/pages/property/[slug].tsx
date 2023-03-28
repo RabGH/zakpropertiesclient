@@ -51,6 +51,7 @@ const Property = ({
     p: 2,
     maxWidth: 1200,
     margin: "0 auto",
+    width: '100vw', // set width to 100vw
   };
 
   const titleContainer = {
@@ -153,9 +154,9 @@ const Property = ({
   return (
     <Box sx={mainContainer}>
 
-      <Box sx={mainImageContainer}>
+      <Card sx={mainImageContainer}>
         <ImageCarousel mainImage={mainPropertyImage} subImages={propertyImages} />
-      </Box>   
+      </Card>   
 
       <Divider sx={dividerStyles} />
 

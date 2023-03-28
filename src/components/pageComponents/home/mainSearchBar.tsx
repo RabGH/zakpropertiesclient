@@ -62,9 +62,15 @@ function SearchBar(props: SearchBarProps) {
 
   const mainBox = {
     display: "flex",
+    flexDirection: "column",
+    position: "absolute",
+    top: "100%",
+    left: "0",
+    right: "0",
+    zIndex: "9999",
+    flex: 1,
     alignItems: "center",
-    padding: "3px",
-    zIndex: 10,
+    justifyContent: "center",  
   };
 
   const autoSearchStyles = {
@@ -89,6 +95,7 @@ function SearchBar(props: SearchBarProps) {
     "& .MuiInputLabel-root.Mui-focused": {
       color: 'white',
     },
+    zIndex: 5,
   };
 
   const autoSelectStyles = {
@@ -113,6 +120,7 @@ function SearchBar(props: SearchBarProps) {
     "& .MuiInputLabel-root.Mui-focused": {
       color: 'white',
     },
+    zIndex: 5,
   };
 
   const searchBarWrapper = {

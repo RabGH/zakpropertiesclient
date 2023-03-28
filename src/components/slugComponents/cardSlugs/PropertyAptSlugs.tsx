@@ -17,17 +17,17 @@ interface Property {
   squareFootage: number;
 }
 
-interface PropertyCardBodyProps {
+interface PropertyAptCardBodyProps {
   properties?: Property[];
 }
 
-const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
+const PropertyAptCardBodyData = ({ properties }: PropertyAptCardBodyProps) => {
 
   const main = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: '100vh',
+    minHeight: '50vh',
   };
 
   const featuredTitlePos = {
@@ -37,18 +37,6 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-  };
-
-  const feedContainer = {
-    display: 'flex',
-    flexDirection: 'column',
-  };
-
-  const feed = {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gap: '1rem',
-    marginBottom: '2rem',
   };
   
   const cardStyles = {
@@ -87,12 +75,16 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
     flexDirection: 'column',
   };
 
+  const mainBox = {
+    display: 'flex',
+    flexDirection: 'row',
+    mb: '2rem'
+  };
+
   if (!properties) {
     return null;
   }
 
-  // Filter properties by propertyType
-  const villasAndTownhouses = properties.filter(property => property.propertyType === 'Villa/Townhouse');
   const apartments = properties.filter(property => property.propertyType === 'Apartment');
 
   return (
@@ -100,22 +92,22 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
       {properties && (
         <Container>
           <Box sx={main}>
-            <Box sx={feedContainer}>
+            <Box>
               <Divider>
                 <Typography variant='h5' sx={featuredTitlePos}>
-                  Villas and Townhouses
+                  Featured Apartments
                 </Typography>
               </Divider>
-              <Box sx={feed}>
-                {properties?.map((property) => (
+              <Box sx={mainBox}>
+                {apartments?.slice(0,3).map((property) => (
                   <Link key={property._id} href={`property/${property.slug.current}`}>
                     <Card sx={cardStyles}>
                       {property.mainPropertyImage && (
                         <Image
                           src={urlFor(property.mainPropertyImage).auto('format').url()}
                           alt={property.title}
-                          width={330}
-                          height={270}
+                          width={360}
+                          height={250}
                           style={{ borderRadius: '10px' }}
                         />
                       )}
@@ -145,4 +137,4 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
   );
 }
 
-export default PropertyCardBodyData;
+export default PropertyAptCardBodyData;
