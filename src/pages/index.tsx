@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Container, Typography, Box, Grid, Paper } from "@mui/material";
+import { Container, Typography, Box, Grid, Paper, Card } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import HomeHeader from "../components/pageComponents/home/HomeHeader";
@@ -14,7 +14,11 @@ import PropertyTownCardSlug from "../components/slugComponents/cardSlugs/Propert
 import ProjectCardSlug from "../components/slugComponents/cardSlugs/ProjectCardSlugs";
 
 import { urlFor } from '../../sanity';
-import DashBoardMap from "../components/pageComponents/home/DashBoardMap";
+
+import dynamic from 'next/dynamic';
+const DashBoardMap = dynamic(() => import('../components/pageComponents/home/DashBoardMap'), {
+  ssr: false,
+});
 
 interface HomeProps {
   properties: Property[];
@@ -42,9 +46,23 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
     alignItems: "center",
   };
 
-  const mainContainer = {
+  const mapCardPos = {
+    m: 3,
   };
 
+  const mapCard = {
+    width: "100%",
+    height: "500px",
+    borderRadius: "5px",
+    overflow: "hidden",
+    padding: "1rem",
+  };
+
+  const locationTitleStyles = {
+    paddingBottom: '1rem',
+  };
+
+  const mainContainer = {};
   const propertyVillaCards = {};
   const propertyTownCards = {};
   const propertyAptCards = {};
@@ -86,8 +104,13 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
         </Box>
       </Grid>
       <Divider />
-        <Box sx={{ mt: 4 }}>
-          <DashBoardMap properties={properties} projects={projects} />
+        <Box sx={mapCardPos}>
+          <Card sx={mapCard}>
+            <Divider>
+              <Typography variant='h3' sx={locationTitleStyles}>All Properties and Projects</Typography>
+            </Divider>
+            <DashBoardMap properties={properties} projects={projects} />
+          </Card>
         </Box>
       </Container>
     </Box>
@@ -102,8 +125,10 @@ export async function getServerSideProps() {
     sanityClient.fetch<Project[]>(projectQuery),
   ]);
 
-  console.log("Properties:", properties);
-  console.log("Projects:", projects);
+  // console.log("Properties:", properties);
+  // console.log("Projects:", projects);
+  // {properties.length > 0 && <DashBoardMap properties={properties} className='dashboard-map' />}
+  // location: { _type: 'geopoint', lat: 25.2, lng: 55.1 },  
 
   return {
     props: {
