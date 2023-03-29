@@ -42,7 +42,6 @@ const DashBoardMap: React.FC<DashBoardMapProps> = ({
         center={center}
         zoom={10}
         ref={mapRef as React.MutableRefObject<typeof MapContainer | null>}
-        // whenCreated={setMap}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
