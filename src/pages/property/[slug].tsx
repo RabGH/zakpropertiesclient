@@ -197,7 +197,7 @@ const Property = ({
         
         <Box sx={bodyStyles}>
           <Box sx={staticStyles}>
-            <Typography variant="body1" sx={propertyDescStyles}>
+            <Typography variant="body2" sx={propertyDescStyles}>
               Aliqua pariatur labore velit aute sunt et laboris non 
               pariatur ut sit officia sunt mollit. Mollit amet dolor ex 
               Lorem mollit cillum mollit veniam qui dolor cupidatat cupidatat 

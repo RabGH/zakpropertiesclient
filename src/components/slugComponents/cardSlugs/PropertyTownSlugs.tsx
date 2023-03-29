@@ -1,7 +1,8 @@
-import { urlFor } from '../../../../sanity';
+import { sanityClient, urlFor } from '../../../../sanity';
 import { isMultiple, formatPrice, formatArea } from '../../../../utils';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { Box, Typography, Container, Card, Divider } from '@mui/material';
 
 interface Property {
@@ -16,11 +17,11 @@ interface Property {
   squareFootage: number;
 }
 
-interface PropertyCardBodyProps {
+interface PropertyAptCardBodyProps {
   properties?: Property[];
 }
 
-const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
+const PropertyAptCardBodyData = ({ properties }: PropertyAptCardBodyProps) => {
 
   const main = {
     display: 'flex',
@@ -84,7 +85,7 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
     return null;
   }
 
-  const villas = properties.filter(property => property.propertyType === 'Villa');
+  const townhouses = properties.filter(property => property.propertyType === 'Townhouse');
 
   return (
     <>
@@ -94,11 +95,11 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
             <Box>
               <Divider>
                 <Typography variant='h5' sx={featuredTitlePos}>
-                  Featured Villas
+                  Featured Townhouses
                 </Typography>
               </Divider>
               <Box sx={mainBox}>
-                {villas?.slice(0,3).map((property) => (
+                {townhouses?.slice(0,3).map((property) => (
                   <Link key={property._id} href={`property/${property.slug.current}`}>
                     <Card sx={cardStyles}>
                       {property.mainPropertyImage && (
@@ -136,4 +137,4 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
   );
 }
 
-export default PropertyCardBodyData;
+export default PropertyAptCardBodyData;

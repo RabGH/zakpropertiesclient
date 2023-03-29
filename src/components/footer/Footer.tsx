@@ -68,7 +68,7 @@ function Footer() {
           </GeneralButton>
         </Link>
 
-        <Link href="/projects/a-smaller-project-not-as-big-as-the-rest-but-decent">
+        {/* <Link href="/projects/a-smaller-project-not-as-big-as-the-rest-but-decent">
           <GeneralButton variant="contained" sx={linkStyles}>
             Project1
           </GeneralButton>
@@ -84,7 +84,7 @@ function Footer() {
           <GeneralButton variant="contained" sx={linkStyles}>
             Project3
           </GeneralButton>
-        </Link>
+        </Link> */}
       </Box>
       <Box sx={linkBox}>
         <Typography variant="h6" gutterBottom></Typography>

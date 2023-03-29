@@ -1,9 +1,10 @@
 // useProjects.ts
 import { useEffect, useState } from "react";
-import sanityClient from "../client";
+import { sanityClient } from "../../../sanity";
+import { Project } from "../../../types";
 
 // A helper function to shuffle an array
-const shuffle = (array) => {
+const shuffle = (array: any[]) => {
   let currentIndex = array.length,
     randomIndex;
 
@@ -24,28 +25,32 @@ const shuffle = (array) => {
 };
 
 // A custom hook to fetch projects data and return a shuffled and sliced array
-export const useProjects = (limit) => {
-  const [projects, setProjects] = useState([]);
+export const useProjectsRandom = (limit: number): Project[] => {
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "project"]{
+        `*[ _type == "projects" && slug.current == $pageSlug][0]{
           title,
-          date,
-          place,
+          projectPropertyTypes,
+          unitType,
+          projectOffPlan,
+          mainDeveloper,
+          mainProjectImage,
+          totalPrice,
           description,
-          projectType,
-          link,
-          tags,
-          mainImage{
-            asset->{
-              _id,
-              url
-            },
-            alt
+          squareFootage,
+          projectImages,
+          amenities,
+          location,
+          properties[]->{
+            _id,
+            title,
+            mainPropertyImage,
+            totalPrice,
           }
-        }`
+      }`
       )
       .then((data) => {
         // Shuffle and slice the data according to the limit

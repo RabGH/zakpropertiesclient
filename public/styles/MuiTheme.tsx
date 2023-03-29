@@ -82,7 +82,7 @@ export const themeOptions: ThemeOptions = {
     body1: {
       fontFamily: "Roboto",
       fontWeight: 100,
-      color: "#000000",
+      color: "#ffffff",
       lineHeight: 1.5,
       margin: "0",
     },

@@ -1,16 +1,10 @@
 import { sanityClient, urlFor } from "../../../sanity";
-
 import { isMultiple, formatPrice, formatArea } from "../../../utils";
-
 import Link from "next/link";
-
 import Image from "next/image";
-
 import { Box, Divider, Typography, Card } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
-
 import ImageCarousel from "../../components/slugComponents/ImageGallery";
-
 import dynamic from "next/dynamic";
 const MapSlug = dynamic(
   () => import("../../components/slugComponents/MapSlug"),
@@ -81,7 +75,7 @@ const Projects = ({
   const PropertiesCardPos = {};
 
   const propertyContainer = {};
-  
+
   return (
     <Box sx={mainContainer}>
       <Box sx={titleContainer}>
@@ -110,16 +104,20 @@ const Projects = ({
         </Box>
 
         <Box>
-          {typeof projectOffPlan === 'object' && projectOffPlan.offplan ? (
+          {projectOffPlan &&
+          typeof projectOffPlan === "object" &&
+          projectOffPlan.offplan ? (
             <Box>
               <Typography>Off-plan project</Typography>
               {projectOffPlan.completionDate && (
-                <Typography>Completion date: {projectOffPlan.completionDate}</Typography>
+                <Typography>
+                  Completion date: {projectOffPlan.completionDate}
+                </Typography>
               )}
             </Box>
           ) : (
             <Typography>Not an off-plan project</Typography>
-          )}
+          )}{" "}
         </Box>
 
         <Box sx={bodyStyles}>
@@ -230,13 +228,15 @@ export const getServerSideProps = async (pageContext: PageContext) => {
       notFound: true,
     };
   } else {
+    const projectOffPlan =
+      projects.projectOffPlan !== undefined ? projects.projectOffPlan : null;
     return {
       props: {
         title: projects.title,
         location: projects.location,
         projectPropertyTypes: projects.projectPropertyTypes,
         mainDeveloper: projects.mainDeveloper,
-        projectOffPlan: projects.projectOffPlan || null,
+        projectOffPlan: projectOffPlan,
         unitType: projects.unitType,
         mainProjectImage: projects.mainProjectImage || null,
         projectImages: projects.projectImages,

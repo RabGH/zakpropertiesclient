@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Autocomplete, TextField, Box, useTheme } from "@mui/material";
+import { Autocomplete, TextField, Box, useTheme, Button } from "@mui/material";
 import { Property, Project } from "../../../../types";
 import { useRouter } from "next/router";
+
+
 interface SearchBarProps {
   properties: Property[];
   projects: Project[];
@@ -14,18 +16,20 @@ function SearchBar(props: SearchBarProps) {
   const [selectedType, setSelectedType] = useState("All");
 
   const handleTypeChange = (
-    event: React.SyntheticEvent<Element, Event>,
+    _event: React.SyntheticEvent<Element, Event>,
     value: string | null = "All"
   ) => {
     setSelectedType(value || "All");
   };
 
   const handleSearch = (
-    event: React.SyntheticEvent<Element, Event>,
+    _event: React.SyntheticEvent<Element, Event>,
     value: string
   ) => {
     if (selectedType === "Properties") {
-      const property = properties.find((property) => property.title === value);
+      const property = properties.find(
+        (property) => property.title === value
+      );
       if (property) {
         router.push(`/property/${property.slug.current}`);
       }
@@ -35,7 +39,6 @@ function SearchBar(props: SearchBarProps) {
         router.push(`/project/${project.slug.current}`);
       }
     } else {
-      // If All is selected, search in both properties and projects
       const property = properties.find((property) => property.title === value);
       const project = projects.find((project) => project.title === value);
       if (property) {
@@ -56,22 +59,29 @@ function SearchBar(props: SearchBarProps) {
     }
   };
 
+  const getButtonLabel = (type: string[]) => {
+    if (type.includes("All")) {
+      return `${properties.length} ${projects.length}`;
+    } else if (type.includes("Properties")) {
+      return `${properties.length}`;
+    } else {
+      return `${projects.length}`;
+    }
+  };
+
   const propertyOptions = properties.map((property) => property.title);
   const projectOptions = projects.map((project) => project.title);
   const options = ["All", "Properties", "Projects"];
 
-  const mainBox = {
-    display: "flex",
-    flexDirection: "column",
-    position: "absolute",
-    top: "100%",
-    left: "0",
-    right: "0",
-    zIndex: "9999",
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",  
+  const handleProjectsClick = () => {
+    setSelectedType("Projects");
   };
+  
+  const handlePropertiesClick = () => {
+    setSelectedType("Properties");
+  };
+
+  const muiTheme = useTheme();
 
   const autoSearchStyles = {
     width: "600px",
@@ -82,10 +92,10 @@ function SearchBar(props: SearchBarProps) {
     "& .MuiInputLabel-root": {
       color: "black",
     },
-    // "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-    //   borderColor: "rgba(30, 59, 114, 0.3)",
-    //   borderWidth: "0px",
-    // },
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "rgba(30, 59, 114, 1)",
+      borderWidth: "0px",
+    },
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderColor: "white",
     },
@@ -99,7 +109,7 @@ function SearchBar(props: SearchBarProps) {
   };
 
   const autoSelectStyles = {
-    width: "170px",
+    width: "155px",
     flexGrow: 1,
     "& .MuiInputBase-input": {
       color: "black",
@@ -107,10 +117,10 @@ function SearchBar(props: SearchBarProps) {
     "& .MuiInputLabel-root": {
       color: "black",
     },
-    // "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-    //   borderColor: "rgba(30, 59, 114, 0.3)",
-    //   borderWidth: "0px",
-    // },
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "rgba(30, 59, 114, 1)",
+      borderWidth: "0px",
+    },
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderColor: "black",
     },
@@ -124,46 +134,111 @@ function SearchBar(props: SearchBarProps) {
   };
 
   const searchBarWrapper = {
+    position: 'absolute',
+    top: "120%",
+    left: "0",
+    right: "0",
+    zIndex: "9999",
+    flex: 1,
+  };
+
+  const mainBox = {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",   
   };
 
   const autoTextField = {};
 
+  const propertiesButtonStyles = {
+    backgroundColor: "transparent",
+    boxShadow: "none",
+    color: 'white',
+    textDecoration: "underline",
+    fontWeight: "bold",
+    textTransform: "capitalize",
+    fontSize: "22px",
+    margin: "0 0px",
+    "&:hover": {
+      color: muiTheme.palette.error.light,
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      textDecoration: "none",
+    },
+  };
+
+  const projectButtonStyles = {
+    backgroundColor: "transparent",
+    boxShadow: "none",
+    color: 'white',
+    textDecoration: "underline",
+    fontWeight: "bold",
+    textTransform: "capitalize",
+    fontSize: "22px",
+    margin: "0 0px",
+    "&:hover": {
+      color: muiTheme.palette.error.light,
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      textDecoration: "none",
+    },
+  };
+
+  const mainSearchContainer = {
+    display: 'flex',
+  };
+
+  const mainButtonContainer = {
+    display: 'flex',
+    flexDirection: 'row',
+    spaceBetween: '1rem',
+    mb: '2rem',
+  };
+
   return (
     <Box sx={searchBarWrapper}>
       <Box sx={mainBox}>
-        <Autocomplete
-          disablePortal
-          options={options}
-          value={selectedType}
-          onChange={handleTypeChange}
-          // inputValue={getLabel(selectedType)}
-          sx={autoSelectStyles}
-          renderInput={(params) => (
-            <TextField {...params} label="Type" variant="outlined" />
-          )}
-        />
-        <Autocomplete
-          disablePortal
-          options={
-            selectedType === "All"
-              ? [...propertyOptions, ...projectOptions]
-              : selectedType === "Properties"
-              ? propertyOptions
-              : projectOptions
-          }
-          sx={autoSearchStyles}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Search"
-              variant="outlined"
-              sx={autoTextField}
-            />
-          )}
-          onInputChange={handleSearch}
-        />
+      <Box sx={mainButtonContainer}>
+        <Button onClick={handlePropertiesClick} sx={propertiesButtonStyles} variant='contained'>
+            Properties :{getButtonLabel(["Properties"])}
+          </Button>
+          <Button onClick={handleProjectsClick} sx={projectButtonStyles} variant='contained'>
+            Projects :{getButtonLabel(["Projects"])}
+          </Button>
+      </Box>
+        <Box sx={mainSearchContainer}>
+          <Autocomplete
+            disablePortal
+            options={options}
+            value={selectedType}
+            onChange={handleTypeChange}
+            // inputValue={getLabel(selectedType)}
+            sx={autoSelectStyles}
+            renderInput={(params) => (
+              <TextField {...params} label="Type" variant="outlined" />
+            )}
+          />
+          <Autocomplete
+            disablePortal
+            options={
+              selectedType === "All"
+                ? [...propertyOptions, ...projectOptions]
+                : selectedType === "Properties"
+                ? propertyOptions
+                : projectOptions
+            }
+            sx={autoSearchStyles}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Search"
+                variant="outlined"
+                sx={autoTextField}
+              />
+            )}
+            onInputChange={handleSearch}
+          />
+        </Box>
       </Box>
     </Box>
   );

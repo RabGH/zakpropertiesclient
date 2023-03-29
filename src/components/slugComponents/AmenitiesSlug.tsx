@@ -46,7 +46,7 @@ const AmenitiesCard = ({ amenities }: AmenitiesCardProps) => {
               return (
                 <Box key={amenity.name} sx={amenityStyles}>
                   {amenity.icon}
-                  <Typography variant="body1" sx={amenityTextStyles}>
+                  <Typography variant="body2" sx={amenityTextStyles}>
                     {amenity.name}
                   </Typography>
                 </Box>

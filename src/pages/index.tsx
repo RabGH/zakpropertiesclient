@@ -10,9 +10,11 @@ import { Property, Project } from "../../types";
 
 import PropertyVillaCardSlug from "../components/slugComponents/cardSlugs/PropertyVillaSlugs";
 import PropertyAptCardSlug from "../components/slugComponents/cardSlugs/PropertyAptSlugs";
+import PropertyTownCardSlug from "../components/slugComponents/cardSlugs/PropertyTownSlugs";
 import ProjectCardSlug from "../components/slugComponents/cardSlugs/ProjectCardSlugs";
 
 import { urlFor } from '../../sanity';
+import DashBoardMap from "../components/pageComponents/home/DashBoardMap";
 
 interface HomeProps {
   properties: Property[];
@@ -29,22 +31,22 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
     textAlign: "center",
     maxWidth: "70ch",
     margin: "0 auto",
+    mb: '-20rem',
   };
 
   const boxContentProject = {
-    height: "100vh",
+    height: "80vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   };
 
-  const mainContainer = {};
-
-  const propertyVillaCards = {
-    marginTop: "-20rem",
+  const mainContainer = {
   };
 
+  const propertyVillaCards = {};
+  const propertyTownCards = {};
   const propertyAptCards = {};
   const projectCards = {};
 
@@ -74,22 +76,34 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
         </Box>
       </Grid>
       <Grid container spacing={3} direction="column">
+        <Box sx={propertyTownCards}>
+          <PropertyTownCardSlug properties={properties} />
+        </Box>
+      </Grid>
+      <Grid container spacing={3} direction="column">
         <Box sx={projectCards}>
           <ProjectCardSlug projects={projects} />
         </Box>
       </Grid>
+      <Divider />
+        <Box sx={{ mt: 4 }}>
+          <DashBoardMap properties={properties} projects={projects} />
+        </Box>
       </Container>
     </Box>
   );
 }
 
 export async function getServerSideProps() {
-  const propertyQuery = '*[_type == "property"]';
-  const projectQuery = '*[_type == "projects"]';
+  const propertyQuery = '*[_type == "property"]{..., location}';
+  const projectQuery = '*[_type == "projects"]{..., location}';
   const [properties, projects] = await Promise.all([
     sanityClient.fetch<Property[]>(propertyQuery),
     sanityClient.fetch<Project[]>(projectQuery),
   ]);
+
+  console.log("Properties:", properties);
+  console.log("Projects:", projects);
 
   return {
     props: {
