@@ -4,8 +4,8 @@ export const themeOptions: ThemeOptions = {
   palette: {
     mode: "light",
     background: {
-      // default: "#1B1B1B",
-      // paper: "#f7f7f7",
+      default: "#1B1B1B",
+      paper: "#1B1B1B",
     },
     primary: {
       main: "#FFFFFF", // White Primary, use on dark pages

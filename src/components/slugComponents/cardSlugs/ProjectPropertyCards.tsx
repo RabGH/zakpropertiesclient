@@ -3,7 +3,16 @@ import { isMultiple, formatPrice, formatArea } from "../../../../utils";
 import Link from "next/link";
 import { Box, Typography, Container, Card, Divider } from "@mui/material";
 import { Property } from "../../../../types";
-import { main, featuredTitlePos, cardStyles, propertyTypeStyles, propertyTitleCard, propertyAreaCard, propertyPriceCard, cardInfoStyles, mainBox } from './cardStylesSlugs';
+import { main, 
+  featuredTitlePos, 
+  cardStyles, 
+  propertyTypeStyles, 
+  propertyTitleCard, 
+  propertyAreaCard, 
+  propertyPriceCard, 
+  cardInfoStyles, 
+  mainBox 
+} from './cardStylesSlugs';
 import CardImageCarousel from './cardImageCarousel';
   
 interface ProjectPropertyCardsProps {

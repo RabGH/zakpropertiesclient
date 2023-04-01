@@ -50,17 +50,33 @@ const StyledToolbar = styled(Toolbar)({
 const StyledImage = styled(Image)({
   height: "8rem",
   width: "auto",
-  // filter: "invert(100%)",
+  transition: "all 0.9s ease-out",
 });
 
 export default function ElevateAppBar(props: Props): JSX.Element {
+  const [inverted, setInverted] = React.useState(true);
+
+  const handleScroll = React.useCallback(() => {
+    const { scrollTop } = document.documentElement;
+    setInverted(scrollTop === 0);
+  }, []);
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
   return (
     <React.Fragment>
-      <Box sx={{ marginTop:'-4rem' }}>
+      <Box sx={{ marginTop: "-4rem" }}>
         <ElevationScroll {...props}>
           <StyledAppBar position="sticky">
             <StyledToolbar>
-              <StyledImage src={NoBgLogo} alt="" />
+              <StyledImage
+                src={NoBgLogo}
+                alt=""
+                style={{ filter: inverted ? "invert(100%)" : "none" }}
+              />
             </StyledToolbar>
           </StyledAppBar>
         </ElevationScroll>

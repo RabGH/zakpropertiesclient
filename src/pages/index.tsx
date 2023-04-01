@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography, Box, Grid, Card, ThemeProvider } from "@mui/material";
+import { Container, Typography, Box, Grid, Card, useTheme, Paper } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import HomeHeader from "../components/pageComponents/home/HomeHeader";
 
@@ -10,8 +10,6 @@ import PropertyVillaCardSlug from "../components/slugComponents/cardSlugs/Proper
 import PropertyAptCardSlug from "../components/slugComponents/cardSlugs/PropertyAptSlugs";
 import PropertyTownCardSlug from "../components/slugComponents/cardSlugs/PropertyTownSlugs";
 import ProjectCardSlug from "../components/slugComponents/cardSlugs/ProjectCardSlugs";
-
-import darkTheme from '../../public/styles/darkTheme';
 
 import dynamic from 'next/dynamic';
 const DashBoardMap = dynamic(() => import('../components/pageComponents/home/DashBoardMap'), {
@@ -25,6 +23,8 @@ interface HomeProps {
 }
 
 function Home({ properties, projects, mainProjectImage }: HomeProps) {
+
+  const muiTheme = useTheme();
 
   const contentHeader = {
     fontSize: "1.5rem",
@@ -50,13 +50,19 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
   const mapCard = {
     width: "100%",
     height: "500px",
-    borderRadius: "5px",
+    borderRadius: "15px",
     overflow: "hidden",
     padding: "1rem",
   };
 
+  const mapCardContent = {
+    backgroundColor: "#333",
+    border: "2px solid #fff",
+  };
+
   const locationTitleStyles = {
     paddingBottom: '1rem',
+    color: muiTheme.palette.primary.main
   };
 
   const mainContainer = {};
@@ -67,7 +73,6 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
 
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
         <Box sx={mainContainer}>
                 <HomeHeader properties={properties} projects={projects} />
               <Container>
@@ -108,12 +113,13 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
                 <Divider>
                   <Typography variant='h3' sx={locationTitleStyles}>Properties and Projects</Typography>
                 </Divider>
-                <DashBoardMap properties={properties} projects={projects} />
+                  <Paper sx={mapCardContent}>
+                    <DashBoardMap properties={properties} projects={projects} />
+                  </Paper>              
               </Card>
             </Box>
           </Container>
         </Box>
-      </ThemeProvider>
     </>
   );
 }

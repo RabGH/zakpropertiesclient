@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import { Box, Divider, Typography, Card, ThemeProvider } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
-import lightTheme from '../../../public/styles/lightTheme';
 
 import { BiBed } from 'react-icons/bi';
 import { BiBath } from 'react-icons/bi';
@@ -154,7 +153,6 @@ const Property = ({
 
   return (
     <>
-    <ThemeProvider theme={lightTheme}>
       <Box sx={mainContainer}>
         <Box sx={imageWrapper}>
           <ImageCarousel mainImage={mainPropertyImage} images={propertyImages} alt={title} />
@@ -234,7 +232,6 @@ const Property = ({
           </Card>
         </Box>
       </Box>
-    </ThemeProvider>
     </>
   );
 };

@@ -13,8 +13,7 @@ import { main,
   propertyPriceCard, 
   cardInfoStyles, 
   mainBox } from './cardStylesSlugs';
-
-  import CardImageCarousel from './cardImageCarousel';
+import CardImageCarousel from './cardImageCarousel';
 
 interface PropertyVillaCardBodyProps {
   properties?: Property[];
