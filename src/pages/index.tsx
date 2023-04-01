@@ -1,7 +1,5 @@
 import React from "react";
-import { useState } from "react";
-import { Container, Typography, Box, Grid, Paper, Card } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Container, Typography, Box, Grid, Card, ThemeProvider } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import HomeHeader from "../components/pageComponents/home/HomeHeader";
 
@@ -13,7 +11,7 @@ import PropertyAptCardSlug from "../components/slugComponents/cardSlugs/Property
 import PropertyTownCardSlug from "../components/slugComponents/cardSlugs/PropertyTownSlugs";
 import ProjectCardSlug from "../components/slugComponents/cardSlugs/ProjectCardSlugs";
 
-import { urlFor } from '../../sanity';
+import darkTheme from '../../public/styles/darkTheme';
 
 import dynamic from 'next/dynamic';
 const DashBoardMap = dynamic(() => import('../components/pageComponents/home/DashBoardMap'), {
@@ -27,7 +25,6 @@ interface HomeProps {
 }
 
 function Home({ properties, projects, mainProjectImage }: HomeProps) {
-  const muiTheme = useTheme();
 
   const contentHeader = {
     fontSize: "1.5rem",
@@ -69,51 +66,55 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
   const projectCards = {};
 
   return (
-    <Box sx={mainContainer}>
-            <HomeHeader properties={properties} projects={projects} />
-          <Container>
-          <Box sx={boxContentProject}>
-            <Typography variant="body2" component="div" sx={contentHeader}>
-            Zak Properties is a top-tier real estate brokerage in Dubai that
-            specializes in selling luxurious apartments, villas, and 
-            townhouses, as well as showcasing off-plan projects. 
-            Whether you are a first-time buyer or an experienced investor, 
-            we offer a range of real estate options to meet 
-            your needs.
-            </Typography>
-          </Box>
-        
-      <Grid container spacing={3} direction="column">
-        <Box sx={propertyVillaCards}>
-          <PropertyVillaCardSlug properties={properties} />
+    <>
+      <ThemeProvider theme={darkTheme}>
+        <Box sx={mainContainer}>
+                <HomeHeader properties={properties} projects={projects} />
+              <Container>
+              <Box sx={boxContentProject}>
+                <Typography variant="body1" component="div" sx={contentHeader}>
+                Zak Properties is a top-tier real estate brokerage in Dubai that
+                specializes in selling luxurious apartments, villas, and 
+                townhouses, as well as showcasing off-plan projects. 
+                Whether you are a first-time buyer or an experienced investor, 
+                we offer a range of real estate options to meet 
+                your needs.
+                </Typography>
+              </Box>
+            
+          <Grid container spacing={3} direction="column">
+            <Box sx={propertyVillaCards}>
+              <PropertyVillaCardSlug properties={properties} />
+            </Box>
+          </Grid>
+          <Grid container spacing={3} direction="column">
+            <Box sx={propertyAptCards}>
+              <PropertyAptCardSlug properties={properties} />
+            </Box>
+          </Grid>
+          <Grid container spacing={3} direction="column">
+            <Box sx={propertyTownCards}>
+              <PropertyTownCardSlug properties={properties} />
+            </Box>
+          </Grid>
+          <Grid container spacing={3} direction="column">
+            <Box sx={projectCards}>
+              <ProjectCardSlug projects={projects} />
+            </Box>
+          </Grid>
+          <Divider />
+            <Box sx={mapCardPos}>
+              <Card sx={mapCard}>
+                <Divider>
+                  <Typography variant='h3' sx={locationTitleStyles}>Properties and Projects</Typography>
+                </Divider>
+                <DashBoardMap properties={properties} projects={projects} />
+              </Card>
+            </Box>
+          </Container>
         </Box>
-      </Grid>
-      <Grid container spacing={3} direction="column">
-        <Box sx={propertyAptCards}>
-          <PropertyAptCardSlug properties={properties} />
-        </Box>
-      </Grid>
-      <Grid container spacing={3} direction="column">
-        <Box sx={propertyTownCards}>
-          <PropertyTownCardSlug properties={properties} />
-        </Box>
-      </Grid>
-      <Grid container spacing={3} direction="column">
-        <Box sx={projectCards}>
-          <ProjectCardSlug projects={projects} />
-        </Box>
-      </Grid>
-      <Divider />
-        <Box sx={mapCardPos}>
-          <Card sx={mapCard}>
-            <Divider>
-              <Typography variant='h3' sx={locationTitleStyles}>All Properties and Projects</Typography>
-            </Divider>
-            <DashBoardMap properties={properties} projects={projects} />
-          </Card>
-        </Box>
-      </Container>
-    </Box>
+      </ThemeProvider>
+    </>
   );
 }
 
@@ -124,11 +125,6 @@ export async function getServerSideProps() {
     sanityClient.fetch<Property[]>(propertyQuery),
     sanityClient.fetch<Project[]>(projectQuery),
   ]);
-
-  // console.log("Properties:", properties);
-  // console.log("Projects:", projects);
-  // {properties.length > 0 && <DashBoardMap properties={properties} className='dashboard-map' />}
-  // location: { _type: 'geopoint', lat: 25.2, lng: 55.1 },  
 
   return {
     props: {

@@ -1,11 +1,11 @@
 import { ThemeOptions, createTheme } from "@mui/material";
 
-export const themeOptions: ThemeOptions = {
+export const darkTheme: ThemeOptions = {
   palette: {
-    mode: "light",
+    mode: "dark",
     background: {
-      // default: "#1B1B1B",
-      // paper: "#f7f7f7",
+      default: "#1B1B1B",
+      paper: "#f7f7f730",
     },
     primary: {
       main: "#FFFFFF", // White Primary, use on dark pages
@@ -35,7 +35,7 @@ export const themeOptions: ThemeOptions = {
       fontFamily: "Montserrat",
       fontSize: "2.5rem",
       fontWeight: 700,
-      color: "##333333",
+      color: "#ffffff",
       lineHeight: 1.2,
       margin: "0",
     },
@@ -97,6 +97,6 @@ export const themeOptions: ThemeOptions = {
   },
 };
 
-const theme = createTheme(themeOptions);
+const theme = createTheme(darkTheme);
 
 export default theme;

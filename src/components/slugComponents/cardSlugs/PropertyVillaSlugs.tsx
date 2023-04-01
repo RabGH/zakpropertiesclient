@@ -1,90 +1,34 @@
-import { urlFor } from '../../../../sanity';
-import { isMultiple, formatPrice, formatArea } from '../../../../utils';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Box, Typography, Container, Card, Divider } from '@mui/material';
+import { urlFor, sanityClient } from "../../../../sanity";
+import { isMultiple, formatPrice, formatArea } from "../../../../utils";
+import Image from "next/image";
+import Link from "next/link";
+import { Box, Typography, Container, Card, Divider } from "@mui/material";
+import { Property } from "../../../../types";
+import { main, 
+  featuredTitlePos, 
+  cardStyles, 
+  propertyTypeStyles, 
+  propertyTitleCard, 
+  propertyAreaCard, 
+  propertyPriceCard, 
+  cardInfoStyles, 
+  mainBox } from './cardStylesSlugs';
 
-interface Property {
-  _id: string;
-  title: string;
-  mainPropertyImage?: string;
-  slug: {
-    current: string;
-  }
-  propertyType: string;
-  totalPrice: number;
-  squareFootage: number;
-}
+  import CardImageCarousel from './cardImageCarousel';
 
-interface PropertyCardBodyProps {
+interface PropertyVillaCardBodyProps {
   properties?: Property[];
 }
 
-const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
-
-  const main = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '50vh',
-  };
-
-  const featuredTitlePos = {
-    mt: '1rem',
-    ml: '1rem',
-    mb: '1rem',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  };
+const PropertyVillaCardBodyData = ({ properties }: PropertyVillaCardBodyProps) => {
   
-  const cardStyles = {
-    boxShadow: 'none',
-    borderRadius: '10px',
-    overflow: 'hidden',
-    transition: 'all 0.3s ease-in-out',
-    cursor: 'pointer',
-    backgroundColor: 'transparent',
-    '&:hover': {
-      boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)',
-    },
-    padding: '1rem',
-  };
-
-  const propertyTypeStyles = {
-    paddingBottom: '0.7rem',
-  };
-
-  const propertyTitleCard = {
-    fontSize: '1rem',
-    paddingBottom: '0.7rem',
-  };
-
-  const properyAreaCard = {
-    paddingBottom: '0.3rem',
-  };
-
-  const propertyPriceCard = {
-    paddingBottom: '0.7rem',
-    fontSize: '0.9rem',
-  };
-
-  const cardInfoStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-  };
-
-  const mainBox = {
-    display: 'flex',
-    flexDirection: 'row',
-    mb: '2rem'
-  };
-
   if (!properties) {
     return null;
   }
 
-  const villas = properties.filter(property => property.propertyType === 'Villa');
+  const villas = properties.filter(
+    (property) => property.propertyType === "Villa"
+  );
 
   return (
     <>
@@ -93,40 +37,42 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
           <Box sx={main}>
             <Box>
               <Divider>
-                <Typography variant='h5' sx={featuredTitlePos}>
+                <Typography variant="h5" sx={featuredTitlePos}>
                   Featured Villas
                 </Typography>
               </Divider>
               <Box sx={mainBox}>
-                {villas?.slice(0,3).map((property) => (
-                  <Link key={property._id} href={`property/${property.slug.current}`}>
-                    <Card sx={cardStyles}>
-                      {property.mainPropertyImage && (
-                        <Image
-                          src={urlFor(property.mainPropertyImage).auto('format').url()}
-                          alt={property.title}
-                          width={360}
-                          height={250}
-                          style={{ borderRadius: '10px' }}
-                        />
-                      )}
-                      <Box sx={cardInfoStyles}>
-                        <Typography variant='body2' sx={propertyTypeStyles}>
-                          {property.propertyType}
-                        </Typography>
-                        <Typography variant='h6' sx={propertyTitleCard}>
-                          {property.title}
-                        </Typography>
-                        <Typography variant='body2' sx={properyAreaCard}>
-                         Area {formatArea(property.squareFootage)}
-                        </Typography>
-                        <Typography variant='h5' sx={propertyPriceCard}>
-                          {formatPrice(property.totalPrice)}
-                        </Typography>
-                      </Box>
-                    </Card>
-                  </Link>
-                ))}
+              {villas?.slice(0, 3).map((property) => (
+                <Card sx={cardStyles} key={property._id}>
+                  {property.mainPropertyImage && (
+                    <CardImageCarousel
+                      images={[
+                        urlFor(property.mainPropertyImage).auto("format").url(),
+                        ...property.propertyImages.map((img) =>
+                          urlFor(img).auto("format").url()
+                        ),
+                      ]}
+                      alt={property.title}
+                    />
+                  )}
+                  <Box sx={cardInfoStyles}>
+                    <Link key={property._id} href={`property/${property.slug.current}`}>
+                      <Typography variant="body1" sx={propertyTypeStyles}>
+                        {/* {property.propertyType} */}
+                      </Typography>
+                      <Typography variant="h6" sx={propertyTitleCard}>
+                        {property.title}
+                      </Typography>
+                      <Typography variant="body2" sx={propertyAreaCard}>
+                        Area {formatArea(property.squareFootage)}
+                      </Typography>
+                      <Typography variant="h5" sx={propertyPriceCard}>
+                        {formatPrice(property.totalPrice)}
+                      </Typography>
+                    </Link>
+                  </Box>
+                </Card>
+              ))}              
               </Box>
             </Box>
           </Box>
@@ -134,6 +80,6 @@ const PropertyCardBodyData = ({ properties }: PropertyCardBodyProps) => {
       )}
     </>
   );
-}
+};
 
-export default PropertyCardBodyData;
+export default PropertyVillaCardBodyData;

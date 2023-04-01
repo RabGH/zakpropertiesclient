@@ -2,8 +2,9 @@ import { sanityClient } from "../../../sanity";
 import { isMultiple, formatPrice, formatArea } from "../../../utils";
 import Link from "next/link";
 
-import { Box, Divider, Typography, Card } from "@mui/material";
+import { Box, Divider, Typography, Card, ThemeProvider } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
+import lightTheme from '../../../public/styles/lightTheme';
 
 import { BiBed } from 'react-icons/bi';
 import { BiBath } from 'react-icons/bi';
@@ -19,7 +20,7 @@ const MapSlug = dynamic(
 );
 
 import { Property as PropertyProps } from "../../../types";
-import ImageCarousel from "../../components/slugComponents/ImageGallery";
+import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
 
 interface PageContext {
   query: {
@@ -69,10 +70,10 @@ const Property = ({
     fontSize: "1.3rem",
   };
 
-  const mainImageContainer = {
-    border: '1px solid #00000000',
-    backgroundColor: '#1B1B1B10',
-    borderRadius: '10px',
+  const imageWrapper = {
+    display: "flex",
+    flexDirection: 'column',
+    justifyContent: "center",
   };
 
   const mainBodyCard = {
@@ -152,86 +153,89 @@ const Property = ({
   };
 
   return (
-    <Box sx={mainContainer}>
+    <>
+    <ThemeProvider theme={lightTheme}>
+      <Box sx={mainContainer}>
+        <Box sx={imageWrapper}>
+          <ImageCarousel mainImage={mainPropertyImage} images={propertyImages} alt={title} />
+        </Box>   
 
-      <Card sx={mainImageContainer}>
-        <ImageCarousel mainImage={mainPropertyImage} subImages={propertyImages} />
-      </Card>   
+        <Divider sx={dividerStyles} />
 
-      <Divider sx={dividerStyles} />
-
-      <Card sx={mainBodyCard}>
-        <Box sx={titleContainer}>
-          <Typography variant="h2" sx={titleStyle}>
-            {title}
-          </Typography>
-          <Typography variant="h3" sx={priceStyle}>
-            {formatPrice(totalPrice)}
-          </Typography>
-        </Box>
-        
-        <Box sx={mainSection}>
-          <Typography variant="h5" sx={propertyTypeStyles}>
-            {propertyType}
-          </Typography>
-          
-          <Typography variant="body2" sx={propertyBedStyles}>
-            {bedrooms} bedroom{isMultiple(bedrooms)} <BiBed />
-          </Typography>
-          <Typography variant="body2" sx={propertyBathroomStyles}>
-            {bathrooms} bathroom{isMultiple(bathrooms)} <BiBath />
-          </Typography>
-        </Box>
-        
-        <Box sx={squareFootageStyles}>
-              <Typography variant="body2" sx={propertyMainAreaStyles}>
-                Main Area {formatArea(squareFootage)}
-              </Typography>
-              <Typography variant="body2" sx={propertyPlottedAreaStyles}>
-                Plotted Area {formatArea(plottedArea)}
-              </Typography>
-              <Typography variant="body2" sx={propertyBuiltAreaStyles}>
-                Built Up Area {formatArea(builtUpArea)}
-              </Typography>
-        </Box>
-        
-        <Box sx={bodyStyles}>
-          <Box sx={staticStyles}>
-            <Typography variant="body2" sx={propertyDescStyles}>
-              Aliqua pariatur labore velit aute sunt et laboris non 
-              pariatur ut sit officia sunt mollit. Mollit amet dolor ex 
-              Lorem mollit cillum mollit veniam qui dolor cupidatat cupidatat 
-              consectetur aute. Veniam commodo nisi ipsum do enim id in mollit
-               velit proident exercitation veniam. {description}
+        <Card sx={mainBodyCard}>
+          <Box sx={titleContainer}>
+            <Typography variant="h2" sx={titleStyle}>
+              {title}
+            </Typography>
+            <Typography variant="h3" sx={priceStyle}>
+              {formatPrice(totalPrice)}
             </Typography>
           </Box>
-          <Box sx={priceButtonPos}>
-            <Link href="/contact">
-              <GeneralButton variant="contained">Contact</GeneralButton>
-            </Link>
+          
+          <Box sx={mainSection}>
+            <Typography variant="h5" sx={propertyTypeStyles}>
+              {propertyType}
+            </Typography>
+            
+            <Typography variant="body2" sx={propertyBedStyles}>
+              {bedrooms} bedroom{isMultiple(bedrooms)} <BiBed />
+            </Typography>
+            <Typography variant="body2" sx={propertyBathroomStyles}>
+              {bathrooms} bathroom{isMultiple(bathrooms)} <BiBath />
+            </Typography>
           </Box>
-        </Box>
-      </Card>
-
-      <Divider sx={dividerStyles} />
-
-      <Box sx={amenityStyles}>
-        <AmenitiesCard amenities={amenities}/>
-      </Box>
-
-      <Divider sx={dividerStyles} />
-
-      <Box sx={mapCardPos}>
-        <Card sx={mapCard}>
-          <Typography variant="h3">Location</Typography>
-          <MapSlug
-            title={title}
-            lat={location?.lat || 0}
-            lng={location?.lng || 0}
-          />
+          
+          <Box sx={squareFootageStyles}>
+                <Typography variant="body2" sx={propertyMainAreaStyles}>
+                  Main Area {formatArea(squareFootage)}
+                </Typography>
+                <Typography variant="body2" sx={propertyPlottedAreaStyles}>
+                  Plotted Area {formatArea(plottedArea)}
+                </Typography>
+                <Typography variant="body2" sx={propertyBuiltAreaStyles}>
+                  Built Up Area {formatArea(builtUpArea)}
+                </Typography>
+          </Box>
+          
+          <Box sx={bodyStyles}>
+            <Box sx={staticStyles}>
+              <Typography variant="body2" sx={propertyDescStyles}>
+                Aliqua pariatur labore velit aute sunt et laboris non 
+                pariatur ut sit officia sunt mollit. Mollit amet dolor ex 
+                Lorem mollit cillum mollit veniam qui dolor cupidatat cupidatat 
+                consectetur aute. Veniam commodo nisi ipsum do enim id in mollit
+                velit proident exercitation veniam. {description}
+              </Typography>
+            </Box>
+            <Box sx={priceButtonPos}>
+              <Link href="/contact">
+                <GeneralButton variant="contained">Contact</GeneralButton>
+              </Link>
+            </Box>
+          </Box>
         </Card>
+
+        <Divider sx={dividerStyles} />
+
+        <Box sx={amenityStyles}>
+          <AmenitiesCard amenities={amenities}/>
+        </Box>
+
+        <Divider sx={dividerStyles} />
+
+        <Box sx={mapCardPos}>
+          <Card sx={mapCard}>
+            <Typography variant="h3">Location</Typography>
+            <MapSlug
+              title={title}
+              lat={location?.lat || 0}
+              lng={location?.lng || 0}
+            />
+          </Card>
+        </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
+    </>
   );
 };
 

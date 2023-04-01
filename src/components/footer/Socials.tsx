@@ -19,7 +19,7 @@ function Socials() {
   const socialIcons = {
     fontSize: "20px",
     marginBottom: "0.5rem",
-    color: 'white',
+    color: muiTheme.palette.success.dark,
     "&:hover": {
       color: muiTheme.palette.error.dark,
     },

@@ -15,6 +15,7 @@ function Footer() {
     flexDirection: "column",
     alignItems: "center",
     padding: "24px 0",
+    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
   };
 
   const linkBox = {
@@ -29,14 +30,14 @@ function Footer() {
   const linkStyles = {
     backgroundColor: "transparent",
     boxShadow: "none",
-    color: 'white',
+    color: muiTheme.palette.success.dark,
     textDecoration: "none",
     // fontWeight: "bold",
     textTransform: "capitalize",
     fontSize: "15px",
     margin: "0 0px",
     "&:hover": {
-      color: muiTheme.palette.error.dark,
+      color: muiTheme.palette.error.light,
       backgroundColor: "transparent",
       boxShadow: "none",
       textDecoration: "none",
@@ -44,7 +45,6 @@ function Footer() {
   };
 
   const copyRightStyles = {
-    color: 'white',
   };
 
   return (

@@ -2,10 +2,12 @@ import { sanityClient, urlFor } from "../../../sanity";
 import { isMultiple, formatPrice, formatArea } from "../../../utils";
 import Link from "next/link";
 import Image from "next/image";
-import { Box, Divider, Typography, Card } from "@mui/material";
+import { Box, Divider, Typography, Card, Container } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
-import ImageCarousel from "../../components/slugComponents/ImageGallery";
+import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
+import ProjectPropertyCards from '../../components/slugComponents/cardSlugs/ProjectPropertyCards'
 import dynamic from "next/dynamic";
+import AmenitiesCard from '../../components/slugComponents/AmenitiesSlug';
 const MapSlug = dynamic(
   () => import("../../components/slugComponents/MapSlug"),
   {
@@ -36,48 +38,90 @@ const Projects = ({
   location,
   properties,
 }: ProjectsProps) => {
-  const mainContainer = {};
 
-  const titleContainer = {};
+  const mainContainer = {
+    p: 2,
+    maxWidth: 1200,
+    margin: "0 auto",
+    width: '100vw', // set width to 100vw
+    mt: '5rem',
+  };
+
+  const titleContainer = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  };
 
   const titleStyle = {};
 
-  const priceStyle = {};
+  const priceStyle = {
+    ml: 2,
+    fontSize: "1.3rem",
+  };
 
-  const dividerStyles = {};
+  const imageWrapper = {
+    display: "flex",
+    flexDirection: 'column',
+    justifyContent: "center",
+  };
 
-  const mainSection = {};
+  const dividerStyles = {
+    m: 10,
+  };
+
+  const mainSection = {
+    mt: 2,
+  };
 
   const mainBodyStyles = {};
 
-  const bodyStyles = {};
+  const bodyStyles = {
+    mt: 2,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  };
 
-  const squareFootageStyles = {};
+  const squareFootageStyles = {
+    mt: 3,
+    lineHeight: "1.5",
+  };
 
-  const descriptionStyles = {};
+  const descriptionStyles = {
+    fontSize: "1.3rem",
+  };
 
-  const amenityStyles = {};
-
-  const amenitiesCardStyles = {};
+  const amenityStyles = {    
+    maxWidth: 700,
+    margin: "0 auto",
+  };
 
   const priceBox = {};
 
-  const priceButtonPos = {};
+  const priceButtonPos = {
+    mt: '3rem',
+  };
 
-  const mapCardPos = {};
+  const mapCardPos = {
+    mt: 3,
+  };
 
-  const mapCard = {};
+  const mapCard = {
+    width: "100%",
+    height: "500px",
+    borderRadius: "5px",
+    overflow: "hidden",
+    padding: "1rem",
+  };
 
   const locationTitle = {};
-
-  const mainPropertiesContainer = {};
-
-  const PropertiesCardPos = {};
 
   const propertyContainer = {};
 
   return (
     <Box sx={mainContainer}>
+      
       <Box sx={titleContainer}>
         <Typography variant="h2" sx={titleStyle}>
           {title}
@@ -86,8 +130,10 @@ const Projects = ({
           {formatPrice(totalPrice)}
         </Typography>
       </Box>
-      <ImageCarousel mainImage={mainProjectImage} subImages={projectImages} />
-
+      <Box sx={imageWrapper}>
+        <ImageCarousel mainImage={mainProjectImage} images={projectImages} alt={title} />
+      </Box>
+      <Container>
       <Divider sx={dividerStyles} />
 
       <Box sx={mainSection}>
@@ -133,12 +179,9 @@ const Projects = ({
       <Divider sx={dividerStyles} />
 
       <Box sx={amenityStyles}>
-        <Card sx={{ p: 2 }}>
-          <Typography variant="h3">Amenities</Typography>
-          <Box sx={amenitiesCardStyles}>{amenities}</Box>
-        </Card>
+        <AmenitiesCard amenities={amenities}/>
       </Box>
-
+      </Container>
       <Box sx={priceBox}>
         <Typography variant="h5">Price: {formatPrice(totalPrice)}</Typography>
         <Box sx={priceButtonPos}>
@@ -151,28 +194,7 @@ const Projects = ({
       <Divider sx={dividerStyles} />
 
       <Box sx={propertyContainer}>
-        {properties.map((property: Property) => (
-          <Box key={property._id} sx={mainPropertiesContainer}>
-            <Box sx={PropertiesCardPos}>
-              <Card>
-                {property.mainPropertyImage && (
-                  <Image
-                    width={800}
-                    height={600}
-                    src={urlFor(property.mainPropertyImage)
-                      .auto("format")
-                      .url()}
-                    alt={property.title}
-                  />
-                )}
-                <Typography variant="h1">{property.title}</Typography>
-                <Typography variant="h6">
-                  {formatPrice(property.totalPrice)}
-                </Typography>
-              </Card>
-            </Box>
-          </Box>
-        ))}
+        <ProjectPropertyCards properties={properties}/> 
       </Box>
 
       <Divider sx={dividerStyles} />
@@ -189,6 +211,7 @@ const Projects = ({
           />
         </Card>
       </Box>
+      
     </Box>
   );
 };
@@ -210,10 +233,20 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         amenities,
         location,
         properties[]->{
-          _id,
           title,
+          location,
+          propertyType,
           mainPropertyImage,
+          propertyImages,
           totalPrice,
+          bathrooms,
+          bedrooms,
+          description,
+          squareFootage,
+          plottedArea,
+          builtUpArea,
+          amenities,
+          slug,
         }
     }`;
 

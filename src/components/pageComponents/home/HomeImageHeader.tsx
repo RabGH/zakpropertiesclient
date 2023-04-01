@@ -1,11 +1,11 @@
-import React, { useEffect, RefObject } from "react";
+import React, { useEffect, RefObject, useState, useRef } from "react";
 import { Typography, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import { urlFor } from "../../../../sanity";
 import { Project } from "../../../../types";
 import Image from "next/image";
 import Link from "next/link";
-
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useKeenSlider, KeenSliderOptions } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
@@ -13,23 +13,24 @@ interface HomeImageHeaderProps {
   projects: Project[];
 }
 
-const useCurrentSlide = (sliderRef: RefObject<any>, projects: Project[]) => {
+const useCurrentSlide = (sliderRef: RefObject<HTMLDivElement>, projects: Project[]) => {
   const currentSlideRef = React.useRef(0);
   const [currentProject, setCurrentProject] = React.useState(projects[0]);
 
   React.useEffect(() => {
     const slider = sliderRef.current;
     if (slider) {
-      const currentSlideIndex = slider.details().relativeSlide;
-      if (currentSlideIndex !== currentSlideRef.current) {
-        currentSlideRef.current = currentSlideIndex;
-        setCurrentProject(projects[currentSlideIndex]);
+      const currentSlideIndex = slider.querySelector(".keen-slider__slide.-current")?.getAttribute("data-slide-index");
+      if (currentSlideIndex !== currentSlideRef.current.toString()) {
+        currentSlideRef.current = parseInt(currentSlideIndex!);
+        setCurrentProject(projects[currentSlideRef.current]);
       }
     }
   }, [sliderRef, projects]);
 
   return currentProject;
 };
+
 
 function HomeImageHeader({ projects }: HomeImageHeaderProps) {
 
@@ -94,19 +95,52 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
     mode: "free-snap",
   };
 
-  const [sliderRef, slider] = useKeenSlider(options);
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>(options);
+  const currentProject = useCurrentSlide(sliderRef, projects);
+  
 
-  useEffect(() => {
-    if (slider && slider.current) {
-    }
-  }, [slider]);
+  console.log(slider);
+  
 
   return (
     <>
       {projects.length > 0 && (
-        <Box ref={sliderRef} className="keen-slider">
-          {projects.map((project, index) => (
-            <Box key={index} className="keen-slider__slide" sx={imgContainer}>
+        <Box sx={{ position: "relative" }}>
+          <Box
+            className="keen-slider__arrow keen-slider__arrow--left"
+            // onClick={goToPrevSlide}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "0",
+              transform: "translate(-50%, -50%)",
+              zIndex: "2",
+              ml: '3rem',
+            }}
+          >
+            <ChevronLeft />
+          </Box>
+          <Box
+            className="keen-slider__arrow keen-slider__arrow--right"
+            // onClick={goToNextSlide}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              right: "0",
+              transform: "translate(50%, -50%)",
+              zIndex: "2",
+              mr: '3rem',
+            }}
+          >
+            <ChevronRight />
+          </Box>
+          <Box ref={sliderRef} className="keen-slider">
+            {projects.map((project, index) => (
+              <Box
+                key={index}
+                className="keen-slider__slide"
+                sx={imgContainer}
+              >              
               <Image
                 src={urlFor(project.mainProjectImage).auto("format").url()}
                 width={1920}
@@ -115,7 +149,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
               />
               <Box sx={logoContainer}>
               <Typography variant="body1">
-                  Click to view
+                  Learn More
                 </Typography>
                 <Link key={project._id} href={`projects/${project.slug.current}`}>
                   <Typography variant="h1" sx={zakTitle}>
@@ -129,6 +163,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
             </Box>
           ))}
         </Box>
+      </Box>
       )}
     </>
   );

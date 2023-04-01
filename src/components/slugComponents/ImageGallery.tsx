@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Box, IconButton, Paper } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { styled } from "@mui/system";
 import {
   IoMdArrowDroprightCircle,
@@ -145,7 +145,7 @@ const ImageCarousel = ({ mainImage, subImages }: ImageCarouselProps) => {
           }}
           onClick={handlePrevClick}
         >
-          {/* <IoMdArrowDropleftCircle size={30} /> */}
+          <IoMdArrowDropleftCircle size={30} />
       </IconButton>
       <Box
         sx={subImageBox}
@@ -170,7 +170,7 @@ const ImageCarousel = ({ mainImage, subImages }: ImageCarouselProps) => {
         }}
         onClick={handleNextClick}
       >
-        {/* <IoMdArrowDroprightCircle size={30} /> */}
+        <IoMdArrowDroprightCircle size={30} />
       </IconButton>
     </Box>
   </Box>

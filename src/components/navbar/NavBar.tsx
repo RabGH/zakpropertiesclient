@@ -8,6 +8,7 @@ import { useScrollTrigger } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import NoBgLogo from "../../../public/images/logo/logoNoBg.png";
+// import NoBgLogo from "../../../public/images/logo/NewLogo-NoBg.png";
 
 interface Props {
   children?: React.ReactNode;
@@ -49,6 +50,7 @@ const StyledToolbar = styled(Toolbar)({
 const StyledImage = styled(Image)({
   height: "8rem",
   width: "auto",
+  // filter: "invert(100%)",
 });
 
 export default function ElevateAppBar(props: Props): JSX.Element {

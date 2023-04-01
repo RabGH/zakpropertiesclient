@@ -13,12 +13,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <main>
-        <ThemeProvider theme={theme}>
+        {/* <ThemeProvider theme={theme}> */}
           <CssBaseline />
           <NavBar />
           <Component {...pageProps} />
           <Footer />
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </main>
     </>
   );

@@ -20,33 +20,33 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
       };
     
       const featuredTitlePos = {
-        mt: '1rem',
-        ml: '1rem',
-        mb: '1rem',
+        mt: '2rem',
+        mb: '2rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        color: 'white',
       };
       
       const cardStyles = {
         position: 'relative',
-        width: 360,
-        height: 250,
+        width: 500,
+        height: 300,
         boxShadow: 'none',
-        // borderRadius: '10px',
+        borderRadius: '10px',
         overflow: 'hidden',
         transition: 'all 0.3s ease-in-out',
         cursor: 'pointer',
-        backgroundColor: 'transparent',
+        // backgroundColor: 'transparent',
         objectFit: 'cover',
         zIndex: 1,
         padding: '2rem',
         m: 1,
         '&:hover': {
-          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.8)',
+          boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
         },
       };
-
+      // 'rgba(26, 26, 26, 1)'
       const imageBoxStyles = {
         "&::before": {
           content: "''",
@@ -56,39 +56,44 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
           right: 0,
           bottom: 0,
           backgroundColor: "rgba(0, 0, 0, 0.3)",
+          // '&:hover': {
+          //   boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
+          // },
         },
       };
     
       const projectTypeStyles = {
         color: 'rgba(255, 255, 255, 1)',
         paddingBottom: '0.7rem',
+        fontWeight: '700',
         
       };
     
       const projectTitleCard = {
-        color: 'rgba(255, 255, 255, 1)',
-        fontSize: '1.2rem',
+        color: 'white',
         paddingBottom: '0.7rem',
-        fontWeight: '700',
       };
     
       const projectAreaCard = {
         color: 'rgba(255, 255, 255, 1)',
         paddingBottom: '0.3rem',
+        fontWeight: '700',
       };
     
       const projectPriceCard = {
         color: 'rgba(255, 255, 255, 1)',
-        paddingBottom: '0.7rem',
         fontSize: '0.9rem',
+        fontWeight: '700',
       };
     
       const cardInfoStyles = {
-        display: 'flex',
-        flexDirection: 'column',
-        // backgroundColor: "rgba(0,0,0,0.5)", 
-        padding: "1rem", 
-        // borderRadius: "0 0 10px 10px",
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        padding: '1rem',
+        color: 'rgba(255, 255, 255, 1)',
+        fontSize: '1.2rem',
+        fontWeight: '700',
         zIndex: 2,
       };
     
@@ -118,8 +123,8 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                                           <Image
                                               src={urlFor(projects.mainProjectImage).auto('format').url()}
                                               alt={projects.title}
-                                              width={360}
-                                              height={250}
+                                              width={1920}
+                                              height={1080}
                                               style={{  
                                               position: 'absolute',
                                               top: 0,

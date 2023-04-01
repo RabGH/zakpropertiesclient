@@ -200,10 +200,10 @@ function SearchBar(props: SearchBarProps) {
       <Box sx={mainBox}>
       <Box sx={mainButtonContainer}>
         <Button onClick={handlePropertiesClick} sx={propertiesButtonStyles} variant='contained'>
-            Properties :{getButtonLabel(["Properties"])}
+        Properties{/* Properties {getButtonLabel(["Properties"])} */}
           </Button>
           <Button onClick={handleProjectsClick} sx={projectButtonStyles} variant='contained'>
-            Projects :{getButtonLabel(["Projects"])}
+          Developments{/* Developments {getButtonLabel(["Projects"])} */}
           </Button>
       </Box>
         <Box sx={mainSearchContainer}>
