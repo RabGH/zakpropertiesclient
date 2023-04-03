@@ -93,6 +93,7 @@ const slugTheme = createTheme({
       color: "#000000",
       lineHeight: 1.5,
       margin: "0",
+      fontSize: '1rem',
     },
   },
 });

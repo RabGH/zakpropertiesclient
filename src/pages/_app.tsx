@@ -15,7 +15,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const { pathname } = router;
 
   const isProjectsPage = pathname.startsWith("/projects");
-  const isPropertiesPage = pathname.startsWith("/properties");
+  const isPropertiesPage = pathname.startsWith("/property");
 
   return (
     <>

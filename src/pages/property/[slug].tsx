@@ -49,9 +49,8 @@ const Property = ({
 
   const mainContainer = {
     p: 2,
-    maxWidth: 1200,
     margin: "0 auto",
-    width: '100vw', // set width to 100vw
+    width: '100vw',
   };
 
   const titleContainer = {

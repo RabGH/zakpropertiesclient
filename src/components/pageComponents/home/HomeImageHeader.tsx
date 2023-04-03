@@ -66,8 +66,6 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
     bottom: 0,
     height: "111vh",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    // boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
-    // borderBottom: `1px solid ${muiTheme.palette.secondary.dark}`,
   };
   
   const contentContainer = {

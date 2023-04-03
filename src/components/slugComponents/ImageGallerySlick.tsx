@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { Box, Card } from "@mui/material";
 import { urlFor } from "../../../sanity";
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 interface ImageCarouselProps {
   images: string[];
@@ -24,28 +25,28 @@ const ImageCarousel = ({ images, alt, mainImage }: ImageCarouselProps) => {
 
   const mainImageUrl = urlFor(mainImage).auto("format").url();
 
-  const cardGalleryStyle = {
-    maxWidth: '1110px',
-    maxHeight: '1000px',
-    padding: '3rem',
-    borderRadius: '15px',
-    backgroundColor: 'rgba(0, 0, 0, 0.2)'
+  const mainCard = {
+
   };
 
   const mainBox = {
-
+    width: "80%",
+    margin: "0 auto",
+    position: "relative",
+    mb: '3rem',
+    mt: '3rem',
   };
 
   return (
-    <Card sx={cardGalleryStyle}>
+    <Card sx={mainCard}>
       <Box sx={mainBox}>
         <Slider {...settings}>
           <Box key="main">
             <Image
               src={mainImageUrl}
               alt={alt}
-              width={1024}
-              height={720}
+              width={1920}
+              height={1080}
             />
           </Box>
           {images.map((image, index) => {
@@ -55,8 +56,8 @@ const ImageCarousel = ({ images, alt, mainImage }: ImageCarouselProps) => {
                 <Image
                   src={imageUrl}
                   alt={alt}
-                  width={1024}
-                  height={720}
+                  width={1920}
+                  height={1080}
                 />
               </Box>
             );
