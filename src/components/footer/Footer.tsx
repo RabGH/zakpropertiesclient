@@ -32,7 +32,7 @@ function Footer() {
     boxShadow: "none",
     color: muiTheme.palette.success.dark,
     textDecoration: "none",
-    // fontWeight: "bold",
+    fontWeight: "bold",
     textTransform: "capitalize",
     fontSize: "15px",
     margin: "0 0px",

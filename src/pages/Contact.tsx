@@ -129,10 +129,10 @@ function Contact() {
     <Container sx={mainContainer}>
       <Box sx={titleBox}>
         <Typography variant="h4">Contact Me</Typography>
-        <Typography variant="body2">
+        <Typography variant="body1">
           Contact Page, type in your name, email, subject, and message.
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body1">
           I&apos;ll get back to you as soon as I can!
         </Typography>
       </Box>
@@ -210,8 +210,7 @@ function Contact() {
           </Box>
           <Grid sx={imgGrid}>
             <Box sx={logoStyles}>
-              <Image src={logoContact} alt="" />
-            </Box>
+            <Image src={logoContact} alt="" style={{filter: 'invert(100%)'}} />            </Box>
           </Grid>
         </Grid>
       </Container>

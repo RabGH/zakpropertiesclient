@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import Image from "next/image";
+import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import { useScrollTrigger } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -72,11 +73,13 @@ export default function ElevateAppBar(props: Props): JSX.Element {
         <ElevationScroll {...props}>
           <StyledAppBar position="sticky">
             <StyledToolbar>
+            <Link href="/">
               <StyledImage
                 src={NoBgLogo}
                 alt=""
                 style={{ filter: inverted ? "invert(100%)" : "none" }}
               />
+            </Link>
             </StyledToolbar>
           </StyledAppBar>
         </ElevationScroll>

@@ -11,7 +11,8 @@ import { main,
   propertyTitleCard, 
   propertyAreaCard, 
   propertyPriceCard, 
-  cardInfoStyles, 
+  cardInfoStyles,
+  dividerStyles, 
   mainBox } from './cardStylesSlugs';
   
 import CardImageCarousel from './cardImageCarousel';
@@ -36,7 +37,7 @@ const PropertyAptCardBodyData = ({ properties }: PropertyAptCardBodyProps) => {
         <Container>
           <Box sx={main}>
             <Box>
-              <Divider>
+              <Divider sx={dividerStyles}>
                 <Typography variant="h5" sx={featuredTitlePos}>
                   Featured Apartments
                 </Typography>
@@ -57,16 +58,13 @@ const PropertyAptCardBodyData = ({ properties }: PropertyAptCardBodyProps) => {
                   )}
                   <Box sx={cardInfoStyles}>
                     <Link key={property._id} href={`property/${property.slug.current}`}>
-                      <Typography variant="body2" sx={propertyTypeStyles}>
-                        {/* {property.propertyType} */}
-                      </Typography>
                       <Typography variant="h6" sx={propertyTitleCard}>
                         {property.title}
                       </Typography>
-                      <Typography variant="body2" sx={propertyAreaCard}>
+                      <Typography variant="body1" sx={propertyAreaCard}>
                         Area {formatArea(property.squareFootage)}
                       </Typography>
-                      <Typography variant="h5" sx={propertyPriceCard}>
+                      <Typography variant="body1" sx={propertyPriceCard}>
                         {formatPrice(property.totalPrice)}
                       </Typography>
                     </Link>

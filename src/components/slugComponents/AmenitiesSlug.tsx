@@ -37,7 +37,7 @@ const AmenitiesCard = ({ amenities }: AmenitiesCardProps) => {
   };
 
   return (
-    <Card sx={{ p: 2}}>
+    <Card sx={{ p: 2 }}>
       <Box sx={amenitiesCardStyles}>
         <Typography variant="h3" sx={{ textAlign: "center" }}>Amenities</Typography>
         <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 2 }}>
@@ -46,7 +46,7 @@ const AmenitiesCard = ({ amenities }: AmenitiesCardProps) => {
               return (
                 <Box key={amenity.name} sx={amenityStyles}>
                   {amenity.icon}
-                  <Typography variant="body2" sx={amenityTextStyles}>
+                  <Typography variant="body1" sx={amenityTextStyles}>
                     {amenity.name}
                   </Typography>
                 </Box>

@@ -6,109 +6,107 @@ import { Project } from "../../../../types";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import { useKeenSlider, KeenSliderOptions } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface HomeImageHeaderProps {
   projects: Project[];
 }
 
-const useCurrentSlide = (sliderRef: RefObject<HTMLDivElement>, projects: Project[]) => {
-  const currentSlideRef = React.useRef(0);
-  const [currentProject, setCurrentProject] = React.useState(projects[0]);
-
-  React.useEffect(() => {
-    const slider = sliderRef.current;
-    if (slider) {
-      const currentSlideIndex = slider.querySelector(".keen-slider__slide.-current")?.getAttribute("data-slide-index");
-      if (currentSlideIndex !== currentSlideRef.current.toString()) {
-        currentSlideRef.current = parseInt(currentSlideIndex!);
-        setCurrentProject(projects[currentSlideRef.current]);
-      }
-    }
-  }, [sliderRef, projects]);
-
-  return currentProject;
+const sliderSettings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
 };
-
 
 function HomeImageHeader({ projects }: HomeImageHeaderProps) {
 
   const muiTheme = useTheme();
 
+  const zakLearnMore = {
+    textAlign: "left",
+  };
+
   const zakTitle = {
     fontSize: "5rem",
-    fontWeight: "",
+    fontWeight: "bold",
     mb: "4rem",
     color: "white",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    textAlign: "left",
     transition: "color 0.3s ease-in-out",
     ":hover": {
       color: muiTheme.palette.error.light,
     },
   };
-
+  
   const zakSubTitle = {
     fontSize: "1.3rem",
     fontWeight: "400",
     mb: "5rem",
     color: "white",
-    textAlign: "center",
+    textAlign: "left",
   };
-
+  
   const imgContainer = {
-    height: "100vh",
-    "&::after": {
-      content: "''",
-      position: "absolute",
-      left: 0,
-      right: 0,
-      zIndex: 1,
-    },
-    "&::before": {
-      content: "''",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-      zIndex: 1,
-    },
+    position: "relative",
+    height: "110vh",
+    width: "100%",
+    zIndex: 1,
   };
-
-  const logoContainer = {
+  
+  const imgOverlay = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: "111vh",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    // boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
+    // borderBottom: `1px solid ${muiTheme.palette.secondary.dark}`,
+  };
+  
+  const contentContainer = {
     position: "absolute",
     top: "45%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     zIndex: 1,
+    textAlign: "center",
+    color: "white",
+    maxWidth: "1300px",
+    margin: "0 auto",
   };
 
-  const options: KeenSliderOptions<{}, boolean, string> = {
-    rubberband: true,
-    renderMode: "precision",
-    loop: true,
-    drag: true,
-    mode: "free-snap",
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [projects]);
+
+  const goToPrevSlide = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickPrev();
+    }
   };
 
-  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>(options);
-  const currentProject = useCurrentSlide(sliderRef, projects);
-  
-
-  console.log(slider);
-  
+  const goToNextSlide = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickNext();
+    }
+  };
 
   return (
     <>
       {projects.length > 0 && (
         <Box sx={{ position: "relative" }}>
           <Box
-            className="keen-slider__arrow keen-slider__arrow--left"
-            // onClick={goToPrevSlide}
+            onClick={goToPrevSlide}
             sx={{
               position: "absolute",
               top: "50%",
@@ -121,8 +119,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
             <ChevronLeft />
           </Box>
           <Box
-            className="keen-slider__arrow keen-slider__arrow--right"
-            // onClick={goToNextSlide}
+            onClick={goToNextSlide}
             sx={{
               position: "absolute",
               top: "50%",
@@ -134,39 +131,42 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
           >
             <ChevronRight />
           </Box>
-          <Box ref={sliderRef} className="keen-slider">
+          <Box>
+          <Slider
+            {...sliderSettings}
+            ref={sliderRef}
+            beforeChange={(_, next) => setCurrentSlide(next)}
+          >
             {projects.map((project, index) => (
-              <Box
-                key={index}
-                className="keen-slider__slide"
-                sx={imgContainer}
-              >              
-              <Image
-                src={urlFor(project.mainProjectImage).auto("format").url()}
-                width={1920}
-                height={1080}
-                alt={project.title}
-              />
-              <Box sx={logoContainer}>
-              <Typography variant="body1">
-                  Learn More
-                </Typography>
-                <Link key={project._id} href={`projects/${project.slug.current}`}>
-                  <Typography variant="h1" sx={zakTitle}>
-                    {project.title}
-                  </Typography>
-                </Link>
-                <Typography variant="h1" sx={zakSubTitle}>
-                  {project.description}
-                </Typography>
+              <Box key={project._id}>
+                <Box sx={imgContainer} data-slide-index={index}>
+                  <Image
+                    src={urlFor(project.mainProjectImage).auto("format").url()}
+                    width={1920}
+                    height={1080}
+                    alt={project.title}
+                  />
+                  <Box sx={imgOverlay} />
+                    <Box sx={contentContainer}>
+                      <Typography variant="body1" sx={zakLearnMore}>Learn More</Typography>
+                      <Link key={project._id} href={`projects/${project.slug.current}`}>
+                        <Typography variant="h1" sx={zakTitle}>
+                          {project.title}
+                        </Typography>
+                      </Link>
+                      <Typography variant="h1" sx={zakSubTitle}>
+                        {project.description}
+                      </Typography>
+                    </Box>
+                </Box>
               </Box>
-            </Box>
-          ))}
+            ))}
+          </Slider>
         </Box>
       </Box>
-      )}
-    </>
-  );
+    )}
+  </>
+);
 }
 
 export default HomeImageHeader;

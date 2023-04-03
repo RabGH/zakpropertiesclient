@@ -12,7 +12,6 @@ export const featuredTitlePos = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: 'white',
 };
 
 export const cardStyles = {
@@ -40,17 +39,16 @@ export const propertyTypeStyles = {
 export const propertyTitleCard = {
     fontSize: "1.2rem",
     paddingBottom: "0.7rem",
+    mt: '0.5rem',
 };
 
 export const propertyAreaCard = {
     paddingBottom: "0.3rem",
-    color: 'white',
 };
 
 export const propertyPriceCard = {
     paddingBottom: "0rem",
     fontSize: "0.9rem",
-    color: 'white',
 };
 
 export const cardInfoStyles = {
@@ -63,4 +61,11 @@ export const mainBox = {
     display: "flex",
     flexDirection: "row",
     mb: "2rem",
+};
+
+export const dividerStyles = {
+    "&::before, &::after": {
+        borderBottomWdith: 2,
+        borderColor: 'white',
+    }
 };

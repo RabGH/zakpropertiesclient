@@ -103,13 +103,21 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
         mb: '2rem'
       };
 
+      const dividerStyles = {
+        "&::before, &::after": {
+            borderBottomWdith: 2,
+            borderColor: 'white',
+        }
+      };
+    
+
     return (
         <>
         {projects && (
             <Container>
                 <Box sx={main}>
                     <Box>
-                        <Divider>
+                        <Divider sx={dividerStyles}>
                             <Typography variant='h5' sx={featuredTitlePos}>
                                 Featured Projects
                             </Typography>

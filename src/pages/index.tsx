@@ -27,12 +27,13 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
   const muiTheme = useTheme();
 
   const contentHeader = {
-    fontSize: "1.5rem",
+    fontSize: "1.2rem",
     lineHeight: "1.5",
     textAlign: "center",
     maxWidth: "70ch",
     margin: "0 auto",
-    mb: '-20rem',
+    mb: '-25rem',
+    fontStyle: 'italic',
   };
 
   const boxContentProject = {
@@ -64,6 +65,17 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
     paddingBottom: '1rem',
     color: muiTheme.palette.primary.main
   };
+
+
+  const dividerStyles = {
+    // "&::before, &::after": {
+    //     borderBottomWdith: 2,
+    //     borderColor: 'white',
+    // },
+    borderBottomWdith: 2,
+    borderColor: 'white',
+  };
+
 
   const mainContainer = {};
   const propertyVillaCards = {};
@@ -107,10 +119,10 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
               <ProjectCardSlug projects={projects} />
             </Box>
           </Grid>
-          <Divider />
+          <Divider sx={dividerStyles} />
             <Box sx={mapCardPos}>
               <Card sx={mapCard}>
-                <Divider>
+                <Divider sx={dividerStyles}>
                   <Typography variant='h3' sx={locationTitleStyles}>Properties and Projects</Typography>
                 </Divider>
                   <Paper sx={mapCardContent}>

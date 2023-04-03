@@ -20,34 +20,6 @@
 *, *::before, *::after {
     text-decoration: none;
 }
-
-/* body {
-  background-color: #1B1B1B;
-} */
-
-.slick-arrow {
-    /* This will apply to both arrows */
-  }
-  
-  .slick-next {
-    /* This will apply only to the next arrow */
-  }
-  
-  .slick-prev {
-    /* This will apply only to the prev arrow */
-  }
-  
-  .slick-dots {
-    /* This will apply to the dots container */
-  }
-  
-  .slick-dots li {
-    /* This will apply to each dot */
-  }
-  
-  .slick-dots li.slick-active {
-    /* This will apply to the active dot */
-  }
   
   
   

@@ -61,9 +61,9 @@ const Projects = ({
   };
 
   const imageWrapper = {
-    display: "flex",
-    flexDirection: 'column',
-    justifyContent: "center",
+    // display: "flex",
+    // flexDirection: 'column',
+    // justifyContent: "center",
   };
 
   const dividerStyles = {

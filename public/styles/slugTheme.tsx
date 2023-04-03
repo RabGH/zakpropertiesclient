@@ -1,17 +1,17 @@
-import { ThemeOptions, createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 
-export const lightTheme: ThemeOptions = {
+const slugTheme = createTheme({
   palette: {
     mode: "light",
     background: {
-      default: "#f7f7f7",
-      paper: "#CCCCCC30",
+      default: "#F7F7F7",
+      paper: "#6B6B6B",
     },
     primary: {
-      main: "#1B1B1B", // Dark Gray primary 
+      main: "#1B1B1B", // White Primary, use on dark pages
     },
     secondary: {
-      main: "#CCCCCC", // Medium Shade of Gray , background or text
+      main: "#F0F0F0", // Medium Shade of Gray , background or text
     },
     error: {
       main: "#1e6572", // Turquoise #1e6572, light #4B838E , dark #15464F
@@ -20,7 +20,7 @@ export const lightTheme: ThemeOptions = {
       main: "#FFA07A", // Coral Orange #FFA07A, light #FFB394 , dark #B27055
     },
     success: {
-      main: "#f7f7f7", // Off-white secondary
+      main: "#1B1B1B", // Dark Gray Secondary, use on light pages
     },
   },
   typography: {
@@ -33,9 +33,9 @@ export const lightTheme: ThemeOptions = {
     ].join(","),
     h1: {
       fontFamily: "Montserrat",
-      fontSize: "2.5rem",
-      fontWeight: 700,
-      color: "#1B1B1B",
+      fontSize: "1.75rem",
+      fontWeight: 400,
+      color: "#000",
       lineHeight: 1.2,
       margin: "0",
     },
@@ -43,7 +43,7 @@ export const lightTheme: ThemeOptions = {
       fontFamily: "Montserrat",
       fontSize: "2rem",
       fontWeight: 700,
-      color: "#1B1B1B",
+      color: "#000",
       lineHeight: 1.2,
       margin: "0",
     },
@@ -51,7 +51,7 @@ export const lightTheme: ThemeOptions = {
       fontFamily: "Lato",
       fontSize: "1.75rem",
       fontWeight: 600,
-      color: "#1B1B1B",
+      color: "#000",
       lineHeight: 1.2,
       margin: "0",
     },
@@ -59,7 +59,7 @@ export const lightTheme: ThemeOptions = {
       fontFamily: "Lato",
       fontSize: "1.5rem",
       fontWeight: 600,
-      color: "#1B1B1B",
+      color: "#000",
       lineHeight: 1.2,
       margin: "0",
     },
@@ -67,18 +67,18 @@ export const lightTheme: ThemeOptions = {
       fontFamily: "Roboto",
       fontSize: "1.25rem",
       fontWeight: 400,
-      color: "#1B1B1B",
+      color: '#000',
       lineHeight: 1.2,
       margin: "0",
+      letterSpacing: "0.1rem",
     },
     h6: {
       fontFamily: "Lato",
       fontSize: "1.1rem",
       fontWeight: 600,
-      color: "#f7f7f7",
+      color: "#000",
       lineHeight: 1.2,
       margin: "0",
-      // "#1e3b72",
     },
     body1: {
       fontFamily: "Roboto",
@@ -95,7 +95,6 @@ export const lightTheme: ThemeOptions = {
       margin: "0",
     },
   },
-};
-const theme = createTheme(lightTheme);
+});
 
-export default theme;
+export default slugTheme;

@@ -11,7 +11,7 @@ import { main,
   propertyAreaCard, 
   propertyPriceCard, 
   cardInfoStyles, 
-  mainBox 
+  mainBox, 
 } from './cardStylesSlugs';
 import CardImageCarousel from './cardImageCarousel';
   
