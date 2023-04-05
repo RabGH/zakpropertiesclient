@@ -3,12 +3,14 @@ export const main = {
   justifyContent: "center",
   alignItems: "center",
   minHeight: "50vh",
+  mb: '1rem',
 };
 
 export const featuredTitlePos = {
   mt: "1rem",
   ml: "1rem",
   mb: "1rem",
+  mr: '1rem',
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

@@ -32,14 +32,13 @@ const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
   const cardStyles = {
     maxWidth: "420px",
     maxHeight: "450px",
-    boxShadow: "none",
     borderRadius: "10px",
     overflow: "hidden",
     transition: "all 0.3s ease-in-out",
     backgroundColor: "transparent",
+    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
     "&:hover": {
-      boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
-      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      backgroundColor: "#9B9B9B50",
     },
     padding: "0.7rem",
   };

@@ -15,37 +15,29 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "50vh",
-  };
-
-  const featuredTitlePos = {
-    mt: "2rem",
-    mb: "2rem",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "white",
+    minHeight: "45vh",
+    minWidth: "45vh",
   };
 
   const cardStyles = {
     position: "relative",
     width: 500,
-    height: 300,
+    height: 340,
     boxShadow: "none",
     borderRadius: "10px",
     overflow: "hidden",
     transition: "all 0.3s ease-in-out",
     cursor: "pointer",
-    // backgroundColor: 'transparent',
     objectFit: "cover",
     zIndex: 1,
     padding: "2rem",
-    m: 1,
+    mr: 2,
+    ml: 2,
     "&:hover": {
       boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
     },
   };
-  // 'rgba(26, 26, 26, 1)'
+
   const imageBoxStyles = {
     "&::before": {
       content: "''",
@@ -55,9 +47,9 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
       right: 0,
       bottom: 0,
       backgroundColor: "rgba(0, 0, 0, 0.3)",
-      // '&:hover': {
-      //   boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
-      // },
+      "&:hover": {
+        boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
+      },
     },
   };
 
@@ -101,26 +93,14 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
     mb: "2rem",
   };
 
-  const dividerStyles = {
-    "&::before, &::after": {
-      borderBottomWdith: 2,
-      borderColor: "white",
-    },
-  };
-
   return (
     <>
       {projects && (
         <Container>
           <Box sx={main}>
             <Box>
-              <Divider sx={dividerStyles}>
-                <Typography variant="h5" sx={featuredTitlePos}>
-                  Featured Developments
-                </Typography>
-              </Divider>
               <Box sx={mainBox}>
-                {projects?.slice(0, 6).map((projects) => (
+                {projects?.map((projects) => (
                   <Link
                     key={projects._id}
                     href={`projects/${projects.slug.current}`}

@@ -30,6 +30,7 @@ import {
   mainImageContainer,
   viewPhotosBox,
 } from "../../components/slugComponents/imageCarouselStyles";
+import {featuredTitlePos} from "../../components/slugComponents/cardSlugs/cardStylesSlugs";
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 
 interface PropertyList {
@@ -119,15 +120,6 @@ const Projects = ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-  };
-
-  const featuredTitlePos = {
-    mt: "1rem",
-    ml: "1rem",
-    mb: "1rem",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
   };
 
   const buttonStyles = {

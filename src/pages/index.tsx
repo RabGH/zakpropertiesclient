@@ -18,7 +18,7 @@ import PropertyVillaCardSlug from "../components/slugComponents/cardSlugs/Proper
 import PropertyAptCardSlug from "../components/slugComponents/cardSlugs/PropertyAptSlugs";
 import PropertyTownCardSlug from "../components/slugComponents/cardSlugs/PropertyTownSlugs";
 import ProjectCardSlug from "../components/slugComponents/cardSlugs/ProjectCardSlugs";
-
+import { featuredTitlePos } from "../components/slugComponents/cardSlugs/cardStylesSlugs";
 import dynamic from "next/dynamic";
 const DashBoardMap = dynamic(
   () => import("../components/pageComponents/home/DashBoardMap"),
@@ -42,7 +42,7 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
     textAlign: "center",
     maxWidth: "70ch",
     margin: "0 auto",
-    mb: "-25rem",
+    mb: "-27rem",
     fontStyle: "italic",
   };
 
@@ -77,12 +77,11 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
   };
 
   const dividerStyles = {
-    // "&::before, &::after": {
-    //     borderBottomWdith: 2,
-    //     borderColor: 'white',
-    // },
-    borderBottomWdith: 2,
-    borderColor: "white",
+    mt: '1rem',
+    "&::before, &::after": {
+        borderWidth: 1,
+        borderColor: 'white',
+    },
   };
 
   const mainContainer = {};
@@ -122,8 +121,13 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
             </Box>
           </Grid>
           <Grid container spacing={3} direction="column">
+            <Divider sx={dividerStyles}>
+              <Typography variant="h5" sx={featuredTitlePos}>
+                Featured Developments
+              </Typography>
+            </Divider>
             <Box sx={projectCards}>
-              <ProjectCardSlug projects={projects} />
+              <ProjectCardSlug projects={projects.slice(0, 3)} />
             </Box>
           </Grid>
           <Divider sx={dividerStyles} />
