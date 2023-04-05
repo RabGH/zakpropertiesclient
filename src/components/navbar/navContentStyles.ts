@@ -20,6 +20,7 @@ export const burgerNavBox = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  transition: "background-color 0.4s ease-in-out",
   "&:Hover": {
     backgroundColor: "#3B3B3B45",
   },
@@ -37,6 +38,13 @@ export const popperStyles = {
 
 export const popperPaperStyles = {
   zIndex: 9999,
-  mr: "1rem",
+  mr: "1.8rem",
   mt: "0.5rem",
+};
+
+export const iconSocialStyles = {
+  transition: "color 0.4s ease-in-out",
+  "&:Hover": {
+    color: "#0B0B0B",
+  },
 };
