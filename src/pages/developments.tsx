@@ -3,7 +3,7 @@ import { Container, Typography, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 
-function Home() {
+function Developments() {
   const muiTheme = useTheme();
 
   const aboutProject = {
@@ -41,4 +41,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Developments;

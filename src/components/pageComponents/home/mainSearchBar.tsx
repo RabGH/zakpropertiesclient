@@ -3,7 +3,6 @@ import { Autocomplete, TextField, Box, useTheme, Button } from "@mui/material";
 import { Property, Project } from "../../../../types";
 import { useRouter } from "next/router";
 
-
 interface SearchBarProps {
   properties: Property[];
   projects: Project[];
@@ -27,9 +26,7 @@ function SearchBar(props: SearchBarProps) {
     value: string
   ) => {
     if (selectedType === "Properties") {
-      const property = properties.find(
-        (property) => property.title === value
-      );
+      const property = properties.find((property) => property.title === value);
       if (property) {
         router.push(`/property/${property.slug.current}`);
       }
@@ -76,7 +73,7 @@ function SearchBar(props: SearchBarProps) {
   const handleProjectsClick = () => {
     setSelectedType("Projects");
   };
-  
+
   const handlePropertiesClick = () => {
     setSelectedType("Properties");
   };
@@ -103,7 +100,7 @@ function SearchBar(props: SearchBarProps) {
       backgroundColor: "rgba(255, 255, 255, 0.7)",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: 'white',
+      color: "white",
     },
     zIndex: 5,
   };
@@ -128,13 +125,13 @@ function SearchBar(props: SearchBarProps) {
       backgroundColor: "rgba(255, 255, 255, 0.7)",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: 'white',
+      color: "white",
     },
     zIndex: 5,
   };
 
   const searchBarWrapper = {
-    position: 'absolute',
+    position: "absolute",
     top: "120%",
     left: "0",
     right: "0",
@@ -145,7 +142,7 @@ function SearchBar(props: SearchBarProps) {
   const mainBox = {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",   
+    alignItems: "center",
   };
 
   const autoTextField = {};
@@ -153,7 +150,7 @@ function SearchBar(props: SearchBarProps) {
   const propertiesButtonStyles = {
     backgroundColor: "transparent",
     boxShadow: "none",
-    color: 'white',
+    color: "white",
     textDecoration: "underline",
     fontWeight: "bold",
     textTransform: "capitalize",
@@ -170,7 +167,7 @@ function SearchBar(props: SearchBarProps) {
   const projectButtonStyles = {
     backgroundColor: "transparent",
     boxShadow: "none",
-    color: 'white',
+    color: "white",
     textDecoration: "underline",
     fontWeight: "bold",
     textTransform: "capitalize",
@@ -185,27 +182,35 @@ function SearchBar(props: SearchBarProps) {
   };
 
   const mainSearchContainer = {
-    display: 'flex',
+    display: "flex",
   };
 
   const mainButtonContainer = {
-    display: 'flex',
-    flexDirection: 'row',
-    spaceBetween: '1rem',
-    mb: '2rem',
+    display: "flex",
+    flexDirection: "row",
+    spaceBetween: "1rem",
+    mb: "2rem",
   };
 
   return (
     <Box sx={searchBarWrapper}>
       <Box sx={mainBox}>
-      <Box sx={mainButtonContainer}>
-        <Button onClick={handlePropertiesClick} sx={propertiesButtonStyles} variant='contained'>
+        <Box sx={mainButtonContainer}>
+          <Button
+            onClick={handlePropertiesClick}
+            sx={propertiesButtonStyles}
+            variant="contained"
+          >
             Properties {getButtonLabel(["Properties"])}
           </Button>
-          <Button onClick={handleProjectsClick} sx={projectButtonStyles} variant='contained'>
+          <Button
+            onClick={handleProjectsClick}
+            sx={projectButtonStyles}
+            variant="contained"
+          >
             Developments {getButtonLabel(["Projects"])}
           </Button>
-      </Box>
+        </Box>
         <Box sx={mainSearchContainer}>
           <Autocomplete
             disablePortal

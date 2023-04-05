@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import GeneralButton from "../general/GButton";
-import Button from "@mui/material";
 import Link from "next/link";
 import Socials from "./Socials";
 
@@ -44,8 +43,7 @@ function Footer() {
     },
   };
 
-  const copyRightStyles = {
-  };
+  const copyRightStyles = {};
 
   return (
     <Box sx={mainContainer}>

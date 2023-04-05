@@ -39,7 +39,7 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
         <Box
           sx={{
             position: "absolute",
-            top: '90%',
+            top: "90%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -80,7 +80,7 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
           left: 0,
           transform: "translateY(-50%)",
           zIndex: 1,
-          color: 'white',
+          color: "white",
         }}
         onClick={handlePrev}
       >
@@ -93,7 +93,7 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
           right: 0,
           transform: "translateY(-50%)",
           zIndex: 1,
-          color: 'white',
+          color: "white",
         }}
         onClick={handleNext}
       >

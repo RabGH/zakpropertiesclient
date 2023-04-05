@@ -3,18 +3,19 @@ import { isMultiple, formatPrice, formatArea } from "../../../../utils";
 import Link from "next/link";
 import { Box, Typography, Container, Card, Divider } from "@mui/material";
 import { Property } from "../../../../types";
-import { main, 
-  featuredTitlePos, 
-  cardStyles, 
-  propertyTypeStyles, 
-  propertyTitleCard, 
-  propertyAreaCard, 
-  propertyPriceCard, 
-  cardInfoStyles, 
-  mainBox, 
-} from './cardStylesSlugs';
-import CardImageCarousel from './cardImageCarousel';
-  
+import {
+  main,
+  featuredTitlePos,
+  cardStyles,
+  propertyTypeStyles,
+  propertyTitleCard,
+  propertyAreaCard,
+  propertyPriceCard,
+  cardInfoStyles,
+  mainBox,
+} from "./cardStylesSlugs";
+import CardImageCarousel from "./cardImageCarousel";
+
 interface ProjectPropertyCardsProps {
   properties: Property[];
 }
@@ -44,7 +45,10 @@ const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
                   />
                 )}
                 <Box sx={cardInfoStyles}>
-                  <Link key={property._id} href={`/property/${property.slug.current}`}>
+                  <Link
+                    key={property._id}
+                    href={`/property/${property.slug.current}`}
+                  >
                     <Typography variant="body2" sx={propertyTypeStyles}>
                       {property.propertyType}
                     </Typography>

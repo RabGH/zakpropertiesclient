@@ -24,7 +24,6 @@ const sliderSettings = {
 };
 
 function HomeImageHeader({ projects }: HomeImageHeaderProps) {
-
   const muiTheme = useTheme();
 
   const zakLearnMore = {
@@ -42,7 +41,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
       color: muiTheme.palette.error.light,
     },
   };
-  
+
   const zakSubTitle = {
     fontSize: "1.3rem",
     fontWeight: "400",
@@ -50,14 +49,14 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
     color: "white",
     textAlign: "left",
   };
-  
+
   const imgContainer = {
     position: "relative",
     height: "110vh",
     width: "100%",
     zIndex: 1,
   };
-  
+
   const imgOverlay = {
     position: "absolute",
     top: 0,
@@ -67,7 +66,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
     height: "111vh",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   };
-  
+
   const contentContainer = {
     position: "absolute",
     top: "45%",
@@ -111,7 +110,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
               left: "0",
               transform: "translate(-50%, -50%)",
               zIndex: "2",
-              ml: '3rem',
+              ml: "3rem",
             }}
           >
             <ChevronLeft />
@@ -124,30 +123,37 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
               right: "0",
               transform: "translate(50%, -50%)",
               zIndex: "2",
-              mr: '3rem',
+              mr: "3rem",
             }}
           >
             <ChevronRight />
           </Box>
           <Box>
-          <Slider
-            {...sliderSettings}
-            ref={sliderRef}
-            beforeChange={(_, next) => setCurrentSlide(next)}
-          >
-            {projects.map((project, index) => (
-              <Box key={project._id}>
-                <Box sx={imgContainer} data-slide-index={index}>
-                  <Image
-                    src={urlFor(project.mainProjectImage).auto("format").url()}
-                    width={1920}
-                    height={1080}
-                    alt={project.title}
-                  />
-                  <Box sx={imgOverlay} />
+            <Slider
+              {...sliderSettings}
+              ref={sliderRef}
+              beforeChange={(_, next) => setCurrentSlide(next)}
+            >
+              {projects.map((project, index) => (
+                <Box key={project._id}>
+                  <Box sx={imgContainer} data-slide-index={index}>
+                    <Image
+                      src={urlFor(project.mainProjectImage)
+                        .auto("format")
+                        .url()}
+                      width={1920}
+                      height={1080}
+                      alt={project.title}
+                    />
+                    <Box sx={imgOverlay} />
                     <Box sx={contentContainer}>
-                      <Typography variant="body1" sx={zakLearnMore}>Learn More</Typography>
-                      <Link key={project._id} href={`projects/${project.slug.current}`}>
+                      <Typography variant="body1" sx={zakLearnMore}>
+                        Learn More
+                      </Typography>
+                      <Link
+                        key={project._id}
+                        href={`projects/${project.slug.current}`}
+                      >
                         <Typography variant="h1" sx={zakTitle}>
                           {project.title}
                         </Typography>
@@ -156,15 +162,15 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
                         {project.description}
                       </Typography>
                     </Box>
+                  </Box>
                 </Box>
-              </Box>
-            ))}
-          </Slider>
+              ))}
+            </Slider>
+          </Box>
         </Box>
-      </Box>
-    )}
-  </>
-);
+      )}
+    </>
+  );
 }
 
 export default HomeImageHeader;

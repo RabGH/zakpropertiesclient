@@ -1,5 +1,13 @@
 import React from "react";
-import { Container, Typography, Box, Grid, Card, useTheme, Paper } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Box,
+  Grid,
+  Card,
+  useTheme,
+  Paper,
+} from "@mui/material";
 import Divider from "@mui/material/Divider";
 import HomeHeader from "../components/pageComponents/home/HomeHeader";
 
@@ -11,10 +19,13 @@ import PropertyAptCardSlug from "../components/slugComponents/cardSlugs/Property
 import PropertyTownCardSlug from "../components/slugComponents/cardSlugs/PropertyTownSlugs";
 import ProjectCardSlug from "../components/slugComponents/cardSlugs/ProjectCardSlugs";
 
-import dynamic from 'next/dynamic';
-const DashBoardMap = dynamic(() => import('../components/pageComponents/home/DashBoardMap'), {
-  ssr: false,
-});
+import dynamic from "next/dynamic";
+const DashBoardMap = dynamic(
+  () => import("../components/pageComponents/home/DashBoardMap"),
+  {
+    ssr: false,
+  }
+);
 
 interface HomeProps {
   properties: Property[];
@@ -23,7 +34,6 @@ interface HomeProps {
 }
 
 function Home({ properties, projects, mainProjectImage }: HomeProps) {
-
   const muiTheme = useTheme();
 
   const contentHeader = {
@@ -32,8 +42,8 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
     textAlign: "center",
     maxWidth: "70ch",
     margin: "0 auto",
-    mb: '-25rem',
-    fontStyle: 'italic',
+    mb: "-25rem",
+    fontStyle: "italic",
   };
 
   const boxContentProject = {
@@ -62,10 +72,9 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
   };
 
   const locationTitleStyles = {
-    paddingBottom: '1rem',
-    color: muiTheme.palette.primary.main
+    paddingBottom: "1rem",
+    color: muiTheme.palette.primary.main,
   };
-
 
   const dividerStyles = {
     // "&::before, &::after": {
@@ -73,9 +82,8 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
     //     borderColor: 'white',
     // },
     borderBottomWdith: 2,
-    borderColor: 'white',
+    borderColor: "white",
   };
-
 
   const mainContainer = {};
   const propertyVillaCards = {};
@@ -85,20 +93,19 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
 
   return (
     <>
-        <Box sx={mainContainer}>
-                <HomeHeader properties={properties} projects={projects} />
-              <Container>
-              <Box sx={boxContentProject}>
-                <Typography variant="body1" component="div" sx={contentHeader}>
-                Zak Properties is a top-tier real estate brokerage in Dubai that
-                specializes in selling luxurious apartments, villas, and 
-                townhouses, as well as showcasing off-plan projects. 
-                Whether you are a first-time buyer or an experienced investor, 
-                we offer a range of real estate options to meet 
-                your needs.
-                </Typography>
-              </Box>
-            
+      <Box sx={mainContainer}>
+        <HomeHeader properties={properties} projects={projects} />
+        <Container>
+          <Box sx={boxContentProject}>
+            <Typography variant="body1" component="div" sx={contentHeader}>
+              Zak Properties is a top-tier real estate brokerage in Dubai that
+              specializes in selling luxurious apartments, villas, and
+              townhouses, as well as showcasing off-plan projects. Whether you
+              are a first-time buyer or an experienced investor, we offer a
+              range of real estate options to meet your needs.
+            </Typography>
+          </Box>
+
           <Grid container spacing={3} direction="column">
             <Box sx={propertyVillaCards}>
               <PropertyVillaCardSlug properties={properties} />
@@ -120,18 +127,20 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
             </Box>
           </Grid>
           <Divider sx={dividerStyles} />
-            <Box sx={mapCardPos}>
-              <Card sx={mapCard}>
-                <Divider sx={dividerStyles}>
-                  <Typography variant='h3' sx={locationTitleStyles}>Properties and Projects</Typography>
-                </Divider>
-                  <Paper sx={mapCardContent}>
-                    <DashBoardMap properties={properties} projects={projects} />
-                  </Paper>              
-              </Card>
-            </Box>
-          </Container>
-        </Box>
+          <Box sx={mapCardPos}>
+            <Card sx={mapCard}>
+              <Divider sx={dividerStyles}>
+                <Typography variant="h3" sx={locationTitleStyles}>
+                  Properties and Projects
+                </Typography>
+              </Divider>
+              <Paper sx={mapCardContent}>
+                <DashBoardMap properties={properties} projects={projects} />
+              </Paper>
+            </Card>
+          </Box>
+        </Container>
+      </Box>
     </>
   );
 }

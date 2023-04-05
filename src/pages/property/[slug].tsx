@@ -5,10 +5,10 @@ import Link from "next/link";
 import { Box, Divider, Typography, Card } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 
-import { BiBed } from 'react-icons/bi';
-import { BiBath } from 'react-icons/bi';
+import { BiBed } from "react-icons/bi";
+import { BiBath } from "react-icons/bi";
 
-import AmenitiesCard from '../../components/slugComponents/AmenitiesSlug';
+import AmenitiesCard from "../../components/slugComponents/AmenitiesSlug";
 
 import dynamic from "next/dynamic";
 const MapSlug = dynamic(
@@ -42,7 +42,6 @@ const Property = ({
   amenities,
   location,
 }: PropertyProps) => {
-
   const dividerStyles = {
     m: 10,
   };
@@ -50,7 +49,7 @@ const Property = ({
   const mainContainer = {
     p: 2,
     margin: "0 auto",
-    width: '100vw',
+    width: "100vw",
   };
 
   const titleContainer = {
@@ -68,11 +67,10 @@ const Property = ({
     fontSize: "1.3rem",
   };
 
-  const imageWrapper = {
-  };
+  const imageWrapper = {};
 
   const mainBodyCard = {
-    padding: '2rem',
+    padding: "2rem",
   };
 
   const mainSection = {
@@ -81,8 +79,8 @@ const Property = ({
 
   const propertyTypeStyles = {
     fontSize: "1.3rem",
-    mb: '1rem',
-    mt: '1rem',
+    mb: "1rem",
+    mt: "1rem",
   };
 
   const propertyBedStyles = {
@@ -95,9 +93,9 @@ const Property = ({
 
   const bodyStyles = {
     mt: 2,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   };
 
   const staticStyles = {
@@ -132,7 +130,7 @@ const Property = ({
   };
 
   const priceButtonPos = {
-    mt: '3rem',
+    mt: "3rem",
   };
 
   const mapCardPos = {
@@ -151,8 +149,12 @@ const Property = ({
     <>
       <Box sx={mainContainer}>
         <Box sx={imageWrapper}>
-          <ImageCarousel mainImage={mainPropertyImage} images={propertyImages} alt={title} />
-        </Box>   
+          <ImageCarousel
+            mainImage={mainPropertyImage}
+            images={propertyImages}
+            alt={title}
+          />
+        </Box>
 
         <Divider sx={dividerStyles} />
 
@@ -165,12 +167,12 @@ const Property = ({
               {formatPrice(totalPrice)}
             </Typography>
           </Box>
-          
+
           <Box sx={mainSection}>
             <Typography variant="h5" sx={propertyTypeStyles}>
               {propertyType}
             </Typography>
-            
+
             <Typography variant="body2" sx={propertyBedStyles}>
               {bedrooms} bedroom{isMultiple(bedrooms)} <BiBed />
             </Typography>
@@ -178,27 +180,27 @@ const Property = ({
               {bathrooms} bathroom{isMultiple(bathrooms)} <BiBath />
             </Typography>
           </Box>
-          
+
           <Box sx={squareFootageStyles}>
-                <Typography variant="body2" sx={propertyMainAreaStyles}>
-                  Main Area {formatArea(squareFootage)}
-                </Typography>
-                <Typography variant="body2" sx={propertyPlottedAreaStyles}>
-                  Plotted Area {formatArea(plottedArea)}
-                </Typography>
-                <Typography variant="body2" sx={propertyBuiltAreaStyles}>
-                  Built Up Area {formatArea(builtUpArea)}
-                </Typography>
+            <Typography variant="body2" sx={propertyMainAreaStyles}>
+              Main Area {formatArea(squareFootage)}
+            </Typography>
+            <Typography variant="body2" sx={propertyPlottedAreaStyles}>
+              Plotted Area {formatArea(plottedArea)}
+            </Typography>
+            <Typography variant="body2" sx={propertyBuiltAreaStyles}>
+              Built Up Area {formatArea(builtUpArea)}
+            </Typography>
           </Box>
-          
+
           <Box sx={bodyStyles}>
             <Box sx={staticStyles}>
               <Typography variant="body2" sx={propertyDescStyles}>
-                Aliqua pariatur labore velit aute sunt et laboris non 
-                pariatur ut sit officia sunt mollit. Mollit amet dolor ex 
-                Lorem mollit cillum mollit veniam qui dolor cupidatat cupidatat 
-                consectetur aute. Veniam commodo nisi ipsum do enim id in mollit
-                velit proident exercitation veniam. {description}
+                Aliqua pariatur labore velit aute sunt et laboris non pariatur
+                ut sit officia sunt mollit. Mollit amet dolor ex Lorem mollit
+                cillum mollit veniam qui dolor cupidatat cupidatat consectetur
+                aute. Veniam commodo nisi ipsum do enim id in mollit velit
+                proident exercitation veniam. {description}
               </Typography>
             </Box>
             <Box sx={priceButtonPos}>
@@ -212,7 +214,7 @@ const Property = ({
         <Divider sx={dividerStyles} />
 
         <Box sx={amenityStyles}>
-          <AmenitiesCard amenities={amenities}/>
+          <AmenitiesCard amenities={amenities} />
         </Box>
 
         <Divider sx={dividerStyles} />

@@ -1,12 +1,19 @@
 import { sanityClient } from "../../../sanity";
 import { formatPrice, formatArea } from "../../../utils";
 import Link from "next/link";
-import { Box, Divider, Typography, Card, Container, useTheme } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Typography,
+  Card,
+  Container,
+  useTheme,
+} from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
-import ProjectPropertyCards from '../../components/slugComponents/cardSlugs/ProjectPropertyCards'
+import ProjectPropertyCards from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
 import dynamic from "next/dynamic";
-import AmenitiesCard from '../../components/slugComponents/AmenitiesSlug';
+import AmenitiesCard from "../../components/slugComponents/AmenitiesSlug";
 const MapSlug = dynamic(
   () => import("../../components/slugComponents/MapSlug"),
   {
@@ -37,19 +44,18 @@ const Projects = ({
   location,
   properties,
 }: ProjectsProps) => {
-  
   const muiTheme = useTheme();
 
   const mainContainer = {
     margin: "0 auto",
-    width: '100vw',
+    width: "100vw",
     pt: "5rem",
     pb: "5rem",
   };
 
   const imageMainContainer = {
     m: "0 auto",
-    display: 'flex',
+    display: "flex",
   };
 
   const contentContainer = {
@@ -61,7 +67,7 @@ const Projects = ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    mt: '5rem',
+    mt: "5rem",
     textAlign: "center",
   };
 
@@ -89,13 +95,13 @@ const Projects = ({
   const projectTypeStyles = {};
 
   const offPlanStyles = {};
-  
+
   const offPlanCompleteStyles = {};
 
   const bodyStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
   };
 
   const squareFootageStyles = {};
@@ -104,7 +110,7 @@ const Projects = ({
     my: "1rem",
   };
 
-  const amenityStyles = {    
+  const amenityStyles = {
     maxWidth: 700,
     margin: "0 auto",
   };
@@ -112,9 +118,9 @@ const Projects = ({
   const priceBox = {};
 
   const priceButtonPos = {
-    mt: '3rem',
-    display: 'flex',
-    flexDirection: 'column',
+    mt: "3rem",
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center",
   };
 
@@ -145,7 +151,11 @@ const Projects = ({
   return (
     <Box sx={mainContainer}>
       <Box sx={imageMainContainer}>
-        <ImageCarousel mainImage={mainProjectImage} images={projectImages} alt={title} />
+        <ImageCarousel
+          mainImage={mainProjectImage}
+          images={projectImages}
+          alt={title}
+        />
       </Box>
       <Box sx={contentContainer}>
         <Box sx={titleContainer}>
@@ -156,46 +166,46 @@ const Projects = ({
             {formatPrice(totalPrice)}
           </Typography>
         </Box>
-        
+
         <Container>
           <Divider sx={dividerStyles} />
 
           <Box>
-              <Typography variant="h6" sx={mainDeveloperStyles}>
-                Developed by {mainDeveloper}
-              </Typography>
+            <Typography variant="h6" sx={mainDeveloperStyles}>
+              Developed by {mainDeveloper}
+            </Typography>
           </Box>
 
           <Box>
-              {projectOffPlan &&
-              typeof projectOffPlan === "object" &&
-              projectOffPlan.offplan ? (
-                <Box>
-                  <Typography variant="body2" sx={offPlanStyles}>Off-plan project</Typography>
-                  {projectOffPlan.completionDate && (
-                    <Typography variant="body2" sx={offPlanCompleteStyles}>
-                      Completion date: {projectOffPlan.completionDate}
-                    </Typography>
-                  )}
-                </Box>
-              ) : (
-                <Typography>Not an off-plan project</Typography>
-              )}{" "}
-            </Box>
-  
+            {projectOffPlan &&
+            typeof projectOffPlan === "object" &&
+            projectOffPlan.offplan ? (
+              <Box>
+                <Typography variant="body2" sx={offPlanStyles}>
+                  Off-plan project
+                </Typography>
+                {projectOffPlan.completionDate && (
+                  <Typography variant="body2" sx={offPlanCompleteStyles}>
+                    Completion date: {projectOffPlan.completionDate}
+                  </Typography>
+                )}
+              </Box>
+            ) : (
+              <Typography>Not an off-plan project</Typography>
+            )}{" "}
+          </Box>
+
           <Box sx={mainSection}>
             <Typography variant="body2" sx={projectTypeStyles}>
               Types of Housing Built: {projectPropertyTypes}
             </Typography>
-  
+
             <Box>
               <Typography variant="body2" sx={unitTypeStyles}>
                 Unit types {unitType}
               </Typography>
             </Box>
-  
-            
-  
+
             <Box sx={bodyStyles}>
               <Typography variant="body2" sx={squareFootageStyles}>
                 Built-up Area: {formatArea(squareFootage)}
@@ -205,30 +215,31 @@ const Projects = ({
               </Typography>
             </Box>
           </Box>
-  
+
           <Divider sx={dividerStyles} />
-  
+
           <Box sx={amenityStyles}>
-            <AmenitiesCard amenities={amenities}/>
+            <AmenitiesCard amenities={amenities} />
           </Box>
         </Container>
-  
+
         <Box sx={priceBox}>
           {/* <Typography variant="h5">Price: {formatPrice(totalPrice)}</Typography> */}
           <Box sx={priceButtonPos}>
             <Link href="/contact">
-              <GeneralButton variant="contained" sx={buttonStyles}>Contact</GeneralButton>
+              <GeneralButton variant="contained" sx={buttonStyles}>
+                Contact
+              </GeneralButton>
             </Link>
           </Box>
         </Box>
-  
-  
+
         <Box sx={propertyContainer}>
-          <ProjectPropertyCards properties={properties}/> 
+          <ProjectPropertyCards properties={properties} />
         </Box>
-  
+
         <Divider sx={dividerStyles} />
-  
+
         <Box sx={mapCardPos}>
           <Card sx={mapCard}>
             <Typography variant="h3" sx={locationTitle}>
@@ -244,7 +255,7 @@ const Projects = ({
       </Box>
     </Box>
   );
-}
+};
 
 export const getServerSideProps = async (pageContext: PageContext) => {
   const pageSlug = pageContext.query.slug;

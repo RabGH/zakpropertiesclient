@@ -67,7 +67,7 @@ const slugTheme = createTheme({
       fontFamily: "Roboto",
       fontSize: "1.25rem",
       fontWeight: 400,
-      color: '#000',
+      color: "#000",
       lineHeight: 1.2,
       margin: "0",
       letterSpacing: "0.1rem",
@@ -93,7 +93,7 @@ const slugTheme = createTheme({
       color: "#000000",
       lineHeight: 1.5,
       margin: "0",
-      fontSize: '1rem',
+      fontSize: "1rem",
     },
   },
 });

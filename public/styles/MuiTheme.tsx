@@ -67,7 +67,7 @@ export const themeOptions: ThemeOptions = {
       fontFamily: "Roboto",
       fontSize: "1.25rem",
       fontWeight: 400,
-      color: '#fff',
+      color: "#fff",
       lineHeight: 1.2,
       margin: "0",
       letterSpacing: "0.1rem",

@@ -1,5 +1,12 @@
-import { Box, Card, Typography } from '@mui/material';
-import { BiDumbbell, BiSwim, BiCartAlt, BiShow, BiSmile, BiLockAlt } from 'react-icons/bi';
+import { Box, Card, Typography } from "@mui/material";
+import {
+  BiDumbbell,
+  BiSwim,
+  BiCartAlt,
+  BiShow,
+  BiSmile,
+  BiLockAlt,
+} from "react-icons/bi";
 
 interface AmenitiesCardProps {
   amenities: string[];
@@ -39,8 +46,17 @@ const AmenitiesCard = ({ amenities }: AmenitiesCardProps) => {
   return (
     <Card sx={{ p: 2 }}>
       <Box sx={amenitiesCardStyles}>
-        <Typography variant="h3" sx={{ textAlign: "center" }}>Amenities</Typography>
-        <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 2 }}>
+        <Typography variant="h3" sx={{ textAlign: "center" }}>
+          Amenities
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: 2,
+          }}
+        >
           {amenitiesList.map((amenity) => {
             if (amenities.includes(amenity.name)) {
               return (

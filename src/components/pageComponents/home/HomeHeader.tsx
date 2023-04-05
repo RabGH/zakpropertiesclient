@@ -15,9 +15,7 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
     position: "relative",
   };
 
-  const searchBarContainer = {
-
-  };
+  const searchBarContainer = {};
 
   const searchBarBox = {
     maxWidth: 750,

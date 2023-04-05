@@ -9,7 +9,7 @@ import {
   Button,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import Link from 'next/link';
+import Link from "next/link";
 
 const AboutPage: React.FC = () => {
   const theme = useTheme();
@@ -79,13 +79,10 @@ const AboutPage: React.FC = () => {
             Have a question or need help with buying or selling a property?
             We&apos;re here to help!
           </Typography>
-          
-          <Link href="/contact">
-          <Button variant="contained">
-            Contact Us
-          </Button>
-        </Link>
 
+          <Link href="/contact">
+            <Button variant="contained">Contact Us</Button>
+          </Link>
         </Box>
       </Container>
     </Box>
