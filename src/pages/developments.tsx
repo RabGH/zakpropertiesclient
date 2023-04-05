@@ -15,7 +15,7 @@ function Developments({ projects }: DevelopmentsProps) {
   const muiTheme = useTheme();
 
   const mainContainer = {
-    height: "170vh",
+    height: "275vh",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -46,44 +46,39 @@ function Developments({ projects }: DevelopmentsProps) {
   };
 
   return (
-      <Box sx={mainContainer}>
-        <Typography variant="h3" component="h1" sx={titleStyles}>
-          Featured Developments
-        </Typography>
-        <Grid
-            container
-            spacing={1}
-            justifyContent="center"
-            alignItems="center"
-        >
-          {projects &&
-              projects.map((project) => (
-                  <React.Fragment key={project._id}>
-                    <Grid item xs={12} md={8}>
-                      <ProjectCardSlug projects={[project]} />
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                      <Typography variant="h4" component="h2" sx={projectTitle}>
-                        {project.title}
-                      </Typography>
-                      <Typography variant="body1" sx={projectDesc}>
-                        {project.description}
-                      </Typography>
-                    </Grid>
-                    <Divider sx={divider} />
-                  </React.Fragment>
-              ))}
-        </Grid>
-        <Divider/>
-        <Typography variant="h6" sx={{ mt: "1rem" }}>
-          Contact us for development inquiries and off-plan development projects
-        </Typography>
-        <Link href="/contact">
-          <Button variant="contained" size="large" sx={contactButton}>
-            Contact Us
-          </Button>
-        </Link>
-      </Box>
+    <Box sx={mainContainer}>
+      <Typography variant="h3" component="h1" sx={titleStyles}>
+        Featured Developments
+      </Typography>
+      <Grid container spacing={1} justifyContent="center" alignItems="center">
+        {projects &&
+          projects.map((project) => (
+            <React.Fragment key={project._id}>
+              <Grid item xs={12} md={8}>
+                <ProjectCardSlug projects={[project]} />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Typography variant="h4" component="h2" sx={projectTitle}>
+                  {project.title}
+                </Typography>
+                <Typography variant="body1" sx={projectDesc}>
+                  {project.description}
+                </Typography>
+              </Grid>
+              <Divider sx={divider} />
+            </React.Fragment>
+          ))}
+      </Grid>
+      <Divider />
+      <Typography variant="h6" sx={{ mt: "1rem" }}>
+        Contact us for development inquiries and off-plan development projects
+      </Typography>
+      <Link href="/contact">
+        <Button variant="contained" size="large" sx={contactButton}>
+          Contact Us
+        </Button>
+      </Link>
+    </Box>
   );
 }
 

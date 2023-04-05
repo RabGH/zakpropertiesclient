@@ -77,10 +77,10 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
   };
 
   const dividerStyles = {
-    mt: '1rem',
+    mt: "1rem",
     "&::before, &::after": {
-        borderWidth: 1,
-        borderColor: 'white',
+      borderWidth: 1,
+      borderColor: "white",
     },
   };
 

@@ -11,7 +11,8 @@ export interface Property {
   plottedArea: number;
   builtUpArea: number;
   propertyImages: string[];
-  amenities: string[];
+  features: string[];
+  propertyOffPlan: boolean | { offplan?: boolean; propertyCompletionDate?: string };
   slug: {
     current: string;
   };
@@ -35,7 +36,12 @@ export interface Project {
   squareFootage: number;
   projectImages: string[];
   amenities: string[];
-
+  projectType: string;
+  numFloors?: number;
+  numUnits?: number;
+  numVillas?: number;
+  bedrooms?: string;
+  projectBuiltUpArea?: number;
   properties: {
     properties: Property[];
   };

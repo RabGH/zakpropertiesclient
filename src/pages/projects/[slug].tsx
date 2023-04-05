@@ -12,9 +12,7 @@ import {
 import GeneralButton from "../../components/general/GButton";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
 import ProjectPropertyCards from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
-import {
-  propertyContainer,
-} from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
+import { propertyContainer } from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
 import dynamic from "next/dynamic";
 import AmenitiesCard from "../../components/slugComponents/AmenitiesSlug";
 const MapSlug = dynamic(
@@ -30,7 +28,7 @@ import {
   mainImageContainer,
   viewPhotosBox,
 } from "../../components/slugComponents/imageCarouselStyles";
-import {featuredTitlePos} from "../../components/slugComponents/cardSlugs/cardStylesSlugs";
+import { featuredTitlePos } from "../../components/slugComponents/cardSlugs/cardStylesSlugs";
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 
 interface PropertyList {
@@ -50,6 +48,11 @@ const Projects = ({
   description,
   squareFootage,
   projectImages,
+  projectBuiltUpArea,
+  numFloors,
+  numUnits,
+  numVillas,
+  bedrooms,
   amenities,
   location,
   properties,
@@ -93,6 +96,8 @@ const Projects = ({
   const projectTypeStyles = {};
 
   const offPlanStyles = {};
+
+  const offPlanTextStyles = {};
 
   const offPlanCompleteStyles = {};
 
@@ -180,12 +185,12 @@ const Projects = ({
             </Typography>
           </Box>
 
-          <Box>
+          <Box sx={offPlanStyles}>
             {projectOffPlan &&
             typeof projectOffPlan === "object" &&
             projectOffPlan.offplan ? (
               <Box>
-                <Typography variant="body2" sx={offPlanStyles}>
+                <Typography variant="body2" sx={offPlanTextStyles}>
                   Off-plan project
                 </Typography>
                 {projectOffPlan.completionDate && (
@@ -195,7 +200,7 @@ const Projects = ({
                 )}
               </Box>
             ) : (
-              <Typography>Not an off-plan project</Typography>
+              <Typography>Ready to buy Properties</Typography>
             )}{" "}
           </Box>
 
@@ -244,14 +249,13 @@ const Projects = ({
         </Divider>
       </Box>
 
-        <Box sx={propertyContainer}>
-          {properties?.slice(0, 3).map((property: Property) => (
-            <Box key={property._id}>
-              <ProjectPropertyCards properties={[property]} />
-            </Box>
-          ))}
-        </Box>
-
+      <Box sx={propertyContainer}>
+        {properties?.slice(0, 3).map((property: Property) => (
+          <Box key={property._id}>
+            <ProjectPropertyCards properties={[property]} />
+          </Box>
+        ))}
+      </Box>
 
       <Divider sx={dividerStyles} />
       <Box sx={mapCardPos}>
@@ -286,6 +290,12 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         projectImages,
         amenities,
         location,
+        projectBuiltUpArea,
+        projectType,
+        numFloors,
+        numUnits,
+        numVillas,
+        bedrooms,
         properties[]->{
           title,
           location,
@@ -299,7 +309,8 @@ export const getServerSideProps = async (pageContext: PageContext) => {
           squareFootage,
           plottedArea,
           builtUpArea,
-          amenities,
+          features,
+          propertyOffPlan,
           slug,
         }
     }`;
@@ -325,13 +336,19 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         mainDeveloper: projects.mainDeveloper,
         projectOffPlan: projectOffPlan,
         unitType: projects.unitType,
-        mainProjectImage: projects.mainProjectImage || null,
         projectImages: projects.projectImages,
         totalPrice: projects.totalPrice,
         description: projects.description,
         squareFootage: projects.squareFootage,
         amenities: projects.amenities,
+        projectBuiltUpArea: projects.projectBuiltUpArea,
+        projectType: projects.projectType,
+        mainProjectImage: projects.mainProjectImage || null,
         properties: projects.properties || null,
+        numFloors: projects.numFloors || null,
+        numUnits: projects.numUnits || null,
+        numVillas: projects.numVillas || null,
+        bedrooms: projects.bedrooms || null,
       },
     };
   }

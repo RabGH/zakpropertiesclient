@@ -5,7 +5,8 @@ import { Box, Divider, Typography, Card, useTheme } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 import { BiBed } from "react-icons/bi";
 import { BiBath } from "react-icons/bi";
-import AmenitiesCard from "../../components/slugComponents/AmenitiesSlug";
+import FeaturesSlug from "../../components/slugComponents/FeaturesSlug";
+import { featuresStyles } from "../../components/slugComponents/FeaturesSlug";
 import dynamic from "next/dynamic";
 const MapSlug = dynamic(
   () => import("../../components/slugComponents/MapSlug"),
@@ -40,8 +41,9 @@ const Property = ({
   plottedArea,
   builtUpArea,
   propertyImages,
-  amenities,
+  features,
   location,
+  propertyOffPlan,
 }: PropertyProps) => {
   const muiTheme = useTheme();
 
@@ -123,11 +125,6 @@ const Property = ({
     fontSize: "1rem",
   };
 
-  const amenityStyles = {
-    maxWidth: 700,
-    margin: "0 auto",
-  };
-
   const buttonStyles = {
     "&:hover": {
       backgroundColor: muiTheme.palette.primary.light,
@@ -157,6 +154,12 @@ const Property = ({
     overflow: "hidden",
     padding: "1rem",
   };
+
+  const offPlanStyles = {};
+
+  const offPlanTextStyles = {};
+
+  const offPlanCompleteStyles = {};
 
   return (
     <>
@@ -193,6 +196,25 @@ const Property = ({
             <Typography variant="h5" sx={propertyTypeStyles}>
               {propertyType}
             </Typography>
+
+            <Box sx={offPlanStyles}>
+              {propertyOffPlan &&
+              typeof propertyOffPlan === "object" &&
+              propertyOffPlan.offplan ? (
+                <Box>
+                  <Typography variant="body2" sx={offPlanTextStyles}>
+                    Off-plan project
+                  </Typography>
+                  {propertyOffPlan.propertyCompletionDate && (
+                    <Typography variant="body2" sx={offPlanCompleteStyles}>
+                      Completion date: {propertyOffPlan.propertyCompletionDate}
+                    </Typography>
+                  )}
+                </Box>
+              ) : (
+                <Typography>Ready to buy</Typography>
+              )}{" "}
+            </Box>
 
             <Typography variant="body2" sx={propertyBedStyles}>
               {bedrooms} bedroom{isMultiple(bedrooms)} <BiBed />
@@ -233,8 +255,8 @@ const Property = ({
 
           <Divider sx={dividerStyles} />
 
-          <Box sx={amenityStyles}>
-            <AmenitiesCard amenities={amenities} />
+          <Box sx={featuresStyles}>
+            <FeaturesSlug features={features} />
           </Box>
 
           <Divider sx={dividerStyles} />
@@ -273,7 +295,8 @@ export const getServerSideProps = async (pageContext: PageContext) => {
       squareFootage,
       plottedArea,
       builtUpArea,
-      amenities
+      features,
+      propertyOffPlan,
     }`;
 
   const property = await sanityClient.fetch(query, { pageSlug });
@@ -294,10 +317,11 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         bathrooms: property.bathrooms,
         bedrooms: property.bedrooms,
         description: property.description,
-        squareFootage: property.squareFootage,
-        plottedArea: property.plottedArea,
-        builtUpArea: property.builtUpArea,
-        amenities: property.amenities,
+        squareFootage: property.squareFootage || null,
+        plottedArea: property.plottedArea || null,
+        builtUpArea: property.builtUpArea || null,
+        features: property.features,
+        propertyOffPlan: property.propertyOffPlan || null,
       },
     };
   }
