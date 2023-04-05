@@ -20,7 +20,7 @@ import {
   mainImageContainer,
   viewPhotosBox,
 } from "../../components/slugComponents/imageCarouselStyles";
-import ViewAllPhotos from "../../components/slugComponents/ViewAllPhotos";
+import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 
 interface PageContext {
   query: {

@@ -12,6 +12,9 @@ import {
 import GeneralButton from "../../components/general/GButton";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
 import ProjectPropertyCards from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
+import {
+  propertyContainer,
+} from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
 import dynamic from "next/dynamic";
 import AmenitiesCard from "../../components/slugComponents/AmenitiesSlug";
 const MapSlug = dynamic(
@@ -27,7 +30,7 @@ import {
   mainImageContainer,
   viewPhotosBox,
 } from "../../components/slugComponents/imageCarouselStyles";
-import ViewAllPhotos from "../../components/slugComponents/ViewAllPhotos";
+import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 
 interface PropertyList {
   properties: Property[];
@@ -127,19 +130,6 @@ const Projects = ({
     justifyContent: "center",
   };
 
-  const propertyCardsContainer = {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  };
-
-  const propertyContainer = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-    gridGap: "16px",
-  };
-
   const buttonStyles = {
     "&:hover": {
       backgroundColor: muiTheme.palette.primary.light,
@@ -151,6 +141,8 @@ const Projects = ({
   const mapCardPos = {
     mt: 3,
     mb: 3,
+    pr: "12rem",
+    pl: "12rem",
   };
 
   const mapCard = {
@@ -258,31 +250,29 @@ const Projects = ({
             Project Properties
           </Typography>
         </Divider>
+      </Box>
 
-        <Box sx={propertyCardsContainer}>
-          <Box sx={propertyContainer}>
-            {properties.map((property: Property) => (
-              <Box key={property._id}>
-                <ProjectPropertyCards properties={[property]} />
-              </Box>
-            ))}
-          </Box>
+        <Box sx={propertyContainer}>
+          {properties?.slice(0, 3).map((property: Property) => (
+            <Box key={property._id}>
+              <ProjectPropertyCards properties={[property]} />
+            </Box>
+          ))}
         </Box>
 
-        <Divider sx={dividerStyles} />
 
-        <Box sx={mapCardPos}>
-          <Card sx={mapCard}>
-            <Typography variant="h3" sx={locationTitle}>
-              Location
-            </Typography>
-            <MapSlug
-              title={title}
-              lat={location?.lat || 0}
-              lng={location?.lng || 0}
-            />
-          </Card>
-        </Box>
+      <Divider sx={dividerStyles} />
+      <Box sx={mapCardPos}>
+        <Card sx={mapCard}>
+          <Typography variant="h3" sx={locationTitle}>
+            Location
+          </Typography>
+          <MapSlug
+            title={title}
+            lat={location?.lat || 0}
+            lng={location?.lng || 0}
+          />
+        </Card>
       </Box>
     </Box>
   );
@@ -292,35 +282,35 @@ export const getServerSideProps = async (pageContext: PageContext) => {
   const pageSlug = pageContext.query.slug;
 
   const query = `*[ _type == "projects" && slug.current == $pageSlug][0]{
-title,
-projectPropertyTypes,
-unitType,
-projectOffPlan,
-mainDeveloper,
-mainProjectImage,
-totalPrice,
-description,
-squareFootage,
-projectImages,
-amenities,
-location,
-properties[]->{
-title,
-location,
-propertyType,
-mainPropertyImage,
-propertyImages,
-totalPrice,
-bathrooms,
-bedrooms,
-description,
-squareFootage,
-plottedArea,
-builtUpArea,
-amenities,
-slug,
-}
-}`;
+        title,
+        projectPropertyTypes,
+        unitType,
+        projectOffPlan,
+        mainDeveloper,
+        mainProjectImage,
+        totalPrice,
+        description,
+        squareFootage,
+        projectImages,
+        amenities,
+        location,
+        properties[]->{
+          title,
+          location,
+          propertyType,
+          mainPropertyImage,
+          propertyImages,
+          totalPrice,
+          bathrooms,
+          bedrooms,
+          description,
+          squareFootage,
+          plottedArea,
+          builtUpArea,
+          amenities,
+          slug,
+        }
+    }`;
 
   const projects = await sanityClient.fetch(query, { pageSlug });
 
