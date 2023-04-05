@@ -30,7 +30,7 @@ const ImageCarousel = ({ images, alt, mainImage }: ImageCarouselProps) => {
   };
 
   const mainBox = {
-    width: "80%",
+    width: "100%",
     margin: "0 auto",
     position: "relative",
     mb: '3rem',

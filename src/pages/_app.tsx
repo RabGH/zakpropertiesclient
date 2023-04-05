@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "../../public/styles/MuiTheme";
 import slugTheme from "../../public/styles/slugTheme";
-import NavBar from "../components/navbar/NavBar";
+import NavBar from "../components/navbar/fadeNavBar";
 import Footer from "../components/footer/Footer";
 import { useRouter } from "next/router";
 import "../../public/styles/global.css";

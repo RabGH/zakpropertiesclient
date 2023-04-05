@@ -7,10 +7,8 @@ import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import { useScrollTrigger } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-
+import FadeNavSocials from './fadeNavSocials'
 import NoBgLogo from "../../../public/images/logo/logoNoBg.png";
-// import NoBgLogo from "../../../public/images/logo/NewLogo-NoBg.png";
-
 interface Props {
   children?: React.ReactNode;
 }
@@ -80,6 +78,7 @@ export default function ElevateAppBar(props: Props): JSX.Element {
                 style={{ filter: inverted ? "invert(100%)" : "none" }}
               />
             </Link>
+              <FadeNavSocials />
             </StyledToolbar>
           </StyledAppBar>
         </ElevationScroll>

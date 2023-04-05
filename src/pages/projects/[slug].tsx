@@ -1,7 +1,6 @@
-import { sanityClient, urlFor } from "../../../sanity";
-import { isMultiple, formatPrice, formatArea } from "../../../utils";
+import { sanityClient } from "../../../sanity";
+import { formatPrice, formatArea } from "../../../utils";
 import Link from "next/link";
-import Image from "next/image";
 import { Box, Divider, Typography, Card, Container, useTheme } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";

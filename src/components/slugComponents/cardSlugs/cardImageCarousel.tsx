@@ -49,7 +49,7 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
         </Box>
       );
     },
-    beforeChange: (prev, next) => {
+    beforeChange: (prev: any, next: any) => {
       setCurrentSlide(next);
     },
   };
