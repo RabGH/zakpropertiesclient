@@ -14,7 +14,7 @@ import CardImageCarousel from "./CardImageCarousel";
 
 export const propertyContainer = {
   display: "flex",
-  flexDirection: 'row',
+  flexDirection: "row",
   justifyContent: "center",
 };
 
