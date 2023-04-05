@@ -22,6 +22,10 @@ const MapSlug = dynamic(
 );
 
 import { Project, Property, PageContext } from "../../../types";
+import {
+  mainContainer,
+  mainImageContainer,
+} from "../../components/slugComponents/imageCarouselStyles";
 
 interface PropertyList {
   properties: Property[];
@@ -46,18 +50,6 @@ const Projects = ({
 }: ProjectsProps) => {
   const muiTheme = useTheme();
 
-  const mainContainer = {
-    margin: "0 auto",
-    width: "100vw",
-    pt: "5rem",
-    pb: "5rem",
-  };
-
-  const imageMainContainer = {
-    m: "0 auto",
-    display: "flex",
-  };
-
   const contentContainer = {
     pr: "12rem",
     pl: "12rem",
@@ -67,7 +59,7 @@ const Projects = ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    mt: "5rem",
+    mt: "3rem",
     textAlign: "center",
   };
 
@@ -124,8 +116,38 @@ const Projects = ({
     alignItems: "center",
   };
 
+  const featuredTitlePos = {
+    mt: "1rem",
+    ml: "1rem",
+    mb: "1rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
+
+  const propertyCardsContainer = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+
+  const propertyContainer = {
+    display: "flex",
+    flexDirection: "row",
+  };
+
+  const buttonStyles = {
+    "&:hover": {
+      backgroundColor: muiTheme.palette.primary.light,
+    },
+    mb: "1rem",
+  };
+
+  const locationTitle = {};
   const mapCardPos = {
     mt: 3,
+    mb: 3,
   };
 
   const mapCard = {
@@ -136,21 +158,9 @@ const Projects = ({
     padding: "1rem",
   };
 
-  const locationTitle = {};
-
-  const propertyContainer = {
-    mt: "3rem",
-  };
-
-  const buttonStyles = {
-    "&:hover": {
-      backgroundColor: muiTheme.palette.primary.light,
-    },
-  };
-
   return (
     <Box sx={mainContainer}>
-      <Box sx={imageMainContainer}>
+      <Box sx={mainImageContainer}>
         <ImageCarousel
           mainImage={mainProjectImage}
           images={projectImages}
@@ -224,7 +234,6 @@ const Projects = ({
         </Container>
 
         <Box sx={priceBox}>
-          {/* <Typography variant="h5">Price: {formatPrice(totalPrice)}</Typography> */}
           <Box sx={priceButtonPos}>
             <Link href="/contact">
               <GeneralButton variant="contained" sx={buttonStyles}>
@@ -234,8 +243,20 @@ const Projects = ({
           </Box>
         </Box>
 
-        <Box sx={propertyContainer}>
-          <ProjectPropertyCards properties={properties} />
+        <Divider>
+          <Typography variant="h5" sx={featuredTitlePos}>
+            Project Properties
+          </Typography>
+        </Divider>
+
+        <Box sx={propertyCardsContainer}>
+          <Box sx={propertyContainer}>
+            {properties.map((property: Property) => (
+              <Box key={property._id}>
+                <ProjectPropertyCards properties={[property]} />
+              </Box>
+            ))}
+          </Box>
         </Box>
 
         <Divider sx={dividerStyles} />
@@ -261,35 +282,35 @@ export const getServerSideProps = async (pageContext: PageContext) => {
   const pageSlug = pageContext.query.slug;
 
   const query = `*[ _type == "projects" && slug.current == $pageSlug][0]{
-        title,
-        projectPropertyTypes,
-        unitType,
-        projectOffPlan,
-        mainDeveloper,
-        mainProjectImage,
-        totalPrice,
-        description,
-        squareFootage,
-        projectImages,
-        amenities,
-        location,
-        properties[]->{
-          title,
-          location,
-          propertyType,
-          mainPropertyImage,
-          propertyImages,
-          totalPrice,
-          bathrooms,
-          bedrooms,
-          description,
-          squareFootage,
-          plottedArea,
-          builtUpArea,
-          amenities,
-          slug,
-        }
-    }`;
+                  title,
+                  projectPropertyTypes,
+                  unitType,
+                  projectOffPlan,
+                  mainDeveloper,
+                  mainProjectImage,
+                  totalPrice,
+                  description,
+                  squareFootage,
+                  projectImages,
+                  amenities,
+                  location,
+                  properties[]->{
+                  title,
+                  location,
+                  propertyType,
+                  mainPropertyImage,
+                  propertyImages,
+                  totalPrice,
+                  bathrooms,
+                  bedrooms,
+                  description,
+                  squareFootage,
+                  plottedArea,
+                  builtUpArea,
+                  amenities,
+                  slug,
+              }
+          }`;
 
   const projects = await sanityClient.fetch(query, { pageSlug });
 

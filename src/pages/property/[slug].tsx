@@ -20,7 +20,10 @@ const MapSlug = dynamic(
 
 import { Property as PropertyProps } from "../../../types";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
-
+import {
+  mainContainer,
+  mainImageContainer,
+} from "../../components/slugComponents/imageCarouselStyles";
 interface PageContext {
   query: {
     slug: string;
@@ -46,12 +49,6 @@ const Property = ({
     m: 10,
   };
 
-  const mainContainer = {
-    p: 2,
-    margin: "0 auto",
-    width: "100vw",
-  };
-
   const titleContainer = {
     display: "flex",
     justifyContent: "space-between",
@@ -66,8 +63,6 @@ const Property = ({
     ml: 2,
     fontSize: "1.3rem",
   };
-
-  const imageWrapper = {};
 
   const mainBodyCard = {
     padding: "2rem",
@@ -148,7 +143,7 @@ const Property = ({
   return (
     <>
       <Box sx={mainContainer}>
-        <Box sx={imageWrapper}>
+        <Box sx={mainImageContainer}>
           <ImageCarousel
             mainImage={mainPropertyImage}
             images={propertyImages}

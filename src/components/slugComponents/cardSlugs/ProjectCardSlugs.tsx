@@ -116,7 +116,7 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
             <Box>
               <Divider sx={dividerStyles}>
                 <Typography variant="h5" sx={featuredTitlePos}>
-                  Featured Projects
+                  Featured Developments
                 </Typography>
               </Divider>
               <Box sx={mainBox}>

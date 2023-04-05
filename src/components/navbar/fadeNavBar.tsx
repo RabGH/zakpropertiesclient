@@ -10,7 +10,7 @@ import { useTheme } from "@mui/material/styles";
 import FadeNavSocials from "./fadeNavSocials";
 import BurgerNav from "./burgerNav";
 import NoBgLogo from "../../../public/images/logo/logoNoBg.png";
-import { navContents } from "./navContentStyles"
+import { navContents } from "./navContentStyles";
 
 interface Props {
   children?: React.ReactNode;

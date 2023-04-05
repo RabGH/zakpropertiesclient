@@ -25,11 +25,6 @@ const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
     <Container>
       <Box sx={main}>
         <Box>
-          <Divider>
-            <Typography variant="h5" sx={featuredTitlePos}>
-              Project Properties
-            </Typography>
-          </Divider>
           <Box sx={mainBox}>
             {properties.slice(0, 3).map((property: Property) => (
               <Card sx={cardStyles} key={property._id}>
