@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Autocomplete, TextField, Box, useTheme, Button } from "@mui/material";
 import { Property, Project } from "../../../../types";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface SearchBarProps {
   properties: Property[];
@@ -196,20 +197,24 @@ function SearchBar(props: SearchBarProps) {
     <Box sx={searchBarWrapper}>
       <Box sx={mainBox}>
         <Box sx={mainButtonContainer}>
-          <Button
-            onClick={handlePropertiesClick}
-            sx={propertiesButtonStyles}
-            variant="contained"
-          >
-            Properties {getButtonLabel(["Properties"])}
-          </Button>
-          <Button
-            onClick={handleProjectsClick}
-            sx={projectButtonStyles}
-            variant="contained"
-          >
-            Developments {getButtonLabel(["Projects"])}
-          </Button>
+          <Link href="/buyProperties" passHref>
+            <Button
+              onClick={handlePropertiesClick}
+              sx={propertiesButtonStyles}
+              variant="contained"
+            >
+              Properties {getButtonLabel(["Properties"])}
+            </Button>
+          </Link>
+          <Link href="/developments" passHref>
+            <Button
+              onClick={handleProjectsClick}
+              sx={projectButtonStyles}
+              variant="contained"
+            >
+              Developments {getButtonLabel(["Projects"])}
+            </Button>
+          </Link>
         </Box>
         <Box sx={mainSearchContainer}>
           <Autocomplete

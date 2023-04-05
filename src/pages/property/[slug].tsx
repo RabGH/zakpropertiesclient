@@ -71,8 +71,8 @@ const Property = ({
   };
 
   const contentContainer = {
-    pr: "12rem",
-    pl: "12rem",
+    pr: "10rem",
+    pl: "10rem",
   };
 
   const mainSection = {
@@ -246,7 +246,7 @@ const Property = ({
               <Box sx={priceButtonPos}>
                 <Link href="/contact">
                   <GeneralButton variant="contained" sx={buttonStyles}>
-                    Contact
+                    Learn More
                   </GeneralButton>
                 </Link>
               </Box>

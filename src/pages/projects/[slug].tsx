@@ -236,7 +236,7 @@ const Projects = ({
           <Box sx={priceButtonPos}>
             <Link href="/contact">
               <GeneralButton variant="contained" sx={buttonStyles}>
-                Contact
+                Learn More
               </GeneralButton>
             </Link>
           </Box>

@@ -75,7 +75,7 @@ function Developments({ projects }: DevelopmentsProps) {
       </Typography>
       <Link href="/contact">
         <Button variant="contained" size="large" sx={contactButton}>
-          Contact Us
+          Learn More
         </Button>
       </Link>
     </Box>

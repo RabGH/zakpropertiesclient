@@ -1,12 +1,4 @@
-import { Box, Card, Typography } from "@mui/material";
-import {
-  BiDumbbell,
-  BiSwim,
-  BiCartAlt,
-  BiShow,
-  BiSmile,
-  BiLockAlt,
-} from "react-icons/bi";
+import { Box, Card, Typography, Divider } from "@mui/material";
 
 interface AmenitiesCardProps {
   amenities: string[];
@@ -14,62 +6,77 @@ interface AmenitiesCardProps {
 
 const AmenitiesCard = ({ amenities }: AmenitiesCardProps) => {
   const amenityStyles = {
+    p: 2,
+    backgroundColor: "#F7F7F7",
+    boxShadow: "none",
+    borderRadius: "10px",
     display: "flex",
     alignItems: "center",
-    gap: 1,
-  };
-
-  const amenityIconStyles = {
-    fontSize: 24,
-  };
-
-  const amenityTextStyles = {
+    justifyContent: "center",
     fontSize: 16,
+    whiteSpace: "nowrap",
+    "&:not(:last-child)::after": {
+      content: '","',
+    },
   };
-
-  const amenitiesList = [
-    { name: "Gym", icon: <BiDumbbell /> },
-    { name: "Pool", icon: <BiSwim /> },
-    { name: "Grocery Store", icon: <BiCartAlt /> },
-    { name: "Retail Area", icon: <BiShow /> },
-    { name: "Kids Area", icon: <BiSmile /> },
-    { name: "Gated Community", icon: <BiLockAlt /> },
-  ];
 
   const amenitiesCardStyles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: 2,
   };
 
+  const amenitiesBoxStyles = {
+    width: "100%",
+  };
+
+  const rowStyles = {
+    display: "flex",
+    justifyContent: "center",
+    gap: 1,
+    height: "2rem",
+  };
+
+  const amenitiesTitle = {
+    mb: "0.5rem",
+    display: "flex",
+    justifyContent: "center",
+    fontWeight: "bold",
+  };
+
+  const columns = [];
+  let column = [];
+
+  for (let i = 0; i < amenities.length; i++) {
+    column.push(amenities[i]);
+
+    if (column.length === 4) {
+      columns.push(column);
+      column = [];
+    }
+  }
+
+  if (column.length > 0) {
+    columns.push(column);
+  }
+
   return (
-    <Card sx={{ p: 2 }}>
+    <Card sx={amenityStyles}>
       <Box sx={amenitiesCardStyles}>
-        <Typography variant="h3" sx={{ textAlign: "center" }}>
-          Amenities
+        <Typography variant="h6" sx={amenitiesTitle}>
+          Property's Amenities
         </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: 2,
-          }}
-        >
-          {amenitiesList.map((amenity) => {
-            if (amenities.includes(amenity.name)) {
-              return (
-                <Box key={amenity.name} sx={amenityStyles}>
-                  {amenity.icon}
-                  <Typography variant="body1" sx={amenityTextStyles}>
-                    {amenity.name}
-                  </Typography>
-                </Box>
-              );
-            }
-            return null;
-          })}
+        <Divider sx={{ borderBottom: "4px solid #000000", zIndex: 3 }} />
+        <Box sx={amenitiesBoxStyles}>
+          {columns.map((col, idx) => (
+            <Box key={idx} sx={rowStyles}>
+              {col.map((amenity) => (
+                <Typography key={amenity} variant="body2" sx={amenityStyles}>
+                  {amenity}
+                </Typography>
+              ))}
+            </Box>
+          ))}
         </Box>
       </Box>
     </Card>
