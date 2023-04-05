@@ -25,7 +25,9 @@ import { Project, Property, PageContext } from "../../../types";
 import {
   mainContainer,
   mainImageContainer,
+  viewPhotosBox,
 } from "../../components/slugComponents/imageCarouselStyles";
+import ViewAllPhotos from "../../components/slugComponents/ViewAllPhotos";
 
 interface PropertyList {
   properties: Property[];
@@ -133,8 +135,9 @@ const Projects = ({
   };
 
   const propertyContainer = {
-    display: "flex",
-    flexDirection: "row",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+    gridGap: "16px",
   };
 
   const buttonStyles = {
@@ -162,6 +165,13 @@ const Projects = ({
     <Box sx={mainContainer}>
       <Box sx={mainImageContainer}>
         <ImageCarousel
+          mainImage={mainProjectImage}
+          images={projectImages}
+          alt={title}
+        />
+      </Box>
+      <Box sx={viewPhotosBox}>
+        <ViewAllPhotos
           mainImage={mainProjectImage}
           images={projectImages}
           alt={title}
@@ -282,35 +292,35 @@ export const getServerSideProps = async (pageContext: PageContext) => {
   const pageSlug = pageContext.query.slug;
 
   const query = `*[ _type == "projects" && slug.current == $pageSlug][0]{
-                  title,
-                  projectPropertyTypes,
-                  unitType,
-                  projectOffPlan,
-                  mainDeveloper,
-                  mainProjectImage,
-                  totalPrice,
-                  description,
-                  squareFootage,
-                  projectImages,
-                  amenities,
-                  location,
-                  properties[]->{
-                  title,
-                  location,
-                  propertyType,
-                  mainPropertyImage,
-                  propertyImages,
-                  totalPrice,
-                  bathrooms,
-                  bedrooms,
-                  description,
-                  squareFootage,
-                  plottedArea,
-                  builtUpArea,
-                  amenities,
-                  slug,
-              }
-          }`;
+title,
+projectPropertyTypes,
+unitType,
+projectOffPlan,
+mainDeveloper,
+mainProjectImage,
+totalPrice,
+description,
+squareFootage,
+projectImages,
+amenities,
+location,
+properties[]->{
+title,
+location,
+propertyType,
+mainPropertyImage,
+propertyImages,
+totalPrice,
+bathrooms,
+bedrooms,
+description,
+squareFootage,
+plottedArea,
+builtUpArea,
+amenities,
+slug,
+}
+}`;
 
   const projects = await sanityClient.fetch(query, { pageSlug });
 

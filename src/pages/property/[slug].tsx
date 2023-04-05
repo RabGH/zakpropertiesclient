@@ -1,15 +1,11 @@
 import { sanityClient } from "../../../sanity";
 import { isMultiple, formatPrice, formatArea } from "../../../utils";
 import Link from "next/link";
-
-import { Box, Divider, Typography, Card } from "@mui/material";
+import { Box, Divider, Typography, Card, useTheme } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
-
 import { BiBed } from "react-icons/bi";
 import { BiBath } from "react-icons/bi";
-
 import AmenitiesCard from "../../components/slugComponents/AmenitiesSlug";
-
 import dynamic from "next/dynamic";
 const MapSlug = dynamic(
   () => import("../../components/slugComponents/MapSlug"),
@@ -17,13 +13,15 @@ const MapSlug = dynamic(
     ssr: false,
   }
 );
-
 import { Property as PropertyProps } from "../../../types";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
 import {
   mainContainer,
   mainImageContainer,
+  viewPhotosBox,
 } from "../../components/slugComponents/imageCarouselStyles";
+import ViewAllPhotos from "../../components/slugComponents/ViewAllPhotos";
+
 interface PageContext {
   query: {
     slug: string;
@@ -45,6 +43,8 @@ const Property = ({
   amenities,
   location,
 }: PropertyProps) => {
+  const muiTheme = useTheme();
+
   const dividerStyles = {
     m: 10,
   };
@@ -53,19 +53,24 @@ const Property = ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    mt: "3rem",
+    textAlign: "center",
   };
 
-  const titleStyle = {
-    fontWeight: "",
-  };
+  const titleStyle = {};
 
   const priceStyle = {
     ml: 2,
     fontSize: "1.3rem",
+    p: "1rem",
+    borderRadius: "0.5rem",
+    backgroundColor: "#F1EDEE",
+    color: "#3D3D3D",
   };
 
-  const mainBodyCard = {
-    padding: "2rem",
+  const contentContainer = {
+    pr: "12rem",
+    pl: "12rem",
   };
 
   const mainSection = {
@@ -97,7 +102,7 @@ const Property = ({
     lineHeight: "1.5",
   };
 
-  const propertyDescStyles = {
+  const descriptionStyles = {
     fontSize: "1.3rem",
   };
 
@@ -121,15 +126,28 @@ const Property = ({
   const amenityStyles = {
     maxWidth: 700,
     margin: "0 auto",
-    // mt: '3rem',
   };
+
+  const buttonStyles = {
+    "&:hover": {
+      backgroundColor: muiTheme.palette.primary.light,
+    },
+    mb: "1rem",
+  };
+
+  const priceBox = {};
 
   const priceButtonPos = {
     mt: "3rem",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   };
 
+  const locationTitle = {};
   const mapCardPos = {
     mt: 3,
+    mb: 3,
   };
 
   const mapCard = {
@@ -151,9 +169,17 @@ const Property = ({
           />
         </Box>
 
+        <Box sx={viewPhotosBox}>
+          <ViewAllPhotos
+            mainImage={mainPropertyImage}
+            images={propertyImages}
+            alt={title}
+          />
+        </Box>
+
         <Divider sx={dividerStyles} />
 
-        <Card sx={mainBodyCard}>
+        <Box sx={contentContainer}>
           <Box sx={titleContainer}>
             <Typography variant="h2" sx={titleStyle}>
               {title}
@@ -190,39 +216,41 @@ const Property = ({
 
           <Box sx={bodyStyles}>
             <Box sx={staticStyles}>
-              <Typography variant="body2" sx={propertyDescStyles}>
-                Aliqua pariatur labore velit aute sunt et laboris non pariatur
-                ut sit officia sunt mollit. Mollit amet dolor ex Lorem mollit
-                cillum mollit veniam qui dolor cupidatat cupidatat consectetur
-                aute. Veniam commodo nisi ipsum do enim id in mollit velit
-                proident exercitation veniam. {description}
+              <Typography variant="body2" sx={descriptionStyles}>
+                {description}
               </Typography>
             </Box>
-            <Box sx={priceButtonPos}>
-              <Link href="/contact">
-                <GeneralButton variant="contained">Contact</GeneralButton>
-              </Link>
+            <Box sx={priceBox}>
+              <Box sx={priceButtonPos}>
+                <Link href="/contact">
+                  <GeneralButton variant="contained" sx={buttonStyles}>
+                    Contact
+                  </GeneralButton>
+                </Link>
+              </Box>
             </Box>
           </Box>
-        </Card>
 
-        <Divider sx={dividerStyles} />
+          <Divider sx={dividerStyles} />
 
-        <Box sx={amenityStyles}>
-          <AmenitiesCard amenities={amenities} />
-        </Box>
+          <Box sx={amenityStyles}>
+            <AmenitiesCard amenities={amenities} />
+          </Box>
 
-        <Divider sx={dividerStyles} />
+          <Divider sx={dividerStyles} />
 
-        <Box sx={mapCardPos}>
-          <Card sx={mapCard}>
-            <Typography variant="h3">Location</Typography>
-            <MapSlug
-              title={title}
-              lat={location?.lat || 0}
-              lng={location?.lng || 0}
-            />
-          </Card>
+          <Box sx={mapCardPos}>
+            <Card sx={mapCard}>
+              <Typography variant="h3" sx={locationTitle}>
+                Location
+              </Typography>
+              <MapSlug
+                title={title}
+                lat={location?.lat || 0}
+                lng={location?.lng || 0}
+              />
+            </Card>
+          </Box>
         </Box>
       </Box>
     </>

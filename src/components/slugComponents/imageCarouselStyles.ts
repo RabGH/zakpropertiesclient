@@ -32,3 +32,7 @@ export const imageStyles = {
   maxWidth: "100%",
   maxHeight: "100%",
 };
+
+export const viewPhotosBox = {
+  ml: "2rem",
+};

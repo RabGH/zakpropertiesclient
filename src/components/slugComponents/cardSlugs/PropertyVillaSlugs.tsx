@@ -16,7 +16,7 @@ import {
   dividerStyles,
   mainBox,
 } from "./cardStylesSlugs";
-import CardImageCarousel from "./cardImageCarousel";
+import CardImageCarousel from "./CardImageCarousel";
 
 interface PropertyVillaCardBodyProps {
   properties?: Property[];

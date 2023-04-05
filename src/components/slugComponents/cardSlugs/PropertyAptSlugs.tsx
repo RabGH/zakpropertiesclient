@@ -17,7 +17,7 @@ import {
   mainBox,
 } from "./cardStylesSlugs";
 
-import CardImageCarousel from "./cardImageCarousel";
+import CardImageCarousel from "./CardImageCarousel";
 
 interface PropertyAptCardBodyProps {
   properties?: Property[];
