@@ -2,7 +2,7 @@ import { sanityClient } from "../../../sanity";
 import { isMultiple, formatPrice, formatArea } from "../../../utils";
 import Link from "next/link";
 
-import { Box, Divider, Typography, Card, ThemeProvider } from "@mui/material";
+import { Box, Divider, Typography, Card } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 
 import { BiBed } from 'react-icons/bi';
