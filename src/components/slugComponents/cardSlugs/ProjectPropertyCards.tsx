@@ -20,6 +20,7 @@ export const propertyContainer = {
 
 interface ProjectPropertyCardsProps {
   properties: Property[];
+  projects?: Property[];
 }
 
 const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
@@ -52,7 +53,7 @@ const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
   return (
     <Box sx={main}>
       {properties.map((property: Property, index: number) => (
-        <Box key={property._id} sx={cardSizeStyles}>
+        <Box key={`project_${property._id}_${index}`} sx={cardSizeStyles}>
           <Card sx={cardStyles}>
             {property.mainPropertyImage && (
               <CardImageCarousel
@@ -67,7 +68,7 @@ const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
             )}
             <Box sx={cardInfoStyles}>
               <Link
-                key={property._id}
+                key={`property_${property._id}`}
                 href={`/property/${property.slug.current}`}
               >
                 <Typography variant="body2" sx={propertyTypeStyles}>

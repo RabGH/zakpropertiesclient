@@ -9,6 +9,9 @@ export function formatPrice(price: number): string {
   return `AED: ${formatNumberWithCommas(price)}`;
 }
 
-export function formatArea(area: number): string {
+export function formatArea(area: number | undefined): string {
+  if (area == null) {
+    return "none";
+  }
   return `${formatNumberWithCommas(area)} sqft`;
 }

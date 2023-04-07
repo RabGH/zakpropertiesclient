@@ -10,13 +10,6 @@ import dynamic from "next/dynamic";
 import AmenitiesCard, {
   amenityStyles,
 } from "../../components/slugComponents/amenitiesFeatures/AmenitiesSlug";
-const MapSlug = dynamic(
-  () => import("../../components/slugComponents/MapSlug"),
-  {
-    ssr: false,
-  }
-);
-
 import { Project, Property, PageContext } from "../../../lib/types";
 import {
   mainContainer,
@@ -29,6 +22,12 @@ import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 import { getProjectPageStyles } from "../../components/slugComponents/pageSlugStyles/projectSlugStyles";
 import { getGeneralSlugStyles } from "../../components/slugComponents/pageSlugStyles/generalSlugStyles";
 
+const MapSlug = dynamic(
+  () => import("../../components/slugComponents/MapSlug"),
+  {
+    ssr: false,
+  }
+);
 interface PropertyList {
   properties: Property[];
 }
