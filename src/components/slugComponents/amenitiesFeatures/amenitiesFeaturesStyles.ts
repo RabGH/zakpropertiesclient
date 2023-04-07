@@ -21,7 +21,7 @@ export const cardStyles = {
 export const boxStyles = {
   display: "grid",
   gridTemplateColumns: "repeat(4, 1fr)",
-  gap: "20px"
+  gap: "20px",
 };
 
 export const mainTitle = {
@@ -33,5 +33,5 @@ export const mainTitle = {
 
 export const dividerCardStyles = {
   borderBottom: "4px solid #000000",
-  zIndex: 3
+  zIndex: 3,
 };

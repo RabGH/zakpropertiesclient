@@ -1,20 +1,15 @@
 import { sanityClient } from "../../../lib/sanity";
 import { formatPrice, formatArea } from "../../../lib/utils";
 import Link from "next/link";
-import {
-  Box,
-  Divider,
-  Typography,
-  Card,
-  Container,
-  useTheme,
-} from "@mui/material";
+import { Box, Divider, Typography, Card, Container } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
 import ProjectPropertyCards from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
 import { propertyContainer } from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
 import dynamic from "next/dynamic";
-import AmenitiesCard, { amenityStyles } from "../../components/slugComponents/amenitiesFeatures/AmenitiesSlug";
+import AmenitiesCard, {
+  amenityStyles,
+} from "../../components/slugComponents/amenitiesFeatures/AmenitiesSlug";
 const MapSlug = dynamic(
   () => import("../../components/slugComponents/MapSlug"),
   {
@@ -30,6 +25,30 @@ import {
 } from "../../components/slugComponents/imageCarouselStyles";
 import { featuredTitlePos } from "../../components/slugComponents/cardSlugs/cardComponents/cardStylesSlugs";
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
+
+import {
+  dividerStyles,
+  titleContainer,
+  titleStyle,
+  priceStyle,
+  contentContainer,
+  mainSection,
+  unitTypeStyles,
+  mainDeveloperStyles,
+  projectTypeStyles,
+  bodyStyles,
+  squareFootageStyles,
+  buttonStyles,
+  priceBox,
+  priceButtonPos,
+  locationTitle,
+  mapCardPos,
+  mapCard,
+  offPlanStyles,
+  offPlanTextStyles,
+  offPlanCompleteStyles,
+  descriptionStyles,
+} from "../../components/slugComponents/pageSlugStyles/projectSlugStyles";
 
 interface PropertyList {
   properties: Property[];
@@ -57,94 +76,6 @@ const Projects = ({
   location,
   properties,
 }: ProjectsProps) => {
-  const muiTheme = useTheme();
-
-  const contentContainer = {
-    pr: "12rem",
-    pl: "12rem",
-  };
-
-  const titleContainer = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    mt: "3rem",
-    textAlign: "center",
-  };
-
-  const titleStyle = {};
-
-  const priceStyle = {
-    ml: 2,
-    fontSize: "1.3rem",
-    p: "1rem",
-    borderRadius: "0.5rem",
-    backgroundColor: "#F1EDEE",
-    color: "#3D3D3D",
-  };
-
-  const dividerStyles = {
-    m: 3,
-  };
-
-  const mainSection = {};
-
-  const unitTypeStyles = {};
-
-  const mainDeveloperStyles = {};
-
-  const projectTypeStyles = {};
-
-  const offPlanStyles = {};
-
-  const offPlanTextStyles = {};
-
-  const offPlanCompleteStyles = {};
-
-  const bodyStyles = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-  };
-
-  const squareFootageStyles = {};
-
-  const descriptionStyles = {
-    my: "1rem",
-  };
-
-  const priceBox = {};
-
-  const priceButtonPos = {
-    mt: "3rem",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  };
-
-  const buttonStyles = {
-    "&:hover": {
-      backgroundColor: muiTheme.palette.primary.light,
-    },
-    mb: "1rem",
-  };
-
-  const locationTitle = {};
-  const mapCardPos = {
-    mt: 3,
-    mb: 3,
-    pr: "12rem",
-    pl: "12rem",
-  };
-
-  const mapCard = {
-    width: "100%",
-    height: "500px",
-    borderRadius: "5px",
-    overflow: "hidden",
-    padding: "1rem",
-  };
-
   return (
     <Box sx={mainContainer}>
       <Box sx={mainImageContainer}>

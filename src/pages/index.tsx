@@ -47,7 +47,7 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
   };
 
   const boxContentProject = {
-    height: "80vh",
+    minHeight: "80vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",

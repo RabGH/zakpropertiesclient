@@ -19,19 +19,19 @@ export const featuresStyles = {
 
 const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
   return (
-      <Box sx={cardStyles}>
-        <Typography variant="h6" sx={mainTitle}>
-          Property's Features
-        </Typography>
-        <Divider sx={dividerCardStyles} />
-        <Box sx={boxStyles}>
-          {features.map((feat) => (
-              <Typography key={feat} variant="body2" sx={mainStyles}>
-                {feat}
-              </Typography>
-          ))}
-        </Box>
+    <Box sx={cardStyles}>
+      <Typography variant="h6" sx={mainTitle}>
+        Property's Features
+      </Typography>
+      <Divider sx={dividerCardStyles} />
+      <Box sx={boxStyles}>
+        {features.map((feat) => (
+          <Typography key={feat} variant="body2" sx={mainStyles}>
+            {feat}
+          </Typography>
+        ))}
       </Box>
+    </Box>
   );
 };
 

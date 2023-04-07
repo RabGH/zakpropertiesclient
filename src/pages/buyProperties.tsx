@@ -1,22 +1,22 @@
 import React from "react";
 import Head from "next/head";
 import { Box, Divider, Typography } from "@mui/material";
-import { Property } from "../../lib/types";
+import { Project, Property } from "../../lib/types";
 import { sanityClient } from "../../lib/sanity";
 import PropertyCardGrid from "../components/slugComponents/cardSlugs/cardComponents/PropertyCardGrid";
+import {
+  mainBox,
+  contentMainBox,
+  featuredTitlePos,
+  dividerStyles,
+  propertyAllCardBox,
+} from "../components/slugComponents/pageSlugStyles/buyPropertiesStyles";
 
 export default function PropertySearch({
   properties,
 }: {
   properties: Property[];
 }) {
-  const dividerStyles = {};
-
-  const featuredTitlePos = {
-    mt: "8rem",
-  };
-  const mainBox = {};
-
   return (
     <Box sx={mainBox}>
       <Head>
@@ -24,38 +24,42 @@ export default function PropertySearch({
         <meta name="description" content="Search for properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Divider sx={dividerStyles}>
-        <Typography variant="h5" sx={featuredTitlePos}>
-          Featured Properties
+      <Box sx={contentMainBox}>
+        <Typography variant="h3" sx={featuredTitlePos}>
+          Featured Properties for Sale
         </Typography>
-      </Divider>
-      <Box>
-        <PropertyCardGrid properties={properties} />
+        <Divider sx={dividerStyles} />
+        <Box sx={propertyAllCardBox}>
+          <PropertyCardGrid properties={properties} />
+        </Box>
       </Box>
     </Box>
   );
 }
+export async function getServerSideProps() {
+  const propertyQuery = `*[ _type == "property"]{
+    ..., 
+    location,
+    propertyType,
+    mainPropertyImage,
+    propertyImages,
+    totalPrice,
+    bathrooms,
+    bedrooms,
+    description,
+    squareFootage,
+    plottedArea,
+    builtUpArea,
+    features,
+    propertyOffPlan,
+}`;
+  const [properties] = await Promise.all([
+    sanityClient.fetch<Property[]>(propertyQuery),
+  ]);
 
-export const getServerSideProps = async () => {
-  const query = `*[ _type == "property"]{
-      title,
-      location,
-      propertyType,
-      mainPropertyImage,
-      propertyImages,
-      totalPrice,
-      bathrooms,
-      bedrooms,
-      description,
-      squareFootage,
-      plottedArea,
-      builtUpArea,
-      features,
-      propertyOffPlan,
-      "slug": slug.current,
-    }`;
-
-  const properties = await sanityClient.fetch(query);
-
-  return { props: { properties } };
-};
+  return {
+    props: {
+      properties,
+    },
+  };
+}

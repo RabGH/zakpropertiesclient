@@ -1,7 +1,7 @@
 import { sanityClient } from "../../../lib/sanity";
 import { isMultiple, formatPrice, formatArea } from "../../../lib/utils";
 import Link from "next/link";
-import { Box, Divider, Typography, Card, useTheme } from "@mui/material";
+import { Box, Divider, Typography, Card } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 import { BiBed } from "react-icons/bi";
 import { BiBath } from "react-icons/bi";
@@ -22,6 +22,34 @@ import {
   viewPhotosBox,
 } from "../../components/slugComponents/imageCarouselStyles";
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
+
+import {
+  dividerStyles,
+  titleContainer,
+  titleStyle,
+  priceStyle,
+  contentContainer,
+  mainSection,
+  propertyTypeStyles,
+  propertyBedStyles,
+  propertyBathroomStyles,
+  bodyStyles,
+  staticStyles,
+  squareFootageStyles,
+  propertyMainAreaStyles,
+  propertyBuiltAreaStyles,
+  buttonStyles,
+  priceBox,
+  priceButtonPos,
+  locationTitle,
+  mapCardPos,
+  mapCard,
+  offPlanStyles,
+  offPlanTextStyles,
+  offPlanCompleteStyles,
+  descriptionStyles,
+  propertyPlottedAreaStyles,
+} from "../../components/slugComponents/pageSlugStyles/propertySlugStyles";
 
 interface PageContext {
   query: {
@@ -45,122 +73,6 @@ const Property = ({
   location,
   propertyOffPlan,
 }: PropertyProps) => {
-  const muiTheme = useTheme();
-
-  const dividerStyles = {
-    m: 5,
-  };
-
-  const titleContainer = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    mt: "3rem",
-    textAlign: "center",
-  };
-
-  const titleStyle = {};
-
-  const priceStyle = {
-    ml: 2,
-    fontSize: "1.3rem",
-    p: "1rem",
-    borderRadius: "0.5rem",
-    backgroundColor: "#F1EDEE",
-    color: "#3D3D3D",
-  };
-
-  const contentContainer = {
-    pr: "10rem",
-    pl: "10rem",
-  };
-
-  const mainSection = {
-    mt: 2,
-  };
-
-  const propertyTypeStyles = {
-    fontSize: "1.3rem",
-    mb: "1rem",
-    mt: "1rem",
-  };
-
-  const propertyBedStyles = {
-    fontSize: "1rem",
-  };
-
-  const propertyBathroomStyles = {
-    fontSize: "1rem",
-  };
-
-  const bodyStyles = {
-    mt: 2,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  };
-
-  const staticStyles = {
-    lineHeight: "1.5",
-  };
-
-  const descriptionStyles = {
-    fontSize: "1.3rem",
-  };
-
-  const squareFootageStyles = {
-    mt: 3,
-    lineHeight: "1.5",
-  };
-
-  const propertyMainAreaStyles = {
-    fontSize: "1rem",
-  };
-
-  const propertyPlottedAreaStyles = {
-    fontSize: "1rem",
-  };
-
-  const propertyBuiltAreaStyles = {
-    fontSize: "1rem",
-  };
-
-  const buttonStyles = {
-    "&:hover": {
-      backgroundColor: muiTheme.palette.primary.light,
-    },
-    mb: "1rem",
-  };
-
-  const priceBox = {};
-
-  const priceButtonPos = {
-    mt: "3rem",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  };
-
-  const locationTitle = {};
-  const mapCardPos = {
-    mt: 3,
-    mb: 3,
-  };
-
-  const mapCard = {
-    width: "100%",
-    height: "500px",
-    borderRadius: "5px",
-    overflow: "hidden",
-    padding: "1rem",
-  };
-
-  const offPlanStyles = {};
-
-  const offPlanTextStyles = {};
-
-  const offPlanCompleteStyles = {};
-
   return (
     <>
       <Box sx={mainContainer}>
