@@ -23,33 +23,8 @@ import {
 } from "../../components/slugComponents/imageCarouselStyles";
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 
-import {
-  dividerStyles,
-  titleContainer,
-  titleStyle,
-  priceStyle,
-  contentContainer,
-  mainSection,
-  propertyTypeStyles,
-  propertyBedStyles,
-  propertyBathroomStyles,
-  bodyStyles,
-  staticStyles,
-  squareFootageStyles,
-  propertyMainAreaStyles,
-  propertyBuiltAreaStyles,
-  buttonStyles,
-  priceBox,
-  priceButtonPos,
-  locationTitle,
-  mapCardPos,
-  mapCard,
-  offPlanStyles,
-  offPlanTextStyles,
-  offPlanCompleteStyles,
-  descriptionStyles,
-  propertyPlottedAreaStyles,
-} from "../../components/slugComponents/pageSlugStyles/propertySlugStyles";
+import { getPropertyPageStyles } from "../../components/slugComponents/pageSlugStyles/propertySlugStyles";
+import { getGeneralSlugStyles } from "../../components/slugComponents/pageSlugStyles/generalSlugStyles";
 
 interface PageContext {
   query: {
@@ -73,6 +48,8 @@ const Property = ({
   location,
   propertyOffPlan,
 }: PropertyProps) => {
+  const styles = getPropertyPageStyles();
+  const generalStyles = getGeneralSlugStyles();
   return (
     <>
       <Box sx={mainContainer}>
@@ -92,33 +69,39 @@ const Property = ({
           />
         </Box>
 
-        <Divider sx={dividerStyles} />
+        <Divider sx={generalStyles.dividerStyles} />
 
-        <Box sx={contentContainer}>
-          <Box sx={titleContainer}>
-            <Typography variant="h2" sx={titleStyle}>
+        <Box sx={generalStyles.contentContainer}>
+          <Box sx={generalStyles.titleContainer}>
+            <Typography variant="h2" sx={generalStyles.titleStyle}>
               {title}
             </Typography>
-            <Typography variant="h3" sx={priceStyle}>
+            <Typography variant="h3" sx={generalStyles.priceStyle}>
               {formatPrice(totalPrice)}
             </Typography>
           </Box>
 
-          <Box sx={mainSection}>
-            <Typography variant="h5" sx={propertyTypeStyles}>
+          <Box sx={generalStyles.mainSection}>
+            <Typography variant="h5" sx={styles.propertyTypeStyles}>
               {propertyType}
             </Typography>
 
-            <Box sx={offPlanStyles}>
+            <Box sx={generalStyles.offPlanStyles}>
               {propertyOffPlan &&
               typeof propertyOffPlan === "object" &&
               propertyOffPlan.offplan ? (
                 <Box>
-                  <Typography variant="body2" sx={offPlanTextStyles}>
+                  <Typography
+                    variant="body2"
+                    sx={generalStyles.offPlanTextStyles}
+                  >
                     Off-plan project
                   </Typography>
                   {propertyOffPlan.propertyCompletionDate && (
-                    <Typography variant="body2" sx={offPlanCompleteStyles}>
+                    <Typography
+                      variant="body2"
+                      sx={generalStyles.offPlanCompleteStyles}
+                    >
                       Completion date: {propertyOffPlan.propertyCompletionDate}
                     </Typography>
                   )}
@@ -128,36 +111,39 @@ const Property = ({
               )}{" "}
             </Box>
 
-            <Typography variant="body2" sx={propertyBedStyles}>
+            <Typography variant="body2" sx={styles.propertyBedStyles}>
               {bedrooms} bedroom{isMultiple(bedrooms)} <BiBed />
             </Typography>
-            <Typography variant="body2" sx={propertyBathroomStyles}>
+            <Typography variant="body2" sx={styles.propertyBathroomStyles}>
               {bathrooms} bathroom{isMultiple(bathrooms)} <BiBath />
             </Typography>
           </Box>
 
-          <Box sx={squareFootageStyles}>
-            <Typography variant="body2" sx={propertyMainAreaStyles}>
+          <Box sx={styles.squareFootageStyles}>
+            <Typography variant="body2" sx={styles.propertyMainAreaStyles}>
               Main Area {formatArea(squareFootage)}
             </Typography>
-            <Typography variant="body2" sx={propertyPlottedAreaStyles}>
+            <Typography variant="body2" sx={styles.propertyPlottedAreaStyles}>
               Plotted Area {formatArea(plottedArea)}
             </Typography>
-            <Typography variant="body2" sx={propertyBuiltAreaStyles}>
+            <Typography variant="body2" sx={styles.propertyBuiltAreaStyles}>
               Built Up Area {formatArea(builtUpArea)}
             </Typography>
           </Box>
 
-          <Box sx={bodyStyles}>
-            <Box sx={staticStyles}>
-              <Typography variant="body2" sx={descriptionStyles}>
+          <Box sx={generalStyles.bodyStyles}>
+            <Box sx={styles.staticStyles}>
+              <Typography variant="body2" sx={generalStyles.descriptionStyles}>
                 {description}
               </Typography>
             </Box>
-            <Box sx={priceBox}>
-              <Box sx={priceButtonPos}>
+            <Box sx={generalStyles.priceBox}>
+              <Box sx={generalStyles.priceButtonPos}>
                 <Link href="/contact">
-                  <GeneralButton variant="contained" sx={buttonStyles}>
+                  <GeneralButton
+                    variant="contained"
+                    sx={generalStyles.buttonStyles}
+                  >
                     Learn More
                   </GeneralButton>
                 </Link>
@@ -165,17 +151,17 @@ const Property = ({
             </Box>
           </Box>
 
-          <Divider sx={dividerStyles} />
+          <Divider sx={generalStyles.dividerStyles} />
 
           <Box sx={featuresStyles}>
             <FeaturesSlug features={features} />
           </Box>
 
-          <Divider sx={dividerStyles} />
+          <Divider sx={generalStyles.dividerStyles} />
 
-          <Box sx={mapCardPos}>
-            <Card sx={mapCard}>
-              <Typography variant="h3" sx={locationTitle}>
+          <Box sx={styles.mapCardPos}>
+            <Card sx={generalStyles.mapCard}>
+              <Typography variant="h3" sx={generalStyles.locationTitle}>
                 Location
               </Typography>
               <MapSlug

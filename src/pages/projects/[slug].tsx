@@ -26,29 +26,8 @@ import {
 import { featuredTitlePos } from "../../components/slugComponents/cardSlugs/cardComponents/cardStylesSlugs";
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 
-import {
-  dividerStyles,
-  titleContainer,
-  titleStyle,
-  priceStyle,
-  contentContainer,
-  mainSection,
-  unitTypeStyles,
-  mainDeveloperStyles,
-  projectTypeStyles,
-  bodyStyles,
-  squareFootageStyles,
-  buttonStyles,
-  priceBox,
-  priceButtonPos,
-  locationTitle,
-  mapCardPos,
-  mapCard,
-  offPlanStyles,
-  offPlanTextStyles,
-  offPlanCompleteStyles,
-  descriptionStyles,
-} from "../../components/slugComponents/pageSlugStyles/projectSlugStyles";
+import { getProjectPageStyles } from "../../components/slugComponents/pageSlugStyles/projectSlugStyles";
+import { getGeneralSlugStyles } from "../../components/slugComponents/pageSlugStyles/generalSlugStyles";
 
 interface PropertyList {
   properties: Property[];
@@ -76,6 +55,9 @@ const Projects = ({
   location,
   properties,
 }: ProjectsProps) => {
+  const styles = getProjectPageStyles();
+  const generalStyles = getGeneralSlugStyles();
+
   return (
     <Box sx={mainContainer}>
       <Box sx={mainImageContainer}>
@@ -92,35 +74,41 @@ const Projects = ({
           alt={title}
         />
       </Box>
-      <Box sx={contentContainer}>
-        <Box sx={titleContainer}>
-          <Typography variant="h2" sx={titleStyle}>
+      <Box sx={generalStyles.contentContainer}>
+        <Box sx={generalStyles.titleContainer}>
+          <Typography variant="h2" sx={generalStyles.titleStyle}>
             {title}
           </Typography>
-          <Typography variant="h5" sx={priceStyle}>
+          <Typography variant="h5" sx={generalStyles.priceStyle}>
             {formatPrice(totalPrice)}
           </Typography>
         </Box>
 
         <Container>
-          <Divider sx={dividerStyles} />
+          <Divider sx={generalStyles.dividerStyles} />
 
           <Box>
-            <Typography variant="h6" sx={mainDeveloperStyles}>
+            <Typography variant="h6" sx={styles.mainDeveloperStyles}>
               Developed by {mainDeveloper}
             </Typography>
           </Box>
 
-          <Box sx={offPlanStyles}>
+          <Box sx={generalStyles.offPlanStyles}>
             {projectOffPlan &&
             typeof projectOffPlan === "object" &&
             projectOffPlan.offplan ? (
               <Box>
-                <Typography variant="body2" sx={offPlanTextStyles}>
+                <Typography
+                  variant="body2"
+                  sx={generalStyles.offPlanTextStyles}
+                >
                   Off-plan project
                 </Typography>
                 {projectOffPlan.completionDate && (
-                  <Typography variant="body2" sx={offPlanCompleteStyles}>
+                  <Typography
+                    variant="body2"
+                    sx={generalStyles.offPlanCompleteStyles}
+                  >
                     Completion date: {projectOffPlan.completionDate}
                   </Typography>
                 )}
@@ -130,38 +118,41 @@ const Projects = ({
             )}{" "}
           </Box>
 
-          <Box sx={mainSection}>
-            <Typography variant="body2" sx={projectTypeStyles}>
+          <Box sx={generalStyles.mainSection}>
+            <Typography variant="body2" sx={styles.projectTypeStyles}>
               Types of Housing Built: {projectPropertyTypes}
             </Typography>
 
             <Box>
-              <Typography variant="body2" sx={unitTypeStyles}>
+              <Typography variant="body2" sx={styles.unitTypeStyles}>
                 Unit types {unitType}
               </Typography>
             </Box>
 
-            <Box sx={bodyStyles}>
-              <Typography variant="body2" sx={squareFootageStyles}>
+            <Box sx={generalStyles.bodyStyles}>
+              <Typography variant="body2" sx={styles.squareFootageStyles}>
                 Built-up Area: {formatArea(squareFootage)}
               </Typography>
-              <Typography variant="h6" sx={descriptionStyles}>
+              <Typography variant="h6" sx={generalStyles.descriptionStyles}>
                 {description}
               </Typography>
             </Box>
           </Box>
 
-          <Divider sx={dividerStyles} />
+          <Divider sx={generalStyles.dividerStyles} />
 
           <Box sx={amenityStyles}>
             <AmenitiesCard amenities={amenities} />
           </Box>
         </Container>
 
-        <Box sx={priceBox}>
-          <Box sx={priceButtonPos}>
+        <Box sx={generalStyles.priceBox}>
+          <Box sx={generalStyles.priceButtonPos}>
             <Link href="/contact">
-              <GeneralButton variant="contained" sx={buttonStyles}>
+              <GeneralButton
+                variant="contained"
+                sx={generalStyles.buttonStyles}
+              >
                 Learn More
               </GeneralButton>
             </Link>
@@ -183,10 +174,10 @@ const Projects = ({
         ))}
       </Box>
 
-      <Divider sx={dividerStyles} />
-      <Box sx={mapCardPos}>
-        <Card sx={mapCard}>
-          <Typography variant="h3" sx={locationTitle}>
+      <Divider sx={generalStyles.dividerStyles} />
+      <Box sx={styles.mapCardPos}>
+        <Card sx={generalStyles.mapCard}>
+          <Typography variant="h3" sx={generalStyles.locationTitle}>
             Location
           </Typography>
           <MapSlug
