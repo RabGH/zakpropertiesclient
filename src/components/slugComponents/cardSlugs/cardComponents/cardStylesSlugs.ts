@@ -18,7 +18,7 @@ export const featuredTitlePos = {
 
 export const cardStyles = {
   maxWidth: "420px",
-  maxHeight: "450px",
+  maxHeight: "490px",
   boxShadow: "none",
   borderRadius: "10px",
   overflow: "hidden",
@@ -33,9 +33,7 @@ export const cardStyles = {
 };
 
 export const propertyTypeStyles = {
-  // paddingBottom: "0.7rem",
-  // mt: '1rem',
-  // fontSize: '1rem',
+  fontSize: "1rem",
 };
 
 export const propertyTitleCard = {
@@ -44,9 +42,7 @@ export const propertyTitleCard = {
   mt: "0.5rem",
 };
 
-export const propertyAreaCard = {
-  paddingBottom: "0.3rem",
-};
+export const propertyAreaCard = {};
 
 export const propertyPriceCard = {
   paddingBottom: "0rem",
@@ -71,3 +67,11 @@ export const dividerStyles = {
     borderColor: "white",
   },
 };
+
+export const bedroomStyles = {};
+
+export const offPlanStyles = {};
+
+export const offPlanTextStyles = {};
+
+export const offPlanCompleteStyles = {};

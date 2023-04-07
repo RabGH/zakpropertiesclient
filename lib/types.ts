@@ -12,7 +12,10 @@ export interface Property {
   builtUpArea: number;
   propertyImages: string[];
   features: string[];
-  propertyOffPlan: boolean | { offplan?: boolean; propertyCompletionDate?: string };
+  propertyOffPlan: {
+    offplan?: boolean;
+    propertyCompletionDate?: string;
+  };
   slug: {
     current: string;
   };

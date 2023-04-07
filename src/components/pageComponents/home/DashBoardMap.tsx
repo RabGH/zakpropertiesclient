@@ -1,6 +1,6 @@
 import React, { Ref, useEffect, useRef, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { Project, Property } from "../../../../types";
+import { Project, Property } from "../../../../lib/types";
 import L, { LatLngBounds, LatLngExpression } from "leaflet";
 
 interface DashBoardMapProps {

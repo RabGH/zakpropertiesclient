@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Autocomplete, TextField, Box, useTheme, Button } from "@mui/material";
-import { Property, Project } from "../../../../types";
+import { Property, Project } from "../../../../lib/types";
 import { useRouter } from "next/router";
 import Link from "next/link";
 

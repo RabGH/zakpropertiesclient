@@ -1,12 +1,12 @@
-import { sanityClient } from "../../../sanity";
-import { isMultiple, formatPrice, formatArea } from "../../../utils";
+import { sanityClient } from "../../../lib/sanity";
+import { isMultiple, formatPrice, formatArea } from "../../../lib/utils";
 import Link from "next/link";
 import { Box, Divider, Typography, Card, useTheme } from "@mui/material";
 import GeneralButton from "../../components/general/GButton";
 import { BiBed } from "react-icons/bi";
 import { BiBath } from "react-icons/bi";
-import FeaturesSlug from "../../components/slugComponents/FeaturesSlug";
-import { featuresStyles } from "../../components/slugComponents/FeaturesSlug";
+import FeaturesSlug from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
+import { featuresStyles } from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
 import dynamic from "next/dynamic";
 const MapSlug = dynamic(
   () => import("../../components/slugComponents/MapSlug"),
@@ -14,7 +14,7 @@ const MapSlug = dynamic(
     ssr: false,
   }
 );
-import { Property as PropertyProps } from "../../../types";
+import { Property as PropertyProps } from "../../../lib/types";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
 import {
   mainContainer,
@@ -48,7 +48,7 @@ const Property = ({
   const muiTheme = useTheme();
 
   const dividerStyles = {
-    m: 10,
+    m: 5,
   };
 
   const titleContainer = {

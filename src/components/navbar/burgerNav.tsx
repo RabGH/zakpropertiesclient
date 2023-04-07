@@ -12,6 +12,7 @@ import {
   mainBurgerBox,
   popperStyles,
   popperPaperStyles,
+  menuIconStyles,
 } from "./navContentStyles";
 
 export default function BurgerNav() {
@@ -40,7 +41,7 @@ export default function BurgerNav() {
           aria-label="menu"
           sx={{ m: "0 auto" }}
         >
-          <MenuIcon />
+          <MenuIcon sx={menuIconStyles} />
         </IconButton>
         <Popper sx={popperStyles} open={open} anchorEl={anchorRef.current}>
           <Paper sx={popperPaperStyles}>

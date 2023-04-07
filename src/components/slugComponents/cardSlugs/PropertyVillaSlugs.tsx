@@ -1,9 +1,9 @@
-import { urlFor, sanityClient } from "../../../../sanity";
-import { isMultiple, formatPrice, formatArea } from "../../../../utils";
+import { urlFor, sanityClient } from "../../../../lib/sanity";
+import { isMultiple, formatPrice, formatArea } from "../../../../lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { Box, Typography, Container, Card, Divider } from "@mui/material";
-import { Property } from "../../../../types";
+import { Property } from "../../../../lib/types";
 import {
   main,
   featuredTitlePos,
@@ -15,8 +15,12 @@ import {
   cardInfoStyles,
   dividerStyles,
   mainBox,
-} from "./cardStylesSlugs";
-import CardImageCarousel from "./CardImageCarousel";
+  bedroomStyles,
+  offPlanStyles,
+  offPlanTextStyles,
+  offPlanCompleteStyles,
+} from "./cardComponents/cardStylesSlugs";
+import CardImageCarousel from "./cardComponents/CardImageCarousel";
 
 interface PropertyVillaCardBodyProps {
   properties?: Property[];
@@ -69,8 +73,34 @@ const PropertyVillaCardBodyData = ({
                           {property.title}
                         </Typography>
                         <Typography variant="body1" sx={propertyAreaCard}>
-                          Area {formatArea(property.squareFootage)}
+                          Area: {formatArea(property.squareFootage)}
                         </Typography>
+                        <Typography variant="body1" sx={bedroomStyles}>
+                          Bedrooms: {property.bedrooms}
+                        </Typography>
+                        <Box sx={offPlanStyles}>
+                          {property.propertyOffPlan &&
+                          typeof property.propertyOffPlan === "object" &&
+                          property.propertyOffPlan.offplan ? (
+                            <Box>
+                              {property.propertyOffPlan
+                                .propertyCompletionDate && (
+                                <Typography
+                                  variant="body1"
+                                  sx={offPlanCompleteStyles}
+                                >
+                                  Completion date:{" "}
+                                  {
+                                    property.propertyOffPlan
+                                      .propertyCompletionDate
+                                  }
+                                </Typography>
+                              )}
+                            </Box>
+                          ) : (
+                            <Typography>Ready to buy</Typography>
+                          )}{" "}
+                        </Box>
                         <Typography variant="body1" sx={propertyPriceCard}>
                           {formatPrice(property.totalPrice)}
                         </Typography>

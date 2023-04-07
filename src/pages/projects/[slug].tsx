@@ -1,5 +1,5 @@
-import { sanityClient } from "../../../sanity";
-import { formatPrice, formatArea } from "../../../utils";
+import { sanityClient } from "../../../lib/sanity";
+import { formatPrice, formatArea } from "../../../lib/utils";
 import Link from "next/link";
 import {
   Box,
@@ -14,7 +14,7 @@ import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
 import ProjectPropertyCards from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
 import { propertyContainer } from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
 import dynamic from "next/dynamic";
-import AmenitiesCard from "../../components/slugComponents/AmenitiesSlug";
+import AmenitiesCard, { amenityStyles } from "../../components/slugComponents/amenitiesFeatures/AmenitiesSlug";
 const MapSlug = dynamic(
   () => import("../../components/slugComponents/MapSlug"),
   {
@@ -22,13 +22,13 @@ const MapSlug = dynamic(
   }
 );
 
-import { Project, Property, PageContext } from "../../../types";
+import { Project, Property, PageContext } from "../../../lib/types";
 import {
   mainContainer,
   mainImageContainer,
   viewPhotosBox,
 } from "../../components/slugComponents/imageCarouselStyles";
-import { featuredTitlePos } from "../../components/slugComponents/cardSlugs/cardStylesSlugs";
+import { featuredTitlePos } from "../../components/slugComponents/cardSlugs/cardComponents/cardStylesSlugs";
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 
 interface PropertyList {
@@ -111,11 +111,6 @@ const Projects = ({
 
   const descriptionStyles = {
     my: "1rem",
-  };
-
-  const amenityStyles = {
-    maxWidth: 700,
-    margin: "0 auto",
   };
 
   const priceBox = {};

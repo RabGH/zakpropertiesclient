@@ -2,9 +2,9 @@ import React from "react";
 import { Typography, Box, Grid, Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
-import ProjectCardSlug from "../components/slugComponents/cardSlugs/ProjectCardSlugs";
-import { Project } from "../../types";
-import { sanityClient } from "../../sanity";
+import ProjectCardSlug from "../components/pageComponents/developments/ProjectCardSlugs";
+import { Project } from "../../lib/types";
+import { sanityClient } from "../../lib/sanity";
 import Link from "next/link";
 
 interface DevelopmentsProps {

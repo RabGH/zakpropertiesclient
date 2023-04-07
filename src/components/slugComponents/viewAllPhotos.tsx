@@ -8,7 +8,7 @@ import {
   styled,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { urlFor } from "../../../sanity";
+import { urlFor } from "../../../lib/sanity";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import Image from "next/image";
 

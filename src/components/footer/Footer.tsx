@@ -8,7 +8,7 @@ function Footer() {
   const muiTheme = useTheme();
 
   const mainContainer = {
-    bgcolor: muiTheme.palette.primary.light,
+    bgcolor: muiTheme.palette.warning.main,
     borderTop: `1px solid ${muiTheme.palette.secondary.dark}`,
     display: "flex",
     flexDirection: "column",
@@ -66,19 +66,19 @@ function Footer() {
           </GeneralButton>
         </Link>
 
-        {/* <Link href="/projects/a-smaller-project-not-as-big-as-the-rest-but-decent">
+        {/* <Link href="/projects/a-smaller-developments-not-as-big-as-the-rest-but-decent">
           <GeneralButton variant="contained" sx={linkStyles}>
             Project1
           </GeneralButton>
         </Link>
 
-        <Link href="/projects/another-bigger-even-biggest-project-huge">
+        <Link href="/projects/another-bigger-even-biggest-developments-huge">
           <GeneralButton variant="contained" sx={linkStyles}>
             Project2
           </GeneralButton>
         </Link>
 
-        <Link href="/projects/big-project-big-gains">
+        <Link href="/projects/big-developments-big-gains">
           <GeneralButton variant="contained" sx={linkStyles}>
             Project3
           </GeneralButton>

@@ -5,10 +5,10 @@ const slugTheme = createTheme({
     mode: "light",
     background: {
       default: "#F7F7F7",
-      paper: "#6B6B6B",
+      paper: "#F1EDEE",
     },
     primary: {
-      main: "#1B1B1B", // White Primary, use on dark pages
+      main: "#1B1B1B", // Dark Gray Primary
     },
     secondary: {
       main: "#F0F0F0", // Medium Shade of Gray , background or text
@@ -17,7 +17,7 @@ const slugTheme = createTheme({
       main: "#1e6572", // Turquoise #1e6572, light #4B838E , dark #15464F
     },
     warning: {
-      main: "#FFA07A", // Coral Orange #FFA07A, light #FFB394 , dark #B27055
+      main: "#F7F7F7", // White
     },
     success: {
       main: "#1B1B1B", // Dark Gray Secondary, use on light pages

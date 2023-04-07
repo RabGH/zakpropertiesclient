@@ -1,205 +1,61 @@
-import * as React from "react";
-import {
-  Box,
-  Container,
-  Typography,
-  Card,
-  CardContent,
-  Grid,
-  Button,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import Link from "next/link";
+import React from "react";
+import Head from "next/head";
+import { Box, Divider, Typography } from "@mui/material";
+import { Property } from "../../lib/types";
+import { sanityClient } from "../../lib/sanity";
+import PropertyCardGrid from "../components/slugComponents/cardSlugs/cardComponents/PropertyCardGrid";
 
-const buyProperties: React.FC = () => {
-  const theme = useTheme();
-  const mainContainer = {
-    backgroundColor: theme.palette.background.default,
-    py: 8,
-    height: "140vh",
-    mt: "6rem",
+export default function PropertySearch({
+  properties,
+}: {
+  properties: Property[];
+}) {
+  const dividerStyles = {};
+
+  const featuredTitlePos = {
+    mt: "8rem",
   };
+  const mainBox = {};
 
   return (
-    <Box sx={mainContainer}>
-      <Container maxWidth="lg">
-        <Typography variant="h3" component="h1" align="center" sx={{ mb: 6 }}>
-          FAQ
+    <Box sx={mainBox}>
+      <Head>
+        <title>Property Search</title>
+        <meta name="description" content="Search for properties" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Divider sx={dividerStyles}>
+        <Typography variant="h5" sx={featuredTitlePos}>
+          Featured Properties
         </Typography>
-
-        <Grid container spacing={6}>
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 1
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  We are a leading real estate company based in the UAE,
-                  specializing in the promotion and sale of properties, off-plan
-                  properties, project properties, property investments, and
-                  more.
-                </Typography>
-                <Typography variant="body1">
-                  Our team of experienced professionals is dedicated to helping
-                  clients find the perfect property and making the buying or
-                  selling process as smooth and stress-free as possible.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 2
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
-                </Typography>
-                <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>{" "}
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 3
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
-                </Typography>
-                <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>{" "}
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 4
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
-                </Typography>
-                <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>{" "}
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 5
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
-                </Typography>
-                <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>{" "}
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 6
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
-                </Typography>
-                <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>{" "}
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 7
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
-                </Typography>
-                <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>{" "}
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 8
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
-                </Typography>
-                <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-
-        <Box sx={{ mt: 8, textAlign: "center" }}>
-          <Typography variant="h4" component="h2" gutterBottom>
-            Contact Us
-          </Typography>
-
-          <Typography variant="body1" sx={{ mb: 2 }}>
-            Have a question or need help with buying or selling a property?
-            We&apos;re here to help!
-          </Typography>
-
-          <Link href="/contact">
-            <Button variant="contained">Contact Us</Button>
-          </Link>
-        </Box>
-      </Container>
+      </Divider>
+      <Box>
+        <PropertyCardGrid properties={properties} />
+      </Box>
     </Box>
   );
-};
+}
 
-export default buyProperties;
+export const getServerSideProps = async () => {
+  const query = `*[ _type == "property"]{
+      title,
+      location,
+      propertyType,
+      mainPropertyImage,
+      propertyImages,
+      totalPrice,
+      bathrooms,
+      bedrooms,
+      description,
+      squareFootage,
+      plottedArea,
+      builtUpArea,
+      features,
+      propertyOffPlan,
+      "slug": slug.current,
+    }`;
+
+  const properties = await sanityClient.fetch(query);
+
+  return { props: { properties } };
+};

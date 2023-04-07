@@ -9,7 +9,7 @@ interface SanityConfig {
 
 const config: SanityConfig = {
   /**
-   * Find your project ID and dataset in `sanity.json` in your studio project.
+   * Find your developments ID and dataset in `sanity.json` in your studio developments.
    * These are considered “public”, but you can use environment variables
    * if you want differ between local dev and production.
    *

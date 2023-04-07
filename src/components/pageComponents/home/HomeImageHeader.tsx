@@ -1,8 +1,8 @@
 import React, { useEffect, RefObject, useState, useRef } from "react";
 import { Typography, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
-import { urlFor } from "../../../../sanity";
-import { Project } from "../../../../types";
+import { urlFor } from "../../../../lib/sanity";
+import { Project } from "../../../../lib/types";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";

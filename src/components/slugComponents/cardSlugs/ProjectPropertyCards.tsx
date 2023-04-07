@@ -1,16 +1,16 @@
-import { urlFor } from "../../../../sanity";
-import { isMultiple, formatPrice, formatArea } from "../../../../utils";
+import { urlFor } from "../../../../lib/sanity";
+import { isMultiple, formatPrice, formatArea } from "../../../../lib/utils";
 import Link from "next/link";
 import { Box, Typography, Card } from "@mui/material";
-import { Property } from "../../../../types";
+import { Property } from "../../../../lib/types";
 import {
   propertyTypeStyles,
   propertyTitleCard,
   propertyAreaCard,
   propertyPriceCard,
   cardInfoStyles,
-} from "./cardStylesSlugs";
-import CardImageCarousel from "./CardImageCarousel";
+} from "./cardComponents/cardStylesSlugs";
+import CardImageCarousel from "./cardComponents/CardImageCarousel";
 
 export const propertyContainer = {
   display: "flex",
@@ -31,7 +31,7 @@ const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
 
   const cardStyles = {
     maxWidth: "420px",
-    maxHeight: "450px",
+    maxHeight: "500px",
     borderRadius: "10px",
     overflow: "hidden",
     transition: "all 0.3s ease-in-out",

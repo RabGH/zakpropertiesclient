@@ -17,7 +17,7 @@ export const themeOptions: ThemeOptions = {
       main: "#1e6572", // Turquoise #1e6572, light #4B838E , dark #15464F
     },
     warning: {
-      main: "#FFA07A", // Coral Orange #FFA07A, light #FFB394 , dark #B27055
+      main: "#F7F7F7", // White
     },
     success: {
       main: "#1B1B1B", // Dark Gray Secondary, use on light pages
