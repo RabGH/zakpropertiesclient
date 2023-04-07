@@ -123,12 +123,16 @@ const Property = ({
             <Typography variant="body2" sx={styles.propertyMainAreaStyles}>
               Main Area {formatArea(squareFootage)}
             </Typography>
-            <Typography variant="body2" sx={styles.propertyPlottedAreaStyles}>
-              Plotted Area {formatArea(plottedArea)}
-            </Typography>
-            <Typography variant="body2" sx={styles.propertyBuiltAreaStyles}>
-              Built Up Area {formatArea(builtUpArea)}
-            </Typography>
+            {plottedArea && (
+              <Typography variant="body2" sx={styles.propertyPlottedAreaStyles}>
+                Plotted Area {formatArea(plottedArea)}
+              </Typography>
+            )}
+            {builtUpArea && (
+              <Typography variant="body2" sx={styles.propertyBuiltAreaStyles}>
+                Built Up Area {formatArea(builtUpArea)}
+              </Typography>
+            )}
           </Box>
 
           <Box sx={generalStyles.bodyStyles}>
