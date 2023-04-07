@@ -20,7 +20,7 @@ export const cardStyles = {
 
 export const boxStyles = {
   display: "grid",
-  gridTemplateColumns: "repeat(4, 1fr)",
+  gridTemplateColumns: "repeat(7, 1fr)",
   gap: "20px",
 };
 

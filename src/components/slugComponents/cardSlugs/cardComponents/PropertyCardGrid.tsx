@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import { Box, Grid, Pagination, useTheme } from "@mui/material";
 import { Property } from "../../../../../lib/types";
 import PropertyCard from "../PropertyAllSlugs";
+import PropertySearchBar from "../../../searchBubbles/PropertyTypes";
+import { getPropertyGridCardStyles } from "./propertyCardGridStyles";
 
 interface Props {
   properties: Property[];
+  selectedType: string;
 }
 
-const PropertyCardGrid: React.FC<Props> = ({ properties }) => {
-  const [page, setPage] = useState(1); // initial page number
+const PropertyCardGrid: React.FC<Props> = ({ properties, selectedType }) => {
+  const styles = getPropertyGridCardStyles();
 
-  const cardsPerPage = 9; // number of cards to show per page
+  const [page, setPage] = useState(1);
+  const cardsPerPage = 9;
+
+  const [selectedPropertyType, setSelectedPropertyType] = useState("");
 
   const handleChangePage = (
     event: React.ChangeEvent<unknown>,
@@ -21,69 +27,41 @@ const PropertyCardGrid: React.FC<Props> = ({ properties }) => {
 
   const numPages = Math.ceil(properties.length / cardsPerPage); // calculate total number of pages
 
-  const theme = useTheme();
+  const filteredProperties = properties.filter(
+    (property) =>
+      selectedType === "All" || property.propertyType === selectedType
+  );
 
-  const mainBox = {
-    minHeight: "100vh",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-  };
-
-  const paginationBox = {
-    display: "flex",
-    justifyContent: "center",
-    mt: 2,
-  };
-
-  const paginationStyles = {
-    "& .MuiPaginationItem-root": {
-      color: theme.palette.primary.dark,
-    },
-    "& .Mui-selected": {
-      color: theme.palette.primary.main,
-      backgroundColor: theme.palette.success.light,
-    },
-    mb: "5rem",
-  };
-
-  const cardGridStyles = {
-    width: "100%",
-    maxWidth: "1300px",
-  };
-
-  const gridStyles = {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  };
-
-  const propertyCardBox = {
-    flexGrow: 1,
-    flexBasis: "33%",
-    maxWidth: "420px",
+  const handleSearch = (propertyType: string) => {
+    setSelectedPropertyType(propertyType);
+    setPage(1);
   };
 
   return (
-    <Box sx={mainBox}>
-      <Box sx={cardGridStyles}>
-        <Grid container spacing={1} justifyContent="center" sx={gridStyles}>
-          {properties
+    <Box sx={styles.mainBox}>
+      <PropertySearchBar handleSearch={handleSearch} />
+      <Box sx={styles.cardGridStyles}>
+        <Grid
+          container
+          spacing={1}
+          justifyContent="center"
+          sx={styles.gridStyles}
+        >
+          {filteredProperties
             .slice((page - 1) * cardsPerPage, page * cardsPerPage) // slice the properties array based on the current page number
             .map((property) => (
-              <Box sx={propertyCardBox} key={property._id}>
+              <Box sx={styles.propertyCardBox} key={property._id}>
                 <PropertyCard property={property} />
               </Box>
             ))}
         </Grid>
       </Box>
-      <Box sx={paginationBox}>
+      <Box sx={styles.paginationBox}>
         <Pagination
           count={numPages}
           page={page}
           onChange={handleChangePage}
-          sx={paginationStyles}
+          sx={styles.paginationStyles}
         />
       </Box>
     </Box>

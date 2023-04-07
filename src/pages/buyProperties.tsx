@@ -12,6 +12,7 @@ export default function PropertySearch({
   properties: Property[];
 }) {
   const styles = getBuyPropertiesPageStyles();
+  const selectedType = "All"; // set the default selectedType value
   return (
     <Box sx={styles.mainBox}>
       <Head>
@@ -23,14 +24,17 @@ export default function PropertySearch({
         <Typography variant="h3" sx={styles.featuredTitlePos}>
           Featured Properties for Sale
         </Typography>
-        <Divider sx={styles.dividerStyles} />
         <Box sx={styles.propertyAllCardBox}>
-          <PropertyCardGrid properties={properties} />
+          <PropertyCardGrid
+            properties={properties}
+            selectedType={selectedType}
+          />
         </Box>
       </Box>
     </Box>
   );
 }
+
 export async function getServerSideProps() {
   const propertyQuery = `*[ _type == "property"]{
     ..., 
