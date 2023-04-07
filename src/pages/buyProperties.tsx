@@ -4,32 +4,27 @@ import { Box, Divider, Typography } from "@mui/material";
 import { Project, Property } from "../../lib/types";
 import { sanityClient } from "../../lib/sanity";
 import PropertyCardGrid from "../components/slugComponents/cardSlugs/cardComponents/PropertyCardGrid";
-import {
-  mainBox,
-  contentMainBox,
-  featuredTitlePos,
-  dividerStyles,
-  propertyAllCardBox,
-} from "../components/slugComponents/pageSlugStyles/buyPropertiesStyles";
+import { getBuyPropertiesPageStyles } from "../components/slugComponents/pageSlugStyles/buyPropertiesStyles";
 
 export default function PropertySearch({
   properties,
 }: {
   properties: Property[];
 }) {
+  const styles = getBuyPropertiesPageStyles();
   return (
-    <Box sx={mainBox}>
+    <Box sx={styles.mainBox}>
       <Head>
         <title>Property Search</title>
         <meta name="description" content="Search for properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box sx={contentMainBox}>
-        <Typography variant="h3" sx={featuredTitlePos}>
+      <Box sx={styles.contentMainBox}>
+        <Typography variant="h3" sx={styles.featuredTitlePos}>
           Featured Properties for Sale
         </Typography>
-        <Divider sx={dividerStyles} />
-        <Box sx={propertyAllCardBox}>
+        <Divider sx={styles.dividerStyles} />
+        <Box sx={styles.propertyAllCardBox}>
           <PropertyCardGrid properties={properties} />
         </Box>
       </Box>

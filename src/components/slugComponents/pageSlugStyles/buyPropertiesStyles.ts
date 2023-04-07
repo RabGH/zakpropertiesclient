@@ -1,20 +1,29 @@
-export const dividerStyles = {
-  m: 5,
-  borderBottomWdith: 2,
-  borderColor: "white",
-};
+import { useTheme } from "@mui/material";
 
-export const featuredTitlePos = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
-export const mainBox = {};
+export const getBuyPropertiesPageStyles = () => {
+  const muiTheme = useTheme();
 
-export const contentMainBox = {
-  mt: "8rem",
-};
+  return {
+    dividerStyles: {
+      m: 5,
+      borderBottomWdith: 2,
+      borderColor: "white",
+    },
 
-export const propertyAllCardBox = {
-  mt: "1rem",
+    featuredTitlePos: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+
+    mainBox: {},
+
+    contentMainBox: {
+      mt: "8rem",
+    },
+
+    propertyAllCardBox: {
+      mt: "1rem",
+    },
+  };
 };
