@@ -1,22 +1,45 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Button, FormControl, Input, InputLabel } from "@mui/material";
 
-const priceRanges = [
-  "Less than 500K",
-  "500K - 1M",
-  "1M - 2M",
-  "2M - 3M",
-  "More than 3M",
-];
-const [selectedPriceRange, setSelectedPriceRange] = useState<string[]>([]);
+interface Props {
+  handlePriceRange: (low: number, high: number) => void;
+  priceRange: number;
+}
 
-const handlePriceRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  const priceRange = event.target.value;
-  const isChecked = event.target.checked;
-  setSelectedPriceRange((prevSelectedPriceRange) => {
-    if (isChecked) {
-      return [...prevSelectedPriceRange, priceRange];
-    } else {
-      return prevSelectedPriceRange.filter((pr) => pr !== priceRange);
-    }
-  });
+const PriceRange: React.FC<Props> = ({ handlePriceRange, priceRange }) => {
+  const [low, setLow] = useState<number>(priceRange[0]);
+  const [high, setHigh] = useState<number>(priceRange[1]);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    handlePriceRange(low, high);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel htmlFor="low">Low</InputLabel>
+        <Input
+          id="low"
+          type="number"
+          value={low}
+          onChange={(e) => setLow(Number(e.target.value))}
+        />
+      </FormControl>
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel htmlFor="high">High</InputLabel>
+        <Input
+          id="high"
+          type="number"
+          value={high}
+          onChange={(e) => setHigh(Number(e.target.value))}
+        />
+      </FormControl>
+      <Button variant="outlined" type="submit">
+        Price Range
+      </Button>
+    </form>
+  );
 };
+
+export default PriceRange;

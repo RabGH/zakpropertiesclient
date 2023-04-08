@@ -1,26 +1,19 @@
-/* ========== All Styles ========== */
-
 :root {
-    --color-primary: #f7f7f7; /* off white */
-    --color-secondary: #1E3C72 /* deep blue */
-    --color-hover: #AFEEEE; /* light turquoise */
-
-    --color-gold: #FFD700 /* gold */
-    --color-coral: #FFA07A; /* light coral */
-    --color-orange: #FFB347 /* pastel orange */
-    --color-accent: #fc5185; /* bright pink */
-
-    --color-primary: #333333; /* dark gray */
-    --color-light-gray: #bfbfbf; /* light gray */
-    --color-black: #000000;
-    --color-white: #ffffff;
+  --color-primary: #f7f7f7; /* off white */
+  --color-secondary: #1e3c72; /* deep blue */
+  --color-hover: #afeeee; /* light turquoise */
+  --color-gold: #ffd700; /* gold */
+  --color-coral: #ffa07a; /* light coral */
+  --color-orange: #ffb347; /* pastel orange */
+  --color-accent: #fc5185; /* bright pink */
+  --color--primary: #333333; /* dark gray */
+  --color-light-gray: #bfbfbf; /* light gray */
+  --color-black: #000000;
+  --color-white: #ffffff;
 }
-/* ========== Font Styles ========== */
-
-*, *::before, *::after {
-    text-decoration: none;
+/* ========== All Styles ========== */
+*,
+*::before,
+*::after {
+  text-decoration: none;
 }
-
-  
-  
-  

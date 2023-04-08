@@ -3,6 +3,7 @@ import { Box, Grid, Pagination, useTheme } from "@mui/material";
 import { Property } from "../../../../../lib/types";
 import PropertyCard from "../PropertyAllSlugs";
 import PropertySearchBar from "../../../searchBubbles/PropertyTypes";
+import PriceRange from "../../../searchBubbles/PriceRange";
 import { getPropertyGridCardStyles } from "./propertyCardGridStyles";
 
 interface Props {
@@ -10,14 +11,14 @@ interface Props {
   selectedType: string;
 }
 
-const PropertyCardGrid: React.FC<Props> = ({ properties, selectedType }) => {
+const PropertyCardGrid: React.FC<Props> = ({ properties }) => {
   const styles = getPropertyGridCardStyles();
 
   const [page, setPage] = useState(1);
   const cardsPerPage = 9;
 
-  const [selectedPropertyType, setSelectedPropertyType] = useState("");
-
+  const [selectedType, setSelectedType] = useState("");
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
   const handleChangePage = (
     event: React.ChangeEvent<unknown>,
     value: number
@@ -27,19 +28,31 @@ const PropertyCardGrid: React.FC<Props> = ({ properties, selectedType }) => {
 
   const numPages = Math.ceil(properties.length / cardsPerPage); // calculate total number of pages
 
-  const filteredProperties = properties.filter(
-    (property) =>
-      selectedType === "All" || property.propertyType === selectedType
-  );
+  const filteredProperties = properties
+    .filter(
+      (property) =>
+        selectedType === "All" || property.propertyType === selectedType
+    )
+    .filter((property) => {
+      if (priceRange[0] === 0 && priceRange[1] === 0) {
+        return true; // if price range is not set, show all properties
+      } else {
+        return (
+          property.totalPrice >= priceRange[0] &&
+          property.totalPrice <= priceRange[1]
+        );
+      }
+    });
 
   const handleSearch = (propertyType: string) => {
-    setSelectedPropertyType(propertyType);
+    setSelectedType(propertyType);
     setPage(1);
   };
 
   return (
     <Box sx={styles.mainBox}>
       <PropertySearchBar handleSearch={handleSearch} />
+      <PriceRange handlePriceRange={setPriceRange} priceRange={priceRange} />
       <Box sx={styles.cardGridStyles}>
         <Grid
           container

@@ -36,9 +36,9 @@ const PropertySearchBar = ({ handleSearch }: PropertySearchBarProps) => {
       direction="row"
       alignItems="center"
       spacing={2}
-      sx={{ p: 2, borderBottom: "1px solid #ccc" }}
+      sx={{ p: 2, borderBottom: "1px solid #ccc", mb: "2rem" }}
     >
-      <Typography variant="h6">Property Types:</Typography>
+      {/*<Typography variant="h6"></Typography>*/}
       <ButtonGroup variant="outlined" aria-label="property type dropdown">
         <Button onClick={handleClick}>{selectedPropertyType}</Button>
         <Menu
