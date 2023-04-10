@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const features = [
+const featureBubble = [
   "Balcony",
   "Built-in wardrobes",
   "Concierge Service",

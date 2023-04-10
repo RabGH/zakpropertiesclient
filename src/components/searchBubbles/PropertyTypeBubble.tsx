@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   ButtonGroup,
@@ -7,15 +7,21 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { PropertyTypeBubbleProps } from "./bubbleInterfaces";
 
-interface PropertySearchBarProps {
-  handleSearch: (propertyType: string) => void;
-}
-
-const PropertySearchBar = ({ handleSearch }: PropertySearchBarProps) => {
+const PropertyTypeBubble = ({
+  handleSearch,
+  search,
+  setSearch,
+  filteredProperties,
+}: PropertyTypeBubbleProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedPropertyType, setSelectedPropertyType] =
     useState<string>("All");
+
+  useEffect(() => {
+    handleSearch("All");
+  }, []);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -28,6 +34,7 @@ const PropertySearchBar = ({ handleSearch }: PropertySearchBarProps) => {
   const handlePropertyTypeChange = (propertyType: string) => {
     setSelectedPropertyType(propertyType);
     handleSearch(propertyType);
+    setSearch({ ...search, propertyType });
     setAnchorEl(null);
   };
 
@@ -38,7 +45,6 @@ const PropertySearchBar = ({ handleSearch }: PropertySearchBarProps) => {
       spacing={2}
       sx={{ p: 2, borderBottom: "1px solid #ccc", mb: "2rem" }}
     >
-      {/*<Typography variant="h6"></Typography>*/}
       <ButtonGroup variant="outlined" aria-label="property type dropdown">
         <Button onClick={handleClick}>{selectedPropertyType}</Button>
         <Menu
@@ -73,4 +79,4 @@ const PropertySearchBar = ({ handleSearch }: PropertySearchBarProps) => {
   );
 };
 
-export default PropertySearchBar;
+export default PropertyTypeBubble;
