@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid, Pagination, useTheme } from "@mui/material";
+import { Box, Grid, Pagination } from "@mui/material";
 import { Property } from "../../../../../lib/types";
 import PropertyCard from "../PropertyAllSlugs";
 import SearchFieldBubbles from "../../../searchBubbles/SearchFieldBubbles";
@@ -8,26 +8,22 @@ import { SearchInterface } from "../../../searchBubbles/bubbleInterfaces";
 
 interface Props {
   properties: Property[];
+  search: SearchInterface;
+  setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
+  filteredProperties: Property[];
+  setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
 }
 
-const PropertyCardGrid: React.FC<Props> = ({ properties }) => {
+const PropertyCardGrid: React.FC<Props> = ({
+  properties,
+  search,
+  setSearch,
+  filteredProperties,
+  setFilteredProperties,
+}) => {
   const styles = getPropertyGridCardStyles();
-  const [search, setSearch] = useState<SearchInterface>({
-    propertyType: "",
-    minPrice: 0,
-    maxPrice: 0,
-    propertyOffPlan: false,
-    filteredProperties: [],
-    bedrooms: 0,
-    bathrooms: 0,
-    propertyFeatures: [],
-  });
   const [page, setPage] = useState(1);
   const cardsPerPage = 9;
-  const [selectedType, setSelectedType] = useState("");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
-  const [filteredProperties, setFilteredProperties] =
-    useState<Property[]>(properties);
 
   const handleChangePage = (
     event: React.ChangeEvent<unknown>,
@@ -36,62 +32,27 @@ const PropertyCardGrid: React.FC<Props> = ({ properties }) => {
     setPage(value);
   };
 
-  const numPages = Math.ceil(filteredProperties.length / cardsPerPage); // calculate total number of pages
-
-  const handleSearch = (
-    propertyType: string,
-    minPrice: number,
-    maxPrice: number
-  ) => {
-    setSelectedType(propertyType);
-    setPriceRange([minPrice, maxPrice]);
-    setPage(1);
-    const filtered = properties
-      .filter(
-        (property) =>
-          propertyType === "All" || property.propertyType === propertyType
-      )
-      .filter((property) => {
-        if (minPrice === 0 && maxPrice === 0) {
-          return true;
-        } else {
-          return (
-            property.totalPrice >= minPrice && property.totalPrice <= maxPrice
-          );
-        }
-      });
-    setFilteredProperties(filtered);
-  };
+  const numPages = Math.ceil(search.filteredProperties.length / cardsPerPage);
 
   return (
     <Box sx={styles.mainBox}>
       <SearchFieldBubbles
-        handleSearch={handleSearch}
-        selectedType={selectedType}
-        priceRange={priceRange}
-        setPriceRange={setPriceRange}
         filteredProperties={filteredProperties}
         search={search}
         setSearch={setSearch}
         properties={properties}
-        setFilteredProperties={setFilteredProperties} // Add this
+        setFilteredProperties={setFilteredProperties}
+        priceRange={search.priceRange}
       />
-      <Box sx={styles.cardGridStyles}>
-        <Grid
-          container
-          spacing={1}
-          justifyContent="center"
-          sx={styles.gridStyles}
-        >
-          {filteredProperties
-            .slice((page - 1) * cardsPerPage, page * cardsPerPage)
-            .map((property) => (
-              <Box sx={styles.propertyCardBox} key={property._id}>
-                <PropertyCard property={property} />
-              </Box>
-            ))}
-        </Grid>
-      </Box>
+      <Grid container spacing={2} sx={styles.cardGridStyles}>
+        {search.filteredProperties
+          .slice((page - 1) * cardsPerPage, page * cardsPerPage)
+          .map((property) => (
+            <Grid item xs={12} sm={6} md={4} key={property._id}>
+              <PropertyCard property={property} />
+            </Grid>
+          ))}
+      </Grid>
       <Box sx={styles.paginationBox}>
         <Pagination
           count={numPages}

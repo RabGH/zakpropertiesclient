@@ -1,110 +1,153 @@
 import { useEffect, useState } from "react";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, Button } from "@mui/material";
 import PropertyTypeBubble from "./PropertyTypeBubble";
 import PriceRangeBubble from "./PriceRangeBubble";
 import ReadyToBuyBubble from "./ReadyToBuyBubble";
-import { SearchFieldBubblesProps, SearchInterface } from "./bubbleInterfaces";
-import { Property } from "../../../lib/types";
+import BedroomBubble from "./BedroomBubble";
+import SizeBubble from "./SizeBubble";
+import { SearchFieldBubblesProps } from "./bubbleInterfaces";
+import { filterProperties } from "./filterPropertiesFunction";
 
 const SearchFieldBubbles = ({
-  handleSearch,
-  selectedType,
-  priceRange,
-  setPriceRange,
   filteredProperties,
   search,
   setSearch,
   properties,
   setFilteredProperties,
 }: SearchFieldBubblesProps) => {
-  const [minPrice, setMinPrice] = useState<number>(priceRange[0]);
-  const [maxPrice, setMaxPrice] = useState<number>(priceRange[1]);
+  const [isChanged, setIsChanged] = useState(false);
+  const [readyToBuyOption, setReadyToBuyOption] = useState("Any");
+  const [results, setResults] = useState(filteredProperties.length);
+  const [priceRange, setPriceRange] = useState<[number, number]>([
+    search.priceRange[0],
+    search.priceRange[1],
+  ]);
+  const [bedroomRange, setBedroomRange] = useState<[number, number]>([
+    search.bedrooms[0],
+    search.bedrooms[1],
+  ]);
 
-  const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    if (name === "minPrice") {
-      setMinPrice(Number(value));
-      setPriceRange([Number(value), priceRange[1]]);
-      setSearch({
-        ...search,
-        minPrice: Number(value),
-      });
-      handleSearch(selectedType, Number(value), priceRange[1]);
-    } else if (name === "maxPrice") {
-      setMaxPrice(Number(value));
-      setPriceRange([priceRange[0], Number(value)]);
-      setSearch({
-        ...search,
-        maxPrice: Number(value),
-      });
-      handleSearch(selectedType, priceRange[0], Number(value));
-    }
-  };
-
+  const [sizeRange, setSizeRange] = useState<[number, number]>([
+    search.sizeRange[0],
+    search.sizeRange[1],
+  ]);
   const handleTypeChange = (propertyType: string) => {
-    const updatedSearch = { ...search, propertyType };
-    setSearch(updatedSearch);
-    handleSearch(propertyType, search.minPrice, search.maxPrice);
+    setSearch({ ...search, propertyType });
   };
-
   const handleReadyToBuyChange = (option: string) => {
-    let filteredProperties = properties;
-    let updatedSearch: SearchInterface = { ...search };
+    let updatedSearch = search;
+    let filteredProperties = search.filteredProperties;
 
     if (option === "Any") {
-      updatedSearch.propertyOffPlan = false;
+      updatedSearch = { ...updatedSearch, filteredProperties: properties };
+      filteredProperties = properties;
     } else {
-      updatedSearch.propertyOffPlan = option === "Off-Plan";
+      updatedSearch = {
+        ...updatedSearch,
+        propertyOffPlan: option === "Off-Plan",
+      };
       if (option === "Off-Plan") {
         filteredProperties = properties.filter(
           (property) =>
-            property.propertyOffPlan?.offplan === true ||
+            property.propertyOffPlan?.offplan ??
             property.propertyOffPlan === undefined
+        );
+      } else if (option === "Ready to Buy") {
+        filteredProperties = properties.filter(
+          (property) => !property.propertyOffPlan?.offplan
         );
       }
     }
 
-    updatedSearch = { ...updatedSearch, filteredProperties };
-    setSearch(updatedSearch);
-    handleSearch(
-      updatedSearch.propertyType,
-      updatedSearch.minPrice,
-      updatedSearch.maxPrice
-    );
+    setSearch((prevState) => ({ ...prevState, readyToBuy: option }));
+    setFilteredProperties(filteredProperties);
   };
 
   useEffect(() => {
-    setFilteredProperties(properties);
-  }, [properties, setFilteredProperties]);
+    if (
+      priceRange[0] !== search.priceRange[0] ||
+      priceRange[1] !== search.priceRange[1] ||
+      bedroomRange[0] !== search.bedrooms[0] ||
+      bedroomRange[1] !== search.bedrooms[1] ||
+      sizeRange[0] !== search.sizeRange[0] ||
+      sizeRange[1] !== search.sizeRange[1]
+    ) {
+      setIsChanged(true);
+    } else {
+      setIsChanged(false);
+    }
+  }, [
+    sizeRange,
+    priceRange,
+    bedroomRange,
+    search.sizeRange,
+    search.priceRange,
+    search.bedrooms,
+  ]);
+
+  const handleButtonClick = async () => {
+    const filteredProperties = filterProperties(
+      search.propertyType,
+      priceRange,
+      readyToBuyOption === "Any" ? undefined : readyToBuyOption === "Off-Plan",
+      bedroomRange,
+      sizeRange,
+      properties
+    );
+    setSearch((prev) => ({
+      ...prev,
+      filteredProperties,
+      priceRange,
+    }));
+    setFilteredProperties(filteredProperties);
+  };
+
+  useEffect(() => {
+    setResults(filteredProperties.length);
+  }, [filteredProperties]);
 
   return (
     <Stack direction="row" flexWrap="wrap" spacing={2} sx={{ mb: "2rem" }}>
-      <Typography sx={{ alignSelf: "center" }}>
-        {filteredProperties.length} results found
-      </Typography>
       <ReadyToBuyBubble
-        search={search}
-        setSearch={setSearch}
-        properties={properties}
-        setFilteredProperties={setFilteredProperties}
-        handleReadyToBuyChange={handleReadyToBuyChange}
+        readyToBuyOption={readyToBuyOption}
+        setReadyToBuyOption={setReadyToBuyOption}
       />
       <PropertyTypeBubble
         handleSearch={handleTypeChange}
-        selectedType={selectedType}
         search={search}
         setSearch={setSearch}
-        filteredProperties={filteredProperties}
+      />
+      <BedroomBubble
+        handleBedroomRange={(low, high) => setBedroomRange([low, high])}
+        minBedrooms={1}
+        maxBedrooms={15}
+        search={search}
+        bedroomRange={bedroomRange}
+        setIsChanged={setIsChanged}
+        setSearch={setSearch}
+      />
+      <SizeBubble
+        handleSizeRange={(sizeRange) => setSizeRange(sizeRange)}
+        sizeRange={sizeRange}
+        search={search}
+        setIsChanged={setIsChanged}
+        setSearch={setSearch}
       />
       <PriceRangeBubble
-        handlePriceRange={handlePriceChange}
+        handlePriceRange={(priceRange) => setPriceRange(priceRange)}
         priceRange={priceRange}
-        minPrice={0}
-        maxPrice={1000000000}
-        handleSearch={handleSearch}
+        search={search}
+        setIsChanged={setIsChanged}
+        setSearch={setSearch}
       />
+      <Button
+        onClick={handleButtonClick}
+        variant="contained"
+        disabled={isChanged}
+      >
+        Results: {results}
+      </Button>
     </Stack>
   );
 };
-
 export default SearchFieldBubbles;

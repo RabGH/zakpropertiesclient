@@ -1,27 +1,13 @@
-import { useState, useEffect } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Menu,
-  MenuItem,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { useState } from "react";
+import { Button, ButtonGroup, Menu, MenuItem, Stack } from "@mui/material";
 import { PropertyTypeBubbleProps } from "./bubbleInterfaces";
 
 const PropertyTypeBubble = ({
   handleSearch,
   search,
   setSearch,
-  filteredProperties,
 }: PropertyTypeBubbleProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedPropertyType, setSelectedPropertyType] =
-    useState<string>("All");
-
-  useEffect(() => {
-    handleSearch("All");
-  }, []);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -32,9 +18,8 @@ const PropertyTypeBubble = ({
   };
 
   const handlePropertyTypeChange = (propertyType: string) => {
-    setSelectedPropertyType(propertyType);
     handleSearch(propertyType);
-    setSearch({ ...search, propertyType });
+    setSearch((prevSearch) => ({ ...prevSearch, propertyType }));
     setAnchorEl(null);
   };
 
@@ -46,7 +31,7 @@ const PropertyTypeBubble = ({
       sx={{ p: 2, borderBottom: "1px solid #ccc", mb: "2rem" }}
     >
       <ButtonGroup variant="outlined" aria-label="property type dropdown">
-        <Button onClick={handleClick}>{selectedPropertyType}</Button>
+        <Button onClick={handleClick}>{search.propertyType}</Button>
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}

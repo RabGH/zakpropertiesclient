@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import { Box, Divider, Typography } from "@mui/material";
-import { Project, Property } from "../../lib/types";
+import { Property } from "../../lib/types";
 import { sanityClient } from "../../lib/sanity";
 import PropertyCardGrid from "../components/slugComponents/cardSlugs/cardComponents/PropertyCardGrid";
 import { getBuyPropertiesPageStyles } from "../components/slugComponents/pageSlugStyles/buyPropertiesStyles";
+import { SearchInterface } from "../components/searchBubbles/bubbleInterfaces";
 
 export default function PropertySearch({
   properties,
@@ -12,7 +13,19 @@ export default function PropertySearch({
   properties: Property[];
 }) {
   const styles = getBuyPropertiesPageStyles();
-  const selectedType = "All"; // set the default selectedType value
+  const [search, setSearch] = useState<SearchInterface>({
+    propertyType: "All",
+    priceRange: [0, 1000000000],
+    propertyOffPlan: false,
+    filteredProperties: properties,
+    bedrooms: [1, 15],
+    propertyFeatures: [],
+    readyToBuy: "Any",
+    sizeRange: [0, 100000],
+  });
+  const [filteredProperties, setFilteredProperties] =
+    useState<Property[]>(properties);
+
   return (
     <Box sx={styles.mainBox}>
       <Head>
@@ -27,7 +40,10 @@ export default function PropertySearch({
         <Box sx={styles.propertyAllCardBox}>
           <PropertyCardGrid
             properties={properties}
-            selectedType={selectedType}
+            search={search}
+            setSearch={setSearch}
+            filteredProperties={filteredProperties}
+            setFilteredProperties={setFilteredProperties}
           />
         </Box>
       </Box>
@@ -37,7 +53,7 @@ export default function PropertySearch({
 
 export async function getServerSideProps() {
   const propertyQuery = `*[ _type == "property"]{
-..., 
+...,
 location,
 propertyType,
 mainPropertyImage,
