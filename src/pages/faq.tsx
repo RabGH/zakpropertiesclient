@@ -24,7 +24,7 @@ const FAQ: React.FC = () => {
     <Box sx={mainContainer}>
       <Container maxWidth="lg">
         <Typography variant="h3" component="h1" align="center" sx={{ mb: 6 }}>
-          FAQ
+          Frequently Asked Questions
         </Typography>
 
         <Grid container spacing={6}>

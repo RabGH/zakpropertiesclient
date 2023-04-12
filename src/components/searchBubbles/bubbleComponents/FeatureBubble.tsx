@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Button, ButtonGroup, Menu, MenuItem, Stack } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Menu,
+  MenuItem,
+  Stack,
+  Grid,
+} from "@mui/material";
 import { FeatureBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
@@ -57,53 +65,105 @@ const FeatureBubble = ({
           onClose={handleClose}
           sx={styles.featureMenuStyles}
         >
-          <MenuItem onClick={() => handleFeatureChange("Balcony")}>
-            Balcony
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Garden")}>
-            Built-in wardrobes
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Pool")}>Pool</MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Garage")}>
-            Concierge Service
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Covered Parking
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Equipped Kitchen
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Gym
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Private Gym
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Security
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Spa
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Walk-in Closet
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Study room
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Private Pool
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Private Garden
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Maid Service
-          </MenuItem>
-          <MenuItem onClick={() => handleFeatureChange("Fireplace")}>
-            Fireplace
-          </MenuItem>
-          {/* add more features as you like */}
+          <Box sx={styles.featureMainMenuBoxStyles}>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Balcony")}
+              onClick={() => handleFeatureChange("Balcony")}
+            >
+              Balcony
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Built in Wardrobes")}
+              onClick={() => handleFeatureChange("Built in Wardrobes")}
+            >
+              Built-in Wardrobes
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Pool")}
+              onClick={() => handleFeatureChange("Pool")}
+            >
+              Pool
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Concierge Service")}
+              onClick={() => handleFeatureChange("Concierge Service")}
+            >
+              Concierge Service
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Covered Parking")}
+              onClick={() => handleFeatureChange("Covered Parking")}
+            >
+              Covered Parking
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Fully Fitted Kitchen")}
+              onClick={() => handleFeatureChange("Equipped Kitchen")}
+            >
+              Equipped Kitchen
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Shared Gym")}
+              onClick={() => handleFeatureChange("Shared Gym")}
+            >
+              Shared Gym
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Private Gym")}
+              onClick={() => handleFeatureChange("Private Gym")}
+            >
+              Private Gym
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Security")}
+              onClick={() => handleFeatureChange("Security")}
+            >
+              Security
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Spa")}
+              onClick={() => handleFeatureChange("Spa")}
+            >
+              Spa
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Walk in Closet")}
+              onClick={() => handleFeatureChange("Walk in Closet")}
+            >
+              Walk-in Closet
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Study")}
+              onClick={() => handleFeatureChange("Study")}
+            >
+              Study
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Private Pool")}
+              onClick={() => handleFeatureChange("Private Pool")}
+            >
+              Private Pool
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Private Garden")}
+              onClick={() => handleFeatureChange("Private Garden")}
+            >
+              Private Garden
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Maid Service")}
+              onClick={() => handleFeatureChange("Maid Service")}
+            >
+              Maid Service
+            </MenuItem>
+            <MenuItem
+              selected={search.propertyFeatures.includes("Fireplace")}
+              onClick={() => handleFeatureChange("Fireplace")}
+            >
+              Fireplace
+            </MenuItem>
+            {/* add more features as you like */}
+          </Box>
         </Menu>
       </ButtonGroup>
     </Stack>

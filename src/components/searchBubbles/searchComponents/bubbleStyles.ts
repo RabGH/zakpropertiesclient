@@ -50,6 +50,14 @@ export const getBubbleStyles = () => {
     featureButtonGroupStyles: {},
     featureButtonStyles: {},
     featureMenuStyles: {},
+    featureMainMenuBoxStyles: {
+      width: "315px",
+      height: "215px",
+      display: "grid",
+      gridTemplateColumns: "repeat(4, 1fr)",
+      gridTemplateRows: "repeat(4, 1fr)",
+      gap: "8px",
+    },
 
     // PriceRangeBubble.tsx Styles
     priceButtonStyles: {},
