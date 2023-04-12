@@ -44,7 +44,7 @@ const PropertyCardGrid: React.FC<Props> = ({
         setFilteredProperties={setFilteredProperties}
         priceRange={search.priceRange}
       />
-        <Divider sx={styles.searchGridDividerStyles}/>
+      <Divider sx={styles.searchGridDividerStyles} />
       <Grid container spacing={2} sx={styles.cardGridStyles}>
         {search.filteredProperties
           .slice((page - 1) * cardsPerPage, page * cardsPerPage)

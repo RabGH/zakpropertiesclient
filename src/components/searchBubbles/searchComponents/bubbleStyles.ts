@@ -28,7 +28,7 @@ export const getBubbleStyles = () => {
     bedroomButtonStyles: {},
     bedroomPopperStyles: {
       width: "300px",
-      height: "300px",
+      height: "110px",
       padding: "20px",
       borderRadius: "10px",
       backgroundColor: muiTheme.palette.background.paper,
@@ -38,7 +38,11 @@ export const getBubbleStyles = () => {
       width: "250px",
       color: muiTheme.palette.secondary.main,
     },
-    bedroomButtonStackStyles: {},
+    bedroomButtonStackStyles: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+    },
     bedroomApplyButtonStyles: {},
     bedroomResetButtonStyles: {},
 
@@ -50,21 +54,28 @@ export const getBubbleStyles = () => {
     // PriceRangeBubble.tsx Styles
     priceButtonStyles: {},
     pricePopperStyles: {
-      width: "300px",
-      height: "300px",
-      padding: "20px",
-      borderRadius: "10px",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      p: "1rem",
+      width: "305px",
+      height: "190px",
+      borderRadius: "8px",
       backgroundColor: muiTheme.palette.background.paper,
     },
     priceSearchBoxStyles: {},
     priceSliderStyles: {
       width: "250px",
-      color: muiTheme.palette.secondary.main,
     },
     priceStackTypographyStyles: {
       px: 2,
     },
-    priceButtonStackStyles: {},
+    priceButtonStackStyles: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      mt: "1rem",
+    },
     priceApplyButtonStyles: {},
     priceResetButtonStyles: {},
 
@@ -81,21 +92,26 @@ export const getBubbleStyles = () => {
     // SizeBubble.tsx Styles
     sizeButtonStyles: {},
     sizePopperStyles: {
-      width: "300px",
-      height: "230px",
-      padding: "20px",
-      borderRadius: "10px",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      p: "1rem",
+      width: "305px",
+      height: "190px",
+      borderRadius: "8px",
       backgroundColor: muiTheme.palette.background.paper,
     },
     sizeSearchBoxStyles: {},
     sizeSliderStyles: {
       width: "250px",
-      color: muiTheme.palette.secondary.main,
     },
-    sizeStackTypographyStyles: {
-      p: 1,
+    sizeStackTypographyStyles: {},
+    sizeButtonStackStyles: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      mt: "1rem",
     },
-    sizeButtonStackStyles: {},
     sizeApplyButtonStyles: {},
     sizeResetButtonStyles: {},
 

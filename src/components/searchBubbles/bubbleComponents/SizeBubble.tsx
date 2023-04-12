@@ -55,19 +55,18 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
     setButtonText("Any");
   };
   const valueLabelFormat = (value: number) => {
-    return `${value} sqft`;
+    return value.toLocaleString("en-US", {
+      style: "unit",
+      unit: "meter",
+      maximumFractionDigits: 0,
+      minimumFractionDigits: 0,
+    });
   };
+
   const marks = [
-    { value: 100000, label: "10000 sqft" },
-    { value: 200000, label: "20000 sqft" },
-    { value: 300000, label: "30000 sqft" },
-    { value: 400000, label: "40000 sqft" },
-    { value: 500000, label: "50000 sqft" },
-    { value: 600000, label: "60000 sqft" },
-    { value: 700000, label: "70000 sqft" },
-    { value: 800000, label: "80000 sqft" },
-    { value: 900000, label: "90000 sqft" },
-    { value: 1000000, label: "100000 sqft" },
+    { value: 0, label: "0" },
+    { value: 50000, label: "50000" },
+    { value: 100000, label: "100000" },
   ].filter((mark) => mark.value % 50000 === 0);
 
   return (

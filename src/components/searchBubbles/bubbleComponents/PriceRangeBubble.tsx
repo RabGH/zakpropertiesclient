@@ -76,12 +76,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   };
 
   return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      spacing={2}
-      sx={styles.generalBubbleStackStyles}
-    >
+    <Stack sx={styles.generalBubbleStackStyles}>
       <Button
         onClick={handleButtonClick}
         variant="outlined"
@@ -107,16 +102,16 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
             justifyContent="space-between"
             sx={styles.priceStackTypographyStyles}
           >
-            <Typography variant="body2">Min Price</Typography>
-            <Typography variant="body2">{valueLabelFormat(low)}</Typography>
+            <Typography variant="body1">Min Price</Typography>
+            <Typography variant="body1">{valueLabelFormat(low)}</Typography>
           </Stack>
           <Stack
             direction="row"
             justifyContent="space-between"
             sx={styles.priceStackTypographyStyles}
           >
-            <Typography variant="body2">Max Price</Typography>
-            <Typography variant="body2">{valueLabelFormat(high)}</Typography>
+            <Typography variant="body1">Max Price</Typography>
+            <Typography variant="body1">{valueLabelFormat(high)}</Typography>
           </Stack>
           <Stack direction="row" spacing={2} sx={styles.priceButtonStackStyles}>
             <Button

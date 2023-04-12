@@ -58,3 +58,8 @@ export interface FeatureBubbleProps {
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }
+export interface ClickAwayBubbleProps {
+  open: boolean;
+  setOpen: (value: boolean) => void;
+  children: React.ReactElement;
+}

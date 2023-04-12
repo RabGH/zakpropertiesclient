@@ -51,12 +51,7 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
     setAnchorEl(event.currentTarget);
   };
   return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      spacing={2}
-      sx={styles.generalBubbleStackStyles}
-    >
+    <Stack sx={styles.generalBubbleStackStyles}>
       <Button
         onClick={handleButtonClick}
         variant="outlined"
