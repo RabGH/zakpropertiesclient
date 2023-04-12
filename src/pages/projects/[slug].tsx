@@ -155,6 +155,14 @@ const Projects = ({
                 Learn More
               </GeneralButton>
             </Link>
+            <Link href="/developments">
+              <GeneralButton
+                variant="contained"
+                sx={generalStyles.buttonStyles}
+              >
+                View More Developments
+              </GeneralButton>
+            </Link>
           </Box>
         </Box>
 
@@ -172,7 +180,11 @@ const Projects = ({
           </Box>
         ))}
       </Box>
-
+      <Link href="/buyProperties">
+        <GeneralButton variant="contained" sx={generalStyles.buttonStyles}>
+          View More Properties
+        </GeneralButton>
+      </Link>
       <Divider sx={generalStyles.dividerStyles} />
       <Box sx={styles.mapCardPos}>
         <Card sx={generalStyles.mapCard}>

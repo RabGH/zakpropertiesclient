@@ -6,6 +6,7 @@ export const filterProperties = (
   propertyOffPlan: boolean | undefined,
   bedroomRange: [number, number],
   sizeRange: [number, number],
+  propertyFeatures: string[],
   properties: Property[]
 ) => {
   let filteredProperties: Property[] = [];
@@ -24,7 +25,17 @@ export const filterProperties = (
     const sizeMatch =
       property.squareFootage >= sizeRange[0] &&
       property.squareFootage <= sizeRange[1];
-    if (typeMatch && priceMatch && offPlanMatch && bedroomMatch && sizeMatch) {
+    const featureMatch = // added this condition
+      propertyFeatures.length === 0 ||
+      propertyFeatures.every((feature) => property.features.includes(feature));
+    if (
+      typeMatch &&
+      priceMatch &&
+      offPlanMatch &&
+      bedroomMatch &&
+      sizeMatch &&
+      featureMatch
+    ) {
       filteredProperties.push(property);
     }
   }

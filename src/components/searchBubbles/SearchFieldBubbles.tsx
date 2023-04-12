@@ -4,6 +4,7 @@ import PropertyTypeBubble from "./PropertyTypeBubble";
 import PriceRangeBubble from "./PriceRangeBubble";
 import ReadyToBuyBubble from "./ReadyToBuyBubble";
 import BedroomBubble from "./BedroomBubble";
+import FeatureBubble from "./FeatureBubble";
 import SizeBubble from "./SizeBubble";
 import { SearchFieldBubblesProps } from "./bubbleInterfaces";
 import { filterProperties } from "./filterPropertiesFunction";
@@ -31,6 +32,7 @@ const SearchFieldBubbles = ({
     search.sizeRange[0],
     search.sizeRange[1],
   ]);
+  const [featureArray, setFeatureArray] = useState<string[]>([]);
   const handleTypeChange = (propertyType: string) => {
     setSearch({ ...search, propertyType });
   };
@@ -70,7 +72,8 @@ const SearchFieldBubbles = ({
       bedroomRange[0] !== search.bedrooms[0] ||
       bedroomRange[1] !== search.bedrooms[1] ||
       sizeRange[0] !== search.sizeRange[0] ||
-      sizeRange[1] !== search.sizeRange[1]
+      sizeRange[1] !== search.sizeRange[1] ||
+      featureArray.length !== search.propertyFeatures.length
     ) {
       setIsChanged(true);
     } else {
@@ -80,6 +83,7 @@ const SearchFieldBubbles = ({
     sizeRange,
     priceRange,
     bedroomRange,
+    featureArray,
     search.sizeRange,
     search.priceRange,
     search.bedrooms,
@@ -92,6 +96,7 @@ const SearchFieldBubbles = ({
       readyToBuyOption === "Any" ? undefined : readyToBuyOption === "Off-Plan",
       bedroomRange,
       sizeRange,
+      search.propertyFeatures,
       properties
     );
     setSearch((prev) => ({
@@ -107,7 +112,7 @@ const SearchFieldBubbles = ({
   }, [filteredProperties]);
 
   return (
-    <Stack direction="row" flexWrap="wrap" spacing={2} sx={{ mb: "2rem" }}>
+    <Stack direction="row" flexWrap="wrap" spacing={0} sx={{ mb: "2rem" }}>
       <ReadyToBuyBubble
         readyToBuyOption={readyToBuyOption}
         setReadyToBuyOption={setReadyToBuyOption}
@@ -124,6 +129,17 @@ const SearchFieldBubbles = ({
         search={search}
         bedroomRange={bedroomRange}
         setIsChanged={setIsChanged}
+        setSearch={setSearch}
+      />
+      <FeatureBubble
+        handleSearch={(propertyFeatures) => {
+          setSearch((prevSearch) => ({
+            ...prevSearch,
+            propertyFeatures,
+          }));
+          setFeatureArray(propertyFeatures);
+        }}
+        search={search}
         setSearch={setSearch}
       />
       <SizeBubble
@@ -143,7 +159,7 @@ const SearchFieldBubbles = ({
       <Button
         onClick={handleButtonClick}
         variant="contained"
-        disabled={isChanged}
+        // disabled={isChanged}
       >
         Results: {results}
       </Button>

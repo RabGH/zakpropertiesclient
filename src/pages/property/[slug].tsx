@@ -151,6 +151,14 @@ const Property = ({
                     Learn More
                   </GeneralButton>
                 </Link>
+                <Link href="/buyProperties">
+                  <GeneralButton
+                    variant="contained"
+                    sx={generalStyles.buttonStyles}
+                  >
+                    View More Properties
+                  </GeneralButton>
+                </Link>
               </Box>
             </Box>
           </Box>

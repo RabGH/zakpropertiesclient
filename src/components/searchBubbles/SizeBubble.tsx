@@ -1,40 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Button, Popper, Slider, Stack, Typography, Box } from "@mui/material";
 import { SizeBubbleProps } from "./bubbleInterfaces";
-import { Button, Slider, Stack, Popper, Box } from "@mui/material";
 
 const SizeBubble: React.FC<SizeBubbleProps> = ({
   handleSizeRange,
   sizeRange,
   search,
-  setIsChanged,
   setSearch,
 }) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [low, setLow] = useState<number>(sizeRange[0]);
   const [high, setHigh] = useState<number>(sizeRange[1]);
-  const [open, setOpen] = useState<boolean>(false);
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [buttonText, setButtonText] = useState<string>("Any");
 
-  const minSize = 0;
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popper" : undefined;
+  const minSize = 100;
   const maxSize = 100000;
-
-  const handleApply = () => {
-    handleSizeRange([low, high]);
-    setOpen(false);
-    setIsChanged(true);
-    setSearch((prev) => ({ ...prev, sizeRange: [low, high] }));
+  const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
-  const handleSliderChange = (event: any, newValue: number | number[]) => {
+  const handleSliderChange = (
+    event: Event,
+    newValue: number | number[]
+  ): void => {
     if (Array.isArray(newValue)) {
       setLow(newValue[0]);
       setHigh(newValue[1]);
     }
   };
 
+  const handleApply = () => {
+    handleSizeRange([low, high]);
+    setAnchorEl(null);
+    if (low === search.sizeRange[0] && high === search.sizeRange[1]) {
+      setButtonText("Any");
+    } else if (low === minSize && high === maxSize) {
+      setButtonText("Any");
+    } else {
+      setButtonText("Custom");
+    }
+  };
+
+  const handleReset = () => {
+    setLow(search.sizeRange[0]);
+    setHigh(search.sizeRange[1]);
+    setSearch((prevSearch) => ({
+      ...prevSearch,
+      sizeRange: [search.sizeRange[0], search.sizeRange[1]],
+    }));
+    setButtonText("Any");
+  };
   const valueLabelFormat = (value: number) => {
     return `${value} sqft`;
   };
-
   const marks = [
     { value: 100000, label: "10000 sqft" },
     { value: 200000, label: "20000 sqft" },
@@ -48,24 +68,6 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
     { value: 1000000, label: "100000 sqft" },
   ].filter((mark) => mark.value % 50000 === 0);
 
-  const handleReset = () => {
-    setLow(minSize);
-    setHigh(maxSize);
-  };
-
-  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setOpen((prev) => !prev);
-    setAnchorEl(event.currentTarget);
-  };
-
-  useEffect(() => {
-    if (low !== sizeRange[0] || high !== sizeRange[1]) {
-      setIsChanged(true);
-    } else {
-      setIsChanged(false);
-    }
-  }, [low, high, sizeRange, setIsChanged]);
-
   return (
     <Stack
       direction="row"
@@ -74,8 +76,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
       sx={{ p: 2, borderBottom: "1px solid #ccc", mb: "2rem" }}
     >
       <Button onClick={handleButtonClick} variant="outlined">
-        Size Range: {valueLabelFormat(low)} - {valueLabelFormat(high)}
-        {high === search.maxSize && "+"}
+        Size Range: {buttonText}
       </Button>
       <Popper open={open} anchorEl={anchorEl}>
         <Box>
@@ -84,11 +85,19 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
             onChange={handleSliderChange}
             min={minSize}
             max={maxSize}
-            step={1000}
+            step={100}
             marks={marks}
             valueLabelDisplay="auto"
             valueLabelFormat={valueLabelFormat}
           />
+          <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
+            <Typography variant="body2">Min Size</Typography>
+            <Typography variant="body2">{valueLabelFormat(low)}</Typography>
+          </Stack>
+          <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
+            <Typography variant="body2">Max Size</Typography>
+            <Typography variant="body2">{valueLabelFormat(high)}</Typography>
+          </Stack>
           <Stack direction="row" spacing={2}>
             <Button onClick={handleApply} variant="contained">
               Apply

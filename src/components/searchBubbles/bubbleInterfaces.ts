@@ -53,3 +53,8 @@ export interface SizeBubbleProps {
   setIsChanged: (value: boolean) => void;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }
+export interface FeatureBubbleProps {
+  handleSearch: (features: string[]) => void;
+  search: SearchInterface;
+  setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
+}

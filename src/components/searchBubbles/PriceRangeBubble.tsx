@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Button, Popper, Slider, Stack, Typography, Box } from "@mui/material";
 import { PriceRangeBubbleProps } from "./bubbleInterfaces";
-import { Button, Slider, Stack, Popper, Box } from "@mui/material";
 
 const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   handlePriceRange,
@@ -9,60 +9,70 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   setIsChanged,
   setSearch,
 }) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [low, setLow] = useState<number>(priceRange[0]);
   const [high, setHigh] = useState<number>(priceRange[1]);
-  const [open, setOpen] = useState<boolean>(false);
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [buttonText, setButtonText] = useState<string>("Any");
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popper" : undefined;
+  const minPrice = 1000;
+  const maxPrice = 1000000000;
+  const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const handleSliderChange = (
+    event: Event,
+    newValue: number | number[]
+  ): void => {
+    if (Array.isArray(newValue)) {
+      setLow(newValue[0]);
+      setHigh(newValue[1]);
+    }
+  };
 
   const handleApply = () => {
     handlePriceRange([low, high]);
-    setOpen(false);
-    setIsChanged(true);
-    setSearch((prev) => ({ ...prev, priceRange: [low, high] }));
-  };
-
-  const handleSliderChange = (event: any, newValue: number | number[]) => {
-    if (Array.isArray(newValue)) {
-      setLow(Math.round(Math.pow(10, newValue[0])));
-      setHigh(Math.round(Math.pow(10, newValue[1])));
+    setAnchorEl(null);
+    setIsChanged(low !== priceRange[0] || high !== priceRange[1]);
+    if (low === search.priceRange[0] && high === search.priceRange[1]) {
+      setButtonText("Any");
+    } else {
+      setButtonText("Selected");
     }
   };
 
-  const valueLabelFormat = (value: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "AED",
-      maximumFractionDigits: 0,
-    }).format(Math.pow(10, value));
+  const handleReset = () => {
+    setLow(search.priceRange[0]);
+    setHigh(search.priceRange[1]);
+    setSearch((prevSearch) => ({
+      ...prevSearch,
+      priceRange: [search.priceRange[0], search.priceRange[1]],
+    }));
+    setIsChanged(false);
+    setButtonText("Any");
   };
 
   const marks = [
-    { value: 3, label: valueLabelFormat(3) },
-    { value: 4, label: valueLabelFormat(4) },
-    { value: 5, label: valueLabelFormat(5) },
-    { value: 6, label: valueLabelFormat(6) },
-    { value: 7, label: valueLabelFormat(7) },
-    { value: 8, label: valueLabelFormat(8) },
-    { value: 9, label: valueLabelFormat(9) },
+    {
+      value: minPrice,
+      label: "1k",
+    },
+    {
+      value: maxPrice,
+      label: "1B",
+    },
   ];
 
-  const handleReset = () => {
-    setLow(10000);
-    setHigh(1000000000);
+  const valueLabelFormat = (value: number) => {
+    return value.toLocaleString("en-US", {
+      style: "currency",
+      currency: "AED",
+      maximumFractionDigits: 0,
+      minimumFractionDigits: 0,
+    });
   };
-
-  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setOpen((prev) => !prev);
-    setAnchorEl(event.currentTarget);
-  };
-
-  useEffect(() => {
-    if (low !== priceRange[0] || high !== priceRange[1]) {
-      setIsChanged(true);
-    } else {
-      setIsChanged(false);
-    }
-  }, [low, high, priceRange, setIsChanged]);
 
   return (
     <Stack
@@ -72,22 +82,28 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
       sx={{ p: 2, borderBottom: "1px solid #ccc", mb: "2rem" }}
     >
       <Button onClick={handleButtonClick} variant="outlined">
-        Price Range: {valueLabelFormat(Math.log10(low))} -{" "}
-        {valueLabelFormat(Math.log10(high))}
-        {high === search.maxPrice && "+"}
+        Price Range: {buttonText}
       </Button>
       <Popper open={open} anchorEl={anchorEl}>
         <Box>
           <Slider
-            value={[Math.log10(low), Math.log10(high)]}
+            value={[low, high]}
             onChange={handleSliderChange}
-            min={3}
-            max={9}
-            step={0.01}
+            min={minPrice}
+            max={maxPrice}
+            step={1000}
             marks={marks}
             valueLabelDisplay="auto"
             valueLabelFormat={valueLabelFormat}
           />
+          <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
+            <Typography variant="body2">Min Price</Typography>
+            <Typography variant="body2">{valueLabelFormat(low)}</Typography>
+          </Stack>
+          <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
+            <Typography variant="body2">Max Price</Typography>
+            <Typography variant="body2">{valueLabelFormat(high)}</Typography>
+          </Stack>
           <Stack direction="row" spacing={2}>
             <Button onClick={handleApply} variant="contained">
               Apply
