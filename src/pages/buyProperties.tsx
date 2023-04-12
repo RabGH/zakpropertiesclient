@@ -5,7 +5,7 @@ import { Property } from "../../lib/types";
 import { sanityClient } from "../../lib/sanity";
 import PropertyCardGrid from "../components/slugComponents/cardSlugs/cardComponents/PropertyCardGrid";
 import { getBuyPropertiesPageStyles } from "../components/slugComponents/pageSlugStyles/buyPropertiesStyles";
-import { SearchInterface } from "../components/searchBubbles/bubbleInterfaces";
+import { SearchInterface } from "../components/searchBubbles/searchComponents/bubbleInterfaces";
 
 export default function PropertySearch({
   properties,

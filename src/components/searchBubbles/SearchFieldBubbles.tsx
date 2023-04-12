@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Stack, Typography, Button } from "@mui/material";
-import PropertyTypeBubble from "./PropertyTypeBubble";
-import PriceRangeBubble from "./PriceRangeBubble";
-import ReadyToBuyBubble from "./ReadyToBuyBubble";
-import BedroomBubble from "./BedroomBubble";
-import FeatureBubble from "./FeatureBubble";
-import SizeBubble from "./SizeBubble";
-import { SearchFieldBubblesProps } from "./bubbleInterfaces";
-import { filterProperties } from "./filterPropertiesFunction";
+import PropertyTypeBubble from "./bubbleComponents/PropertyTypeBubble";
+import PriceRangeBubble from "./bubbleComponents/PriceRangeBubble";
+import ReadyToBuyBubble from "./bubbleComponents/ReadyToBuyBubble";
+import BedroomBubble from "./bubbleComponents/BedroomBubble";
+import FeatureBubble from "./bubbleComponents/FeatureBubble";
+import SizeBubble from "./bubbleComponents/SizeBubble";
+import { getBubbleStyles } from "./searchComponents/bubbleStyles";
+import { SearchFieldBubblesProps } from "./searchComponents/bubbleInterfaces";
+import { filterProperties } from "./searchComponents/filterPropertiesFunction";
 
 const SearchFieldBubbles = ({
   filteredProperties,
@@ -16,6 +17,7 @@ const SearchFieldBubbles = ({
   properties,
   setFilteredProperties,
 }: SearchFieldBubblesProps) => {
+  const styles = getBubbleStyles();
   const [isChanged, setIsChanged] = useState(false);
   const [readyToBuyOption, setReadyToBuyOption] = useState("Any");
   const [results, setResults] = useState(filteredProperties.length);
@@ -112,7 +114,12 @@ const SearchFieldBubbles = ({
   }, [filteredProperties]);
 
   return (
-    <Stack direction="row" flexWrap="wrap" spacing={0} sx={{ mb: "2rem" }}>
+    <Stack
+      direction="row"
+      flexWrap="wrap"
+      spacing={0}
+      sx={styles.mainSearchFieldStack}
+    >
       <ReadyToBuyBubble
         readyToBuyOption={readyToBuyOption}
         setReadyToBuyOption={setReadyToBuyOption}
@@ -159,6 +166,7 @@ const SearchFieldBubbles = ({
       <Button
         onClick={handleButtonClick}
         variant="contained"
+        sx={styles.resultsSearchButton}
         // disabled={isChanged}
       >
         Results: {results}

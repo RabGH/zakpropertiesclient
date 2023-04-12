@@ -1,4 +1,4 @@
-import { Property } from "../../../lib/types";
+import { Property } from "../../../../lib/types";
 
 export const filterProperties = (
   propertyType: string,

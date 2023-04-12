@@ -4,7 +4,7 @@ import { Property } from "../../../../../lib/types";
 import PropertyCard from "../PropertyAllSlugs";
 import SearchFieldBubbles from "../../../searchBubbles/SearchFieldBubbles";
 import { getPropertyGridCardStyles } from "./propertyCardGridStyles";
-import { SearchInterface } from "../../../searchBubbles/bubbleInterfaces";
+import { SearchInterface } from "../../../searchBubbles/searchComponents/bubbleInterfaces";
 
 interface Props {
   properties: Property[];

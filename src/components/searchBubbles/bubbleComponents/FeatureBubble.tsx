@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Button, ButtonGroup, Menu, MenuItem, Stack } from "@mui/material";
-import { FeatureBubbleProps } from "./bubbleInterfaces";
+import { FeatureBubbleProps } from "../searchComponents/bubbleInterfaces";
+import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
 const FeatureBubble = ({
   handleSearch,
   search,
   setSearch,
 }: FeatureBubbleProps) => {
+  const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -39,16 +41,21 @@ const FeatureBubble = ({
       direction="row"
       alignItems="center"
       spacing={2}
-      sx={{ p: 2, borderBottom: "1px solid #ccc", mb: "2rem" }}
+      sx={styles.generalBubbleStackStyles}
     >
-      <ButtonGroup variant="outlined" aria-label="feature dropdown">
-        <Button onClick={handleClick}>
+      <ButtonGroup
+        variant="outlined"
+        aria-label="feature dropdown"
+        sx={styles.featureButtonGroupStyles}
+      >
+        <Button onClick={handleClick} sx={styles.featureButtonStyles}>
           Features: {selectedCount > 0 ? `${selectedCount} selected` : "Any"}
         </Button>
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleClose}
+          sx={styles.featureMenuStyles}
         >
           <MenuItem onClick={() => handleFeatureChange("Balcony")}>
             Balcony

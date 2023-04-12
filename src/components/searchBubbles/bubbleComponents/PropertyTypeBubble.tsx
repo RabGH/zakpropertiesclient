@@ -1,12 +1,14 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, ButtonGroup, Menu, MenuItem, Stack } from "@mui/material";
-import { PropertyTypeBubbleProps } from "./bubbleInterfaces";
+import { PropertyTypeBubbleProps } from "../searchComponents/bubbleInterfaces";
+import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
 const PropertyTypeBubble = ({
   handleSearch,
   search,
   setSearch,
 }: PropertyTypeBubbleProps) => {
+  const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -28,14 +30,21 @@ const PropertyTypeBubble = ({
       direction="row"
       alignItems="center"
       spacing={2}
-      sx={{ p: 2, borderBottom: "1px solid #ccc", mb: "2rem" }}
+      sx={styles.generalBubbleStackStyles}
     >
-      <ButtonGroup variant="outlined" aria-label="property type dropdown">
-        <Button onClick={handleClick}>{search.propertyType}</Button>
+      <ButtonGroup
+        variant="outlined"
+        aria-label="property type dropdown"
+        sx={styles.typeButtonGroupStyles}
+      >
+        <Button onClick={handleClick} sx={styles.typeButtonStyles}>
+          {search.propertyType}
+        </Button>
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleClose}
+          sx={styles.typeMenuStyles}
         >
           <MenuItem onClick={() => handlePropertyTypeChange("All")}>
             All

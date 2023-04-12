@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Button, Popper, Slider, Stack, Typography, Box } from "@mui/material";
-import { PriceRangeBubbleProps } from "./bubbleInterfaces";
+import { PriceRangeBubbleProps } from "../searchComponents/bubbleInterfaces";
+import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
 const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   handlePriceRange,
   priceRange,
   search,
-  setIsChanged,
   setSearch,
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -14,6 +14,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   const [high, setHigh] = useState<number>(priceRange[1]);
   const [buttonText, setButtonText] = useState<string>("Any");
 
+  const styles = getBubbleStyles();
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
   const minPrice = 1000;
@@ -35,11 +36,12 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   const handleApply = () => {
     handlePriceRange([low, high]);
     setAnchorEl(null);
-    setIsChanged(low !== priceRange[0] || high !== priceRange[1]);
     if (low === search.priceRange[0] && high === search.priceRange[1]) {
       setButtonText("Any");
+    } else if (low === minPrice && high === maxPrice) {
+      setButtonText("Any");
     } else {
-      setButtonText("Selected");
+      setButtonText("Custom");
     }
   };
 
@@ -50,7 +52,6 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
       ...prevSearch,
       priceRange: [search.priceRange[0], search.priceRange[1]],
     }));
-    setIsChanged(false);
     setButtonText("Any");
   };
 
@@ -79,13 +80,17 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
       direction="row"
       alignItems="center"
       spacing={2}
-      sx={{ p: 2, borderBottom: "1px solid #ccc", mb: "2rem" }}
+      sx={styles.generalBubbleStackStyles}
     >
-      <Button onClick={handleButtonClick} variant="outlined">
+      <Button
+        onClick={handleButtonClick}
+        variant="outlined"
+        sx={styles.priceButtonStyles}
+      >
         Price Range: {buttonText}
       </Button>
-      <Popper open={open} anchorEl={anchorEl}>
-        <Box>
+      <Popper open={open} anchorEl={anchorEl} sx={styles.pricePopperStyles}>
+        <Box sx={styles.priceSearchBoxStyles}>
           <Slider
             value={[low, high]}
             onChange={handleSliderChange}
@@ -95,20 +100,37 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
             marks={marks}
             valueLabelDisplay="auto"
             valueLabelFormat={valueLabelFormat}
+            sx={styles.priceSliderStyles}
           />
-          <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            sx={styles.priceStackTypographyStyles}
+          >
             <Typography variant="body2">Min Price</Typography>
             <Typography variant="body2">{valueLabelFormat(low)}</Typography>
           </Stack>
-          <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            sx={styles.priceStackTypographyStyles}
+          >
             <Typography variant="body2">Max Price</Typography>
             <Typography variant="body2">{valueLabelFormat(high)}</Typography>
           </Stack>
-          <Stack direction="row" spacing={2}>
-            <Button onClick={handleApply} variant="contained">
+          <Stack direction="row" spacing={2} sx={styles.priceButtonStackStyles}>
+            <Button
+              onClick={handleApply}
+              variant="contained"
+              sx={styles.priceApplyButtonStyles}
+            >
               Apply
             </Button>
-            <Button onClick={handleReset} variant="text">
+            <Button
+              onClick={handleReset}
+              variant="text"
+              sx={styles.priceResetButtonStyles}
+            >
               Reset
             </Button>
           </Stack>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Popper, Slider, Stack, Typography, Box } from "@mui/material";
-import { SizeBubbleProps } from "./bubbleInterfaces";
+import { SizeBubbleProps } from "../searchComponents/bubbleInterfaces";
+import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
 const SizeBubble: React.FC<SizeBubbleProps> = ({
   handleSizeRange,
@@ -13,6 +14,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
   const [high, setHigh] = useState<number>(sizeRange[1]);
   const [buttonText, setButtonText] = useState<string>("Any");
 
+  const styles = getBubbleStyles();
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
   const minSize = 100;
@@ -73,13 +75,17 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
       direction="row"
       alignItems="center"
       spacing={2}
-      sx={{ p: 2, borderBottom: "1px solid #ccc", mb: "2rem" }}
+      sx={styles.generalBubbleStackStyles}
     >
-      <Button onClick={handleButtonClick} variant="outlined">
+      <Button
+        onClick={handleButtonClick}
+        variant="outlined"
+        sx={styles.sizeButtonStyles}
+      >
         Size Range: {buttonText}
       </Button>
-      <Popper open={open} anchorEl={anchorEl}>
-        <Box>
+      <Popper open={open} anchorEl={anchorEl} sx={styles.sizePopperStyles}>
+        <Box sx={styles.sizeSearchBoxStyles}>
           <Slider
             value={[low, high]}
             onChange={handleSliderChange}
@@ -89,20 +95,37 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
             marks={marks}
             valueLabelDisplay="auto"
             valueLabelFormat={valueLabelFormat}
+            sx={styles.sizeSliderStyles}
           />
-          <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            sx={styles.sizeStackTypographyStyles}
+          >
             <Typography variant="body2">Min Size</Typography>
             <Typography variant="body2">{valueLabelFormat(low)}</Typography>
           </Stack>
-          <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            sx={styles.sizeStackTypographyStyles}
+          >
             <Typography variant="body2">Max Size</Typography>
             <Typography variant="body2">{valueLabelFormat(high)}</Typography>
           </Stack>
-          <Stack direction="row" spacing={2}>
-            <Button onClick={handleApply} variant="contained">
+          <Stack direction="row" spacing={2} sx={styles.sizeButtonStackStyles}>
+            <Button
+              onClick={handleApply}
+              variant="contained"
+              sx={styles.sizeApplyButtonStyles}
+            >
               Apply
             </Button>
-            <Button onClick={handleReset} variant="text">
+            <Button
+              onClick={handleReset}
+              variant="text"
+              sx={styles.sizeResetButtonStyles}
+            >
               Reset
             </Button>
           </Stack>

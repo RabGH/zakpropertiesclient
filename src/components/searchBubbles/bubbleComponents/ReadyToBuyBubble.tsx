@@ -7,12 +7,14 @@ import {
   MenuItem,
   Stack,
 } from "@mui/material";
-import { ReadyToBuyBubbleProps } from "./bubbleInterfaces";
+import { ReadyToBuyBubbleProps } from "../searchComponents/bubbleInterfaces";
+import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
 export default function ReadyToBuyBubble({
   readyToBuyOption,
   setReadyToBuyOption,
 }: ReadyToBuyBubbleProps) {
+  const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -33,14 +35,21 @@ export default function ReadyToBuyBubble({
       direction="row"
       alignItems="center"
       spacing={2}
-      sx={{ p: 2, borderBottom: "1px solid #ccc", mb: "2rem" }}
+      sx={styles.generalBubbleStackStyles}
     >
-      <ButtonGroup variant="outlined" aria-label="ready to buy dropdown">
-        <Button onClick={handleButtonClick}>{readyToBuyOption}</Button>
+      <ButtonGroup
+        variant="outlined"
+        aria-label="ready to buy dropdown"
+        sx={styles.readyButtonGroupStyles}
+      >
+        <Button onClick={handleButtonClick} sx={styles.readyButtonStyles}>
+          {readyToBuyOption}
+        </Button>
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleMenuClose}
+          sx={styles.readyMenuStyles}
         >
           <MenuItem onClick={() => handleMenuItemClick("Any")}>
             <ListItemText primary="Any" />
