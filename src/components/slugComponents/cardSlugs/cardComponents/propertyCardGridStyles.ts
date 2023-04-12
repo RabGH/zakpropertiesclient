@@ -45,5 +45,12 @@ export const getPropertyGridCardStyles = () => {
       flexBasis: "33%",
       maxWidth: "420px",
     },
+
+    searchGridDividerStyles: {
+      mb: "1rem",
+      borderWidth: 1,
+      borderColor: "white",
+      minWidth: "80%",
+    },
   };
 };

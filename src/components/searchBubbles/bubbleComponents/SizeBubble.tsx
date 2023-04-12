@@ -102,16 +102,16 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
             justifyContent="space-between"
             sx={styles.sizeStackTypographyStyles}
           >
-            <Typography variant="body2">Min Size</Typography>
-            <Typography variant="body2">{valueLabelFormat(low)}</Typography>
+            <Typography variant="body1">Min Size</Typography>
+            <Typography variant="body1">{valueLabelFormat(low)}</Typography>
           </Stack>
           <Stack
             direction="row"
             justifyContent="space-between"
             sx={styles.sizeStackTypographyStyles}
           >
-            <Typography variant="body2">Max Size</Typography>
-            <Typography variant="body2">{valueLabelFormat(high)}</Typography>
+            <Typography variant="body1">Max Size</Typography>
+            <Typography variant="body1">{valueLabelFormat(high)}</Typography>
           </Stack>
           <Stack direction="row" spacing={2} sx={styles.sizeButtonStackStyles}>
             <Button

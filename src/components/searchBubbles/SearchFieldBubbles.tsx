@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Stack, Typography, Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Stack, Typography, Button, Box } from "@mui/material";
 import PropertyTypeBubble from "./bubbleComponents/PropertyTypeBubble";
 import PriceRangeBubble from "./bubbleComponents/PriceRangeBubble";
 import ReadyToBuyBubble from "./bubbleComponents/ReadyToBuyBubble";
@@ -114,64 +114,68 @@ const SearchFieldBubbles = ({
   }, [filteredProperties]);
 
   return (
-    <Stack
-      direction="row"
-      flexWrap="wrap"
-      spacing={0}
-      sx={styles.mainSearchFieldStack}
-    >
-      <ReadyToBuyBubble
-        readyToBuyOption={readyToBuyOption}
-        setReadyToBuyOption={setReadyToBuyOption}
-      />
-      <PropertyTypeBubble
-        handleSearch={handleTypeChange}
-        search={search}
-        setSearch={setSearch}
-      />
-      <BedroomBubble
-        handleBedroomRange={(low, high) => setBedroomRange([low, high])}
-        minBedrooms={1}
-        maxBedrooms={15}
-        search={search}
-        bedroomRange={bedroomRange}
-        setIsChanged={setIsChanged}
-        setSearch={setSearch}
-      />
-      <FeatureBubble
-        handleSearch={(propertyFeatures) => {
-          setSearch((prevSearch) => ({
-            ...prevSearch,
-            propertyFeatures,
-          }));
-          setFeatureArray(propertyFeatures);
-        }}
-        search={search}
-        setSearch={setSearch}
-      />
-      <SizeBubble
-        handleSizeRange={(sizeRange) => setSizeRange(sizeRange)}
-        sizeRange={sizeRange}
-        search={search}
-        setIsChanged={setIsChanged}
-        setSearch={setSearch}
-      />
-      <PriceRangeBubble
-        handlePriceRange={(priceRange) => setPriceRange(priceRange)}
-        priceRange={priceRange}
-        search={search}
-        setIsChanged={setIsChanged}
-        setSearch={setSearch}
-      />
-      <Button
-        onClick={handleButtonClick}
-        variant="contained"
-        sx={styles.resultsSearchButton}
-        // disabled={isChanged}
+    <Box sx={styles.searchFieldMainBox}>
+      <Stack
+        direction="row"
+        flexWrap="wrap"
+        spacing={0}
+        sx={styles.mainSearchFieldStack}
       >
-        Results: {results}
-      </Button>
-    </Stack>
+        <ReadyToBuyBubble
+          readyToBuyOption={readyToBuyOption}
+          setReadyToBuyOption={setReadyToBuyOption}
+        />
+        <PropertyTypeBubble
+          handleSearch={handleTypeChange}
+          search={search}
+          setSearch={setSearch}
+        />
+        <BedroomBubble
+          handleBedroomRange={(low, high) => setBedroomRange([low, high])}
+          minBedrooms={1}
+          maxBedrooms={15}
+          search={search}
+          bedroomRange={bedroomRange}
+          setIsChanged={setIsChanged}
+          setSearch={setSearch}
+        />
+        <FeatureBubble
+          handleSearch={(propertyFeatures) => {
+            setSearch((prevSearch) => ({
+              ...prevSearch,
+              propertyFeatures,
+            }));
+            setFeatureArray(propertyFeatures);
+          }}
+          search={search}
+          setSearch={setSearch}
+        />
+        <SizeBubble
+          handleSizeRange={(sizeRange) => setSizeRange(sizeRange)}
+          sizeRange={sizeRange}
+          search={search}
+          setIsChanged={setIsChanged}
+          setSearch={setSearch}
+        />
+        <PriceRangeBubble
+          handlePriceRange={(priceRange) => setPriceRange(priceRange)}
+          priceRange={priceRange}
+          search={search}
+          setIsChanged={setIsChanged}
+          setSearch={setSearch}
+        />
+      </Stack>
+      <Box sx={styles.searchButtonBox}>
+        <Button
+          onClick={handleButtonClick}
+          variant="contained"
+          sx={styles.searchResultsButton}
+          // disabled={isChanged}
+        >
+          Results: {results}
+        </Button>
+      </Box>
+    </Box>
   );
 };
 export default SearchFieldBubbles;

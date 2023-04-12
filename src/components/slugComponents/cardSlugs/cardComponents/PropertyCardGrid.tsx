@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid, Pagination } from "@mui/material";
+import { Box, Grid, Pagination, Divider } from "@mui/material";
 import { Property } from "../../../../../lib/types";
 import PropertyCard from "../PropertyAllSlugs";
 import SearchFieldBubbles from "../../../searchBubbles/SearchFieldBubbles";
@@ -44,6 +44,7 @@ const PropertyCardGrid: React.FC<Props> = ({
         setFilteredProperties={setFilteredProperties}
         priceRange={search.priceRange}
       />
+        <Divider sx={styles.searchGridDividerStyles}/>
       <Grid container spacing={2} sx={styles.cardGridStyles}>
         {search.filteredProperties
           .slice((page - 1) * cardsPerPage, page * cardsPerPage)
