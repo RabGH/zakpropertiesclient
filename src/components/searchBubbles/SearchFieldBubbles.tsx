@@ -121,6 +121,16 @@ const SearchFieldBubbles = ({
         spacing={0}
         sx={styles.mainSearchFieldStack}
       >
+        <Box sx={styles.searchButtonBox}>
+          <Button
+            onClick={handleButtonClick}
+            variant="contained"
+            sx={styles.searchResultsButton}
+            // disabled={isChanged}
+          >
+            Results: {results}
+          </Button>
+        </Box>
         <ReadyToBuyBubble
           readyToBuyOption={readyToBuyOption}
           setReadyToBuyOption={setReadyToBuyOption}
@@ -139,17 +149,6 @@ const SearchFieldBubbles = ({
           setIsChanged={setIsChanged}
           setSearch={setSearch}
         />
-        <FeatureBubble
-          handleSearch={(propertyFeatures) => {
-            setSearch((prevSearch) => ({
-              ...prevSearch,
-              propertyFeatures,
-            }));
-            setFeatureArray(propertyFeatures);
-          }}
-          search={search}
-          setSearch={setSearch}
-        />
         <SizeBubble
           handleSizeRange={(sizeRange) => setSizeRange(sizeRange)}
           sizeRange={sizeRange}
@@ -164,17 +163,18 @@ const SearchFieldBubbles = ({
           setIsChanged={setIsChanged}
           setSearch={setSearch}
         />
+        <FeatureBubble
+          handleSearch={(propertyFeatures) => {
+            setSearch((prevSearch) => ({
+              ...prevSearch,
+              propertyFeatures,
+            }));
+            setFeatureArray(propertyFeatures);
+          }}
+          search={search}
+          setSearch={setSearch}
+        />
       </Stack>
-      <Box sx={styles.searchButtonBox}>
-        <Button
-          onClick={handleButtonClick}
-          variant="contained"
-          sx={styles.searchResultsButton}
-          // disabled={isChanged}
-        >
-          Results: {results}
-        </Button>
-      </Box>
     </Box>
   );
 };

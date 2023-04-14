@@ -52,11 +52,11 @@ const FeatureBubble = ({
       sx={styles.generalBubbleStackStyles}
     >
       <ButtonGroup
-        variant="outlined"
+        variant="contained"
         aria-label="feature dropdown"
         sx={styles.featureButtonGroupStyles}
       >
-        <Button onClick={handleClick} sx={styles.featureButtonStyles}>
+        <Button onClick={handleClick} sx={styles.generalButtonStyles}>
           Features: {selectedCount > 0 ? `${selectedCount} selected` : "Any"}
         </Button>
         <Menu
@@ -97,7 +97,9 @@ const FeatureBubble = ({
               Covered Parking
             </MenuItem>
             <MenuItem
-              selected={search.propertyFeatures.includes("Fully Fitted Kitchen")}
+              selected={search.propertyFeatures.includes(
+                "Fully Fitted Kitchen"
+              )}
               onClick={() => handleFeatureChange("Equipped Kitchen")}
             >
               Equipped Kitchen

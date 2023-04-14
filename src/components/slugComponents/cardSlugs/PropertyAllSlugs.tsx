@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Box, Typography, Container, Card, Divider } from "@mui/material";
 import { Property } from "../../../../lib/types";
 import {
-  main,
+  mainAll,
   featuredTitlePos,
-  cardStyles,
+  allCardStyles,
   propertyTypeStyles,
   propertyTitleCard,
   propertyAreaCard,
@@ -33,11 +33,10 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
   return (
     <>
       {property && (
-        <Container>
-          <Box sx={main}>
+          <Box sx={mainAll}>
             <Box>
               <Box sx={mainBox}>
-                <Card sx={cardStyles}>
+                <Card sx={allCardStyles}>
                   {property.mainPropertyImage && (
                     <CardImageCarousel
                       images={[
@@ -98,7 +97,6 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
               </Box>
             </Box>
           </Box>
-        </Container>
       )}
     </>
   );

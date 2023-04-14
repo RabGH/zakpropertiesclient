@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Button, Popper, Slider, Stack, Typography, Box } from "@mui/material";
+import {
+  Button,
+  Popper,
+  Slider,
+  Stack,
+  Typography,
+  Box,
+  Chip,
+} from "@mui/material";
 import { SizeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
@@ -70,66 +78,83 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
   ].filter((mark) => mark.value % 50000 === 0);
 
   return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      spacing={2}
-      sx={styles.generalBubbleStackStyles}
-    >
+    <Stack sx={styles.generalBubbleStackStyles}>
       <Button
         onClick={handleButtonClick}
-        variant="outlined"
-        sx={styles.sizeButtonStyles}
+        variant="contained"
+        sx={styles.generalButtonStyles}
       >
         Size Range: {buttonText}
       </Button>
-      <Popper open={open} anchorEl={anchorEl} sx={styles.sizePopperStyles}>
-        <Box sx={styles.sizeSearchBoxStyles}>
-          <Slider
-            value={[low, high]}
-            onChange={handleSliderChange}
-            min={minSize}
-            max={maxSize}
-            step={100}
-            marks={marks}
-            valueLabelDisplay="auto"
-            valueLabelFormat={valueLabelFormat}
-            sx={styles.sizeSliderStyles}
-          />
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            sx={styles.sizeStackTypographyStyles}
-          >
-            <Typography variant="body1">Min Size</Typography>
-            <Typography variant="body1">{valueLabelFormat(low)}</Typography>
-          </Stack>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            sx={styles.sizeStackTypographyStyles}
-          >
-            <Typography variant="body1">Max Size</Typography>
-            <Typography variant="body1">{valueLabelFormat(high)}</Typography>
-          </Stack>
-          <Stack direction="row" spacing={2} sx={styles.sizeButtonStackStyles}>
-            <Button
-              onClick={handleApply}
-              variant="contained"
-              sx={styles.sizeApplyButtonStyles}
+      <Box sx={styles.generalPopperBox}>
+        <Popper open={open} anchorEl={anchorEl} sx={styles.sizePopperStyles}>
+          <Box sx={styles.sizeSearchBoxStyles}>
+            <Slider
+              value={[low, high]}
+              onChange={handleSliderChange}
+              min={minSize}
+              max={maxSize}
+              step={100}
+              marks={marks}
+              valueLabelDisplay="auto"
+              valueLabelFormat={valueLabelFormat}
+              sx={styles.sizeSliderStyles}
+            />
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              sx={styles.sizeStackChipStyles}
             >
-              Apply
-            </Button>
-            <Button
-              onClick={handleReset}
-              variant="text"
-              sx={styles.sizeResetButtonStyles}
+              <Chip
+                label="Min Size"
+                variant="filled"
+                sx={styles.sizeChipLabelStyles}
+              />
+              <Chip
+                label={valueLabelFormat(low)}
+                variant="filled"
+                sx={styles.sizeChipNumberStyles}
+              />
+            </Stack>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              sx={styles.sizeStackChipStyles}
             >
-              Reset
-            </Button>
-          </Stack>
-        </Box>
-      </Popper>
+              <Chip
+                label="Max Size"
+                variant="filled"
+                sx={styles.sizeChipLabelStyles}
+              />
+              <Chip
+                label={valueLabelFormat(high)}
+                variant="filled"
+                sx={styles.sizeChipNumberStyles}
+              />
+            </Stack>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={styles.sizeButtonStackStyles}
+            >
+              <Button
+                onClick={handleApply}
+                variant="contained"
+                sx={styles.generalApplyButtonStyles}
+              >
+                Apply
+              </Button>
+              <Button
+                onClick={handleReset}
+                variant="text"
+                sx={styles.generalResetButtonStyles}
+              >
+                Clear
+              </Button>
+            </Stack>
+          </Box>
+        </Popper>
+      </Box>
     </Stack>
   );
 };

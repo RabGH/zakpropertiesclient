@@ -38,11 +38,11 @@ export default function ReadyToBuyBubble({
       sx={styles.generalBubbleStackStyles}
     >
       <ButtonGroup
-        variant="outlined"
+        variant="contained"
         aria-label="ready to buy dropdown"
         sx={styles.readyButtonGroupStyles}
       >
-        <Button onClick={handleButtonClick} sx={styles.readyButtonStyles}>
+        <Button onClick={handleButtonClick} sx={styles.generalButtonStyles}>
           {readyToBuyOption}
         </Button>
         <Menu

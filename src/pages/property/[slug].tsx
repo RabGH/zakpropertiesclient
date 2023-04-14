@@ -23,8 +23,8 @@ import {
 } from "../../components/slugComponents/imageCarouselStyles";
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 
-import { getPropertyPageStyles } from "../../components/slugComponents/pageSlugStyles/propertySlugStyles";
-import { getGeneralSlugStyles } from "../../components/slugComponents/pageSlugStyles/generalSlugStyles";
+import { getPropertyPageStyles } from "../../components/pageComponents/pageSlugStyles/propertySlugStyles";
+import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
 
 interface PageContext {
   query: {

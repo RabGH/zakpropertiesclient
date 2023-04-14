@@ -1,5 +1,13 @@
-import React, { useState } from "react";
-import { Button, Popper, Slider, Stack, Typography, Box } from "@mui/material";
+import React, { ChangeEvent, useRef, useState } from "react";
+import {
+  Button,
+  Popper,
+  MenuItem,
+  Stack,
+  Typography,
+  Box,
+} from "@mui/material";
+import TextField from "@mui/material/TextField";
 import { PriceRangeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
@@ -17,20 +25,22 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   const styles = getBubbleStyles();
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
-  const minPrice = 1000;
+  const minPrice = 0;
   const maxPrice = 1000000000;
   const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
-  const handleSliderChange = (
-    event: Event,
-    newValue: number | number[]
-  ): void => {
-    if (Array.isArray(newValue)) {
-      setLow(newValue[0]);
-      setHigh(newValue[1]);
-    }
+  const handleLowChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setLow(Number(event.target.value));
+  };
+
+  const handleHighChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setHigh(Number(event.target.value));
   };
 
   const handleApply = () => {
@@ -44,27 +54,32 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
       setButtonText("Custom");
     }
   };
-
   const handleReset = () => {
-    setLow(search.priceRange[0]);
-    setHigh(search.priceRange[1]);
+    setLow(minPrice);
+    setHigh(maxPrice);
     setSearch((prevSearch) => ({
       ...prevSearch,
-      priceRange: [search.priceRange[0], search.priceRange[1]],
+      priceRange: [minPrice, maxPrice],
     }));
     setButtonText("Any");
   };
 
-  const marks = [
-    {
-      value: minPrice,
-      label: "1k",
-    },
-    {
-      value: maxPrice,
-      label: "1B",
-    },
-  ];
+  const priceOptions = [];
+  let i = minPrice;
+  while (i <= maxPrice) {
+    priceOptions.push(i);
+    if (i < 10000000) {
+      i += 1000000; // add 1 million until 10 million
+    } else if (i < 50000000) {
+      i += 5000000; // add 5 million until 50 million
+    } else if (i < 100000000) {
+      i += 10000000; // add 10 million until 100 million
+    } else if (i < 300000000) {
+      i += 25000000; // add 25 million until 300 million
+    } else {
+      i += 50000000; // add 50 million until max
+    }
+  }
 
   const valueLabelFormat = (value: number) => {
     return value.toLocaleString("en-US", {
@@ -75,62 +90,105 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
     });
   };
 
+  const inputRef = useRef(null);
+
   return (
     <Stack sx={styles.generalBubbleStackStyles}>
       <Button
         onClick={handleButtonClick}
-        variant="outlined"
-        sx={styles.priceButtonStyles}
+        variant="contained"
+        sx={styles.generalButtonStyles}
+        ref={inputRef}
       >
         Price Range: {buttonText}
       </Button>
-      <Popper open={open} anchorEl={anchorEl} sx={styles.pricePopperStyles}>
-        <Box sx={styles.priceSearchBoxStyles}>
-          <Slider
-            value={[low, high]}
-            onChange={handleSliderChange}
-            min={minPrice}
-            max={maxPrice}
-            step={1000}
-            marks={marks}
-            valueLabelDisplay="auto"
-            valueLabelFormat={valueLabelFormat}
-            sx={styles.priceSliderStyles}
-          />
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            sx={styles.priceStackTypographyStyles}
-          >
-            <Typography variant="body1">Min Price</Typography>
-            <Typography variant="body1">{valueLabelFormat(low)}</Typography>
-          </Stack>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            sx={styles.priceStackTypographyStyles}
-          >
-            <Typography variant="body1">Max Price</Typography>
-            <Typography variant="body1">{valueLabelFormat(high)}</Typography>
-          </Stack>
-          <Stack direction="row" spacing={2} sx={styles.priceButtonStackStyles}>
-            <Button
-              onClick={handleApply}
-              variant="contained"
-              sx={styles.priceApplyButtonStyles}
+      <Box sx={styles.generalPopperBox}>
+        <Popper open={open} anchorEl={anchorEl} sx={styles.pricePopperStyles}>
+          <Box sx={styles.priceSearchBoxStyles}>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={styles.priceSelectStackStyles}
             >
-              Apply
-            </Button>
-            <Button
-              onClick={handleReset}
-              variant="text"
-              sx={styles.priceResetButtonStyles}
+              <TextField
+                value={low}
+                onChange={handleLowChange}
+                inputProps={{ "aria-label": "Low price" }}
+                sx={styles.priceSelectStyles}
+                select
+                SelectProps={{
+                  value: low,
+                  displayEmpty: true,
+                  inputProps: { "aria-label": "Low price" },
+                  sx: styles.priceSelectStyles,
+                  MenuProps: {
+                    anchorOrigin: { vertical: "bottom", horizontal: "left" },
+                    transformOrigin: { vertical: "top", horizontal: "left" },
+                    PaperProps: {
+                      sx: styles.priceMenuPaperStyles,
+                    },
+                  },
+                }}
+              >
+                <MenuItem value={minPrice}>Min</MenuItem>
+                {priceOptions.map((option) => (
+                  <MenuItem key={option} value={option}>
+                    {valueLabelFormat(option)}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <Typography variant="body1">to</Typography>
+              <TextField
+                value={high}
+                onChange={handleHighChange}
+                inputProps={{ "aria-label": "Low price" }}
+                sx={styles.priceSelectStyles}
+                select
+                SelectProps={{
+                  value: high,
+                  displayEmpty: true,
+                  inputProps: { "aria-label": "Low price" },
+                  sx: styles.priceSelectStyles,
+                  MenuProps: {
+                    anchorOrigin: { vertical: "bottom", horizontal: "left" },
+                    transformOrigin: { vertical: "top", horizontal: "left" },
+                    PaperProps: {
+                      sx: styles.priceMenuPaperStyles,
+                    },
+                  },
+                }}
+              >
+                {priceOptions.map((option) => (
+                  <MenuItem key={option} value={option}>
+                    {valueLabelFormat(option)}
+                  </MenuItem>
+                ))}
+                <MenuItem value={maxPrice}>Max</MenuItem>
+              </TextField>
+            </Stack>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={styles.priceButtonStackStyles}
             >
-              Reset
-            </Button>
-          </Stack>
-        </Box>
-      </Popper>
+              <Button
+                onClick={handleApply}
+                variant="contained"
+                sx={styles.generalApplyButtonStyles}
+              >
+                Apply
+              </Button>
+              <Button
+                onClick={handleReset}
+                variant="text"
+                sx={styles.generalResetButtonStyles}
+              >
+                Clear
+              </Button>
+            </Stack>
+          </Box>
+        </Popper>
+      </Box>
     </Stack>
   );
 };

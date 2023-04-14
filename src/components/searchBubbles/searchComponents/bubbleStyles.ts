@@ -5,50 +5,60 @@ export const getBubbleStyles = () => {
 
   return {
     // SearchFieldBubbles.tsx Styles
+    searchFieldMainBox: {},
     mainSearchFieldStack: {
       display: "flex",
       flexDirection: "row",
       flexWrap: "wrap",
       alignItems: "center",
       justifyContent: "center",
-      border: "1px solid #ccc",
-      borderRadius: "10px",
-      backgroundColor: muiTheme.palette.success.main,
+      backgroundColor: "#00000050",
+      borderRadius: "15px",
+      p: "0.5rem",
+      boxShadow: "0px 0px 5px 0px #FFFFFF30",
     },
     searchButtonBox: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      m: "2rem",
+      p: "8px",
     },
     searchResultsButton: {},
-    searchFieldMainBox: {},
 
     // BedroomBubble.tsx Styles
-    bedroomButtonStyles: {},
     bedroomPopperStyles: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      p: "0.5rem",
       width: "300px",
-      height: "110px",
-      padding: "20px",
-      borderRadius: "10px",
+      height: "100px",
+      borderRadius: "8px",
       backgroundColor: muiTheme.palette.background.paper,
+      border: "1px solid gray",
+      zIndex: 9999,
     },
     bedroomSearchBoxStyles: {},
     bedroomSliderStyles: {
       width: "250px",
-      color: muiTheme.palette.secondary.main,
+      "& & .MuiSlider-valueLabel": {
+        color: "white",
+      },
+      "& .MuiSlider-track": {
+        backgroundImage: "linear-gradient(to right, white, gray)",
+      },
+      "& .MuiSlider-rail": {
+        backgroundImage: "linear-gradient(to right, white, gray)",
+      },
+      "& .MuiSlider-thumb": {
+        borderColor: "white",
+      },
     },
     bedroomButtonStackStyles: {
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
     },
-    bedroomApplyButtonStyles: {},
-    bedroomResetButtonStyles: {},
 
     // FeatureBubble.tsx Styles
     featureButtonGroupStyles: {},
-    featureButtonStyles: {},
     featureMenuStyles: {},
     featureMainMenuBoxStyles: {
       width: "315px",
@@ -60,23 +70,53 @@ export const getBubbleStyles = () => {
     },
 
     // PriceRangeBubble.tsx Styles
-    priceButtonStyles: {},
     pricePopperStyles: {
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
-      p: "1rem",
-      width: "305px",
-      height: "190px",
+      p: "0.5rem",
+      width: "420px",
+      height: "150px",
       borderRadius: "8px",
       backgroundColor: muiTheme.palette.background.paper,
+      border: "1px solid gray",
     },
-    priceSearchBoxStyles: {},
-    priceSliderStyles: {
-      width: "250px",
+    priceSearchBoxStyles: {
+      p: 1.5,
     },
-    priceStackTypographyStyles: {
-      px: 2,
+    priceSelectStackStyles: {
+      alignItems: "center",
+    },
+    priceSelectStyles: {
+      width: "170px",
+      "& .MuiInputLabel-root": {
+        "&.Mui-focused": {
+          color: muiTheme.palette.grey[400],
+        },
+        "&:hover": {
+          color: muiTheme.palette.grey[300],
+        },
+      },
+      "& .MuiSelect-select": {
+        backgroundColor: muiTheme.palette.grey[500],
+        borderRadius: "4px",
+        "&:hover": {
+          backgroundColor: muiTheme.palette.grey[600],
+        },
+        "&.Mui-focused": {
+          backgroundColor: muiTheme.palette.grey[700],
+        },
+      },
+      "& .MuiMenuItem-root": {
+        color: muiTheme.palette.common.white,
+        backgroundColor: muiTheme.palette.grey[800],
+        "&.Mui-selected": {
+          backgroundColor: muiTheme.palette.grey[700],
+        },
+        "&:hover": {
+          backgroundColor: muiTheme.palette.grey[900],
+        },
+      },
     },
     priceButtonStackStyles: {
       display: "flex",
@@ -84,9 +124,11 @@ export const getBubbleStyles = () => {
       justifyContent: "center",
       mt: "1rem",
     },
-    priceApplyButtonStyles: {},
-    priceResetButtonStyles: {},
-
+    priceMenuPaperStyles: {
+      maxHeight: "400px",
+      overflow: "auto",
+      zIndex: 9999,
+    },
     // PropertyTypeBubble.tsx Styles
     typeButtonGroupStyles: {},
     typeButtonStyles: {},
@@ -94,38 +136,76 @@ export const getBubbleStyles = () => {
 
     // ReadyToBuyBubble.tsx Styles
     readyButtonGroupStyles: {},
-    readyButtonStyles: {},
     readyMenuStyles: {},
 
     // SizeBubble.tsx Styles
-    sizeButtonStyles: {},
     sizePopperStyles: {
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
-      p: "1rem",
-      width: "305px",
-      height: "190px",
+      p: "0.5rem",
+      width: "320px",
+      height: "200px",
       borderRadius: "8px",
       backgroundColor: muiTheme.palette.background.paper,
+      border: "1px solid gray",
+      zIndex: 9999,
     },
     sizeSearchBoxStyles: {},
     sizeSliderStyles: {
       width: "250px",
+      "& & .MuiSlider-valueLabel": {
+        color: "white",
+      },
+      "& .MuiSlider-track": {
+        backgroundImage: "linear-gradient(to right, white, gray)",
+      },
+      "& .MuiSlider-rail": {
+        backgroundImage: "linear-gradient(to right, white, gray)",
+      },
+      "& .MuiSlider-thumb": {
+        borderColor: "white",
+      },
     },
-    sizeStackTypographyStyles: {},
+    sizeStackChipStyles: {},
+    sizeChipLabelStyles: {
+      color: "white",
+      backgroundColor: muiTheme.palette.grey[900],
+      mb: 0.3,
+    },
+    sizeChipNumberStyles: {
+      color: "white",
+      backgroundColor: muiTheme.palette.grey[900],
+    },
     sizeButtonStackStyles: {
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
       mt: "1rem",
     },
-    sizeApplyButtonStyles: {},
-    sizeResetButtonStyles: {},
 
     // General Bubble Styles
     generalBubbleStackStyles: {
-      p: 2,
+      p: 1,
     },
+    generalButtonStyles: {
+      color: muiTheme.palette.common.white,
+      backgroundColor: muiTheme.palette.grey[800],
+      "&:hover": {
+        backgroundColor: muiTheme.palette.grey[900],
+      },
+      position: "relative",
+    },
+    generalResetButtonStyles: {
+      color: muiTheme.palette.grey[400],
+    },
+    generalApplyButtonStyles: {
+      color: muiTheme.palette.common.white,
+      backgroundColor: muiTheme.palette.grey[800],
+      "&:hover": {
+        backgroundColor: muiTheme.palette.grey[900],
+      },
+    },
+    generalPopperBox: {},
   };
 };

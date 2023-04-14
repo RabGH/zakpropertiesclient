@@ -12,6 +12,8 @@ export const getPropertyGridCardStyles = () => {
       flexDirection: "column",
     },
 
+    propertyCardGridSearchBarBox: {},
+
     paginationBox: {
       display: "flex",
       justifyContent: "center",
@@ -26,18 +28,12 @@ export const getPropertyGridCardStyles = () => {
         color: muiTheme.palette.primary.main,
         backgroundColor: muiTheme.palette.success.light,
       },
-      mb: "5rem",
+      mb: "3rem",
     },
 
     cardGridStyles: {
       width: "100%",
       maxWidth: "1300px",
-    },
-
-    gridStyles: {
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "center",
     },
 
     propertyCardBox: {
@@ -47,10 +43,10 @@ export const getPropertyGridCardStyles = () => {
     },
 
     searchGridDividerStyles: {
-      mb: "1rem",
-      borderWidth: 1,
-      borderColor: "white",
-      minWidth: "80%",
+      m: "1rem",
+      // borderWidth: 1,
+      // borderColor: "white",
+      // minWidth: "80%",
     },
   };
 };

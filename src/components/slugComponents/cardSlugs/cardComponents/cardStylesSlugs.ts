@@ -1,9 +1,31 @@
+export const mainAll = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+}
+
+export const allCardStyles = {
+  maxWidth: "420px",
+  maxHeight: "490px",
+  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.5)",
+  borderRadius: "10px",
+  overflow: "hidden",
+  transition: "all 0.3s ease-in-out",
+  backgroundColor: "transparent",
+  "&:hover": {
+    boxShadow: "0px 4px 20px rgba(0, 0, 0, 1)",
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+  },
+  padding: "0.7rem",
+};
+
+// ------------------------------------------------
+
 export const main = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   minHeight: "50vh",
-  mb: "1rem",
 };
 
 export const featuredTitlePos = {
@@ -14,6 +36,8 @@ export const featuredTitlePos = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  m: "1.2rem",
+  fontSize: "1.5rem",
 };
 
 export const cardStyles = {
@@ -33,7 +57,7 @@ export const cardStyles = {
 };
 
 export const propertyTypeStyles = {
-  fontSize: "1rem",
+  fontSize: "1.2rem",
 };
 
 export const propertyTitleCard = {

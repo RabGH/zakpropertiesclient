@@ -54,47 +54,49 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
     <Stack sx={styles.generalBubbleStackStyles}>
       <Button
         onClick={handleButtonClick}
-        variant="outlined"
-        sx={styles.bedroomButtonStyles}
+        variant="contained"
+        sx={styles.generalButtonStyles}
       >
         Bedrooms: {low} - {high}
         {high === maxBedrooms && "+"}
       </Button>
-      <Popper open={open} anchorEl={anchorEl} sx={styles.bedroomPopperStyles}>
-        <Box sx={styles.bedroomSearchBoxStyles}>
-          <Slider
-            value={[low, high]}
-            onChange={handleSliderChange}
-            min={minBedrooms}
-            max={maxBedrooms}
-            step={1}
-            marks={marks}
-            valueLabelDisplay="auto"
-            valueLabelFormat={valueLabelFormat}
-            sx={styles.bedroomSliderStyles}
-          />
-          <Stack
-            direction="row"
-            spacing={2}
-            sx={styles.bedroomButtonStackStyles}
-          >
-            <Button
-              onClick={handleApply}
-              variant="contained"
-              sx={styles.bedroomApplyButtonStyles}
+      <Box sx={styles.generalPopperBox}>
+        <Popper open={open} anchorEl={anchorEl} sx={styles.bedroomPopperStyles}>
+          <Box sx={styles.bedroomSearchBoxStyles}>
+            <Slider
+              value={[low, high]}
+              onChange={handleSliderChange}
+              min={minBedrooms}
+              max={maxBedrooms}
+              step={1}
+              marks={marks}
+              valueLabelDisplay="auto"
+              valueLabelFormat={valueLabelFormat}
+              sx={styles.bedroomSliderStyles}
+            />
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={styles.bedroomButtonStackStyles}
             >
-              Apply
-            </Button>
-            <Button
-              onClick={handleReset}
-              variant="outlined"
-              sx={styles.bedroomResetButtonStyles}
-            >
-              Reset
-            </Button>
-          </Stack>
-        </Box>
-      </Popper>
+              <Button
+                onClick={handleApply}
+                variant="contained"
+                sx={styles.generalApplyButtonStyles}
+              >
+                Apply
+              </Button>
+              <Button
+                onClick={handleReset}
+                variant="text"
+                sx={styles.generalResetButtonStyles}
+              >
+                Clear
+              </Button>
+            </Stack>
+          </Box>
+        </Popper>
+      </Box>
     </Stack>
   );
 };

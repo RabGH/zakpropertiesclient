@@ -19,8 +19,8 @@ import {
 import { featuredTitlePos } from "../../components/slugComponents/cardSlugs/cardComponents/cardStylesSlugs";
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 
-import { getProjectPageStyles } from "../../components/slugComponents/pageSlugStyles/projectSlugStyles";
-import { getGeneralSlugStyles } from "../../components/slugComponents/pageSlugStyles/generalSlugStyles";
+import { getProjectPageStyles } from "../../components/pageComponents/pageSlugStyles/projectSlugStyles";
+import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
 
 const MapSlug = dynamic(
   () => import("../../components/slugComponents/MapSlug"),

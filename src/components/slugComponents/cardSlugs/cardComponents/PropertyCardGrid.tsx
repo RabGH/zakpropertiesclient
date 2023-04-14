@@ -36,16 +36,18 @@ const PropertyCardGrid: React.FC<Props> = ({
 
   return (
     <Box sx={styles.mainBox}>
-      <SearchFieldBubbles
-        filteredProperties={filteredProperties}
-        search={search}
-        setSearch={setSearch}
-        properties={properties}
-        setFilteredProperties={setFilteredProperties}
-        priceRange={search.priceRange}
-      />
+      <Box sx={styles.propertyCardGridSearchBarBox}>
+        <SearchFieldBubbles
+          filteredProperties={filteredProperties}
+          search={search}
+          setSearch={setSearch}
+          properties={properties}
+          setFilteredProperties={setFilteredProperties}
+          priceRange={search.priceRange}
+        />
+      </Box>
       <Divider sx={styles.searchGridDividerStyles} />
-      <Grid container spacing={2} sx={styles.cardGridStyles}>
+      <Grid container spacing={0} sx={styles.cardGridStyles}>
         {search.filteredProperties
           .slice((page - 1) * cardsPerPage, page * cardsPerPage)
           .map((property) => (
