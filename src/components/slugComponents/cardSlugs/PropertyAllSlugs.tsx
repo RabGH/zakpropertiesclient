@@ -33,70 +33,66 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
   return (
     <>
       {property && (
-          <Box sx={mainAll}>
-            <Box>
-              <Box sx={mainBox}>
-                <Card sx={allCardStyles}>
-                  {property.mainPropertyImage && (
-                    <CardImageCarousel
-                      images={[
-                        urlFor(property.mainPropertyImage).auto("format").url(),
-                        ...property.propertyImages.map((img) =>
-                          urlFor(img).auto("format").url()
-                        ),
-                      ]}
-                      alt={property.title}
-                    />
-                  )}
-                  <Box sx={cardInfoStyles}>
-                    <Link
-                      key={property._id}
-                      href={`property/${property.slug.current}`}
-                    >
-                      <Typography variant="body1" sx={propertyTypeStyles}>
-                        {property.propertyType}
-                      </Typography>
-                      <Typography variant="h6" sx={propertyTitleCard}>
-                        {property.title}
-                      </Typography>
-                      <Typography variant="body1" sx={propertyAreaCard}>
-                        Area: {formatArea(property.squareFootage)}
-                      </Typography>
-                      <Typography variant="body1" sx={bedroomStyles}>
-                        Bedrooms: {property.bedrooms}
-                      </Typography>
-                      <Box sx={offPlanStyles}>
-                        {property.propertyOffPlan &&
-                        typeof property.propertyOffPlan === "object" &&
-                        property.propertyOffPlan.offplan ? (
-                          <Box>
-                            {property.propertyOffPlan
-                              .propertyCompletionDate && (
-                              <Typography
-                                variant="body1"
-                                sx={offPlanCompleteStyles}
-                              >
-                                Completion date:{" "}
-                                {
-                                  property.propertyOffPlan
-                                    .propertyCompletionDate
-                                }
-                              </Typography>
-                            )}
-                          </Box>
-                        ) : (
-                          <Typography>Ready to buy</Typography>
-                        )}{" "}
-                      </Box>
-                      <Typography variant="body1" sx={propertyPriceCard}>
-                        {formatPrice(property.totalPrice)}
-                      </Typography>
-                    </Link>
-                  </Box>
-                </Card>
-              </Box>
+        <Box sx={mainAll}>
+          <Box>
+            <Box sx={mainBox}>
+              <Card sx={allCardStyles}>
+                {property.mainPropertyImage && (
+                  <CardImageCarousel
+                    images={[
+                      urlFor(property.mainPropertyImage).auto("format").url(),
+                      ...property.propertyImages.map((img) =>
+                        urlFor(img).auto("format").url()
+                      ),
+                    ]}
+                    alt={property.title}
+                  />
+                )}
+                <Box sx={cardInfoStyles}>
+                  <Link
+                    key={property._id}
+                    href={`property/${property.slug.current}`}
+                  >
+                    <Typography variant="body1" sx={propertyTypeStyles}>
+                      {property.propertyType}
+                    </Typography>
+                    <Typography variant="h6" sx={propertyTitleCard}>
+                      {property.title}
+                    </Typography>
+                    <Typography variant="body1" sx={propertyAreaCard}>
+                      Area: {formatArea(property.squareFootage)}
+                    </Typography>
+                    <Typography variant="body1" sx={bedroomStyles}>
+                      Bedrooms: {property.bedrooms}
+                    </Typography>
+                    <Box sx={offPlanStyles}>
+                      {property.propertyOffPlan &&
+                      typeof property.propertyOffPlan === "object" &&
+                      property.propertyOffPlan.offplan ? (
+                        <Box>
+                          {property.propertyOffPlan.propertyCompletionDate && (
+                            <Typography
+                              variant="body1"
+                              sx={offPlanCompleteStyles}
+                            >
+                              Completion date:{" "}
+                              {property.propertyOffPlan.propertyCompletionDate}
+                            </Typography>
+                          )}
+                        </Box>
+                      ) : (
+                        <Typography>Ready to buy</Typography>
+                      )}{" "}
+                    </Box>
+                    <Typography variant="body1" sx={propertyPriceCard}>
+                      {formatPrice(property.totalPrice)}
+                    </Typography>
+                  </Link>
+                </Box>
+              </Card>
             </Box>
           </Box>
+        </Box>
       )}
     </>
   );

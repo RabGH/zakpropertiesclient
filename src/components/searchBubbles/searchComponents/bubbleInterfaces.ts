@@ -45,6 +45,8 @@ export interface BedroomBubbleProps {
   bedroomRange: [number, number];
   setIsChanged: (value: boolean) => void;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
+  clickAwayOpen: boolean;
+  setClickAwayOpen: (value: boolean) => void;
 }
 export interface SizeBubbleProps {
   sizeRange: [number, number];

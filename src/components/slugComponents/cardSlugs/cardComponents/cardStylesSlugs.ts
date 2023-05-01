@@ -2,7 +2,7 @@ export const mainAll = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-}
+};
 
 export const allCardStyles = {
   maxWidth: "420px",

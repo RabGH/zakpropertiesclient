@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BedroomBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { Button, Slider, Stack, Popper, Box } from "@mui/material";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
+import ClickAwayBubble from "../searchComponents/ClickAwayBubble";
 const BedroomBubble: React.FC<BedroomBubbleProps> = ({
   handleBedroomRange,
   minBedrooms,
@@ -9,13 +10,14 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
   search,
   setIsChanged,
   setSearch,
+  clickAwayOpen,
+  setClickAwayOpen,
 }) => {
   const styles = getBubbleStyles();
   const [low, setLow] = useState<number>(minBedrooms);
   const [high, setHigh] = useState<number>(maxBedrooms);
   const [open, setOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
   useEffect(() => {
     if (low !== search.bedrooms[0] || high !== search.bedrooms[1]) {
       setIsChanged(true);
@@ -61,41 +63,47 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
         {high === maxBedrooms && "+"}
       </Button>
       <Box sx={styles.generalPopperBox}>
-        <Popper open={open} anchorEl={anchorEl} sx={styles.bedroomPopperStyles}>
-          <Box sx={styles.bedroomSearchBoxStyles}>
-            <Slider
-              value={[low, high]}
-              onChange={handleSliderChange}
-              min={minBedrooms}
-              max={maxBedrooms}
-              step={1}
-              marks={marks}
-              valueLabelDisplay="auto"
-              valueLabelFormat={valueLabelFormat}
-              sx={styles.bedroomSliderStyles}
-            />
-            <Stack
-              direction="row"
-              spacing={2}
-              sx={styles.bedroomButtonStackStyles}
-            >
-              <Button
-                onClick={handleApply}
-                variant="contained"
-                sx={styles.generalApplyButtonStyles}
+        <ClickAwayBubble open={clickAwayOpen} setOpen={setClickAwayOpen}>
+          <Popper
+            open={open}
+            anchorEl={anchorEl}
+            sx={styles.bedroomPopperStyles}
+          >
+            <Box sx={styles.bedroomSearchBoxStyles}>
+              <Slider
+                value={[low, high]}
+                onChange={handleSliderChange}
+                min={minBedrooms}
+                max={maxBedrooms}
+                step={1}
+                marks={marks}
+                valueLabelDisplay="auto"
+                valueLabelFormat={valueLabelFormat}
+                sx={styles.bedroomSliderStyles}
+              />
+              <Stack
+                direction="row"
+                spacing={2}
+                sx={styles.bedroomButtonStackStyles}
               >
-                Apply
-              </Button>
-              <Button
-                onClick={handleReset}
-                variant="text"
-                sx={styles.generalResetButtonStyles}
-              >
-                Clear
-              </Button>
-            </Stack>
-          </Box>
-        </Popper>
+                <Button
+                  onClick={handleApply}
+                  variant="contained"
+                  sx={styles.generalApplyButtonStyles}
+                >
+                  Apply
+                </Button>
+                <Button
+                  onClick={handleReset}
+                  variant="text"
+                  sx={styles.generalResetButtonStyles}
+                >
+                  Clear
+                </Button>
+              </Stack>
+            </Box>
+          </Popper>
+        </ClickAwayBubble>
       </Box>
     </Stack>
   );
