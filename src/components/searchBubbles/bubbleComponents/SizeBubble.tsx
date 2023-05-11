@@ -4,7 +4,8 @@ import {
   Popper,
   Slider,
   Stack,
-  Typography,
+  Menu,
+  MenuList,
   Box,
   Chip,
 } from "@mui/material";
@@ -17,19 +18,14 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
   search,
   setSearch,
 }) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const styles = getBubbleStyles();
   const [low, setLow] = useState<number>(sizeRange[0]);
   const [high, setHigh] = useState<number>(sizeRange[1]);
   const [buttonText, setButtonText] = useState<string>("Any");
+  const [open, setOpen] = useState<boolean>(false);
 
-  const styles = getBubbleStyles();
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popper" : undefined;
   const minSize = 100;
   const maxSize = 100000;
-  const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
-  };
 
   const handleSliderChange = (
     event: Event,
@@ -43,7 +39,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
 
   const handleApply = () => {
     handleSizeRange([low, high]);
-    setAnchorEl(null);
+    setOpen(false);
     if (low === search.sizeRange[0] && high === search.sizeRange[1]) {
       setButtonText("Any");
     } else if (low === minSize && high === maxSize) {
@@ -77,18 +73,28 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
     { value: 100000, label: "100000" },
   ].filter((mark) => mark.value % 50000 === 0);
 
+  const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
+    setOpen((prev) => !prev);
+  };
+
   return (
     <Stack sx={styles.generalBubbleStackStyles}>
       <Button
         onClick={handleButtonClick}
         variant="contained"
         sx={styles.generalButtonStyles}
+        id="size-button"
       >
         Size Range: {buttonText}
       </Button>
       <Box sx={styles.generalPopperBox}>
-        <Popper open={open} anchorEl={anchorEl} sx={styles.sizePopperStyles}>
-          <Box sx={styles.sizeSearchBoxStyles}>
+        <Menu
+          open={open}
+          onClose={() => setOpen(false)}
+          anchorEl={document.getElementById("size-button")}
+          sx={styles.sizeMenuStyles}
+        >
+          <MenuList sx={styles.sizeMenuListStyles}>
             <Slider
               value={[low, high]}
               onChange={handleSliderChange}
@@ -152,8 +158,8 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
                 Clear
               </Button>
             </Stack>
-          </Box>
-        </Popper>
+          </MenuList>
+        </Menu>
       </Box>
     </Stack>
   );

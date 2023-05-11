@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BedroomBubbleProps } from "../searchComponents/bubbleInterfaces";
-import { Button, Slider, Stack, Popover, Box } from "@mui/material";
+import { Button, Slider, Stack, Menu, Box, MenuList } from "@mui/material";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
+
 const BedroomBubble: React.FC<BedroomBubbleProps> = ({
   handleBedroomRange,
   minBedrooms,
@@ -36,15 +37,15 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
     }
   };
 
-  const valueLabelFormat = (value: number) => {
-    return value === maxBedrooms ? `${value}+` : value;
-  };
-  const marks = [{ value: minBedrooms }, { value: maxBedrooms }];
-
   const handleReset = () => {
     setLow(1);
     setHigh(15);
   };
+
+  const valueLabelFormat = (value: number) => {
+    return value === maxBedrooms ? `${value}+` : value;
+  };
+  const marks = [{ value: minBedrooms }, { value: maxBedrooms }];
 
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setOpen((prev) => !prev);
@@ -55,18 +56,19 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
         onClick={handleButtonClick}
         variant="contained"
         sx={styles.generalButtonStyles}
+        id="bedroom-button"
       >
         Bedrooms: {low} - {high}
         {high === maxBedrooms && "+"}
       </Button>
       <Box sx={styles.generalPopperBox}>
-        <Popover
+        <Menu
           open={open}
           onClose={() => setOpen(false)}
           anchorEl={document.getElementById("bedroom-button")}
-          sx={styles.bedroomPopperStyles}
+          sx={styles.bedroomMenuStyles}
         >
-          <Box sx={styles.bedroomSearchBoxStyles}>
+          <MenuList sx={styles.bedroomMenuListStyles}>
             <Slider
               value={[low, high]}
               onChange={handleSliderChange}
@@ -74,7 +76,7 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
               max={maxBedrooms}
               step={1}
               marks={marks}
-              valueLabelDisplay="auto"
+              valueLabelDisplay="on"
               valueLabelFormat={valueLabelFormat}
               sx={styles.bedroomSliderStyles}
             />
@@ -98,8 +100,8 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
                 Clear
               </Button>
             </Stack>
-          </Box>
-        </Popover>
+          </MenuList>
+        </Menu>
       </Box>
     </Stack>
   );

@@ -23,12 +23,21 @@ export const getBubbleStyles = () => {
     searchResultsButton: {},
 
     // BedroomBubble.tsx Styles
-    bedroomPopperStyles: {
-      width: "800px",
-      height: "500px",
+    bedroomMenuStyles: {
+      width: "500px",
+      height: "180px",
       overflow: "visible",
+      mt: "0.5rem",
     },
-    bedroomSearchBoxStyles: {},
+    bedroomMenuListStyles: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "space-between",
+      pt: "2rem",
+      pr: "2rem",
+      pl: "2rem",
+    },
     bedroomSliderStyles: {
       width: "250px",
       "& & .MuiSlider-valueLabel": {
@@ -132,19 +141,21 @@ export const getBubbleStyles = () => {
     readyMenuStyles: {},
 
     // SizeBubble.tsx Styles
-    sizePopperStyles: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "center",
-      p: "0.5rem",
-      width: "320px",
-      height: "200px",
-      borderRadius: "8px",
-      backgroundColor: muiTheme.palette.background.paper,
-      border: "1px solid gray",
-      zIndex: 9999,
+    sizeMenuStyles: {
+      width: "1000px",
+      height: "1000px",
+      overflow: "visible",
+      mt: "0.5rem",
     },
-    sizeSearchBoxStyles: {},
+    sizeMenuListStyles: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "space-between",
+      pt: "2rem",
+      pr: "3rem",
+      pl: "2.3rem",
+    },
     sizeSliderStyles: {
       width: "250px",
       "& & .MuiSlider-valueLabel": {
@@ -164,7 +175,7 @@ export const getBubbleStyles = () => {
     sizeChipLabelStyles: {
       color: "white",
       backgroundColor: muiTheme.palette.grey[900],
-      mb: 0.3,
+      mb: "0.5rem",
     },
     sizeChipNumberStyles: {
       color: "white",
@@ -174,7 +185,7 @@ export const getBubbleStyles = () => {
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
-      mt: "1rem",
+      mt: "0.3rem",
     },
 
     // General Bubble Styles
