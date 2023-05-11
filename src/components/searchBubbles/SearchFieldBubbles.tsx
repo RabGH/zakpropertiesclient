@@ -19,7 +19,6 @@ const SearchFieldBubbles = ({
 }: SearchFieldBubblesProps) => {
   const styles = getBubbleStyles();
   const [isChanged, setIsChanged] = useState(false);
-  const [clickAwayOpen, setClickAwayOpen] = useState<boolean>(false);
   const [readyToBuyOption, setReadyToBuyOption] = useState("Any");
   const [results, setResults] = useState(filteredProperties.length);
   const [priceRange, setPriceRange] = useState<[number, number]>([
@@ -148,8 +147,6 @@ const SearchFieldBubbles = ({
           bedroomRange={bedroomRange}
           setIsChanged={setIsChanged}
           setSearch={setSearch}
-          clickAwayOpen={clickAwayOpen}
-          setClickAwayOpen={setClickAwayOpen}
         />
         <SizeBubble
           handleSizeRange={(sizeRange) => setSizeRange(sizeRange)}

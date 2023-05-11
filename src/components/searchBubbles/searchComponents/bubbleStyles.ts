@@ -24,16 +24,9 @@ export const getBubbleStyles = () => {
 
     // BedroomBubble.tsx Styles
     bedroomPopperStyles: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "center",
-      p: "0.5rem",
-      width: "300px",
-      height: "100px",
-      borderRadius: "8px",
-      backgroundColor: muiTheme.palette.background.paper,
-      border: "1px solid gray",
-      zIndex: 9999,
+      width: "800px",
+      height: "500px",
+      overflow: "visible",
     },
     bedroomSearchBoxStyles: {},
     bedroomSliderStyles: {
