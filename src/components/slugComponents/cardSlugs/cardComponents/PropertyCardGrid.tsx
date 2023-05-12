@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Grid, Pagination, Divider } from "@mui/material";
 import { Property } from "../../../../../lib/types";
-import PropertyCard from "../PropertyAllSlugs";
+import PropertyAllCard from "../PropertyAllSlugs";
 import SearchFieldBubbles from "../../../searchBubbles/SearchFieldBubbles";
 import { getPropertyGridCardStyles } from "./propertyCardGridStyles";
 import { SearchInterface } from "../../../searchBubbles/searchComponents/bubbleInterfaces";
@@ -52,7 +52,7 @@ const PropertyCardGrid: React.FC<Props> = ({
           .slice((page - 1) * cardsPerPage, page * cardsPerPage)
           .map((property) => (
             <Grid item xs={12} sm={6} md={4} key={property._id}>
-              <PropertyCard property={property} />
+              <PropertyAllCard property={property} />
             </Grid>
           ))}
       </Grid>

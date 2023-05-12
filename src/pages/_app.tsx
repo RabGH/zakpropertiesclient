@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "../../public/styles/MuiTheme";
 import slugTheme from "../../public/styles/slugTheme";
-import NavBar from "../components/navbar/homeNavBar/fadeNavBar";
+import FadeNavBar from "../components/navbar/homeNavBar/fadeNavBar";
 import MainNavBar from "../components/navbar/allNavBar/mainNavBar";
 import Footer from "../components/footer/Footer";
 import { useRouter } from "next/router";
@@ -17,6 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   const isProjectsPage = pathname.startsWith("/projects");
   const isPropertiesPage = pathname.startsWith("/property");
+  const isBuyPropertiesPage = pathname.startsWith("/buyProperties");
   const isHomePage = pathname === "/";
 
   return (
@@ -25,14 +26,18 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         {isHomePage ? (
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <NavBar />
+            <FadeNavBar />
             <Component {...pageProps} />
             <Footer />
           </ThemeProvider>
         ) : (
           <>
             <ThemeProvider
-              theme={isProjectsPage || isPropertiesPage ? slugTheme : theme}
+              theme={
+                isProjectsPage || isPropertiesPage || isBuyPropertiesPage
+                  ? slugTheme
+                  : theme
+              }
             >
               <CssBaseline />
               <MainNavBar />

@@ -13,6 +13,7 @@ export const getBubbleStyles = () => {
       alignItems: "center",
       justifyContent: "center",
       p: "0.5rem",
+      mb: "2rem",
     },
     searchButtonBox: {
       p: "8px",

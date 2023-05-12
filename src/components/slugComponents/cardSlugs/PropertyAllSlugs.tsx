@@ -18,6 +18,7 @@ import {
   offPlanStyles,
   offPlanTextStyles,
   offPlanCompleteStyles,
+  offPlanReadyToBuyStyles,
 } from "./cardComponents/cardStylesSlugs";
 import CardImageCarousel from "./cardComponents/CardImageCarousel";
 
@@ -53,16 +54,16 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                     key={property._id}
                     href={`property/${property.slug.current}`}
                   >
-                    <Typography variant="body1" sx={propertyTypeStyles}>
+                    <Typography variant="body2" sx={propertyTypeStyles}>
                       {property.propertyType}
                     </Typography>
                     <Typography variant="h6" sx={propertyTitleCard}>
                       {property.title}
                     </Typography>
-                    <Typography variant="body1" sx={propertyAreaCard}>
+                    <Typography variant="body2" sx={propertyAreaCard}>
                       Area: {formatArea(property.squareFootage)}
                     </Typography>
-                    <Typography variant="body1" sx={bedroomStyles}>
+                    <Typography variant="body2" sx={bedroomStyles}>
                       Bedrooms: {property.bedrooms}
                     </Typography>
                     <Box sx={offPlanStyles}>
@@ -72,7 +73,7 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                         <Box>
                           {property.propertyOffPlan.propertyCompletionDate && (
                             <Typography
-                              variant="body1"
+                              variant="body2"
                               sx={offPlanCompleteStyles}
                             >
                               Completion date:{" "}
@@ -81,10 +82,10 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                           )}
                         </Box>
                       ) : (
-                        <Typography>Ready to buy</Typography>
+                        <Typography variant="body2" sx={offPlanReadyToBuyStyles}>Ready to buy</Typography>
                       )}{" "}
                     </Box>
-                    <Typography variant="body1" sx={propertyPriceCard}>
+                    <Typography variant="body2" sx={propertyPriceCard}>
                       {formatPrice(property.totalPrice)}
                     </Typography>
                   </Link>

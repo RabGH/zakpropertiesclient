@@ -7,17 +7,20 @@ export const mainAll = {
 export const allCardStyles = {
   maxWidth: "420px",
   maxHeight: "490px",
-  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.5)",
+  boxShadow: "none",
   borderRadius: "10px",
   overflow: "hidden",
   transition: "all 0.3s ease-in-out",
   backgroundColor: "transparent",
+  padding: "0.7rem",
+  mt: "-1rem",
   "&:hover": {
     boxShadow: "0px 4px 20px rgba(0, 0, 0, 1)",
     backgroundColor: "rgba(255, 255, 255, 0.05)",
   },
-  padding: "0.7rem",
 };
+
+export const offPlanReadyToBuyStyles = {};
 
 // ------------------------------------------------
 
@@ -48,11 +51,11 @@ export const cardStyles = {
   overflow: "hidden",
   transition: "all 0.3s ease-in-out",
   backgroundColor: "transparent",
+  padding: "0.7rem",
   "&:hover": {
     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
     backgroundColor: "rgba(255, 255, 255, 0.1)",
   },
-  padding: "0.7rem",
   // paddingBottom: '10rem',
 };
 
