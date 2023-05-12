@@ -3,11 +3,34 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Link from "next/link";
 import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
-import { mainBox, iconSocialStyles } from "./navContentStyles";
+import { useScrollTrigger } from "@mui/material";
+import { mainBox, iconSocialStyles } from "../navContentStyles";
 
-const SocialIcons = () => {
+const FadeNavSocials = () => {
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 60,
+    target: typeof window !== "undefined" ? window : undefined,
+  });
+
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    if (trigger) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }, [trigger]);
+
   return (
-    <Box sx={mainBox}>
+    <Box
+      sx={{
+        ...mainBox,
+        opacity: visible ? 1 : 0,
+        transition: "all 0.3s ease-out",
+      }}
+    >
       <Link
         href="https://api.whatsapp.com/send?phone=123456789"
         target="_blank"
@@ -30,4 +53,4 @@ const SocialIcons = () => {
   );
 };
 
-export default SocialIcons;
+export default FadeNavSocials;

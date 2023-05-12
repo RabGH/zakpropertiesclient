@@ -6,9 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import SocialIcons from "./mainNavSocials";
-import NoBgLogo from "../../../public/images/logo/logoNoBg.png";
+import NoBgLogo from "../../../../public/images/logo/logoNoBg.png";
 import BurgerNav from "./burgerNav";
-import { navContents } from "./navContentStyles";
+import { navContents } from "../navContentStyles";
 
 interface Props {
   children?: React.ReactNode;

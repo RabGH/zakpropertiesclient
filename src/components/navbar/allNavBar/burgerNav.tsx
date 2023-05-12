@@ -13,7 +13,7 @@ import {
   popperStyles,
   popperPaperStyles,
   menuIconStyles,
-} from "./navContentStyles";
+} from "../navContentStyles";
 
 export default function BurgerNav() {
   const [open, setOpen] = React.useState(false);

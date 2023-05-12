@@ -8,9 +8,9 @@ import { styled } from "@mui/material/styles";
 import { useScrollTrigger } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import FadeNavSocials from "./fadeNavSocials";
-import BurgerNav from "./burgerNav";
-import NoBgLogo from "../../../public/images/logo/logoNoBg.png";
-import { navContents } from "./navContentStyles";
+import FadeBurgerNav from "../homeNavBar/fadeBurgerNav";
+import NoBgLogo from "../../../../public/images/logo/logoNoBg.png";
+import { navContents } from "../navContentStyles";
 
 interface Props {
   children?: React.ReactNode;
@@ -83,7 +83,7 @@ export default function ElevateAppBar(props: Props): JSX.Element {
               </Link>
               <Box sx={navContents}>
                 <FadeNavSocials />
-                <BurgerNav />
+                <FadeBurgerNav />
               </Box>
             </StyledToolbar>
           </StyledAppBar>

@@ -203,7 +203,7 @@ function SearchBar(props: SearchBarProps) {
               sx={propertiesButtonStyles}
               variant="contained"
             >
-              Properties {getButtonLabel(["Properties"])}
+              {/* {getButtonLabel(["Properties"])} */}Properties
             </Button>
           </Link>
           <Link href="/developments" passHref>
@@ -212,7 +212,7 @@ function SearchBar(props: SearchBarProps) {
               sx={projectButtonStyles}
               variant="contained"
             >
-              Developments {getButtonLabel(["Projects"])}
+              {/* {getButtonLabel(["Projects"])} */}Developments
             </Button>
           </Link>
         </Box>
