@@ -72,19 +72,21 @@ export const getBubbleStyles = () => {
     },
 
     // PriceRangeBubble.tsx Styles
-    pricePopperStyles: {
+    priceMenuStyles: {
+      width: "1000px",
+      height: "1000px",
+      overflow: "visible",
+      mt: "0.5rem",
+    },
+    priceMenuListStyles: {
       display: "flex",
-      flexDirection: "row",
-      justifyContent: "center",
-      p: "0.5rem",
-      width: "420px",
-      height: "150px",
-      borderRadius: "8px",
-      backgroundColor: muiTheme.palette.background.paper,
-      border: "1px solid gray",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "space-between",
     },
     priceSearchBoxStyles: {
-      p: 1.5,
+      pr: 2,
+      pl: 2,
     },
     priceSelectStackStyles: {
       alignItems: "center",
