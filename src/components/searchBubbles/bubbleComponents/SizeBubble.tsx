@@ -22,6 +22,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
   const [high, setHigh] = useState<number>(sizeRange[1]);
   const [buttonText, setButtonText] = useState<string>("Any");
   const [open, setOpen] = useState<boolean>(false);
+  const buttonRef = React.useRef(null);
 
   const minSize = 100;
   const maxSize = 100000;
@@ -82,7 +83,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
         onClick={handleButtonClick}
         variant="contained"
         sx={styles.generalButtonStyles}
-        id="size-button"
+        ref={buttonRef}
       >
         Size Range: {buttonText}
       </Button>
@@ -90,7 +91,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
         <Menu
           open={open}
           onClose={() => setOpen(false)}
-          anchorEl={document.getElementById("size-button")}
+          anchorEl={buttonRef.current}
           sx={styles.sizeMenuStyles}
         >
           <MenuList sx={styles.sizeMenuListStyles}>

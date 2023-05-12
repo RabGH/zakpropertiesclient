@@ -43,10 +43,7 @@ export const getPropertyGridCardStyles = () => {
     },
 
     searchGridDividerStyles: {
-      m: "1rem",
-      // borderWidth: 1,
-      // borderColor: "white",
-      // minWidth: "80%",
+      m: "0.1rem",
     },
   };
 };

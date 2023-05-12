@@ -23,6 +23,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   const [high, setHigh] = useState<number>(priceRange[1]);
   const [buttonText, setButtonText] = useState<string>("Any");
   const [open, setOpen] = useState<boolean>(false);
+  const buttonRef = React.useRef(null);
 
   const minPrice = 0;
   const maxPrice = 1000000000;
@@ -90,16 +91,13 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
     });
   };
 
-  const inputRef = useRef(null);
-
   return (
     <Stack sx={styles.generalBubbleStackStyles}>
       <Button
         onClick={handleButtonClick}
         variant="contained"
         sx={styles.generalButtonStyles}
-        ref={inputRef}
-        id="price-button"
+        ref={buttonRef}
       >
         Price Range: {buttonText}
       </Button>
@@ -107,7 +105,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
         <Menu
           open={open}
           onClose={() => setOpen(false)}
-          anchorEl={document.getElementById("price-button")}
+          anchorEl={buttonRef.current}
           sx={styles.priceMenuStyles}
         >
           <MenuList sx={styles.priceMenuListStyles}>

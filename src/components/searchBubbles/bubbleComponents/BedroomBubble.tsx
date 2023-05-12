@@ -15,6 +15,7 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
   const [low, setLow] = useState<number>(minBedrooms);
   const [high, setHigh] = useState<number>(maxBedrooms);
   const [open, setOpen] = useState<boolean>(false);
+  const buttonRef = React.useRef(null);
 
   useEffect(() => {
     if (low !== search.bedrooms[0] || high !== search.bedrooms[1]) {
@@ -56,7 +57,7 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
         onClick={handleButtonClick}
         variant="contained"
         sx={styles.generalButtonStyles}
-        id="bedroom-button"
+        ref={buttonRef}
       >
         Bedrooms: {low} - {high}
         {high === maxBedrooms && "+"}
@@ -65,7 +66,7 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
         <Menu
           open={open}
           onClose={() => setOpen(false)}
-          anchorEl={document.getElementById("bedroom-button")}
+          anchorEl={buttonRef.current}
           sx={styles.bedroomMenuStyles}
         >
           <MenuList sx={styles.bedroomMenuListStyles}>

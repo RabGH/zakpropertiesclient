@@ -12,10 +12,7 @@ export const getBubbleStyles = () => {
       flexWrap: "wrap",
       alignItems: "center",
       justifyContent: "center",
-      backgroundColor: "#00000050",
-      borderRadius: "15px",
       p: "0.5rem",
-      boxShadow: "0px 0px 5px 0px #FFFFFF30",
     },
     searchButtonBox: {
       p: "8px",
