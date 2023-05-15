@@ -6,8 +6,12 @@ import {
   dividerCardStyles,
   mainTitle,
 } from "./amenitiesFeaturesStyles";
+
 interface AmenitiesSlugProps {
-  amenities: string[];
+  amenities: {
+    name: string;
+    amenities: string[];
+  };
 }
 
 export const amenityStyles = {
@@ -20,13 +24,13 @@ const AmenitiesSlug = ({ amenities }: AmenitiesSlugProps) => {
   return (
     <Box sx={cardStyles}>
       <Typography variant="h6" sx={mainTitle}>
-        Property's Amenities
+        {amenities.name}
       </Typography>
       <Divider sx={dividerCardStyles} />
       <Box sx={boxStyles}>
-        {amenities.map((amenity) => (
-          <Typography key={amenity} variant="body2" sx={mainStyles}>
-            {amenity}
+        {amenities?.amenities?.map((opt) => (
+          <Typography key={opt} variant="body2" sx={mainStyles}>
+            {opt}
           </Typography>
         ))}
       </Box>

@@ -1,36 +1,35 @@
 import { sanityClient } from "../../../lib/sanity";
 import { isMultiple, formatPrice, formatArea } from "../../../lib/utils";
 import Link from "next/link";
-import { Box, Divider, Typography, Card } from "@mui/material";
-import GeneralButton from "../../components/general/GButton";
+import { Box, Divider, Typography, Card, Button } from "@mui/material";
 import { BiBed } from "react-icons/bi";
 import { BiBath } from "react-icons/bi";
 import FeaturesSlug from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
 import { featuresStyles } from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
 import dynamic from "next/dynamic";
-const MapSlug = dynamic(
-  () => import("../../components/slugComponents/MapSlug"),
-  {
-    ssr: false,
-  }
-);
 import { Property as PropertyProps } from "../../../lib/types";
+import { getPropertyPageStyles } from "../../components/pageComponents/pageSlugStyles/propertySlugStyles";
+import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
+import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
 import {
   mainContainer,
   mainImageContainer,
   viewPhotosBox,
 } from "../../components/slugComponents/imageCarouselStyles";
-import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
-
-import { getPropertyPageStyles } from "../../components/pageComponents/pageSlugStyles/propertySlugStyles";
-import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
 
 interface PageContext {
   query: {
     slug: string;
   };
 }
+
+const MapSlug = dynamic(
+  () => import("../../components/slugComponents/MapSlug"),
+  {
+    ssr: false,
+  }
+);
 
 const Property = ({
   title,
@@ -76,9 +75,26 @@ const Property = ({
             <Typography variant="h2" sx={generalStyles.titleStyle}>
               {title}
             </Typography>
-            <Typography variant="h3" sx={generalStyles.priceStyle}>
-              {formatPrice(totalPrice)}
-            </Typography>
+            <Card>
+              <Box sx={generalStyles.priceBox}>
+                <Typography variant="h3" sx={generalStyles.priceStyle}>
+                  {formatPrice(totalPrice)}
+                </Typography>
+
+                <Box sx={generalStyles.priceButtonPos}>
+                  <Link href="/contact">
+                    <Button variant="contained" sx={generalStyles.buttonStyles}>
+                      Learn More
+                    </Button>
+                  </Link>
+                  <Link href="/buyProperties">
+                    <Button variant="contained" sx={generalStyles.buttonStyles}>
+                      View More Properties
+                    </Button>
+                  </Link>
+                </Box>
+              </Box>
+            </Card>
           </Box>
 
           <Box sx={generalStyles.mainSection}>
@@ -141,26 +157,6 @@ const Property = ({
                 {description}
               </Typography>
             </Box>
-            <Box sx={generalStyles.priceBox}>
-              <Box sx={generalStyles.priceButtonPos}>
-                <Link href="/contact">
-                  <GeneralButton
-                    variant="contained"
-                    sx={generalStyles.buttonStyles}
-                  >
-                    Learn More
-                  </GeneralButton>
-                </Link>
-                <Link href="/buyProperties">
-                  <GeneralButton
-                    variant="contained"
-                    sx={generalStyles.buttonStyles}
-                  >
-                    View More Properties
-                  </GeneralButton>
-                </Link>
-              </Box>
-            </Box>
           </Box>
 
           <Divider sx={generalStyles.dividerStyles} />
@@ -195,6 +191,8 @@ export const getServerSideProps = async (pageContext: PageContext) => {
   const query = `*[ _type == "property" && slug.current == $pageSlug][0]{
       title,
       location,
+      address,
+      specificAddress,
       propertyType,
       mainPropertyImage,
       propertyImages,
@@ -205,9 +203,12 @@ export const getServerSideProps = async (pageContext: PageContext) => {
       squareFootage,
       plottedArea,
       builtUpArea,
-      features,
+      features->{
+        name,
+        features[],
+      },
       propertyOffPlan,
-    }`;
+      }`;
 
   const property = await sanityClient.fetch(query, { pageSlug });
   if (!property) {
@@ -230,7 +231,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         squareFootage: property.squareFootage || null,
         plottedArea: property.plottedArea || null,
         builtUpArea: property.builtUpArea || null,
-        features: property.features,
+        features: property.features || [],
         propertyOffPlan: property.propertyOffPlan || null,
       },
     };

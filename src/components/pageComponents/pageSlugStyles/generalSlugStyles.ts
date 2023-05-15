@@ -55,6 +55,12 @@ export const getGeneralSlugStyles = () => {
       overflow: "hidden",
       padding: "1rem",
     },
+    viewMoreProperties: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      mt: "1rem",
+    },
     titleStyle: {},
     offPlanStyles: {},
     offPlanTextStyles: {},

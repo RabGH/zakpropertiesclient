@@ -8,7 +8,10 @@ import {
 } from "./amenitiesFeaturesStyles";
 
 interface FeaturesSlugProps {
-  features: string[];
+  features: {
+    name: string;
+    features: string[];
+  };
 }
 
 export const featuresStyles = {
@@ -21,13 +24,13 @@ const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
   return (
     <Box sx={cardStyles}>
       <Typography variant="h6" sx={mainTitle}>
-        Property's Features
+        {features.name}
       </Typography>
       <Divider sx={dividerCardStyles} />
       <Box sx={boxStyles}>
-        {features.map((feat) => (
-          <Typography key={feat} variant="body2" sx={mainStyles}>
-            {feat}
+        {features?.features?.map((opt) => (
+          <Typography key={opt} variant="body2" sx={mainStyles}>
+            {opt}
           </Typography>
         ))}
       </Box>

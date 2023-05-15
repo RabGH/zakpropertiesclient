@@ -1,8 +1,14 @@
 import { sanityClient } from "../../../lib/sanity";
 import { formatPrice, formatArea } from "../../../lib/utils";
 import Link from "next/link";
-import { Box, Divider, Typography, Card, Container } from "@mui/material";
-import GeneralButton from "../../components/general/GButton";
+import {
+  Box,
+  Divider,
+  Typography,
+  Card,
+  Container,
+  Button,
+} from "@mui/material";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
 import ProjectPropertyCards from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
 import { propertyContainer } from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
@@ -52,6 +58,8 @@ const Projects = ({
   bedrooms,
   amenities,
   location,
+  address,
+  specificAddress,
   properties,
 }: ProjectsProps) => {
   const styles = getProjectPageStyles();
@@ -148,20 +156,14 @@ const Projects = ({
         <Box sx={generalStyles.priceBox}>
           <Box sx={generalStyles.priceButtonPos}>
             <Link href="/contact">
-              <GeneralButton
-                variant="contained"
-                sx={generalStyles.buttonStyles}
-              >
+              <Button variant="contained" sx={generalStyles.buttonStyles}>
                 Learn More
-              </GeneralButton>
+              </Button>
             </Link>
             <Link href="/developments">
-              <GeneralButton
-                variant="contained"
-                sx={generalStyles.buttonStyles}
-              >
+              <Button variant="contained" sx={generalStyles.buttonStyles}>
                 View More Developments
-              </GeneralButton>
+              </Button>
             </Link>
           </Box>
         </Box>
@@ -180,11 +182,13 @@ const Projects = ({
           </Box>
         ))}
       </Box>
-      <Link href="/buyProperties">
-        <GeneralButton variant="contained" sx={generalStyles.buttonStyles}>
-          View More Properties
-        </GeneralButton>
-      </Link>
+      <Box sx={generalStyles.viewMoreProperties}>
+        <Link href="/buyProperties">
+          <Button variant="contained" sx={generalStyles.buttonStyles}>
+            View More Properties
+          </Button>
+        </Link>
+      </Box>
       <Divider sx={generalStyles.dividerStyles} />
       <Box sx={styles.mapCardPos}>
         <Card sx={generalStyles.mapCard}>
@@ -206,47 +210,55 @@ export const getServerSideProps = async (pageContext: PageContext) => {
   const pageSlug = pageContext.query.slug;
 
   const query = `*[ _type == "projects" && slug.current == $pageSlug][0]{
+      title,
+      projectPropertyTypes,
+      unitType,
+      projectOffPlan,
+      mainDeveloper,
+      mainProjectImage,
+      totalPrice,
+      description,
+      squareFootage,
+      projectImages,
+      location,
+      address->{
+        street,
+        city,
+      },
+      specificAddress,
+      projectBuiltUpArea,
+      projectType,
+      numFloors,
+      numUnits,
+      numVillas,
+      bedrooms,
+      amenities->{
+        name,
+        amenities[],
+        },
+      properties[]->{
         title,
-        projectPropertyTypes,
-        unitType,
-        projectOffPlan,
-        mainDeveloper,
-        mainProjectImage,
+        location,
+        propertyType,
+        mainPropertyImage,
+        propertyImages,
         totalPrice,
+        bathrooms,
+        bedrooms,
         description,
         squareFootage,
-        projectImages,
-        amenities,
-        location,
-        projectBuiltUpArea,
-        projectType,
-        numFloors,
-        numUnits,
-        numVillas,
-        bedrooms,
-        properties[]->{
-          title,
-          location,
-          propertyType,
-          mainPropertyImage,
-          propertyImages,
-          totalPrice,
-          bathrooms,
-          bedrooms,
-          description,
-          squareFootage,
-          plottedArea,
-          builtUpArea,
-          features,
-          propertyOffPlan,
-          slug,
+        plottedArea,
+        builtUpArea,
+        features,
+        propertyOffPlan,
+        slug,
         }
-    }`;
+      }`;
 
   const projects = await sanityClient.fetch(query, { pageSlug });
 
-  // console.log(projects);
-  // console.log("Properties: ", projects.properties);
+  console.log(projects);
+  console.log("Properties: ", projects.properties);
 
   if (!projects) {
     return {
@@ -268,7 +280,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         totalPrice: projects.totalPrice,
         description: projects.description,
         squareFootage: projects.squareFootage,
-        amenities: projects.amenities,
+        amenities: projects.amenities || [],
         projectBuiltUpArea: projects.projectBuiltUpArea,
         projectType: projects.projectType,
         mainProjectImage: projects.mainProjectImage || null,
