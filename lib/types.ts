@@ -29,11 +29,16 @@ export interface Property {
   slug: {
     current: string;
   };
-
   location: {
     lat?: number;
     lng?: number;
   };
+  projectId?: {
+    _id?: string;
+    _type?: "reference";
+    _weak?: boolean;
+    projectId: Project;
+  }
 }
 
 export interface Project {

@@ -213,11 +213,11 @@ const Projects = ({
           <Typography variant="h3" sx={styles.locationTitle}>
             Location
           </Typography>
-          <MapSlug
+          {/* <MapSlug
             title={title}
             lat={location?.lat || 0}
             lng={location?.lng || 0}
-          />
+          /> */}
         </Card>
       </Box>
     </Box>

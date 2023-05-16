@@ -48,6 +48,8 @@ const Property = ({
   features,
   location,
   propertyOffPlan,
+  address,
+  specificAddress,
 }: PropertyProps) => {
   const styles = getPropertyPageStyles();
 
@@ -118,14 +120,13 @@ const Property = ({
 
             <Divider sx={styles.dividerStyles} />
 
-            {/* <Typography variant="h6" sx={styles.locationTitle}>
-Location
-</Typography>
-<MapSlug
-title={title}
-lat={location?.lat || 0}
-lng={location?.lng || 0}
-/> */}
+            <MapSlug
+              title={title}
+              lat={location?.lat || 0}
+              lng={location?.lng || 0}
+              address={address}
+              specificAddress={specificAddress}
+            />
           </Box>
           <PropertyReference
             totalPrice={totalPrice}
@@ -142,28 +143,31 @@ export const getServerSideProps = async (pageContext: PageContext) => {
   const pageSlug = pageContext.query.slug;
 
   const query = `*[ _type == "property" && slug.current == $pageSlug][0]{
-        id,
-        title,
-        location,
-        address,
-        specificAddress,
-        propertyType,
-        mainPropertyImage,
-        propertyImages,
-        totalPrice,
-        bathrooms,
-        bedrooms,
-        description,
-        squareFootage,
-        plottedArea,
-        builtUpArea,
-        areaType[],
-        features->{
-          name,
-          features[],
-          },
-        propertyOffPlan,
-        }`;
+            id,
+            title,
+            location,
+            address,
+            specificAddress,
+            propertyType,
+            mainPropertyImage,
+            propertyImages,
+            totalPrice,
+            bathrooms,
+            bedrooms,
+            description,
+            squareFootage,
+            plottedArea,
+            builtUpArea,
+            areaType[],
+            propertyOffPlan,
+            projectId{
+              _id,
+            },
+            features->{
+              name,
+              features[],
+            },
+            }`;
 
   const property = await sanityClient.fetch(query, { pageSlug });
   if (!property) {
@@ -190,6 +194,8 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         areaType: property.areaType || [],
         features: property.features || [],
         propertyOffPlan: property.propertyOffPlan || null,
+        address: property.address || null,
+        specificAddress: property.specificAddress || null,
       },
     };
   }
