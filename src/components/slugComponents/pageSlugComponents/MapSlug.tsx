@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngTuple } from "leaflet";
 import { Box, Typography, IconButton, Modal, Backdrop } from "@mui/material";
 import MapIcon from "@mui/icons-material/Map";
+import { useTheme } from "@mui/material";
 
 interface MapSlugProps {
   lat: number;
@@ -22,6 +23,7 @@ const MapSlug: React.FC<MapSlugProps> = ({
   address,
   specificAddress,
 }) => {
+  const theme = useTheme();
   const position: LatLngTuple = [lat, lng];
   const [open, setOpen] = useState(false);
 
@@ -51,8 +53,8 @@ const MapSlug: React.FC<MapSlugProps> = ({
       >
         <Typography variant="h6">Location</Typography>
         <Typography variant="body2">{specificAddress}</Typography>
-        <Typography variant="body2">{address.street}</Typography>
-        <Typography variant="body2">{address.city}</Typography>
+        <Typography variant="body2">{address?.street}</Typography>
+        <Typography variant="body2">{address?.city}</Typography>
       </Box>
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -62,7 +64,18 @@ const MapSlug: React.FC<MapSlugProps> = ({
         </IconButton>
         <Typography variant="body2">View map</Typography>
       </Box>
-      <Modal open={open} onClose={handleClose} BackdropComponent={Backdrop}>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          zIndex: theme.zIndex.modal + 1,
+          overflow: "hidden",
+        }}
+      >
         <MapContainer
           center={position}
           zoom={13}

@@ -9,7 +9,7 @@ import {
   Container,
   Button,
 } from "@mui/material";
-import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
+import ImageCarousel from "../../components/slugComponents/pageSlugComponents/ImageGallerySlick";
 import ProjectPropertyCards from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
 import { propertyContainer } from "../../components/slugComponents/cardSlugs/ProjectPropertyCards";
 import dynamic from "next/dynamic";
@@ -21,15 +21,15 @@ import {
   mainContainer,
   mainImageContainer,
   viewPhotosBox,
-} from "../../components/slugComponents/imageCarouselStyles";
+} from "../../components/slugComponents/pageSlugComponents/imageCarouselStyles";
 import { featuredTitlePos } from "../../components/slugComponents/cardSlugs/cardComponents/cardStylesSlugs";
-import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
+import ViewAllPhotos from "../../components/slugComponents/pageSlugComponents/viewAllPhotos";
 
 import { getProjectPageStyles } from "../../components/pageComponents/pageSlugStyles/projectSlugStyles";
 // import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
 
 const MapSlug = dynamic(
-  () => import("../../components/slugComponents/MapSlug"),
+  () => import("../../components/slugComponents/pageSlugComponents/MapSlug"),
   {
     ssr: false,
   }
@@ -112,17 +112,11 @@ const Projects = ({
             typeof projectOffPlan === "object" &&
             projectOffPlan.offplan ? (
               <Box>
-                <Typography
-                  variant="body2"
-                  sx={styles.offPlanTextStyles}
-                >
+                <Typography variant="body2" sx={styles.offPlanTextStyles}>
                   Off-plan project
                 </Typography>
                 {projectOffPlan.completionDate && (
-                  <Typography
-                    variant="body2"
-                    sx={styles.offPlanCompleteStyles}
-                  >
+                  <Typography variant="body2" sx={styles.offPlanCompleteStyles}>
                     Completion date: {projectOffPlan.completionDate}
                   </Typography>
                 )}
@@ -179,7 +173,10 @@ const Projects = ({
               </Button>
             </Link>
             <Link href="/developments">
-              <Button variant="contained" sx={styles.viewMoreDevelopmentsStyles}>
+              <Button
+                variant="contained"
+                sx={styles.viewMoreDevelopmentsStyles}
+              >
                 View More Developments
               </Button>
             </Link>

@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { Box, useTheme, ButtonBase } from "@mui/material";
-import { urlFor } from "../../../lib/sanity";
+import { urlFor } from "../../../../lib/sanity";
 import { mainBox, imageBox, imageStyles } from "./imageCarouselStyles";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 

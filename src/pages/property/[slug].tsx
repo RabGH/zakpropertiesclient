@@ -9,14 +9,14 @@ import { featuresStyles } from "../../components/slugComponents/amenitiesFeature
 import dynamic from "next/dynamic";
 import { Property as PropertyProps } from "../../../lib/types";
 import { getPropertyPageStyles } from "../../components/pageComponents/pageSlugStyles/propertySlugStyles";
-import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
-import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
+import ViewAllPhotos from "../../components/slugComponents/pageSlugComponents/viewAllPhotos";
+import ImageCarousel from "../../components/slugComponents/pageSlugComponents/ImageGallerySlick";
 import {
   mainContainer,
   mainImageContainer,
   viewPhotosBox,
-} from "../../components/slugComponents/imageCarouselStyles";
-import PropertyReference from "../../components/slugComponents/referenceCardComponents/PropertyReferenceSlug";
+} from "../../components/slugComponents/pageSlugComponents/imageCarouselStyles";
+import PropertyReference from "../../components/slugComponents/pageSlugComponents/PropertyReferenceSlug";
 
 interface PageContext {
   query: {
@@ -25,7 +25,7 @@ interface PageContext {
 }
 
 const MapSlug = dynamic(
-  () => import("../../components/slugComponents/MapSlug"),
+  () => import("../../components/slugComponents/pageSlugComponents/MapSlug"),
   {
     ssr: false,
   }
@@ -146,7 +146,10 @@ export const getServerSideProps = async (pageContext: PageContext) => {
             id,
             title,
             location,
-            address,
+            address->{
+              street,
+              city,
+            },
             specificAddress,
             propertyType,
             mainPropertyImage,
