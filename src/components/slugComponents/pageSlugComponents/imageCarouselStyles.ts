@@ -35,4 +35,5 @@ export const imageStyles = {
 
 export const viewPhotosBox = {
   ml: "2rem",
+  mb: "1rem",
 };

@@ -7,6 +7,7 @@ import { BiBath } from "react-icons/bi";
 import FeaturesSlug from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
 import { featuresStyles } from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { Property as PropertyProps } from "../../../lib/types";
 import { getPropertyPageStyles } from "../../components/pageComponents/pageSlugStyles/propertySlugStyles";
 import ViewAllPhotos from "../../components/slugComponents/pageSlugComponents/viewAllPhotos";
@@ -72,44 +73,16 @@ const Property = ({
           />
         </Box>
 
-        <Divider sx={styles.dividerStyles} />
-
         <Box sx={styles.mainSection}>
           <Box sx={styles.contentContainer}>
-            <Typography variant="h2" sx={styles.titleStyle}>
+            <Typography variant="h1" sx={styles.titleStyle}>
               {title}
             </Typography>
-            <Divider sx={styles.dividerStyles} />
-            <Typography variant="h6" sx={styles.propertyTypeStyles}>
-              {propertyType}
+            <Typography variant="body2" sx={styles.propertyTypeStyles}>
+              {propertyType} ⋅ {bedrooms} beds ⋅ {bathrooms} baths ⋅{" "}
+              {squareFootage} sq. ft. ⋅ {builtUpArea} sq. ft. ⋅ {plottedArea}{" "}
+              sq. ft. plot
             </Typography>
-            <Divider sx={styles.dividerStyles} />
-            <Typography variant="body2" sx={styles.propertyBedStyles}>
-              {bedrooms} bedroom{isMultiple(bedrooms)} <BiBed />
-            </Typography>
-            <Typography variant="body2" sx={styles.propertyBathroomStyles}>
-              {bathrooms} bathroom{isMultiple(bathrooms)} <BiBath />
-            </Typography>
-            <Divider sx={styles.dividerStyles} />
-            <Box sx={styles.squareFootageStyles}>
-              <Typography variant="body2" sx={styles.propertyMainAreaStyles}>
-                Main Area {formatArea(squareFootage)}
-              </Typography>
-              {plottedArea && (
-                <Typography
-                  variant="body2"
-                  sx={styles.propertyPlottedAreaStyles}
-                >
-                  Plotted Area {formatArea(plottedArea)}
-                </Typography>
-              )}
-              {builtUpArea && (
-                <Typography variant="body2" sx={styles.propertyBuiltAreaStyles}>
-                  Built Up Area {formatArea(builtUpArea)}
-                </Typography>
-              )}
-            </Box>
-            <Divider sx={styles.dividerStyles} />
             <Typography variant="body2" sx={styles.descriptionStyles}>
               {description}
             </Typography>
@@ -120,13 +93,24 @@ const Property = ({
 
             <Divider sx={styles.dividerStyles} />
 
-            <MapSlug
-              title={title}
-              lat={location?.lat || 0}
-              lng={location?.lng || 0}
-              address={address}
-              specificAddress={specificAddress}
-            />
+            <Box sx={styles.mapSlug}>
+              <MapSlug
+                title={title}
+                lat={location?.lat || 0}
+                lng={location?.lng || 0}
+                address={address}
+                specificAddress={specificAddress}
+              />
+            </Box>
+            <Divider sx={styles.dividerStyles} />
+            <Box sx={styles.lifeBoxStyles}>
+              <Typography variant="h3">Life Style</Typography>
+
+              <Typography variant="body2" sx={styles.lifeStyles}>
+                <Link href="/">{areaType}</Link>
+              </Typography>
+            </Box>
+            <Divider sx={styles.dividerStyles} />
           </Box>
           <PropertyReference
             totalPrice={totalPrice}

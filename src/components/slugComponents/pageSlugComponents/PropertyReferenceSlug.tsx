@@ -18,16 +18,16 @@ const PropertyReference = ({
 }: PropertyReferenceProps) => {
   const stickyStyles = {
     position: "sticky",
-    top: "100px",
+    top: "120px",
     margin: "1rem",
     padding: "1rem",
     border: "none",
     borderRadius: "0.5rem",
-    boxShadow: "0.5rem 0.5rem 0.5rem gray",
+    boxShadow: "0.2rem 0.2rem 0.2rem gray",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    maxWidth: "60%",
+    maxWidth: "70%",
   };
 
   const buttonStyles = {
@@ -46,7 +46,7 @@ const PropertyReference = ({
   const readyToBuyStyles = {};
 
   return (
-    <Box>
+    <Box sx={{ p: 5, mt: 2 }}>
       <Card sx={stickyStyles}>
         <Typography variant="body2" sx={idStyles}>
           Reference ID: {id}

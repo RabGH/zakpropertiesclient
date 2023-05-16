@@ -1,6 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import GeneralButton from "../general/GButton";
 import Link from "next/link";
 import Socials from "./Socials";
 
@@ -49,21 +48,21 @@ function Footer() {
     <Box sx={mainContainer}>
       <Box sx={linkBox}>
         <Link href="/">
-          <GeneralButton variant="contained" sx={linkStyles}>
+          <Button variant="contained" sx={linkStyles}>
             Home
-          </GeneralButton>
+          </Button>
         </Link>
 
         <Link href="/about">
-          <GeneralButton variant="contained" sx={linkStyles}>
+          <Button variant="contained" sx={linkStyles}>
             About
-          </GeneralButton>
+          </Button>
         </Link>
 
         <Link href="/contact">
-          <GeneralButton variant="contained" sx={linkStyles}>
+          <Button variant="contained" sx={linkStyles}>
             Contact
-          </GeneralButton>
+          </Button>
         </Link>
 
         {/* <Link href="/projects/a-smaller-developments-not-as-big-as-the-rest-but-decent">

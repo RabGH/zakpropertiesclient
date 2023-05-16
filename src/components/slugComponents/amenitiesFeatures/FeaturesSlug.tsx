@@ -22,7 +22,7 @@ export const featuresStyles = {
 const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
   return (
     <Box sx={cardStyles}>
-      <Typography variant="h6" sx={mainTitle}>
+      <Typography variant="h3" sx={mainTitle}>
         {features.name}
       </Typography>
       <Box sx={boxStyles}>

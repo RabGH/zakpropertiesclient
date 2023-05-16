@@ -48,9 +48,9 @@ const slugTheme = createTheme({
       margin: "0",
     },
     h3: {
-      fontFamily: "Lato",
-      fontSize: "1.75rem",
-      fontWeight: 600,
+      fontFamily: "Montserrat",
+      fontSize: "1.3rem",
+      fontWeight: 400,
       color: "#000",
       lineHeight: 1.2,
       margin: "0",
@@ -65,7 +65,7 @@ const slugTheme = createTheme({
     },
     h5: {
       fontFamily: "Roboto",
-      fontSize: "1.25rem",
+      fontSize: "1.2rem",
       fontWeight: 400,
       color: "#000",
       lineHeight: 1.2,
@@ -75,7 +75,7 @@ const slugTheme = createTheme({
     h6: {
       fontFamily: "Lato",
       fontSize: "1.1rem",
-      fontWeight: 600,
+      fontWeight: 400,
       color: "#000",
       lineHeight: 1.2,
       margin: "0",

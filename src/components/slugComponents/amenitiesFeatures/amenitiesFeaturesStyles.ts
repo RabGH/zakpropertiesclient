@@ -1,5 +1,7 @@
 export const mainStyles = {
   p: 1.5,
+  pl: 3,
+  pr: 3,
   lineHeight: 0,
   color: "#3D3D3D",
   boxShadow: "none",
@@ -22,8 +24,9 @@ export const boxStyles = {
 };
 
 export const mainTitle = {
-  p: 1.5,
+  mb: "1rem",
+  pl: 3,
+  pr: 3,
   display: "flex",
   justifyContent: "flex-start",
-  fontWeight: "bold",
 };

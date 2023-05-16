@@ -13,64 +13,48 @@ export const getPropertyPageStyles = () => {
       },
     },
 
-    mapCardPos: {
-      mt: 3,
-      mb: 3,
-    },
-    propertyBedStyles: {
-      fontSize: "1rem",
-    },
-    propertyBathroomStyles: {
-      fontSize: "1rem",
-    },
-    staticStyles: {
-      lineHeight: "1.5",
-    },
-    squareFootageStyles: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-    },
-    propertyMainAreaStyles: {
-      fontSize: "1rem",
-    },
-    propertyPlottedAreaStyles: {
-      fontSize: "1rem",
-    },
-    propertyBuiltAreaStyles: {
-      fontSize: "1rem",
+    propertyTypeStyles: {
+      fontSize: "0.9rem",
+      pr: 3,
+      pl: 3,
+      mb: "1.5rem",
+      mt: "0.5rem",
     },
 
-    propertyTypeStyles: {
-      fontSize: "1.3rem",
-      mb: "1rem",
-      mt: "1rem",
-    },
     dividerStyles: {
       width: "100%",
-      height: "1px",
-      backgroundColor: "#000000",
-      color: "black",
-      margin: "0.5rem 0",
+      mt: 3,
+      mb: 4,
     },
-    titleStyle: {},
-    descriptionStyles: {},
-    locationTitle: {},
-    mapCard: {},
+
+    lifeStyles: {
+      mt: 1,
+    },
+    lifeBoxStyles: {
+      pr: 3,
+      pl: 3,
+    },
+
+    titleStyle: {
+      pr: 3,
+      pl: 3,
+    },
+
+    descriptionStyles: {
+      pr: 3,
+      pl: 3,
+    },
+
+    mapSlug: {
+      pr: 3,
+      pl: 3,
+    },
+
     contentContainer: {
       display: "flex",
       flexDirection: "column",
       alignItems: "flex-start",
-    },
-    titleContainer: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
-    },
-    bodyStyles: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
+      p: 10,
     },
   };
 };
