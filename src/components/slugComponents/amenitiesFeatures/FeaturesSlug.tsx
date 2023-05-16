@@ -3,7 +3,6 @@ import {
   mainStyles,
   cardStyles,
   boxStyles,
-  dividerCardStyles,
   mainTitle,
 } from "./amenitiesFeaturesStyles";
 
@@ -26,7 +25,6 @@ const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
       <Typography variant="h6" sx={mainTitle}>
         {features.name}
       </Typography>
-      <Divider sx={dividerCardStyles} />
       <Box sx={boxStyles}>
         {features?.features?.map((opt) => (
           <Typography key={opt} variant="body2" sx={mainStyles}>

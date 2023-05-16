@@ -1,37 +1,29 @@
 export const mainStyles = {
-  p: 2,
-  lineHeight: 1.5,
-  borderRadius: "0.5rem",
-  backgroundColor: "#F1EDEE",
+  p: 1.5,
+  lineHeight: 0,
   color: "#3D3D3D",
   boxShadow: "none",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   fontSize: 16,
-  whiteSpace: "nowrap",
 };
 
 export const cardStyles = {
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  alignItems: "flex-start",
 };
 
 export const boxStyles = {
   display: "grid",
-  gridTemplateColumns: "repeat(7, 1fr)",
-  gap: "20px",
+  gridTemplateColumns: "repeat(3, minmax(0, max-content))",
+  gap: "0px",
 };
 
 export const mainTitle = {
-  mb: "1rem",
+  p: 1.5,
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   fontWeight: "bold",
-};
-
-export const dividerCardStyles = {
-  borderBottom: "4px solid #000000",
-  zIndex: 3,
 };

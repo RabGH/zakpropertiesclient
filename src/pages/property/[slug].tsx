@@ -1,6 +1,7 @@
 import { sanityClient } from "../../../lib/sanity";
 import { isMultiple, formatPrice, formatArea } from "../../../lib/utils";
-import { Box, Divider, Typography, Card, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
+import Divider from "@mui/material/Divider";
 import { BiBed } from "react-icons/bi";
 import { BiBath } from "react-icons/bi";
 import FeaturesSlug from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
@@ -110,17 +111,21 @@ const Property = ({
             <Typography variant="body2" sx={styles.descriptionStyles}>
               {description}
             </Typography>
+
             <Divider sx={styles.dividerStyles} />
+
             <FeaturesSlug features={features} />
+
             <Divider sx={styles.dividerStyles} />
-            <Typography variant="h6" sx={styles.locationTitle}>
-              Location
-            </Typography>
-            <MapSlug
-              title={title}
-              lat={location?.lat || 0}
-              lng={location?.lng || 0}
-            />
+
+            {/* <Typography variant="h6" sx={styles.locationTitle}>
+Location
+</Typography>
+<MapSlug
+title={title}
+lat={location?.lat || 0}
+lng={location?.lng || 0}
+/> */}
           </Box>
           <PropertyReference
             totalPrice={totalPrice}
