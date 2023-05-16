@@ -1,6 +1,5 @@
 import { sanityClient } from "../../../lib/sanity";
 import { isMultiple, formatPrice, formatArea } from "../../../lib/utils";
-import Link from "next/link";
 import { Box, Divider, Typography, Card, Button } from "@mui/material";
 import { BiBed } from "react-icons/bi";
 import { BiBath } from "react-icons/bi";
@@ -9,7 +8,6 @@ import { featuresStyles } from "../../components/slugComponents/amenitiesFeature
 import dynamic from "next/dynamic";
 import { Property as PropertyProps } from "../../../lib/types";
 import { getPropertyPageStyles } from "../../components/pageComponents/pageSlugStyles/propertySlugStyles";
-import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 import ImageCarousel from "../../components/slugComponents/ImageGallerySlick";
 import {
@@ -17,6 +15,7 @@ import {
   mainImageContainer,
   viewPhotosBox,
 } from "../../components/slugComponents/imageCarouselStyles";
+import PropertyReference from "../../components/slugComponents/referenceCardComponents/PropertyReferenceSlug";
 
 interface PageContext {
   query: {
@@ -32,6 +31,7 @@ const MapSlug = dynamic(
 );
 
 const Property = ({
+  id,
   title,
   propertyType,
   mainPropertyImage,
@@ -42,13 +42,14 @@ const Property = ({
   squareFootage,
   plottedArea,
   builtUpArea,
+  areaType,
   propertyImages,
   features,
   location,
   propertyOffPlan,
 }: PropertyProps) => {
   const styles = getPropertyPageStyles();
-  const generalStyles = getGeneralSlugStyles();
+
   return (
     <>
       <Box sx={mainContainer}>
@@ -68,117 +69,64 @@ const Property = ({
           />
         </Box>
 
-        <Divider sx={generalStyles.dividerStyles} />
+        <Divider sx={styles.dividerStyles} />
 
-        <Box sx={generalStyles.contentContainer}>
-          <Box sx={generalStyles.titleContainer}>
-            <Typography variant="h2" sx={generalStyles.titleStyle}>
+        <Box sx={styles.mainSection}>
+          <Box sx={styles.contentContainer}>
+            <Typography variant="h2" sx={styles.titleStyle}>
               {title}
             </Typography>
-            <Card>
-              <Box sx={generalStyles.priceBox}>
-                <Typography variant="h3" sx={generalStyles.priceStyle}>
-                  {formatPrice(totalPrice)}
-                </Typography>
-
-                <Box sx={generalStyles.priceButtonPos}>
-                  <Link href="/contact">
-                    <Button variant="contained" sx={generalStyles.buttonStyles}>
-                      Learn More
-                    </Button>
-                  </Link>
-                  <Link href="/buyProperties">
-                    <Button variant="contained" sx={generalStyles.buttonStyles}>
-                      View More Properties
-                    </Button>
-                  </Link>
-                </Box>
-              </Box>
-            </Card>
-          </Box>
-
-          <Box sx={generalStyles.mainSection}>
-            <Typography variant="h5" sx={styles.propertyTypeStyles}>
+            <Divider sx={styles.dividerStyles} />
+            <Typography variant="h6" sx={styles.propertyTypeStyles}>
               {propertyType}
             </Typography>
-
-            <Box sx={generalStyles.offPlanStyles}>
-              {propertyOffPlan &&
-              typeof propertyOffPlan === "object" &&
-              propertyOffPlan.offplan ? (
-                <Box>
-                  <Typography
-                    variant="body2"
-                    sx={generalStyles.offPlanTextStyles}
-                  >
-                    Off-plan project
-                  </Typography>
-                  {propertyOffPlan.propertyCompletionDate && (
-                    <Typography
-                      variant="body2"
-                      sx={generalStyles.offPlanCompleteStyles}
-                    >
-                      Completion date: {propertyOffPlan.propertyCompletionDate}
-                    </Typography>
-                  )}
-                </Box>
-              ) : (
-                <Typography>Ready to buy</Typography>
-              )}{" "}
-            </Box>
-
+            <Divider sx={styles.dividerStyles} />
             <Typography variant="body2" sx={styles.propertyBedStyles}>
               {bedrooms} bedroom{isMultiple(bedrooms)} <BiBed />
             </Typography>
             <Typography variant="body2" sx={styles.propertyBathroomStyles}>
               {bathrooms} bathroom{isMultiple(bathrooms)} <BiBath />
             </Typography>
-          </Box>
-
-          <Box sx={styles.squareFootageStyles}>
-            <Typography variant="body2" sx={styles.propertyMainAreaStyles}>
-              Main Area {formatArea(squareFootage)}
-            </Typography>
-            {plottedArea && (
-              <Typography variant="body2" sx={styles.propertyPlottedAreaStyles}>
-                Plotted Area {formatArea(plottedArea)}
+            <Divider sx={styles.dividerStyles} />
+            <Box sx={styles.squareFootageStyles}>
+              <Typography variant="body2" sx={styles.propertyMainAreaStyles}>
+                Main Area {formatArea(squareFootage)}
               </Typography>
-            )}
-            {builtUpArea && (
-              <Typography variant="body2" sx={styles.propertyBuiltAreaStyles}>
-                Built Up Area {formatArea(builtUpArea)}
-              </Typography>
-            )}
-          </Box>
-
-          <Box sx={generalStyles.bodyStyles}>
-            <Box sx={styles.staticStyles}>
-              <Typography variant="body2" sx={generalStyles.descriptionStyles}>
-                {description}
-              </Typography>
+              {plottedArea && (
+                <Typography
+                  variant="body2"
+                  sx={styles.propertyPlottedAreaStyles}
+                >
+                  Plotted Area {formatArea(plottedArea)}
+                </Typography>
+              )}
+              {builtUpArea && (
+                <Typography variant="body2" sx={styles.propertyBuiltAreaStyles}>
+                  Built Up Area {formatArea(builtUpArea)}
+                </Typography>
+              )}
             </Box>
-          </Box>
-
-          <Divider sx={generalStyles.dividerStyles} />
-
-          <Box sx={featuresStyles}>
+            <Divider sx={styles.dividerStyles} />
+            <Typography variant="body2" sx={styles.descriptionStyles}>
+              {description}
+            </Typography>
+            <Divider sx={styles.dividerStyles} />
             <FeaturesSlug features={features} />
+            <Divider sx={styles.dividerStyles} />
+            <Typography variant="h6" sx={styles.locationTitle}>
+              Location
+            </Typography>
+            <MapSlug
+              title={title}
+              lat={location?.lat || 0}
+              lng={location?.lng || 0}
+            />
           </Box>
-
-          <Divider sx={generalStyles.dividerStyles} />
-
-          <Box sx={styles.mapCardPos}>
-            <Card sx={generalStyles.mapCard}>
-              <Typography variant="h3" sx={generalStyles.locationTitle}>
-                Location
-              </Typography>
-              <MapSlug
-                title={title}
-                lat={location?.lat || 0}
-                lng={location?.lng || 0}
-              />
-            </Card>
-          </Box>
+          <PropertyReference
+            totalPrice={totalPrice}
+            id={id}
+            propertyOffPlan={propertyOffPlan}
+          />
         </Box>
       </Box>
     </>
@@ -189,26 +137,28 @@ export const getServerSideProps = async (pageContext: PageContext) => {
   const pageSlug = pageContext.query.slug;
 
   const query = `*[ _type == "property" && slug.current == $pageSlug][0]{
-      title,
-      location,
-      address,
-      specificAddress,
-      propertyType,
-      mainPropertyImage,
-      propertyImages,
-      totalPrice,
-      bathrooms,
-      bedrooms,
-      description,
-      squareFootage,
-      plottedArea,
-      builtUpArea,
-      features->{
-        name,
-        features[],
-      },
-      propertyOffPlan,
-      }`;
+        id,
+        title,
+        location,
+        address,
+        specificAddress,
+        propertyType,
+        mainPropertyImage,
+        propertyImages,
+        totalPrice,
+        bathrooms,
+        bedrooms,
+        description,
+        squareFootage,
+        plottedArea,
+        builtUpArea,
+        areaType[],
+        features->{
+          name,
+          features[],
+          },
+        propertyOffPlan,
+        }`;
 
   const property = await sanityClient.fetch(query, { pageSlug });
   if (!property) {
@@ -219,6 +169,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
   } else {
     return {
       props: {
+        id: property.id,
         title: property.title,
         location: property.location,
         propertyType: property.propertyType,
@@ -231,6 +182,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         squareFootage: property.squareFootage || null,
         plottedArea: property.plottedArea || null,
         builtUpArea: property.builtUpArea || null,
+        areaType: property.areaType || [],
         features: property.features || [],
         propertyOffPlan: property.propertyOffPlan || null,
       },

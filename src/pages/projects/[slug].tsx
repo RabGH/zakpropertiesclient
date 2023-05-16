@@ -26,7 +26,7 @@ import { featuredTitlePos } from "../../components/slugComponents/cardSlugs/card
 import ViewAllPhotos from "../../components/slugComponents/viewAllPhotos";
 
 import { getProjectPageStyles } from "../../components/pageComponents/pageSlugStyles/projectSlugStyles";
-import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
+// import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
 
 const MapSlug = dynamic(
   () => import("../../components/slugComponents/MapSlug"),
@@ -41,6 +41,8 @@ interface PropertyList {
 type ProjectsProps = Project & PropertyList;
 
 const Projects = ({
+  id,
+  _id,
   title,
   projectPropertyTypes,
   unitType,
@@ -55,6 +57,7 @@ const Projects = ({
   numFloors,
   numUnits,
   numVillas,
+  areaType,
   bedrooms,
   amenities,
   location,
@@ -63,7 +66,7 @@ const Projects = ({
   properties,
 }: ProjectsProps) => {
   const styles = getProjectPageStyles();
-  const generalStyles = getGeneralSlugStyles();
+  // const generalStyles = getGeneralSlugStyles();
 
   return (
     <Box sx={mainContainer}>
@@ -81,40 +84,44 @@ const Projects = ({
           alt={title}
         />
       </Box>
-      <Box sx={generalStyles.contentContainer}>
-        <Box sx={generalStyles.titleContainer}>
-          <Typography variant="h2" sx={generalStyles.titleStyle}>
+      <Box sx={styles.contentContainer}>
+        <Box sx={styles.titleContainer}>
+          <Typography variant="h2" sx={styles.titleStyles}>
             {title}
           </Typography>
-          <Typography variant="h5" sx={generalStyles.priceStyle}>
+          <Typography variant="h5" sx={styles.priceStyles}>
             {formatPrice(totalPrice)}
           </Typography>
         </Box>
 
         <Container>
-          <Divider sx={generalStyles.dividerStyles} />
+          <Divider sx={styles.dividerStyles} />
 
           <Box>
             <Typography variant="h6" sx={styles.mainDeveloperStyles}>
               Developed by {mainDeveloper}
             </Typography>
+            <Typography variant="body2">
+              Street and City: {address.street}, {address.city}
+            </Typography>
+            <Typography variant="body2">Address: {specificAddress}</Typography>
           </Box>
 
-          <Box sx={generalStyles.offPlanStyles}>
+          <Box sx={styles.offPlanStyles}>
             {projectOffPlan &&
             typeof projectOffPlan === "object" &&
             projectOffPlan.offplan ? (
               <Box>
                 <Typography
                   variant="body2"
-                  sx={generalStyles.offPlanTextStyles}
+                  sx={styles.offPlanTextStyles}
                 >
                   Off-plan project
                 </Typography>
                 {projectOffPlan.completionDate && (
                   <Typography
                     variant="body2"
-                    sx={generalStyles.offPlanCompleteStyles}
+                    sx={styles.offPlanCompleteStyles}
                   >
                     Completion date: {projectOffPlan.completionDate}
                   </Typography>
@@ -125,43 +132,54 @@ const Projects = ({
             )}{" "}
           </Box>
 
-          <Box sx={generalStyles.mainSection}>
-            <Typography variant="body2" sx={styles.projectTypeStyles}>
-              Types of Housing Built: {projectPropertyTypes}
-            </Typography>
+          <Box sx={styles.mainSection}>
+            <Box>
+              <Typography variant="body2" sx={styles.projectTypeStyles}>
+                Types of Housing Built: {projectPropertyTypes}
+              </Typography>
+            </Box>
 
             <Box>
               <Typography variant="body2" sx={styles.unitTypeStyles}>
                 Unit types {unitType}
               </Typography>
+              <Typography variant="body2" sx={styles.areaTypeStyles}>
+                Type of Area: {areaType}
+              </Typography>
+              <Typography variant="body2" sx={styles.projectBedroomStyles}>
+                Number of Bedrooms: {bedrooms}
+              </Typography>
             </Box>
 
-            <Box sx={generalStyles.bodyStyles}>
+            <Box sx={styles.bodyStyles}>
               <Typography variant="body2" sx={styles.squareFootageStyles}>
                 Built-up Area: {formatArea(squareFootage)}
               </Typography>
-              <Typography variant="h6" sx={generalStyles.descriptionStyles}>
+              <Typography variant="body2" sx={styles.projectBuiltUpAreaStyles}>
+                Total Project Area: {formatArea(projectBuiltUpArea)}
+              </Typography>
+              <Typography variant="h6" sx={styles.descriptionStyles}>
                 {description}
               </Typography>
             </Box>
           </Box>
 
-          <Divider sx={generalStyles.dividerStyles} />
+          <Divider sx={styles.dividerStyles} />
 
           <Box sx={amenityStyles}>
             <AmenitiesCard amenities={amenities} />
           </Box>
         </Container>
 
-        <Box sx={generalStyles.priceBox}>
-          <Box sx={generalStyles.priceButtonPos}>
+        <Box sx={styles.priceBox}>
+          <Box sx={styles.priceButtonPos}>
             <Link href="/contact">
-              <Button variant="contained" sx={generalStyles.buttonStyles}>
+              <Button variant="contained" sx={styles.buttonStyles}>
                 Learn More
               </Button>
             </Link>
             <Link href="/developments">
-              <Button variant="contained" sx={generalStyles.buttonStyles}>
+              <Button variant="contained" sx={styles.viewMoreDevelopmentsStyles}>
                 View More Developments
               </Button>
             </Link>
@@ -182,17 +200,17 @@ const Projects = ({
           </Box>
         ))}
       </Box>
-      <Box sx={generalStyles.viewMoreProperties}>
+      <Box sx={styles.viewMoreProperties}>
         <Link href="/buyProperties">
-          <Button variant="contained" sx={generalStyles.buttonStyles}>
+          <Button variant="contained" sx={styles.buttonStyles}>
             View More Properties
           </Button>
         </Link>
       </Box>
-      <Divider sx={generalStyles.dividerStyles} />
+      <Divider sx={styles.dividerStyles} />
       <Box sx={styles.mapCardPos}>
-        <Card sx={generalStyles.mapCard}>
-          <Typography variant="h3" sx={generalStyles.locationTitle}>
+        <Card sx={styles.mapCard}>
+          <Typography variant="h3" sx={styles.locationTitle}>
             Location
           </Typography>
           <MapSlug
@@ -210,6 +228,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
   const pageSlug = pageContext.query.slug;
 
   const query = `*[ _type == "projects" && slug.current == $pageSlug][0]{
+      id,
       title,
       projectPropertyTypes,
       unitType,
@@ -225,6 +244,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         street,
         city,
       },
+      areaType,
       specificAddress,
       projectBuiltUpArea,
       projectType,
@@ -270,6 +290,7 @@ export const getServerSideProps = async (pageContext: PageContext) => {
       projects.projectOffPlan !== undefined ? projects.projectOffPlan : null;
     return {
       props: {
+        id: projects.id,
         title: projects.title,
         location: projects.location,
         projectPropertyTypes: projects.projectPropertyTypes,
@@ -281,6 +302,9 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         description: projects.description,
         squareFootage: projects.squareFootage,
         amenities: projects.amenities || [],
+        areaType: projects.areaType || [],
+        specificAddress: projects.specificAddress,
+        address: projects.address,
         projectBuiltUpArea: projects.projectBuiltUpArea,
         projectType: projects.projectType,
         mainProjectImage: projects.mainProjectImage || null,

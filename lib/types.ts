@@ -1,4 +1,5 @@
 export interface Property {
+  id: string;
   _id: string;
   title: string;
   propertyType: string;
@@ -12,6 +13,7 @@ export interface Property {
   builtUpArea: number;
   propertyImages: string[];
   specificAddress: string;
+  areaType: string[];
   address: {
     street: string;
     city: string;
@@ -35,6 +37,7 @@ export interface Property {
 }
 
 export interface Project {
+  id: string;
   _id: string;
   title: string;
   projectPropertyTypes: string[];
@@ -46,6 +49,7 @@ export interface Project {
   description: string;
   squareFootage: number;
   projectImages: string[];
+  areaType: string[];
   amenities: {
     name: string;
     amenities: string[];
