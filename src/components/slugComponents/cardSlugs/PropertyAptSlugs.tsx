@@ -1,9 +1,9 @@
-import { urlFor, sanityClient } from "../../../../lib/sanity";
-import { isMultiple, formatPrice, formatArea } from "../../../../lib/utils";
+import { urlFor, sanityClient } from "@lib/sanity";
+import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { Box, Typography, Container, Card, Divider } from "@mui/material";
-import { Property } from "../../../../lib/types";
+import { Property } from "@lib/types";
 import {
   main,
   featuredTitlePos,

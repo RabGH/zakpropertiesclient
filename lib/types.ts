@@ -38,7 +38,7 @@ export interface Property {
     _type?: "reference";
     _weak?: boolean;
     projectId: Project;
-  }
+  };
 }
 
 export interface Project {

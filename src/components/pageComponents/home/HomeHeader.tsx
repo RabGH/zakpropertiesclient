@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
-import { Property, Project } from "../../../../lib/types";
+import { Property, Project } from "@lib/types";
 import SearchBar from "./mainSearchBar";
 import HomeImageHeader from "./HomeImageHeader";
 

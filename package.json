@@ -36,6 +36,7 @@
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.10",
     "theme-ui": "^0.15.5",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "5.0.2"
   },
   "devDependencies": {

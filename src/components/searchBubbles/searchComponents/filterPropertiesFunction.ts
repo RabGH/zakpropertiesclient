@@ -1,4 +1,4 @@
-import { Property } from "../../../../lib/types";
+import { Property } from "@lib/types";
 
 export const filterProperties = (
   propertyType: string,
@@ -25,7 +25,7 @@ export const filterProperties = (
     const sizeMatch =
       property.squareFootage >= sizeRange[0] &&
       property.squareFootage <= sizeRange[1];
-    const featureMatch = // added this condition
+    const featureMatch =
       propertyFeatures.length === 0 ||
       propertyFeatures.every((feature) => property.features.includes(feature));
     if (

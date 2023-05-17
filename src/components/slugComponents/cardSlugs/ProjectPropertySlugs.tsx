@@ -1,8 +1,8 @@
-import { urlFor } from "../../../../lib/sanity";
-import { isMultiple, formatPrice, formatArea } from "../../../../lib/utils";
+import { urlFor } from "@lib/sanity";
+import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 import Link from "next/link";
 import { Box, Typography, Card } from "@mui/material";
-import { Property } from "../../../../lib/types";
+import { Property } from "@lib/types";
 import {
   propertyTypeStyles,
   propertyTitleCard,

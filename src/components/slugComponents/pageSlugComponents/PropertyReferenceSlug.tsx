@@ -1,6 +1,6 @@
 import { Typography, Box, Button, Card } from "@mui/material";
-import { formatPrice } from "../../../../lib/utils";
-import { Property } from "../../../../lib/types";
+import { formatPrice } from "@lib/utils";
+import { Property } from "@lib/types";
 import Link from "next/link";
 
 interface PropertyReferenceProps {

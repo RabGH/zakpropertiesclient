@@ -1,0 +1,1 @@
+//! LifeStyle links if Urban life, search for properties tha are similar

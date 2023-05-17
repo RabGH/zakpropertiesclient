@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Property } from "../../../../lib/types";
+import { Property } from "@lib/types";
 
 export interface SearchInterface {
   propertyType: string;

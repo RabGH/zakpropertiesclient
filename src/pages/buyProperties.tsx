@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import { Box, Typography } from "@mui/material";
-import { Property } from "../../lib/types";
-import { sanityClient } from "../../lib/sanity";
-import PropertyCardGrid from "../components/slugComponents/cardSlugs/cardComponents/PropertyCardGrid";
-import { getBuyPropertiesPageStyles } from "../components/pageComponents/pageSlugStyles/buyPropertiesStyles";
-import { SearchInterface } from "../components/searchBubbles/searchComponents/bubbleInterfaces";
+import { Property } from "@lib/types";
+import { sanityClient } from "@lib/sanity";
+import PropertyCardGrid from "@/components/slugComponents/cardSlugs/cardComponents/PropertyCardGrid";
+import { getBuyPropertiesPageStyles } from "@/components/pageComponents/pageSlugStyles/buyPropertiesStyles";
+import { SearchInterface } from "@/components/searchBubbles/searchComponents/bubbleInterfaces";
 
 export default function PropertySearch({
   properties,

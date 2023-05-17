@@ -1,5 +1,5 @@
 import React from "react";
-import GeneralButton from "../components/general/GButton";
+import GeneralButton from "@/components/general/GButton";
 import { Container, Box, Typography } from "@mui/material";
 
 function Error() {

@@ -1,6 +1,6 @@
-import { urlFor } from "../../../../lib/sanity";
-import { formatPrice, formatArea } from "../../../../lib/utils";
-import { Project } from "../../../../lib/types";
+import { urlFor } from "@lib/sanity";
+import { formatPrice, formatArea } from "@lib/utils";
+import { Project } from "@lib/types";
 import Image from "next/image";
 import Link from "next/link";
 

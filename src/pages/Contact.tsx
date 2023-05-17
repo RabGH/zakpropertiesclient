@@ -1,6 +1,6 @@
 import React from "react";
-import ContactTextField from "../components/pageComponents/contact/ContactTextField";
-import GeneralButton from "../components/general/GButton";
+import ContactTextField from "@/components/pageComponents/contact/ContactTextField";
+import GeneralButton from "@/components/general/GButton";
 import { Typography, Box, Container, Grid } from "@mui/material";
 
 import Image from "next/image";

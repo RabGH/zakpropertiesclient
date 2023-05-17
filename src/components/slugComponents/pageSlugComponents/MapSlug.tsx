@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngTuple } from "leaflet";
-import { Box, Typography, IconButton, Modal, Backdrop } from "@mui/material";
+import { Box, Typography, IconButton, Modal } from "@mui/material";
 import MapIcon from "@mui/icons-material/Map";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";

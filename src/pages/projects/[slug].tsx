@@ -1,5 +1,5 @@
-import { sanityClient } from "../../../lib/sanity";
-import { formatPrice, formatArea } from "../../../lib/utils";
+import { sanityClient } from "@lib/sanity";
+import { formatPrice, formatArea } from "@lib/utils";
 import Link from "next/link";
 import {
   Box,
@@ -9,23 +9,23 @@ import {
   Container,
   Button,
 } from "@mui/material";
-import ImageCarousel from "../../components/slugComponents/pageSlugComponents/ImageGallerySlick";
-import ProjectPropertyCards from "../../components/slugComponents/cardSlugs/ProjectPropertySlugs";
-import { propertyContainer } from "../../components/slugComponents/cardSlugs/ProjectPropertySlugs";
+import ImageCarousel from "@/components/slugComponents/pageSlugComponents/ImageGallerySlick";
+import ProjectPropertyCards from "@/components/slugComponents/cardSlugs/ProjectPropertySlugs";
+import { propertyContainer } from "@/components/slugComponents/cardSlugs/ProjectPropertySlugs";
 import dynamic from "next/dynamic";
 import AmenitiesCard, {
   amenityStyles,
-} from "../../components/slugComponents/amenitiesFeatures/AmenitiesSlug";
-import { Project, Property, PageContext } from "../../../lib/types";
+} from "@/components/slugComponents/amenitiesFeatures/AmenitiesSlug";
+import { Project, Property, PageContext } from "@lib/types";
 import {
   mainContainer,
   mainImageContainer,
   viewPhotosBox,
-} from "../../components/slugComponents/pageSlugComponents/imageCarouselStyles";
-import { featuredTitlePos } from "../../components/slugComponents/cardSlugs/cardComponents/cardStylesSlugs";
-import ViewAllPhotos from "../../components/slugComponents/pageSlugComponents/viewAllPhotos";
+} from "@/components/slugComponents/pageSlugComponents/imageCarouselStyles";
+import { featuredTitlePos } from "@/components/slugComponents/cardSlugs/cardComponents/cardStylesSlugs";
+import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/viewAllPhotos";
 
-import { getProjectPageStyles } from "../../components/pageComponents/pageSlugStyles/projectSlugStyles";
+import { getProjectPageStyles } from "@/components/pageComponents/pageSlugStyles/projectSlugStyles";
 // import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
 
 const MapSlug = dynamic(

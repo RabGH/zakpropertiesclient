@@ -9,24 +9,24 @@ import {
   useTheme,
 } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import HomeHeader from "../components/pageComponents/home/HomeHeader";
+import HomeHeader from "@/components/pageComponents/home/HomeHeader";
 
-import { sanityClient } from "../../lib/sanity";
-import { Property, Project } from "../../lib/types";
+import { sanityClient } from "@lib/sanity";
+import { Property, Project } from "@lib/types";
 
-import PropertyVillaCardSlug from "../components/slugComponents/cardSlugs/PropertyVillaSlugs";
-import PropertyAptCardSlug from "../components/slugComponents/cardSlugs/PropertyAptSlugs";
-import PropertyTownCardSlug from "../components/slugComponents/cardSlugs/PropertyTownSlugs";
-import ProjectCardSlug from "../components/pageComponents/developments/ProjectCardSlugs";
-import { featuredTitlePos } from "../components/slugComponents/cardSlugs/cardComponents/cardStylesSlugs";
+import PropertyVillaCardSlug from "@/components/slugComponents/cardSlugs/PropertyVillaSlugs";
+import PropertyAptCardSlug from "@/components/slugComponents/cardSlugs/PropertyAptSlugs";
+import PropertyTownCardSlug from "@/components/slugComponents/cardSlugs/PropertyTownSlugs";
+import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
+import { featuredTitlePos } from "@/components/slugComponents/cardSlugs/cardComponents/cardStylesSlugs";
 import dynamic from "next/dynamic";
 const DashBoardMap = dynamic(
-  () => import("../components/pageComponents/home/DashBoardMap"),
+  () => import("@/components/pageComponents/home/DashBoardMap"),
   {
     ssr: false,
   }
 );
-import { getHomePageStyles } from "../components/pageComponents/home/homePageStyles";
+import { getHomePageStyles } from "@/components/pageComponents/home/homePageStyles";
 
 interface HomeProps {
   properties: Property[];

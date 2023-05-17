@@ -1,5 +1,5 @@
-import { sanityClient } from "../../../lib/sanity";
-import { isMultiple, formatPrice, formatArea } from "../../../lib/utils";
+import { sanityClient } from "@lib/sanity";
+import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 import { Box, Typography, Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { BiBed } from "react-icons/bi";
@@ -8,10 +8,10 @@ import FeaturesSlug from "../../components/slugComponents/amenitiesFeatures/Feat
 import { featuresStyles } from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { Property as PropertyProps } from "../../../lib/types";
-import { getPropertyPageStyles } from "../../components/pageComponents/pageSlugStyles/propertySlugStyles";
-import ViewAllPhotos from "../../components/slugComponents/pageSlugComponents/viewAllPhotos";
-import ImageCarousel from "../../components/slugComponents/pageSlugComponents/ImageGallerySlick";
+import { Property as PropertyProps } from "@lib/types";
+import { getPropertyPageStyles } from "@/components/pageComponents/pageSlugStyles/propertySlugStyles";
+import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/viewAllPhotos";
+import ImageCarousel from "@/components/slugComponents/pageSlugComponents/ImageGallerySlick";
 import {
   mainContainer,
   mainImageContainer,
