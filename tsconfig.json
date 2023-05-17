@@ -32,7 +32,10 @@
       ],
       "@styles/*": [
         "./public/styles/*"
-      ]
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
     }
   },
   "include": [

@@ -5,6 +5,7 @@ import { Box, Typography, IconButton, Modal } from "@mui/material";
 import MapIcon from "@mui/icons-material/Map";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
+import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 
 interface MapSlugProps {
   lat: number;

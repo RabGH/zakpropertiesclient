@@ -79,9 +79,8 @@ const Property = ({
               {title}
             </Typography>
             <Typography variant="body2" sx={styles.propertyTypeStyles}>
-              {propertyType} ⋅ {bedrooms} beds ⋅ {bathrooms} baths ⋅{" "}
-              {squareFootage} sq. ft. ⋅ {builtUpArea} sq. ft. ⋅ {plottedArea}{" "}
-              sq. ft. plot
+              {propertyType} ⋅ {bedrooms} bedroom{isMultiple(bedrooms)} ⋅ {bathrooms} bathroom{isMultiple(bathrooms)} ⋅{" "}
+              {formatArea(squareFootage)} ⋅ {formatArea(builtUpArea)} ⋅ {formatArea(plottedArea)}
             </Typography>
             <Typography variant="body2" sx={styles.descriptionStyles}>
               {description}
