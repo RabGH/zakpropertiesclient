@@ -19,7 +19,7 @@ import {
   offPlanStyles,
   offPlanTextStyles,
   offPlanCompleteStyles,
-} from "./cardComponents/cardStylesSlugs";
+} from "./cardComponents/cardStyles";
 import CardImageCarousel from "./cardComponents/CardImageCarousel";
 
 interface PropertyVillaCardBodyProps {

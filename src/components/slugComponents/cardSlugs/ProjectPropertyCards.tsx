@@ -9,7 +9,7 @@ import {
   propertyAreaCard,
   propertyPriceCard,
   cardInfoStyles,
-} from "./cardComponents/cardStylesSlugs";
+} from "./cardComponents/cardStyles";
 import CardImageCarousel from "./cardComponents/CardImageCarousel";
 
 export const propertyContainer = {

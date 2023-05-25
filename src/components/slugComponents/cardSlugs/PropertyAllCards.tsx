@@ -1,7 +1,7 @@
 import { urlFor } from "@lib/sanity";
 import { formatPrice, formatArea } from "@lib/utils";
 import Link from "next/link";
-import { Box, Typography, Card} from "@mui/material";
+import { Box, Typography, Card } from "@mui/material";
 import { Property } from "@lib/types";
 import {
   mainAll,
@@ -19,7 +19,7 @@ import {
   offPlanTextStyles,
   offPlanCompleteStyles,
   offPlanReadyToBuyStyles,
-} from "./cardComponents/cardStylesSlugs";
+} from "./cardComponents/cardStyles";
 import CardImageCarousel from "./cardComponents/CardImageCarousel";
 
 interface PropertyAllCardBodyProps {
@@ -82,7 +82,12 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                           )}
                         </Box>
                       ) : (
-                        <Typography variant="body1" sx={offPlanReadyToBuyStyles}>Ready to buy</Typography>
+                        <Typography
+                          variant="body1"
+                          sx={offPlanReadyToBuyStyles}
+                        >
+                          Ready to buy
+                        </Typography>
                       )}{" "}
                     </Box>
                     <Typography variant="body1" sx={propertyPriceCard}>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Grid, Pagination, Divider } from "@mui/material";
 import { Property } from "../../../../../lib/types";
-import PropertyAllCard from "../PropertyAllSlugs";
+import PropertyAllCard from "../PropertyAllCards";
 import SearchFieldBubbles from "../../../searchBubbles/SearchFieldBubbles";
 import { getPropertyGridCardStyles } from "./propertyCardGridStyles";
 import { SearchInterface } from "../../../searchBubbles/searchComponents/bubbleInterfaces";

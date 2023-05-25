@@ -10,8 +10,8 @@ import {
   Button,
 } from "@mui/material";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/ImageGallerySlick";
-import ProjectPropertyCards from "@/components/slugComponents/cardSlugs/ProjectPropertySlugs";
-import { propertyContainer } from "@/components/slugComponents/cardSlugs/ProjectPropertySlugs";
+import ProjectPropertyCards from "@/components/slugComponents/cardSlugs/ProjectPropertyCards";
+import { propertyContainer } from "@/components/slugComponents/cardSlugs/ProjectPropertyCards";
 import dynamic from "next/dynamic";
 import AmenitiesCard, {
   amenityStyles,
@@ -22,7 +22,7 @@ import {
   mainImageContainer,
   viewPhotosBox,
 } from "@/components/slugComponents/pageSlugComponents/imageCarouselStyles";
-import { featuredTitlePos } from "@/components/slugComponents/cardSlugs/cardComponents/cardStylesSlugs";
+import { featuredTitlePos } from "@/components/slugComponents/cardSlugs/cardComponents/cardStyles";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/viewAllPhotos";
 
 import { getProjectPageStyles } from "@/components/pageComponents/pageSlugStyles/projectSlugStyles";
