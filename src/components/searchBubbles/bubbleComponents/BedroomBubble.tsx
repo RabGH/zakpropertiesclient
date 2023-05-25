@@ -68,6 +68,7 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
           onClose={() => setOpen(false)}
           anchorEl={buttonRef.current}
           sx={styles.bedroomMenuStyles}
+          disableScrollLock
         >
           <MenuList sx={styles.bedroomMenuListStyles}>
             <Slider

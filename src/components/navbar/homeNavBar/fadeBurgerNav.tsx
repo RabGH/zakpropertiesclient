@@ -1,7 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Popper from "@mui/material/Popper";
-import Paper from "@mui/material/Paper";
+import Popover from "@mui/material/Popover";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -12,9 +11,10 @@ import {
   burgerNavBox,
   mainBurgerBox,
   popperStyles,
-  popperPaperStyles,
   menuIconStyles,
 } from "../navContentStyles";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 
 export default function FadeBurgerNav() {
   const [open, setOpen] = React.useState(false);
@@ -45,6 +45,7 @@ export default function FadeBurgerNav() {
     }
     setOpen(false);
   };
+
   return (
     <Box
       sx={{
@@ -65,64 +66,87 @@ export default function FadeBurgerNav() {
         >
           <MenuIcon sx={menuIconStyles} />
         </IconButton>
-        <Popper sx={popperStyles} open={open} anchorEl={anchorRef.current}>
-          <Paper sx={popperPaperStyles}>
-            <MenuList
-              autoFocusItem={open}
-              id="menu-list-grow"
-              onKeyDown={handleClose}
-            >
-              <Link href="/">
-                <MenuItem
-                  onClick={() => setOpen(false)}
-                  onKeyDown={handleClose}
-                >
-                  Home
-                </MenuItem>
-              </Link>
-              <Link href="/about">
-                <MenuItem
-                  onClick={() => setOpen(false)}
-                  onKeyDown={handleClose}
-                >
-                  About
-                </MenuItem>
-              </Link>
-              <Link href="/contact">
-                <MenuItem
-                  onClick={() => setOpen(false)}
-                  onKeyDown={handleClose}
-                >
-                  Contact
-                </MenuItem>
-              </Link>
-              <Link href="/developments">
-                <MenuItem
-                  onClick={() => setOpen(false)}
-                  onKeyDown={handleClose}
-                >
-                  Development Overview
-                </MenuItem>
-              </Link>
-              <Link href="/buyProperties">
-                <MenuItem
-                  onClick={() => setOpen(false)}
-                  onKeyDown={handleClose}
-                >
-                  Buy Properties
-                </MenuItem>
-              </Link>
-              <Link href="/faq">
-                <MenuItem
-                  onClick={() => setOpen(false)}
-                  onKeyDown={handleClose}
-                >
-                  FAQ
-                </MenuItem>
-              </Link>
-            </MenuList>
-          </Paper>
-        </Popper>
+        <Popover
+          sx={popperStyles}
+          open={open}
+          anchorEl={anchorRef.current}
+          onClose={handleClose}
+          disableScrollLock
+          anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
+          transformOrigin={{ horizontal: 0, vertical: -5 }}
+        >
+          <Grid container>
+            <Grid item xs={6}>
+              <MenuList
+                autoFocusItem={open}
+                id="menu-list-grow"
+                onKeyDown={handleClose}
+              >
+                <Link href="/">
+                  <MenuItem
+                    onClick={() => setOpen(false)}
+                    onKeyDown={handleClose}
+                  >
+                    Home
+                  </MenuItem>
+                </Link>
+                <Link href="/about">
+                  <MenuItem
+                    onClick={() => setOpen(false)}
+                    onKeyDown={handleClose}
+                  >
+                    About
+                  </MenuItem>
+                </Link>
+                <Link href="/contact">
+                  <MenuItem
+                    onClick={() => setOpen(false)}
+                    onKeyDown={handleClose}
+                  >
+                    Contact
+                  </MenuItem>
+                </Link>
+                <Link href="/developments">
+                  <MenuItem
+                    onClick={() => setOpen(false)}
+                    onKeyDown={handleClose}
+                  >
+                    Development Overview
+                  </MenuItem>
+                </Link>
+                <Link href="/buyProperties">
+                  <MenuItem
+                    onClick={() => setOpen(false)}
+                    onKeyDown={handleClose}
+                  >
+                    Buy Properties
+                  </MenuItem>
+                </Link>
+                <Link href="/faq">
+                  <MenuItem
+                    onClick={() => setOpen(false)}
+                    onKeyDown={handleClose}
+                  >
+                    FAQ
+                  </MenuItem>
+                </Link>
+              </MenuList>
+            </Grid>
+            <Grid item xs={6}>
+              <MenuList
+                autoFocusItem={open}
+                id="menu-list-grow"
+                onKeyDown={handleClose}
+              >
+                <Button variant="outlined" color="primary">
+                  Sign In
+                </Button>
+                <MenuItem>Follows</MenuItem>
+                <MenuItem>Saved Searches</MenuItem>
+              </MenuList>
+            </Grid>
+          </Grid>
+        </Popover>
       </Box>
     </Box>
   );

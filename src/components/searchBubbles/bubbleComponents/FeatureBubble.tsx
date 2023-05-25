@@ -64,6 +64,7 @@ const FeatureBubble = ({
           open={Boolean(anchorEl)}
           onClose={handleClose}
           sx={styles.featureMenuStyles}
+          disableScrollLock
         >
           <Box sx={styles.featureMainMenuBoxStyles}>
             <MenuItem

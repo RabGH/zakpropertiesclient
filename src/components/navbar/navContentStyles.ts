@@ -48,13 +48,6 @@ export const popperStyles = {
   zIndex: 9999,
 };
 
-export const popperPaperStyles = {
-  zIndex: 9999,
-  mr: "1.8rem",
-  mt: "0.5rem",
-  backgroundColor: "#1B1B1B",
-};
-
 export const iconSocialStyles = {
   transition: "color 0.4s ease-in-out",
   color: "#000000",

@@ -93,6 +93,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
           onClose={() => setOpen(false)}
           anchorEl={buttonRef.current}
           sx={styles.sizeMenuStyles}
+          disableScrollLock
         >
           <MenuList sx={styles.sizeMenuListStyles}>
             <Slider

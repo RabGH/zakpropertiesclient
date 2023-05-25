@@ -107,6 +107,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
           onClose={() => setOpen(false)}
           anchorEl={buttonRef.current}
           sx={styles.priceMenuStyles}
+          disableScrollLock
         >
           <MenuList sx={styles.priceMenuListStyles}>
             <Box sx={styles.priceSearchBoxStyles}>

@@ -45,6 +45,7 @@ const PropertyTypeBubble = ({
           open={Boolean(anchorEl)}
           onClose={handleClose}
           sx={styles.typeMenuStyles}
+          disableScrollLock
         >
           <MenuItem onClick={() => handlePropertyTypeChange("All")}>
             All

@@ -50,6 +50,7 @@ export default function ReadyToBuyBubble({
           open={Boolean(anchorEl)}
           onClose={handleMenuClose}
           sx={styles.readyMenuStyles}
+          disableScrollLock
         >
           <MenuItem onClick={() => handleMenuItemClick("Any")}>
             <ListItemText primary="Any" />
