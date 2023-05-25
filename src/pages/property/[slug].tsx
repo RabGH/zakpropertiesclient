@@ -78,11 +78,11 @@ const Property = ({
             <Typography variant="h1" sx={styles.titleStyle}>
               {title}
             </Typography>
-            <Typography variant="body2" sx={styles.propertyTypeStyles}>
+            <Typography variant="body1" sx={styles.propertyTypeStyles}>
               {propertyType} ⋅ {bedrooms} bedroom{isMultiple(bedrooms)} ⋅ {bathrooms} bathroom{isMultiple(bathrooms)} ⋅{" "}
               {formatArea(squareFootage)} ⋅ {formatArea(builtUpArea)} ⋅ {formatArea(plottedArea)}
             </Typography>
-            <Typography variant="body2" sx={styles.descriptionStyles}>
+            <Typography variant="body1" sx={styles.descriptionStyles}>
               {description}
             </Typography>
 
@@ -105,7 +105,7 @@ const Property = ({
             <Box sx={styles.lifeBoxStyles}>
               <Typography variant="h3">Life Style</Typography>
 
-              <Typography variant="body2" sx={styles.lifeStyles}>
+              <Typography variant="body1" sx={styles.lifeStyles}>
                 <Link href="/">{areaType}</Link>
               </Typography>
             </Box>

@@ -8,10 +8,10 @@ export const themeOptions: ThemeOptions = {
       paper: "#2B2B2B",
     },
     primary: {
-      main: "#FFFFFF", // White Primary, use on dark pages
+      main: "#FFFFFF", // White Primary
     },
     secondary: {
-      main: "#CCCCCC", // Medium Shade of Gray , background or text
+      main: "#CCCCCC", // Medium Shade of Gray
     },
     error: {
       main: "#1e6572", // Turquoise #1e6572, light #4B838E , dark #15464F
@@ -20,7 +20,7 @@ export const themeOptions: ThemeOptions = {
       main: "#F7F7F7", // White
     },
     success: {
-      main: "#1B1B1B", // Dark Gray Secondary, use on light pages
+      main: "#1B1B1B", // Dark Gray Secondary
     },
   },
   typography: {
@@ -35,7 +35,7 @@ export const themeOptions: ThemeOptions = {
       fontFamily: "Montserrat",
       fontSize: "1.75rem",
       fontWeight: 400,
-      color: "#000",
+      color: "#fff",
       lineHeight: 1.2,
       margin: "0",
     },

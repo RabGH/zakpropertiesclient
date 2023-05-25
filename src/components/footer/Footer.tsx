@@ -42,7 +42,9 @@ function Footer() {
     },
   };
 
-  const copyRightStyles = {};
+  const copyRightStyles = {
+    color: "black",
+  };
 
   return (
     <Box sx={mainContainer}>
@@ -64,30 +66,12 @@ function Footer() {
             Contact
           </Button>
         </Link>
-
-        {/* <Link href="/projects/a-smaller-developments-not-as-big-as-the-rest-but-decent">
-          <GeneralButton variant="contained" sx={linkStyles}>
-            Project1
-          </GeneralButton>
-        </Link>
-
-        <Link href="/projects/another-bigger-even-biggest-developments-huge">
-          <GeneralButton variant="contained" sx={linkStyles}>
-            Project2
-          </GeneralButton>
-        </Link>
-
-        <Link href="/projects/big-developments-big-gains">
-          <GeneralButton variant="contained" sx={linkStyles}>
-            Project3
-          </GeneralButton>
-        </Link> */}
       </Box>
       <Box sx={linkBox}>
         <Typography variant="h6" gutterBottom></Typography>
         <Socials />
       </Box>
-      <Typography variant="body2" align="center" sx={copyRightStyles}>
+      <Typography variant="body1" align="center" sx={copyRightStyles}>
         © 2023 ZakProperties. All Rights Reserved.
       </Typography>
     </Box>

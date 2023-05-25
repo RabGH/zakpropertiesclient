@@ -101,10 +101,10 @@ const Projects = ({
             <Typography variant="h6" sx={styles.mainDeveloperStyles}>
               Developed by {mainDeveloper}
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body1">
               Street and City: {address.street}, {address.city}
             </Typography>
-            <Typography variant="body2">Address: {specificAddress}</Typography>
+            <Typography variant="body1">Address: {specificAddress}</Typography>
           </Box>
 
           <Box sx={styles.offPlanStyles}>
@@ -112,11 +112,11 @@ const Projects = ({
             typeof projectOffPlan === "object" &&
             projectOffPlan.offplan ? (
               <Box>
-                <Typography variant="body2" sx={styles.offPlanTextStyles}>
+                <Typography variant="body1" sx={styles.offPlanTextStyles}>
                   Off-plan project
                 </Typography>
                 {projectOffPlan.completionDate && (
-                  <Typography variant="body2" sx={styles.offPlanCompleteStyles}>
+                  <Typography variant="body1" sx={styles.offPlanCompleteStyles}>
                     Completion date: {projectOffPlan.completionDate}
                   </Typography>
                 )}
@@ -128,28 +128,28 @@ const Projects = ({
 
           <Box sx={styles.mainSection}>
             <Box>
-              <Typography variant="body2" sx={styles.projectTypeStyles}>
+              <Typography variant="body1" sx={styles.projectTypeStyles}>
                 Types of Housing Built: {projectPropertyTypes}
               </Typography>
             </Box>
 
             <Box>
-              <Typography variant="body2" sx={styles.unitTypeStyles}>
+              <Typography variant="body1" sx={styles.unitTypeStyles}>
                 Unit types {unitType}
               </Typography>
-              <Typography variant="body2" sx={styles.areaTypeStyles}>
+              <Typography variant="body1" sx={styles.areaTypeStyles}>
                 Type of Area: {areaType}
               </Typography>
-              <Typography variant="body2" sx={styles.projectBedroomStyles}>
+              <Typography variant="body1" sx={styles.projectBedroomStyles}>
                 Number of Bedrooms: {bedrooms}
               </Typography>
             </Box>
 
             <Box sx={styles.bodyStyles}>
-              <Typography variant="body2" sx={styles.squareFootageStyles}>
+              <Typography variant="body1" sx={styles.squareFootageStyles}>
                 Built-up Area: {formatArea(squareFootage)}
               </Typography>
-              <Typography variant="body2" sx={styles.projectBuiltUpAreaStyles}>
+              <Typography variant="body1" sx={styles.projectBuiltUpAreaStyles}>
                 Total Project Area: {formatArea(projectBuiltUpArea)}
               </Typography>
               <Typography variant="h6" sx={styles.descriptionStyles}>

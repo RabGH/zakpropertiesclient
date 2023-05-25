@@ -48,7 +48,7 @@ const PropertyReference = ({
   return (
     <Box sx={{ p: 5, mt: 2 }}>
       <Card sx={stickyStyles}>
-        <Typography variant="body2" sx={idStyles}>
+        <Typography variant="body1" sx={idStyles}>
           Reference ID: {id}
         </Typography>
         <Typography variant="h6" sx={priceStyles}>
@@ -59,17 +59,17 @@ const PropertyReference = ({
           typeof propertyOffPlan === "object" &&
           propertyOffPlan.offplan ? (
             <Box sx={offPlanProjectBoxStyles}>
-              <Typography variant="body2" sx={offPlanTypoStyles}>
+              <Typography variant="body1" sx={offPlanTypoStyles}>
                 Off-plan project
               </Typography>
               {propertyOffPlan.propertyCompletionDate && (
-                <Typography variant="body2" sx={offPlanCompletionStyles}>
+                <Typography variant="body1" sx={offPlanCompletionStyles}>
                   Completion date: {propertyOffPlan.propertyCompletionDate}
                 </Typography>
               )}
             </Box>
           ) : (
-            <Typography variant="body2" sx={readyToBuyStyles}>
+            <Typography variant="body1" sx={readyToBuyStyles}>
               Ready to buy
             </Typography>
           )}

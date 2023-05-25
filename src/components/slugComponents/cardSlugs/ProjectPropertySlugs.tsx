@@ -71,13 +71,13 @@ const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
                 key={`property_${property._id}`}
                 href={`/property/${property.slug.current}`}
               >
-                <Typography variant="body2" sx={propertyTypeStyles}>
+                <Typography variant="body1" sx={propertyTypeStyles}>
                   {property.propertyType}
                 </Typography>
                 <Typography variant="h6" sx={propertyTitleCard}>
                   {property.title}
                 </Typography>
-                <Typography variant="body2" sx={propertyAreaCard}>
+                <Typography variant="body1" sx={propertyAreaCard}>
                   Area {formatArea(property.squareFootage)}
                 </Typography>
                 <Typography variant="h5" sx={propertyPriceCard}>

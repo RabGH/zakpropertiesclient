@@ -11,7 +11,7 @@ const slugTheme = createTheme({
       main: "#1B1B1B", // Dark Gray Primary
     },
     secondary: {
-      main: "#F0F0F0", // Medium Shade of Gray , background or text
+      main: "#F0F0F0", //
     },
     error: {
       main: "#1e6572", // Turquoise #1e6572, light #4B838E , dark #15464F
@@ -20,7 +20,7 @@ const slugTheme = createTheme({
       main: "#F7F7F7", // White
     },
     success: {
-      main: "#1B1B1B", // Dark Gray Secondary, use on light pages
+      main: "#1B1B1B", // Dark Gray Secondary
     },
   },
   typography: {
@@ -83,14 +83,14 @@ const slugTheme = createTheme({
     body1: {
       fontFamily: "Roboto",
       fontWeight: 100,
-      color: "#ffffff",
+      color: "#000000",
       lineHeight: 1.5,
       margin: "0",
     },
     body2: {
       fontFamily: "Roboto",
       fontWeight: 400,
-      color: "#000000",
+      color: "#ffffff",
       lineHeight: 1.5,
       margin: "0",
       fontSize: "1rem",
