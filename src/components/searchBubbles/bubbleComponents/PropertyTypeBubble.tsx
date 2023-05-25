@@ -3,11 +3,7 @@ import { Button, ButtonGroup, Menu, MenuItem, Stack } from "@mui/material";
 import { PropertyTypeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
-const PropertyTypeBubble = ({
-  handleSearch,
-  search,
-  setSearch,
-}: PropertyTypeBubbleProps) => {
+const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -20,7 +16,6 @@ const PropertyTypeBubble = ({
   };
 
   const handlePropertyTypeChange = (propertyType: string) => {
-    handleSearch(propertyType);
     setSearch((prevSearch) => ({ ...prevSearch, propertyType }));
     setAnchorEl(null);
   };

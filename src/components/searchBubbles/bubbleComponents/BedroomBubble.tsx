@@ -4,11 +4,9 @@ import { Button, Slider, Stack, Menu, Box, MenuList } from "@mui/material";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
 const BedroomBubble: React.FC<BedroomBubbleProps> = ({
-  handleBedroomRange,
   minBedrooms,
   maxBedrooms,
   search,
-  setIsChanged,
   setSearch,
 }) => {
   const styles = getBubbleStyles();
@@ -17,18 +15,9 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
 
-  useEffect(() => {
-    if (low !== search.bedrooms[0] || high !== search.bedrooms[1]) {
-      setIsChanged(true);
-    } else {
-      setIsChanged(false);
-    }
-  }, [low, high, search.bedrooms, setIsChanged]);
-
   const handleApply = () => {
-    handleBedroomRange(low, high);
-    setOpen(false);
     setSearch((prev) => ({ ...prev, bedrooms: [low, high] }));
+    setOpen(false);
   };
 
   const handleSliderChange = (event: any, newValue: number | number[]) => {

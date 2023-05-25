@@ -13,6 +13,8 @@ import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 export default function ReadyToBuyBubble({
   readyToBuyOption,
   setReadyToBuyOption,
+  search,
+  setSearch,
 }: ReadyToBuyBubbleProps) {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -28,6 +30,13 @@ export default function ReadyToBuyBubble({
   const handleMenuItemClick = (option: string) => {
     setReadyToBuyOption(option);
     handleMenuClose();
+    if (option === "Any") {
+      setSearch((prev) => ({ ...prev, propertyOffPlan: undefined }));
+    } else if (option === "Off-Plan") {
+      setSearch((prev) => ({ ...prev, propertyOffPlan: true }));
+    } else if (option === "Ready to Buy") {
+      setSearch((prev) => ({ ...prev, propertyOffPlan: false }));
+    }
   };
 
   return (

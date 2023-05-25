@@ -13,7 +13,6 @@ import { PriceRangeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
 const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
-  handlePriceRange,
   priceRange,
   search,
   setSearch,
@@ -45,7 +44,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   };
 
   const handleApply = () => {
-    handlePriceRange([low, high]);
+    setSearch((prev) => ({ ...prev, priceRange: [low, high] }));
     setOpen(false);
     if (low === search.priceRange[0] && high === search.priceRange[1]) {
       setButtonText("Any");
@@ -55,6 +54,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
       setButtonText("Custom");
     }
   };
+
   const handleReset = () => {
     setLow(minPrice);
     setHigh(maxPrice);

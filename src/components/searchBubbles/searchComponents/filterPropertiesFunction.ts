@@ -27,9 +27,9 @@ export const filterProperties = (
       property.squareFootage <= sizeRange[1];
     const featureMatch =
       propertyFeatures.length === 0 ||
-      propertyFeatures.every((feature) =>
-        property.features.features.includes(feature)
-      );
+      propertyFeatures.filter((feature) =>
+        property.features?.features?.includes(feature)
+      ).length === propertyFeatures.length;
     if (
       typeMatch &&
       priceMatch &&

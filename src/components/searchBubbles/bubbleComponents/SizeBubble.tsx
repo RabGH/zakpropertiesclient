@@ -13,7 +13,6 @@ import { SizeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
 const SizeBubble: React.FC<SizeBubbleProps> = ({
-  handleSizeRange,
   sizeRange,
   search,
   setSearch,
@@ -45,7 +44,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
   };
 
   const handleApply = () => {
-    handleSizeRange([low, high]);
+    setSearch((prev) => ({ ...prev, sizeRange: [low, high] }));
     setOpen(false);
     if (low === search.sizeRange[0] && high === search.sizeRange[1]) {
       setButtonText("Any");
@@ -79,17 +78,6 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
       i += 50000;
     }
   }
-
-  // const valueLabelFormat = (value: number) => {
-  //   const sqrft = value * 10.7639;
-  //   const rounded = Math.round(sqrft / 1000) * 1000; // this rounds the value to the nearest thousand
-  //   return rounded.toLocaleString("en-US", {
-  //     style: "unit",
-  //     unit: "meter",
-  //     maximumFractionDigits: 0,
-  //     minimumFractionDigits: 0,
-  //   });
-  // };
 
   return (
     <Stack sx={styles.generalBubbleStackStyles}>
@@ -142,12 +130,6 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
                       {option} sqft
                     </MenuItem>
                   ))}
-                  {/* <MenuItem value={minSize}>Min</MenuItem>
-                  {sizeOptions.map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {valueLabelFormat(option)}
-                    </MenuItem>
-                  ))} */}
                 </TextField>
                 <Typography variant="body1">to</Typography>
                 <TextField
@@ -173,11 +155,6 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
                     },
                   }}
                 >
-                  {/* {sizeOptions.map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {valueLabelFormat(option)}
-                    </MenuItem>
-                  ))} */}
                   {sizeOptions.map((option) => (
                     <MenuItem key={option} value={option}>
                       {option} sqft
