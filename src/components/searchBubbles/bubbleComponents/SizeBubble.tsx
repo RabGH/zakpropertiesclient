@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import {
   Button,
-  Slider,
+  MenuItem,
   Stack,
+  Typography,
+  Box,
   Menu,
   MenuList,
-  Box,
-  Chip,
 } from "@mui/material";
+import TextField from "@mui/material/TextField";
 import { SizeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
@@ -24,17 +25,23 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
 
-  const minSize = 100;
+  const minSize = 0;
   const maxSize = 100000;
 
-  const handleSliderChange = (
-    event: Event,
-    newValue: number | number[]
-  ): void => {
-    if (Array.isArray(newValue)) {
-      setLow(newValue[0]);
-      setHigh(newValue[1]);
-    }
+  const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
+    setOpen((prev) => !prev);
+  };
+
+  const handleLowChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setLow(Number(event.target.value));
+  };
+
+  const handleHighChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setHigh(Number(event.target.value));
   };
 
   const handleApply = () => {
@@ -48,34 +55,41 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
       setButtonText("Custom");
     }
   };
-
   const handleReset = () => {
-    setLow(search.sizeRange[0]);
-    setHigh(search.sizeRange[1]);
+    setLow(minSize);
+    setHigh(maxSize);
     setSearch((prevSearch) => ({
       ...prevSearch,
-      sizeRange: [search.sizeRange[0], search.sizeRange[1]],
+      sizeRange: [minSize, maxSize],
     }));
     setButtonText("Any");
   };
-  const valueLabelFormat = (value: number) => {
-    return value.toLocaleString("en-US", {
-      style: "unit",
-      unit: "meter",
-      maximumFractionDigits: 0,
-      minimumFractionDigits: 0,
-    });
-  };
 
-  const marks = [
-    { value: 0, label: "0" },
-    { value: 50000, label: "50000" },
-    { value: 100000, label: "100000" },
-  ].filter((mark) => mark.value % 50000 === 0);
+  const sizeOptions = [];
+  let i = minSize;
+  while (i <= maxSize) {
+    sizeOptions.push(i);
+    if (i < 10000) {
+      i += 1000;
+    } else if (i < 50000) {
+      i += 5000;
+    } else if (i < 100000) {
+      i += 10000;
+    } else {
+      i += 50000;
+    }
+  }
 
-  const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
-    setOpen((prev) => !prev);
-  };
+  // const valueLabelFormat = (value: number) => {
+  //   const sqrft = value * 10.7639;
+  //   const rounded = Math.round(sqrft / 1000) * 1000; // this rounds the value to the nearest thousand
+  //   return rounded.toLocaleString("en-US", {
+  //     style: "unit",
+  //     unit: "meter",
+  //     maximumFractionDigits: 0,
+  //     minimumFractionDigits: 0,
+  //   });
+  // };
 
   return (
     <Stack sx={styles.generalBubbleStackStyles}>
@@ -96,69 +110,103 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
           disableScrollLock
         >
           <MenuList sx={styles.sizeMenuListStyles}>
-            <Slider
-              value={[low, high]}
-              onChange={handleSliderChange}
-              min={minSize}
-              max={maxSize}
-              step={100}
-              marks={marks}
-              valueLabelDisplay="auto"
-              valueLabelFormat={valueLabelFormat}
-              sx={styles.sizeSliderStyles}
-            />
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              sx={styles.sizeStackChipStyles}
-            >
-              <Chip
-                label="Min Size"
-                variant="filled"
-                sx={styles.sizeChipLabelStyles}
-              />
-              <Chip
-                label={valueLabelFormat(low)}
-                variant="filled"
-                sx={styles.sizeChipNumberStyles}
-              />
-            </Stack>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              sx={styles.sizeStackChipStyles}
-            >
-              <Chip
-                label="Max Size"
-                variant="filled"
-                sx={styles.sizeChipLabelStyles}
-              />
-              <Chip
-                label={valueLabelFormat(high)}
-                variant="filled"
-                sx={styles.sizeChipNumberStyles}
-              />
-            </Stack>
-            <Stack
-              direction="row"
-              spacing={2}
-              sx={styles.sizeButtonStackStyles}
-            >
-              <Button
-                onClick={handleApply}
-                variant="contained"
-                sx={styles.generalApplyButtonStyles}
+            <Box sx={styles.sizeSearchBoxStyles}>
+              <Stack
+                direction="row"
+                spacing={2}
+                sx={styles.sizeSelectStackStyles}
               >
-                Apply
-              </Button>
-              <Button
-                onClick={handleReset}
-                variant="text"
-                sx={styles.generalResetButtonStyles}
+                <TextField
+                  value={low}
+                  onChange={handleLowChange}
+                  inputProps={{ "aria-label": "Low size", "data-unit": "sqft" }}
+                  sx={styles.sizeSelectStyles}
+                  select
+                  SelectProps={{
+                    value: low,
+                    displayEmpty: true,
+                    inputProps: { "aria-label": "Low size" },
+                    sx: styles.sizeSelectStyles,
+                    MenuProps: {
+                      anchorOrigin: { vertical: "bottom", horizontal: "left" },
+                      transformOrigin: { vertical: "top", horizontal: "left" },
+                      PaperProps: {
+                        sx: styles.sizeMenuPaperStyles,
+                      },
+                    },
+                  }}
+                >
+                  <MenuItem value={minSize}>Min</MenuItem>
+                  {sizeOptions.map((option) => (
+                    <MenuItem key={option} value={option}>
+                      {option} sqft
+                    </MenuItem>
+                  ))}
+                  {/* <MenuItem value={minSize}>Min</MenuItem>
+                  {sizeOptions.map((option) => (
+                    <MenuItem key={option} value={option}>
+                      {valueLabelFormat(option)}
+                    </MenuItem>
+                  ))} */}
+                </TextField>
+                <Typography variant="body1">to</Typography>
+                <TextField
+                  value={high}
+                  onChange={handleHighChange}
+                  inputProps={{
+                    "aria-label": "High size",
+                    "data-unit": "sqft",
+                  }}
+                  sx={styles.sizeSelectStyles}
+                  select
+                  SelectProps={{
+                    value: high,
+                    displayEmpty: true,
+                    inputProps: { "aria-label": "High size" },
+                    sx: styles.sizeSelectStyles,
+                    MenuProps: {
+                      anchorOrigin: { vertical: "bottom", horizontal: "left" },
+                      transformOrigin: { vertical: "top", horizontal: "left" },
+                      PaperProps: {
+                        sx: styles.sizeMenuPaperStyles,
+                      },
+                    },
+                  }}
+                >
+                  {/* {sizeOptions.map((option) => (
+                    <MenuItem key={option} value={option}>
+                      {valueLabelFormat(option)}
+                    </MenuItem>
+                  ))} */}
+                  {sizeOptions.map((option) => (
+                    <MenuItem key={option} value={option}>
+                      {option} sqft
+                    </MenuItem>
+                  ))}
+                  <MenuItem value={maxSize}>Max</MenuItem>
+                </TextField>
+              </Stack>
+              <Stack
+                direction="row"
+                spacing={2}
+                sx={styles.sizeButtonStackStyles}
               >
-                Clear
-              </Button>
-            </Stack>
+                <Button
+                  onClick={handleApply}
+                  variant="contained"
+                  sx={styles.generalApplyButtonStyles}
+                >
+                  Apply
+                </Button>
+                <Button
+                  onClick={handleReset}
+                  variant="text"
+                  sx={styles.generalResetButtonStyles}
+                >
+                  Clear
+                </Button>
+              </Stack>
+            </Box>
           </MenuList>
         </Menu>
       </Box>

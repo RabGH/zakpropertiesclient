@@ -152,40 +152,55 @@ export const getBubbleStyles = () => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "space-between",
-      pt: "2rem",
-      pr: "3rem",
-      pl: "2.3rem",
     },
-    sizeSliderStyles: {
-      width: "250px",
-      "& & .MuiSlider-valueLabel": {
-        color: "white",
-      },
-      "& .MuiSlider-track": {
-        backgroundImage: "linear-gradient(to right, white, gray)",
-      },
-      "& .MuiSlider-rail": {
-        backgroundImage: "linear-gradient(to right, white, gray)",
-      },
-      "& .MuiSlider-thumb": {
-        borderColor: "white",
-      },
+    sizeSearchBoxStyles: {
+      pr: 2,
+      pl: 2,
     },
-    sizeStackChipStyles: {},
-    sizeChipLabelStyles: {
-      color: "white",
-      backgroundColor: muiTheme.palette.grey[900],
-      mb: "0.5rem",
+    sizeSelectStackStyles: {
+      alignItems: "center",
     },
-    sizeChipNumberStyles: {
-      color: "white",
-      backgroundColor: muiTheme.palette.grey[900],
+    sizeSelectStyles: {
+      width: "170px",
+      "& .MuiInputLabel-root": {
+        "&.Mui-focused": {
+          color: muiTheme.palette.grey[400],
+        },
+        "& :hover": {
+          color: muiTheme.palette.grey[300],
+        },
+      },
+      "& .MuiSelect-select": {
+        backgroundColor: muiTheme.palette.grey[500],
+        borderRadius: "4px",
+        "& :hover": {
+          backgroundColor: muiTheme.palette.grey[600],
+        },
+        "&.Mui-focused": {
+          backgroundColor: muiTheme.palette.grey[700],
+        },
+      },
+      "& .MuiMenuItem-root": {
+        color: muiTheme.palette.common.white,
+        backgroundColor: muiTheme.palette.grey[800],
+        "&.Mui-selected": {
+          backgroundColor: muiTheme.palette.grey[700],
+        },
+        "& :hover": {
+          backgroundColor: muiTheme.palette.grey[900],
+        },
+      },
     },
     sizeButtonStackStyles: {
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
-      mt: "0.3rem",
+      mt: "1rem",
+    },
+    sizeMenuPaperStyles: {
+      maxHeight: "400px",
+      overflow: "auto",
+      zIndex: 9999,
     },
 
     // General Bubble Styles
@@ -201,7 +216,7 @@ export const getBubbleStyles = () => {
       position: "relative",
     },
     generalResetButtonStyles: {
-      color: muiTheme.palette.grey[400],
+      color: muiTheme.palette.grey[900],
     },
     generalApplyButtonStyles: {
       color: muiTheme.palette.common.white,
