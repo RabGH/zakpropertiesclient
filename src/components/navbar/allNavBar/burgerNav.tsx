@@ -9,6 +9,7 @@ import Link from "next/link";
 import {
   burgerNavBox,
   mainBurgerBox,
+  signInButtonStyles,
   popperStyles,
   menuIconStyles,
 } from "../navContentStyles";
