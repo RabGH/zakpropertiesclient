@@ -10,11 +10,14 @@ import Link from "next/link";
 import {
   burgerNavBox,
   mainBurgerBox,
+  signInButtonStyles,
   popperStyles,
   menuIconStyles,
 } from "../navContentStyles";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import Stack from "@mui/material/Stack";
 
 export default function FadeBurgerNav() {
   const [open, setOpen] = React.useState(false);
@@ -75,7 +78,7 @@ export default function FadeBurgerNav() {
           anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
           transformOrigin={{ horizontal: 0, vertical: -5 }}
         >
-          <Grid container>
+          <Stack direction="row" spacing={0.5}>
             <Grid item xs={6}>
               <MenuList
                 autoFocusItem={open}
@@ -132,20 +135,28 @@ export default function FadeBurgerNav() {
                 </Link>
               </MenuList>
             </Grid>
+            <Divider orientation="vertical" flexItem />
             <Grid item xs={6}>
-              <MenuList
-                autoFocusItem={open}
-                id="menu-list-grow"
-                onKeyDown={handleClose}
-              >
-                <Button variant="outlined" color="primary">
+              <Stack direction="column" spacing={1} alignItems="center">
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  sx={signInButtonStyles}
+                >
                   Sign In
                 </Button>
-                <MenuItem>Follows</MenuItem>
-                <MenuItem>Saved Searches</MenuItem>
-              </MenuList>
+                <Divider orientation="horizontal" flexItem />
+                <MenuList
+                  autoFocusItem={open}
+                  id="menu-list-grow"
+                  onKeyDown={handleClose}
+                >
+                  <MenuItem>Follows</MenuItem>
+                  <MenuItem>Saved Searches</MenuItem>
+                </MenuList>
+              </Stack>
             </Grid>
-          </Grid>
+          </Stack>
         </Popover>
       </Box>
     </Box>

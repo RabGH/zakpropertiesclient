@@ -55,3 +55,8 @@ export const iconSocialStyles = {
     color: "#5B5B5B",
   },
 };
+
+export const signInButtonStyles = {
+  m: 1,
+  mb: 0.5,
+};
