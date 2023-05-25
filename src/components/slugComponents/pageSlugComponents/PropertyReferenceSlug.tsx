@@ -6,15 +6,18 @@ import Link from "next/link";
 interface PropertyReferenceProps {
   totalPrice: number;
   id: string;
+  squareFootage: number;
+  bedrooms: number;
   propertyOffPlan:
     | boolean
     | { offplan?: boolean; propertyCompletionDate?: string };
 }
-
 const PropertyReference = ({
   totalPrice,
   id,
   propertyOffPlan,
+  squareFootage,
+  bedrooms,
 }: PropertyReferenceProps) => {
   const stickyStyles = {
     position: "sticky",
@@ -27,7 +30,7 @@ const PropertyReference = ({
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    maxWidth: "70%",
+    maxWidth: "60%",
   };
 
   const buttonStyles = {
@@ -53,6 +56,12 @@ const PropertyReference = ({
         </Typography>
         <Typography variant="h6" sx={priceStyles}>
           {formatPrice(totalPrice)}
+        </Typography>
+        <Typography variant="body1" sx={idStyles}>
+          {bedrooms} Bedroom{isMultiple(bedrooms)}
+        </Typography>
+        <Typography variant="body1" sx={idStyles}>
+          Area {formatArea(squareFootage)}
         </Typography>
         <Box sx={mainOffPlanBoxStyles}>
           {propertyOffPlan &&

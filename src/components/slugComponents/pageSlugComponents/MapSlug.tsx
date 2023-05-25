@@ -79,7 +79,7 @@ const MapSlug: React.FC<MapSlugProps> = ({
     color: "#000",
     zIndex: theme.zIndex.modal + 2,
   };
-  
+
   const modalBoxContainer = {
     position: "relative",
     height: "800px",
@@ -92,15 +92,15 @@ const MapSlug: React.FC<MapSlugProps> = ({
         <Typography variant="h3" sx={titleStyles}>
           Location
         </Typography>
-        <Typography variant="body2">{specificAddress}</Typography>
-        <Typography variant="body2">{address?.street}</Typography>
-        <Typography variant="body2">{address?.city}</Typography>
+        <Typography variant="body1">{specificAddress}</Typography>
+        <Typography variant="body1">{address?.street}</Typography>
+        <Typography variant="body1">{address?.city}</Typography>
       </Box>
       <Box sx={mapIconBox}>
         <IconButton onClick={handleOpen}>
           <MapIcon sx={{ fontSize: 70 }} />
         </IconButton>
-        <Typography variant="body2">View map</Typography>
+        <Typography variant="body1">View map</Typography>
       </Box>
       <Modal open={open} onClose={handleClose} sx={modalStyles}>
         <Box sx={modalBoxContainer}>

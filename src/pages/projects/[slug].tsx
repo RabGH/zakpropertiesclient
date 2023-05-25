@@ -10,8 +10,8 @@ import {
   Button,
 } from "@mui/material";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/ImageGallerySlick";
-import ProjectPropertyCards from "@/components/slugComponents/cardSlugs/ProjectPropertyCards";
-import { propertyContainer } from "@/components/slugComponents/cardSlugs/ProjectPropertyCards";
+import ProjectPropertyCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectPropertyCards";
+import { propertyContainer } from "@/components/slugComponents/cardSlugs/projectCards/ProjectPropertyCards";
 import dynamic from "next/dynamic";
 import AmenitiesCard, {
   amenityStyles,

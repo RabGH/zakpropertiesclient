@@ -9,8 +9,8 @@ import {
   propertyAreaCard,
   propertyPriceCard,
   cardInfoStyles,
-} from "./cardComponents/cardStyles";
-import CardImageCarousel from "./cardComponents/CardImageCarousel";
+} from "../cardComponents/cardStyles";
+import CardImageCarousel from "../cardComponents/CardImageCarousel";
 
 export const propertyContainer = {
   display: "flex",

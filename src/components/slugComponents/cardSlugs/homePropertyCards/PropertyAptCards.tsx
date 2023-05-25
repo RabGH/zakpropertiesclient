@@ -19,23 +19,21 @@ import {
   offPlanStyles,
   offPlanTextStyles,
   offPlanCompleteStyles,
-} from "./cardComponents/cardStyles";
+} from "../cardComponents/cardStyles";
 
-import CardImageCarousel from "./cardComponents/CardImageCarousel";
+import CardImageCarousel from "../cardComponents/CardImageCarousel";
 
-interface PropertyTownCardBodyProps {
+interface PropertyAptCardBodyProps {
   properties?: Property[];
 }
 
-const PropertyTownCardBodyData = ({
-  properties,
-}: PropertyTownCardBodyProps) => {
+const PropertyAptCardBodyData = ({ properties }: PropertyAptCardBodyProps) => {
   if (!properties) {
     return null;
   }
 
-  const townhouses = properties.filter(
-    (property) => property.propertyType === "Townhouse"
+  const apartments = properties.filter(
+    (property) => property.propertyType === "Apartment"
   );
 
   return (
@@ -46,11 +44,11 @@ const PropertyTownCardBodyData = ({
             <Box>
               <Divider sx={dividerStyles}>
                 <Typography variant="h5" sx={featuredTitlePos}>
-                  Featured Townhouses
+                  Featured Apartments
                 </Typography>
               </Divider>
               <Box sx={mainBox}>
-                {townhouses?.slice(0, 3).map((property) => (
+                {apartments?.slice(0, 3).map((property) => (
                   <Card sx={cardStyles} key={property._id}>
                     {property.mainPropertyImage && (
                       <CardImageCarousel
@@ -117,4 +115,4 @@ const PropertyTownCardBodyData = ({
     </>
   );
 };
-export default PropertyTownCardBodyData;
+export default PropertyAptCardBodyData;

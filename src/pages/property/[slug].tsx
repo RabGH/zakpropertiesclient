@@ -79,8 +79,10 @@ const Property = ({
               {title}
             </Typography>
             <Typography variant="body1" sx={styles.propertyTypeStyles}>
-              {propertyType} ⋅ {bedrooms} bedroom{isMultiple(bedrooms)} ⋅ {bathrooms} bathroom{isMultiple(bathrooms)} ⋅{" "}
-              {formatArea(squareFootage)} ⋅ {formatArea(builtUpArea)} ⋅ {formatArea(plottedArea)}
+              {propertyType} ⋅ {bedrooms} bedroom{isMultiple(bedrooms)} ⋅{" "}
+              {bathrooms} bathroom{isMultiple(bathrooms)} ⋅{" "}
+              {formatArea(squareFootage)} ⋅ {formatArea(builtUpArea)} ⋅{" "}
+              {formatArea(plottedArea)}
             </Typography>
             <Typography variant="body1" sx={styles.descriptionStyles}>
               {description}
@@ -115,6 +117,8 @@ const Property = ({
             totalPrice={totalPrice}
             id={id}
             propertyOffPlan={propertyOffPlan}
+            squareFootage={squareFootage}
+            bedrooms={bedrooms}
           />
         </Box>
       </Box>
@@ -126,34 +130,34 @@ export const getServerSideProps = async (pageContext: PageContext) => {
   const pageSlug = pageContext.query.slug;
 
   const query = `*[ _type == "property" && slug.current == $pageSlug][0]{
-            id,
-            title,
-            location,
-            address->{
-              street,
-              city,
+          id,
+          title,
+          location,
+          address->{
+            street,
+            city,
             },
-            specificAddress,
-            propertyType,
-            mainPropertyImage,
-            propertyImages,
-            totalPrice,
-            bathrooms,
-            bedrooms,
-            description,
-            squareFootage,
-            plottedArea,
-            builtUpArea,
-            areaType[],
-            propertyOffPlan,
-            projectId{
-              _id,
+          specificAddress,
+          propertyType,
+          mainPropertyImage,
+          propertyImages,
+          totalPrice,
+          bathrooms,
+          bedrooms,
+          description,
+          squareFootage,
+          plottedArea,
+          builtUpArea,
+          areaType[],
+          propertyOffPlan,
+          projectId{
+            _id,
             },
-            features->{
-              name,
-              features[],
+          features->{
+            name,
+            features[],
             },
-            }`;
+          }`;
 
   const property = await sanityClient.fetch(query, { pageSlug });
   if (!property) {
