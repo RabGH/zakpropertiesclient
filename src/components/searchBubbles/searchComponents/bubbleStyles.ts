@@ -135,10 +135,14 @@ export const getBubbleStyles = () => {
     typeButtonGroupStyles: {},
     typeButtonStyles: {},
     typeMenuStyles: {},
-    typeMainMenuBoxStyles: {},
+    typeMainMenuBoxStyles: {
+      p: 2,
+    },
 
     // ReadyToBuyBubble.tsx Styles
-    readyButtonGroupStyles: {},
+    readyButtonGroupStyles: {
+      mt: 1,
+    },
     readyMenuStyles: {},
     readyButtonStyles: {},
 
