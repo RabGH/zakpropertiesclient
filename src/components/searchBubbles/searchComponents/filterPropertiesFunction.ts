@@ -1,7 +1,7 @@
 import { Property } from "@lib/types";
 
 export const filterProperties = (
-  propertyType: string,
+  propertyType: string[],
   priceRange: [number, number],
   propertyOffPlan: boolean | undefined,
   bedroomRange: [number, number],
@@ -12,7 +12,9 @@ export const filterProperties = (
   let filteredProperties: Property[] = [];
   for (let property of properties) {
     const typeMatch =
-      propertyType === "All" || property.propertyType === propertyType;
+      propertyType.length === 0 ||
+      (Array.isArray(propertyType) &&
+        propertyType.some((type) => property.propertyType === type));
     const priceMatch =
       property.totalPrice >= priceRange[0] &&
       property.totalPrice <= priceRange[1];

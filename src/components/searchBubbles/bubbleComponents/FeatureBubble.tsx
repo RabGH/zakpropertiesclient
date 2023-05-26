@@ -1,18 +1,9 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Menu,
-  MenuItem,
-  Stack,
-  Grid,
-} from "@mui/material";
+import { Box, Button, ButtonGroup, Menu, MenuItem, Stack } from "@mui/material";
 import { FeatureBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
 const FeatureBubble = ({
-  handleSearch,
   search,
   setSearch,
 }: FeatureBubbleProps) => {
@@ -39,7 +30,6 @@ const FeatureBubble = ({
       ...prevSearch,
       propertyFeatures: updatedFeatures,
     }));
-    handleSearch(updatedFeatures);
   };
 
   const selectedCount = search.propertyFeatures.length;

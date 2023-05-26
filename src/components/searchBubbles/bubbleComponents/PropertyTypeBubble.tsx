@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import { Button, ButtonGroup, Menu, MenuItem, Stack } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Button, ButtonGroup, Menu, MenuItem, Stack, Box } from "@mui/material";
 import { PropertyTypeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
+import ReadyToBuyBubble from "./ReadyToBuyBubble";
 
 const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [readyToBuyOption, setReadyToBuyOption] = useState(search.readyToBuy); // initial state
+  useEffect(() => {
+    setReadyToBuyOption(search.readyToBuy);
+  }, [search.readyToBuy]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -16,8 +21,17 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
   };
 
   const handlePropertyTypeChange = (propertyType: string) => {
-    setSearch((prevSearch) => ({ ...prevSearch, propertyType }));
-    setAnchorEl(null);
+    const isSelected = search.propertyType.includes(propertyType);
+    let updatedTypes: string[];
+    if (isSelected) {
+      updatedTypes = search.propertyType.filter((t) => t !== propertyType);
+    } else {
+      updatedTypes = [...search.propertyType, propertyType];
+    }
+    setSearch((prevSearch) => ({
+      ...prevSearch,
+      propertyType: updatedTypes,
+    }));
   };
 
   return (
@@ -33,7 +47,7 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
         sx={styles.typeButtonGroupStyles}
       >
         <Button onClick={handleClick} sx={styles.generalButtonStyles}>
-          {search.propertyType}
+          Property Type: {search.propertyType}
         </Button>
         <Menu
           anchorEl={anchorEl}
@@ -42,27 +56,53 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
           sx={styles.typeMenuStyles}
           disableScrollLock
         >
-          <MenuItem onClick={() => handlePropertyTypeChange("All")}>
-            All
-          </MenuItem>
-          <MenuItem onClick={() => handlePropertyTypeChange("Villa")}>
-            Villa
-          </MenuItem>
-          <MenuItem onClick={() => handlePropertyTypeChange("Townhouse")}>
-            Townhouse
-          </MenuItem>
-          <MenuItem onClick={() => handlePropertyTypeChange("Apartment")}>
-            Apartment
-          </MenuItem>
-          <MenuItem onClick={() => handlePropertyTypeChange("Penthouse")}>
-            Penthouse
-          </MenuItem>
-          <MenuItem onClick={() => handlePropertyTypeChange("Loft & Duplex")}>
-            Loft & Duplex
-          </MenuItem>
-          <MenuItem onClick={() => handlePropertyTypeChange("Plot")}>
-            Plot
-          </MenuItem>
+          <Box sx={styles.typeMainMenuBoxStyles}>
+            <MenuItem
+              onClick={() => handlePropertyTypeChange("All")}
+              selected={search.propertyType.includes("All")}
+            >
+              All
+            </MenuItem>
+            <MenuItem
+              onClick={() => handlePropertyTypeChange("Villa")}
+              selected={search.propertyType.includes("Villa")}
+            >
+              Villa
+            </MenuItem>
+            <MenuItem
+              onClick={() => handlePropertyTypeChange("Townhouse")}
+              selected={search.propertyType.includes("Townhouse")}
+            >
+              Townhouse
+            </MenuItem>
+            <MenuItem
+              onClick={() => handlePropertyTypeChange("Apartment")}
+              selected={search.propertyType.includes("Apartment")}
+            >
+              Apartment
+            </MenuItem>
+            <MenuItem
+              onClick={() => handlePropertyTypeChange("Penthouse")}
+              selected={search.propertyType.includes("Penthouse")}
+            >
+              Penthouse
+            </MenuItem>
+            <MenuItem
+              onClick={() => handlePropertyTypeChange("Loft & Duplex")}
+              selected={search.propertyType.includes("Loft & Duplex")}
+            >
+              Loft & Duplex
+            </MenuItem>
+            <MenuItem onClick={() => handlePropertyTypeChange("Plot")}>
+              Plot
+            </MenuItem>
+            <ReadyToBuyBubble
+              search={search}
+              setSearch={setSearch}
+              readyToBuyOption={readyToBuyOption}
+              setReadyToBuyOption={setReadyToBuyOption}
+            />
+          </Box>
         </Menu>
       </ButtonGroup>
     </Stack>

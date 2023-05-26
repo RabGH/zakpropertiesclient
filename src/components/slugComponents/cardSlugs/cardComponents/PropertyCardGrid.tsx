@@ -43,7 +43,6 @@ const PropertyCardGrid: React.FC<Props> = ({
           setSearch={setSearch}
           properties={properties}
           setFilteredProperties={setFilteredProperties}
-          priceRange={search.priceRange}
         />
       </Box>
       <Divider sx={styles.searchGridDividerStyles} />

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Property } from "@lib/types";
 
 export interface SearchInterface {
-  propertyType: string;
+  propertyType: string[];
   priceRange: [number, number];
   propertyOffPlan: boolean | undefined;
   filteredProperties: Property[];
@@ -47,7 +47,6 @@ export interface SizeBubbleProps {
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }
 export interface FeatureBubbleProps {
-  handleSearch: (features: string[]) => void;
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }

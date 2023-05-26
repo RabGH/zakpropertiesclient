@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Stack, Typography, Button, Box } from "@mui/material";
+import React from "react";
+import { Stack, Typography, Box } from "@mui/material";
 import PropertyTypeBubble from "./bubbleComponents/PropertyTypeBubble";
 import PriceRangeBubble from "./bubbleComponents/PriceRangeBubble";
-import ReadyToBuyBubble from "./bubbleComponents/ReadyToBuyBubble";
 import BedroomBubble from "./bubbleComponents/BedroomBubble";
 import FeatureBubble from "./bubbleComponents/FeatureBubble";
 import SizeBubble from "./bubbleComponents/SizeBubble";
 import ResultsBubble from "./ResultsBubble";
 import { getBubbleStyles } from "./searchComponents/bubbleStyles";
 import { SearchFieldBubblesProps } from "./searchComponents/bubbleInterfaces";
+import { filterProperties } from "./searchComponents/filterPropertiesFunction";
 
 const SearchFieldBubbles = ({
   search,
@@ -17,36 +17,16 @@ const SearchFieldBubbles = ({
   setFilteredProperties,
 }: SearchFieldBubblesProps) => {
   const styles = getBubbleStyles();
-  const [readyToBuyOption, setReadyToBuyOption] = useState("Any");
 
-  const handleReadyToBuyChange = (option: string) => {
-    let updatedSearch = search;
-    let filteredProperties = search.filteredProperties;
-
-    if (option === "Any") {
-      updatedSearch = { ...updatedSearch, filteredProperties: properties };
-      filteredProperties = properties;
-    } else {
-      updatedSearch = {
-        ...updatedSearch,
-        propertyOffPlan: option === "Off-Plan",
-      };
-      if (option === "Off-Plan") {
-        filteredProperties = properties.filter(
-          (property) =>
-            property.propertyOffPlan?.offplan ??
-            property.propertyOffPlan === undefined
-        );
-      } else if (option === "Ready to Buy") {
-        filteredProperties = properties.filter(
-          (property) => !property.propertyOffPlan?.offplan
-        );
-      }
-    }
-
-    setSearch((prevState) => ({ ...prevState, readyToBuy: option }));
-    setFilteredProperties(filteredProperties);
-  };
+  const results = filterProperties(
+    search.propertyType,
+    search.priceRange,
+    search.propertyOffPlan,
+    search.bedrooms,
+    search.sizeRange,
+    search.propertyFeatures,
+    properties
+  ).length;
 
   return (
     <Box sx={styles.searchFieldMainBox}>
@@ -56,6 +36,7 @@ const SearchFieldBubbles = ({
         spacing={0}
         sx={styles.mainSearchFieldStack}
       >
+        <Typography variant="h6">{results} Homes</Typography>
         <Box sx={styles.searchButtonBox}>
           <ResultsBubble
             search={search}
@@ -64,12 +45,6 @@ const SearchFieldBubbles = ({
             setFilteredProperties={setFilteredProperties}
           />
         </Box>
-        <ReadyToBuyBubble
-          search={search}
-          setSearch={setSearch}
-          readyToBuyOption={readyToBuyOption}
-          setReadyToBuyOption={setReadyToBuyOption}
-        />
         <PropertyTypeBubble search={search} setSearch={setSearch} />
         <BedroomBubble
           minBedrooms={1}
@@ -88,12 +63,6 @@ const SearchFieldBubbles = ({
           setSearch={setSearch}
         />
         <FeatureBubble
-          handleSearch={(propertyFeatures) => {
-            setSearch((prevSearch) => ({
-              ...prevSearch,
-              propertyFeatures,
-            }));
-          }}
           search={search}
           setSearch={setSearch}
         />
