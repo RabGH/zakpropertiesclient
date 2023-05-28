@@ -62,10 +62,7 @@ const SearchFieldBubbles = ({
           search={search}
           setSearch={setSearch}
         />
-        <FeatureBubble
-          search={search}
-          setSearch={setSearch}
-        />
+        <FeatureBubble search={search} setSearch={setSearch} />
       </Stack>
     </Box>
   );

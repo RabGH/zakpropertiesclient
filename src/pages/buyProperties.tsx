@@ -53,24 +53,25 @@ export default function PropertySearch({
 
 export async function getServerSideProps() {
   const propertyQuery = `*[ _type == "property"]{
-          ...,
-          location,
-          propertyType,
-          mainPropertyImage,
-          propertyImages,
-          totalPrice,
-          bathrooms,
-          bedrooms,
-          description,
-          squareFootage,
-          plottedArea,
-          builtUpArea,
-          features->{
-          name,
-          features[],
-          },
-          propertyOffPlan,
-          }`;
+            ...,
+            createdAt,
+            location,
+            propertyType,
+            mainPropertyImage,
+            propertyImages,
+            totalPrice,
+            bathrooms,
+            bedrooms,
+            description,
+            squareFootage,
+            plottedArea,
+            builtUpArea,
+            features->{
+              name,
+              features[],
+              },
+            propertyOffPlan,
+            }`;
   const [properties] = await Promise.all([
     sanityClient.fetch<Property[]>(propertyQuery),
   ]);

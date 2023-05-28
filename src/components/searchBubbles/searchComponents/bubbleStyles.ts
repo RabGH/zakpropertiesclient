@@ -22,6 +22,12 @@ export const getBubbleStyles = () => {
     // ResultsBubble.tsx Styles
     searchResultsButton: {},
 
+    // SortByBubble.tsx Styles
+    sortByButtonStyle: {},
+    sortByMenuBoxStyles: {},
+    sortByMenuStyles: {},
+    sortByButtonGroupStyles: {},
+
     // BedroomBubble.tsx Styles
     bedroomMenuStyles: {
       width: "500px",

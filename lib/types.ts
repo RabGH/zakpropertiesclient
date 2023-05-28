@@ -1,6 +1,7 @@
 export interface Property {
   id: string;
   _id: string;
+  createdAt: Date;
   title: string;
   propertyType: string;
   mainPropertyImage: string;
@@ -44,6 +45,7 @@ export interface Property {
 export interface Project {
   id: string;
   _id: string;
+  createdAt: Date;
   title: string;
   projectPropertyTypes: string[];
   unitType: string;

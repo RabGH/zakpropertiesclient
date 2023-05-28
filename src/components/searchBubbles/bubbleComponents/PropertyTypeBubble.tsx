@@ -7,7 +7,7 @@ import ReadyToBuyBubble from "./ReadyToBuyBubble";
 const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [readyToBuyOption, setReadyToBuyOption] = useState(search.readyToBuy); // initial state
+  const [readyToBuyOption, setReadyToBuyOption] = useState(search.readyToBuy);
   useEffect(() => {
     setReadyToBuyOption(search.readyToBuy);
   }, [search.readyToBuy]);
