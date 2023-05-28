@@ -46,12 +46,6 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
         aria-label="property type dropdown"
         sx={styles.typeButtonGroupStyles}
       >
-        {/* <Button onClick={handleClick} sx={styles.generalButtonStyles}>
-Types:{" "}
-{search.propertyType.length > 0
-? search.propertyType.join(" ")
-: "All"}
-</Button> */}
         <Button onClick={handleClick} sx={styles.generalButtonStyles}>
           Types:{" "}
           {search.propertyType.length > 0 ? search.propertyType.length : "All"}
@@ -117,3 +111,12 @@ Types:{" "}
 };
 
 export default PropertyTypeBubble;
+
+{
+  /* <Button onClick={handleClick} sx={styles.generalButtonStyles}>
+Types:{" "}
+{search.propertyType.length > 0
+? search.propertyType.join(" ")
+: "All"}
+</Button> */
+}
