@@ -12,11 +12,11 @@ const SortByBubble: React.FC<SortByBubbleProps> = ({
 }) => {
   const styles = getBubbleStyles();
   const [buttonText, setButtonText] = useState<string>("Featured");
-  const [open, setOpen] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const buttonRef = React.useRef(null);
 
   const sortBy = (criterion: string) => {
-    setOpen(false);
+    setAnchorEl(null);
     setButtonText(criterion);
     const filteredProperties = filterProperties(
       search.propertyType,
@@ -55,8 +55,12 @@ const SortByBubble: React.FC<SortByBubbleProps> = ({
     setFilteredProperties(filteredProperties);
   };
 
-  const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
-    setOpen((prev) => !prev);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -67,7 +71,7 @@ const SortByBubble: React.FC<SortByBubbleProps> = ({
       sx={styles.generalBubbleStackStyles}
     >
       <Button
-        onClick={handleButtonClick}
+        onClick={handleClick}
         variant="outlined"
         sx={styles.sortByButtonStyle}
         ref={buttonRef}
@@ -81,20 +85,21 @@ const SortByBubble: React.FC<SortByBubbleProps> = ({
           sx={styles.sortByButtonGroupStyles}
         >
           <Menu
-            open={open}
-            onClose={() => setOpen(false)}
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
             sx={styles.sortByMenuStyles}
             disableScrollLock
           >
             <MenuItem onClick={() => sortBy("Featured")}>Featured</MenuItem>
             <MenuItem onClick={() => sortBy("High Price")}>High Price</MenuItem>
             <MenuItem onClick={() => sortBy("Low Price")}>Low Price</MenuItem>
-            <MenuItem onClick={() => sortBy("Latest Property")}>
+            {/* <MenuItem onClick={() => sortBy("Latest Property")}>
               Latest Property
             </MenuItem>
             <MenuItem onClick={() => sortBy("Oldest Property")}>
               Oldest Property
-            </MenuItem>
+            </MenuItem> */}
           </Menu>
         </ButtonGroup>
       </Box>
