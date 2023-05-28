@@ -1,28 +1,58 @@
 import React, { useState } from "react";
-import {
-  Typography,
-  Box,
-  Button,
-  Stack,
-  Menu,
-  ButtonGroup,
-  MenuItem,
-} from "@mui/material";
+import { Box, Button, Stack, Menu, ButtonGroup, MenuItem } from "@mui/material";
 import { SortByBubbleProps } from "./searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "./searchComponents/bubbleStyles";
+import { filterProperties } from "./searchComponents/filterPropertiesFunction";
 
 const SortByBubble: React.FC<SortByBubbleProps> = ({
   search,
   setSearch,
-  latestProperty,
-  oldestProperty,
-  lowPrice,
-  highPrice,
+  setFilteredProperties,
 }) => {
   const styles = getBubbleStyles();
   const [buttonText, setButtonText] = useState<string>("Any");
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
+
+  const sortBy = (criterion: string) => {
+    setOpen(false);
+    setButtonText(criterion);
+    const filteredProperties = filterProperties(
+      search.propertyType,
+      search.priceRange,
+      search.propertyOffPlan,
+      search.bedrooms,
+      search.sizeRange,
+      search.propertyFeatures,
+      properties
+    );
+
+    switch (criterion) {
+      case "High Price":
+        filteredProperties.sort((a, b) => b.totalPrice - a.totalPrice);
+        break;
+      case "Low Price":
+        filteredProperties.sort((a, b) => a.totalPrice - b.totalPrice);
+        break;
+      case "Latest Property":
+        filteredProperties.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        break;
+      case "Oldest Property":
+        filteredProperties.sort(
+          (a, b) =>
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );
+        break;
+    }
+    setSearch((prev) => ({
+      ...prev,
+      filteredProperties,
+    }));
+    setFilteredProperties(filteredProperties);
+  };
 
   const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
     setOpen((prev) => !prev);
@@ -50,7 +80,14 @@ const SortByBubble: React.FC<SortByBubbleProps> = ({
             sx={styles.sortByMenuStyles}
             disableScrollLock
           >
-            <MenuItem></MenuItem>
+            <MenuItem onClick={() => sortBy("High Price")}>High Price</MenuItem>
+            <MenuItem onClick={() => sortBy("Low Price")}>Low Price</MenuItem>
+            <MenuItem onClick={() => sortBy("Latest Property")}>
+              Latest Property
+            </MenuItem>
+            <MenuItem onClick={() => sortBy("Oldest Property")}>
+              Oldest Property
+            </MenuItem>
           </Menu>
         </ButtonGroup>
       </Box>

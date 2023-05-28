@@ -13,6 +13,7 @@ export interface SearchInterface {
   maxSize?: number;
   sizeRange: [number, number];
 }
+
 export interface SearchFieldBubblesProps {
   filteredProperties: Property[];
   search: SearchInterface;
@@ -61,8 +62,6 @@ export interface ResultsBubbleProps {
 export interface SortByBubbleProps {
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
-  highPrice: number;
-  lowPrice: number;
-  latestProperty: string;
-  oldestProperty: string;
+  properties: Property[];
+  setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
 }
