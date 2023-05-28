@@ -18,6 +18,8 @@ export const getBubbleStyles = () => {
     searchButtonBox: {
       p: "8px",
     },
+
+    // ResultsBubble.tsx Styles
     searchResultsButton: {},
 
     // BedroomBubble.tsx Styles
