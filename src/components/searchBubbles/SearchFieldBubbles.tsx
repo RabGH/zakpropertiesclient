@@ -6,8 +6,9 @@ import BedroomBubble from "./bubbleComponents/BedroomBubble";
 import FeatureBubble from "./bubbleComponents/FeatureBubble";
 import SizeBubble from "./bubbleComponents/SizeBubble";
 import ResultsBubble from "./ResultsBubble";
+import SortByBubble from "./SortByBubble";
 import { getBubbleStyles } from "./searchComponents/bubbleStyles";
-import { SearchFieldBubblesProps } from "./searchComponents/bubbleInterfaces";
+import { SearchFieldBubblesProps, SearchInterface } from "./searchComponents/bubbleInterfaces";
 import { filterProperties } from "./searchComponents/filterPropertiesFunction";
 
 const SearchFieldBubbles = ({
@@ -17,6 +18,13 @@ const SearchFieldBubbles = ({
   setFilteredProperties,
 }: SearchFieldBubblesProps) => {
   const styles = getBubbleStyles();
+
+  const updateSearch = (values: Partial<SearchInterface>) => {
+    setSearch((prev) => ({
+      ...prev,
+      ...values,
+    }));
+  };
 
   const results = filterProperties(
     search.propertyType,
@@ -61,8 +69,16 @@ const SearchFieldBubbles = ({
           priceRange={search.priceRange}
           search={search}
           setSearch={setSearch}
+          properties={properties}
+          setFilteredProperties={setFilteredProperties}
         />
         <FeatureBubble search={search} setSearch={setSearch} />
+        <SortByBubble
+          search={search}
+          setSearch={setSearch}
+          setFilteredProperties={setFilteredProperties}
+          properties={properties}
+        />
       </Stack>
     </Box>
   );

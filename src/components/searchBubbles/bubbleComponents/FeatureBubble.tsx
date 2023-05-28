@@ -3,10 +3,7 @@ import { Box, Button, ButtonGroup, Menu, MenuItem, Stack } from "@mui/material";
 import { FeatureBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
-const FeatureBubble = ({
-  search,
-  setSearch,
-}: FeatureBubbleProps) => {
+const FeatureBubble = ({ search, setSearch }: FeatureBubbleProps) => {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
