@@ -3,23 +3,7 @@ import { formatPrice, formatArea } from "@lib/utils";
 import Link from "next/link";
 import { Box, Typography, Card } from "@mui/material";
 import { Property } from "@lib/types";
-import {
-  mainAll,
-  featuredTitlePos,
-  allCardStyles,
-  propertyTypeStyles,
-  propertyTitleCard,
-  propertyAreaCard,
-  propertyPriceCard,
-  cardInfoStyles,
-  dividerStyles,
-  mainBox,
-  bedroomStyles,
-  offPlanStyles,
-  offPlanTextStyles,
-  offPlanCompleteStyles,
-  offPlanReadyToBuyStyles,
-} from "./cardComponents/cardStyles";
+import { CardStyles } from "./cardComponents/cardStyles";
 import CardImageCarousel from "./cardComponents/CardImageCarousel";
 
 interface PropertyAllCardBodyProps {
@@ -27,16 +11,16 @@ interface PropertyAllCardBodyProps {
 }
 
 const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
+  const styles = CardStyles();
   if (!property) {
     return null;
   }
-  //! Using both mainAll and mainBox and an extra box, check why
   return (
     <>
       {property && (
-        <Box sx={mainAll}>
-          <Box sx={mainBox}>
-            <Card sx={allCardStyles}>
+        <Box sx={styles.mainAll}>
+          <Box sx={styles.mainBox}>
+            <Card sx={styles.allCardStyles}>
               {property.mainPropertyImage && (
                 <CardImageCarousel
                   images={[
@@ -48,24 +32,24 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                   alt={property.title}
                 />
               )}
-              <Box sx={cardInfoStyles}>
+              <Box sx={styles.cardInfoStyles}>
                 <Link
                   key={property._id}
                   href={`property/${property.slug.current}`}
                 >
-                  <Typography variant="body1" sx={propertyTypeStyles}>
+                  <Typography variant="body1" sx={styles.propertyTypeStyles}>
                     {property.propertyType}
                   </Typography>
-                  <Typography variant="h6" sx={propertyTitleCard}>
+                  <Typography variant="h6" sx={styles.propertyTitleCard}>
                     {property.title}
                   </Typography>
-                  <Typography variant="body1" sx={propertyAreaCard}>
+                  <Typography variant="body1" sx={styles.propertyAreaCard}>
                     Area: {formatArea(property.squareFootage)}
                   </Typography>
-                  <Typography variant="body1" sx={bedroomStyles}>
+                  <Typography variant="body1" sx={styles.bedroomStyles}>
                     Bedrooms: {property.bedrooms}
                   </Typography>
-                  <Box sx={offPlanStyles}>
+                  <Box sx={styles.offPlanStyles}>
                     {property.propertyOffPlan &&
                     typeof property.propertyOffPlan === "object" &&
                     property.propertyOffPlan.offplan ? (
@@ -73,7 +57,7 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                         {property.propertyOffPlan.propertyCompletionDate && (
                           <Typography
                             variant="body1"
-                            sx={offPlanCompleteStyles}
+                            sx={styles.offPlanCompleteStyles}
                           >
                             Completion date:{" "}
                             {property.propertyOffPlan.propertyCompletionDate}
@@ -81,12 +65,15 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                         )}
                       </Box>
                     ) : (
-                      <Typography variant="body1" sx={offPlanReadyToBuyStyles}>
+                      <Typography
+                        variant="body1"
+                        sx={styles.offPlanReadyToBuyStyles}
+                      >
                         Ready to buy
                       </Typography>
                     )}{" "}
                   </Box>
-                  <Typography variant="body1" sx={propertyPriceCard}>
+                  <Typography variant="body1" sx={styles.propertyPriceCard}>
                     {formatPrice(property.totalPrice)}
                   </Typography>
                 </Link>

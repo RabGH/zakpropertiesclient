@@ -1,25 +1,9 @@
-import { urlFor, sanityClient } from "@lib/sanity";
+import { urlFor } from "@lib/sanity";
 import { isMultiple, formatPrice, formatArea } from "@lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 import { Box, Typography, Container, Card, Divider, Grid } from "@mui/material";
 import { Property } from "@lib/types";
-import {
-  main,
-  featuredTitlePos,
-  cardStyles,
-  propertyTypeStyles,
-  propertyTitleCard,
-  propertyAreaCard,
-  propertyPriceCard,
-  cardInfoStyles,
-  dividerStyles,
-  mainBox,
-  bedroomStyles,
-  offPlanStyles,
-  offPlanTextStyles,
-  offPlanCompleteStyles,
-} from "../cardComponents/cardStyles";
+import { CardStyles } from "../cardComponents/cardStyles";
 
 import CardImageCarousel from "../cardComponents/CardImageCarousel";
 
@@ -27,9 +11,8 @@ interface PropertyTownCardBodyProps {
   properties?: Property[];
 }
 
-const PropertyTownCardBodyData = ({
-  properties,
-}: PropertyTownCardBodyProps) => {
+const PropertyTownCardBodyData = ({ properties }: PropertyTownCardBodyProps) => {
+  const styles = CardStyles();
   if (!properties) {
     return null;
   }
@@ -41,19 +24,19 @@ const PropertyTownCardBodyData = ({
   return (
     <>
       {properties && (
-        <Container>
-          <Box sx={main}>
+        <Box sx={styles.mainAll}>
+          <Box sx={styles.mainBox}>
             <Box>
-              <Divider sx={dividerStyles}>
-                <Typography variant="h5" sx={featuredTitlePos}>
+              <Divider sx={styles.dividerStyles}>
+                <Typography variant="h5" sx={styles.featuredTitlePos}>
                   Featured Townhouses
                 </Typography>
               </Divider>
-              <Box sx={mainBox}>
+              <Box sx={styles.mainBox}>
                 <Grid container spacing={3} justifyContent="center">
                   {townhouses?.slice(0, 3).map((property) => (
                     <Grid item xs={12} sm={6} md={4}>
-                      <Card sx={cardStyles} key={property._id}>
+                      <Card sx={styles.allCardStyles} key={property._id}>
                         {property.mainPropertyImage && (
                           <CardImageCarousel
                             images={[
@@ -67,21 +50,30 @@ const PropertyTownCardBodyData = ({
                             alt={property.title}
                           />
                         )}
-                        <Box sx={cardInfoStyles}>
+                        <Box sx={styles.cardInfoStyles}>
                           <Link
                             key={property._id}
                             href={`property/${property.slug.current}`}
                           >
-                            <Typography variant="h6" sx={propertyTitleCard}>
+                            <Typography
+                              variant="h6"
+                              sx={styles.propertyTitleCard}
+                            >
                               {property.title}
                             </Typography>
-                            <Typography variant="body1" sx={propertyAreaCard}>
+                            <Typography
+                              variant="body1"
+                              sx={styles.propertyAreaCard}
+                            >
                               Area: {formatArea(property.squareFootage)}
                             </Typography>
-                            <Typography variant="body1" sx={bedroomStyles}>
+                            <Typography
+                              variant="body1"
+                              sx={styles.bedroomStyles}
+                            >
                               Bedrooms: {property.bedrooms}
                             </Typography>
-                            <Box sx={offPlanStyles}>
+                            <Box sx={styles.offPlanStyles}>
                               {property.propertyOffPlan &&
                               typeof property.propertyOffPlan === "object" &&
                               property.propertyOffPlan.offplan ? (
@@ -90,7 +82,7 @@ const PropertyTownCardBodyData = ({
                                     .propertyCompletionDate && (
                                     <Typography
                                       variant="body1"
-                                      sx={offPlanCompleteStyles}
+                                      sx={styles.offPlanCompleteStyles}
                                     >
                                       Completion date:{" "}
                                       {
@@ -104,7 +96,10 @@ const PropertyTownCardBodyData = ({
                                 <Typography>Ready to buy</Typography>
                               )}{" "}
                             </Box>
-                            <Typography variant="body1" sx={propertyPriceCard}>
+                            <Typography
+                              variant="body1"
+                              sx={styles.propertyPriceCard}
+                            >
                               {formatPrice(property.totalPrice)}
                             </Typography>
                           </Link>
@@ -116,7 +111,7 @@ const PropertyTownCardBodyData = ({
               </Box>
             </Box>
           </Box>
-        </Container>
+        </Box>
       )}
     </>
   );
