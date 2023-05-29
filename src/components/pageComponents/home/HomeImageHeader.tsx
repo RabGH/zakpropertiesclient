@@ -78,7 +78,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
       color: muiTheme.palette.error.light,
     },
     "@media (max-width: 600px)": {
-      fontSize: "4rem",
+      fontSize: "3.4rem",
     },
     "@media (max-width: 400px)": {
       fontSize: "2rem",

@@ -3,7 +3,7 @@ import { formatPrice, formatArea } from "@lib/utils";
 import { Project } from "@lib/types";
 import Image from "next/image";
 import Link from "next/link";
-import { Box, Typography, Container, Grid } from "@mui/material";
+import { Box, Typography, Container, Grid, Card } from "@mui/material";
 import { getDevelopmentStyles } from "./developmentStyles";
 
 interface ProjectsCardBodyProps {
@@ -20,14 +20,14 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
           <Box sx={styles.main}>
             <Box>
               <Box sx={styles.mainBox}>
-                <Grid container spacing={0} justifyContent="center">
+                <Grid container spacing={2} justifyContent="center">
                   {projects?.map((projects) => (
-                    <Grid item xs={12} sm={6} md={4}>
+                    <Grid item key={projects._id} xs={12} sm={6} md={4}>
                       <Link
                         key={projects._id}
                         href={`projects/${projects.slug.current}`}
                       >
-                        <Box sx={styles.cardStyles}>
+                        <Card sx={styles.cardStyles}>
                           {projects.mainProjectImage && (
                             <Box sx={styles.imageBoxStyles}>
                               <Image
@@ -75,7 +75,7 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                               {formatPrice(projects.totalPrice)}
                             </Typography>
                           </Box>
-                        </Box>
+                        </Card>
                       </Link>
                     </Grid>
                   ))}

@@ -14,7 +14,9 @@ export const getHomePageStyles = () => {
       fontStyle: "italic",
       "@media (max-width: 600px)": {
         fontSize: "1rem",
-        mb: "-20rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "1rem",
       },
     },
 
@@ -24,6 +26,14 @@ export const getHomePageStyles = () => {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
+      "@media (max-width: 600px)": {
+        minHeight: "80vh",
+        mb: "-6rem",
+      },
+      "@media (max-width: 400px)": {
+        minHeight: "30vh",
+        mb: "15rem",
+      },
     },
 
     mapCardPos: {
@@ -79,8 +89,15 @@ export const getHomePageStyles = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      m: "1.2rem",
       fontSize: "1.5rem",
+      "@media (max-width: 600px)": {
+        fontSize: "1.3rem",
+        mb: "1rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "1.3rem",
+        mb: "1rem",
+      },
     },
 
     mainContainer: {

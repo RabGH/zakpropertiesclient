@@ -5,24 +5,23 @@ export const CardStyles = () => {
   return {
     // Property Home Card Styles and property all card styles
     allCardStyles: {
-      maxWidth: 450,
-      maxHeight: 490,
+      maxWidth: "450px",
+      maxHeight: "490px",
       boxShadow: "none",
       borderRadius: "10px",
       overflow: "hidden",
       transition: "all 0.3s ease-in-out",
       backgroundColor: "transparent",
       padding: "0.7rem",
-      mt: "-1rem",
       "&:hover": {
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 1)",
         backgroundColor: "rgba(255, 255, 255, 0.05)",
       },
       "@media (max-width: 600px)": {
-        width: "450px",
+        maxWidth: "420px",
       },
       "@media (max-width: 400px)": {
-        width: "355px",
+        maxWidth: "300px",
       },
     },
     offPlanReadyToBuyStyles: {},
@@ -31,18 +30,20 @@ export const CardStyles = () => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      mb: "1rem",
+      mb: "3rem",
     },
     featuredTitlePos: {
-      // mt: "1rem",
-      // ml: "1rem",
-      // mb: "1rem",
-      // mr: "1rem",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      m: "2rem",
+      m: "1rem",
       fontSize: "1.5rem",
+      "@media (max-width: 600px)": {
+        fontSize: "1.2rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "1rem",
+      },
     },
     propertyTypeStyles: {
       fontSize: "1.2rem",

@@ -32,13 +32,11 @@ export const getDevelopmentStyles = () => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      minHeight: "50vh",
-      minWidth: "50vh",
     },
     cardStyles: {
       position: "relative",
-      maxWidth: 500,
-      height: 340,
+      width: 360,
+      height: 350,
       boxShadow: "none",
       borderRadius: "10px",
       overflow: "hidden",
@@ -47,11 +45,16 @@ export const getDevelopmentStyles = () => {
       objectFit: "cover",
       zIndex: 1,
       padding: "2rem",
-      mr: 2,
-      ml: 2,
       "&:hover": {
         boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
         transform: "scale(1.05)",
+      },
+      "@media (max-width: 600px)": {
+        width: "100%",
+        mr: "5rem",
+      },
+      "@media (max-width: 400px)": {
+        width: "100%",
       },
     },
     imageBoxStyles: {
