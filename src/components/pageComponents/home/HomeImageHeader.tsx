@@ -59,10 +59,11 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
     textAlign: "left",
     "@media (max-width: 600px)": {
       fontSize: "1rem",
+      mt: "10rem",
     },
     "@media (max-width: 400px)": {
       fontSize: "0.8rem",
-      mt: "20rem",
+      mt: "10rem",
     },
   };
 
@@ -77,7 +78,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
       color: muiTheme.palette.error.light,
     },
     "@media (max-width: 600px)": {
-      fontSize: "2rem",
+      fontSize: "4rem",
     },
     "@media (max-width: 400px)": {
       fontSize: "2rem",
@@ -94,7 +95,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
       fontSize: "1rem",
     },
     "@media (max-width: 400px)": {
-      fontSize: "1rem",
+      fontSize: "0.9rem",
     },
   };
 
@@ -104,10 +105,10 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
     width: "100%",
     zIndex: 1,
     "@media (max-width: 600px)": {
-      height: "80vh",
+      height: "110vh",
     },
     "@media (max-width: 400px)": {
-      height: "100vh",
+      height: "80vh",
     },
   };
 

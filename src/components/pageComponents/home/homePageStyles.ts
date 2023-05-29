@@ -94,15 +94,6 @@ export const getHomePageStyles = () => {
       },
       margin: "0 auto",
     },
-    propertyVillaCards: {
-      justifyContent: "center",
-    },
-    propertyAptCards: {
-      justifyContent: "center",
-    },
-    propertyTownCards: {
-      justifyContent: "center",
-    },
     projectCards: {},
   };
 };

@@ -3,22 +3,10 @@ import { useTheme } from "@mui/material";
 export const CardStyles = () => {
   const theme = useTheme();
   return {
-    // Specific PropertyAllCard Styles
+    // Property Home Card Styles and property all card styles
     allCardStyles: {
-      maxWidth: {
-        xl: "450px",
-        lg: "420px",
-        md: "369px",
-        sm: "360px",
-        xs: "360px",
-      },
-      maxHeight: {
-        xl: "610px",
-        lg: "490px",
-        md: "490px",
-        sm: "490px",
-        xs: "490px",
-      },
+      maxWidth: 450,
+      maxHeight: 490,
       boxShadow: "none",
       borderRadius: "10px",
       overflow: "hidden",
@@ -31,7 +19,7 @@ export const CardStyles = () => {
         backgroundColor: "rgba(255, 255, 255, 0.05)",
       },
       "@media (max-width: 600px)": {
-        width: "490px",
+        width: "450px",
       },
       "@media (max-width: 400px)": {
         width: "355px",
@@ -39,22 +27,21 @@ export const CardStyles = () => {
     },
     offPlanReadyToBuyStyles: {},
 
-    // Property Home Card Styles
     mainAll: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      mb: "2rem",
+      mb: "1rem",
     },
     featuredTitlePos: {
-      mt: "1rem",
-      ml: "1rem",
-      mb: "1rem",
-      mr: "1rem",
+      // mt: "1rem",
+      // ml: "1rem",
+      // mb: "1rem",
+      // mr: "1rem",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      m: "1.2rem",
+      m: "2rem",
       fontSize: "1.5rem",
     },
     propertyTypeStyles: {
@@ -78,7 +65,6 @@ export const CardStyles = () => {
     mainBox: {
       display: "flex",
       flexDirection: "row",
-      mb: "2rem",
     },
     dividerStyles: {
       "&::before, &::after": {

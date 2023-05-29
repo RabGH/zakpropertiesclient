@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Typography,
-  Box,
-  Grid,
-  Card,
-  Paper,
-  useTheme,
-} from "@mui/material";
+import { Container, Typography, Box, Grid, Card, Paper } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import HomeHeader from "@/components/pageComponents/home/HomeHeader";
 
@@ -53,22 +45,16 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
 
           <HomePropertyCardsComponent properties={properties} />
 
-          <Grid
-            container
-            spacing={3}
-            direction="column"
-            justifyContent="center"
-            sx={{ alignSelf: "center" }}
-          >
-            <Divider sx={styles.dividerStyles}>
-              <Typography variant="h5" sx={styles.homeFeaturedTitlePos}>
-                Featured Developments
-              </Typography>
-            </Divider>
-            <Box sx={styles.projectCards}>
-              <ProjectCardSlug projects={projects.slice(0, 3)} />
-            </Box>
-          </Grid>
+          <Divider sx={styles.dividerStyles}>
+            <Typography variant="h5" sx={styles.homeFeaturedTitlePos}>
+              Featured Developments
+            </Typography>
+          </Divider>
+
+          <Box sx={styles.projectCards}>
+            <ProjectCardSlug projects={projects.slice(0, 3)} />
+          </Box>
+
           <Divider sx={styles.dividerStyles} />
           <Box sx={styles.mapCardPos}>
             <Card sx={styles.mapCard}>

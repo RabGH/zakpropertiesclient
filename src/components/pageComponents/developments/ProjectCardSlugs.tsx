@@ -20,9 +20,9 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
           <Box sx={styles.main}>
             <Box>
               <Box sx={styles.mainBox}>
-                <Grid container spacing={3} justifyContent="center">
+                <Grid container spacing={0} justifyContent="center">
                   {projects?.map((projects) => (
-                    <Grid item xs={12} sm={12} md={6} lg={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                       <Link
                         key={projects._id}
                         href={`projects/${projects.slug.current}`}
