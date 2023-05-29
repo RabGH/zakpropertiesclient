@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import { Typography, Box, Container, Grid, TextField } from "@mui/material";
+import {
+  Typography,
+  Box,
+  Container,
+  Grid,
+  TextField,
+  Button,
+  Snackbar,
+  CircularProgress,
+  FormControl,
+} from "@mui/material";
 
 import Image from "next/image";
 import logoContact from "../../public/images/logo/logoNoBg.png";
 
 import { getContactStyles } from "@/components/pageComponents/contact/contactStyles";
-import GeneralButton from "@/components/general/GButton";
 
 function Contact() {
   const styles = getContactStyles();
@@ -17,12 +26,17 @@ function Contact() {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [snackOpen, setSnackOpen] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch("/api/contactMe/contact", {
         method: "POST",
@@ -36,11 +50,25 @@ function Contact() {
         throw new Error(errorMessage);
       }
       console.log("Email send successfully");
-      alert("Email Sent successfully");
+      setSnackMessage("Email Sent successfully");
+      setSnackOpen(true);
     } catch (error) {
       console.error("Error sending email", error);
-      alert("Error sending email");
+      setSnackMessage("Error sending email");
+      setSnackOpen(true);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const handleSnackClose = (
+    event: Event | React.SyntheticEvent<any, Event>, //change this line
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackOpen(false);
   };
 
   return (
@@ -51,86 +79,88 @@ function Contact() {
           Contact Page, type in your name, email, subject, and message.
         </Typography>
         <Typography variant="body1">
-          I&apos;ll get back to you as soon as I can!
+          W&apos;ll get back to you as soon as we can!
         </Typography>
       </Box>
       <Container>
         <Grid sx={styles.contactGrid}>
           <Box sx={styles.formBox}>
             <form id="ContactForm" onSubmit={handleSubmit}>
-              <Box sx={styles.textField}>
-                <TextField
-                  id="name"
-                  label="name"
-                  name="name"
-                  type="text"
-                  variant="outlined"
-                  size="medium"
-                  multiline={false}
-                  rows={1}
-                  sx={styles.contactField}
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </Box>
-              <Box sx={styles.textField}>
-                <TextField
-                  id="email"
-                  label="Email"
-                  name="email"
-                  type="email"
-                  variant="outlined"
-                  size="medium"
-                  multiline={false}
-                  rows={1}
-                  sx={styles.contactField}
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </Box>
-              <Box sx={styles.textField}>
-                <TextField
-                  id="subject"
-                  label="Subject"
-                  name="subject"
-                  type="text"
-                  variant="outlined"
-                  size="medium"
-                  multiline={false}
-                  rows={1}
-                  sx={styles.contactField}
-                  required
-                  value={formData.subject}
-                  onChange={handleChange}
-                />
-              </Box>
-              <Box sx={styles.textField}>
-                <TextField
-                  id="message"
-                  label="Message"
-                  name="message"
-                  type="multiline"
-                  variant="outlined"
-                  size="medium"
-                  multiline={true}
-                  rows={5}
-                  sx={styles.contactField}
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
-                />
-              </Box>
+              <FormControl sx={styles.formControl} variant="outlined">
+                <Box sx={styles.textField}>
+                  <TextField
+                    id="name"
+                    label="name"
+                    name="name"
+                    type="text"
+                    variant="outlined"
+                    size="medium"
+                    multiline={false}
+                    rows={1}
+                    sx={styles.contactField}
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                </Box>
+                <Box sx={styles.textField}>
+                  <TextField
+                    id="email"
+                    label="Email"
+                    name="email"
+                    type="email"
+                    variant="outlined"
+                    size="medium"
+                    multiline={false}
+                    rows={1}
+                    sx={styles.contactField}
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </Box>
+                <Box sx={styles.textField}>
+                  <TextField
+                    id="subject"
+                    label="Subject"
+                    name="subject"
+                    type="text"
+                    variant="outlined"
+                    size="medium"
+                    multiline={false}
+                    rows={1}
+                    sx={styles.contactField}
+                    required
+                    value={formData.subject}
+                    onChange={handleChange}
+                  />
+                </Box>
+                <Box sx={styles.textField}>
+                  <TextField
+                    id="message"
+                    label="Message"
+                    name="message"
+                    type="multiline"
+                    variant="outlined"
+                    size="medium"
+                    multiline={true}
+                    rows={5}
+                    sx={styles.contactField}
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
+                </Box>
+              </FormControl>
               <Box sx={styles.buttonBox}>
-                <GeneralButton
-                  label="Send"
+                <Button
+                  variant="contained"
                   size="large"
-                  onClick={() => {}}
+                  type="submit"
                   sx={styles.buttonStyles}
                 >
-                  Send
-                </GeneralButton>
+                  {loading ? <CircularProgress size={24} /> : "Send"}
+                </Button>
               </Box>
             </form>
           </Box>
@@ -145,6 +175,13 @@ function Contact() {
           </Grid>
         </Grid>
       </Container>
+      <Snackbar
+        open={snackOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackClose}
+        message={snackMessage}
+        sx={styles.snackbarStyles}
+      />
     </Container>
   );
 }

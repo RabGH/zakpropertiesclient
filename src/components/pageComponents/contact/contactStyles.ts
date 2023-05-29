@@ -5,78 +5,112 @@ export const getContactStyles = () => {
     mainContainer: {
       display: "flex",
       flexDirection: "column",
-      height: "80vh",
+      height: "75vh",
       justifyContent: "center",
       alignItems: "center",
       mt: "5rem",
+      ml: "10rem",
+      "@media (max-width: 1024px)": {
+        height: "80vh",
+        ml: "5rem",
+      },
+      "@media (max-width: 768px)": {
+        height: "90vh",
+        ml: "2rem",
+      },
+      "@media (max-width: 480px)": {
+        height: "95vh",
+        ml: "0rem",
+      },
     },
     titleBox: {
       display: "flex",
       flexDirection: "column",
-      alignItems: "flex-start",
-      mr: "15rem",
-      width: "100%",
-    },
-    formBox: {
-      maxWidth: "50%",
-      padding: "0 24px",
-    },
-    buttonBox: {
-      marginTop: "24px",
-    },
-    textField: {
-      marginTop: "16px",
-      "& .MuiOutlinedInput-root": {
-        "& fieldset": {
-          borderColor: muiTheme.palette.secondary.dark,
-        },
-        "&:hover fieldset": {
-          borderColor: "#212121",
-        },
-        "&.Mui-focused fieldset": {
-          borderColor: "#212121",
-        },
+      alignItems: "left",
+      justifyContent: "center",
+      width: "70%",
+      mb: "1rem",
+      mr: "18rem",
+      "@media (max-width: 1024px)": {
+        mr: "10rem",
       },
-    },
-    contactField: {
-      width: "700px",
-    },
-    buttonStyles: {
-      marginTop: "24px",
-      fontWeight: "bold",
-      "&:hover": {
-        color: muiTheme.palette.secondary.dark,
+      "@media (max-width: 768px)": {
+        mr: "8rem",
       },
-    },
-    logoStyles: {
-      display: "flex",
-      justifyContent: "flex-end",
-      alignItems: "center",
-      textAlign: "center",
+      "@media (max-width: 480px)": {
+        mr: "5rem",
+      },
     },
     contactGrid: {
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      gap: "24px",
+      display: "flex",
+      flexDirection: "row",
+    },
+    formBox: {
+      display: "flex",
+      flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
-      marginTop: "32px",
-      "@media screen and (max-width: 768px)": {
-        gridTemplateColumns: "1fr",
-        justifyContent: "center",
+    },
+    textField: {
+      display: "flex",
+      flexDirection: "row",
+      marginBottom: "1rem",
+    },
+    contactField: {
+      width: "50vw",
+      "@media (max-width: 1024px)": {
+        width: "40vw",
+      },
+      "@media (max-width: 768px)": {
+        width: "50vw",
+      },
+      "@media (max-width: 480px)": {
+        width: "80vw",
+      },
+      "& .MuiFilledInput-input": {
+        color: muiTheme.palette.common.white,
+      },
+      "& .MuiFilledInput-root": {
+        backgroundColor: muiTheme.palette.common.white,
+      },
+      "& input": {
+        color: muiTheme.palette.common.white,
+      },
+      "& textarea": {
+        color: muiTheme.palette.common.white,
+      },
+      "& .MuiOutlinedInput-root": {
+        "& .MuiOutlinedInput-notchedOutline": {
+          borderColor: muiTheme.palette.common.white,
+        },
+        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+          borderColor: muiTheme.palette.grey[300],
+        },
+      },
+    },
+    buttonBox: {
+      display: "flex",
+      flexDirection: "row",
+      marginTop: "1rem",
+    },
+    buttonStyles: {
+      marginTop: "1rem",
+      fontWeight: "bold",
+      "&:hover": {
+        color: "#f5f5f5",
       },
     },
     imgGrid: {
       display: "flex",
-      justifyContent: "flex-end",
+      flexDirection: "column",
       alignItems: "center",
-      height: "100%",
-      paddingRight: "24px",
-      "@media screen and (max-width: 768px)": {
-        justifyContent: "center",
-        paddingRight: "0",
-        marginTop: "24px",
-      },
     },
+    logoStyles: {
+      width: "30vw",
+      height: "30vh",
+    },
+    formControl: {
+      width: "100%",
+    },
+    snackbarStyles: {},
   };
 };
