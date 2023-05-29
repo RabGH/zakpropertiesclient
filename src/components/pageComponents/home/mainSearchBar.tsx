@@ -215,7 +215,7 @@ function SearchBar(props: SearchBarProps) {
               sx={propertiesButtonStyles}
               variant="contained"
             >
-              {/* {getButtonLabel(["Properties"])} */}Properties
+              {/* {getButtonLabel(["Properties"])} */}Buy Properties
             </Button>
           </Link>
           <Link href="/developments" passHref>
@@ -224,7 +224,7 @@ function SearchBar(props: SearchBarProps) {
               sx={projectButtonStyles}
               variant="contained"
             >
-              {/* {getButtonLabel(["Projects"])} */}Developments
+              {/* {getButtonLabel(["Projects"])} */}View Developments
             </Button>
           </Link>
         </Box>
