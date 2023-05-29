@@ -5,6 +5,7 @@ interface SanityConfig {
   dataset: string;
   projectId: string;
   useCdn: boolean;
+  apiVersion: string;
 }
 
 const config: SanityConfig = {
@@ -16,8 +17,10 @@ const config: SanityConfig = {
    * https://nextjs.org/docs/basic-features/environment-variables
    **/
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string,
+  projectId:
+    (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string) || "s4j5fcfd",
   useCdn: process.env.NODE_ENV === "production",
+  apiVersion: "2021-03-25",
   /**
    * Set useCdn to `false` if your application require the freshest possible
    * data always (potentially slightly slower and a bit more expensive).
