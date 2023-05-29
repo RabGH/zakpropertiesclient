@@ -2,7 +2,6 @@ import { useTheme } from "@mui/material";
 
 export const getDevelopmentStyles = () => {
   const muiTheme = useTheme();
-
   return {
     mainContainer: {
       height: "275vh",
@@ -38,7 +37,7 @@ export const getDevelopmentStyles = () => {
     },
     cardStyles: {
       position: "relative",
-      width: 500,
+      width: 400,
       height: 340,
       boxShadow: "none",
       borderRadius: "10px",
@@ -52,6 +51,7 @@ export const getDevelopmentStyles = () => {
       ml: 2,
       "&:hover": {
         boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
+        transform: "scale(1.05)",
       },
     },
     imageBoxStyles: {
@@ -62,7 +62,8 @@ export const getDevelopmentStyles = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
+        backgroundImage:
+          "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8))",
         "&:hover": {
           boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
         },
@@ -74,8 +75,9 @@ export const getDevelopmentStyles = () => {
       fontWeight: "700",
     },
     projectTitleCard: {
-      color: "white",
+      color: muiTheme.palette.primary.main,
       paddingBottom: "0.7rem",
+      fontSize: muiTheme.typography.h5.fontSize,
     },
     projectAreaCard: {
       color: "rgba(255, 255, 255, 1)",
@@ -83,8 +85,8 @@ export const getDevelopmentStyles = () => {
       fontWeight: "700",
     },
     projectPriceCard: {
-      color: "rgba(255, 255, 255, 1)",
-      fontSize: "0.9rem",
+      color: muiTheme.palette.secondary.main,
+      fontSize: muiTheme.typography.h6.fontSize,
       fontWeight: "700",
     },
     cardInfoStyles: {

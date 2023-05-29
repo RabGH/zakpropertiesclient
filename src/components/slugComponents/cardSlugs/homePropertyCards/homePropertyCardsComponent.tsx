@@ -6,6 +6,7 @@ import { getHomePageStyles } from "@/components/pageComponents/home/homePageStyl
 import PropertyVillaCardSlug from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyVillaCards";
 import PropertyAptCardSlug from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyAptCards";
 import PropertyTownCardSlug from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyTownCards";
+import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
 
 interface HomePropertyCardsProps {
   properties: Property[];

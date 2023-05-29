@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, Box, Grid, Button } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
 import { Project } from "@lib/types";
@@ -13,8 +12,7 @@ interface DevelopmentsProps {
 }
 
 function Developments({ projects }: DevelopmentsProps) {
-  const muiTheme = useTheme();
-  const styles = getDevelopmentStyles(muiTheme);
+  const styles = getDevelopmentStyles();
 
   return (
     <Box sx={styles.mainContainer}>

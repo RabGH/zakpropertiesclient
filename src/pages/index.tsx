@@ -60,16 +60,14 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
             justifyContent="center"
             sx={{ alignSelf: "center" }}
           >
-            <Grid item xs={12} sm={6} md={4}>
-              <Divider sx={styles.dividerStyles}>
-                <Typography variant="h5" sx={styles.homeFeaturedTitlePos}>
-                  Featured Developments
-                </Typography>
-              </Divider>
-              <Box sx={styles.projectCards}>
-                <ProjectCardSlug projects={projects.slice(0, 3)} />
-              </Box>
-            </Grid>
+            <Divider sx={styles.dividerStyles}>
+              <Typography variant="h5" sx={styles.homeFeaturedTitlePos}>
+                Featured Developments
+              </Typography>
+            </Divider>
+            <Box sx={styles.projectCards}>
+              <ProjectCardSlug projects={projects.slice(0, 3)} />
+            </Box>
           </Grid>
           <Divider sx={styles.dividerStyles} />
           <Box sx={styles.mapCardPos}>

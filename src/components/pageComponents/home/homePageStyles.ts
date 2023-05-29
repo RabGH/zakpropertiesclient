@@ -80,13 +80,7 @@ export const getHomePageStyles = () => {
       alignItems: "center",
       justifyContent: "center",
       m: "1.2rem",
-      fontSize: {
-        xl: "1.5rem",
-        lg: "1.5rem",
-        md: "1.5rem",
-        sm: "1rem",
-        xs: "1rem",
-      },
+      fontSize: "1.5rem",
     },
 
     mainContainer: {

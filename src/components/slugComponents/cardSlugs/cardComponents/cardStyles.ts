@@ -5,8 +5,20 @@ export const CardStyles = () => {
   return {
     // Specific PropertyAllCard Styles
     allCardStyles: {
-      maxWidth: "420px",
-      maxHeight: "490px",
+      maxWidth: {
+        xl: "500px",
+        lg: "420px",
+        md: "400px",
+        sm: "390px",
+        xs: "390px",
+      },
+      maxHeight: {
+        xl: "610px",
+        lg: "490px",
+        md: "490px",
+        sm: "490px",
+        xs: "490px",
+      },
       boxShadow: "none",
       borderRadius: "10px",
       overflow: "hidden",
@@ -39,6 +51,33 @@ export const CardStyles = () => {
       m: "1.2rem",
       fontSize: "1.5rem",
     },
+    // cardStyles: {
+    // maxWidth: {
+    //   xl: "400px",
+    //   lg: "420px",
+    //   md: "400px",
+    //   sm: "350px",
+    //   xs: "300px",
+    // },
+    // maxHeight: {
+    //   xl: "510px",
+    //   lg: "490px",
+    //   md: "470px",
+    //   sm: "470px",
+    //   xs: "470px",
+    // },
+    //   boxShadow: "none",
+    //   borderRadius: "10px",
+    //   overflow: "hidden",
+    //   transition: "all 0.3s ease-in-out",
+    //   backgroundColor: "transparent",
+    //   padding: "0.7rem",
+    //   mt: "-1rem",
+    //   "&:hover": {
+    //     boxShadow: "0px 4px 20px rgba(0, 0, 0, 1)",
+    //     backgroundColor: "rgba(255, 255, 255, 0.05)",
+    //   },
+    // },
     propertyTypeStyles: {
       fontSize: "1.2rem",
     },
