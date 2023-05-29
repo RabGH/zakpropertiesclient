@@ -37,7 +37,13 @@ export const getDevelopmentStyles = () => {
     },
     cardStyles: {
       position: "relative",
-      width: 400,
+      maxWidth: {
+        xl: "500px",
+        lg: "420px",
+        md: "400px",
+        sm: "385px",
+        xs: "385px",
+      },
       height: 340,
       boxShadow: "none",
       borderRadius: "10px",

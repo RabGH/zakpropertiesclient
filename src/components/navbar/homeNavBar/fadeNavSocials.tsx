@@ -4,9 +4,10 @@ import IconButton from "@mui/material/IconButton";
 import Link from "next/link";
 import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import { useScrollTrigger } from "@mui/material";
-import { mainBox, iconSocialStyles } from "../navContentStyles";
+import { getNavBarStyles } from "../navContentStyles";
 
 const FadeNavSocials = () => {
+  const styles = getNavBarStyles();
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 60,
@@ -26,7 +27,7 @@ const FadeNavSocials = () => {
   return (
     <Box
       sx={{
-        ...mainBox,
+        ...styles.mainBox,
         opacity: visible ? 1 : 0,
         transition: "all 0.3s ease-out",
       }}
@@ -36,7 +37,7 @@ const FadeNavSocials = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconButton sx={iconSocialStyles}>
+        <IconButton sx={styles.iconSocialStyles}>
           <FaWhatsapp fontSize="2rem" />
         </IconButton>
       </Link>
@@ -45,7 +46,7 @@ const FadeNavSocials = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconButton sx={iconSocialStyles}>
+        <IconButton sx={styles.iconSocialStyles}>
           <FaEnvelope fontSize="2rem" />
         </IconButton>
       </Link>

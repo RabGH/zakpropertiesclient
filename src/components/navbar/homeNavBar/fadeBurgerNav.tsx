@@ -7,19 +7,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import { useScrollTrigger } from "@mui/material";
 import Link from "next/link";
-import {
-  burgerNavBox,
-  mainBurgerBox,
-  signInButtonStyles,
-  popperStyles,
-  menuIconStyles,
-} from "../navContentStyles";
+import { getNavBarStyles } from "../navContentStyles";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 
 export default function FadeBurgerNav() {
+  const styles = getNavBarStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
   const [visible, setVisible] = React.useState(false);
@@ -52,12 +47,12 @@ export default function FadeBurgerNav() {
   return (
     <Box
       sx={{
-        ...mainBurgerBox,
+        ...styles.mainBurgerBox,
         opacity: visible ? 1 : 0,
         transition: "all 0.3s ease-out",
       }}
     >
-      <Box sx={burgerNavBox}>
+      <Box sx={styles.burgerNavBox}>
         <IconButton
           ref={anchorRef}
           onClick={handleToggle}
@@ -67,10 +62,10 @@ export default function FadeBurgerNav() {
           aria-label="menu"
           sx={{ m: "0 auto" }}
         >
-          <MenuIcon sx={menuIconStyles} />
+          <MenuIcon sx={styles.menuIconStyles} />
         </IconButton>
         <Popover
-          sx={popperStyles}
+          sx={styles.popperStyles}
           open={open}
           anchorEl={anchorRef.current}
           onClose={handleClose}
@@ -141,7 +136,7 @@ export default function FadeBurgerNav() {
                 <Button
                   variant="outlined"
                   color="primary"
-                  sx={signInButtonStyles}
+                  sx={styles.signInButtonStyles}
                 >
                   Sign In
                 </Button>

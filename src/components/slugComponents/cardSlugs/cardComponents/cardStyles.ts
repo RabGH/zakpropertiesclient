@@ -9,8 +9,8 @@ export const CardStyles = () => {
         xl: "500px",
         lg: "420px",
         md: "400px",
-        sm: "390px",
-        xs: "390px",
+        sm: "385px",
+        xs: "385px",
       },
       maxHeight: {
         xl: "610px",

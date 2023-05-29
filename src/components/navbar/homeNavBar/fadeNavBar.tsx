@@ -10,7 +10,7 @@ import { useTheme } from "@mui/material/styles";
 import FadeNavSocials from "./fadeNavSocials";
 import FadeBurgerNav from "../homeNavBar/fadeBurgerNav";
 import NoBgLogo from "../../../../public/images/logo/logoNoBg.png";
-import { navContents } from "../navContentStyles";
+import { getNavBarStyles } from "../navContentStyles";
 
 interface Props {
   children?: React.ReactNode;
@@ -56,6 +56,7 @@ const StyledImage = styled(Image)({
 });
 
 export default function ElevateAppBar(props: Props): JSX.Element {
+  const styles = getNavBarStyles();
   const [inverted, setInverted] = React.useState(true);
 
   const handleScroll = React.useCallback(() => {
@@ -81,7 +82,7 @@ export default function ElevateAppBar(props: Props): JSX.Element {
                   style={{ filter: inverted ? "invert(100%)" : "none" }}
                 />
               </Link>
-              <Box sx={navContents}>
+              <Box sx={styles.navContents}>
                 <FadeNavSocials />
                 <FadeBurgerNav />
               </Box>

@@ -8,7 +8,7 @@ import { styled } from "@mui/material/styles";
 import SocialIcons from "./mainNavSocials";
 import NoBgLogo from "../../../../public/images/logo/logoNoBg.png";
 import BurgerNav from "./burgerNav";
-import { navContents } from "../navContentStyles";
+import { getNavBarStyles } from "../navContentStyles";
 
 interface Props {
   children?: React.ReactNode;
@@ -32,6 +32,7 @@ const StyledImage = styled(Image)({
 });
 
 export default function MainNavBar(props: Props): JSX.Element {
+  const styles = getNavBarStyles();
   return (
     <React.Fragment>
       <Box sx={{ marginTop: "-4rem" }}>
@@ -40,7 +41,7 @@ export default function MainNavBar(props: Props): JSX.Element {
             <Link href="/">
               <StyledImage src={NoBgLogo} alt="" />
             </Link>
-            <Box sx={navContents}>
+            <Box sx={styles.navContents}>
               <SocialIcons />
               <BurgerNav />
             </Box>

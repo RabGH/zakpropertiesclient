@@ -6,19 +6,14 @@ import MenuList from "@mui/material/MenuList";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Link from "next/link";
-import {
-  burgerNavBox,
-  mainBurgerBox,
-  signInButtonStyles,
-  popperStyles,
-  menuIconStyles,
-} from "../navContentStyles";
+import { getNavBarStyles } from "../navContentStyles";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 
 export default function BurgerNav() {
+  const styles = getNavBarStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
@@ -33,8 +28,8 @@ export default function BurgerNav() {
     setOpen(false);
   };
   return (
-    <Box sx={mainBurgerBox}>
-      <Box sx={burgerNavBox}>
+    <Box sx={styles.mainBurgerBox}>
+      <Box sx={styles.burgerNavBox}>
         <IconButton
           ref={anchorRef}
           onClick={handleToggle}
@@ -44,10 +39,10 @@ export default function BurgerNav() {
           aria-label="menu"
           sx={{ m: "0 auto" }}
         >
-          <MenuIcon sx={menuIconStyles} />
+          <MenuIcon sx={styles.menuIconStyles} />
         </IconButton>
         <Popover
-          sx={popperStyles}
+          sx={styles.popperStyles}
           open={open}
           anchorEl={anchorRef.current}
           onClose={handleClose}
@@ -118,7 +113,7 @@ export default function BurgerNav() {
                 <Button
                   variant="outlined"
                   color="primary"
-                  sx={signInButtonStyles}
+                  sx={styles.signInButtonStyles}
                 >
                   Sign In
                 </Button>
