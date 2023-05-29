@@ -28,7 +28,7 @@ const sliderSettings = {
         slidesToShow: 1,
         slidesToScroll: 1,
         infinite: true,
-        dots: true,
+        dots: false,
       },
     },
     {
@@ -36,7 +36,7 @@ const sliderSettings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
-        initialSlide: 2,
+        initialSlide: 1,
       },
     },
     {
@@ -44,6 +44,9 @@ const sliderSettings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+        arrows: false,
       },
     },
   ],
@@ -54,6 +57,13 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
 
   const zakLearnMore = {
     textAlign: "left",
+    "@media (max-width: 600px)": {
+      fontSize: "1rem",
+    },
+    "@media (max-width: 400px)": {
+      fontSize: "0.8rem",
+      mt: "20rem",
+    },
   };
 
   const zakTitle = {
@@ -66,6 +76,12 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
     ":hover": {
       color: muiTheme.palette.error.light,
     },
+    "@media (max-width: 600px)": {
+      fontSize: "2rem",
+    },
+    "@media (max-width: 400px)": {
+      fontSize: "2rem",
+    },
   };
 
   const zakSubTitle = {
@@ -74,6 +90,12 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
     mb: "5rem",
     color: "white",
     textAlign: "left",
+    "@media (max-width: 600px)": {
+      fontSize: "1rem",
+    },
+    "@media (max-width: 400px)": {
+      fontSize: "1rem",
+    },
   };
 
   const imgContainer = {
@@ -81,6 +103,12 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
     height: "110vh",
     width: "100%",
     zIndex: 1,
+    "@media (max-width: 600px)": {
+      height: "80vh",
+    },
+    "@media (max-width: 400px)": {
+      height: "100vh",
+    },
   };
 
   const imgOverlay = {
@@ -103,6 +131,14 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
     color: "white",
     maxWidth: "1300px",
     margin: "0 auto",
+    "@media (max-width: 600px)": {
+      top: "40%",
+      fontSize: "0.8rem",
+    },
+    "@media (max-width: 400px)": {
+      top: "35%",
+      fontSize: "0.6rem",
+    },
   };
 
   const [currentSlide, setCurrentSlide] = useState(0);

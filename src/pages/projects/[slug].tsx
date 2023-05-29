@@ -22,7 +22,7 @@ import {
   mainImageContainer,
   viewPhotosBox,
 } from "@/components/slugComponents/pageSlugComponents/imageCarouselStyles";
-import { featuredTitlePos } from "@/components/slugComponents/cardSlugs/cardComponents/cardStyles";
+import { CardStyles } from "@/components/slugComponents/cardSlugs/cardComponents/cardStyles";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/viewAllPhotos";
 
 import { getProjectPageStyles } from "@/components/pageComponents/pageSlugStyles/projectSlugStyles";
@@ -66,6 +66,7 @@ const Projects = ({
   properties,
 }: ProjectsProps) => {
   const styles = getProjectPageStyles();
+  const cardStyles = CardStyles();
   // const generalStyles = getGeneralSlugStyles();
 
   return (
@@ -101,10 +102,10 @@ const Projects = ({
             <Typography variant="h6" sx={styles.mainDeveloperStyles}>
               Developed by {mainDeveloper}
             </Typography>
-            <Typography variant="body1">
+            {/* <Typography variant="body1">
               Street and City: {address.street}, {address.city}
-            </Typography>
-            <Typography variant="body1">Address: {specificAddress}</Typography>
+            </Typography> */}
+            {/* <Typography variant="body1">Address: {specificAddress}</Typography> */}
           </Box>
 
           <Box sx={styles.offPlanStyles}>
@@ -184,9 +185,7 @@ const Projects = ({
         </Box>
 
         <Divider>
-          <Typography variant="h5" sx={featuredTitlePos}>
-            Project Properties
-          </Typography>
+          <Typography variant="h5">Project Properties</Typography>
         </Divider>
       </Box>
 
@@ -203,19 +202,6 @@ const Projects = ({
             View More Properties
           </Button>
         </Link>
-      </Box>
-      <Divider sx={styles.dividerStyles} />
-      <Box sx={styles.mapCardPos}>
-        <Card sx={styles.mapCard}>
-          <Typography variant="h3" sx={styles.locationTitle}>
-            Location
-          </Typography>
-          {/* <MapSlug
-            title={title}
-            lat={location?.lat || 0}
-            lng={location?.lng || 0}
-          /> */}
-        </Card>
       </Box>
     </Box>
   );
@@ -300,8 +286,8 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         squareFootage: projects.squareFootage,
         amenities: projects.amenities || [],
         areaType: projects.areaType || [],
-        specificAddress: projects.specificAddress,
-        address: projects.address,
+        specificAddress: projects.specificAddress || null,
+        address: projects.address || null,
         projectBuiltUpArea: projects.projectBuiltUpArea,
         projectType: projects.projectType,
         mainProjectImage: projects.mainProjectImage || null,

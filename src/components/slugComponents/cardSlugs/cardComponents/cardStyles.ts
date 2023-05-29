@@ -9,8 +9,8 @@ export const CardStyles = () => {
         xl: "450px",
         lg: "420px",
         md: "369px",
-        sm: "369px",
-        xs: "369px",
+        sm: "360px",
+        xs: "360px",
       },
       maxHeight: {
         xl: "610px",
@@ -29,6 +29,12 @@ export const CardStyles = () => {
       "&:hover": {
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 1)",
         backgroundColor: "rgba(255, 255, 255, 0.05)",
+      },
+      "@media (max-width: 600px)": {
+        width: "490px",
+      },
+      "@media (max-width: 400px)": {
+        width: "355px",
       },
     },
     offPlanReadyToBuyStyles: {},
@@ -84,8 +90,6 @@ export const CardStyles = () => {
     offPlanStyles: {},
     offPlanTextStyles: {},
     offPlanCompleteStyles: {},
-    homeCardGridStyles: {
-      // minWidth: "100%",
-    },
+    homeCardGridStyles: {},
   };
 };

@@ -29,11 +29,11 @@ export const getHomePageStyles = () => {
     mapCardPos: {
       m: 3,
       display: {
-        xs: "none", // hide on extra-small screens
-        sm: "none", // hide on small screens
-        md: "block", // show on medium screens
-        lg: "block", // show on large screens
-        xl: "block", // show on extra-large screens
+        xs: "none",
+        sm: "none",
+        md: "block",
+        lg: "block",
+        xl: "block",
       },
     },
 
@@ -86,14 +86,13 @@ export const getHomePageStyles = () => {
     mainContainer: {
       display: "flex",
       width: {
-        // use the responsive style helper function here
-        xs: "100%", // full width on extra-small screens
-        sm: "100%", // 80% width on small screens
-        md: "100%", // 60% width on medium screens
-        lg: "100%", // 40% width on large screens
-        xl: "100%", // 20% width on extra-large screens
+        xs: "100%",
+        sm: "100%",
+        md: "100%",
+        lg: "100%",
+        xl: "100%",
       },
-      margin: "0 auto", // center the container
+      margin: "0 auto",
     },
     propertyVillaCards: {
       justifyContent: "center",
