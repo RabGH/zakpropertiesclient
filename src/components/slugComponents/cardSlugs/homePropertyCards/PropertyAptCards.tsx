@@ -35,8 +35,8 @@ const PropertyAptCardBodyData = ({ properties }: PropertyAptCardBodyProps) => {
 
               <Grid container spacing={0} justifyContent="center">
                 {apartments?.slice(0, 3).map((property) => (
-                  <Grid item xs={12} sm={6} md={4}>
-                    <Card sx={styles.allCardStyles} key={property._id}>
+                  <Grid item xs={12} sm={6} md={4} key={property._id}>
+                    <Card sx={styles.allCardStyles}>
                       {property.mainPropertyImage && (
                         <CardImageCarousel
                           images={[
