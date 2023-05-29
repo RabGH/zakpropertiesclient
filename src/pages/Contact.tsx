@@ -6,9 +6,10 @@ import { Typography, Box, Container, Grid } from "@mui/material";
 import Image from "next/image";
 import logoContact from "../../public/images/logo/logoNoBg.png";
 
-import { useTheme } from "@mui/material/styles";
+import { getContactStyles } from "@/components/pageComponents/contact/contactStyles";
 
 function Contact() {
+  const styles = getContactStyles();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = document.querySelector<HTMLFormElement>("form#ContactForm")!;
@@ -37,97 +38,10 @@ function Contact() {
       alert("Error sending email");
     }
   };
-  const muiTheme = useTheme();
-
-  const mainContainer = {
-    display: "flex",
-    flexDirection: "column",
-    height: "80vh",
-    justifyContent: "center",
-    alignItems: "center",
-    mt: "5rem",
-  };
-
-  const titleBox = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    mr: "15rem",
-    width: "100%",
-  };
-
-  const formBox = {
-    maxWidth: "50%",
-    padding: "0 24px",
-  };
-
-  const buttonBox = {
-    marginTop: "24px",
-  };
-
-  const textField = {
-    marginTop: "16px",
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: muiTheme.palette.secondary.dark,
-      },
-      "&:hover fieldset": {
-        borderColor: "#212121",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#212121",
-      },
-    },
-  };
-
-  const contactField = {
-    width: "700px",
-  };
-
-  const buttonStyles = {
-    marginTop: "24px",
-    fontWeight: "bold",
-    "&:hover": {
-      color: muiTheme.palette.secondary.dark,
-    },
-  };
-
-  const logoStyles = {
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    textAlign: "center",
-  };
-
-  const contactGrid = {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "24px",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: "32px",
-    "@media screen and (max-width: 768px)": {
-      gridTemplateColumns: "1fr",
-      justifyContent: "center",
-    },
-  };
-
-  const imgGrid = {
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    height: "100%",
-    paddingRight: "24px",
-    "@media screen and (max-width: 768px)": {
-      justifyContent: "center",
-      paddingRight: "0",
-      marginTop: "24px",
-    },
-  };
 
   return (
-    <Container sx={mainContainer}>
-      <Box sx={titleBox}>
+    <Container sx={styles.mainContainer}>
+      <Box sx={styles.titleBox}>
         <Typography variant="h4">Contact Me</Typography>
         <Typography variant="body1">
           Contact Page, type in your name, email, subject, and message.
@@ -137,10 +51,10 @@ function Contact() {
         </Typography>
       </Box>
       <Container>
-        <Grid sx={contactGrid}>
-          <Box sx={formBox}>
+        <Grid sx={styles.contactGrid}>
+          <Box sx={styles.formBox}>
             <form id="ContactForm" onSubmit={handleSubmit}>
-              <Box sx={textField}>
+              <Box sx={styles.textField}>
                 <ContactTextField
                   id="name"
                   label="name"
@@ -150,11 +64,11 @@ function Contact() {
                   size="medium"
                   multiline={false}
                   rows={1}
-                  sx={contactField}
+                  sx={styles.contactField}
                   required
                 />
               </Box>
-              <Box sx={textField}>
+              <Box sx={styles.textField}>
                 <ContactTextField
                   id="email"
                   label="Email"
@@ -164,11 +78,11 @@ function Contact() {
                   size="medium"
                   multiline={false}
                   rows={1}
-                  sx={contactField}
+                  sx={styles.contactField}
                   required
                 />
               </Box>
-              <Box sx={textField}>
+              <Box sx={styles.textField}>
                 <ContactTextField
                   id="subject"
                   label="Subject"
@@ -178,11 +92,11 @@ function Contact() {
                   size="medium"
                   multiline={false}
                   rows={1}
-                  sx={contactField}
+                  sx={styles.contactField}
                   required
                 />
               </Box>
-              <Box sx={textField}>
+              <Box sx={styles.textField}>
                 <ContactTextField
                   id="message"
                   label="Message"
@@ -192,29 +106,29 @@ function Contact() {
                   size="medium"
                   multiline={true}
                   rows={5}
-                  sx={contactField}
+                  sx={styles.contactField}
                   required
                 />
               </Box>
-              <Box sx={buttonBox}>
+              <Box sx={styles.buttonBox}>
                 <GeneralButton
                   label="Send"
                   size="large"
                   onClick={() => {}}
-                  sx={buttonStyles}
+                  sx={styles.buttonStyles}
                 >
                   Send
                 </GeneralButton>
               </Box>
             </form>
           </Box>
-          <Grid sx={imgGrid}>
-            <Box sx={logoStyles}>
+          <Grid sx={styles.imgGrid}>
+            <Box sx={styles.logoStyles}>
               <Image
                 src={logoContact}
                 alt=""
                 style={{ filter: "invert(100%)" }}
-              />{" "}
+              />
             </Box>
           </Grid>
         </Grid>

@@ -3,13 +3,7 @@ import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 import Link from "next/link";
 import { Box, Typography, Card } from "@mui/material";
 import { Property } from "@lib/types";
-import {
-  propertyTypeStyles,
-  propertyTitleCard,
-  propertyAreaCard,
-  propertyPriceCard,
-  cardInfoStyles,
-} from "../cardComponents/cardStyles";
+import { CardStyles } from "../cardComponents/cardStyles";
 import CardImageCarousel from "../cardComponents/CardImageCarousel";
 
 export const propertyContainer = {
@@ -24,6 +18,8 @@ interface ProjectPropertyCardsProps {
 }
 
 const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
+  const styles = CardStyles();
+
   const main = {
     mt: "1rem",
     justifyContent: "center",
@@ -66,21 +62,21 @@ const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
                 alt={property.title}
               />
             )}
-            <Box sx={cardInfoStyles}>
+            <Box sx={styles.cardInfoStyles}>
               <Link
                 key={`property_${property._id}`}
                 href={`/property/${property.slug.current}`}
               >
-                <Typography variant="body1" sx={propertyTypeStyles}>
+                <Typography variant="body1" sx={styles.propertyTypeStyles}>
                   {property.propertyType}
                 </Typography>
-                <Typography variant="h6" sx={propertyTitleCard}>
+                <Typography variant="h6" sx={styles.propertyTitleCard}>
                   {property.title}
                 </Typography>
-                <Typography variant="body1" sx={propertyAreaCard}>
+                <Typography variant="body1" sx={styles.propertyAreaCard}>
                   Area {formatArea(property.squareFootage)}
                 </Typography>
-                <Typography variant="h5" sx={propertyPriceCard}>
+                <Typography variant="h5" sx={styles.propertyPriceCard}>
                   {formatPrice(property.totalPrice)}
                 </Typography>
               </Link>

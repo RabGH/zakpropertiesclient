@@ -1,5 +1,6 @@
-import { Theme } from "@mui/material";
-export const getContactStyles = (muiTheme: Theme) => {
+import { useTheme } from "@mui/material";
+export const getContactStyles = () => {
+  const muiTheme = useTheme();
   return {
     mainContainer: {
       display: "flex",
