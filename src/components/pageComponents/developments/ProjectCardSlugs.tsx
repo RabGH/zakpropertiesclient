@@ -3,7 +3,7 @@ import { formatPrice, formatArea } from "@lib/utils";
 import { Project } from "@lib/types";
 import Image from "next/image";
 import Link from "next/link";
-import { Box, Typography, Container, Grid } from "@mui/material"; // import Grid here
+import { Box, Typography, Container, Grid } from "@mui/material";
 import { getDevelopmentStyles } from "./developmentStyles";
 
 interface ProjectsCardBodyProps {
