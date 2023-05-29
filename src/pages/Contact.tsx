@@ -1,38 +1,42 @@
-import React from "react";
-import ContactTextField from "@/components/pageComponents/contact/ContactTextField";
-import GeneralButton from "@/components/general/GButton";
-import { Typography, Box, Container, Grid } from "@mui/material";
+import React, { useState } from "react";
+import { Typography, Box, Container, Grid, TextField } from "@mui/material";
 
 import Image from "next/image";
 import logoContact from "../../public/images/logo/logoNoBg.png";
 
 import { getContactStyles } from "@/components/pageComponents/contact/contactStyles";
+import GeneralButton from "@/components/general/GButton";
 
 function Contact() {
   const styles = getContactStyles();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = document.querySelector<HTMLFormElement>("form#ContactForm")!;
-    const formData = new FormData(form);
-    const data: { [key: string]: string } = {};
-    for (let entry of formData.entries()) {
-      data[entry[0] as string] = entry[1] as string;
-    }
-
-    console.log(data);
-
     try {
-      const response = await fetch("http://localhost:5000/contact", {
+      const response = await fetch("/api/contactMe/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       if (!response.ok) {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
       }
-      console.log("Email send succussfully");
-      alert("Email Sent succesfully");
+      console.log("Email send successfully");
+      alert("Email Sent successfully");
     } catch (error) {
       console.error("Error sending email", error);
       alert("Error sending email");
@@ -55,7 +59,7 @@ function Contact() {
           <Box sx={styles.formBox}>
             <form id="ContactForm" onSubmit={handleSubmit}>
               <Box sx={styles.textField}>
-                <ContactTextField
+                <TextField
                   id="name"
                   label="name"
                   name="name"
@@ -66,10 +70,12 @@ function Contact() {
                   rows={1}
                   sx={styles.contactField}
                   required
+                  value={formData.name}
+                  onChange={handleChange}
                 />
               </Box>
               <Box sx={styles.textField}>
-                <ContactTextField
+                <TextField
                   id="email"
                   label="Email"
                   name="email"
@@ -80,10 +86,12 @@ function Contact() {
                   rows={1}
                   sx={styles.contactField}
                   required
+                  value={formData.email}
+                  onChange={handleChange}
                 />
               </Box>
               <Box sx={styles.textField}>
-                <ContactTextField
+                <TextField
                   id="subject"
                   label="Subject"
                   name="subject"
@@ -94,10 +102,12 @@ function Contact() {
                   rows={1}
                   sx={styles.contactField}
                   required
+                  value={formData.subject}
+                  onChange={handleChange}
                 />
               </Box>
               <Box sx={styles.textField}>
-                <ContactTextField
+                <TextField
                   id="message"
                   label="Message"
                   name="message"
@@ -108,6 +118,8 @@ function Contact() {
                   rows={5}
                   sx={styles.contactField}
                   required
+                  value={formData.message}
+                  onChange={handleChange}
                 />
               </Box>
               <Box sx={styles.buttonBox}>
@@ -128,7 +140,7 @@ function Contact() {
                 src={logoContact}
                 alt=""
                 style={{ filter: "invert(100%)" }}
-              />
+              />{" "}
             </Box>
           </Grid>
         </Grid>
