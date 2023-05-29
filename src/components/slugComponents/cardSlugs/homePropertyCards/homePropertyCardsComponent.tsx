@@ -1,12 +1,11 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
 import { Property } from "@lib/types";
-import { getHomePageStyles } from "@/components/pageComponents/home/homePageStyles";
+import { CardStyles } from "../cardComponents/cardStyles";
 
 import PropertyVillaCardSlug from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyVillaCards";
 import PropertyAptCardSlug from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyAptCards";
 import PropertyTownCardSlug from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyTownCards";
-import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
 
 interface HomePropertyCardsProps {
   properties: Property[];
@@ -15,11 +14,11 @@ interface HomePropertyCardsProps {
 export default function HomePropertyCardsComponent({
   properties,
 }: HomePropertyCardsProps) {
-  const styles = getHomePageStyles();
+  const styles = CardStyles();
   return (
     <Grid
       container
-      spacing={2}
+      spacing={0}
       justifyContent="center"
       direction={{
         xs: "column",
@@ -28,6 +27,7 @@ export default function HomePropertyCardsComponent({
         lg: "row",
         xl: "row",
       }}
+      sx={styles.homeCardGridStyles}
     >
       <PropertyVillaCardSlug properties={properties} />
       <PropertyAptCardSlug properties={properties} />

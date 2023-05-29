@@ -3,8 +3,8 @@ import { formatPrice, formatArea } from "@lib/utils";
 import Link from "next/link";
 import { Box, Typography, Card } from "@mui/material";
 import { Property } from "@lib/types";
-import { CardStyles } from "./cardComponents/cardStyles";
-import CardImageCarousel from "./cardComponents/CardImageCarousel";
+import { CardStyles } from "../cardComponents/cardStyles";
+import CardImageCarousel from "../cardComponents/CardImageCarousel";
 
 interface PropertyAllCardBodyProps {
   property?: Property;

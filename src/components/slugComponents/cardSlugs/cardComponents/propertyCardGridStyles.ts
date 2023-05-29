@@ -33,7 +33,7 @@ export const getPropertyGridCardStyles = () => {
 
     cardGridStyles: {
       width: "100%",
-      maxWidth: "1300px",
+      maxWidth: "1350px",
     },
 
     propertyCardBox: {
