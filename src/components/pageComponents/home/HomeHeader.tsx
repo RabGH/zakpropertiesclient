@@ -15,7 +15,11 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
     position: "relative",
   };
 
-  const searchBarContainer = {};
+  const searchBarContainer = {
+    "@media (max-width: 480px)": {
+      display: "none",
+    },
+  };
 
   const searchBarBox = {
     maxWidth: 750,

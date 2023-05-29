@@ -2,6 +2,7 @@ export const mainAll = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  mb: "2rem",
 };
 
 export const allCardStyles = {
@@ -29,6 +30,7 @@ export const main = {
   justifyContent: "center",
   alignItems: "center",
   minHeight: "50vh",
+  flexDirection: "column",
 };
 
 export const featuredTitlePos = {
@@ -52,11 +54,11 @@ export const cardStyles = {
   transition: "all 0.3s ease-in-out",
   backgroundColor: "transparent",
   padding: "0.7rem",
+  mt: "-1rem",
   "&:hover": {
-    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    boxShadow: "0px 4px 20px rgba(0, 0, 0, 1)",
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
   },
-  // paddingBottom: '10rem',
 };
 
 export const propertyTypeStyles = {

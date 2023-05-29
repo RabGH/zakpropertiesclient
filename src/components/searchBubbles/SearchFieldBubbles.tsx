@@ -44,7 +44,7 @@ const SearchFieldBubbles = ({
         spacing={0}
         sx={styles.mainSearchFieldStack}
       >
-        <Typography variant="h6">{results} Homes</Typography>
+        {/* <Typography variant="h6">{results} Homes</Typography> */}
         <Box sx={styles.searchButtonBox}>
           <ResultsBubble
             search={search}

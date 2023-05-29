@@ -58,12 +58,12 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
           disableScrollLock
         >
           <Box sx={styles.typeMainMenuBoxStyles}>
-            <MenuItem
+            {/* <MenuItem
               onClick={() => handlePropertyTypeChange("All")}
               selected={search.propertyType.includes("All")}
             >
               All
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem
               onClick={() => handlePropertyTypeChange("Villa")}
               selected={search.propertyType.includes("Villa")}

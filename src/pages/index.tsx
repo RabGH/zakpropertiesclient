@@ -13,12 +13,9 @@ import HomeHeader from "@/components/pageComponents/home/HomeHeader";
 
 import { sanityClient } from "@lib/sanity";
 import { Property, Project } from "@lib/types";
+import HomePropertyCardsComponent from "@/components/slugComponents/cardSlugs/homePropertyCards/homePropertyCardsComponent";
 
-import PropertyVillaCardSlug from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyVillaCards";
-import PropertyAptCardSlug from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyAptCards";
-import PropertyTownCardSlug from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyTownCards";
 import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
-import { featuredTitlePos } from "@/components/slugComponents/cardSlugs/cardComponents/cardStyles";
 import dynamic from "next/dynamic";
 const DashBoardMap = dynamic(
   () => import("@/components/pageComponents/home/DashBoardMap"),
@@ -34,13 +31,12 @@ interface HomeProps {
   mainProjectImage: string[];
 }
 function Home({ properties, projects, mainProjectImage }: HomeProps) {
-  const muiTheme = useTheme();
-  const styles = getHomePageStyles(muiTheme);
+  const styles = getHomePageStyles();
   return (
     <>
+      <HomeHeader properties={properties} projects={projects} />
       <Box sx={styles.mainContainer}>
-        <HomeHeader properties={properties} projects={projects} />
-        <Container>
+        <Container sx={styles.mainBoxContainer}>
           <Box sx={styles.boxContentProject}>
             <Typography
               variant="body1"
@@ -55,30 +51,25 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
             </Typography>
           </Box>
 
-          <Grid container spacing={3} direction="column">
-            <Box sx={styles.propertyVillaCards}>
-              <PropertyVillaCardSlug properties={properties} />
-            </Box>
-          </Grid>
-          <Grid container spacing={3} direction="column">
-            <Box sx={styles.propertyAptCards}>
-              <PropertyAptCardSlug properties={properties} />
-            </Box>
-          </Grid>
-          <Grid container spacing={3} direction="column">
-            <Box sx={styles.propertyTownCards}>
-              <PropertyTownCardSlug properties={properties} />
-            </Box>
-          </Grid>
-          <Grid container spacing={3} direction="column">
-            <Divider sx={styles.dividerStyles}>
-              <Typography variant="h5" sx={featuredTitlePos}>
-                Featured Developments
-              </Typography>
-            </Divider>
-            <Box sx={styles.projectCards}>
-              <ProjectCardSlug projects={projects.slice(0, 3)} />
-            </Box>
+          <HomePropertyCardsComponent properties={properties} />
+
+          <Grid
+            container
+            spacing={3}
+            direction="column"
+            justifyContent="center"
+            sx={{ alignSelf: "center" }}
+          >
+            <Grid item xs={12} sm={6} md={4}>
+              <Divider sx={styles.dividerStyles}>
+                <Typography variant="h5" sx={styles.homeFeaturedTitlePos}>
+                  Featured Developments
+                </Typography>
+              </Divider>
+              <Box sx={styles.projectCards}>
+                <ProjectCardSlug projects={projects.slice(0, 3)} />
+              </Box>
+            </Grid>
           </Grid>
           <Divider sx={styles.dividerStyles} />
           <Box sx={styles.mapCardPos}>

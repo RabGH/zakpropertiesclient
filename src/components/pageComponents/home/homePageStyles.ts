@@ -1,6 +1,9 @@
-import { Theme } from "@mui/material";
-export const getHomePageStyles = (muiTheme: Theme) => {
+import { useTheme } from "@mui/material";
+
+export const getHomePageStyles = () => {
+  const muiTheme = useTheme();
   return {
+    mainBoxContainer: {},
     contentHeader: {
       fontSize: "1.2rem",
       lineHeight: "1.5",
@@ -9,6 +12,10 @@ export const getHomePageStyles = (muiTheme: Theme) => {
       margin: "0 auto",
       mb: "-27rem",
       fontStyle: "italic",
+      "@media (max-width: 600px)": {
+        fontSize: "1rem",
+        mb: "-20rem",
+      },
     },
 
     boxContentProject: {
@@ -21,6 +28,13 @@ export const getHomePageStyles = (muiTheme: Theme) => {
 
     mapCardPos: {
       m: 3,
+      display: {
+        xs: "none", // hide on extra-small screens
+        sm: "none", // hide on small screens
+        md: "block", // show on medium screens
+        lg: "block", // show on large screens
+        xl: "block", // show on extra-large screens
+      },
     },
 
     mapCard: {
@@ -29,6 +43,10 @@ export const getHomePageStyles = (muiTheme: Theme) => {
       borderRadius: "15px",
       overflow: "hidden",
       padding: "1rem",
+      "@media (max-width: 600px)": {
+        width: "80%",
+        height: "300px",
+      },
     },
 
     mapCardContent: {
@@ -39,6 +57,10 @@ export const getHomePageStyles = (muiTheme: Theme) => {
     locationTitleStyles: {
       paddingBottom: "1rem",
       color: muiTheme.palette.primary.main,
+      textAlign: "center",
+      "@media (max-width: 600px)": {
+        fontSize: "2rem",
+      },
     },
 
     dividerStyles: {
@@ -49,10 +71,45 @@ export const getHomePageStyles = (muiTheme: Theme) => {
       },
     },
 
-    mainContainer: {},
-    propertyVillaCards: {},
-    propertyTownCards: {},
-    propertyAptCards: {},
+    homeFeaturedTitlePos: {
+      mt: "1rem",
+      ml: "1rem",
+      mb: "1rem",
+      mr: "1rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      m: "1.2rem",
+      fontSize: {
+        xl: "1.5rem",
+        lg: "1.5rem",
+        md: "1.5rem",
+        sm: "1rem",
+        xs: "1rem",
+      },
+    },
+
+    mainContainer: {
+      display: "flex",
+      width: {
+        // use the responsive style helper function here
+        xs: "100%", // full width on extra-small screens
+        sm: "100%", // 80% width on small screens
+        md: "100%", // 60% width on medium screens
+        lg: "100%", // 40% width on large screens
+        xl: "100%", // 20% width on extra-large screens
+      },
+      margin: "0 auto", // center the container
+    },
+    propertyVillaCards: {
+      justifyContent: "center",
+    },
+    propertyAptCards: {
+      justifyContent: "center",
+    },
+    propertyTownCards: {
+      justifyContent: "center",
+    },
     projectCards: {},
   };
 };

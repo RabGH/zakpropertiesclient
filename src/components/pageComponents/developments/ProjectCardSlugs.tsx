@@ -3,111 +3,32 @@ import { formatPrice, formatArea } from "@lib/utils";
 import { Project } from "@lib/types";
 import Image from "next/image";
 import Link from "next/link";
+import { getDevelopmentStyles } from "./developmentStyles";
 
-import { Box, Typography, Container, Card, Divider } from "@mui/material";
+import { Box, Typography, Container } from "@mui/material";
 
 interface ProjectsCardBodyProps {
   projects?: Project[];
 }
 
 const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
-  const main = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "45vh",
-    minWidth: "45vh",
-  };
-
-  const cardStyles = {
-    position: "relative",
-    width: 500,
-    height: 340,
-    boxShadow: "none",
-    borderRadius: "10px",
-    overflow: "hidden",
-    transition: "all 0.3s ease-in-out",
-    cursor: "pointer",
-    objectFit: "cover",
-    zIndex: 1,
-    padding: "2rem",
-    mr: 2,
-    ml: 2,
-    "&:hover": {
-      boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
-    },
-  };
-
-  const imageBoxStyles = {
-    "&::before": {
-      content: "''",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: "rgba(0, 0, 0, 0.3)",
-      "&:hover": {
-        boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
-      },
-    },
-  };
-
-  const projectTypeStyles = {
-    color: "rgba(255, 255, 255, 1)",
-    paddingBottom: "0.7rem",
-    fontWeight: "700",
-  };
-
-  const projectTitleCard = {
-    color: "white",
-    paddingBottom: "0.7rem",
-  };
-
-  const projectAreaCard = {
-    color: "rgba(255, 255, 255, 1)",
-    paddingBottom: "0.3rem",
-    fontWeight: "700",
-  };
-
-  const projectPriceCard = {
-    color: "rgba(255, 255, 255, 1)",
-    fontSize: "0.9rem",
-    fontWeight: "700",
-  };
-
-  const cardInfoStyles = {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    padding: "1rem",
-    color: "rgba(255, 255, 255, 1)",
-    fontSize: "1.2rem",
-    fontWeight: "700",
-    zIndex: 2,
-  };
-
-  const mainBox = {
-    display: "flex",
-    flexDirection: "row",
-    mb: "2rem",
-  };
+  const styles = getDevelopmentStyles();
 
   return (
     <>
       {projects && (
         <Container>
-          <Box sx={main}>
+          <Box sx={styles.main}>
             <Box>
-              <Box sx={mainBox}>
+              <Box sx={styles.mainBox}>
                 {projects?.map((projects) => (
                   <Link
                     key={projects._id}
                     href={`projects/${projects.slug.current}`}
                   >
-                    <Box sx={cardStyles}>
+                    <Box sx={styles.cardStyles}>
                       {projects.mainProjectImage && (
-                        <Box sx={imageBoxStyles}>
+                        <Box sx={styles.imageBoxStyles}>
                           <Image
                             src={urlFor(projects.mainProjectImage)
                               .auto("format")
@@ -127,17 +48,20 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                           />
                         </Box>
                       )}
-                      <Box sx={cardInfoStyles}>
-                        <Typography variant="body1" sx={projectTypeStyles}>
+                      <Box sx={styles.cardInfoStyles}>
+                        <Typography
+                          variant="body1"
+                          sx={styles.projectTypeStyles}
+                        >
                           {projects.projectPropertyTypes}
                         </Typography>
-                        <Typography variant="h6" sx={projectTitleCard}>
+                        <Typography variant="h6" sx={styles.projectTitleCard}>
                           {projects.title}
                         </Typography>
-                        <Typography variant="body1" sx={projectAreaCard}>
+                        <Typography variant="body1" sx={styles.projectAreaCard}>
                           Area {formatArea(projects.squareFootage)}
                         </Typography>
-                        <Typography variant="h5" sx={projectPriceCard}>
+                        <Typography variant="h5" sx={styles.projectPriceCard}>
                           {formatPrice(projects.totalPrice)}
                         </Typography>
                       </Box>

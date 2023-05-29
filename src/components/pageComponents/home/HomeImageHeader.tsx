@@ -21,6 +21,32 @@ const sliderSettings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 function HomeImageHeader({ projects }: HomeImageHeaderProps) {
@@ -80,7 +106,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
   };
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<Slider | null>(null);
 
   useEffect(() => {
     setCurrentSlide(0);
@@ -88,13 +114,13 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
 
   const goToPrevSlide = () => {
     if (sliderRef.current) {
-      sliderRef.current.slickPrev();
+      sliderRef.current?.slickPrev();
     }
   };
 
   const goToNextSlide = () => {
     if (sliderRef.current) {
-      sliderRef.current.slickNext();
+      sliderRef.current?.slickNext();
     }
   };
 
