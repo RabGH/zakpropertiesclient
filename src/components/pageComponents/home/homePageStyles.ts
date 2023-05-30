@@ -125,7 +125,7 @@ export const getHomePageStyles = () => {
       textAlign: "left",
       "@media (max-width: 600px)": {
         fontSize: "1rem",
-        mt: "10rem",
+        mt: "7rem",
       },
       "@media (max-width: 400px)": {
         fontSize: "0.8rem",
@@ -154,11 +154,11 @@ export const getHomePageStyles = () => {
     zakSubTitle: {
       fontSize: "1.3rem",
       fontWeight: "400",
-      mb: "5rem",
+      mt: "8rem",
       color: "white",
       textAlign: "left",
       "@media (max-width: 600px)": {
-        fontSize: "1rem",
+        fontSize: "1.3rem",
       },
       "@media (max-width: 400px)": {
         fontSize: "0.9rem",
@@ -190,7 +190,7 @@ export const getHomePageStyles = () => {
 
     contentContainer: {
       position: "absolute",
-      top: "45%",
+      top: "47%",
       left: "50%",
       transform: "translate(-50%, -50%)",
       zIndex: 1,

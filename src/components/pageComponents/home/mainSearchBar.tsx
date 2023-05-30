@@ -175,9 +175,11 @@ function SearchBar(props: SearchBarProps) {
     },
     "@media (max-width: 600px)": {
       display: "true",
+      mt: "6rem",
     },
     "@media (max-width: 400px)": {
       display: "true",
+      mt: "6rem",
     },
   };
 
@@ -198,9 +200,11 @@ function SearchBar(props: SearchBarProps) {
     },
     "@media (max-width: 600px)": {
       display: "true",
+      mt: "5rem",
     },
     "@media (max-width: 400px)": {
       display: "true",
+      mt: "5rem",
     },
   };
 
