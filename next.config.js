@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: ["cdn.sanity.io"],
   },
+  staticPageGenerationTimeout: 120,
 };
 
 module.exports = nextConfig;
