@@ -23,7 +23,7 @@ const AmenitiesSlug = ({ amenities }: AmenitiesSlugProps) => {
   return (
     <Box sx={cardStyles}>
       <Typography variant="h6" sx={mainTitle}>
-        {amenities.name}
+        {amenities?.name ?? "Amenities"}
       </Typography>
       <Box sx={boxStyles}>
         {amenities?.amenities?.map((opt) => (

@@ -23,7 +23,7 @@ const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
   return (
     <Box sx={cardStyles}>
       <Typography variant="h3" sx={mainTitle}>
-        {features.name}
+        {features?.name ?? "Features"}
       </Typography>
       <Box sx={boxStyles}>
         {features?.features?.map((opt) => (
