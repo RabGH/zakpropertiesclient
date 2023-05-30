@@ -167,10 +167,10 @@ function Contact() {
           <Grid sx={styles.imgGrid}>
             <Box sx={styles.logoStyles}>
               {/* <Image
-                src={logoContact}
-                alt=""
-                style={{ filter: "invert(100%)" }}
-              /> */}
+src={logoContact}
+alt=""
+style={{ filter: "invert(100%)" }}
+/> */}
             </Box>
           </Grid>
         </Grid>

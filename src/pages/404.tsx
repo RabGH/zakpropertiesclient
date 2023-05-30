@@ -1,6 +1,5 @@
 import React from "react";
-import GeneralButton from "@/components/general/GButton";
-import { Container, Box, Typography } from "@mui/material";
+import { Container, Box, Typography, Button } from "@mui/material";
 
 function Error() {
   return (
@@ -11,24 +10,22 @@ function Error() {
         <Container>
           <Box>
             <Box>
-              <GeneralButton
-                label="Home"
+              <Button
                 onClick={() => {
                   window.location.href = "/";
                 }}
               >
                 Home
-              </GeneralButton>
+              </Button>
             </Box>
             <Box>
-              <GeneralButton
-                label="Home"
+              <Button
                 onClick={() => {
                   window.location.href = "/contact";
                 }}
               >
                 Contact
-              </GeneralButton>
+              </Button>
             </Box>
           </Box>
         </Container>
