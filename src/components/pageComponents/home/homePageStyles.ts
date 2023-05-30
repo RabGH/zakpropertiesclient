@@ -14,6 +14,10 @@ export const getHomePageStyles = () => {
       maxWidth: "70ch",
       fontStyle: "italic",
       mt: "10rem",
+      "@media (max-width: 1024px)": {
+        fontSize: "1.3rem",
+        mt: "10rem",
+      },
       "@media (max-width: 600px)": {
         fontSize: "1.2rem",
         mt: "10rem",
@@ -30,6 +34,9 @@ export const getHomePageStyles = () => {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
+      "@media (max-width: 1024px)": {
+        minHeight: "65vh",
+      },
       "@media (max-width: 600px)": {
         minHeight: "65vh",
         mt: "1rem",
@@ -123,31 +130,39 @@ export const getHomePageStyles = () => {
     // HomeImageHeader Styles
     zakLearnMore: {
       textAlign: "left",
+      "@media (max-width: 1024px)": {
+        fontSize: "1rem",
+      },
       "@media (max-width: 600px)": {
         fontSize: "1rem",
-        mt: "7rem",
+        mt: "6rem",
       },
       "@media (max-width: 400px)": {
         fontSize: "0.8rem",
-        mt: "15rem",
+        mt: "6rem",
       },
     },
 
     zakTitle: {
       fontSize: "5rem",
       fontWeight: "bold",
-      mb: "4rem",
+      mb: "2rem",
       color: "white",
       textAlign: "left",
       transition: "color 0.3s ease-in-out",
       ":hover": {
         color: muiTheme.palette.error.light,
       },
+      "@media (max-width: 1024px)": {
+        fontSize: "4.5rem",
+      },
       "@media (max-width: 600px)": {
         fontSize: "3.4rem",
+        mb: "0rem",
       },
       "@media (max-width: 400px)": {
         fontSize: "2rem",
+        mb: "0rem",
       },
     },
 
@@ -157,11 +172,17 @@ export const getHomePageStyles = () => {
       mt: "8rem",
       color: "white",
       textAlign: "left",
+      "@media (max-width: 1024px)": {
+        mt: "4rem",
+        mb: "3rem",
+      },
       "@media (max-width: 600px)": {
-        fontSize: "1.3rem",
+        mt: "6rem",
+        mb: "-1rem",
       },
       "@media (max-width: 400px)": {
-        fontSize: "0.9rem",
+        mt: "7rem",
+        mb: "-1rem",
       },
     },
 
@@ -236,8 +257,7 @@ export const getHomePageStyles = () => {
       position: "relative",
     },
 
-    searchBarContainer: {
-    },
+    searchBarContainer: {},
 
     searchBarBox: {
       maxWidth: 750,

@@ -104,9 +104,13 @@ function SearchBar(props: SearchBarProps) {
       color: "white",
     },
     zIndex: 5,
-    "@media (max-width: 600px)": {},
-    "@media (max-width: 400px)": {},
-    "@media (max-width: 480px)": {
+    "@media (max-width: 1024px)": {
+      mt: "2rem",
+    },
+    "@media (max-width: 600px)": {
+      display: "none",
+    },
+    "@media (max-width: 400px)": {
       display: "none",
     },
   };
@@ -134,9 +138,13 @@ function SearchBar(props: SearchBarProps) {
       color: "white",
     },
     zIndex: 5,
-    "@media (max-width: 600px)": {},
-    "@media (max-width: 400px)": {},
-    "@media (max-width: 480px)": {
+    "@media (max-width: 1024px)": {
+      mt: "2rem",
+    },
+    "@media (max-width: 600px)": {
+      display: "none",
+    },
+    "@media (max-width: 400px)": {
       display: "none",
     },
   };
@@ -173,6 +181,10 @@ function SearchBar(props: SearchBarProps) {
       boxShadow: "none",
       textDecoration: "none",
     },
+    "@media (max-width: 1024px)": {
+      display: "true",
+      mt: "6rem",
+    },
     "@media (max-width: 600px)": {
       display: "true",
       mt: "6rem",
@@ -198,13 +210,17 @@ function SearchBar(props: SearchBarProps) {
       boxShadow: "none",
       textDecoration: "none",
     },
+    "@media (max-width: 1024px)": {
+      display: "true",
+      mt: "6rem",
+    },
     "@media (max-width: 600px)": {
       display: "true",
-      mt: "5rem",
+      mt: "6rem",
     },
     "@media (max-width: 400px)": {
       display: "true",
-      mt: "5rem",
+      mt: "6rem",
     },
   };
 
