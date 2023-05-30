@@ -10,6 +10,7 @@ import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { getHomePageStyles } from "./homePageStyles";
 
 interface HomeImageHeaderProps {
   projects: Project[];
@@ -53,94 +54,7 @@ const sliderSettings = {
 };
 
 function HomeImageHeader({ projects }: HomeImageHeaderProps) {
-  const muiTheme = useTheme();
-
-  const zakLearnMore = {
-    textAlign: "left",
-    "@media (max-width: 600px)": {
-      fontSize: "1rem",
-      mt: "10rem",
-    },
-    "@media (max-width: 400px)": {
-      fontSize: "0.8rem",
-      mt: "10rem",
-    },
-  };
-
-  const zakTitle = {
-    fontSize: "5rem",
-    fontWeight: "bold",
-    mb: "4rem",
-    color: "white",
-    textAlign: "left",
-    transition: "color 0.3s ease-in-out",
-    ":hover": {
-      color: muiTheme.palette.error.light,
-    },
-    "@media (max-width: 600px)": {
-      fontSize: "3.4rem",
-    },
-    "@media (max-width: 400px)": {
-      fontSize: "2rem",
-    },
-  };
-
-  const zakSubTitle = {
-    fontSize: "1.3rem",
-    fontWeight: "400",
-    mb: "5rem",
-    color: "white",
-    textAlign: "left",
-    "@media (max-width: 600px)": {
-      fontSize: "1rem",
-    },
-    "@media (max-width: 400px)": {
-      fontSize: "0.9rem",
-    },
-  };
-
-  const imgContainer = {
-    position: "relative",
-    height: "110vh",
-    width: "100%",
-    zIndex: 1,
-    "@media (max-width: 600px)": {
-      height: "110vh",
-    },
-    "@media (max-width: 400px)": {
-      height: "80vh",
-    },
-  };
-
-  const imgOverlay = {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: "111vh",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  };
-
-  const contentContainer = {
-    position: "absolute",
-    top: "45%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    zIndex: 1,
-    textAlign: "center",
-    color: "white",
-    maxWidth: "1300px",
-    margin: "0 auto",
-    "@media (max-width: 600px)": {
-      top: "40%",
-      fontSize: "0.8rem",
-    },
-    "@media (max-width: 400px)": {
-      top: "35%",
-      fontSize: "0.6rem",
-    },
-  };
+  const styles = getHomePageStyles();
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef<Slider | null>(null);
@@ -164,31 +78,11 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
   return (
     <>
       {projects.length > 0 && (
-        <Box sx={{ position: "relative" }}>
-          <Box
-            onClick={goToPrevSlide}
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: "0",
-              transform: "translate(-50%, -50%)",
-              zIndex: "2",
-              ml: "3rem",
-            }}
-          >
+        <Box sx={styles.mainBox}>
+          <Box onClick={goToPrevSlide} sx={styles.chevLeftBox}>
             <ChevronLeft />
           </Box>
-          <Box
-            onClick={goToNextSlide}
-            sx={{
-              position: "absolute",
-              top: "50%",
-              right: "0",
-              transform: "translate(50%, -50%)",
-              zIndex: "2",
-              mr: "3rem",
-            }}
-          >
+          <Box onClick={goToNextSlide} sx={styles.chevRightBox}>
             <ChevronRight />
           </Box>
           <Box>
@@ -199,7 +93,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
             >
               {projects.map((project, index) => (
                 <Box key={project._id}>
-                  <Box sx={imgContainer} data-slide-index={index}>
+                  <Box sx={styles.imgContainer} data-slide-index={index}>
                     <Image
                       src={urlFor(project.mainProjectImage)
                         .auto("format")
@@ -211,20 +105,20 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
                       placeholder="blur"
                       blurDataURL="data:image/svg+xml;base64,..."
                     />
-                    <Box sx={imgOverlay} />
-                    <Box sx={contentContainer}>
-                      <Typography variant="body1" sx={zakLearnMore}>
+                    <Box sx={styles.imgOverlay} />
+                    <Box sx={styles.contentContainer}>
+                      <Typography variant="body1" sx={styles.zakLearnMore}>
                         Learn More
                       </Typography>
                       <Link
                         key={project._id}
                         href={`projects/${project.slug.current}`}
                       >
-                        <Typography variant="h1" sx={zakTitle}>
+                        <Typography variant="h1" sx={styles.zakTitle}>
                           {project.title}
                         </Typography>
                       </Link>
-                      <Typography variant="h1" sx={zakSubTitle}>
+                      <Typography variant="h1" sx={styles.zakSubTitle}>
                         {project.description}
                       </Typography>
                     </Box>

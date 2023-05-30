@@ -5,18 +5,23 @@ export const getHomePageStyles = () => {
   return {
     mainBoxContainer: {},
     contentHeader: {
-      fontSize: "1.2rem",
+      fontSize: "1.3rem",
       lineHeight: "1.5",
       textAlign: "center",
       maxWidth: "70ch",
       margin: "0 auto",
-      mb: "-27rem",
       fontStyle: "italic",
+      mb: "1rem",
+      mt: "10rem",
       "@media (max-width: 600px)": {
-        fontSize: "1rem",
+        fontSize: "1.2rem",
+        mb: "1rem",
+        mt: "10rem",
       },
       "@media (max-width: 400px)": {
-        fontSize: "1rem",
+        fontSize: "1.1rem",
+        mb: "1rem",
+        mt: "10rem",
       },
     },
 
@@ -28,11 +33,9 @@ export const getHomePageStyles = () => {
       alignItems: "center",
       "@media (max-width: 600px)": {
         minHeight: "80vh",
-        mb: "-6rem",
       },
       "@media (max-width: 400px)": {
-        minHeight: "30vh",
-        mb: "15rem",
+        minHeight: "50vh",
       },
     },
 
@@ -112,5 +115,115 @@ export const getHomePageStyles = () => {
       margin: "0 auto",
     },
     projectCards: {},
+
+    // HomeImageHeader Styles
+    zakLearnMore: {
+      textAlign: "left",
+      "@media (max-width: 600px)": {
+        fontSize: "1rem",
+        mt: "10rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "0.8rem",
+        mt: "15rem",
+      },
+    },
+
+    zakTitle: {
+      fontSize: "5rem",
+      fontWeight: "bold",
+      mb: "4rem",
+      color: "white",
+      textAlign: "left",
+      transition: "color 0.3s ease-in-out",
+      ":hover": {
+        color: muiTheme.palette.error.light,
+      },
+      "@media (max-width: 600px)": {
+        fontSize: "3.4rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "2rem",
+      },
+    },
+
+    zakSubTitle: {
+      fontSize: "1.3rem",
+      fontWeight: "400",
+      mb: "5rem",
+      color: "white",
+      textAlign: "left",
+      "@media (max-width: 600px)": {
+        fontSize: "1rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "0.9rem",
+      },
+    },
+
+    imgContainer: {
+      position: "relative",
+      height: "110vh",
+      width: "100%",
+      zIndex: 1,
+      "@media (max-width: 600px)": {
+        height: "110vh",
+      },
+      "@media (max-width: 400px)": {
+        height: "80vh",
+      },
+    },
+
+    imgOverlay: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      height: "111vh",
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+    },
+
+    contentContainer: {
+      position: "absolute",
+      top: "45%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      zIndex: 1,
+      textAlign: "center",
+      color: "white",
+      maxWidth: "1300px",
+      margin: "0 auto",
+      "@media (max-width: 600px)": {
+        top: "40%",
+        fontSize: "0.8rem",
+      },
+      "@media (max-width: 400px)": {
+        top: "35%",
+        fontSize: "0.6rem",
+      },
+    },
+
+    chevRightBox: {
+      position: "absolute",
+      top: "50%",
+      right: "0",
+      transform: "translate(50%, -50%)",
+      zIndex: "2",
+      mr: "3rem",
+    },
+
+    chevLeftBox: {
+      position: "absolute",
+      top: "50%",
+      left: "0",
+      transform: "translate(-50%, -50%)",
+      zIndex: "2",
+      ml: "3rem",
+    },
+
+    mainBox: {
+      position: "relative",
+    },
   };
 };

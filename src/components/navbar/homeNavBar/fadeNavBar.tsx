@@ -47,12 +47,22 @@ const StyledAppBar = styled(AppBar)({
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
+  "@media (max-width: 600px)": {},
+  "@media (max-width: 400px)": {},
 });
 
 const StyledImage = styled(Image)({
   height: "8rem",
   width: "auto",
   transition: "all 0.9s ease-out",
+  "@media (max-width: 600px)": {
+    width: "10rem",
+    height: "7rem",
+  },
+  "@media (max-width: 400px)": {
+    width: "10rem",
+    height: "7rem",
+  },
 });
 
 export default function ElevateAppBar(props: Props): JSX.Element {
@@ -78,7 +88,7 @@ export default function ElevateAppBar(props: Props): JSX.Element {
               <Link href="/">
                 <StyledImage
                   src={NoBgLogo}
-                  alt=""
+                  alt="Logo"
                   style={{ filter: inverted ? "invert(100%)" : "none" }}
                 />
               </Link>

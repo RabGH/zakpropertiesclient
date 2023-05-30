@@ -8,15 +8,16 @@ export const getNavBarStyles = () => {
       alignItems: "center",
       justifyContent: "flex-end",
       gap: "1rem",
-      [theme.breakpoints.down("sm")]: {
-        display: "none",
-      },
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 400px)": {},
     },
     mainBox: {
       display: "flex",
       marginRight: "0.5rem",
       justifyContent: "space-between",
       gap: "1rem",
+      "@media (max-width: 600px)": { },
+      "@media (max-width: 400px)": { },
     },
     burgerNavBox: {
       backgroundColor: "transparent",
@@ -32,6 +33,8 @@ export const getNavBarStyles = () => {
       "&:hover": {
         borderColor: "#3B3B3B45",
       },
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 400px)": {},
     },
     menuIconStyles: {
       fontSize: "24px",
@@ -46,6 +49,8 @@ export const getNavBarStyles = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 400px)": {},
     },
     popperStyles: {
       zIndex: 9999,

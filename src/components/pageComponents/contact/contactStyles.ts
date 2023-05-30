@@ -107,6 +107,12 @@ export const getContactStyles = () => {
     logoStyles: {
       width: "30vw",
       height: "30vh",
+      "@media (max-width: 600px)": {
+        display: "none",
+      },
+      "@media (max-width: 400px)": {
+        display: "none",
+      },
     },
     formControl: {
       width: "100%",

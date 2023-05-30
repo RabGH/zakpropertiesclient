@@ -24,11 +24,21 @@ const StyledAppBar = styled(AppBar)({
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
+  "@media (max-width: 600px)": {},
+  "@media (max-width: 400px)": {},
 });
 
 const StyledImage = styled(Image)({
   height: "8rem",
   width: "auto",
+  "@media (max-width: 600px)": {
+    width: "10rem",
+    height: "7rem",
+  },
+  "@media (max-width: 400px)": {
+    width: "10rem",
+    height: "7rem",
+  },
 });
 
 export default function MainNavBar(props: Props): JSX.Element {
@@ -39,7 +49,7 @@ export default function MainNavBar(props: Props): JSX.Element {
         <StyledAppBar position="sticky">
           <StyledToolbar>
             <Link href="/">
-              <StyledImage src={NoBgLogo} alt="" />
+              <StyledImage src={NoBgLogo} alt="Logo" />
             </Link>
             <Box sx={styles.navContents}>
               <SocialIcons />

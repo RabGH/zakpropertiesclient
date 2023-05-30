@@ -11,8 +11,8 @@ import {
   FormControl,
 } from "@mui/material";
 
-// import Image from "next/image";
-// import logoContact from "../../public/images/logo/logoNoBg.png";
+import Image from "next/image";
+import logoContact from "../../public/images/logo/logoNoBg.png";
 
 import { getContactStyles } from "@/components/pageComponents/contact/contactStyles";
 
@@ -166,11 +166,15 @@ function Contact() {
           </Box>
           <Grid sx={styles.imgGrid}>
             <Box sx={styles.logoStyles}>
-              {/* <Image
-src={logoContact}
-alt=""
-style={{ filter: "invert(100%)" }}
-/> */}
+              {Image != null && (
+                <Image
+                  src={logoContact}
+                  alt="logo"
+                  style={{ filter: "invert(100%)" }}
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml;base64,..."
+                />
+              )}
             </Box>
           </Grid>
         </Grid>
