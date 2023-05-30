@@ -62,7 +62,7 @@ function Contact() {
   };
 
   const handleSnackClose = (
-    event: Event | React.SyntheticEvent<any, Event>, //change this line
+    event: Event | React.SyntheticEvent<any, Event>,
     reason?: string
   ) => {
     if (reason === "clickaway") {

@@ -16,7 +16,7 @@ const AboutPage: React.FC = () => {
   const mainContainer = {
     backgroundColor: theme.palette.background.default,
     height: "100vh",
-    mt: "10rem",
+    mt: "11rem",
     p: "2rem",
   };
 
