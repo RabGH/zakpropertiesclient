@@ -3,39 +3,40 @@ import { useTheme } from "@mui/material";
 export const getHomePageStyles = () => {
   const muiTheme = useTheme();
   return {
-    mainBoxContainer: {},
+    // Index Styles
+    mainBoxContainer: {
+      mt: "10rem",
+    },
     contentHeader: {
-      fontSize: "1.3rem",
+      fontSize: "1.4rem",
       lineHeight: "1.5",
       textAlign: "center",
       maxWidth: "70ch",
-      margin: "0 auto",
       fontStyle: "italic",
-      mb: "1rem",
       mt: "10rem",
       "@media (max-width: 600px)": {
         fontSize: "1.2rem",
-        mb: "1rem",
-        mt: "10rem",
+        mt: "5rem",
       },
       "@media (max-width: 400px)": {
         fontSize: "1.1rem",
-        mb: "1rem",
-        mt: "10rem",
+        mt: "2rem",
       },
     },
 
     boxContentProject: {
-      minHeight: "80vh",
+      minHeight: "65vh",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
       "@media (max-width: 600px)": {
-        minHeight: "80vh",
+        minHeight: "65vh",
+        mt: "-7rem",
       },
       "@media (max-width: 400px)": {
-        minHeight: "50vh",
+        minHeight: "65vh",
+        mt: "-7rem",
       },
     },
 
@@ -103,7 +104,7 @@ export const getHomePageStyles = () => {
       },
     },
 
-    mainContainer: {
+    indexMainContainer: {
       display: "flex",
       width: {
         xs: "100%",
@@ -115,6 +116,9 @@ export const getHomePageStyles = () => {
       margin: "0 auto",
     },
     projectCards: {},
+    homeHeaderContainerBox: {
+      mb: "5rem",
+    },
 
     // HomeImageHeader Styles
     zakLearnMore: {
@@ -224,6 +228,30 @@ export const getHomePageStyles = () => {
 
     mainBox: {
       position: "relative",
+    },
+
+    // Home Header Styles (Holds HomeImageHeader and SearchBar)
+    mainContainer: {
+      height: "64vh",
+      position: "relative",
+    },
+
+    searchBarContainer: {
+      "@media (max-width: 480px)": {
+        display: "none",
+      },
+    },
+
+    searchBarBox: {
+      maxWidth: 750,
+      width: "100%",
+      mt: "20rem",
+    },
+
+    homeComponentMainBox: {
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
     },
   };
 };

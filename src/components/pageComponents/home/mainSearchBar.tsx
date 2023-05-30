@@ -104,12 +104,8 @@ function SearchBar(props: SearchBarProps) {
       color: "white",
     },
     zIndex: 5,
-    "@media (max-width: 600px)": {
-     
-    },
-    "@media (max-width: 400px)": {
-      
-    },
+    "@media (max-width: 600px)": {},
+    "@media (max-width: 400px)": {},
   };
 
   const autoSelectStyles = {
@@ -135,12 +131,8 @@ function SearchBar(props: SearchBarProps) {
       color: "white",
     },
     zIndex: 5,
-    "@media (max-width: 600px)": {
-     
-    },
-    "@media (max-width: 400px)": {
-      
-    },
+    "@media (max-width: 600px)": {},
+    "@media (max-width: 400px)": {},
   };
 
   const searchBarWrapper = {
@@ -175,6 +167,12 @@ function SearchBar(props: SearchBarProps) {
       boxShadow: "none",
       textDecoration: "none",
     },
+    "@media (max-width: 600px)": {
+      display: "true",
+    },
+    "@media (max-width: 400px)": {
+      display: "true",
+    },
   };
 
   const projectButtonStyles = {
@@ -191,6 +189,12 @@ function SearchBar(props: SearchBarProps) {
       backgroundColor: "transparent",
       boxShadow: "none",
       textDecoration: "none",
+    },
+    "@media (max-width: 600px)": {
+      display: "true",
+    },
+    "@media (max-width: 400px)": {
+      display: "true",
     },
   };
 

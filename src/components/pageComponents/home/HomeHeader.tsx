@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { Property, Project } from "@lib/types";
 import SearchBar from "./mainSearchBar";
 import HomeImageHeader from "./HomeImageHeader";
+import { getHomePageStyles } from "./homePageStyles";
 
 interface HomeHeaderProps {
   properties: Property[];
@@ -10,23 +11,7 @@ interface HomeHeaderProps {
 }
 
 function HomeHeader({ properties, projects }: HomeHeaderProps) {
-  const mainContainer = {
-    height: "64vh",
-    position: "relative",
-  };
-
-  const searchBarContainer = {
-    "@media (max-width: 480px)": {
-      display: "none",
-    },
-  };
-
-  const searchBarBox = {
-    maxWidth: 750,
-    width: "100%",
-    mt: "20rem",
-  };
-
+  const styles = getHomePageStyles();
   const [open, setOpen] = useState(false);
 
   const handleToggle = () => {
@@ -35,11 +20,11 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
 
   return (
     <>
-      <Box sx={mainContainer}>
+      <Box sx={styles.mainContainer}>
         <HomeImageHeader projects={projects} />
-        <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-          <Box sx={searchBarContainer}>
-            <Box sx={searchBarBox}>
+        <Box sx={styles.homeComponentMainBox}>
+          <Box sx={styles.searchBarContainer}>
+            <Box sx={styles.searchBarBox}>
               <SearchBar
                 properties={properties}
                 projects={projects}

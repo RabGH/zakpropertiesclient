@@ -26,8 +26,10 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
   const styles = getHomePageStyles();
   return (
     <>
-      <HomeHeader properties={properties} projects={projects} />
-      <Box sx={styles.mainContainer}>
+      <Box sx={styles.homeHeaderContainerBox}>
+        <HomeHeader properties={properties} projects={projects} />
+      </Box>
+      <Box sx={styles.indexMainContainer}>
         <Container sx={styles.mainBoxContainer}>
           <Box sx={styles.boxContentProject}>
             <Typography
