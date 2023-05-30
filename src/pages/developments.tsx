@@ -46,7 +46,7 @@ function Developments({ projects }: DevelopmentsProps) {
       <Typography variant="h6" sx={{ mt: "1rem" }}>
         Contact us for development inquiries and off-plan development projects
       </Typography>
-      <Link href="/contact">
+      <Link href="/contactUs">
         <Button variant="contained" size="large" sx={styles.contactButton}>
           Learn More
         </Button>

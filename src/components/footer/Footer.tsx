@@ -56,13 +56,13 @@ function Footer() {
           </Button>
         </Link>
 
-        <Link href="/about">
+        <Link href="/aboutUs">
           <Button variant="contained" sx={linkStyles}>
             About
           </Button>
         </Link>
 
-        <Link href="/contact">
+        <Link href="/contactUs">
           <Button variant="contained" sx={linkStyles}>
             Contact
           </Button>

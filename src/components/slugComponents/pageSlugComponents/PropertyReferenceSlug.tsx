@@ -83,7 +83,7 @@ const PropertyReference = ({
             </Typography>
           )}
         </Box>
-        <Link href="/contact" passHref>
+        <Link href="/contactUs" passHref>
           <Button variant="contained" sx={buttonStyles}>
             Learn More
           </Button>

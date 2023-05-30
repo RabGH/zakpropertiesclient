@@ -169,7 +169,7 @@ Street and City: {address.street}, {address.city}
 
         <Box sx={styles.priceBox}>
           <Box sx={styles.priceButtonPos}>
-            <Link href="/contact">
+            <Link href="/contactUs">
               <Button variant="contained" sx={styles.buttonStyles}>
                 Learn More
               </Button>

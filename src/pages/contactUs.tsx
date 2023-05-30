@@ -74,7 +74,7 @@ function Contact() {
   return (
     <Container sx={styles.mainContainer}>
       <Box sx={styles.titleBox}>
-        <Typography variant="h4">Contact Me</Typography>
+        <Typography variant="h4">Contact Us</Typography>
         <Typography variant="body1">
           Contact Page, type in your name, email, subject, and message.
         </Typography>

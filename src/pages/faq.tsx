@@ -193,7 +193,7 @@ const FAQ: React.FC = () => {
             We&apos;re here to help!
           </Typography>
 
-          <Link href="/contact">
+          <Link href="/contactUs">
             <Button variant="contained">Contact Us</Button>
           </Link>
         </Box>

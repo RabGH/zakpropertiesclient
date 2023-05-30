@@ -65,7 +65,7 @@ export default function BurgerNav() {
                     Home
                   </MenuItem>
                 </Link>
-                <Link href="/about">
+                <Link href="/aboutUs">
                   <MenuItem
                     onClick={() => setOpen(false)}
                     onKeyDown={handleClose}
@@ -73,7 +73,7 @@ export default function BurgerNav() {
                     About
                   </MenuItem>
                 </Link>
-                <Link href="/contact">
+                <Link href="/contactUs">
                   <MenuItem
                     onClick={() => setOpen(false)}
                     onKeyDown={handleClose}

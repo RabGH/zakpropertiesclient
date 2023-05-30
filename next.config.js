@@ -5,7 +5,7 @@ const nextConfig = {
     domains: ["cdn.sanity.io"],
   },
   staticPageGenerationTimeout: 120,
-  exportTrailingSlash: true,
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
