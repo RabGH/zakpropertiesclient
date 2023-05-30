@@ -9,7 +9,6 @@ import {
   Button,
   Divider,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import Link from "next/link";
 import HelpIcon from "@mui/icons-material/Help";
 import Image from "next/image";
@@ -21,15 +20,14 @@ const source1 =
 const source2 =
   "https://www.propertyfinder.ae/blog/what-are-the-benefits-of-buying-a-property-in-dubai/";
 const source3 =
-  "https://www.khaleejtimes.com/business/real-estate/vat-in-real-estate-what-you-need-to-know";
+  "https://vatregistrationuae.com/impact-of-vat-on-dubai-real-estate-market/";
 const source4 =
-  "https://www.bayut.com/mybayut/legal-requirements-for-owning-property-in-dubai/";
+  "https://www.tamimi.com/law-update-articles/can-real-estate-dubai-part-2-know-rights-real-estate-investors-dubai-guide/";
 const source5 = "https://www.bayut.com/mybayut/mortgage-calculator-guide/";
 const source6 =
   "https://www.propertyfinder.ae/blog/buying-off-plan-property-uae-need-know/";
 
 const FAQ: React.FC = () => {
-  const theme = useTheme();
   const faqMainContainer = {
     maxWidth: "lg",
     mt: 15,
