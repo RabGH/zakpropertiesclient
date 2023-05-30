@@ -237,9 +237,6 @@ export const getHomePageStyles = () => {
     },
 
     searchBarContainer: {
-      "@media (max-width: 480px)": {
-        display: "none",
-      },
     },
 
     searchBarBox: {

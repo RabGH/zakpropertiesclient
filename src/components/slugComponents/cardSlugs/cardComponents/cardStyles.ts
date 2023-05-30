@@ -18,7 +18,7 @@ export const CardStyles = () => {
         backgroundColor: "rgba(255, 255, 255, 0.05)",
       },
       "@media (max-width: 600px)": {
-        maxWidth: "420px",
+        maxWidth: "390px",
       },
       "@media (max-width: 400px)": {
         maxWidth: "300px",
@@ -31,6 +31,8 @@ export const CardStyles = () => {
       justifyContent: "center",
       alignItems: "center",
       mb: "3rem",
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 400px)": {},
     },
     featuredTitlePos: {
       display: "flex",

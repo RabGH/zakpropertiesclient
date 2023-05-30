@@ -106,6 +106,9 @@ function SearchBar(props: SearchBarProps) {
     zIndex: 5,
     "@media (max-width: 600px)": {},
     "@media (max-width: 400px)": {},
+    "@media (max-width: 480px)": {
+      display: "none",
+    },
   };
 
   const autoSelectStyles = {
@@ -133,6 +136,9 @@ function SearchBar(props: SearchBarProps) {
     zIndex: 5,
     "@media (max-width: 600px)": {},
     "@media (max-width: 400px)": {},
+    "@media (max-width: 480px)": {
+      display: "none",
+    },
   };
 
   const searchBarWrapper = {

@@ -30,6 +30,7 @@ const sliderSettings = {
         slidesToScroll: 1,
         infinite: true,
         dots: false,
+        arrows: false,
       },
     },
     {
@@ -38,6 +39,9 @@ const sliderSettings = {
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 1,
+        infinite: true,
+        dots: false,
+        arrows: false,
       },
     },
     {
