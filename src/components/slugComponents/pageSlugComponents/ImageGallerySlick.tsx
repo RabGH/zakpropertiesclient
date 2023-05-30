@@ -37,7 +37,12 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
     rows: 1,
   };
 
-  const mainImageUrl = urlFor(mainImage).auto("format").url().toString();
+  let mainImageUrl;
+  try {
+    mainImageUrl = urlFor(mainImage).auto("format").url();
+  } catch (error) {
+    mainImageUrl = undefined;
+  }
 
   return (
     <Box sx={mainBox}>
@@ -51,6 +56,8 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
               height={1080}
               style={imageStyles}
               objectFit="contain"
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,..."
             />
           )}
         </Box>
@@ -68,6 +75,8 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
                     height={1080}
                     style={imageStyles}
                     objectFit="contain"
+                    placeholder="blur"
+                    blurDataURL="data:image/svg+xml;base64,..."
                   />
                 )}
               </Box>

@@ -71,7 +71,16 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
       <Slider ref={sliderRef} {...settings}>
         {filteredImages.map((image: string, index: number) => (
           <Box key={index}>
-            <Image src={image} alt={alt} width={450} height={300} />
+            {images != null && (
+              <Image
+                src={image}
+                alt={alt}
+                width={450}
+                height={300}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,..."
+              />
+            )}
           </Box>
         ))}
       </Slider>

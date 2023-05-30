@@ -38,6 +38,8 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                                 alt={projects.title}
                                 width={1920}
                                 height={1080}
+                                placeholder="blur"
+                                blurDataURL="data:image/svg+xml;base64,..."
                                 style={{
                                   position: "absolute",
                                   top: 0,

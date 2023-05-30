@@ -128,6 +128,8 @@ const ViewAllPhotos = ({ images, alt, mainImage }: ViewAllPhotosProps) => {
                   objectFit: "cover",
                 }}
                 fill
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,..."
               />
             </ImageBox>
           )}

@@ -208,6 +208,8 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
                       width={1920}
                       height={1080}
                       alt={project.title}
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,..."
                     />
                     <Box sx={imgOverlay} />
                     <Box sx={contentContainer}>
