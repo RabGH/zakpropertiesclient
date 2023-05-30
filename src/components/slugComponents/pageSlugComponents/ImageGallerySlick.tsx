@@ -41,7 +41,8 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
   try {
     mainImageUrl = urlFor(mainImage).auto("format").url();
   } catch (error) {
-    mainImageUrl = undefined;
+    mainImageUrl =
+      "/zakpropertiesclient/public/images/static_images/WaitHouseIcon.png";
   }
 
   return (
