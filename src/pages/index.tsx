@@ -74,12 +74,12 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const propertyQuery = '*[_type == "property"]{..., location}';
   const projectQuery = '*[_type == "projects"]{..., location}';
   const [properties, projects] = await Promise.all([
-    sanityClient.fetch<Property[]>(propertyQuery),
-    sanityClient.fetch<Project[]>(projectQuery),
+    sanityClient.fetch(propertyQuery),
+    sanityClient.fetch(projectQuery),
   ]);
 
   return {
@@ -87,6 +87,7 @@ export async function getServerSideProps() {
       properties,
       projects,
     },
+    revalidate: 60,
   };
 }
 

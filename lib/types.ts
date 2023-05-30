@@ -88,4 +88,7 @@ export interface PageContext {
   query: {
     slug: string;
   };
+  params: {
+    slug: string;
+  };
 }

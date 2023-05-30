@@ -55,16 +55,15 @@ function Developments({ projects }: DevelopmentsProps) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const projectQuery = '*[_type == "projects"]{..., location}';
-  const [projects] = await Promise.all([
-    sanityClient.fetch<Project[]>(projectQuery),
-  ]);
+  const projects = await sanityClient.fetch(projectQuery);
 
   return {
     props: {
       projects,
     },
+    revalidate: 60,
   };
 }
 

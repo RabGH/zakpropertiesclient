@@ -1,4 +1,5 @@
 import { sanityClient } from "@lib/sanity";
+import { getAllProjectSlugs } from "@lib/getStaticPaths";
 import { formatPrice, formatArea } from "@lib/utils";
 import Link from "next/link";
 import {
@@ -207,97 +208,102 @@ const Projects = ({
   );
 };
 
-export const getServerSideProps = async (pageContext: PageContext) => {
-  const pageSlug = pageContext.query.slug;
+export async function getStaticPaths() {
+  const paths = await getAllProjectSlugs();
 
-  const query = `*[ _type == "projects" && slug.current == $pageSlug][0]{
-      id,
+  return { paths, fallback: true };
+}
+
+export async function getStaticProps(context: any) {
+  const slug = context.params.slug;
+
+  const query = `*[ _type == "projects" && slug.current == $slug][0]{
+    id,
+    title,
+    projectPropertyTypes,
+    unitType,
+    projectOffPlan,
+    mainDeveloper,
+    mainProjectImage,
+    totalPrice,
+    description,
+    squareFootage,
+    projectImages,
+    location,
+    address->{
+      street,
+      city,
+    },
+    areaType,
+    specificAddress,
+    projectBuiltUpArea,
+    projectType,
+    numFloors,
+    numUnits,
+    numVillas,
+    bedrooms,
+    amenities->{
+      name,
+      amenities[],
+    },
+    properties[]->{
       title,
-      projectPropertyTypes,
-      unitType,
-      projectOffPlan,
-      mainDeveloper,
-      mainProjectImage,
+      location,
+      propertyType,
+      mainPropertyImage,
+      propertyImages,
       totalPrice,
+      bathrooms,
+      bedrooms,
       description,
       squareFootage,
-      projectImages,
-      location,
-      address->{
-        street,
-        city,
-      },
-      areaType,
-      specificAddress,
-      projectBuiltUpArea,
-      projectType,
-      numFloors,
-      numUnits,
-      numVillas,
-      bedrooms,
-      amenities->{
-        name,
-        amenities[],
-        },
-      properties[]->{
-        title,
-        location,
-        propertyType,
-        mainPropertyImage,
-        propertyImages,
-        totalPrice,
-        bathrooms,
-        bedrooms,
-        description,
-        squareFootage,
-        plottedArea,
-        builtUpArea,
-        features,
-        propertyOffPlan,
-        slug,
-        }
-      }`;
+      plottedArea,
+      builtUpArea,
+      features,
+      propertyOffPlan,
+      slug,
+    }
+  }`;
 
-  const projects = await sanityClient.fetch(query, { pageSlug });
+  const project = await sanityClient.fetch(query, { slug });
 
-  console.log(projects);
-  console.log("Properties: ", projects.properties);
-
-  if (!projects) {
+  if (!project) {
     return {
       props: null,
       notFound: true,
     };
   } else {
     const projectOffPlan =
-      projects.projectOffPlan !== undefined ? projects.projectOffPlan : null;
+      project.projectOffPlan !== undefined ? project.projectOffPlan : null;
     return {
       props: {
-        id: projects.id,
-        title: projects.title,
-        location: projects.location,
-        projectPropertyTypes: projects.projectPropertyTypes,
-        mainDeveloper: projects.mainDeveloper,
+        id: project.id,
+        title: project.title,
+        location: project.location,
+        projectPropertyTypes: project.projectPropertyTypes,
+        mainDeveloper: project.mainDeveloper,
         projectOffPlan: projectOffPlan,
-        unitType: projects.unitType,
-        projectImages: projects.projectImages,
-        totalPrice: projects.totalPrice,
-        description: projects.description,
-        squareFootage: projects.squareFootage,
-        amenities: projects.amenities || [],
-        areaType: projects.areaType || [],
-        specificAddress: projects.specificAddress || null,
-        address: projects.address || null,
-        projectBuiltUpArea: projects.projectBuiltUpArea,
-        projectType: projects.projectType,
-        mainProjectImage: projects.mainProjectImage || null,
-        properties: projects.properties || null,
-        numFloors: projects.numFloors || null,
-        numUnits: projects.numUnits || null,
-        numVillas: projects.numVillas || null,
-        bedrooms: projects.bedrooms || null,
+        unitType: project.unitType,
+        projectImages: project.projectImages,
+        totalPrice: project.totalPrice,
+        description: project.description,
+        squareFootage: project.squareFootage,
+        amenities: project.amenities || [],
+        areaType: project.areaType || [],
+        specificAddress: project.specificAddress || null,
+        address: project.address || null,
+        projectBuiltUpArea: project.projectBuiltUpArea,
+        projectType: project.projectType,
+        mainProjectImage: project.mainProjectImage || null,
+        properties: project.properties || null,
+        numFloors: project.numFloors || null,
+        numUnits: project.numUnits || null,
+        numVillas: project.numVillas || null,
+        bedrooms: project.bedrooms || null,
       },
+      revalidate: 60, 
     };
   }
-};
+}
+
 export default Projects;

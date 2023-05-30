@@ -1,7 +1,7 @@
 import { sanityClient } from "@lib/sanity";
+import { getAllPropertySlugs } from "@lib/getStaticPaths";
 import { isMultiple, formatPrice, formatArea } from "@lib/utils";
-import { Box, Typography, Button } from "@mui/material";
-import Divider from "@mui/material/Divider";
+import { Box, Typography, Button, Divider } from "@mui/material";
 import { BiBed } from "react-icons/bi";
 import { BiBath } from "react-icons/bi";
 import FeaturesSlug from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
@@ -21,6 +21,9 @@ import PropertyReference from "../../components/slugComponents/pageSlugComponent
 
 interface PageContext {
   query: {
+    slug: string;
+  };
+  params: {
     slug: string;
   };
 }
@@ -126,40 +129,46 @@ const Property = ({
   );
 };
 
-export const getServerSideProps = async (pageContext: PageContext) => {
-  const pageSlug = pageContext.query.slug;
+export async function getStaticPaths() {
+  const paths = await getAllPropertySlugs();
 
-  const query = `*[ _type == "property" && slug.current == $pageSlug][0]{
-          id,
-          title,
-          location,
-          address->{
-            street,
-            city,
-            },
-          specificAddress,
-          propertyType,
-          mainPropertyImage,
-          propertyImages,
-          totalPrice,
-          bathrooms,
-          bedrooms,
-          description,
-          squareFootage,
-          plottedArea,
-          builtUpArea,
-          areaType[],
-          propertyOffPlan,
-          projectId{
-            _id,
-            },
-          features->{
-            name,
-            features[],
-            },
-          }`;
+  return { paths, fallback: false };
+}
 
-  const property = await sanityClient.fetch(query, { pageSlug });
+export async function getStaticProps(context: any) {
+  const slug = context.params.slug;
+
+  const query = `*[ _type == "property" && slug.current == $slug][0]{
+    id,
+    title,
+    location,
+    address->{
+      street,
+      city,
+    },
+    specificAddress,
+    propertyType,
+    mainPropertyImage,
+    propertyImages,
+    totalPrice,
+    bathrooms,
+    bedrooms,
+    description,
+    squareFootage,
+    plottedArea,
+    builtUpArea,
+    areaType[],
+    propertyOffPlan,
+    projectId{
+      _id,
+    },
+    features->{
+      name,
+      features[],
+    },
+  }`;
+
+  const property = await sanityClient.fetch(query, { slug });
   if (!property) {
     return {
       props: null,
@@ -187,7 +196,8 @@ export const getServerSideProps = async (pageContext: PageContext) => {
         address: property.address || null,
         specificAddress: property.specificAddress || null,
       },
+      revalidate: 60,
     };
   }
-};
+}
 export default Property;

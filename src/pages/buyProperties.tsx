@@ -51,34 +51,34 @@ export default function PropertySearch({
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const propertyQuery = `*[ _type == "property"]{
-              ...,
-              createdAt,
-              location,
-              propertyType,
-              mainPropertyImage,
-              propertyImages,
-              totalPrice,
-              bathrooms,
-              bedrooms,
-              description,
-              squareFootage,
-              plottedArea,
-              builtUpArea,
-              features->{
-              name,
-              features[],
-              },
-              propertyOffPlan,
-              }`;
-  const [properties] = await Promise.all([
-    sanityClient.fetch<Property[]>(propertyQuery),
-  ]);
+    ...,
+    createdAt,
+    location,
+    propertyType,
+    mainPropertyImage,
+    propertyImages,
+    totalPrice,
+    bathrooms,
+    bedrooms,
+    description,
+    squareFootage,
+    plottedArea,
+    builtUpArea,
+    features->{
+      name,
+      features[],
+    },
+    propertyOffPlan,    
+  }`;
+
+  const properties = await sanityClient.fetch(propertyQuery);
 
   return {
     props: {
       properties,
     },
+    revalidate: 60,
   };
 }
