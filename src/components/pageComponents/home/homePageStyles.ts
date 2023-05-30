@@ -16,11 +16,11 @@ export const getHomePageStyles = () => {
       mt: "10rem",
       "@media (max-width: 600px)": {
         fontSize: "1.2rem",
-        mt: "5rem",
+        mt: "10rem",
       },
       "@media (max-width: 400px)": {
         fontSize: "1.1rem",
-        mt: "2rem",
+        mt: "10rem",
       },
     },
 
@@ -32,11 +32,11 @@ export const getHomePageStyles = () => {
       alignItems: "center",
       "@media (max-width: 600px)": {
         minHeight: "65vh",
-        mt: "-7rem",
+        mt: "1rem",
       },
       "@media (max-width: 400px)": {
         minHeight: "65vh",
-        mt: "-7rem",
+        mt: "1rem",
       },
     },
 
