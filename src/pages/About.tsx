@@ -17,7 +17,7 @@ const AboutPage: React.FC = () => {
     backgroundColor: theme.palette.background.default,
     height: "100vh",
     mt: "10rem",
-    p: "1rem",
+    p: "2rem",
   };
 
   return (
