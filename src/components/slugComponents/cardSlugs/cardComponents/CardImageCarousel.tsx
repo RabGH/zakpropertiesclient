@@ -64,10 +64,12 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
     sliderRef.current?.slickPrev();
   };
 
+  const filteredImages = images.filter((image) => image != null);
+
   return (
     <Box sx={{ position: "relative" }}>
       <Slider ref={sliderRef} {...settings}>
-        {images.map((image: string, index: number) => (
+        {filteredImages.map((image: string, index: number) => (
           <Box key={index}>
             <Image src={image} alt={alt} width={450} height={300} />
           </Box>

@@ -119,14 +119,18 @@ const ViewAllPhotos = ({ images, alt, mainImage }: ViewAllPhotosProps) => {
           <LeftArrowButton onClick={handlePrev}>
             <ChevronLeft fontSize="large" />
           </LeftArrowButton>
-          <ImageBox>
-            <EnlargedImage
-              src={activeImageUrl}
-              alt={alt}
-              layout="fill"
-              objectFit="contain"
-            />
-          </ImageBox>
+          {images != null && (
+            <ImageBox>
+              <EnlargedImage
+                src={activeImageUrl}
+                alt={alt}
+                style={{
+                  objectFit: "cover",
+                }}
+                fill
+              />
+            </ImageBox>
+          )}
           <RightArrowButton onClick={handleNext}>
             <ChevronRight fontSize="large" />
           </RightArrowButton>

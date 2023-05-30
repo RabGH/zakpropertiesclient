@@ -104,8 +104,8 @@ const Projects = ({
               Developed by {mainDeveloper}
             </Typography>
             {/* <Typography variant="body1">
-              Street and City: {address.street}, {address.city}
-            </Typography> */}
+Street and City: {address.street}, {address.city}
+</Typography> */}
             {/* <Typography variant="body1">Address: {specificAddress}</Typography> */}
           </Box>
 
@@ -284,7 +284,7 @@ export async function getStaticProps(context: any) {
         mainDeveloper: project.mainDeveloper,
         projectOffPlan: projectOffPlan,
         unitType: project.unitType,
-        projectImages: project.projectImages,
+        projectImages: project.projectImages || null,
         totalPrice: project.totalPrice,
         description: project.description,
         squareFootage: project.squareFootage,

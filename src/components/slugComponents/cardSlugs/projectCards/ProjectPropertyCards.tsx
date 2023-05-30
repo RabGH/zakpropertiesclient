@@ -54,10 +54,13 @@ const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
             {property.mainPropertyImage && (
               <CardImageCarousel
                 images={[
-                  urlFor(property.mainPropertyImage).auto("format").url().toString(),
-                  ...property.propertyImages.map((img) =>
-                    urlFor(img).auto("format").url().toString()
-                  ),
+                  urlFor(property.mainPropertyImage)
+                    .auto("format")
+                    .url()
+                    .toString(),
+                  ...property.propertyImages
+                    .filter((img) => img != null)
+                    .map((img) => urlFor(img).auto("format").url().toString()),
                 ]}
                 alt={property.title}
               />

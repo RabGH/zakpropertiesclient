@@ -43,30 +43,36 @@ const ImageCarousel = ({ images, alt, mainImage }: ImageCarouselProps) => {
     <Box sx={mainBox}>
       <Slider {...settings} ref={sliderRef}>
         <Box key="main" sx={imageBox}>
-          <Image
-            src={mainImageUrl}
-            alt={alt}
-            width={1920}
-            height={1080}
-            style={imageStyles}
-            objectFit="contain"
-          />
+          {images != null && (
+            <Image
+              src={mainImageUrl}
+              alt={alt}
+              width={1920}
+              height={1080}
+              style={imageStyles}
+              objectFit="contain"
+            />
+          )}
         </Box>
-        {images.map((image, index) => {
-          const imageUrl = urlFor(image).auto("format").url().toString();
-          return (
-            <Box key={index} sx={imageBox}>
-              <Image
-                src={imageUrl}
-                alt={alt}
-                width={1920}
-                height={1080}
-                style={imageStyles}
-                objectFit="contain"
-              />
-            </Box>
-          );
-        })}
+        {images
+          .filter((image) => image != null)
+          .map((image, index) => {
+            const imageUrl = urlFor(image).auto("format").url().toString();
+            return (
+              <Box key={index} sx={imageBox}>
+                {image != null && (
+                  <Image
+                    src={imageUrl}
+                    alt={alt}
+                    width={1920}
+                    height={1080}
+                    style={imageStyles}
+                    objectFit="contain"
+                  />
+                )}
+              </Box>
+            );
+          })}
       </Slider>
       <Box>
         <ButtonBase

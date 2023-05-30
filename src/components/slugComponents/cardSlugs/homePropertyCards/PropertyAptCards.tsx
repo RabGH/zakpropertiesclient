@@ -44,9 +44,11 @@ const PropertyAptCardBodyData = ({ properties }: PropertyAptCardBodyProps) => {
                               .auto("format")
                               .url()
                               .toString(),
-                            ...property.propertyImages.map((img) =>
-                              urlFor(img).auto("format").url().toString()
-                            ),
+                            ...property.propertyImages
+                              .filter((img) => img != null)
+                              .map((img) =>
+                                urlFor(img).auto("format").url().toString()
+                              ),
                           ]}
                           alt={property.title}
                         />
