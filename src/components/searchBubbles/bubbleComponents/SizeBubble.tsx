@@ -54,6 +54,19 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
       setButtonText("Custom");
     }
   };
+
+  const handleClose = () => {
+    setSearch((prev) => ({ ...prev, sizeRange: [low, high] }));
+    setOpen(false);
+    if (low === search.sizeRange[0] && high === search.sizeRange[1]) {
+      setButtonText("Any");
+    } else if (low === minSize && high === maxSize) {
+      setButtonText("Any");
+    } else {
+      setButtonText("Custom");
+    }
+  };
+
   const handleReset = () => {
     setLow(minSize);
     setHigh(maxSize);
@@ -92,7 +105,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
       <Box sx={styles.generalPopperBox}>
         <Menu
           open={open}
-          onClose={() => setOpen(false)}
+          onClose={handleClose}
           anchorEl={buttonRef.current}
           sx={styles.sizeMenuStyles}
           disableScrollLock

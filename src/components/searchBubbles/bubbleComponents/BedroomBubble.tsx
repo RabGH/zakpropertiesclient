@@ -20,6 +20,11 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
     setOpen(false);
   };
 
+  const handleClose = () => {
+    setSearch((prev) => ({ ...prev, bedrooms: [low, high] }));
+    setOpen(false);
+  };
+
   const handleSliderChange = (event: any, newValue: number | number[]) => {
     if (Array.isArray(newValue)) {
       setLow(newValue[0]);
@@ -54,7 +59,7 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
       <Box sx={styles.generalPopperBox}>
         <Menu
           open={open}
-          onClose={() => setOpen(false)}
+          onClose={handleClose}
           anchorEl={buttonRef.current}
           sx={styles.bedroomMenuStyles}
           disableScrollLock

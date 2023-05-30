@@ -8,7 +8,10 @@ import SizeBubble from "./bubbleComponents/SizeBubble";
 import ResultsBubble from "./ResultsBubble";
 import SortByBubble from "./SortByBubble";
 import { getBubbleStyles } from "./searchComponents/bubbleStyles";
-import { SearchFieldBubblesProps, SearchInterface } from "./searchComponents/bubbleInterfaces";
+import {
+  SearchFieldBubblesProps,
+  SearchInterface,
+} from "./searchComponents/bubbleInterfaces";
 import { filterProperties } from "./searchComponents/filterPropertiesFunction";
 
 const SearchFieldBubbles = ({
@@ -44,7 +47,6 @@ const SearchFieldBubbles = ({
         spacing={0}
         sx={styles.mainSearchFieldStack}
       >
-        {/* <Typography variant="h6">{results} Homes</Typography> */}
         <Box sx={styles.searchButtonBox}>
           <ResultsBubble
             search={search}

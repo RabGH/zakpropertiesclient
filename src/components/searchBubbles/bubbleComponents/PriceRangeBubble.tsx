@@ -55,6 +55,18 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
     }
   };
 
+  const handleClose = () => {
+    setSearch((prev) => ({ ...prev, priceRange: [low, high] }));
+    setOpen(false);
+    if (low === search.priceRange[0] && high === search.priceRange[1]) {
+      setButtonText("Any");
+    } else if (low === minPrice && high === maxPrice) {
+      setButtonText("Any");
+    } else {
+      setButtonText("Custom");
+    }
+  };
+
   const handleReset = () => {
     setLow(minPrice);
     setHigh(maxPrice);
@@ -104,7 +116,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
       <Box sx={styles.generalPopperBox}>
         <Menu
           open={open}
-          onClose={() => setOpen(false)}
+          onClose={handleClose}
           anchorEl={buttonRef.current}
           sx={styles.priceMenuStyles}
           disableScrollLock
