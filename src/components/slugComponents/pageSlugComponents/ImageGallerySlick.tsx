@@ -37,7 +37,7 @@ const ImageCarousel = ({ images, alt, mainImage }: ImageCarouselProps) => {
     rows: 1,
   };
 
-  const mainImageUrl = urlFor(mainImage).auto("format").url();
+  const mainImageUrl = urlFor(mainImage).auto("format").url().toString();
 
   return (
     <Box sx={mainBox}>

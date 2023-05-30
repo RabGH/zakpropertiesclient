@@ -101,8 +101,11 @@ const ViewAllPhotos = ({ images, alt, mainImage }: ViewAllPhotosProps) => {
   };
 
   const mainImageUrl = urlFor(mainImage).auto("format").url().toString();
-  const activeImageUrl = urlFor(images[activeImageIndex]).auto("format").url().toString();
-  
+  const activeImageUrl = urlFor(images[activeImageIndex])
+    .auto("format")
+    .url()
+    .toString();
+
   return (
     <>
       <ViewAllPhotosButton variant="contained" onClick={handleOpen}>
