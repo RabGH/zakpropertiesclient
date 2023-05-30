@@ -6,7 +6,7 @@ export const CardStyles = () => {
     // Property Home Card Styles and property all card styles
     allCardStyles: {
       maxWidth: "450px",
-      maxHeight: "490px",
+      maxHeight: "510px",
       boxShadow: "none",
       borderRadius: "10px",
       overflow: "hidden",
@@ -30,9 +30,13 @@ export const CardStyles = () => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      mb: "3rem",
-      "@media (max-width: 600px)": {},
-      "@media (max-width: 400px)": {},
+      mb: "2rem",
+      "@media (max-width: 600px)": {
+        mb: "1rem",
+      },
+      "@media (max-width: 400px)": {
+        mb: "1rem",
+      },
     },
     featuredTitlePos: {
       display: "flex",

@@ -1,204 +1,317 @@
 import * as React from "react";
 import {
-  Box,
   Container,
+  Box,
   Typography,
   Card,
   CardContent,
   Grid,
   Button,
+  Divider,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Link from "next/link";
+import HelpIcon from "@mui/icons-material/Help";
+import Image from "next/image";
+import logoContact from "../../public/images/logo/logoNoBg.png";
+
+// Sources
+const source1 =
+  "https://dubailand.gov.ae/en/frequently-asked-questions/#:~:text=How%20do%20I%20lease%20a%20property%20in%20UAE%3F";
+const source2 =
+  "https://www.propertyfinder.ae/blog/what-are-the-benefits-of-buying-a-property-in-dubai/";
+const source3 =
+  "https://www.khaleejtimes.com/business/real-estate/vat-in-real-estate-what-you-need-to-know";
+const source4 =
+  "https://www.bayut.com/mybayut/legal-requirements-for-owning-property-in-dubai/";
+const source5 = "https://www.bayut.com/mybayut/mortgage-calculator-guide/";
+const source6 =
+  "https://www.propertyfinder.ae/blog/buying-off-plan-property-uae-need-know/";
 
 const FAQ: React.FC = () => {
   const theme = useTheme();
-  const mainContainer = {
-    backgroundColor: theme.palette.background.default,
-    py: 8,
-    height: "140vh",
-    mt: "6rem",
+  const faqMainContainer = {
+    maxWidth: "lg",
+    mt: 15,
+    p: 1,
+    "@media (max-width: 600px)": {},
+    "@media (max-width: 400px)": {},
   };
 
+  const faqLogoStyles = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "200px",
+    height: "200px",
+    filter: "invert(100%)",
+    m: "0 auto",
+    mt: "5rem",
+    "@media (max-width: 600px)": { width: "100px", height: "100px" },
+    "@media (max-width: 400px)": { width: "100px", height: "100px" },
+  };
+
+  const faqLogoImageStyles = {};
+
   return (
-    <Box sx={mainContainer}>
-      <Container maxWidth="lg">
-        <Typography variant="h3" component="h1" align="center" sx={{ mb: 6 }}>
+    <Container>
+      <Box sx={faqMainContainer}>
+        <Typography variant="h2" align="center" sx={{ mb: "4rem", mt: "3rem" }}>
           Frequently Asked Questions
         </Typography>
 
-        <Grid container spacing={6}>
+        <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 1
-                </Typography>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Typography variant="h1" sx={{ mb: "1rem" }}>
+                    <HelpIcon color="primary" /> How do I lease a property in
+                    UAE?
+                  </Typography>
+                </Box>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  We are a leading real estate company based in the UAE,
-                  specializing in the promotion and sale of properties, off-plan
-                  properties, project properties, property investments, and
-                  more.
+                  To lease a property in UAE, you need to contact a licensed
+                  real estate agent or broker who can help you find a suitable
+                  property and negotiate the terms of the lease agreement with
+                  the landlord. You also need to provide some documents, such as
+                  your passport, visa, Emirates ID, and proof of income, and pay
+                  a security deposit and the rent in advance.
                 </Typography>
                 <Typography variant="body1">
-                  Our team of experienced professionals is dedicated to helping
-                  clients find the perfect property and making the buying or
-                  selling process as smooth and stress-free as possible.
+                  You can also use online platforms, such as Dubai REST, to
+                  access real estate services and perform transactions
+                  electronically.
+                  <Link
+                    href={source1}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    [source]
+                  </Link>
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 2
-                </Typography>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Typography variant="h1" sx={{ mb: "1rem" }}>
+                    <HelpIcon color="primary" /> What are the benefits of buying
+                    a property in Dubai?
+                  </Typography>
+                </Box>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
+                  Buying a property in Dubai has many benefits, such as:
                 </Typography>
                 <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
+                  - You can enjoy a tax-free income from renting or selling your
+                  property.
+                  <Divider />
+                  - You can get a residency visa if you invest in a property
+                  worth at least AED 1 million.
+                  <Divider />
+                  - You can access a diverse and dynamic real estate market with
+                  high returns on investment and capital appreciation.
+                  <Divider />- You can choose from a wide range of properties
+                  and projects that suit your budget and lifestyle.
+                  <Link
+                    href={source2}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    [source]
+                  </Link>
                 </Typography>
               </CardContent>
             </Card>
           </Grid>{" "}
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 3
-                </Typography>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Typography variant="h1" sx={{ mb: "1rem" }}>
+                    <HelpIcon color="primary" /> What is VAT and how does it
+                    affect real estate transactions in UAE?
+                  </Typography>
+                </Box>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
+                  VAT is a value-added tax that is applied to the supply of
+                  goods and services in UAE. It is levied at a standard rate of
+                  5%, except for some exempt or zero-rated supplies.
                 </Typography>
                 <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
+                  VAT affects real estate transactions in UAE in different ways,
+                  depending on the type and purpose of the property. For
+                  example, the first supply of a new residential property within
+                  the first three years of its construction is zero-rated, which
+                  means no VAT is charged. However, the subsequent supply of the
+                  same property is subject to VAT at 5%. Commercial properties,
+                  on the other hand, are always subject to VAT at 5%, regardless
+                  of whether they are new or not.
+                  <Link
+                    href={source3}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    [source]
+                  </Link>
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>{" "}
+          </Grid>
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 4
-                </Typography>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Typography variant="h1" sx={{ mb: "1rem" }}>
+                    <HelpIcon color="primary" /> What are the legal requirements
+                    for owning a property in UAE?
+                  </Typography>
+                </Box>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
+                  To own a property in UAE, you need to meet the following legal
+                  requirements:
                 </Typography>
                 <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
+                  - You must be at least 21 years old and have a valid passport
+                  and visa.
+                  <Divider />
+                  - You must register your property with the relevant authority,
+                  such as the Dubai Land Department or the Abu Dhabi Department
+                  of Municipalities and Transport, and pay the registration fees
+                  and taxes.
+                  <Divider />
+                  - You must obtain a title deed or an ownership certificate
+                  that proves your ownership of the property.
+                  <Divider />- You must comply with the laws and regulations
+                  governing real estate transactions in UAE, such as obtaining
+                  the necessary approvals and permits, paying the service
+                  charges and maintenance fees, and respecting the rights and
+                  obligations of other parties involved in the transaction.
+                  <Link
+                    href={source4}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    [source]
+                  </Link>
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>{" "}
+          </Grid>
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 5
-                </Typography>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Typography variant="h1" sx={{ mb: "1rem" }}>
+                    <HelpIcon color="primary" /> How can I get a mortgage or
+                    financing for buying a property in UAE?
+                  </Typography>
+                </Box>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
+                  To get a mortgage or financing for buying a property in UAE,
+                  you need to apply to a bank or a financial institution that
+                  offers such services. You also need to provide some documents,
+                  such as your passport, visa, Emirates ID, proof of income,
+                  bank statements, credit report, and property valuation report.
                 </Typography>
                 <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
+                  The amount and terms of the mortgage or financing will depend
+                  on various factors, such as your income, credit history,
+                  property value, and loan-to-value ratio. Generally, the
+                  maximum loan-to-value ratio for expatriates is 75% for the
+                  first property and 60% for the second property. The repayment
+                  period can range from 5 to 25 years, depending on your age and
+                  eligibility.
+                  <Link
+                    href={source5}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    [source]
+                  </Link>
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>{" "}
+          </Grid>
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 6
-                </Typography>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Typography variant="h1" sx={{ mb: "1rem" }}>
+                    <HelpIcon color="primary" /> What are off-plan projects and
+                    properties in UAE?
+                  </Typography>
+                </Box>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
+                  Off-plan projects and properties are properties that are not
+                  yet constructed or are under construction, and are purchased
+                  directly from the developer.
                 </Typography>
                 <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>{" "}
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 7
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
-                </Typography>
-                <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>{" "}
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  FAQ 8
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
-                </Typography>
-                <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
+                  Buying an off-plan property has some benefits, such as lower
+                  prices, flexible payment plans, high capital gains, and
+                  property regulations in Dubai that protect buyers from delays,
+                  cancellations, and fraud. However, it also has some risks,
+                  such as delayed completion time, quality issues, market
+                  fluctuations, and legal disputes with developers or
+                  contractors
+                  <Link
+                    href={source6}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    [source]
+                  </Link>
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
         </Grid>
 
+        <Grid
+          item
+          xs={12}
+          sx={{
+            justify: "center",
+            direction: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Box sx={faqLogoStyles}>
+            {Image != null && (
+              <Image
+                src={logoContact}
+                alt="logo"
+                style={faqLogoImageStyles}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,..."
+              />
+            )}
+          </Box>
+        </Grid>
+
         <Box sx={{ mt: 8, textAlign: "center" }}>
-          <Typography variant="h4" component="h2" gutterBottom>
+          <Typography variant="h4" sx={{ mb: "0.7rem" }}>
             Contact Us
           </Typography>
 
-          <Typography variant="body1" sx={{ mb: 2 }}>
+          <Typography variant="body1" sx={{ mb: "0.9rem" }}>
             Have a question or need help with buying or selling a property?
             We&apos;re here to help!
           </Typography>
 
-          <Link href="/contactUs">
-            <Button variant="contained">Contact Us</Button>
+          <Link href="/contact">
+            <Button variant="contained" sx={{ mb: "5rem" }}>
+              Contact Us
+            </Button>
           </Link>
         </Box>
-      </Container>
-    </Box>
+      </Box>
+    </Container>
   );
 };
 

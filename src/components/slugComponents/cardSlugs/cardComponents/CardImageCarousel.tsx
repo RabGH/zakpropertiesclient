@@ -39,10 +39,16 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
         <Box
           sx={{
             position: "absolute",
-            top: "87%",
+            top: "89%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            "@media (max-width: 600px)": {
+              top: "87%",
+            },
+            "@media (max-width: 400px)": {
+              top: "87%",
+            },
           }}
         >
           {dots}

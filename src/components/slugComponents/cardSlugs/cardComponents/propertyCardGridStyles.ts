@@ -45,5 +45,9 @@ export const getPropertyGridCardStyles = () => {
     searchGridDividerStyles: {
       m: "0.1rem",
     },
+
+    cardAllGridStyles: {
+      justifyContent: "center",
+    },
   };
 };

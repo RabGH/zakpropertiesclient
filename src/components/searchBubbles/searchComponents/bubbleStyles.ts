@@ -34,6 +34,14 @@ export const getBubbleStyles = () => {
       height: "180px",
       overflow: "visible",
       mt: "0.5rem",
+      "@media (max-width: 600px)": {
+        width: "885px",
+        ml: "1.1rem",
+      },
+      "@media (max-width: 400px)": {
+        width: "885px",
+        ml: "1.1rem",
+      },
     },
     bedroomMenuListStyles: {
       display: "flex",
@@ -83,6 +91,14 @@ export const getBubbleStyles = () => {
       height: "1000px",
       overflow: "visible",
       mt: "0.5rem",
+      "@media (max-width: 600px)": {
+        width: "885px",
+        ml: "1.1rem",
+      },
+      "@media (max-width: 400px)": {
+        width: "885px",
+        ml: "1.1rem",
+      },
     },
     priceMenuListStyles: {
       display: "flex",
@@ -160,6 +176,14 @@ export const getBubbleStyles = () => {
       height: "1000px",
       overflow: "visible",
       mt: "0.5rem",
+      "@media (max-width: 600px)": {
+        width: "885px",
+        ml: "1.1rem",
+      },
+      "@media (max-width: 400px)": {
+        width: "885px",
+        ml: "1.1rem",
+      },
     },
     sizeMenuListStyles: {
       display: "flex",

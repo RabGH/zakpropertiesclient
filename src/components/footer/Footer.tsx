@@ -80,3 +80,15 @@ function Footer() {
 }
 
 export default Footer;
+
+{/* <Box sx={footerStyles}>
+        <Typography variant="body1" color="textSecondary">
+          © 2023 by Zak Properties. All rights reserved.
+        </Typography>
+        <Link href="/privacy-policy" color="inherit">
+          Privacy Policy
+        </Link>
+        <Link href="/terms-of-service" color="inherit">
+          Terms of Service
+        </Link>
+      </Box> */}

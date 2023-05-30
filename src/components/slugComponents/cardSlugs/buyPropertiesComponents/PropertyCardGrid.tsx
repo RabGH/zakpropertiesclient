@@ -46,11 +46,19 @@ const PropertyCardGrid: React.FC<Props> = ({
         />
       </Box>
       <Divider sx={styles.searchGridDividerStyles} />
-      <Grid container spacing={0} sx={styles.cardGridStyles}>
+      <Grid container spacing={1} sx={styles.cardGridStyles}>
         {search.filteredProperties
           .slice((page - 1) * cardsPerPage, page * cardsPerPage)
           .map((property) => (
-            <Grid item xs={12} sm={6} md={4} key={property._id}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={6}
+              lg={4}
+              key={property._id}
+              sx={styles.cardAllGridStyles}
+            >
               <PropertyAllCard property={property} />
             </Grid>
           ))}
