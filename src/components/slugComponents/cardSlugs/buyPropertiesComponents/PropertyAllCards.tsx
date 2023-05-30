@@ -24,9 +24,9 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
               {property.mainPropertyImage && (
                 <CardImageCarousel
                   images={[
-                    urlFor(property.mainPropertyImage).auto("format").url(),
+                    urlFor(property.mainPropertyImage).auto("format").url().toString(),
                     ...property.propertyImages.map((img) =>
-                      urlFor(img).auto("format").url()
+                      urlFor(img).auto("format").url().toString()
                     ),
                   ]}
                   alt={property.title}

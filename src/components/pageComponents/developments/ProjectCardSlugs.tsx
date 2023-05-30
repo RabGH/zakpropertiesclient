@@ -33,7 +33,8 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                               <Image
                                 src={urlFor(projects.mainProjectImage)
                                   .auto("format")
-                                  .url()}
+                                  .url()
+                                  .toString()}
                                 alt={projects.title}
                                 width={1920}
                                 height={1080}

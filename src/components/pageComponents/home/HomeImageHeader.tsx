@@ -203,7 +203,8 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
                     <Image
                       src={urlFor(project.mainProjectImage)
                         .auto("format")
-                        .url()}
+                        .url()
+                        .toString()}
                       width={1920}
                       height={1080}
                       alt={project.title}

@@ -53,7 +53,7 @@ const ImageCarousel = ({ images, alt, mainImage }: ImageCarouselProps) => {
           />
         </Box>
         {images.map((image, index) => {
-          const imageUrl = urlFor(image).auto("format").url();
+          const imageUrl = urlFor(image).auto("format").url().toString();
           return (
             <Box key={index} sx={imageBox}>
               <Image
