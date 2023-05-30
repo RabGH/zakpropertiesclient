@@ -73,7 +73,7 @@ function Contact() {
 
   return (
     <Container sx={styles.mainContainer}>
-      {/* <Box sx={styles.titleBox}>
+      <Box sx={styles.titleBox}>
         <Typography variant="h4">Contact Me</Typography>
         <Typography variant="body1">
           Contact Page, type in your name, email, subject, and message.
@@ -181,7 +181,7 @@ function Contact() {
         onClose={handleSnackClose}
         message={snackMessage}
         sx={styles.snackbarStyles}
-      /> */}
+      />
     </Container>
   );
 }
