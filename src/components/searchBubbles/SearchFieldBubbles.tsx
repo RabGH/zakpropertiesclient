@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Stack, Typography, Box } from "@mui/material";
 import PropertyTypeBubble from "./bubbleComponents/PropertyTypeBubble";
 import PriceRangeBubble from "./bubbleComponents/PriceRangeBubble";
@@ -8,11 +8,7 @@ import SizeBubble from "./bubbleComponents/SizeBubble";
 import ResultsBubble from "./ResultsBubble";
 import SortByBubble from "./SortByBubble";
 import { getBubbleStyles } from "./searchComponents/bubbleStyles";
-import {
-  SearchFieldBubblesProps,
-  SearchInterface,
-} from "./searchComponents/bubbleInterfaces";
-import { filterProperties } from "./searchComponents/filterPropertiesFunction";
+import { SearchFieldBubblesProps } from "./searchComponents/bubbleInterfaces";
 
 const SearchFieldBubbles = ({
   search,
@@ -21,23 +17,6 @@ const SearchFieldBubbles = ({
   setFilteredProperties,
 }: SearchFieldBubblesProps) => {
   const styles = getBubbleStyles();
-
-  const updateSearch = (values: Partial<SearchInterface>) => {
-    setSearch((prev) => ({
-      ...prev,
-      ...values,
-    }));
-  };
-
-  const results = filterProperties(
-    search.propertyType,
-    search.priceRange,
-    search.propertyOffPlan,
-    search.bedrooms,
-    search.sizeRange,
-    search.propertyFeatures,
-    properties
-  ).length;
 
   return (
     <Box sx={styles.searchFieldMainBox}>
