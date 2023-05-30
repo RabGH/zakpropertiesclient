@@ -301,7 +301,7 @@ export async function getStaticProps(context: any) {
         numVillas: project.numVillas || null,
         bedrooms: project.bedrooms || null,
       },
-      revalidate: 60, 
+      revalidate: 60,
     };
   }
 }
