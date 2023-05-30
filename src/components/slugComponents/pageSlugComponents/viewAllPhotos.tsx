@@ -100,12 +100,21 @@ const ViewAllPhotos = ({ images, alt, mainImage }: ViewAllPhotosProps) => {
     );
   };
 
-  const mainImageUrl = urlFor(mainImage).auto("format").url().toString();
-  const activeImageUrl = urlFor(images[activeImageIndex])
-    .auto("format")
-    .url()
-    .toString();
+  let mainImageUrl;
+  try {
+    mainImageUrl = urlFor(mainImage).auto("format").url();
+  } catch (error) {
+    mainImageUrl =
+      "/zakpropertiesclient/public/images/static_images/WaitHouseIcon.png";
+  }
 
+  let activeImageUrl;
+  try {
+    activeImageUrl = urlFor(images[activeImageIndex]).auto("format").url();
+  } catch (error) {
+    activeImageUrl =
+      "/zakpropertiesclient/public/images/static_images/WaitHouseIcon.png";
+  }
   return (
     <>
       <ViewAllPhotosButton variant="contained" onClick={handleOpen}>
