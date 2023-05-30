@@ -14,7 +14,7 @@ interface ImageCarouselProps {
   alt: string;
 }
 
-const ImageCarousel = ({ images, alt, mainImage }: ImageCarouselProps) => {
+const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
   const muiTheme = useTheme();
   const sliderRef = useRef<Slider>(null);
 
