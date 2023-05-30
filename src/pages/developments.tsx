@@ -19,29 +19,20 @@ function Developments({ projects }: DevelopmentsProps) {
       <Typography variant="h3" component="h1" sx={styles.titleStyles}>
         Featured Developments
       </Typography>
-      <Grid container spacing={1} justifyContent="center" alignItems="center">
-        {projects &&
-          projects.map((project) => (
-            <React.Fragment key={project._id}>
-              <Grid item xs={12} md={8}>
-                <ProjectCardSlug projects={[project]} />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Typography
-                  variant="h4"
-                  component="h2"
-                  sx={styles.projectTitle}
-                >
-                  {project.title}
-                </Typography>
-                <Typography variant="body1" sx={styles.projectDesc}>
-                  {project.description}
-                </Typography>
-              </Grid>
-              <Divider sx={styles.divider} />
-            </React.Fragment>
-          ))}
-      </Grid>
+
+      {projects &&
+        projects.map((project) => (
+          <React.Fragment key={project._id}>
+            <ProjectCardSlug projects={[project]} />
+            <Typography variant="h4" component="h2" sx={styles.projectTitle}>
+              {project.title}
+            </Typography>
+            <Typography variant="body1" sx={styles.projectDesc}>
+              {project.description}
+            </Typography>
+            <Divider sx={styles.divider} />
+          </React.Fragment>
+        ))}
       <Divider />
       <Typography variant="h6" sx={{ mt: "1rem" }}>
         Contact us for development inquiries and off-plan development projects

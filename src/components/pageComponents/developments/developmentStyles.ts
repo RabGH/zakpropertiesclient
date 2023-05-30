@@ -4,7 +4,6 @@ export const getDevelopmentStyles = () => {
   const muiTheme = useTheme();
   return {
     mainContainer: {
-      height: "275vh",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -15,7 +14,7 @@ export const getDevelopmentStyles = () => {
     titleStyles: {
       fontWeight: "bold",
       mb: "1rem",
-      mt: "5rem",
+      mt: "10rem",
     },
     projectTitle: {
       fontWeight: "bold",
@@ -26,7 +25,8 @@ export const getDevelopmentStyles = () => {
     },
     divider: {},
     contactButton: {
-      mt: "2rem",
+      mt: "3rem",
+      mb: "3rem",
     },
     main: {
       display: "flex",
@@ -50,11 +50,10 @@ export const getDevelopmentStyles = () => {
         transform: "scale(1.05)",
       },
       "@media (max-width: 600px)": {
-        width: "100%",
-        mr: "5rem",
+        width: 345,
       },
       "@media (max-width: 400px)": {
-        width: "100%",
+        width: 340,
       },
     },
     imageBoxStyles: {
