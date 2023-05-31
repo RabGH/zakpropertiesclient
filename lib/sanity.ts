@@ -1,5 +1,6 @@
 import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
+import { useNextSanityImage } from "next-sanity-image";
 
 interface SanityConfig {
   dataset: string;
@@ -9,30 +10,15 @@ interface SanityConfig {
 }
 
 const config: SanityConfig = {
-  /**
-   * Find your developments ID and dataset in `sanity.json` in your studio developments.
-   * These are considered “public”, but you can use environment variables
-   * if you want differ between local dev and production.
-   *
-   * https://nextjs.org/docs/basic-features/environment-variables
-   **/
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   projectId:
     (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string) || "s4j5fcfd",
   useCdn: process.env.NODE_ENV === "production",
   apiVersion: "2021-03-25",
-  /**
-   * Set useCdn to `false` if your application require the freshest possible
-   * data always (potentially slightly slower and a bit more expensive).
-   * Authenticated request (like preview) will always bypass the CDN
-   **/
 };
-/**
- * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
- * Read more: https://www.sanity.io/docs/image-url
- **/
 export const urlFor = (source: string): ReturnType<typeof imageUrlBuilder> =>
   imageUrlBuilder(config).image(source);
 
-// Set up the client for fetching data in the getProps page functions
 export const sanityClient = createClient(config);
+export const useSanityImage = (image: string) =>
+  useNextSanityImage(sanityClient, image);
