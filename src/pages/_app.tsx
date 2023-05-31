@@ -1,5 +1,6 @@
 import React from "react";
 import { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "../../public/styles/MuiTheme";
@@ -28,6 +29,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             <CssBaseline />
             <FadeNavBar />
             <Component {...pageProps} />
+            <Analytics />
             <Footer />
           </ThemeProvider>
         ) : (
@@ -42,6 +44,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               <CssBaseline />
               <MainNavBar />
               <Component {...pageProps} />
+              <Analytics />
               <Footer />
             </ThemeProvider>
           </>
