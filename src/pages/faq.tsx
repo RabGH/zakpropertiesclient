@@ -302,7 +302,7 @@ const FAQ: React.FC = () => {
             We&apos;re here to help!
           </Typography>
 
-          <Link href="/contact">
+          <Link href="/contactUs">
             <Button variant="contained" sx={{ mb: "5rem" }}>
               Contact Us
             </Button>

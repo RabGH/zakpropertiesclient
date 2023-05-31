@@ -43,12 +43,11 @@ const AboutPage: React.FC = () => {
   return (
     <Container>
       <Box sx={aboutMainContainer}>
-        <Typography variant="h2" align="center" sx={{ mb: "4rem", mt: "3rem", }}>
+        <Typography variant="h2" align="center" sx={{ mb: "4rem", mt: "3rem" }}>
           About Us
         </Typography>
 
         <Grid container spacing={4}>
-          
           <Grid item xs={12} md={6}>
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
@@ -166,7 +165,7 @@ const AboutPage: React.FC = () => {
             We&apos;re here to help!
           </Typography>
 
-          <Link href="/contact">
+          <Link href="/contactUs">
             <Button variant="contained" sx={{ mb: "5rem" }}>
               Contact Us
             </Button>

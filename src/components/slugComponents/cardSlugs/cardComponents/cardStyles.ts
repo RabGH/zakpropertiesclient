@@ -17,13 +17,26 @@ export const CardStyles = () => {
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 1)",
         backgroundColor: "rgba(255, 255, 255, 0.05)",
       },
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1024px)": {},
       "@media (max-width: 600px)": {
-        maxWidth: "390px",
+        width: "310px",
       },
       "@media (max-width: 400px)": {
-        maxWidth: "300px",
+        width: "375px",
+      },
+      "@media (max-width: 375px)": {
+        width: "365px",
+      },
+      "@media (max-width: 360px)": {
+        width: "330px",
       },
     },
+
+    homeCardGridStyles: {
+      maxWidth: "1500px",
+    },
+
     offPlanReadyToBuyStyles: {},
 
     mainAll: {
@@ -83,6 +96,6 @@ export const CardStyles = () => {
     offPlanStyles: {},
     offPlanTextStyles: {},
     offPlanCompleteStyles: {},
-    homeCardGridStyles: {},
+    homeGridStyles: {},
   };
 };

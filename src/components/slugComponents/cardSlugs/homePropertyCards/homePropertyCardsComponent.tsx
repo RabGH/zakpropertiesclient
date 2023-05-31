@@ -27,7 +27,7 @@ export default function HomePropertyCardsComponent({
         lg: "row",
         xl: "row",
       }}
-      sx={styles.homeCardGridStyles}
+      sx={styles.homeGridStyles}
     >
       <PropertyVillaCardSlug properties={properties} />
       <PropertyAptCardSlug properties={properties} />

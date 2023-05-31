@@ -14,6 +14,7 @@ export const getHomePageStyles = () => {
       maxWidth: "70ch",
       fontStyle: "italic",
       mt: "10rem",
+      "@media (max-width: 1440px)": {},
       "@media (max-width: 1024px)": {
         fontSize: "1.3rem",
         mt: "10rem",
@@ -23,9 +24,10 @@ export const getHomePageStyles = () => {
         mt: "10rem",
       },
       "@media (max-width: 400px)": {
-        fontSize: "1.1rem",
-        mt: "10rem",
+        fontSize: "1.2rem",
+        mt: "5rem",
       },
+      "@media (max-width: 360px)": {},
     },
 
     boxContentProject: {
@@ -34,6 +36,7 @@ export const getHomePageStyles = () => {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
+      "@media (max-width: 1440px)": {},
       "@media (max-width: 1024px)": {
         minHeight: "65vh",
       },
@@ -42,8 +45,12 @@ export const getHomePageStyles = () => {
         mt: "1rem",
       },
       "@media (max-width: 400px)": {
-        minHeight: "65vh",
-        mt: "1rem",
+        minHeight: "35vh",
+        mb: "3rem",
+      },
+      "@media (max-width: 375px)": {
+        minHeight: "35vh",
+        mb: "5rem",
       },
     },
 
@@ -141,6 +148,9 @@ export const getHomePageStyles = () => {
         fontSize: "0.8rem",
         mt: "6rem",
       },
+      "@media (max-width: 375px)": {
+        fontSize: "0.8rem",
+      },
     },
 
     zakTitle: {
@@ -161,6 +171,13 @@ export const getHomePageStyles = () => {
         mb: "0rem",
       },
       "@media (max-width: 400px)": {
+        fontSize: "3rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 375px)": {
+        fontSize: "2.5rem",
+      },
+      "@media (max-width: 360px)": {
         fontSize: "2rem",
         mb: "0rem",
       },
@@ -169,20 +186,30 @@ export const getHomePageStyles = () => {
     zakSubTitle: {
       fontSize: "1.3rem",
       fontWeight: "400",
-      mt: "8rem",
+      mt: "3rem",
       color: "white",
       textAlign: "left",
+      "@media (max-width: 1440px)": {
+        mb: "10rem",
+      },
       "@media (max-width: 1024px)": {
-        mt: "4rem",
         mb: "3rem",
       },
       "@media (max-width: 600px)": {
-        mt: "6rem",
+        mt: "3rem",
         mb: "-1rem",
       },
       "@media (max-width: 400px)": {
-        mt: "7rem",
-        mb: "-1rem",
+        mt: "3rem",
+        fontSize: "1rem",
+      },
+      "@media (max-width: 375px)": {
+        fontSize: "1rem",
+        mt: "1rem",
+      },
+      "@media (max-width: 360px)": {
+        mt: "1rem",        
+        fontSize: "1rem",
       },
     },
 
@@ -191,10 +218,18 @@ export const getHomePageStyles = () => {
       height: "110vh",
       width: "100%",
       zIndex: 1,
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1024px)": {},
       "@media (max-width: 600px)": {
         height: "110vh",
       },
       "@media (max-width: 400px)": {
+        height: "90vh",
+      },
+      "@media (max-width: 375px)": {
+        height: "100vh",
+      },
+      "@media (max-width: 360px)": {
         height: "80vh",
       },
     },
@@ -211,7 +246,7 @@ export const getHomePageStyles = () => {
 
     contentContainer: {
       position: "absolute",
-      top: "47%",
+      top: "37%",
       left: "50%",
       transform: "translate(-50%, -50%)",
       zIndex: 1,
@@ -219,11 +254,27 @@ export const getHomePageStyles = () => {
       color: "white",
       maxWidth: "1300px",
       margin: "0 auto",
+      "@media (max-width: 1440px)": {
+        top: "47%",
+        fontSize: "1rem",
+      },
+      "@media (max-width: 1024px)": {
+        top: "43%",
+        fontSize: "0.9rem",
+      },
       "@media (max-width: 600px)": {
-        top: "40%",
+        top: "33%",
         fontSize: "0.8rem",
       },
       "@media (max-width: 400px)": {
+        top: "30%",
+        fontSize: "0.6rem",
+      },
+      "@media (max-width: 375px)": {
+        top: "36%",
+        fontSize: "0.6rem",
+      },
+      "@media (max-width: 360px)": {
         top: "35%",
         fontSize: "0.6rem",
       },
@@ -262,7 +313,6 @@ export const getHomePageStyles = () => {
     searchBarBox: {
       maxWidth: 750,
       width: "100%",
-      mt: "20rem",
     },
 
     homeComponentMainBox: {
