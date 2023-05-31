@@ -44,7 +44,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               <CssBaseline />
               <MainNavBar />
               <Component {...pageProps} />
-              <Analytics />
               <Footer />
             </ThemeProvider>
           </>
