@@ -274,17 +274,15 @@ export async function getStaticProps(context: any) {
       notFound: true,
     };
   } else {
-    const projectOffPlan =
-      project.projectOffPlan !== undefined ? project.projectOffPlan : null;
     return {
       props: {
         id: project.id,
-        _id: projectOffPlan._id,
+        _id: project._id,
         title: project.title,
         location: project.location,
         projectPropertyTypes: project.projectPropertyTypes,
         mainDeveloper: project.mainDeveloper,
-        projectOffPlan: projectOffPlan,
+        projectOffPlan: project.projectOffPlan ?? null,
         unitType: project.unitType,
         projectImages: project.projectImages ?? null,
         totalPrice: project.totalPrice,
