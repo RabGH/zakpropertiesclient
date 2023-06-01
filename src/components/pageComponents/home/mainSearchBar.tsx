@@ -47,25 +47,25 @@ function SearchBar(props: SearchBarProps) {
     }
   };
 
-  const getLabel = (type: string) => {
-    if (type === "All") {
-      return `Total Properties: ${properties.length} | Total Projects: ${projects.length}`;
-    } else if (type === "Properties") {
-      return `Total Properties: ${properties.length}`;
-    } else {
-      return `Total Projects: ${projects.length}`;
-    }
-  };
+  // const getLabel = (type: string) => {
+  //   if (type === "All") {
+  //     return `Total Properties: ${properties.length} | Total Projects: ${projects.length}`;
+  //   } else if (type === "Properties") {
+  //     return `Total Properties: ${properties.length}`;
+  //   } else {
+  //     return `Total Projects: ${projects.length}`;
+  //   }
+  // };
 
-  const getButtonLabel = (type: string[]) => {
-    if (type.includes("All")) {
-      return `${properties.length} ${projects.length}`;
-    } else if (type.includes("Properties")) {
-      return `${properties.length}`;
-    } else {
-      return `${projects.length}`;
-    }
-  };
+  // const getButtonLabel = (type: string[]) => {
+  //   if (type.includes("All")) {
+  //     return `${properties.length} ${projects.length}`;
+  //   } else if (type.includes("Properties")) {
+  //     return `${properties.length}`;
+  //   } else {
+  //     return `${projects.length}`;
+  //   }
+  // };
 
   const propertyOptions = properties.map((property) => property.title);
   const projectOptions = projects.map((project) => project.title);
@@ -177,6 +177,9 @@ function SearchBar(props: SearchBarProps) {
     },
     "@media (max-width: 600px)": {
       top: "115%",
+    },
+    "@media (max-width: 481px)": {
+      top: "110%",
     },
     "@media (max-width: 400px)": {
       top: "80%",
