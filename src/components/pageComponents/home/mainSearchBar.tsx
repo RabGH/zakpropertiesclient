@@ -101,7 +101,7 @@ function SearchBar(props: SearchBarProps) {
       backgroundColor: "rgba(255, 255, 255, 0.7)",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: "white",
+      color: "black",
     },
     zIndex: 5,
 
@@ -143,7 +143,7 @@ function SearchBar(props: SearchBarProps) {
       backgroundColor: "rgba(255, 255, 255, 0.7)",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: "white",
+      color: "black",
     },
     zIndex: 5,
     "@media (max-width: 1440px)": {},
