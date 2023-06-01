@@ -120,15 +120,8 @@ export const getHomePageStyles = () => {
 
     indexMainContainer: {
       display: "flex",
-      width: {
-        xs: "100%",
-        sm: "100%",
-        md: "100%",
-        lg: "100%",
-        xl: "100%",
-      },
-      margin: "0 auto",
     },
+
     projectCards: {},
     homeHeaderContainerBox: {
       mb: "5rem",
@@ -143,6 +136,10 @@ export const getHomePageStyles = () => {
       "@media (max-width: 600px)": {
         fontSize: "1rem",
         mt: "6rem",
+      },
+      "@media (max-width: 481px)": {
+        fontSize: "1rem",
+        mt: "8rem",
       },
       "@media (max-width: 400px)": {
         fontSize: "0.8rem",
@@ -168,6 +165,10 @@ export const getHomePageStyles = () => {
       },
       "@media (max-width: 600px)": {
         fontSize: "3.4rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 481px)": {
+        fontSize: "2.3rem",
         mb: "0rem",
       },
       "@media (max-width: 400px)": {
@@ -196,8 +197,12 @@ export const getHomePageStyles = () => {
         mb: "3rem",
       },
       "@media (max-width: 600px)": {
-        mt: "3rem",
+        mt: "2rem",
         mb: "-1rem",
+      },
+      "@media (max-width: 481px)": {
+        fontSize: "1.2rem",
+        mb: "0rem",
       },
       "@media (max-width: 400px)": {
         mt: "3rem",
@@ -208,7 +213,7 @@ export const getHomePageStyles = () => {
         mt: "1rem",
       },
       "@media (max-width: 360px)": {
-        mt: "1rem",        
+        mt: "1rem",
         fontSize: "1rem",
       },
     },
@@ -218,10 +223,8 @@ export const getHomePageStyles = () => {
       height: "110vh",
       width: "100%",
       zIndex: 1,
-      "@media (max-width: 1440px)": {},
-      "@media (max-width: 1024px)": {},
       "@media (max-width: 600px)": {
-        height: "110vh",
+        height: "115vh",
       },
       "@media (max-width: 400px)": {
         height: "90vh",
@@ -242,6 +245,9 @@ export const getHomePageStyles = () => {
       bottom: 0,
       height: "111vh",
       backgroundColor: "rgba(0, 0, 0, 0.5)",
+      "@media (max-width: 600px)": {
+        height: "117vh",
+      },
     },
 
     contentContainer: {

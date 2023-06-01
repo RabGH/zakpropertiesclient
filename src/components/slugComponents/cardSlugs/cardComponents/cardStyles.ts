@@ -5,7 +5,7 @@ export const CardStyles = () => {
   return {
     // Property Home Card Styles and property all card styles
     allCardStyles: {
-      maxWidth: "450px",
+      maxWidth: "500px",
       maxHeight: "510px",
       boxShadow: "none",
       borderRadius: "10px",
@@ -20,22 +20,33 @@ export const CardStyles = () => {
       "@media (max-width: 1440px)": {},
       "@media (max-width: 1024px)": {},
       "@media (max-width: 600px)": {
-        width: "310px",
+        width: "480px",
+      },
+      "@media (max-width: 481px)": {
+        width: "400px",
       },
       "@media (max-width: 400px)": {
-        width: "375px",
+        // width: "375px",
       },
       "@media (max-width: 375px)": {
-        width: "365px",
+        // width: "365px",
       },
       "@media (max-width: 360px)": {
-        width: "330px",
+        // width: "330px",
       },
     },
 
-    homeCardGridStyles: {
+    homeContainerCardGridStyles: {
       width: "100%",
-      maxWidth: "1500px",
+      maxWidth: "1350px",
+    },
+
+    homeCardGridStyles: {
+      justifyContent: "center",
+    },
+
+    homeGridStyles: {
+      width: "100%",
     },
 
     offPlanReadyToBuyStyles: {},
@@ -56,7 +67,7 @@ export const CardStyles = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      m: "1rem",
+      m: "1.2rem",
       fontSize: "1.5rem",
       "@media (max-width: 600px)": {
         fontSize: "1.2rem",
@@ -86,6 +97,7 @@ export const CardStyles = () => {
     mainBox: {
       display: "flex",
       flexDirection: "row",
+      "@media (max-width: 481px)": {},
     },
     dividerStyles: {
       "&::before, &::after": {
@@ -97,6 +109,5 @@ export const CardStyles = () => {
     offPlanStyles: {},
     offPlanTextStyles: {},
     offPlanCompleteStyles: {},
-    homeGridStyles: {},
   };
 };

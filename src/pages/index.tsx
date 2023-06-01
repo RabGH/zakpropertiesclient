@@ -46,7 +46,7 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
               range of real estate options to meet your needs.
             </Typography>
           </Box>
-//! Refresh page new image
+
           <HomePropertyCardsComponent properties={properties} />
 
           <Divider sx={styles.dividerStyles}>

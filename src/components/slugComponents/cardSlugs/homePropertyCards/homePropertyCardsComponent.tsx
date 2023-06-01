@@ -18,8 +18,7 @@ export default function HomePropertyCardsComponent({
   return (
     <Grid
       container
-      spacing={0}
-      justifyContent="center"
+      spacing={1}
       direction={{
         xs: "column",
         sm: "column",

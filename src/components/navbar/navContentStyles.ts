@@ -16,9 +16,11 @@ export const getNavBarStyles = () => {
       marginRight: "0.5rem",
       justifyContent: "space-between",
       gap: "1rem",
-      "@media (max-width: 600px)": { },
-      "@media (max-width: 400px)": { },
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 400px)": {},
     },
+
+    // Burger Styles 
     burgerNavBox: {
       backgroundColor: "transparent",
       borderRadius: "50%",

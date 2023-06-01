@@ -7,7 +7,6 @@ import {
   CardContent,
   Grid,
   Button,
-  Divider,
 } from "@mui/material";
 import Link from "next/link";
 import HelpIcon from "@mui/icons-material/Help";
@@ -29,7 +28,23 @@ const source6 =
 
 const FAQ: React.FC = () => {
   const faqMainContainer = {
-    maxWidth: "lg",
+    display: "grid",
+    justifyItems: "center",
+    "@media (max-width: 1440px)": {},
+    "@media (max-width: 1281px)": {},
+    "@media (max-width: 1025px)": {},
+    "@media (max-width: 961px)": {},
+    "@media (max-width: 768px)": {},
+    "@media (max-width: 641px)": {},
+    "@media (max-width: 600px)": {},
+    "@media (max-width: 481px)": {},
+    "@media (max-width: 400px)": {},
+    "@media (max-width: 375px)": {},
+    "@media (max-width: 360px)": {},
+    "@media (max-width: 320px)": {},
+  };
+
+  const faqMainContainerBox = {
     mt: 15,
     p: 1,
     "@media (max-width: 600px)": {},
@@ -52,15 +67,23 @@ const FAQ: React.FC = () => {
 
   const faqLogoImageStyles = {};
 
+  const faqCardGridStyles = {
+    justifyContent: "center",
+  };
+
+  const faqContainerGridStyles = {
+    width: "100%",
+  };
+
   return (
-    <Container>
-      <Box sx={faqMainContainer}>
+    <Container sx={faqMainContainer}>
+      <Box sx={faqMainContainerBox}>
         <Typography variant="h2" align="center" sx={{ mb: "4rem", mt: "3rem" }}>
           Frequently Asked Questions
         </Typography>
 
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
+        <Grid container spacing={2} sx={faqContainerGridStyles}>
+          <Grid item xs={12} sm={6} md={6} lg={4} sx={faqCardGridStyles}>
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -92,7 +115,7 @@ const FAQ: React.FC = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} sm={6} md={6} lg={4} sx={faqCardGridStyles}>
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -107,14 +130,18 @@ const FAQ: React.FC = () => {
                 <Typography variant="body1">
                   - You can enjoy a tax-free income from renting or selling your
                   property.
-                  <Divider />
+                </Typography>
+                <Typography variant="body1">
                   - You can get a residency visa if you invest in a property
                   worth at least AED 1 million.
-                  <Divider />
+                </Typography>
+                <Typography variant="body1">
                   - You can access a diverse and dynamic real estate market with
                   high returns on investment and capital appreciation.
-                  <Divider />- You can choose from a wide range of properties
-                  and projects that suit your budget and lifestyle.
+                </Typography>
+                <Typography variant="body1">
+                  - You can choose from a wide range of properties and projects
+                  that suit your budget and lifestyle.
                   <Link
                     href={source2}
                     target="_blank"
@@ -126,81 +153,7 @@ const FAQ: React.FC = () => {
               </CardContent>
             </Card>
           </Grid>{" "}
-          <Grid item xs={12} md={6}>
-            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
-              <CardContent>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Typography variant="h1" sx={{ mb: "1rem" }}>
-                    <HelpIcon color="primary" /> What is VAT and how does it
-                    affect real estate transactions in UAE?
-                  </Typography>
-                </Box>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  VAT is a value-added tax that is applied to the supply of
-                  goods and services in UAE. It is levied at a standard rate of
-                  5%, except for some exempt or zero-rated supplies.
-                </Typography>
-                <Typography variant="body1">
-                  VAT affects real estate transactions in UAE in different ways,
-                  depending on the type and purpose of the property. For
-                  example, the first supply of a new residential property within
-                  the first three years of its construction is zero-rated, which
-                  means no VAT is charged. However, the subsequent supply of the
-                  same property is subject to VAT at 5%. Commercial properties,
-                  on the other hand, are always subject to VAT at 5%, regardless
-                  of whether they are new or not.
-                  <Link
-                    href={source3}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    [source]
-                  </Link>
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
-              <CardContent>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Typography variant="h1" sx={{ mb: "1rem" }}>
-                    <HelpIcon color="primary" /> What are the legal requirements
-                    for owning a property in UAE?
-                  </Typography>
-                </Box>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  To own a property in UAE, you need to meet the following legal
-                  requirements:
-                </Typography>
-                <Typography variant="body1">
-                  - You must be at least 21 years old and have a valid passport
-                  and visa.
-                  <Divider />
-                  - You must register your property with the relevant authority,
-                  such as the Dubai Land Department or the Abu Dhabi Department
-                  of Municipalities and Transport, and pay the registration fees
-                  and taxes.
-                  <Divider />
-                  - You must obtain a title deed or an ownership certificate
-                  that proves your ownership of the property.
-                  <Divider />- You must comply with the laws and regulations
-                  governing real estate transactions in UAE, such as obtaining
-                  the necessary approvals and permits, paying the service
-                  charges and maintenance fees, and respecting the rights and
-                  obligations of other parties involved in the transaction.
-                  <Link
-                    href={source4}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    [source]
-                  </Link>
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} sm={6} md={6} lg={4} sx={faqCardGridStyles}>
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -235,7 +188,85 @@ const FAQ: React.FC = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} sm={6} md={6} lg={4} sx={faqCardGridStyles}>
+            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
+              <CardContent>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Typography variant="h1" sx={{ mb: "1rem" }}>
+                    <HelpIcon color="primary" /> What is VAT and how does it
+                    affect real estate transactions in UAE?
+                  </Typography>
+                </Box>
+                <Typography variant="body1" sx={{ mb: 2 }}>
+                  VAT is a value-added tax that is applied to the supply of
+                  goods and services in UAE. It is levied at a standard rate of
+                  5%, except for some exempt or zero-rated supplies.
+                </Typography>
+                <Typography variant="body1">
+                  VAT affects real estate transactions in UAE in different ways,
+                  depending on the type and purpose of the property. For
+                  example, the first supply of a new residential property within
+                  the first three years of its construction is zero-rated, which
+                  means no VAT is charged. However, the subsequent supply of the
+                  same property is subject to VAT at 5%. Commercial properties,
+                  on the other hand, are always subject to VAT at 5%, regardless
+                  of whether they are new or not.
+                  <Link
+                    href={source3}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    [source]
+                  </Link>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={6} md={6} lg={4} sx={faqCardGridStyles}>
+            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
+              <CardContent>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Typography variant="h1" sx={{ mb: "1rem" }}>
+                    <HelpIcon color="primary" /> What are the legal requirements
+                    for owning a property in UAE?
+                  </Typography>
+                </Box>
+                <Typography variant="body1" sx={{ mb: 2 }}>
+                  To own a property in UAE, you need to meet the following legal
+                  requirements:
+                </Typography>
+                <Typography variant="body1">
+                  - You must be at least 21 years old and have a valid passport
+                  and visa.
+                </Typography>
+                <Typography variant="body1">
+                  - You must register your property with the relevant authority,
+                  such as the Dubai Land Department or the Abu Dhabi Department
+                  of Municipalities and Transport, and pay the registration fees
+                  and taxes.
+                </Typography>
+                <Typography variant="body1">
+                  - You must obtain a title deed or an ownership certificate
+                  that proves your ownership of the property.
+                </Typography>
+                <Typography variant="body1">
+                  - You must comply with the laws and regulations governing real
+                  estate transactions in UAE, such as obtaining the necessary
+                  approvals and permits, paying the service charges and
+                  maintenance fees, and respecting the rights and obligations of
+                  other parties involved in the transaction.
+                  <Link
+                    href={source4}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    [source]
+                  </Link>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={6} md={6} lg={4} sx={faqCardGridStyles}>
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
                 <Box sx={{ display: "flex", alignItems: "center" }}>

@@ -18,7 +18,8 @@ import PublicIcon from "@mui/icons-material/Public";
 
 const AboutPage: React.FC = () => {
   const aboutMainContainer = {
-    maxWidth: "lg",
+    display: "grid",
+    justifyItems: "center",
     mt: 10,
     p: 4,
     "@media (max-width: 600px)": {},
@@ -34,6 +35,7 @@ const AboutPage: React.FC = () => {
     height: "200px",
     filter: "invert(100%)",
     m: "0 auto",
+    mt: "3rem",
     "@media (max-width: 600px)": { width: "100px", height: "100px" },
     "@media (max-width: 400px)": { width: "100px", height: "100px" },
   };
@@ -52,6 +54,26 @@ const AboutPage: React.FC = () => {
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
                 <Typography variant="h1">
+                  <DesignServicesIcon /> Our Services
+                </Typography>
+                <Typography variant="body1" sx={{ mb: 2 }}>
+                  We offer a wide range of services, including property sales,
+                  management, valuation, consultancy, and marketing.
+                </Typography>
+                <Typography variant="body1">
+                  We have access to the best properties and projects in the UAE,
+                  as well as a network of local and international partners. We
+                  use the latest technology and market research to provide our
+                  clients with the best solutions for their real estate needs.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
+              <CardContent>
+                <Typography variant="h1">
                   <WavingHandIcon />
                   Who We Are
                 </Typography>
@@ -65,27 +87,6 @@ const AboutPage: React.FC = () => {
                   Our team of experienced professionals is dedicated to helping
                   clients find the perfect property and making the buying or
                   selling process as smooth and stress-free as possible.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} md={6}>
-            <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
-              <CardContent>
-                <Typography variant="h1">
-                  <PublicIcon />
-                  Our Mission
-                </Typography>
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Our mission is to provide the best real estate services to our
-                  clients, with a focus on integrity, honesty, and
-                  professionalism.
-                </Typography>
-                <Typography variant="body1">
-                  We strive to exceed our clients&apos; expectations by
-                  providing expert guidance and support throughout the entire
-                  buying or selling process.
                 </Typography>
               </CardContent>
             </Card>
@@ -116,17 +117,18 @@ const AboutPage: React.FC = () => {
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
                 <Typography variant="h1">
-                  <DesignServicesIcon /> Our Services
+                  <PublicIcon />
+                  Our Mission
                 </Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  We offer a wide range of services, including property sales,
-                  management, valuation, consultancy, and marketing.
+                  Our mission is to provide the best real estate services to our
+                  clients, with a focus on integrity, honesty, and
+                  professionalism.
                 </Typography>
                 <Typography variant="body1">
-                  We have access to the best properties and projects in the UAE,
-                  as well as a network of local and international partners. We
-                  use the latest technology and market research to provide our
-                  clients with the best solutions for their real estate needs.
+                  We strive to exceed our clients&apos; expectations by
+                  providing expert guidance and support throughout the entire
+                  buying or selling process.
                 </Typography>
               </CardContent>
             </Card>
@@ -166,7 +168,7 @@ const AboutPage: React.FC = () => {
           </Typography>
 
           <Link href="/contactUs">
-            <Button variant="contained" sx={{ mb: "5rem" }}>
+            <Button variant="contained" sx={{ mb: "2rem" }}>
               Contact Us
             </Button>
           </Link>

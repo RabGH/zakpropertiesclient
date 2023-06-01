@@ -45,12 +45,6 @@ export const getPropertyGridCardStyles = () => {
       maxWidth: "1350px",
     },
 
-    propertyCardBox: {
-      flexGrow: 1,
-      flexBasis: "33%",
-      maxWidth: "420px",
-    },
-
     searchGridDividerStyles: {
       m: "0.1rem",
     },
