@@ -35,16 +35,14 @@ const PropertyTownCardBodyData = ({
                 </Typography>
               </Divider>
 
-              <Grid container spacing={0} justifyContent="center">
+              <Grid
+                container
+                spacing={0}
+                sx={styles.homeCardGridStyles}
+                justifyContent="center"
+              >
                 {townhouses?.slice(0, 3).map((property) => (
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    sx={styles.homeCardGridStyles}
-                    key={property._id}
-                  >
+                  <Grid item xs={12} sm={6} md={4} key={property._id}>
                     <Card sx={styles.allCardStyles}>
                       {property.mainPropertyImage && (
                         <CardImageCarousel

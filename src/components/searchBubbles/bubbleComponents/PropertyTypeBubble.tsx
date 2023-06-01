@@ -21,12 +21,16 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
   };
 
   const handlePropertyTypeChange = (propertyType: string) => {
-    const isSelected = search.propertyType.includes(propertyType);
     let updatedTypes: string[];
-    if (isSelected) {
-      updatedTypes = search.propertyType.filter((t) => t !== propertyType);
+    if (propertyType === "All") {
+      updatedTypes = [];
     } else {
-      updatedTypes = [...search.propertyType, propertyType];
+      const isSelected = search.propertyType.includes(propertyType);
+      if (isSelected) {
+        updatedTypes = search.propertyType.filter((t) => t !== propertyType);
+      } else {
+        updatedTypes = [...search.propertyType, propertyType];
+      }
     }
     setSearch((prevSearch) => ({
       ...prevSearch,
@@ -58,12 +62,12 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
           disableScrollLock
         >
           <Box sx={styles.typeMainMenuBoxStyles}>
-            {/* <MenuItem
+            <MenuItem
               onClick={() => handlePropertyTypeChange("All")}
               selected={search.propertyType.includes("All")}
             >
               All
-            </MenuItem> */}
+            </MenuItem>
             <MenuItem
               onClick={() => handlePropertyTypeChange("Villa")}
               selected={search.propertyType.includes("Villa")}

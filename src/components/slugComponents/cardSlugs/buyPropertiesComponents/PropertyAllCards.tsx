@@ -76,7 +76,7 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                       >
                         Ready to buy
                       </Typography>
-                    )}{" "}
+                    )}
                   </Box>
                   <Typography variant="body1" sx={styles.propertyPriceCard}>
                     {formatPrice(property.totalPrice)}

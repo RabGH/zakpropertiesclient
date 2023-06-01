@@ -34,6 +34,7 @@ export const CardStyles = () => {
     },
 
     homeCardGridStyles: {
+      width: "100%",
       maxWidth: "1500px",
     },
 
