@@ -2,26 +2,28 @@ import React from "react";
 import { Container, Typography, Box, Grid, Card, Paper } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import HomeHeader from "@/components/pageComponents/home/HomeHeader";
-
+import { GetStaticProps } from "next";
 import { sanityClient } from "@lib/sanity";
+import { previewClient } from "@lib/client";
 import { Property, Project } from "@lib/types";
 import HomePropertyCardsComponent from "@/components/slugComponents/cardSlugs/homePropertyCards/homePropertyCardsComponent";
-
 import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
 import dynamic from "next/dynamic";
+import { getHomePageStyles } from "@/components/pageComponents/home/homePageStyles";
+
 const DashBoardMap = dynamic(
   () => import("@/components/pageComponents/home/DashBoardMap"),
   {
     ssr: false,
   }
 );
-import { getHomePageStyles } from "@/components/pageComponents/home/homePageStyles";
 
 interface HomeProps {
   properties: Property[];
   projects: Project[];
   mainProjectImage: string[];
 }
+
 function Home({ properties, projects, mainProjectImage }: HomeProps) {
   const styles = getHomePageStyles();
   return (
@@ -76,21 +78,27 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async ({
+  preview = false,
+  previewData,
+}) => {
   const propertyQuery = '*[_type == "property"]{..., location}';
   const projectQuery = '*[_type == "projects"]{..., location}';
+  const params = preview ? previewData : {};
+  const client = preview ? previewClient : sanityClient;
   const [properties, projects] = await Promise.all([
-    sanityClient.fetch(propertyQuery),
-    sanityClient.fetch(projectQuery),
+    client.fetch(propertyQuery, params),
+    client.fetch(projectQuery, params),
   ]);
 
   return {
     props: {
       properties,
       projects,
+      preview,
     },
     revalidate: 60,
   };
-}
+};
 
 export default Home;

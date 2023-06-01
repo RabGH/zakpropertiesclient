@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { Box, Typography } from "@mui/material";
 import { Property } from "@lib/types";
+import { GetStaticProps } from "next";
 import { sanityClient } from "@lib/sanity";
+import { previewClient } from "@lib/client";
 import PropertyCardGrid from "@/components/slugComponents/cardSlugs/buyPropertiesComponents/PropertyCardGrid";
 import { getBuyPropertiesPageStyles } from "@/components/pageComponents/pageSlugStyles/buyPropertiesStyles";
 import { SearchInterface } from "@/components/searchBubbles/searchComponents/bubbleInterfaces";
@@ -51,7 +53,10 @@ export default function PropertySearch({
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async ({
+  preview = false,
+  previewData,
+}) => {
   const propertyQuery = `*[ _type == "property"]{
     ...,
     createdAt,
@@ -72,13 +77,15 @@ export async function getStaticProps() {
     },
     propertyOffPlan,    
   }`;
-
-  const properties = await sanityClient.fetch(propertyQuery);
+  const client = preview ? previewClient : sanityClient;
+  const params = preview ? previewData : {};
+  const properties = await client.fetch(propertyQuery, params);
 
   return {
     props: {
       properties,
+      preview,
     },
     revalidate: 60,
   };
-}
+};

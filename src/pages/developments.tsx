@@ -3,7 +3,9 @@ import { Typography, Box, Grid, Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
 import { Project } from "@lib/types";
+import { GetStaticProps } from "next";
 import { sanityClient } from "@lib/sanity";
+import { previewClient } from "@lib/client";
 import Link from "next/link";
 import { getDevelopmentStyles } from "@/components/pageComponents/developments/developmentStyles";
 
@@ -46,16 +48,22 @@ function Developments({ projects }: DevelopmentsProps) {
   );
 }
 
-export async function getStaticProps() {
-  const projectQuery = '*[_type == "projects"]{..., location}';
-  const projects = await sanityClient.fetch(projectQuery);
+export const getStaticProps: GetStaticProps = async ({
+preview = false,
+previewData,
+}) => {
+const projectQuery = '*[_type == "projects"]{..., location}';
+const client = preview ? previewClient : sanityClient;
+const params = preview ? previewData : {};
+const projects = await client.fetch(projectQuery, params);
 
-  return {
-    props: {
-      projects,
-    },
-    revalidate: 60,
-  };
-}
+return {
+props: {
+projects,
+preview,
+},
+revalidate: 60,
+};
+};
 
 export default Developments;

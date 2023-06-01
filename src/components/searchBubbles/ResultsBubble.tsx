@@ -21,7 +21,7 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
     properties
   ).length;
 
-  const [buttonText, setButtonText] = useState(`Results: ${results}`);
+  const [buttonText, setButtonText] = useState("");
 
   useEffect(() => {
     const results = filterProperties(
@@ -34,6 +34,8 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
       properties
     ).length;
     setButtonText(`Results: ${results}`);
+    console.log("Search state:", search);
+    console.log("Results:", results);
   }, [search, properties]);
 
   const handleButtonClick = () => {

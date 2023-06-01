@@ -7,14 +7,16 @@ interface SanityConfig {
   projectId: string;
   useCdn: boolean;
   apiVersion: string;
+  previewSecret: string;
 }
 
-const config: SanityConfig = {
+export const config: SanityConfig = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   projectId:
     (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string) || "s4j5fcfd",
   useCdn: process.env.NODE_ENV === "production",
   apiVersion: "2021-03-25",
+  previewSecret: process.env.NEXT_PUBLIC_SANITY_PREVIEW_SECRET || "",
 };
 export const urlFor = (source: string): ReturnType<typeof imageUrlBuilder> =>
   imageUrlBuilder(config).image(source);
