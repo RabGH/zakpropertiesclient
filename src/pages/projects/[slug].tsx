@@ -219,6 +219,7 @@ export async function getStaticProps(context: any) {
 
   const query = `*[ _type == "projects" && slug.current == $slug][0]{
     id,
+    _id,
     title,
     projectPropertyTypes,
     unitType,
@@ -278,6 +279,7 @@ export async function getStaticProps(context: any) {
     return {
       props: {
         id: project.id,
+        _id: projectOffPlan._id,
         title: project.title,
         location: project.location,
         projectPropertyTypes: project.projectPropertyTypes,

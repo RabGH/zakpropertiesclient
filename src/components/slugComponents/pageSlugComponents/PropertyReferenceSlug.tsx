@@ -6,6 +6,7 @@ import Link from "next/link";
 interface PropertyReferenceProps {
   totalPrice: number;
   id: string;
+  _id: string;
   squareFootage: number;
   bedrooms: number;
   propertyOffPlan:
@@ -15,6 +16,7 @@ interface PropertyReferenceProps {
 const PropertyReference = ({
   totalPrice,
   id,
+  _id,
   propertyOffPlan,
   squareFootage,
   bedrooms,
@@ -52,7 +54,7 @@ const PropertyReference = ({
     <Box sx={{ p: 5, mt: 2 }}>
       <Card sx={stickyStyles}>
         <Typography variant="body1" sx={idStyles}>
-          Reference ID: {id}
+          Reference ID: {_id} ({id})
         </Typography>
         <Typography variant="h6" sx={priceStyles}>
           {formatPrice(totalPrice)}

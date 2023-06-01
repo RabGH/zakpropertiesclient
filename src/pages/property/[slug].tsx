@@ -37,6 +37,7 @@ const MapSlug = dynamic(
 
 const Property = ({
   id,
+  _id,
   title,
   propertyType,
   mainPropertyImage,
@@ -119,6 +120,7 @@ const Property = ({
           <PropertyReference
             totalPrice={totalPrice}
             id={id}
+            _id={_id}
             propertyOffPlan={propertyOffPlan}
             squareFootage={squareFootage}
             bedrooms={bedrooms}
@@ -140,6 +142,7 @@ export async function getStaticProps(context: any) {
 
   const query = `*[ _type == "property" && slug.current == $slug][0]{
     id,
+    _id,
     title,
     location,
     address->{
@@ -178,6 +181,7 @@ export async function getStaticProps(context: any) {
     return {
       props: {
         id: property.id,
+        _id: property._id,
         title: property.title,
         location: property.location,
         propertyType: property.propertyType,
