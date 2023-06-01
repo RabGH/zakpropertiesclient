@@ -29,6 +29,15 @@ export const getPropertyGridCardStyles = () => {
         backgroundColor: muiTheme.palette.success.light,
       },
       mb: "3rem",
+      "@media (max-width: 1440px)": {
+        itemsPerPage: 9,
+      },
+      "@media (max-width: 1024px)": {
+        itemsPerPage: 6,
+      },
+      "@media (max-width: 600px)": {
+        itemsPerPage: 9,
+      },
     },
 
     cardGridStyles: {

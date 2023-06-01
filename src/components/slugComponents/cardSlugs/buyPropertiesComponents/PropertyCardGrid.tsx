@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Grid, Pagination, Divider } from "@mui/material";
 import { Property } from "../../../../../lib/types";
 import PropertyAllCard from "./PropertyAllCards";
@@ -33,6 +33,10 @@ const PropertyCardGrid: React.FC<Props> = ({
   };
 
   const numPages = Math.ceil(search.filteredProperties.length / cardsPerPage);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
   return (
     <Box sx={styles.mainBox}>
