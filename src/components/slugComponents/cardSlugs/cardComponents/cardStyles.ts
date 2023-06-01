@@ -5,7 +5,7 @@ export const CardStyles = () => {
   return {
     // Property Home Card Styles and property all card styles
     allCardStyles: {
-      maxWidth: "500px",
+      maxWidth: "450px",
       maxHeight: "510px",
       boxShadow: "none",
       borderRadius: "10px",
@@ -26,13 +26,13 @@ export const CardStyles = () => {
         width: "400px",
       },
       "@media (max-width: 400px)": {
-        // width: "375px",
+        width: "375px",
       },
       "@media (max-width: 375px)": {
-        // width: "365px",
+        width: "365px",
       },
       "@media (max-width: 360px)": {
-        // width: "330px",
+        width: "330px",
       },
     },
 
