@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Stack, Typography, Box } from "@mui/material";
 import PropertyTypeBubble from "./bubbleComponents/PropertyTypeBubble";
 import PriceRangeBubble from "./bubbleComponents/PriceRangeBubble";
@@ -12,9 +12,7 @@ import { SearchFieldBubblesProps } from "./searchComponents/bubbleInterfaces";
 
 const SearchFieldBubbles = ({
   search,
-  setSearch,
   properties,
-  setFilteredProperties,
 }: SearchFieldBubblesProps) => {
   const styles = getBubbleStyles();
 
@@ -27,36 +25,14 @@ const SearchFieldBubbles = ({
         sx={styles.mainSearchFieldStack}
       >
         <Box sx={styles.searchButtonBox}>
-          <ResultsBubble
-            search={search}
-            setSearch={setSearch}
-            properties={properties}
-            setFilteredProperties={setFilteredProperties}
-          />
+          <ResultsBubble search={search} properties={properties} />
         </Box>
-        <PropertyTypeBubble search={search} setSearch={setSearch} />
-        <BedroomBubble
-          minBedrooms={1}
-          maxBedrooms={15}
-          search={search}
-          setSearch={setSearch}
-        />
-        <SizeBubble
-          sizeRange={search.sizeRange}
-          search={search}
-          setSearch={setSearch}
-        />
-        <PriceRangeBubble
-          priceRange={search.priceRange}
-          search={search}
-          setSearch={setSearch}
-        />
-        <FeatureBubble search={search} setSearch={setSearch} />
-        <SortByBubble
-          search={search}
-          setSearch={setSearch}
-          setFilteredProperties={setFilteredProperties}
-        />
+        <PropertyTypeBubble search={search} />
+        <BedroomBubble minBedrooms={1} maxBedrooms={15} />
+        <SizeBubble sizeRange={search.sizeRange} />
+        <PriceRangeBubble priceRange={search.priceRange} />
+        <FeatureBubble search={search} />
+        <SortByBubble search={search} />
       </Stack>
     </Box>
   );

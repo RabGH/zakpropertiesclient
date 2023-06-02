@@ -28,20 +28,6 @@ export default function PropertySearch({
   const [filteredProperties, setFilteredProperties] =
     useState<Property[]>(properties);
 
-  // useEffect(() => {
-  //   const filteredProperties = filterProperties(
-  //     search.propertyType,
-  //     search.priceRange,
-  //     search.propertyOffPlan,
-  //     search.bedrooms,
-  //     search.sizeRange,
-  //     search.propertyFeatures,
-  //     properties
-  //   );
-  //   setSearch({ ...search, filteredProperties });
-  //   setFilteredProperties(filteredProperties);
-  // }, [properties]);
-
   return (
     <Box sx={styles.mainBox}>
       <Head>
@@ -57,8 +43,6 @@ export default function PropertySearch({
           <PropertyCardGrid
             properties={properties}
             search={search}
-            setSearch={setSearch}
-            setFilteredProperties={setFilteredProperties}
           />
         </Box>
       </Box>

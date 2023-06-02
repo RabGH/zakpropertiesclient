@@ -3,14 +3,17 @@ import { Button, ButtonGroup, Menu, MenuItem, Stack, Box } from "@mui/material";
 import { PropertyTypeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 import ReadyToBuyBubble from "./ReadyToBuyBubble";
+import { useRouter } from "next/router";
 
-const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
+const PropertyTypeBubble = ({ search }: PropertyTypeBubbleProps) => {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [readyToBuyOption, setReadyToBuyOption] = useState(search.readyToBuy);
   useEffect(() => {
     setReadyToBuyOption(search.readyToBuy);
   }, [search.readyToBuy]);
+
+  const router = useRouter();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -32,10 +35,14 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
         updatedTypes = [...search.propertyType, propertyType];
       }
     }
-    setSearch((prevSearch) => ({
-      ...prevSearch,
-      propertyType: updatedTypes,
-    }));
+    router.push(
+      {
+        pathname: "/buyProperties",
+        query: { ...router.query, propertyType: updatedTypes.join(",") },
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   return (
@@ -101,12 +108,7 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
             <MenuItem onClick={() => handlePropertyTypeChange("Plot")}>
               Plot
             </MenuItem>
-            <ReadyToBuyBubble
-              search={search}
-              setSearch={setSearch}
-              readyToBuyOption={readyToBuyOption}
-              setReadyToBuyOption={setReadyToBuyOption}
-            />
+            <ReadyToBuyBubble search={search} />
           </Box>
         </Menu>
       </ButtonGroup>
@@ -115,12 +117,3 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
 };
 
 export default PropertyTypeBubble;
-
-{
-  /* <Button onClick={handleClick} sx={styles.generalButtonStyles}>
-Types:{" "}
-{search.propertyType.length > 0
-? search.propertyType.join(" ")
-: "All"}
-</Button> */
-}

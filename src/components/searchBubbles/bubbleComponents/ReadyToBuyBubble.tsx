@@ -2,20 +2,41 @@ import React from "react";
 import { ButtonGroup, Button } from "@mui/material";
 import { ReadyToBuyBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
+import { useRouter } from "next/router";
 
-export default function ReadyToBuyBubble({
-  search,
-  setSearch,
-}: ReadyToBuyBubbleProps) {
+export default function ReadyToBuyBubble({ search }: ReadyToBuyBubbleProps) {
   const styles = getBubbleStyles();
+
+  const router = useRouter();
 
   const handleButtonClick = (option: string) => {
     if (option === "Any") {
-      setSearch((prev) => ({ ...prev, propertyOffPlan: undefined }));
+      router.push(
+        {
+          pathname: "/buyProperties",
+          query: { ...router.query, propertyOffPlan: undefined },
+        },
+        undefined,
+        { shallow: true }
+      );
     } else if (option === "Off-Plan") {
-      setSearch((prev) => ({ ...prev, propertyOffPlan: true }));
+      router.push(
+        {
+          pathname: "/buyProperties",
+          query: { ...router.query, propertyOffPlan: true },
+        },
+        undefined,
+        { shallow: true }
+      );
     } else if (option === "Ready to Buy") {
-      setSearch((prev) => ({ ...prev, propertyOffPlan: false }));
+      router.push(
+        {
+          pathname: "/buyProperties",
+          query: { ...router.query, propertyOffPlan: false },
+        },
+        undefined,
+        { shallow: true }
+      );
     }
   };
 

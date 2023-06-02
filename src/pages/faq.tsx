@@ -74,7 +74,7 @@ const FAQ: React.FC = () => {
   const faqContainerGridStyles = {
     width: "100%",
   };
-
+//! FIX MARGIN
   return (
     <Container sx={faqMainContainer}>
       <Box sx={faqMainContainerBox}>
