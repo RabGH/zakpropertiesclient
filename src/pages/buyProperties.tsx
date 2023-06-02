@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { Box, Typography } from "@mui/material";
 import { Property } from "@lib/types";
@@ -28,6 +28,20 @@ export default function PropertySearch({
   const [filteredProperties, setFilteredProperties] =
     useState<Property[]>(properties);
 
+  // useEffect(() => {
+  //   const filteredProperties = filterProperties(
+  //     search.propertyType,
+  //     search.priceRange,
+  //     search.propertyOffPlan,
+  //     search.bedrooms,
+  //     search.sizeRange,
+  //     search.propertyFeatures,
+  //     properties
+  //   );
+  //   setSearch({ ...search, filteredProperties });
+  //   setFilteredProperties(filteredProperties);
+  // }, [properties]);
+
   return (
     <Box sx={styles.mainBox}>
       <Head>
@@ -44,7 +58,6 @@ export default function PropertySearch({
             properties={properties}
             search={search}
             setSearch={setSearch}
-            filteredProperties={filteredProperties}
             setFilteredProperties={setFilteredProperties}
           />
         </Box>

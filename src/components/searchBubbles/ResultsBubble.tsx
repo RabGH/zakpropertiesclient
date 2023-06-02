@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { getBubbleStyles } from "./searchComponents/bubbleStyles";
-import { filterProperties } from "./searchComponents/filterPropertiesFunction";
+import { filterProperties } from "./searchComponents/filterPropertiesFunction"; // Keep this import
 import { ResultsBubbleProps } from "./searchComponents/bubbleInterfaces";
 
 const ResultsBubble: React.FC<ResultsBubbleProps> = ({
@@ -11,15 +11,6 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
   setFilteredProperties,
 }) => {
   const styles = getBubbleStyles();
-  const results = filterProperties(
-    search.propertyType,
-    search.priceRange,
-    search.propertyOffPlan,
-    search.bedrooms,
-    search.sizeRange,
-    search.propertyFeatures,
-    properties
-  ).length;
 
   const [buttonText, setButtonText] = useState("");
 
@@ -36,7 +27,7 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
     setButtonText(`Results: ${results}`);
     console.log("Search state:", search);
     console.log("Results:", results);
-  }, [search, properties]);
+  }, [search]);
 
   const handleButtonClick = () => {
     const filteredProperties = filterProperties(
@@ -48,10 +39,7 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
       search.propertyFeatures,
       properties
     );
-    setSearch((prev) => ({
-      ...prev,
-      filteredProperties,
-    }));
+    setSearch({ ...search, filteredProperties });
     setFilteredProperties(filteredProperties);
   };
 

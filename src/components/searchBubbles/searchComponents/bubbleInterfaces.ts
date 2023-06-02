@@ -15,7 +15,6 @@ export interface SearchInterface {
 }
 
 export interface SearchFieldBubblesProps {
-  filteredProperties: Property[];
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
   properties: Property[];
@@ -31,8 +30,6 @@ export interface PriceRangeBubbleProps {
   priceRange: [number, number];
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
-  properties: Property[];
-  setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
 }
 export interface PropertyTypeBubbleProps {
   search: SearchInterface;
@@ -64,6 +61,5 @@ export interface ResultsBubbleProps {
 export interface SortByBubbleProps {
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
-  properties: Property[];
   setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
 }
