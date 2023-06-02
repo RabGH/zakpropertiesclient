@@ -1,16 +1,15 @@
 import * as React from "react";
 import { Property } from "@lib/types";
+import { MutableRefObject } from "react";
 
 export interface SearchInterface {
   propertyType: string[];
   priceRange: [number, number];
   propertyOffPlan: boolean | undefined;
   filteredProperties: Property[];
-  bedroomRange: [number, number];
+  bedrooms: [number, number];
   propertyFeatures: string[];
   readyToBuy: string;
-  maxPrice?: number;
-  maxSize?: number;
   sizeRange: [number, number];
 }
 
@@ -40,7 +39,8 @@ export interface PriceRangeBubbleProps {
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }
 export interface BedroomBubbleProps {
-  bedroomRange: [number, number];
+  minBedrooms: number;
+  maxBedrooms: number;
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }
@@ -54,6 +54,7 @@ export interface ResultsBubbleProps {
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
   properties: Property[];
   setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
+  resultsButtonRef: MutableRefObject<() => void>;
 }
 export interface SortByBubbleProps {
   search: SearchInterface;

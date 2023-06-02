@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, createContext } from "react";
 import { Stack, Typography, Box } from "@mui/material";
 import PropertyTypeBubble from "./bubbleComponents/PropertyTypeBubble";
 import PriceRangeBubble from "./bubbleComponents/PriceRangeBubble";
@@ -10,6 +10,8 @@ import SortByBubble from "./SortByBubble";
 import { getBubbleStyles } from "./searchComponents/bubbleStyles";
 import { SearchFieldBubblesProps } from "./searchComponents/bubbleInterfaces";
 
+export const ResultsButtonContext = createContext<() => void>(() => {});
+
 const SearchFieldBubbles = ({
   search,
   setSearch,
@@ -17,7 +19,7 @@ const SearchFieldBubbles = ({
   setFilteredProperties,
 }: SearchFieldBubblesProps) => {
   const styles = getBubbleStyles();
-
+  const resultsButtonRef = useRef<() => void>(() => {});
   return (
     <Box sx={styles.searchFieldMainBox}>
       <Stack
@@ -27,16 +29,20 @@ const SearchFieldBubbles = ({
         sx={styles.mainSearchFieldStack}
       >
         <Box sx={styles.searchButtonBox}>
-          <ResultsBubble
-            search={search}
-            setSearch={setSearch}
-            properties={properties}
-            setFilteredProperties={setFilteredProperties}
-          />
+          <ResultsButtonContext.Provider value={resultsButtonRef.current}>
+            <ResultsBubble
+              search={search}
+              setSearch={setSearch}
+              properties={properties}
+              setFilteredProperties={setFilteredProperties}
+              resultsButtonRef={resultsButtonRef}
+            />
+          </ResultsButtonContext.Provider>
         </Box>
         <PropertyTypeBubble search={search} setSearch={setSearch} />
         <BedroomBubble
-          bedroomRange={search.bedroomRange}
+          minBedrooms={1}
+          maxBedrooms={15}
           search={search}
           setSearch={setSearch}
         />

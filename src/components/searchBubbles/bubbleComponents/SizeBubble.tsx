@@ -25,7 +25,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
   const buttonRef = React.useRef(null);
 
   const minSize = 0;
-  const maxSize = 100000;
+  const maxSize = 10000;
 
   const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
     setOpen((prev) => !prev);
@@ -77,20 +77,9 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
     setButtonText("Any");
   };
 
-  const sizeOptions = [];
-  let i = minSize;
-  while (i <= maxSize) {
-    sizeOptions.push(i);
-    if (i < 10000) {
-      i += 1000;
-    } else if (i < 50000) {
-      i += 5000;
-    } else if (i < 100000) {
-      i += 10000;
-    } else {
-      i += 50000;
-    }
-  }
+  const sizeOptions = [
+    1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000,
+  ];
 
   return (
     <Stack sx={styles.generalBubbleStackStyles}>

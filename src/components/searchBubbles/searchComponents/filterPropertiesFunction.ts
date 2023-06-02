@@ -5,11 +5,12 @@ export const filterProperties = (
   propertyType: string[],
   propertyOffPlan: boolean | undefined,
   properties: Property[],
-  bedroomRange: [number, number],
-  sizeRange: [number, number],
-  priceRange: [number, number]
+  priceRange: [number, number],
+  bedrooms: [number, number],
+  sizeRange: [number, number]
 ) => {
   let filteredProperties: Property[] = [];
+  const maxBedrooms = 15;
   for (let property of properties) {
     const typeMatch =
       propertyType.length === 0 ||
@@ -22,8 +23,8 @@ export const filterProperties = (
       propertyOffPlan === undefined ||
       property.propertyOffPlan?.offplan === propertyOffPlan;
     const bedroomMatch =
-      property.bedrooms >= bedroomRange[0] &&
-      (property.bedrooms <= bedroomRange[1] || bedroomRange[1] === 15);
+      property.bedrooms >= bedrooms[0] &&
+      (property.bedrooms <= bedrooms[1] || bedrooms[1] === 15);
     const sizeMatch =
       property.squareFootage >= sizeRange[0] &&
       property.squareFootage <= sizeRange[1];
@@ -45,4 +46,3 @@ export const filterProperties = (
   }
   return filteredProperties;
 };
-//! Test for which one might be causing the problem

@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import { Button, Stack, Box, Menu, MenuList, Slider } from "@mui/material";
-import { getBubbleStyles } from "../searchComponents/bubbleStyles";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { BedroomBubbleProps } from "../searchComponents/bubbleInterfaces";
+import { Button, Slider, Stack, Menu, Box, MenuList } from "@mui/material";
+import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 
-const BedroomBubble: React.FC<BedroomBubbleProps> = ({ bedroomRange, search, setSearch }) => {
+const BedroomBubble: React.FC<BedroomBubbleProps> = ({
+  minBedrooms,
+  maxBedrooms,
+  search,
+  setSearch,
+}) => {
   const styles = getBubbleStyles();
-  const [low, setLow] = useState<number>(bedroomRange[0]);
-  const [high, setHigh] = useState<number>(bedroomRange[1]);
+  const [low, setLow] = useState<number>(minBedrooms);
+  const [high, setHigh] = useState<number>(maxBedrooms);
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
-
-  const minBedrooms = 1;
-  const maxBedrooms = 15;
 
   const handleApply = () => {
     setSearch((prev) => ({ ...prev, bedrooms: [low, high] }));

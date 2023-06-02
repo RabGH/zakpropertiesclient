@@ -78,11 +78,11 @@ const SortByBubble: React.FC<SortByBubbleProps> = ({ search, setSearch }) => {
             <MenuItem onClick={() => sortBy("High Price")}>High Price</MenuItem>
             <MenuItem onClick={() => sortBy("Low Price")}>Low Price</MenuItem>
             {/* <MenuItem onClick={() => sortBy("Latest Property")}>
-              Latest Property
-            </MenuItem>
-            <MenuItem onClick={() => sortBy("Oldest Property")}>
-              Oldest Property
-            </MenuItem> */}
+Latest Property
+</MenuItem>
+<MenuItem onClick={() => sortBy("Oldest Property")}>
+Oldest Property
+</MenuItem> */}
           </Menu>
         </ButtonGroup>
       </Box>

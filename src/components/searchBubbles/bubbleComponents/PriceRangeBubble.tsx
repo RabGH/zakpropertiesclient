@@ -25,7 +25,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   const buttonRef = React.useRef(null);
 
   const minPrice = 0;
-  const maxPrice = 1000000000;
+  const maxPrice = 500000000;
 
   const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
     setOpen((prev) => !prev);
@@ -77,22 +77,14 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
     setButtonText("Any");
   };
 
-  const priceOptions = [];
-  let i = minPrice;
-  while (i <= maxPrice) {
-    priceOptions.push(i);
-    if (i < 10000000) {
-      i += 1000000;
-    } else if (i < 50000000) {
-      i += 5000000;
-    } else if (i < 100000000) {
-      i += 10000000;
-    } else if (i < 300000000) {
-      i += 25000000;
-    } else {
-      i += 50000000;
-    }
-  }
+  const priceOptions = [
+    1000000, 2000000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000,
+    9000000, 10000000, 15000000, 20000000, 25000000, 30000000, 35000000,
+    40000000, 45000000, 50000000, 60000000, 70000000, 80000000, 90000000,
+    100000000, 125000000, 150000000, 175000000, 200000000, 225000000, 250000000,
+    275000000, 300000000, 325000000, 350000000, 375000000, 400000000, 425000000,
+    450000000, 475000000, 500000000,
+  ];
 
   const valueLabelFormat = (value: number) => {
     return value.toLocaleString("en-US", {

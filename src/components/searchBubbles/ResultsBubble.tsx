@@ -9,6 +9,7 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
   setSearch,
   properties,
   setFilteredProperties,
+  resultsButtonRef,
 }) => {
   const styles = getBubbleStyles();
 
@@ -16,13 +17,13 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
 
   useEffect(() => {
     const results = filterProperties(
-      search.propertyType,
-      search.priceRange,
-      search.propertyOffPlan,
-      search.bedroomRange,
-      search.sizeRange,
       search.propertyFeatures,
-      properties
+      search.propertyType,
+      search.propertyOffPlan,
+      properties,
+      search.priceRange,
+      search.bedrooms,
+      search.sizeRange
     ).length;
     setButtonText(`Results: ${results}`);
     console.log("Search state:", search);
@@ -31,17 +32,19 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
 
   const handleButtonClick = () => {
     const filteredProperties = filterProperties(
-      search.propertyType,
-      search.priceRange,
-      search.propertyOffPlan,
-      search.bedroomRange,
-      search.sizeRange,
       search.propertyFeatures,
-      properties
+      search.propertyType,
+      search.propertyOffPlan,
+      properties,
+      search.priceRange,
+      search.bedrooms,
+      search.sizeRange
     );
     setSearch({ ...search, filteredProperties });
     setFilteredProperties(filteredProperties);
   };
+
+  resultsButtonRef.current = handleButtonClick;
 
   return (
     <Button

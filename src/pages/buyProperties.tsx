@@ -17,13 +17,13 @@ export default function PropertySearch({
   const styles = getBuyPropertiesPageStyles();
   const [search, setSearch] = useState<SearchInterface>({
     propertyType: [],
-    priceRange: [0, 1000000000],
+    priceRange: [0, 500000000],
     propertyOffPlan: undefined,
     filteredProperties: properties,
-    bedroomRange: [1, 15],
+    bedrooms: [1, 15],
     propertyFeatures: [],
     readyToBuy: "ANY",
-    sizeRange: [0, 100000],
+    sizeRange: [0, 10000],
   });
   const [filteredProperties, setFilteredProperties] =
     useState<Property[]>(properties);
