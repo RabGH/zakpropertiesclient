@@ -50,15 +50,12 @@ const SearchFieldBubbles = ({
           priceRange={search.priceRange}
           search={search}
           setSearch={setSearch}
-          properties={properties}
-          setFilteredProperties={setFilteredProperties}
         />
         <FeatureBubble search={search} setSearch={setSearch} />
         <SortByBubble
           search={search}
           setSearch={setSearch}
           setFilteredProperties={setFilteredProperties}
-          properties={properties}
         />
       </Stack>
     </Box>

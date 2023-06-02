@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Pagination, Divider } from "@mui/material";
-import { Property } from "../../../../../lib/types";
+import { Property } from "@lib/types";
 import PropertyAllCard from "./PropertyAllCards";
 import SearchFieldBubbles from "../../../searchBubbles/SearchFieldBubbles";
 import { getPropertyGridCardStyles } from "../cardComponents/propertyCardGridStyles";
@@ -10,7 +10,6 @@ interface Props {
   properties: Property[];
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
-  filteredProperties: Property[];
   setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
 }
 
@@ -18,7 +17,6 @@ const PropertyCardGrid: React.FC<Props> = ({
   properties,
   search,
   setSearch,
-  filteredProperties,
   setFilteredProperties,
 }) => {
   const styles = getPropertyGridCardStyles();
@@ -42,7 +40,6 @@ const PropertyCardGrid: React.FC<Props> = ({
     <Box sx={styles.mainBox}>
       <Box sx={styles.propertyCardGridSearchBarBox}>
         <SearchFieldBubbles
-          filteredProperties={filteredProperties}
           search={search}
           setSearch={setSearch}
           properties={properties}
