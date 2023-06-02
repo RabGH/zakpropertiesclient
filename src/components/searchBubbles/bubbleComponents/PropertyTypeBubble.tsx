@@ -3,17 +3,14 @@ import { Button, ButtonGroup, Menu, MenuItem, Stack, Box } from "@mui/material";
 import { PropertyTypeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 import ReadyToBuyBubble from "./ReadyToBuyBubble";
-import { useRouter } from "next/router";
 
-const PropertyTypeBubble = ({ search }: PropertyTypeBubbleProps) => {
+const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [readyToBuyOption, setReadyToBuyOption] = useState(search.readyToBuy);
   useEffect(() => {
     setReadyToBuyOption(search.readyToBuy);
   }, [search.readyToBuy]);
-
-  const router = useRouter();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -35,14 +32,10 @@ const PropertyTypeBubble = ({ search }: PropertyTypeBubbleProps) => {
         updatedTypes = [...search.propertyType, propertyType];
       }
     }
-    router.push(
-      {
-        pathname: "/buyProperties",
-        query: { ...router.query, propertyType: updatedTypes.join(",") },
-      },
-      undefined,
-      { shallow: true }
-    );
+    setSearch((prevSearch) => ({
+      ...prevSearch,
+      propertyType: updatedTypes,
+    }));
   };
 
   return (
@@ -108,7 +101,12 @@ const PropertyTypeBubble = ({ search }: PropertyTypeBubbleProps) => {
             <MenuItem onClick={() => handlePropertyTypeChange("Plot")}>
               Plot
             </MenuItem>
-            <ReadyToBuyBubble search={search} />
+            <ReadyToBuyBubble
+              search={search}
+              setSearch={setSearch}
+              readyToBuyOption={readyToBuyOption}
+              setReadyToBuyOption={setReadyToBuyOption}
+            />
           </Box>
         </Menu>
       </ButtonGroup>

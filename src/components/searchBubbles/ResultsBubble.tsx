@@ -3,11 +3,12 @@ import { Button } from "@mui/material";
 import { getBubbleStyles } from "./searchComponents/bubbleStyles";
 import { filterProperties } from "./searchComponents/filterPropertiesFunction"; // Keep this import
 import { ResultsBubbleProps } from "./searchComponents/bubbleInterfaces";
-import { useRouter } from "next/router";
 
 const ResultsBubble: React.FC<ResultsBubbleProps> = ({
   search,
+  setSearch,
   properties,
+  setFilteredProperties,
 }) => {
   const styles = getBubbleStyles();
 
@@ -18,7 +19,7 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
       search.propertyType,
       search.priceRange,
       search.propertyOffPlan,
-      search.bedrooms,
+      search.bedroomRange,
       search.sizeRange,
       search.propertyFeatures,
       properties
@@ -28,25 +29,18 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
     console.log("Results:", results);
   }, [search]);
 
-  const router = useRouter();
-
   const handleButtonClick = () => {
-    router.push(
-      {
-        pathname: "/buyProperties",
-        query: {
-          ...router.query,
-          propertyType: search.propertyType.join(","),
-          priceRange: `${search.priceRange[0]}-${search.priceRange[1]}`,
-          propertyOffPlan: search.propertyOffPlan,
-          bedrooms: search.bedrooms.join(","),
-          sizeRange: `${search.sizeRange[0]}-${search.sizeRange[1]}`,
-          propertyFeatures: search.propertyFeatures.join(","),
-        },
-      },
-      undefined,
-      { shallow: true }
+    const filteredProperties = filterProperties(
+      search.propertyType,
+      search.priceRange,
+      search.propertyOffPlan,
+      search.bedroomRange,
+      search.sizeRange,
+      search.propertyFeatures,
+      properties
     );
+    setSearch({ ...search, filteredProperties });
+    setFilteredProperties(filteredProperties);
   };
 
   return (
@@ -59,4 +53,5 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
     </Button>
   );
 };
+
 export default ResultsBubble;

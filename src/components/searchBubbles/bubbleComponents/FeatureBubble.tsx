@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import { Box, Button, ButtonGroup, Menu, MenuItem, Stack } from "@mui/material";
 import { FeatureBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
-import { useRouter } from "next/router";
 
-const FeatureBubble = ({ search }: FeatureBubbleProps) => {
+const FeatureBubble = ({ search, setSearch }: FeatureBubbleProps) => {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-  const router = useRouter();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -26,14 +23,10 @@ const FeatureBubble = ({ search }: FeatureBubbleProps) => {
     } else {
       updatedFeatures = [...search.propertyFeatures, feature];
     }
-    router.push(
-      {
-        pathname: "/buyProperties",
-        query: { ...router.query, propertyFeatures: updatedFeatures.join(",") }
-      },
-      undefined,
-      { shallow: true }
-    );
+    setSearch((prevSearch) => ({
+      ...prevSearch,
+      propertyFeatures: updatedFeatures,
+    }));
   };
 
   const selectedCount = search.propertyFeatures.length;
@@ -159,10 +152,12 @@ const FeatureBubble = ({ search }: FeatureBubbleProps) => {
             >
               Fireplace
             </MenuItem>
+            {/* add more features as you like */}
           </Box>
         </Menu>
       </ButtonGroup>
     </Stack>
   );
 };
+
 export default FeatureBubble;

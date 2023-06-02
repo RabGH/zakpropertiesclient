@@ -9,22 +9,20 @@ import {
   MenuList,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import { PriceRangeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
-import { useRouter } from "next/router";
 
-interface PriceRangeBubbleProps {
-  priceRange: number[];
-}
-
-const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({ priceRange }) => {
+const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
+  priceRange,
+  search,
+  setSearch,
+}) => {
   const styles = getBubbleStyles();
   const [low, setLow] = useState<number>(priceRange[0]);
   const [high, setHigh] = useState<number>(priceRange[1]);
   const [buttonText, setButtonText] = useState<string>("Any");
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
-
-  const router = useRouter();
 
   const minPrice = 0;
   const maxPrice = 1000000000;
@@ -46,16 +44,9 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({ priceRange }) => {
   };
 
   const handleApply = () => {
-    router.push(
-      {
-        pathname: "/buyProperties",
-        query: { ...router.query, priceRange: `${low}-${high}` },
-      },
-      undefined,
-      { shallow: true }
-    );
+    setSearch((prev) => ({ ...prev, priceRange: [low, high] }));
     setOpen(false);
-    if (low === priceRange[0] && high === priceRange[1]) {
+    if (low === search.priceRange[0] && high === search.priceRange[1]) {
       setButtonText("Any");
     } else if (low === minPrice && high === maxPrice) {
       setButtonText("Any");
@@ -65,8 +56,9 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({ priceRange }) => {
   };
 
   const handleClose = () => {
+    setSearch((prev) => ({ ...prev, priceRange: [low, high] }));
     setOpen(false);
-    if (low === priceRange[0] && high === priceRange[1]) {
+    if (low === search.priceRange[0] && high === search.priceRange[1]) {
       setButtonText("Any");
     } else if (low === minPrice && high === maxPrice) {
       setButtonText("Any");
@@ -76,16 +68,12 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({ priceRange }) => {
   };
 
   const handleReset = () => {
-    router.push(
-      {
-        pathname: "/buyProperties",
-        query: { ...router.query, priceRange: undefined },
-      },
-      undefined,
-      { shallow: true }
-    );
     setLow(minPrice);
     setHigh(maxPrice);
+    setSearch((prevSearch) => ({
+      ...prevSearch,
+      priceRange: [minPrice, maxPrice],
+    }));
     setButtonText("Any");
   };
 
@@ -167,17 +155,17 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({ priceRange }) => {
                     </MenuItem>
                   ))}
                 </TextField>
-                <Typography variant="body1">-</Typography>
+                <Typography variant="body1">to</Typography>
                 <TextField
                   value={high}
                   onChange={handleHighChange}
-                  inputProps={{ "aria-label": "High price" }}
+                  inputProps={{ "aria-label": "Low price" }}
                   sx={styles.priceSelectStyles}
                   select
                   SelectProps={{
                     value: high,
                     displayEmpty: true,
-                    inputProps: { "aria-label": "High price" },
+                    inputProps: { "aria-label": "Low price" },
                     sx: styles.priceSelectStyles,
                     MenuProps: {
                       anchorOrigin: { vertical: "bottom", horizontal: "left" },
@@ -188,12 +176,12 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({ priceRange }) => {
                     },
                   }}
                 >
-                  <MenuItem value={maxPrice}>Max</MenuItem>
                   {priceOptions.map((option) => (
                     <MenuItem key={option} value={option}>
                       {valueLabelFormat(option)}
                     </MenuItem>
                   ))}
+                  <MenuItem value={maxPrice}>Max</MenuItem>
                 </TextField>
               </Stack>
               <Stack

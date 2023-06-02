@@ -1,34 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { BedroomBubbleProps } from "../searchComponents/bubbleInterfaces";
-import { Button, Slider, Stack, Menu, Box, MenuList } from "@mui/material";
+import React, { useState } from "react";
+import { Button, Stack, Box, Menu, MenuList, Slider } from "@mui/material";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 import { useRouter } from "next/router";
+import { BedroomBubbleProps } from "../searchComponents/bubbleInterfaces";
 
-const BedroomBubble: React.FC<BedroomBubbleProps> = ({
-  minBedrooms,
-  maxBedrooms
-}) => {
+const BedroomBubble: React.FC<BedroomBubbleProps> = ({ bedroomRange, search, setSearch }) => {
   const styles = getBubbleStyles();
-  const [low, setLow] = useState<number>(minBedrooms);
-  const [high, setHigh] = useState<number>(maxBedrooms);
+  const [low, setLow] = useState<number>(bedroomRange[0]);
+  const [high, setHigh] = useState<number>(bedroomRange[1]);
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
 
-  const router = useRouter();
+  const minBedrooms = 1;
+  const maxBedrooms = 15;
 
   const handleApply = () => {
-    router.push(
-      {
-        pathname: "/buyProperties",
-        query: { ...router.query, bedrooms: `${low}-${high}` }
-      },
-      undefined,
-      { shallow: true }
-    );
+    setSearch((prev) => ({ ...prev, bedrooms: [low, high] }));
     setOpen(false);
   };
 
   const handleClose = () => {
+    setSearch((prev) => ({ ...prev, bedrooms: [low, high] }));
     setOpen(false);
   };
 
@@ -40,14 +32,6 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
   };
 
   const handleReset = () => {
-    router.push(
-      {
-        pathname: "/buyProperties",
-        query: { ...router.query, bedrooms: undefined }
-      },
-      undefined,
-      { shallow: true }
-    );
     setLow(1);
     setHigh(15);
   };

@@ -11,17 +11,18 @@ import {
 import TextField from "@mui/material/TextField";
 import { SizeBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
-import { useRouter } from "next/router";
 
-const SizeBubble: React.FC<SizeBubbleProps> = ({ sizeRange }) => {
+const SizeBubble: React.FC<SizeBubbleProps> = ({
+  sizeRange,
+  search,
+  setSearch,
+}) => {
   const styles = getBubbleStyles();
   const [low, setLow] = useState<number>(sizeRange[0]);
   const [high, setHigh] = useState<number>(sizeRange[1]);
   const [buttonText, setButtonText] = useState<string>("Any");
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
-
-  const router = useRouter();
 
   const minSize = 0;
   const maxSize = 100000;
@@ -43,16 +44,9 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({ sizeRange }) => {
   };
 
   const handleApply = () => {
-    router.push(
-      {
-        pathname: "/buyProperties",
-        query: { ...router.query, sizeRange: `${low}-${high}` },
-      },
-      undefined,
-      { shallow: true }
-    );
+    setSearch((prev) => ({ ...prev, sizeRange: [low, high] }));
     setOpen(false);
-    if (low === sizeRange[0] && high === sizeRange[1]) {
+    if (low === search.sizeRange[0] && high === search.sizeRange[1]) {
       setButtonText("Any");
     } else if (low === minSize && high === maxSize) {
       setButtonText("Any");
@@ -62,8 +56,9 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({ sizeRange }) => {
   };
 
   const handleClose = () => {
+    setSearch((prev) => ({ ...prev, sizeRange: [low, high] }));
     setOpen(false);
-    if (low === sizeRange[0] && high === sizeRange[1]) {
+    if (low === search.sizeRange[0] && high === search.sizeRange[1]) {
       setButtonText("Any");
     } else if (low === minSize && high === maxSize) {
       setButtonText("Any");
@@ -73,16 +68,12 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({ sizeRange }) => {
   };
 
   const handleReset = () => {
-    router.push(
-      {
-        pathname: "/buyProperties",
-        query: { ...router.query, sizeRange: undefined },
-      },
-      undefined,
-      { shallow: true }
-    );
     setLow(minSize);
     setHigh(maxSize);
+    setSearch((prevSearch) => ({
+      ...prevSearch,
+      sizeRange: [minSize, maxSize],
+    }));
     setButtonText("Any");
   };
 

@@ -20,7 +20,7 @@ export default function PropertySearch({
     priceRange: [0, 1000000000],
     propertyOffPlan: undefined,
     filteredProperties: properties,
-    bedrooms: [1, 15],
+    bedroomRange: [1, 15],
     propertyFeatures: [],
     readyToBuy: "ANY",
     sizeRange: [0, 100000],
@@ -43,6 +43,8 @@ export default function PropertySearch({
           <PropertyCardGrid
             properties={properties}
             search={search}
+            setSearch={setSearch}
+            setFilteredProperties={setFilteredProperties}
           />
         </Box>
       </Box>
