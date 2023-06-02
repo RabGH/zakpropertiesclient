@@ -21,7 +21,7 @@ const AboutPage: React.FC = () => {
     display: "grid",
     justifyItems: "center",
     mt: 10,
-    p: 4,
+    p: 1,
     "@media (max-width: 600px)": {},
     "@media (max-width: 400px)": {},
   };
@@ -35,12 +35,11 @@ const AboutPage: React.FC = () => {
     height: "200px",
     filter: "invert(100%)",
     m: "0 auto",
-    mt: "3rem",
-    "@media (max-width: 600px)": { width: "100px", height: "100px" },
-    "@media (max-width: 400px)": { width: "100px", height: "100px" },
   };
 
-  const aboutLogoImageStyles = {};
+  const aboutLogoImageStyles = {
+    width: "auto",
+  };
 
   return (
     <Container>
@@ -168,7 +167,7 @@ const AboutPage: React.FC = () => {
           </Typography>
 
           <Link href="/contactUs">
-            <Button variant="contained" sx={{ mb: "2rem" }}>
+            <Button variant="contained" sx={{ mb: "5rem" }}>
               Contact Us
             </Button>
           </Link>

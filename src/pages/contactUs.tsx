@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Typography,
   Box,
@@ -19,16 +19,20 @@ import { getContactStyles } from "@/components/pageComponents/contact/contactSty
 function Contact() {
   const styles = getContactStyles();
 
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
     email: "",
     subject: "",
     message: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const [loading, setLoading] = useState(false);
   const [snackOpen, setSnackOpen] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
+
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -85,7 +89,7 @@ function Contact() {
       <Container>
         <Grid sx={styles.contactGrid}>
           <Box sx={styles.formBox}>
-            <form id="ContactForm" onSubmit={handleSubmit}>
+            <form id="ContactForm" ref={formRef} onSubmit={handleSubmit}>
               <FormControl sx={styles.formControl} variant="outlined">
                 <Box sx={styles.textField}>
                   <TextField
@@ -157,9 +161,21 @@ function Contact() {
                   variant="contained"
                   size="large"
                   type="submit"
-                  sx={styles.buttonStyles}
+                  sx={styles.sendButtonStyles}
                 >
                   {loading ? <CircularProgress size={24} /> : "Send"}
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  type="reset"
+                  sx={styles.resetButtonStyles}
+                  onClick={() => {
+                    formRef.current?.reset();
+                    setFormData(initialFormData);
+                  }}
+                >
+                  Clear
                 </Button>
               </Box>
             </form>

@@ -45,7 +45,7 @@ const FAQ: React.FC = () => {
   };
 
   const faqMainContainerBox = {
-    mt: 15,
+    mt: 10,
     p: 1,
     "@media (max-width: 600px)": {},
     "@media (max-width: 400px)": {},
@@ -61,11 +61,11 @@ const FAQ: React.FC = () => {
     filter: "invert(100%)",
     m: "0 auto",
     mt: "5rem",
-    "@media (max-width: 600px)": { width: "100px", height: "100px" },
-    "@media (max-width: 400px)": { width: "100px", height: "100px" },
   };
 
-  const faqLogoImageStyles = {};
+  const faqLogoImageStyles = {
+    width: "auto",
+  };
 
   const faqCardGridStyles = {
     justifyContent: "center",
