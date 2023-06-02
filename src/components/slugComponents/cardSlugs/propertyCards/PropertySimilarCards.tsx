@@ -5,7 +5,7 @@ import { Box, Typography, Card } from "@mui/material";
 import { Property } from "@lib/types";
 import { CardStyles } from "../cardComponents/cardStyles";
 import CardImageCarousel from "../cardComponents/CardImageCarousel";
-
+//! Not in use
 export const propertyContainer = {
   display: "flex",
   flexDirection: "row",

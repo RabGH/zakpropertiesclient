@@ -86,19 +86,32 @@ export const getContactStyles = () => {
           borderColor: muiTheme.palette.grey[300],
         },
       },
+      ":-webkit-autofill": {
+        backgroundColor: "rgba(255, 255, 255, 0.1)",
+      },
     },
     buttonBox: {
       display: "flex",
       flexDirection: "row",
       marginTop: "1rem",
     },
-    buttonStyles: {
+    sendButtonStyles: {
       marginTop: "1rem",
+      mr: "1rem",
       fontWeight: "bold",
       "&:hover": {
         color: "#f5f5f5",
       },
     },
+    resetButtonStyles: {
+      marginTop: "1rem",
+      ml: "1rem",
+      fontWeight: "bold",
+      "&:hover": {
+        color: "#f5f5f5",
+      },
+    },
+
     imgGrid: {
       display: "flex",
       flexDirection: "column",

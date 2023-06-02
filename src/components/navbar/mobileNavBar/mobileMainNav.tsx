@@ -7,7 +7,7 @@ import { useTheme, Box, Toolbar, AppBar, IconButton } from "@mui/material";
 import { Search, Home } from "@mui/icons-material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Link from "next/link";
-
+//! Not in use
 interface Props {
   children?: React.ReactNode;
 }

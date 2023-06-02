@@ -37,13 +37,20 @@ const PropertyVillaCardBodyData = ({
 
               <Grid
                 container
-                spacing={0}
+                spacing={1}
                 sx={styles.homeContainerCardGridStyles}
-                // justifyContent="center"
               >
                 {villas?.slice(0, 3).map((property) => (
-                  <Grid item xs={12} sm={6} md={6} lg={4} sx={styles.homeCardGridStyles} key={property._id}>
-                    <Card sx={styles.allCardStyles}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={6}
+                    lg={4}
+                    sx={styles.homeCardGridStyles}
+                    key={property._id}
+                  >
+                    <Card sx={styles.homeCardStyles}>
                       {property.mainPropertyImage && (
                         <CardImageCarousel
                           images={[

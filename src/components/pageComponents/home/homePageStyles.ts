@@ -224,9 +224,19 @@ export const getHomePageStyles = () => {
       height: "110vh",
       width: "100%",
       zIndex: 1,
+
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1281px)": {},
+      "@media (max-width: 1024px)": {
+        height: "100vh",
+      },
+      "@media (max-width: 961px)": {},
+      "@media (max-width: 768px)": {},
+      "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
         height: "115vh",
       },
+      "@media (max-width: 481px)": {},
       "@media (max-width: 400px)": {
         height: "90vh",
       },
@@ -236,6 +246,7 @@ export const getHomePageStyles = () => {
       "@media (max-width: 360px)": {
         height: "80vh",
       },
+      "@media (max-width: 320px)": {},
     },
 
     imgOverlay: {
@@ -246,9 +257,24 @@ export const getHomePageStyles = () => {
       bottom: 0,
       height: "111vh",
       backgroundColor: "rgba(0, 0, 0, 0.5)",
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1281px)": {},
+      "@media (max-width: 1024px)": {
+        height: "105vh",
+      },
+      "@media (max-width: 961px)": {},
+      "@media (max-width: 768px)": {
+        height: "110vh",
+      },
+      "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
         height: "117vh",
       },
+      "@media (max-width: 481px)": {},
+      "@media (max-width: 400px)": {},
+      "@media (max-width: 375px)": {},
+      "@media (max-width: 360px)": {},
+      "@media (max-width: 320px)": {},
     },
 
     contentContainer: {
@@ -278,7 +304,7 @@ export const getHomePageStyles = () => {
         fontSize: "0.6rem",
       },
       "@media (max-width: 375px)": {
-        top: "36%",
+        top: "37%",
         fontSize: "0.6rem",
       },
       "@media (max-width: 360px)": {

@@ -20,7 +20,7 @@ export const getNavBarStyles = () => {
       "@media (max-width: 400px)": {},
     },
 
-    // Burger Styles 
+    // Burger Styles
     burgerNavBox: {
       backgroundColor: "transparent",
       borderRadius: "50%",

@@ -173,13 +173,13 @@ function SearchBar(props: SearchBarProps) {
       top: "127%",
     },
     "@media (max-width: 1024px)": {
-      top: "110%",
+      top: "100%",
     },
     "@media (max-width: 600px)": {
       top: "115%",
     },
     "@media (max-width: 481px)": {
-      top: "110%",
+      top: "112%",
     },
     "@media (max-width: 400px)": {
       top: "80%",
