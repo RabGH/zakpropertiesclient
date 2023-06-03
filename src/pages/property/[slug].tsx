@@ -4,20 +4,20 @@ import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 import { Box, Typography, Button, Divider } from "@mui/material";
 import { BiBed } from "react-icons/bi";
 import { BiBath } from "react-icons/bi";
-import FeaturesSlug from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
-import { featuresStyles } from "../../components/slugComponents/amenitiesFeatures/FeaturesSlug";
+import FeaturesSlug from "../../components/slugComponents/pageSlugComponents/amenitiesFeatures/FeaturesSlug";
+import { featuresStyles } from "../../components/slugComponents/pageSlugComponents/amenitiesFeatures/FeaturesSlug";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Property as PropertyProps } from "@lib/types";
-import { getPropertyPageStyles } from "@/components/pageComponents/pageSlugStyles/propertySlugStyles";
-import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/viewAllPhotos";
-import ImageCarousel from "@/components/slugComponents/pageSlugComponents/ImageGallerySlick";
+import { getPropertyPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/propertySlugStyles";
+import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
+import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
 import {
   mainContainer,
   mainImageContainer,
   viewPhotosBox,
-} from "../../components/slugComponents/pageSlugComponents/imageCarouselStyles";
-import PropertyReference from "../../components/slugComponents/pageSlugComponents/PropertyReferenceSlug";
+} from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
+import PropertyReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyReferenceSlug";
 
 interface PageContext {
   query: {
@@ -29,7 +29,7 @@ interface PageContext {
 }
 
 const MapSlug = dynamic(
-  () => import("../../components/slugComponents/pageSlugComponents/MapSlug"),
+  () => import("@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/MapSlug"),
   {
     ssr: false,
   }

@@ -10,27 +10,30 @@ import {
   Container,
   Button,
 } from "@mui/material";
-import ImageCarousel from "@/components/slugComponents/pageSlugComponents/ImageGallerySlick";
+import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
 import ProjectPropertyCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectPropertyCards";
 import { propertyContainer } from "@/components/slugComponents/cardSlugs/projectCards/ProjectPropertyCards";
 import dynamic from "next/dynamic";
 import AmenitiesCard, {
   amenityStyles,
-} from "@/components/slugComponents/amenitiesFeatures/AmenitiesSlug";
+} from "@/components/slugComponents/pageSlugComponents/amenitiesFeatures/AmenitiesSlug";
 import { Project, Property, PageContext } from "@lib/types";
 import {
   mainContainer,
   mainImageContainer,
   viewPhotosBox,
-} from "@/components/slugComponents/pageSlugComponents/imageCarouselStyles";
+} from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import { CardStyles } from "@/components/slugComponents/cardSlugs/cardComponents/cardStyles";
-import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/viewAllPhotos";
+import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
 
-import { getProjectPageStyles } from "@/components/pageComponents/pageSlugStyles/projectSlugStyles";
+import { getProjectPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/projectSlugStyles";
 // import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
 
 const MapSlug = dynamic(
-  () => import("../../components/slugComponents/pageSlugComponents/MapSlug"),
+  () =>
+    import(
+      "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/MapSlug"
+    ),
   {
     ssr: false,
   }
