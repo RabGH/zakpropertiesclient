@@ -4,6 +4,7 @@ export const getPropertyGridCardStyles = () => {
   const muiTheme = useTheme();
 
   return {
+    // buyProperties grid styles
     mainBox: {
       minHeight: "100vh",
       display: "flex",

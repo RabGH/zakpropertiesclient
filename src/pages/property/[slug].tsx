@@ -8,7 +8,7 @@ import FeaturesSlug from "../../components/slugComponents/pageSlugComponents/ame
 import { featuresStyles } from "../../components/slugComponents/pageSlugComponents/amenitiesFeatures/FeaturesSlug";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { Property as PropertyProps } from "@lib/types";
+import { PropertyProps } from "@lib/types";
 import { getPropertyPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/propertySlugStyles";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
@@ -18,6 +18,7 @@ import {
   viewPhotosBox,
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import PropertyReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyReferenceSlug";
+import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCards";
 
 interface PageContext {
   query: {
@@ -29,7 +30,10 @@ interface PageContext {
 }
 
 const MapSlug = dynamic(
-  () => import("@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/MapSlug"),
+  () =>
+    import(
+      "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/MapSlug"
+    ),
   {
     ssr: false,
   }
@@ -55,6 +59,8 @@ const Property = ({
   propertyOffPlan,
   address,
   specificAddress,
+  property,
+  properties,
 }: PropertyProps) => {
   const styles = getPropertyPageStyles();
 
@@ -114,6 +120,13 @@ const Property = ({
               <Typography variant="body1" sx={styles.lifeStyles}>
                 <Link href="/">{areaType}</Link>
               </Typography>
+            </Box>
+            <Divider sx={styles.dividerStyles} />
+            <Box sx={styles.propertySimilarCardsPos}>
+              <PropertySimilarCards
+                property={property}
+                properties={properties}
+              />
             </Box>
             <Divider sx={styles.dividerStyles} />
           </Box>
@@ -178,6 +191,26 @@ export async function getStaticProps(context: any) {
       notFound: true,
     };
   } else {
+    const properties = await sanityClient.fetch(`*[ _type == "property"]{
+      ...,
+      createdAt,
+      location,
+      propertyType,
+      mainPropertyImage,
+      propertyImages,
+      totalPrice,
+      bathrooms,
+      bedrooms,
+      description,
+      squareFootage,
+      plottedArea,
+      builtUpArea,
+      features->{
+        name,
+        features[],
+      },
+      propertyOffPlan,    
+    }`);
     return {
       props: {
         id: property.id,
@@ -199,6 +232,8 @@ export async function getStaticProps(context: any) {
         propertyOffPlan: property.propertyOffPlan ?? null,
         address: property.address ?? null,
         specificAddress: property.specificAddress ?? null,
+        property,
+        properties,
       },
       revalidate: 60,
     };

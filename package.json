@@ -25,6 +25,7 @@
     "eslint-config-next": "13.2.4",
     "leaflet": "^1.9.3",
     "leafletmap": "^0.1.1",
+    "moment": "^2.29.4",
     "next-google-fonts": "^2.2.0",
     "next-sanity": "^4.3.3",
     "next-sanity-image": "^6.0.0",

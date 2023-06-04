@@ -56,5 +56,6 @@ export const getPropertyPageStyles = () => {
       alignItems: "flex-start",
       p: 10,
     },
+    propertySimilarCardsPos: {},
   };
 };

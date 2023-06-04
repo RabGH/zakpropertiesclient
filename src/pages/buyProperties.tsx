@@ -5,7 +5,7 @@ import { Property } from "@lib/types";
 import { GetStaticProps } from "next";
 import { sanityClient } from "@lib/sanity";
 import { previewClient } from "@lib/client";
-import PropertyCardGrid from "@/components/slugComponents/cardSlugs/buyPropertiesComponents/PropertyCardGrid";
+import PropertyCardGrid from "@/components/slugComponents/cardSlugs/buyPropertiesCardComponents/PropertyCardGrid";
 import { getBuyPropertiesPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/buyPropertiesStyles";
 import { SearchInterface } from "@/components/searchBubbles/searchComponents/bubbleInterfaces";
 

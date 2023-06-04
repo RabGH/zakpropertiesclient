@@ -1,6 +1,6 @@
 import { Typography, Box, Button, Card } from "@mui/material";
 import { isMultiple, formatPrice, formatArea } from "@lib/utils";
-import { Property } from "@lib/types";
+import moment from "moment";
 import Link from "next/link";
 
 interface PropertyReferenceProps {
@@ -75,7 +75,10 @@ const PropertyReference = ({
               </Typography>
               {propertyOffPlan.propertyCompletionDate && (
                 <Typography variant="body1" sx={offPlanCompletionStyles}>
-                  Completion date: {propertyOffPlan.propertyCompletionDate}
+                  Completion date:{" "}
+                  {moment(propertyOffPlan.propertyCompletionDate).format(
+                    "YYYY-MM-DD"
+                  )}{" "}
                 </Typography>
               )}
             </Box>
