@@ -13,7 +13,9 @@ import PropertyVillaCardBodyData from "@/components/slugComponents/cardSlugs/hom
 
 import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
 import dynamic from "next/dynamic";
+
 import { getHomePageStyles } from "@/components/pageComponents/home/homePageStyles";
+import { CardStyles } from "@/components/slugComponents/cardSlugs/cardComponents/cardStyles";
 
 const DashBoardMap = dynamic(
   () => import("@/components/pageComponents/home/DashBoardMap"),
@@ -29,6 +31,7 @@ interface HomeProps {
 }
 
 function Home({ properties, projects, mainProjectImage }: HomeProps) {
+  const cardStyles = CardStyles();
   const styles = getHomePageStyles();
   return (
     <>
@@ -51,12 +54,29 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
             </Typography>
           </Box>
 
+          <Divider sx={styles.dividerStyles}>
+            <Typography variant="h5" sx={cardStyles.featuredTitlePos}>
+              Featured Apartments
+            </Typography>
+          </Divider>
           <Box sx={styles.homePropertyCardsComponentPos}>
             <PropertyAptCardBodyData properties={properties} />
           </Box>
+
+          <Divider sx={styles.dividerStyles}>
+            <Typography variant="h5" sx={cardStyles.featuredTitlePos}>
+              Featured Townhouses
+            </Typography>
+          </Divider>
           <Box sx={styles.homePropertyCardsComponentPos}>
             <PropertyTownCardBodyData properties={properties} />
           </Box>
+
+          <Divider sx={styles.dividerStyles}>
+            <Typography variant="h5" sx={cardStyles.featuredTitlePos}>
+              Featured Villas
+            </Typography>
+          </Divider>
           <Box sx={styles.homePropertyCardsComponentPos}>
             <PropertyVillaCardBodyData properties={properties} />
           </Box>

@@ -23,11 +23,6 @@ const PropertyAptCardBodyData = ({ properties }: PropertyAptCardBodyProps) => {
         <Box sx={styles.mainAll}>
           <Box sx={styles.mainBox}>
             <Box>
-              <Divider sx={styles.dividerStyles}>
-                <Typography variant="h5" sx={styles.featuredTitlePos}>
-                  Featured Apartments
-                </Typography>
-              </Divider>
               <Box sx={styles.homeContainerBoxStyles}>
                 {apartments?.slice(0, 3).map((property) => (
                   <Box key={property._id} sx={styles.homeItemCardBoxStyles}>
