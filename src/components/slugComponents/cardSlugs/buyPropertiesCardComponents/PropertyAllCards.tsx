@@ -65,6 +65,7 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                             variant="body1"
                             sx={styles.offPlanCompleteStyles}
                           >
+                            Completion Date:
                             {moment(
                               property.propertyOffPlan.propertyCompletionDate
                             ).format("YYYY-MM-DD")}{" "}
