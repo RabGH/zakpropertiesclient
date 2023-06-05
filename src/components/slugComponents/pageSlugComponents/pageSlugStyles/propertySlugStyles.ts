@@ -29,7 +29,7 @@ export const getPropertyPageStyles = () => {
     dividerStyles: {
       width: "100%",
       mt: "3rem",
-      mb: "4rem",
+      mb: "3rem",
       "@media (max-width: 481px)": {
         mt: "2rem",
         mb: "2rem",
@@ -109,5 +109,13 @@ export const getPropertyPageStyles = () => {
       "@media (max-width: 320px)": {},
     },
     propertySimilarCardsPos: {},
+    featuresSlugPos: {
+      mr: 3,
+      ml: 3,
+      "@media (max-width: 481px)": {
+        mr: 0,
+        ml: 0,
+      },
+    },
   };
 };

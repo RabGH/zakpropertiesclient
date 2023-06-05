@@ -13,26 +13,20 @@ interface FeaturesSlugProps {
   };
 }
 
-export const featuresStyles = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
-
 const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
   return (
-      <Box sx={cardStyles}>
-        <Typography variant="h3" sx={mainTitle}>
-          {features?.name ?? "Features"}
-        </Typography>
-        <Box sx={boxStyles}>
-          {features?.features?.map((opt) => (
-            <Typography key={opt} variant="body2" sx={mainStyles}>
-              {opt}
-            </Typography>
-          ))}
-        </Box>
+    <Box sx={cardStyles}>
+      <Typography variant="h3" sx={mainTitle}>
+        {features?.name ?? "Features"}
+      </Typography>
+      <Box sx={boxStyles}>
+        {features?.features?.map((opt) => (
+          <Typography key={opt} variant="body1" sx={mainStyles}>
+            {opt}
+          </Typography>
+        ))}
       </Box>
+    </Box>
   );
 };
 

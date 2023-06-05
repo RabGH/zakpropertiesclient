@@ -1,9 +1,8 @@
 import { sanityClient } from "@lib/sanity";
 import { getAllPropertySlugs } from "@lib/getStaticPaths";
 import { isMultiple, formatPrice, formatArea } from "@lib/utils";
-import { Box, Typography, Divider, Container } from "@mui/material";
+import { Box, Typography, Divider } from "@mui/material";
 import FeaturesSlug from "../../components/slugComponents/pageSlugComponents/amenitiesFeatures/FeaturesSlug";
-import { featuresStyles } from "../../components/slugComponents/pageSlugComponents/amenitiesFeatures/FeaturesSlug";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { PropertyProps } from "@lib/types";
@@ -17,6 +16,7 @@ import {
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import PropertyReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyReferenceSlug";
 import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCardsGrid";
+import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
 
 interface PageContext {
   query: {
@@ -111,17 +111,15 @@ const Property = ({
             <Divider sx={styles.dividerStyles} />
 
             <Box sx={styles.lifeBoxStyles}>
-              <Typography variant="h3">Life Style</Typography>
-
-              <Typography variant="body1" sx={styles.lifeStyles}>
-                <Link href="/">{areaType}</Link>
-              </Typography>
+              <LifeStyle areaType={property.areaType} />
             </Box>
 
             <Divider sx={styles.dividerStyles} />
 
-            <FeaturesSlug features={features} />
-
+            <Box sx={styles.featuresSlugPos}>
+              <FeaturesSlug features={features} />
+            </Box>
+            
           </Box>
           <PropertyReference
             totalPrice={totalPrice}
@@ -149,7 +147,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps(context: any) {
+export async function getStaticProps(context: PageContext) {
   const slug = context.params.slug;
 
   const query = `*[ _type == "property" && slug.current == $slug][0]{

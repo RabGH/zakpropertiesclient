@@ -42,8 +42,10 @@ const MapSlug: React.FC<MapSlugProps> = ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: "10%",
-    "@media (max-width: 481px)": {},
+    gap: "20%",
+    "@media (max-width: 481px)": {
+      gap: "50%",
+    },
   };
 
   const contentBox = {

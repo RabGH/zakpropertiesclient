@@ -1,14 +1,8 @@
 export const mainStyles = {
-  p: 1.5,
-  ml: 0.5,
-  lineHeight: 0,
-  color: "#3D3D3D",
-  boxShadow: "none",
   display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "left",
   alignItems: "flex-start",
-  justifyContent: "flex-start",
-  fontSize: 16,
-  "@media (max-width: 481px)": {},
 };
 
 export const cardStyles = {
@@ -16,6 +10,7 @@ export const cardStyles = {
   flexDirection: "column",
   alignItems: "flex-start",
   justifyContent: "flex-start",
+  mr: "2rem",
 };
 
 export const boxStyles = {
@@ -26,11 +21,10 @@ export const boxStyles = {
 
 export const mainTitle = {
   mb: "1rem",
-  ml: "1rem",
   display: "flex",
   alignItems: "flex-start",
-  justifyContent: "flex-start",
+  justifyContent: "left",
   "@media (max-width: 481px)": {
-    mr: "2rem",
+    mr: "3rem",
   },
 };
