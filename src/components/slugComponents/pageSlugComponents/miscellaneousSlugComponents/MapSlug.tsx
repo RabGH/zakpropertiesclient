@@ -42,7 +42,8 @@ const MapSlug: React.FC<MapSlugProps> = ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: "20rem",
+    gap: "10%",
+    "@media (max-width: 481px)": {},
   };
 
   const contentBox = {
@@ -50,6 +51,7 @@ const MapSlug: React.FC<MapSlugProps> = ({
     flexDirection: "column",
     alignItems: "flex-start",
     width: "100%",
+    minWidth: "30vw",
   };
 
   const mapIconBox = {

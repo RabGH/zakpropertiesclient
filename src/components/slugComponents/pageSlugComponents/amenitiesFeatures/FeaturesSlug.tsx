@@ -21,18 +21,18 @@ export const featuresStyles = {
 
 const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
   return (
-    <Box sx={cardStyles}>
-      <Typography variant="h3" sx={mainTitle}>
-        {features?.name ?? "Features"}
-      </Typography>
-      <Box sx={boxStyles}>
-        {features?.features?.map((opt) => (
-          <Typography key={opt} variant="body2" sx={mainStyles}>
-            {opt}
-          </Typography>
-        ))}
+      <Box sx={cardStyles}>
+        <Typography variant="h3" sx={mainTitle}>
+          {features?.name ?? "Features"}
+        </Typography>
+        <Box sx={boxStyles}>
+          {features?.features?.map((opt) => (
+            <Typography key={opt} variant="body2" sx={mainStyles}>
+              {opt}
+            </Typography>
+          ))}
+        </Box>
       </Box>
-    </Box>
   );
 };
 

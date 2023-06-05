@@ -51,7 +51,7 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
         <Button
           variant="contained"
           href="/buyProperties"
-          sx={styles.similarPropMsgStyles}
+          sx={styles.similarPropBtnStyles}
         >
           View similar properties
         </Button>

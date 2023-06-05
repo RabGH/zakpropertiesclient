@@ -21,37 +21,95 @@ const PropertyReference = ({
   squareFootage,
   bedrooms,
 }: PropertyReferenceProps) => {
+  const referenceMainBoxStyles = {};
   const stickyStyles = {
     position: "sticky",
     top: "120px",
-    margin: "1rem",
-    padding: "1rem",
+    m: "1rem",
+    p: "1rem",
     border: "none",
     borderRadius: "0.5rem",
     boxShadow: "0.2rem 0.2rem 0.2rem gray",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    maxWidth: "60%",
+    width: "80%",
+    // "@media (max-width: 768px)": {
+    //   flexDirection: "column",
+    //   justifyContent: "space-between",
+    //   alignItems: "left",
+    //   borderRadius: 0,
+    //   boxShadow: "none",
+    //   width: "100%",
+    //   bottom: 0,
+    //   position: "fixed",
+    //   m: 0,
+    //   p: 0,
+    //   zIndex: 9999,
+    //   flexWrap: "wrap",
+    //   backgroundColor: "white",
+    //   borderTop: "1px solid gray",
+    // },
   };
 
   const buttonStyles = {
     mt: "1rem",
+    "@media (max-width: 768px)": {
+      mt: 1,
+      alignSelfSelf: "flex-end",
+      order: 1,
+    },
   };
 
-  const idStyles = {};
+  const idStyles = {
+    "@media (max-width: 768px)": {
+      mt: 1,
+      lineHeight: 1.2,
+    },
+  };
   const priceStyles = {
     mt: "0.5rem",
     mb: "0.5rem",
+    "@media (max-width: 768px)": {
+      lineHeight: 1.2,
+    },
   };
+
   const mainOffPlanBoxStyles = {};
+
   const offPlanProjectBoxStyles = {};
-  const offPlanTypoStyles = {};
-  const offPlanCompletionStyles = {};
-  const readyToBuyStyles = {};
+
+  const offPlanCompletionStyles = {
+    "@media (max-width: 768px)": {
+      lineHeight: 1.2,
+    },
+  };
+
+  const readyToBuyStyles = {
+    "@media (max-width: 768px)": {
+      lineHeight: 1.2,
+    },
+  };
+
+  const offPlanTypeStyles = {
+    "@media (max-width: 768px)": {
+      display: "none",
+    },
+  };
+
+  const bedroomStyles = {
+    "@media (max-width: 768px)": {
+      display: "none",
+    },
+  };
+  const areaStyles = {
+    "@media (max-width: 768px)": {
+      display: "none",
+    },
+  };
 
   return (
-    <Box sx={{ p: 5, mt: 2 }}>
+    <Box sx={referenceMainBoxStyles}>
       <Card sx={stickyStyles}>
         <Typography variant="body1" sx={idStyles}>
           Reference ID: {_id} ({id})
@@ -59,10 +117,10 @@ const PropertyReference = ({
         <Typography variant="h6" sx={priceStyles}>
           {formatPrice(totalPrice)}
         </Typography>
-        <Typography variant="body1" sx={idStyles}>
+        <Typography variant="body1" sx={bedroomStyles}>
           {bedrooms} Bedroom{isMultiple(bedrooms)}
         </Typography>
-        <Typography variant="body1" sx={idStyles}>
+        <Typography variant="body1" sx={areaStyles}>
           Area {formatArea(squareFootage)}
         </Typography>
         <Box sx={mainOffPlanBoxStyles}>
@@ -70,7 +128,7 @@ const PropertyReference = ({
           typeof propertyOffPlan === "object" &&
           propertyOffPlan.offplan ? (
             <Box sx={offPlanProjectBoxStyles}>
-              <Typography variant="body1" sx={offPlanTypoStyles}>
+              <Typography variant="body1" sx={offPlanTypeStyles}>
                 Off-plan project
               </Typography>
               {propertyOffPlan.propertyCompletionDate && (

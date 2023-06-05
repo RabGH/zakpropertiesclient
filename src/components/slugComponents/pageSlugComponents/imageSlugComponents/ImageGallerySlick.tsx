@@ -35,6 +35,16 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
     autoplay: true,
     autoplaySpeed: 2000,
     rows: 1,
+    responsive: [
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+        },
+      },
+    ],
   };
 
   let mainImageUrl;
@@ -75,7 +85,6 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
                     width={1920}
                     height={1080}
                     style={imageStyles}
-                    objectFit="contain"
                     placeholder="blur"
                     blurDataURL="data:image/svg+xml;base64,..."
                   />

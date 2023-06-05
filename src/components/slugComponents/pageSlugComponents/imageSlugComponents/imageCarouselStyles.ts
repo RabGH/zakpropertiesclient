@@ -9,8 +9,8 @@ export const mainBox = {
   position: "relative",
   overflow: "hidden",
   paddingTop: "5vh",
-  paddingBottom: "2vh",
-  marginTop: "3.5rem",
+  paddingBottom: "3vh",
+  mr: "3.5rem",
   ".slick-active": {
     opacity: 1,
   },
@@ -20,20 +20,52 @@ export const mainBox = {
     paddingBottom: "0.5rem",
     paddingTop: "0.5rem",
   },
+  "@media (max-width: 1440px)": {},
+  "@media (max-width: 1281px)": {},
+  "@media (max-width: 1025px)": {},
+  "@media (max-width: 961px)": {},
+  "@media (max-width: 768px)": {},
+  "@media (max-width: 641px)": {},
+  "@media (max-width: 600px)": {
+    mt: "4rem",
+  },
+  "@media (max-width: 481px)": {
+    mt: "4rem",
+  },
+  "@media (max-width: 400px)": {},
+  "@media (max-width: 375px)": {},
+  "@media (max-width: 360px)": {},
+  "@media (max-width: 320px)": {},
 };
 
 export const imageBox = {
   height: "30vw",
   width: "30%",
+  "@media (max-width: 960px)": {
+    height: "80vw",
+    width: "100%",
+  },
 };
 
 export const imageStyles = {
   display: "flex",
   width: "100%",
   height: "100%",
+  "@media (max-width: 1440px)": {},
+  "@media (max-width: 1281px)": {},
+  "@media (max-width: 1025px)": {},
+  "@media (max-width: 961px)": {},
+  "@media (max-width: 768px)": {},
+  "@media (max-width: 641px)": {},
+  "@media (max-width: 600px)": {},
+  "@media (max-width: 481px)": {},
+  "@media (max-width: 400px)": {},
+  "@media (max-width: 375px)": {},
+  "@media (max-width: 360px)": {},
+  "@media (max-width: 320px)": {},
 };
 
 export const viewPhotosBox = {
   ml: "2rem",
-  mb: "1rem",
+  mt: "2rem",
 };
