@@ -29,6 +29,7 @@ export const CardStyles = () => {
       overflowX: "auto",
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
+      webkitOverflowScrolling: "touch",
       "@media (min-width: 1024px)": {
         overflowX: "auto",
         "&::before, &::after": {
@@ -72,13 +73,13 @@ export const CardStyles = () => {
         width: "480px",
       },
       "@media (max-width: 481px)": {
-        width: "400px",
+        width: "365px",
       },
       "@media (max-width: 400px)": {
         width: "375px",
       },
       "@media (max-width: 375px)": {
-        width: "365px",
+        width: "360px",
       },
       "@media (max-width: 360px)": {
         width: "345px",

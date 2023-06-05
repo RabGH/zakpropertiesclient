@@ -18,6 +18,7 @@ export const getSimilarPropertyGridCardStyles = () => {
       flexShrink: 0,
       flexBasis: "33%",
       mt: "1.5rem",
+      mb: "1.5rem",
     },
     similarMainBox: {
       display: "flex",
@@ -30,6 +31,7 @@ export const getSimilarPropertyGridCardStyles = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      justifyContent: "center",
     },
     similarNoPropMsgStyles: {
       width: "50%",
@@ -43,22 +45,16 @@ export const getSimilarPropertyGridCardStyles = () => {
       mb: "3rem",
     },
     similarViewMoreBtnStyles: {
-      maxWidth: "300px",
       margin: "0 auto",
       mt: "2rem",
       mb: "3rem",
+      ml: "4rem",
     },
     similarMainTitleStyles: {
       mb: "1rem",
       ml: "5rem",
       display: "flex",
       justifyContent: "flex-start",
-    },
-
-    swipeToViewMoreText: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
     },
   };
 };

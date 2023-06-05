@@ -48,9 +48,6 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
           </Box>
         )}
       </Box>
-      <Typography variant="body1" sx={styles.swipeToViewMoreText}>
-        Swipe
-      </Typography>
       {similarProperties.length > viewButton && (
         <Button
           variant="contained"
