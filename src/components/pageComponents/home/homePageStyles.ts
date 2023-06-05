@@ -124,6 +124,14 @@ export const getHomePageStyles = () => {
     },
 
     projectCards: {},
+    homePropertyCardsComponentPos: {
+      display: "flex",
+      width: "100%",
+      margin: "0 auto",
+      overflowX: "auto",
+      whiteSpace: "nowrap",
+      scrollSnapType: "x mandatory",
+    },
     homeHeaderContainerBox: {
       mb: "5rem",
     },

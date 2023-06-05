@@ -27,9 +27,16 @@ export const getPropertyPageStyles = () => {
       mb: 4,
     },
 
+    outterDividerStyles: {
+      width: "50%",
+      mb: 4,
+      ml: "5rem",
+    },
+
     lifeStyles: {
       mt: 1,
     },
+
     lifeBoxStyles: {
       pr: 3,
       pl: 3,

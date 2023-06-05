@@ -6,7 +6,11 @@ import { GetStaticProps } from "next";
 import { sanityClient } from "@lib/sanity";
 import { previewClient } from "@lib/client";
 import { Property, Project } from "@lib/types";
-import HomePropertyCardsComponent from "@/components/slugComponents/cardSlugs/homePropertyCards/homePropertyCardsComponent";
+
+import PropertyTownCardBodyData from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyTownCards";
+import PropertyAptCardBodyData from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyAptCards";
+import PropertyVillaCardBodyData from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyVillaCards";
+
 import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
 import dynamic from "next/dynamic";
 import { getHomePageStyles } from "@/components/pageComponents/home/homePageStyles";
@@ -47,7 +51,15 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
             </Typography>
           </Box>
 
-          <HomePropertyCardsComponent properties={properties} />
+          <Box sx={styles.homePropertyCardsComponentPos}>
+            <PropertyAptCardBodyData properties={properties} />
+          </Box>
+          <Box sx={styles.homePropertyCardsComponentPos}>
+            <PropertyTownCardBodyData properties={properties} />
+          </Box>
+          <Box sx={styles.homePropertyCardsComponentPos}>
+            <PropertyVillaCardBodyData properties={properties} />
+          </Box>
 
           <Divider sx={styles.dividerStyles}>
             <Typography variant="h5" sx={styles.homeFeaturedTitlePos}>

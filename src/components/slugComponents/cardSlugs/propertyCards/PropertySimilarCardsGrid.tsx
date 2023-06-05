@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { Property } from "@lib/types";
 import { filterSimilarProperties } from "../cardComponents/filterSimilarPropertiesFunction"; // import the function
 import PropertyAllCard from "@/components/slugComponents/cardSlugs/buyPropertiesCardComponents/PropertyAllCards";
@@ -25,31 +25,12 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
       <Typography variant="h3" sx={styles.similarMainTitleStyles}>
         Similar Properties
       </Typography>
-      <Grid
-        container
-        direction={{
-          xs: "row",
-          sm: "row",
-          md: "row",
-          lg: "row",
-          xl: "row",
-        }}
-        spacing={1}
-        sx={styles.similarCardGridContainerStyles}
-      >
+      <Box sx={styles.similarCardGridContainerStyles}>
         {similarProperties.length > 0 ? (
           similarProperties.slice(0, maxSimilar).map((property) => (
-            <Grid
-              item
-              xs={4}
-              sm={4}
-              md={4}
-              lg={4}
-              key={property._id}
-              sx={styles.similarCardGridItemStyles}
-            >
+            <Box key={property._id} sx={styles.similarCardGridItemStyles}>
               <PropertyAllCard property={property} />
-            </Grid>
+            </Box>
           ))
         ) : (
           <Box sx={styles.similarViewMoreBoxStyles}>
@@ -65,7 +46,7 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
             </Button>
           </Box>
         )}
-      </Grid>
+      </Box>
       {similarProperties.length > viewButton && (
         <Button
           variant="contained"

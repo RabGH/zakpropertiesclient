@@ -16,6 +16,8 @@ export const getSimilarPropertyGridCardStyles = () => {
       justifyContent: "center",
       scrollSnapAlign: "start",
       flexShrink: 0,
+      flexBasis: "33%",
+      mt: "1.5rem",
     },
     similarMainBox: {
       display: "flex",
@@ -46,6 +48,7 @@ export const getSimilarPropertyGridCardStyles = () => {
     },
     similarMainTitleStyles: {
       mb: "1rem",
+      ml: "5rem",
       display: "flex",
       justifyContent: "flex-start",
     },

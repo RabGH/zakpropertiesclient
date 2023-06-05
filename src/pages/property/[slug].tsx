@@ -1,9 +1,7 @@
 import { sanityClient } from "@lib/sanity";
 import { getAllPropertySlugs } from "@lib/getStaticPaths";
 import { isMultiple, formatPrice, formatArea } from "@lib/utils";
-import { Box, Typography, Button, Divider } from "@mui/material";
-import { BiBed } from "react-icons/bi";
-import { BiBath } from "react-icons/bi";
+import { Box, Typography, Divider } from "@mui/material";
 import FeaturesSlug from "../../components/slugComponents/pageSlugComponents/amenitiesFeatures/FeaturesSlug";
 import { featuresStyles } from "../../components/slugComponents/pageSlugComponents/amenitiesFeatures/FeaturesSlug";
 import dynamic from "next/dynamic";
@@ -132,11 +130,13 @@ const Property = ({
           />
         </Box>
       </Box>
-      <Divider sx={styles.dividerStyles} />
-      <Box sx={styles.propertySimilarCardsPos}>
-        <PropertySimilarCards property={property} properties={properties} />
+      <Box>
+        <Divider sx={styles.outterDividerStyles} />
+        <Box sx={styles.propertySimilarCardsPos}>
+          <PropertySimilarCards property={property} properties={properties} />
+        </Box>
+        <Divider sx={styles.dividerStyles} />
       </Box>
-      <Divider sx={styles.dividerStyles} />
     </>
   );
 };
