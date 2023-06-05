@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Box, Typography, Card, Divider, Grid } from "@mui/material";
 import { Property } from "@lib/types";
 import { CardStyles } from "../cardComponents/cardStyles";
-
+import moment from "moment";
 import CardImageCarousel from "../cardComponents/CardImageCarousel";
 
 interface PropertyAptCardBodyProps {
@@ -97,10 +97,10 @@ const PropertyAptCardBodyData = ({ properties }: PropertyAptCardBodyProps) => {
                                     sx={styles.offPlanCompleteStyles}
                                   >
                                     Completion date:{" "}
-                                    {
+                                    {moment(
                                       property.propertyOffPlan
                                         .propertyCompletionDate
-                                    }
+                                    ).format("YYYY-MM-DD")}
                                   </Typography>
                                 )}
                               </Box>

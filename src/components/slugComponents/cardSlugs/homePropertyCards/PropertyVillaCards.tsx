@@ -1,10 +1,10 @@
-import { urlFor, sanityClient } from "@lib/sanity";
+import { urlFor } from "@lib/sanity";
 import { isMultiple, formatPrice, formatArea } from "@lib/utils";
-import Image from "next/image";
 import Link from "next/link";
-import { Box, Typography, Container, Card, Divider, Grid } from "@mui/material";
+import { Box, Typography, Card, Divider, Grid } from "@mui/material";
 import { Property } from "@lib/types";
 import { CardStyles } from "../cardComponents/cardStyles";
+import moment from "moment";
 import CardImageCarousel from "../cardComponents/CardImageCarousel";
 
 interface PropertyVillaCardBodyProps {
@@ -98,11 +98,10 @@ const PropertyVillaCardBodyData = ({
                                     variant="body1"
                                     sx={styles.offPlanCompleteStyles}
                                   >
-                                    Completion date:{" "}
-                                    {
+                                    {moment(
                                       property.propertyOffPlan
                                         .propertyCompletionDate
-                                    }
+                                    ).format("YYYY-MM-DD")}
                                   </Typography>
                                 )}
                               </Box>
