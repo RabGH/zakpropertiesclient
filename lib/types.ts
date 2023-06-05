@@ -1,7 +1,7 @@
 export interface Property {
   id: string;
   _id: string;
-  createdAt?: Date;
+  createdAt: Date;
   title: string;
   propertyType: string;
   mainPropertyImage: string;

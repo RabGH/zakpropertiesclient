@@ -4,20 +4,25 @@ export const getSimilarPropertyGridCardStyles = () => {
   const muiTheme = useTheme();
 
   return {
-    similarCardGridStyles: {
+    similarCardGridContainerStyles: {
+      display: "flex",
       width: "100%",
-      maxWidth: "1350px",
       margin: "0 auto",
+      overflowX: "auto",
+      whiteSpace: "nowrap",
+      scrollSnapType: "x mandatory",
     },
-    similarCardAllGridStyles: {
+    similarCardGridItemStyles: {
       justifyContent: "center",
+      scrollSnapAlign: "start",
+      flexShrink: 0,
     },
     similarMainBox: {
       display: "flex",
-      alignItems: "center",
+      alignItems: "left",
       justifyContent: "center",
       flexDirection: "column",
-      padding: muiTheme.spacing(2),
+      p: "1rem",
     },
     similarViewMoreBoxStyles: {
       display: "flex",
@@ -25,11 +30,24 @@ export const getSimilarPropertyGridCardStyles = () => {
       alignItems: "center",
     },
     similarNoPropMsgStyles: {
-      margin: muiTheme.spacing(1),
+      width: "50%",
+      maxWidth: "300px",
+      margin: "0 auto",
+    },
+    similarPropMsgStyles: {
+      width: "50%",
+      maxWidth: "300px",
+      margin: "0 auto",
     },
     similarViewMoreBtnStyles: {
-      margin: muiTheme.spacing(1),
+      m: "1rem",
+      maxWdith: "300px",
+      width: "100%",
     },
-    similarPropMsgStyles: {},
+    similarMainTitleStyles: {
+      mb: "1rem",
+      display: "flex",
+      justifyContent: "flex-start",
+    },
   };
 };

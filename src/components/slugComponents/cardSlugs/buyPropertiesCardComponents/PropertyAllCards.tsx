@@ -5,6 +5,7 @@ import { Box, Typography, Card } from "@mui/material";
 import { Property } from "@lib/types";
 import { CardStyles } from "../cardComponents/cardStyles";
 import CardImageCarousel from "../cardComponents/CardImageCarousel";
+import moment from "moment";
 
 interface PropertyAllCardBodyProps {
   property?: Property;
@@ -40,7 +41,7 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
               <Box sx={styles.cardInfoStyles}>
                 <Link
                   key={property._id}
-                  href={`property/${property.slug.current}`}
+                  href={`/property/${property.slug.current}`}
                 >
                   <Typography variant="body1" sx={styles.propertyTypeStyles}>
                     {property.propertyType}
@@ -64,8 +65,9 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                             variant="body1"
                             sx={styles.offPlanCompleteStyles}
                           >
-                            Completion date:{" "}
-                            {property.propertyOffPlan.propertyCompletionDate}
+                            {moment(
+                              property.propertyOffPlan.propertyCompletionDate
+                            ).format("YYYY-MM-DD")}{" "}
                           </Typography>
                         )}
                       </Box>

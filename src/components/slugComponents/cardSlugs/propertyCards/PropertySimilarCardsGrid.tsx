@@ -18,27 +18,42 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
   const similarProperties = filterSimilarProperties(property, properties);
   console.log(similarProperties);
   const maxSimilar = 3;
+  const viewButton = 1;
 
   return (
     <Box sx={styles.similarMainBox}>
-      <Grid container spacing={1} sx={styles.similarCardGridStyles}>
+      <Typography variant="h3" sx={styles.similarMainTitleStyles}>
+        Similar Properties
+      </Typography>
+      <Grid
+        container
+        direction={{
+          xs: "row",
+          sm: "row",
+          md: "row",
+          lg: "row",
+          xl: "row",
+        }}
+        spacing={1}
+        sx={styles.similarCardGridContainerStyles}
+      >
         {similarProperties.length > 0 ? (
           similarProperties.slice(0, maxSimilar).map((property) => (
             <Grid
               item
-              xs={12}
-              sm={6}
-              md={6}
+              xs={4}
+              sm={4}
+              md={4}
               lg={4}
               key={property._id}
-              sx={styles.similarCardAllGridStyles}
+              sx={styles.similarCardGridItemStyles}
             >
               <PropertyAllCard property={property} />
             </Grid>
           ))
         ) : (
           <Box sx={styles.similarViewMoreBoxStyles}>
-            <Typography variant="h6" sx={styles.similarNoPropMsgStyles}>
+            <Typography variant="h3" sx={styles.similarNoPropMsgStyles}>
               No similar properties
             </Typography>
             <Button
@@ -51,7 +66,7 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
           </Box>
         )}
       </Grid>
-      {similarProperties.length > maxSimilar && (
+      {similarProperties.length > viewButton && (
         <Button
           variant="contained"
           href="/buyProperties"

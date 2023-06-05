@@ -27,12 +27,12 @@ export const filterSimilarProperties = (
       prop.areaType.some((area) => property.areaType.includes(area));
     const cityMatch = prop.address?.city === property.address?.city;
     if (
-      typeMatch &&
-      priceMatch &&
-      bedroomMatch &&
-      sizeMatch &&
-      areaMatch &&
-      cityMatch
+      typeMatch
+      // priceMatch &&
+      // bedroomMatch &&
+      // sizeMatch &&
+      // areaMatch &&
+      // cityMatch
     ) {
       similarProperties.push(prop);
       if (similarProperties.length === maxSimilar) break;

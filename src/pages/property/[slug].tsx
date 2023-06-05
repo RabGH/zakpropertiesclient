@@ -18,7 +18,7 @@ import {
   viewPhotosBox,
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import PropertyReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyReferenceSlug";
-import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCards";
+import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCardsGrid";
 
 interface PageContext {
   query: {
@@ -121,14 +121,6 @@ const Property = ({
                 <Link href="/">{areaType}</Link>
               </Typography>
             </Box>
-            <Divider sx={styles.dividerStyles} />
-            <Box sx={styles.propertySimilarCardsPos}>
-              <PropertySimilarCards
-                property={property}
-                properties={properties}
-              />
-            </Box>
-            <Divider sx={styles.dividerStyles} />
           </Box>
           <PropertyReference
             totalPrice={totalPrice}
@@ -140,6 +132,11 @@ const Property = ({
           />
         </Box>
       </Box>
+      <Divider sx={styles.dividerStyles} />
+      <Box sx={styles.propertySimilarCardsPos}>
+        <PropertySimilarCards property={property} properties={properties} />
+      </Box>
+      <Divider sx={styles.dividerStyles} />
     </>
   );
 };
