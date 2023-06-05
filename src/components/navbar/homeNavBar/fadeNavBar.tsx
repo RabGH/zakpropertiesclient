@@ -56,7 +56,7 @@ const StyledImage = styled(Image)({
   width: "auto",
   transition: "all 0.9s ease-out",
   "@media (max-width: 600px)": {
-    width: "10rem",
+    width: "auto",
     height: "7rem",
   },
   "@media (max-width: 400px)": {

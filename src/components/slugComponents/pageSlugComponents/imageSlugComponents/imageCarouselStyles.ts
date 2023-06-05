@@ -10,6 +10,7 @@ export const mainBox = {
   overflow: "hidden",
   paddingTop: "5vh",
   paddingBottom: "3vh",
+  mt: "3.5rem",
   mr: "3.5rem",
   ".slick-active": {
     opacity: 1,

@@ -25,6 +25,7 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
       <Typography variant="h3" sx={styles.similarMainTitleStyles}>
         Similar Properties
       </Typography>
+
       <Box sx={styles.similarCardGridContainerStyles}>
         {similarProperties.length > 0 ? (
           similarProperties.slice(0, maxSimilar).map((property) => (
@@ -47,6 +48,9 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
           </Box>
         )}
       </Box>
+      <Typography variant="body1" sx={styles.swipeToViewMoreText}>
+        Swipe
+      </Typography>
       {similarProperties.length > viewButton && (
         <Button
           variant="contained"

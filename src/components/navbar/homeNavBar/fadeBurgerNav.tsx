@@ -29,7 +29,7 @@ export default function FadeBurgerNav() {
     if (trigger) {
       setVisible(true);
     } else {
-      setVisible(false);
+      setVisible(true);
     }
   }, [trigger]);
 
@@ -52,7 +52,12 @@ export default function FadeBurgerNav() {
         transition: "all 0.3s ease-out",
       }}
     >
-      <Box sx={styles.burgerNavBox}>
+      <Box
+        sx={{
+          ...styles.burgerNavBox,
+          borderColor: trigger ? "black" : "white",
+        }}
+      >
         <IconButton
           ref={anchorRef}
           onClick={handleToggle}
@@ -60,9 +65,17 @@ export default function FadeBurgerNav() {
           edge="end"
           color="inherit"
           aria-label="menu"
-          sx={{ m: "0 auto" }}
+          sx={{
+            m: "0 auto",
+            color: trigger ? "black" : "white",
+          }}
         >
-          <MenuIcon sx={styles.menuIconStyles} />
+          <MenuIcon
+            sx={{
+              ...styles.menuIconStyles,
+              color: trigger ? "black" : "white",
+            }}
+          />
         </IconButton>
         <Popover
           sx={styles.popperStyles}
@@ -136,7 +149,10 @@ export default function FadeBurgerNav() {
                 <Button
                   variant="outlined"
                   color="primary"
-                  sx={styles.signInButtonStyles}
+                  sx={{
+                    ...styles.signInButtonStyles,
+                    borderColor: trigger ? "black" : "white",
+                  }}
                 >
                   Sign In
                 </Button>

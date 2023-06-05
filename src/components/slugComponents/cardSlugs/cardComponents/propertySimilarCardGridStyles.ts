@@ -54,5 +54,11 @@ export const getSimilarPropertyGridCardStyles = () => {
       display: "flex",
       justifyContent: "flex-start",
     },
+
+    swipeToViewMoreText: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
   };
 };
