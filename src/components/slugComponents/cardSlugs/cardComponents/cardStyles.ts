@@ -21,6 +21,23 @@ export const CardStyles = () => {
       scrollSnapType: "x mandatory",
     },
 
+    // index.tsx position and scroll styles
+    homePropertyCardsComponentPos: {
+      display: "flex",
+      width: "100%",
+      margin: "0 auto",
+      overflowX: "auto",
+      whiteSpace: "nowrap",
+      scrollSnapType: "x mandatory",
+      "@media (min-width: 1024px)": {
+        overflowX: "auto",
+        "&::before, &::after": {
+          content: '""',
+          flex: 1,
+        },
+      },
+    },
+
     // Property Home Card Styles and property all card styles
     allCardStyles: {
       maxWidth: "450px",

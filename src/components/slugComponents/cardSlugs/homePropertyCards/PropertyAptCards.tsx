@@ -1,4 +1,4 @@
-import { Box, Typography, Divider } from "@mui/material";
+import { Box } from "@mui/material";
 import { Property } from "@lib/types";
 import { CardStyles } from "../cardComponents/cardStyles";
 import PropertyAllCard from "@/components/slugComponents/cardSlugs/buyPropertiesCardComponents/PropertyAllCards"; // import the component

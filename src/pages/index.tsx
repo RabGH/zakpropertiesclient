@@ -59,7 +59,7 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
               Featured Apartments
             </Typography>
           </Divider>
-          <Box sx={styles.homePropertyCardsComponentPos}>
+          <Box sx={cardStyles.homePropertyCardsComponentPos}>
             <PropertyAptCardBodyData properties={properties} />
           </Box>
 
@@ -68,7 +68,7 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
               Featured Townhouses
             </Typography>
           </Divider>
-          <Box sx={styles.homePropertyCardsComponentPos}>
+          <Box sx={cardStyles.homePropertyCardsComponentPos}>
             <PropertyTownCardBodyData properties={properties} />
           </Box>
 
@@ -77,7 +77,7 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
               Featured Villas
             </Typography>
           </Divider>
-          <Box sx={styles.homePropertyCardsComponentPos}>
+          <Box sx={cardStyles.homePropertyCardsComponentPos}>
             <PropertyVillaCardBodyData properties={properties} />
           </Box>
 

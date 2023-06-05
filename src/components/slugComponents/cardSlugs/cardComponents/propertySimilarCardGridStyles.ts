@@ -40,11 +40,13 @@ export const getSimilarPropertyGridCardStyles = () => {
       width: "50%",
       maxWidth: "300px",
       margin: "0 auto",
+      mt: "1rem",
     },
     similarViewMoreBtnStyles: {
-      m: "1rem",
-      maxWdith: "300px",
-      width: "100%",
+      width: "50%",
+      maxWidth: "300px",
+      margin: "0 auto",
+      mt: "1rem",
     },
     similarMainTitleStyles: {
       mb: "1rem",

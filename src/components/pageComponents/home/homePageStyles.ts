@@ -4,9 +4,7 @@ export const getHomePageStyles = () => {
   const muiTheme = useTheme();
   return {
     // Index Styles
-    mainBoxContainer: {
-      mt: "10rem",
-    },
+    mainBoxContainer: {},
     contentHeader: {
       fontSize: "1.4rem",
       lineHeight: "1.5",
@@ -118,20 +116,26 @@ export const getHomePageStyles = () => {
         mb: "1rem",
       },
     },
-
+    //! for the entire content container under header index.tsx
     indexMainContainer: {
       display: "flex",
+      mt: "13rem",
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1281px)": {},
+      "@media (max-width: 1025px)": {},
+      "@media (max-width: 961px)": {},
+      "@media (max-width: 768px)": {},
+      "@media (max-width: 641px)": {},
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 481px)": {},
+      "@media (max-width: 400px)": {},
+      "@media (max-width: 375px)": {},
+      "@media (max-width: 360px)": {},
+      "@media (max-width: 320px)": {},
     },
 
     projectCards: {},
-    homePropertyCardsComponentPos: {
-      display: "flex",
-      width: "100%",
-      margin: "0 auto",
-      overflowX: "auto",
-      whiteSpace: "nowrap",
-      scrollSnapType: "x mandatory",
-    },
+
     homeHeaderContainerBox: {
       mb: "5rem",
     },
