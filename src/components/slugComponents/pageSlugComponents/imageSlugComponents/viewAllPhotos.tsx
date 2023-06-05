@@ -6,6 +6,10 @@ import {
   IconButton,
   useTheme,
   styled,
+  Grid,
+  Container,
+  useMediaQuery,
+  Zoom,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { urlFor } from "@lib/sanity";
@@ -39,10 +43,7 @@ const ImageBox = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-});
-
-const EnlargedImage = styled(Image)({
-  objectFit: "contain",
+  overflow: "auto",
 });
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
@@ -79,6 +80,12 @@ const ViewAllPhotos = ({ images, alt, mainImage }: ViewAllPhotosProps) => {
   const [open, setOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const muiTheme = useTheme();
+
+  const isSmallScreen = useMediaQuery(muiTheme.breakpoints.down("sm"));
+  const isPortrait = useMediaQuery("(orientation: portrait)");
+  const imageWidth = isSmallScreen
+    ? muiTheme.breakpoints.values.sm
+    : muiTheme.breakpoints.values.md;
 
   const handleOpen = () => {
     setOpen(true);
@@ -125,26 +132,44 @@ const ViewAllPhotos = ({ images, alt, mainImage }: ViewAllPhotosProps) => {
           <CloseButton onClick={handleClose}>
             <CloseIcon />
           </CloseButton>
-          <LeftArrowButton onClick={handlePrev}>
-            <ChevronLeft fontSize="large" />
-          </LeftArrowButton>
-          {images != null && (
-            <ImageBox>
-              <EnlargedImage
-                src={activeImageUrl}
-                alt={alt}
-                style={{
-                  objectFit: "cover",
-                }}
-                fill
-                placeholder="blur"
-                blurDataURL="data:image/svg+xml;base64,..."
-              />
-            </ImageBox>
-          )}
-          <RightArrowButton onClick={handleNext}>
-            <ChevronRight fontSize="large" />
-          </RightArrowButton>
+          <Container maxWidth="lg">
+            <Grid container spacing={2} alignItems="center">
+              <Grid item xs={1}>
+                <LeftArrowButton onClick={handlePrev}>
+                  <ChevronLeft fontSize="large" />
+                </LeftArrowButton>
+              </Grid>
+              <Grid item xs={10}>
+                {images != null && (
+                  <ImageBox>
+                    {images.map((image, i) => (
+                      <Zoom in={activeImageIndex === i} key={i}>
+                        <Image
+                          src={urlFor(image).auto("format").url()}
+                          alt={alt}
+                          style={{
+                            objectFit: "cover",
+                            display: activeImageIndex === i ? "block" : "none",
+                          }}
+                          width={imageWidth}
+                          height={
+                            isPortrait ? imageWidth * 0.75 : imageWidth * 0.5
+                          }
+                          placeholder="blur"
+                          blurDataURL="data:image/svg+xml;base64,..."
+                        />
+                      </Zoom>
+                    ))}
+                  </ImageBox>
+                )}
+              </Grid>
+              <Grid item xs={1}>
+                <RightArrowButton onClick={handleNext}>
+                  <ChevronRight fontSize="large" />
+                </RightArrowButton>
+              </Grid>
+            </Grid>
+          </Container>
         </ModalBox>
       </Modal>
     </>
