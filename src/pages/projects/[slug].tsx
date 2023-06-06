@@ -8,24 +8,28 @@ import {
 } from "@lib/utils";
 import Link from "next/link";
 import { Box, Divider, Typography, Button } from "@mui/material";
-
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
-
 import ProjectPropertyCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectPropertyCards";
 import AmenitiesCard from "@/components/slugComponents/pageSlugComponents/amenitiesFeatures/AmenitiesSlug";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
-
 import { Project, Property } from "@lib/types";
 import {
   mainContainer,
   mainImageContainer,
   viewPhotosBox,
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
-
 import { getProjectPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/projectSlugStyles";
-
 import dynamic from "next/dynamic";
+
+interface PageContext {
+  query: {
+    slug: string;
+  };
+  params: {
+    slug: string;
+  };
+}
 
 const MapSlug = dynamic(
   () =>
@@ -36,6 +40,7 @@ const MapSlug = dynamic(
     ssr: false,
   }
 );
+
 interface PropertyList {
   properties: Property[];
 }
@@ -228,10 +233,10 @@ const Projects = ({
 export async function getStaticPaths() {
   const paths = await getAllProjectSlugs();
 
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 }
 
-export async function getStaticProps(context: any) {
+export async function getStaticProps(context: PageContext) {
   const slug = context.params.slug;
 
   const query = `*[ _type == "projects" && slug.current == $slug][0]{

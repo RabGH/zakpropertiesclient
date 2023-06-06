@@ -119,7 +119,6 @@ const Property = ({
             <Box sx={styles.featuresSlugPos}>
               <FeaturesSlug features={features} />
             </Box>
-            
           </Box>
           <PropertyReference
             totalPrice={totalPrice}
