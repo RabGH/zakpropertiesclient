@@ -96,7 +96,7 @@ export const getProjectPageStyles = () => {
       m: 1,
       "@media (max-width: 481px)": {},
     },
-    
+
     projectPresentationBoxStyles: {
       display: "flex",
       m: "0 auto",

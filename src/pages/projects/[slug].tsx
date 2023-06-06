@@ -163,7 +163,7 @@ const Projects = ({
             Unit types
           </Typography>
           <Typography variant="h4" sx={styles.projectPropertyTypesStyles}>
-            {projectPropertyTypes}
+            {`${projectPropertyTypes.join(" ")}`}
           </Typography>
           <Divider sx={styles.dividerStyles} />
           <Box sx={styles.lifeBoxStyles}>
