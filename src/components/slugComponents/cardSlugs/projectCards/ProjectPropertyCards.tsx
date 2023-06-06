@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { Property } from "@lib/types";
 import PropertyAllCard from "@/components/slugComponents/cardSlugs/buyPropertiesCardComponents/PropertyAllCards"; // import the component
 import { getSimilarPropertyGridCardStyles } from "../cardComponents/propertySimilarCardGridStyles"; // import the styles

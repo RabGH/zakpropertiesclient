@@ -136,7 +136,7 @@ const PropertyReference = ({
                   Completion date:{" "}
                   {moment(propertyOffPlan.propertyCompletionDate).format(
                     "YYYY-MM-DD"
-                  )}{" "}
+                  )}
                 </Typography>
               )}
             </Box>

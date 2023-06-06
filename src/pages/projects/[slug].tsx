@@ -95,7 +95,7 @@ const Projects = ({
         </Box>
         <Box sx={styles.mainSection}>
           <Typography variant="h1" sx={styles.titleStyle}>
-            {title} by {mainDeveloper} ID:{id}
+            {title} by {mainDeveloper} ID: ({id})
           </Typography>
           <Typography variant="body1" sx={styles.descriptionStyles}>
             {description}
@@ -117,7 +117,7 @@ const Projects = ({
             Price
           </Typography>
           <Typography variant="h4" sx={styles.projectPriceStyles}>
-            {formatPrice(totalPrice)}+
+            {formatPrice(totalPrice)}
           </Typography>
           <Divider sx={styles.dividerStyles} />
           <Typography variant="h3" sx={styles.projectBedroomStyles}>
@@ -131,9 +131,11 @@ const Projects = ({
             Built up area
           </Typography>
           <Typography variant="h4" sx={styles.projectBuiltUpStyles}>
-            {`${formatNumberWithCommas(projectBuiltUpArea[0])} - ${formatArea(
-              projectBuiltUpArea[1]
-            )}`}
+            {projectBuiltUpArea
+              ? `${formatNumberWithCommas(
+                  projectBuiltUpArea[0]
+                )} - ${formatArea(projectBuiltUpArea[1])}`
+              : "N/A"}
           </Typography>
           <Divider sx={styles.dividerStyles} />
 

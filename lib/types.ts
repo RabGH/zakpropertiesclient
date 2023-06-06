@@ -72,10 +72,10 @@ export interface Project {
   numFloors?: number;
   numUnits?: number;
   numOfHouses?: number;
-  bedrooms: string;
-  projectBuiltUpArea: number[];
+  bedrooms?: string;
+  projectBuiltUpArea?: number[];
   averagePrice?: number[];
-  properties: {
+  properties?: {
     properties: Property[];
   };
   slug: {

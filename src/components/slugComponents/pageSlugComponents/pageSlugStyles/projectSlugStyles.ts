@@ -31,7 +31,9 @@ export const getProjectPageStyles = () => {
       },
     },
 
-    titleStyle: {},
+    titleStyle: {
+      m: "1rem",
+    },
 
     descriptionStyles: {
       m: "1rem",
@@ -155,16 +157,18 @@ export const getProjectPageStyles = () => {
       "&:hover": {
         backgroundColor: muiTheme.palette.primary.light,
       },
-      mb: "2rem",
+      mb: "3rem",
     },
+
     projectExtraInfoBox: {
       mt: "1rem",
     },
 
     projectPropertyContainer: {
       display: "flex",
-      flexDirection: "column",
+      flexDirection: "row",
       alignItems: "center",
+      justifyContent: "center",
       mt: "1rem",
     },
 

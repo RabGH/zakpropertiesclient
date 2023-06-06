@@ -15,7 +15,7 @@ interface AmenitiesSlugProps {
 
 const AmenitiesSlug = ({ amenities }: AmenitiesSlugProps) => {
   return (
-    <Box sx={{...cardStyles, alignItems: "left",}}>
+    <Box sx={{ ...cardStyles, alignItems: "left" }}>
       <Typography variant="h3" sx={mainTitle}>
         {amenities?.name ?? "Amenities"}
       </Typography>
