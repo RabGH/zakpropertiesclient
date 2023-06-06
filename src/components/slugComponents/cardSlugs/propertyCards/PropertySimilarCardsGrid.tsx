@@ -16,7 +16,6 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
 }) => {
   const styles = getSimilarPropertyGridCardStyles();
   const similarProperties = filterSimilarProperties(property, properties);
-  console.log(similarProperties);
   const maxSimilar = 3;
   const viewButton = 1;
 
