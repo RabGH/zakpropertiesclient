@@ -3,12 +3,12 @@ import { useTheme } from "@mui/material";
 export const CardStyles = () => {
   const theme = useTheme();
   return {
-    // PropertyAptCards Villa And Town styles
+    // PropertyAptCards Villa And Town styles AND ProjectPropertyCards
     homeItemCardBoxStyles: {
       justifyContent: "center",
       scrollSnapAlign: "start",
       flexShrink: 0,
-      flexBasis: "33%",
+      minWidth: "33%",
       mt: "1.5rem",
     },
 
@@ -18,10 +18,10 @@ export const CardStyles = () => {
       margin: "0 auto",
       overflowX: "auto",
       whiteSpace: "nowrap",
-      scrollSnapType: "x mandatory",
+      scrollSnapType: "none",
     },
 
-    // index.tsx position and scroll styles
+    // index.tsx position and scroll styles AND ProjectPropertyCards
     homePropertyCardsComponentPos: {
       display: "flex",
       width: "100%",
@@ -39,7 +39,7 @@ export const CardStyles = () => {
       },
     },
 
-    // Property Home Card Styles and property all card styles
+    // Property Home Card Styles and property all card styles AND ProjectPropertyCards
     allCardStyles: {
       maxWidth: "450px",
       maxHeight: "510px",

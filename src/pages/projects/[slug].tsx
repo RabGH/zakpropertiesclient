@@ -211,12 +211,12 @@ const Projects = ({
           <Divider>
             <Typography variant="h3">Project Properties</Typography>
           </Divider>
-
-          <Box sx={styles.projectPropertyContainer}>
+          <Box sx={styles.projectPropertyBoxPos}>
             {properties?.slice(0, 3).map((property: Property) => (
-              <Box key={property._id}>
-                <ProjectPropertyCards properties={[property]} />
-              </Box>
+              <ProjectPropertyCards
+                properties={[property]}
+                key={property._id}
+              />
             ))}
           </Box>
           <Box sx={styles.viewMoreProperties}>

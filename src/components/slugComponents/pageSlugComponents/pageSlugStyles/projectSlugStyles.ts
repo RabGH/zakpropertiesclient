@@ -161,15 +161,32 @@ export const getProjectPageStyles = () => {
     },
 
     projectExtraInfoBox: {
+      m: 1,
+    },
+
+    projectPropertyBoxPos: {
       mt: "1rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      m: "0 auto",
+      overflowX: "auto",
+      whiteSpace: "nowrap",
+      scrollSnapType: "x mandatory",
     },
 
     projectPropertyContainer: {
       display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
+      width: "100%",
+      margin: "0 auto",
       justifyContent: "center",
-      mt: "1rem",
+      "@media (min-width: 1024px)": {
+        overflowX: "auto",
+        "&::before, &::after": {
+          content: '""',
+          flex: 1,
+        },
+      },
     },
 
     viewMoreProperties: {
