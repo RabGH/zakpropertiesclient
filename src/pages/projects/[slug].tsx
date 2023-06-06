@@ -93,139 +93,131 @@ const Projects = ({
             alt={title}
           />
         </Box>
-        <Box sx={styles.mainSection}>
-          <Typography variant="h1" sx={styles.titleStyle}>
-            {title} by {mainDeveloper} ID: ({id})
-          </Typography>
-          <Typography variant="body1" sx={styles.descriptionStyles}>
-            {description}
-          </Typography>
-          <Button
-            href="/contactUs"
-            variant="contained"
-            sx={styles.buttonStyles}
-          >
-            Request Information
-          </Button>
-        </Box>
-        <Box sx={styles.projectInfoStyles}>
-          <Typography variant="h3" sx={styles.projectInfoTitleStyles}>
-            Project's Information
-          </Typography>
-          <Divider sx={styles.dividerStyles} />
-          <Typography variant="h3" sx={styles.projectPriceStyles}>
-            Price
-          </Typography>
-          <Typography variant="h4" sx={styles.projectPriceStyles}>
-            {formatPrice(totalPrice)}
-          </Typography>
-          <Divider sx={styles.dividerStyles} />
-          <Typography variant="h3" sx={styles.projectBedroomStyles}>
-            Bedrooms
-          </Typography>
-          <Typography variant="h4" sx={styles.projectBedroomStyles}>
-            {bedrooms}
-          </Typography>
-          <Divider sx={styles.dividerStyles} />
-          <Typography variant="h3" sx={styles.projectBuiltUpStyles}>
-            Built up area
-          </Typography>
-          <Typography variant="h4" sx={styles.projectBuiltUpStyles}>
-            {projectBuiltUpArea
-              ? `${formatNumberWithCommas(
-                  projectBuiltUpArea[0]
-                )} - ${formatArea(projectBuiltUpArea[1])}`
-              : "N/A"}
-          </Typography>
-          <Divider sx={styles.dividerStyles} />
+      </Box>
+      <Box sx={styles.mainSection}>
+        <Typography variant="h1" sx={styles.titleStyle}>
+          {title} by {mainDeveloper} ID: ({id})
+        </Typography>
+        <Typography variant="body1" sx={styles.descriptionStyles}>
+          {description}
+        </Typography>
+        <Button href="/contactUs" variant="contained" sx={styles.buttonStyles}>
+          Request Information
+        </Button>
+      </Box>
+      <Box sx={styles.projectInfoStyles}>
+        <Typography variant="h3" sx={styles.projectInfoTitleStyles}>
+          Project's Information
+        </Typography>
+        <Divider sx={styles.dividerStyles} />
+        <Typography variant="h3" sx={styles.projectPriceStyles}>
+          Price
+        </Typography>
+        <Typography variant="h4" sx={styles.projectPriceStyles}>
+          {formatPrice(totalPrice)}
+        </Typography>
+        <Divider sx={styles.dividerStyles} />
+        <Typography variant="h3" sx={styles.projectBedroomStyles}>
+          Bedrooms
+        </Typography>
+        <Typography variant="h4" sx={styles.projectBedroomStyles}>
+          {bedrooms}
+        </Typography>
+        <Divider sx={styles.dividerStyles} />
+        <Typography variant="h3" sx={styles.projectBuiltUpStyles}>
+          Built up area
+        </Typography>
+        <Typography variant="h4" sx={styles.projectBuiltUpStyles}>
+          {projectBuiltUpArea
+            ? `${formatNumberWithCommas(projectBuiltUpArea[0])} - ${formatArea(
+                projectBuiltUpArea[1]
+              )}`
+            : "N/A"}
+        </Typography>
+        <Divider sx={styles.dividerStyles} />
 
-          {projectType === "building" ? (
-            <>
-              <Typography variant="h3" sx={styles.projectNumFloorsStyles}>
-                Number of floors
-              </Typography>
-              <Typography variant="h4" sx={styles.projectNumFloorsStyles}>
-                {numFloors}
-              </Typography>
-              <Divider sx={styles.dividerStyles} />
-              <Typography variant="h3" sx={styles.projectNumUnitsStyles}>
-                Number of units
-              </Typography>
-              <Typography variant="h4" sx={styles.projectNumUnitsStyles}>
-                {numUnits}
-              </Typography>
-            </>
-          ) : (
-            <>
-              <Typography variant="h3" sx={styles.projectNumOfHousesStyles}>
-                Number of houses
-              </Typography>
-              <Typography variant="h4" sx={styles.projectNumOfHousesStyles}>
-                {numOfHouses}
-              </Typography>
-            </>
-          )}
-          <Divider sx={styles.dividerStyles} />
-          <Typography variant="h3" sx={styles.projectPropertyTypesStyles}>
-            Unit types
-          </Typography>
-          <Typography variant="h4" sx={styles.projectPropertyTypesStyles}>
-            {`${projectPropertyTypes.join(" ")}`}
-          </Typography>
-          <Divider sx={styles.dividerStyles} />
-          <Box sx={styles.lifeBoxStyles}>
-            <LifeStyle areaType={areaType} />
-          </Box>
-          <Divider sx={styles.dividerStyles} />
-          <Box sx={styles.amenitiesSlugPos}>
-            <AmenitiesCard amenities={amenities} />
-          </Box>
-          <Divider sx={styles.dividerStyles} />
-          <Box sx={styles.projectLocationPos}>
-            <MapSlug
-              title={title}
-              lat={location?.lat || 0}
-              lng={location?.lng || 0}
-              address={address}
-              specificAddress={specificAddress}
-            />
-          </Box>
+        {projectType === "building" ? (
+          <>
+            <Typography variant="h3" sx={styles.projectNumFloorsStyles}>
+              Number of floors
+            </Typography>
+            <Typography variant="h4" sx={styles.projectNumFloorsStyles}>
+              {numFloors}
+            </Typography>
+            <Divider sx={styles.dividerStyles} />
+            <Typography variant="h3" sx={styles.projectNumUnitsStyles}>
+              Number of units
+            </Typography>
+            <Typography variant="h4" sx={styles.projectNumUnitsStyles}>
+              {numUnits}
+            </Typography>
+          </>
+        ) : (
+          <>
+            <Typography variant="h3" sx={styles.projectNumOfHousesStyles}>
+              Number of houses
+            </Typography>
+            <Typography variant="h4" sx={styles.projectNumOfHousesStyles}>
+              {numOfHouses}
+            </Typography>
+          </>
+        )}
+        <Divider sx={styles.dividerStyles} />
+        <Typography variant="h3" sx={styles.projectPropertyTypesStyles}>
+          Unit types
+        </Typography>
+        <Typography variant="h4" sx={styles.projectPropertyTypesStyles}>
+          {`${projectPropertyTypes.join(" ")}`}
+        </Typography>
+        <Divider sx={styles.dividerStyles} />
+        <Box sx={styles.lifeBoxStyles}>
+          <LifeStyle areaType={areaType} />
         </Box>
+        <Divider sx={styles.dividerStyles} />
+        <Box sx={styles.amenitiesSlugPos}>
+          <AmenitiesCard amenities={amenities} />
+        </Box>
+        <Divider sx={styles.dividerStyles} />
+        <Box sx={styles.projectLocationPos}>
+          <MapSlug
+            title={title}
+            lat={location?.lat || 0}
+            lng={location?.lng || 0}
+            address={address}
+            specificAddress={specificAddress}
+          />
+        </Box>
+      </Box>
 
-        <Box sx={styles.projectPresentationBoxStyles}>
-          <Typography variant="h3" sx={styles.projectPresentationTitleStyles}>
-            Presentation
-          </Typography>
-          <Typography variant="body1" sx={styles.presentationStyles}>
-            {presentation}
-          </Typography>
-          <Button
-            variant="contained"
-            sx={styles.buttonStyles}
-            href="/contactUs"
-          >
-            Contact for more
+      <Box sx={styles.projectPresentationBoxStyles}>
+        <Typography variant="h3" sx={styles.projectPresentationTitleStyles}>
+          Presentation
+        </Typography>
+        <Typography variant="body1" sx={styles.presentationStyles}>
+          {presentation}
+        </Typography>
+        <Button variant="contained" sx={styles.buttonStyles} href="/contactUs">
+          Contact for more
+        </Button>
+      </Box>
+      <Box sx={styles.projectPropertiesTitleStyles}>
+        <Divider>
+          <Typography variant="h3">Project Properties</Typography>
+        </Divider>
+      </Box>
+      <Box sx={styles.projectPropertyContainer}>
+        {properties?.slice(0, 3).map((property: Property) => (
+          <Box sx={styles.projectPropertyItem}>
+            <PropertyAllCard property={property} />
+          </Box>
+        ))}
+      </Box>
+      <Box sx={styles.viewMoreProperties}>
+        <Link href="/buyProperties">
+          <Button variant="contained" sx={styles.buttonStyles}>
+            View More Properties
           </Button>
-        </Box>
-        <Box sx={styles.projectPropertiesTitleStyles}>
-          <Divider>
-            <Typography variant="h3">Project Properties</Typography>
-          </Divider>
-        </Box>
-        <Box sx={styles.projectPropertyContainer}>
-          {properties?.slice(0, 3).map((property: Property) => (
-            <Box sx={styles.projectPropertyItem}>
-              <PropertyAllCard property={property} />
-            </Box>
-          ))}
-        </Box>
-        <Box sx={styles.viewMoreProperties}>
-          <Link href="/buyProperties">
-            <Button variant="contained" sx={styles.buttonStyles}>
-              View More Properties
-            </Button>
-          </Link>
-        </Box>
+        </Link>
       </Box>
     </>
   );

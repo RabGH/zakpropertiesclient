@@ -131,7 +131,6 @@ export const getProjectPageStyles = () => {
     presentationStyles: {
       m: 1,
       mt: "2rem",
-      mb: "2rem",
       pl: "15%",
       pr: "15%",
       fontSize: "1.2rem",
@@ -160,24 +159,20 @@ export const getProjectPageStyles = () => {
         backgroundColor: muiTheme.palette.primary.light,
       },
       mb: "3rem",
+      mt: "3rem",
     },
 
     projectPropertyItem: {
       scrollSnapAlign: "start",
-      flexShrink: 0,
       flexBasis: "33%",
-      mt: "1.5rem",
-      mb: "1.5rem",
     },
 
     projectPropertyContainer: {
       display: "flex",
-      width: "100%",
-      margin: "0 auto",
       overflowX: "auto",
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
-      justifyContent: "center",
+      p: "1%",
     },
 
     viewMoreProperties: {

@@ -6,24 +6,18 @@ export const getSimilarPropertyGridCardStyles = () => {
   return {
     similarCardGridContainerStyles: {
       display: "flex",
-      width: "100%",
-      margin: "0 auto",
       overflowX: "auto",
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
-      justifyContent: "center",
+      p: "1%",
     },
     similarCardGridItemStyles: {
       scrollSnapAlign: "start",
-      flexShrink: 0,
       flexBasis: "33%",
-      mt: "1.5rem",
-      mb: "1.5rem",
     },
     similarMainBox: {
       display: "flex",
       alignItems: "left",
-      justifyContent: "center",
       flexDirection: "column",
       p: "1rem",
     },

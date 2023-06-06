@@ -39,7 +39,7 @@ export const CardStyles = () => {
       },
     },
 
-    // Property Home Card Styles and property all card styles AND ProjectPropertyCards
+    // Property all card styles
     allCardStyles: {
       maxWidth: "450px",
       maxHeight: "510px",

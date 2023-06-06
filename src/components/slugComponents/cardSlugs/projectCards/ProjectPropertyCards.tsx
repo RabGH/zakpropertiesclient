@@ -7,7 +7,7 @@ interface ProjectPropertyCardsProps {
   properties: Property[];
   projects?: Property[];
 }
-
+//! Not in use
 const ProjectPropertyCards = ({ properties }: ProjectPropertyCardsProps) => {
   const styles = CardStyles();
 
