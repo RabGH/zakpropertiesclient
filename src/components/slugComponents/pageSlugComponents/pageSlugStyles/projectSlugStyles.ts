@@ -85,15 +85,18 @@ export const getProjectPageStyles = () => {
     projectPropertyTypesStyles: {
       m: 1,
     },
+    lifeBoxStyles: {
+      m: 1,
+    },
     amenitiesSlugPos: {
       m: 1,
       "@media (max-width: 481px)": {},
     },
-
     projectLocationPos: {
       m: 1,
       "@media (max-width: 481px)": {},
     },
+    
     projectPresentationBoxStyles: {
       display: "flex",
       m: "0 auto",

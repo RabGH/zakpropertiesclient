@@ -7,32 +7,25 @@ import {
   isMultiple,
 } from "@lib/utils";
 import Link from "next/link";
-import {
-  Box,
-  Divider,
-  Typography,
-  Card,
-  Container,
-  Button,
-} from "@mui/material";
+import { Box, Divider, Typography, Button } from "@mui/material";
+
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
+import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
 
-//! Fix Cards
 import ProjectPropertyCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectPropertyCards";
-
-import dynamic from "next/dynamic";
 import AmenitiesCard from "@/components/slugComponents/pageSlugComponents/amenitiesFeatures/AmenitiesSlug";
-import { Project, Property, PageContext } from "@lib/types";
+import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
+
+import { Project, Property } from "@lib/types";
 import {
   mainContainer,
   mainImageContainer,
   viewPhotosBox,
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
-import { CardStyles } from "@/components/slugComponents/cardSlugs/cardComponents/cardStyles";
-import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
 
 import { getProjectPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/projectSlugStyles";
-// import { getGeneralSlugStyles } from "../../components/pageComponents/pageSlugStyles/generalSlugStyles";
+
+import dynamic from "next/dynamic";
 
 const MapSlug = dynamic(
   () =>
@@ -76,8 +69,6 @@ const Projects = ({
   properties,
 }: ProjectsProps) => {
   const styles = getProjectPageStyles();
-  const cardStyles = CardStyles();
-  // const generalStyles = getGeneralSlugStyles();
 
   return (
     <>
@@ -99,7 +90,7 @@ const Projects = ({
         </Box>
         <Box sx={styles.mainSection}>
           <Typography variant="h1" sx={styles.titleStyle}>
-            {title}
+            {title} by {mainDeveloper} ID:{id}
           </Typography>
           <Typography variant="body1" sx={styles.descriptionStyles}>
             {description}
@@ -174,6 +165,10 @@ const Projects = ({
           <Typography variant="h4" sx={styles.projectPropertyTypesStyles}>
             {projectPropertyTypes}
           </Typography>
+          <Divider sx={styles.dividerStyles} />
+          <Box sx={styles.lifeBoxStyles}>
+            <LifeStyle areaType={areaType} />
+          </Box>
           <Divider sx={styles.dividerStyles} />
           <Box sx={styles.amenitiesSlugPos}>
             <AmenitiesCard amenities={amenities} />
