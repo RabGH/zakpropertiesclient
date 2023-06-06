@@ -74,140 +74,52 @@ const Projects = ({
   // const generalStyles = getGeneralSlugStyles();
 
   return (
-    <Box sx={mainContainer}>
-      <Box sx={mainImageContainer}>
-        <ImageCarousel
-          mainImage={mainProjectImage}
-          images={projectImages}
-          alt={title}
-        />
-      </Box>
-      <Box sx={viewPhotosBox}>
-        <ViewAllPhotos
-          mainImage={mainProjectImage}
-          images={projectImages}
-          alt={title}
-        />
-      </Box>
-      <Box sx={styles.contentContainer}>
-        <Box sx={styles.titleContainer}>
-          <Typography variant="h2" sx={styles.titleStyles}>
-            {title}
-          </Typography>
-          <Typography variant="h5" sx={styles.priceStyles}>
-            {formatPrice(totalPrice)}
-          </Typography>
+    <>
+      <Box sx={mainContainer}>
+        <Box sx={mainImageContainer}>
+          <ImageCarousel
+            mainImage={mainProjectImage}
+            images={projectImages}
+            alt={title}
+          />
         </Box>
 
-        <Container>
-          <Divider sx={styles.dividerStyles} />
-
-          <Box>
-            <Typography variant="h6" sx={styles.mainDeveloperStyles}>
-              Developed by {mainDeveloper}
-            </Typography>
-            {/* <Typography variant="body1">
-Street and City: {address.street}, {address.city}
-</Typography> */}
-            {/* <Typography variant="body1">Address: {specificAddress}</Typography> */}
-          </Box>
-
-          <Box sx={styles.offPlanStyles}>
-            {projectOffPlan &&
-            typeof projectOffPlan === "object" &&
-            projectOffPlan.offplan ? (
-              <Box>
-                <Typography variant="body1" sx={styles.offPlanTextStyles}>
-                  Off-plan project
-                </Typography>
-                {projectOffPlan.completionDate && (
-                  <Typography variant="body1" sx={styles.offPlanCompleteStyles}>
-                    Completion date: {projectOffPlan.completionDate}
-                  </Typography>
-                )}
-              </Box>
-            ) : (
-              <Typography>Ready to buy Properties</Typography>
-            )}{" "}
-          </Box>
-
-          <Box sx={styles.mainSection}>
-            <Box>
-              <Typography variant="body1" sx={styles.projectTypeStyles}>
-                Types of Housing Built: {projectPropertyTypes}
-              </Typography>
-            </Box>
-
-            <Box>
-              <Typography variant="body1" sx={styles.unitTypeStyles}>
-                Unit types {unitType}
-              </Typography>
-              <Typography variant="body1" sx={styles.areaTypeStyles}>
-                Type of Area: {areaType}
-              </Typography>
-              <Typography variant="body1" sx={styles.projectBedroomStyles}>
-                Number of Bedrooms: {bedrooms}
-              </Typography>
-            </Box>
-
-            <Box sx={styles.bodyStyles}>
-              <Typography variant="body1" sx={styles.squareFootageStyles}>
-                Built-up Area: {formatArea(squareFootage)}
-              </Typography>
-              <Typography variant="body1" sx={styles.projectBuiltUpAreaStyles}>
-                Total Project Area: {formatArea(projectBuiltUpArea)}
-              </Typography>
-              <Typography variant="h6" sx={styles.descriptionStyles}>
-                {description}
-              </Typography>
-            </Box>
-          </Box>
-
-          <Divider sx={styles.dividerStyles} />
-
-          <Box sx={amenityStyles}>
-            <AmenitiesCard amenities={amenities} />
-          </Box>
-        </Container>
-
-        <Box sx={styles.priceBox}>
-          <Box sx={styles.priceButtonPos}>
-            <Link href="/contactUs">
-              <Button variant="contained" sx={styles.buttonStyles}>
-                Learn More
-              </Button>
-            </Link>
-            <Link href="/developments">
-              <Button
-                variant="contained"
-                sx={styles.viewMoreDevelopmentsStyles}
-              >
-                View More Developments
-              </Button>
-            </Link>
-          </Box>
+        <Box sx={viewPhotosBox}>
+          <ViewAllPhotos
+            mainImage={mainProjectImage}
+            images={projectImages}
+            alt={title}
+          />
+        </Box>
+        <Box sx={styles.mainSection}>
+          <Typography variant="h3" sx={styles.titleStyle}>
+            {title}
+          </Typography>
+          <Typography variant="h6" sx={styles.descriptionStyles}>
+            {description}
+          </Typography>
         </Box>
 
         <Divider>
           <Typography variant="h5">Project Properties</Typography>
         </Divider>
-      </Box>
 
-      <Box sx={propertyContainer}>
-        {properties?.slice(0, 3).map((property: Property) => (
-          <Box key={property._id}>
-            <ProjectPropertyCards properties={[property]} />
-          </Box>
-        ))}
+        <Box sx={propertyContainer}>
+          {properties?.slice(0, 3).map((property: Property) => (
+            <Box key={property._id}>
+              <ProjectPropertyCards properties={[property]} />
+            </Box>
+          ))}
+        </Box>
+        <Box sx={styles.viewMoreProperties}>
+          <Link href="/buyProperties">
+            <Button variant="contained" sx={styles.buttonStyles}>
+              View More Properties
+            </Button>
+          </Link>
+        </Box>
       </Box>
-      <Box sx={styles.viewMoreProperties}>
-        <Link href="/buyProperties">
-          <Button variant="contained" sx={styles.buttonStyles}>
-            View More Properties
-          </Button>
-        </Link>
-      </Box>
-    </Box>
+    </>
   );
 };
 
