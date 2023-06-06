@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngTuple } from "leaflet";
 import { Box, Typography, IconButton, Modal } from "@mui/material";
-import MapIcon from "@mui/icons-material/Map";
+import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
 
@@ -41,7 +41,7 @@ const MapSlug: React.FC<MapSlugProps> = ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: "20%",
+    gap: "25%",
     "@media (max-width: 481px)": {
       gap: "50%",
     },
@@ -101,7 +101,7 @@ const MapSlug: React.FC<MapSlugProps> = ({
       </Box>
       <Box sx={mapIconBox}>
         <IconButton onClick={handleOpen}>
-          <MapIcon sx={{ fontSize: 70 }} />
+          <MapOutlinedIcon sx={{ fontSize: 70 }} />
         </IconButton>
         <Typography variant="body1">View map</Typography>
       </Box>

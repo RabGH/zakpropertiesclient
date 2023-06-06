@@ -10,5 +10,5 @@ export function formatPrice(price: number | null | undefined): string {
 }
 
 export function formatArea(area: number | null | undefined): string {
-  return `${formatNumberWithCommas(area ?? 0)} sqft`;
+  return `${formatNumberWithCommas(area ?? 0)} sq. ft.`;
 }

@@ -53,13 +53,15 @@ export interface Project {
   createdAt?: Date;
   title: string;
   projectPropertyTypes: string[];
-  unitType: string;
   mainDeveloper: string;
-  projectOffPlan: boolean | { offplan?: boolean; completionDate?: string };
+  projectOffPlan: {
+    offplan?: boolean;
+    propertyCompletionDate?: string;
+  };
   mainProjectImage: string;
   totalPrice: number;
   description: string;
-  squareFootage: number;
+  presentation: string;
   projectImages: string[];
   areaType: string[];
   amenities: {
@@ -69,9 +71,10 @@ export interface Project {
   projectType: string;
   numFloors?: number;
   numUnits?: number;
-  numVillas?: number;
-  bedrooms?: string;
-  projectBuiltUpArea?: number;
+  numOfHouses?: number;
+  bedrooms: string;
+  projectBuiltUpArea: number[];
+  averagePrice?: number[];
   properties: {
     properties: Property[];
   };

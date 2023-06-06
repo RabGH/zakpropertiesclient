@@ -1,6 +1,11 @@
 import { sanityClient } from "@lib/sanity";
 import { getAllProjectSlugs } from "@lib/getStaticPaths";
-import { formatPrice, formatArea } from "@lib/utils";
+import {
+  formatPrice,
+  formatArea,
+  formatNumberWithCommas,
+  isMultiple,
+} from "@lib/utils";
 import Link from "next/link";
 import {
   Box,
@@ -11,12 +16,12 @@ import {
   Button,
 } from "@mui/material";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
+
+//! Fix Cards
 import ProjectPropertyCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectPropertyCards";
-import { propertyContainer } from "@/components/slugComponents/cardSlugs/projectCards/ProjectPropertyCards";
+
 import dynamic from "next/dynamic";
-import AmenitiesCard, {
-  amenityStyles,
-} from "@/components/slugComponents/pageSlugComponents/amenitiesFeatures/AmenitiesSlug";
+import AmenitiesCard from "@/components/slugComponents/pageSlugComponents/amenitiesFeatures/AmenitiesSlug";
 import { Project, Property, PageContext } from "@lib/types";
 import {
   mainContainer,
@@ -48,19 +53,20 @@ const Projects = ({
   id,
   _id,
   title,
+  projectType,
   projectPropertyTypes,
-  unitType,
   projectOffPlan,
   mainDeveloper,
   mainProjectImage,
   totalPrice,
+  averagePrice,
   description,
-  squareFootage,
+  presentation,
   projectImages,
   projectBuiltUpArea,
   numFloors,
   numUnits,
-  numVillas,
+  numOfHouses,
   areaType,
   bedrooms,
   amenities,
@@ -92,31 +98,132 @@ const Projects = ({
           />
         </Box>
         <Box sx={styles.mainSection}>
-          <Typography variant="h3" sx={styles.titleStyle}>
+          <Typography variant="h1" sx={styles.titleStyle}>
             {title}
           </Typography>
-          <Typography variant="h6" sx={styles.descriptionStyles}>
+          <Typography variant="body1" sx={styles.descriptionStyles}>
             {description}
           </Typography>
+          <Button
+            href="/contactUs"
+            variant="contained"
+            sx={styles.buttonStyles}
+          >
+            Request Information
+          </Button>
+        </Box>
+        <Box sx={styles.projectInfoStyles}>
+          <Typography variant="h3" sx={styles.projectInfoTitleStyles}>
+            Project's Information
+          </Typography>
+          <Divider sx={styles.dividerStyles} />
+          <Typography variant="h3" sx={styles.projectPriceStyles}>
+            Price
+          </Typography>
+          <Typography variant="h4" sx={styles.projectPriceStyles}>
+            {formatPrice(totalPrice)}+
+          </Typography>
+          <Divider sx={styles.dividerStyles} />
+          <Typography variant="h3" sx={styles.projectBedroomStyles}>
+            Bedrooms
+          </Typography>
+          <Typography variant="h4" sx={styles.projectBedroomStyles}>
+            {bedrooms}
+          </Typography>
+          <Divider sx={styles.dividerStyles} />
+          <Typography variant="h3" sx={styles.projectBuiltUpStyles}>
+            Built up area
+          </Typography>
+          <Typography variant="h4" sx={styles.projectBuiltUpStyles}>
+            {`${formatNumberWithCommas(projectBuiltUpArea[0])} - ${formatArea(
+              projectBuiltUpArea[1]
+            )}`}
+          </Typography>
+          <Divider sx={styles.dividerStyles} />
+
+          {projectType === "building" ? (
+            <>
+              <Typography variant="h3" sx={styles.projectNumFloorsStyles}>
+                Number of floors
+              </Typography>
+              <Typography variant="h4" sx={styles.projectNumFloorsStyles}>
+                {numFloors}
+              </Typography>
+              <Divider sx={styles.dividerStyles} />
+              <Typography variant="h3" sx={styles.projectNumUnitsStyles}>
+                Number of units
+              </Typography>
+              <Typography variant="h4" sx={styles.projectNumUnitsStyles}>
+                {numUnits}
+              </Typography>
+            </>
+          ) : (
+            <>
+              <Typography variant="h3" sx={styles.projectNumOfHousesStyles}>
+                Number of houses
+              </Typography>
+              <Typography variant="h4" sx={styles.projectNumOfHousesStyles}>
+                {numOfHouses}
+              </Typography>
+            </>
+          )}
+          <Divider sx={styles.dividerStyles} />
+          <Typography variant="h3" sx={styles.projectPropertyTypesStyles}>
+            Unit types
+          </Typography>
+          <Typography variant="h4" sx={styles.projectPropertyTypesStyles}>
+            {projectPropertyTypes}
+          </Typography>
+          <Divider sx={styles.dividerStyles} />
+          <Box sx={styles.amenitiesSlugPos}>
+            <AmenitiesCard amenities={amenities} />
+          </Box>
+          <Divider sx={styles.dividerStyles} />
+          <Box sx={styles.projectLocationPos}>
+            <MapSlug
+              title={title}
+              lat={location?.lat || 0}
+              lng={location?.lng || 0}
+              address={address}
+              specificAddress={specificAddress}
+            />
+          </Box>
         </Box>
 
-        <Divider>
-          <Typography variant="h5">Project Properties</Typography>
-        </Divider>
-
-        <Box sx={propertyContainer}>
-          {properties?.slice(0, 3).map((property: Property) => (
-            <Box key={property._id}>
-              <ProjectPropertyCards properties={[property]} />
-            </Box>
-          ))}
+        <Box sx={styles.projectPresentationBoxStyles}>
+          <Typography variant="h3" sx={styles.projectPresentationTitleStyles}>
+            Presentation
+          </Typography>
+          <Typography variant="body1" sx={styles.presentationStyles}>
+            {presentation}
+          </Typography>
+          <Button
+            variant="contained"
+            sx={styles.buttonStyles}
+            href="/contactUs"
+          >
+            Contact for more
+          </Button>
         </Box>
-        <Box sx={styles.viewMoreProperties}>
-          <Link href="/buyProperties">
-            <Button variant="contained" sx={styles.buttonStyles}>
-              View More Properties
-            </Button>
-          </Link>
+        <Box sx={styles.projectExtraInfoBox}>
+          <Divider>
+            <Typography variant="h3">Project Properties</Typography>
+          </Divider>
+
+          <Box sx={styles.projectPropertyContainer}>
+            {properties?.slice(0, 3).map((property: Property) => (
+              <Box key={property._id}>
+                <ProjectPropertyCards properties={[property]} />
+              </Box>
+            ))}
+          </Box>
+          <Box sx={styles.viewMoreProperties}>
+            <Link href="/buyProperties">
+              <Button variant="contained" sx={styles.buttonStyles}>
+                View More Properties
+              </Button>
+            </Link>
+          </Box>
         </Box>
       </Box>
     </>
@@ -142,8 +249,9 @@ export async function getStaticProps(context: any) {
     mainDeveloper,
     mainProjectImage,
     totalPrice,
+    averagePrice,
     description,
-    squareFootage,
+    presentation,
     projectImages,
     location,
     address->{
@@ -156,7 +264,7 @@ export async function getStaticProps(context: any) {
     projectType,
     numFloors,
     numUnits,
-    numVillas,
+    numOfHouses,
     bedrooms,
     amenities->{
       name,
@@ -200,9 +308,10 @@ export async function getStaticProps(context: any) {
         projectOffPlan: project.projectOffPlan ?? null,
         unitType: project.unitType,
         projectImages: project.projectImages ?? null,
-        totalPrice: project.totalPrice,
+        totalPrice: project.totalPrice ?? null,
+        averagePrice: project.averagePrice ?? null,
         description: project.description,
-        squareFootage: project.squareFootage,
+        presentation: project.presentation,
         amenities: project.amenities ?? [],
         areaType: project.areaType ?? [],
         specificAddress: project.specificAddress ?? null,
@@ -213,7 +322,7 @@ export async function getStaticProps(context: any) {
         properties: project.properties ?? null,
         numFloors: project.numFloors ?? null,
         numUnits: project.numUnits ?? null,
-        numVillas: project.numVillas ?? null,
+        numOfHouses: project.numOfHouses ?? null,
         bedrooms: project.bedrooms ?? null,
       },
       revalidate: 60,

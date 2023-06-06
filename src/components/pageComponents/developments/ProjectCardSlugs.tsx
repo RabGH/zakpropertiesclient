@@ -9,7 +9,7 @@ import { getDevelopmentStyles } from "./developmentStyles";
 interface ProjectsCardBodyProps {
   projects?: Project[];
 }
-
+//! FIX CARD LOOKS BAD
 const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
   const styles = getDevelopmentStyles();
 
@@ -65,12 +65,12 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                             >
                               {projects.title}
                             </Typography>
-                            <Typography
+                            {/* <Typography
                               variant="body1"
                               sx={styles.projectAreaCard}
                             >
-                              Area {formatArea(projects.squareFootage)}
-                            </Typography>
+                              Area {formatArea(projects.projectBuiltUpArea)}
+                            </Typography> */}
                             <Typography
                               variant="h5"
                               sx={styles.projectPriceCard}
