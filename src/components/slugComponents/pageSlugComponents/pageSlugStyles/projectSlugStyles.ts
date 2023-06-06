@@ -153,6 +153,8 @@ export const getProjectPageStyles = () => {
       },
     },
 
+    projectPropertiesTitleStyles: {},
+
     buttonStyles: {
       "&:hover": {
         backgroundColor: muiTheme.palette.primary.light,
@@ -160,33 +162,22 @@ export const getProjectPageStyles = () => {
       mb: "3rem",
     },
 
-    projectExtraInfoBox: {
-      m: 1,
-    },
-
-    projectPropertyBoxPos: {
-      mt: "1rem",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      m: "0 auto",
-      overflowX: "auto",
-      whiteSpace: "nowrap",
-      scrollSnapType: "x mandatory",
+    projectPropertyItem: {
+      scrollSnapAlign: "start",
+      flexShrink: 0,
+      flexBasis: "33%",
+      mt: "1.5rem",
+      mb: "1.5rem",
     },
 
     projectPropertyContainer: {
       display: "flex",
       width: "100%",
       margin: "0 auto",
+      overflowX: "auto",
+      whiteSpace: "nowrap",
+      scrollSnapType: "x mandatory",
       justifyContent: "center",
-      "@media (min-width: 1024px)": {
-        overflowX: "auto",
-        "&::before, &::after": {
-          content: '""',
-          flex: 1,
-        },
-      },
     },
 
     viewMoreProperties: {

@@ -10,7 +10,6 @@ import Link from "next/link";
 import { Box, Divider, Typography, Button } from "@mui/material";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
-import ProjectPropertyCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectPropertyCards";
 import AmenitiesCard from "@/components/slugComponents/pageSlugComponents/amenitiesFeatures/AmenitiesSlug";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
 import { Project, Property } from "@lib/types";
@@ -21,6 +20,7 @@ import {
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import { getProjectPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/projectSlugStyles";
 import dynamic from "next/dynamic";
+import PropertyAllCard from "@/components/slugComponents/cardSlugs/buyPropertiesCardComponents/PropertyAllCards";
 
 interface PageContext {
   query: {
@@ -207,25 +207,24 @@ const Projects = ({
             Contact for more
           </Button>
         </Box>
-        <Box sx={styles.projectExtraInfoBox}>
+        <Box sx={styles.projectPropertiesTitleStyles}>
           <Divider>
             <Typography variant="h3">Project Properties</Typography>
           </Divider>
-          <Box sx={styles.projectPropertyBoxPos}>
-            {properties?.slice(0, 3).map((property: Property) => (
-              <ProjectPropertyCards
-                properties={[property]}
-                key={property._id}
-              />
-            ))}
-          </Box>
-          <Box sx={styles.viewMoreProperties}>
-            <Link href="/buyProperties">
-              <Button variant="contained" sx={styles.buttonStyles}>
-                View More Properties
-              </Button>
-            </Link>
-          </Box>
+        </Box>
+        <Box sx={styles.projectPropertyContainer}>
+          {properties?.slice(0, 3).map((property: Property) => (
+            <Box sx={styles.projectPropertyItem}>
+              <PropertyAllCard property={property} />
+            </Box>
+          ))}
+        </Box>
+        <Box sx={styles.viewMoreProperties}>
+          <Link href="/buyProperties">
+            <Button variant="contained" sx={styles.buttonStyles}>
+              View More Properties
+            </Button>
+          </Link>
         </Box>
       </Box>
     </>

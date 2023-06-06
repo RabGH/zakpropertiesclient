@@ -11,9 +11,9 @@ export const getSimilarPropertyGridCardStyles = () => {
       overflowX: "auto",
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
+      justifyContent: "center",
     },
     similarCardGridItemStyles: {
-      justifyContent: "center",
       scrollSnapAlign: "start",
       flexShrink: 0,
       flexBasis: "33%",
