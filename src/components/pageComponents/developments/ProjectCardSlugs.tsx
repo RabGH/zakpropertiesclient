@@ -65,12 +65,6 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                             >
                               {projects.title}
                             </Typography>
-                            {/* <Typography
-                              variant="body1"
-                              sx={styles.projectAreaCard}
-                            >
-                              Area {formatArea(projects.projectBuiltUpArea)}
-                            </Typography> */}
                             <Typography
                               variant="h5"
                               sx={styles.projectPriceCard}
