@@ -111,7 +111,7 @@ const Property = ({
             <Divider sx={styles.dividerStyles} />
 
             <Box sx={styles.lifeBoxStyles}>
-              <LifeStyle areaType={property.areaType} />
+              <LifeStyle areaType={areaType} />
             </Box>
 
             <Divider sx={styles.dividerStyles} />

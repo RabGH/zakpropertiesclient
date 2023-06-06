@@ -57,7 +57,7 @@ const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
                               variant="body1"
                               sx={styles.projectTypeStyles}
                             >
-                              {projects.projectPropertyTypes}
+                              {`${projects.projectPropertyTypes.join(" ")}`}
                             </Typography>
                             <Typography
                               variant="h6"
