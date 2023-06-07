@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography, Box, Grid, Card, Paper } from "@mui/material";
+import { Container, Typography, Box, Button, Card, Paper } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import HomeHeader from "@/components/pageComponents/home/HomeHeader";
 import { GetStaticProps } from "next";
@@ -10,15 +10,18 @@ import { Property, Project } from "@lib/types";
 import PropertyTownCardBodyData from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyTownCards";
 import PropertyAptCardBodyData from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyAptCards";
 import PropertyVillaCardBodyData from "@/components/slugComponents/cardSlugs/homePropertyCards/PropertyVillaCards";
+import ProjectsCardBodyData from "@/components/slugComponents/cardSlugs/projectCards/ProjectCardScroll";
 
-import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
 import dynamic from "next/dynamic";
 
 import { getHomePageStyles } from "@/components/pageComponents/home/homePageStyles";
-import { CardStyles } from "@/components/slugComponents/cardSlugs/cardComponents/cardStyles";
+import { CardStyles } from "@/components/slugComponents/cardSlugs/cardComponents/propertyCardStyles";
 
 const DashBoardMap = dynamic(
-  () => import("@/components/pageComponents/home/DashBoardMap"),
+  () =>
+    import(
+      "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/DashBoardMap"
+    ),
   {
     ssr: false,
   }
@@ -27,10 +30,9 @@ const DashBoardMap = dynamic(
 interface HomeProps {
   properties: Property[];
   projects: Project[];
-  mainProjectImage: string[];
 }
 
-function Home({ properties, projects, mainProjectImage }: HomeProps) {
+function Home({ properties, projects }: HomeProps) {
   const cardStyles = CardStyles();
   const styles = getHomePageStyles();
   return (
@@ -39,7 +41,7 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
         <HomeHeader properties={properties} projects={projects} />
       </Box>
       <Box sx={styles.indexMainContainer}>
-        <Container sx={styles.mainBoxContainer}>
+        <Container sx={styles.mainBoxContainer} maxWidth="xl">
           <Box sx={styles.boxContentProject}>
             <Typography
               variant="body1"
@@ -52,6 +54,13 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
               are a first-time buyer or an experienced investor, we offer a
               range of real estate options to meet your needs.
             </Typography>
+            <Button
+              href="/buyProperties"
+              sx={styles.buyPropertiesButton}
+              variant="outlined"
+            >
+              View all properties
+            </Button>
           </Box>
 
           <Divider sx={styles.dividerStyles}>
@@ -59,7 +68,7 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
               Featured Apartments
             </Typography>
           </Divider>
-          <Box sx={cardStyles.homePropertyCardsComponentPos}>
+          <Box sx={cardStyles.homePropertyCardsPos}>
             <PropertyAptCardBodyData properties={properties} />
           </Box>
 
@@ -68,7 +77,7 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
               Featured Townhouses
             </Typography>
           </Divider>
-          <Box sx={cardStyles.homePropertyCardsComponentPos}>
+          <Box sx={cardStyles.homePropertyCardsPos}>
             <PropertyTownCardBodyData properties={properties} />
           </Box>
 
@@ -77,34 +86,28 @@ function Home({ properties, projects, mainProjectImage }: HomeProps) {
               Featured Villas
             </Typography>
           </Divider>
-          <Box sx={cardStyles.homePropertyCardsComponentPos}>
+          <Box sx={cardStyles.homePropertyCardsPos}>
             <PropertyVillaCardBodyData properties={properties} />
           </Box>
 
           <Divider sx={styles.dividerStyles}>
-            <Typography variant="h5" sx={styles.homeFeaturedTitlePos}>
+            <Typography variant="h5" sx={cardStyles.featuredTitlePos}>
               Featured Developments
             </Typography>
           </Divider>
-
-          <Box sx={styles.projectCards}>
-            <ProjectCardSlug projects={projects.slice(0, 3)} />
+          <Box sx={styles.homeProjectCardsPos}>
+            <ProjectsCardBodyData projects={projects.slice(0, 3)} />
           </Box>
 
-          <Divider sx={styles.dividerStyles} />
-          <Box sx={styles.mapCardPos}>
-            <Card sx={styles.mapCard}>
-              <Divider sx={styles.dividerStyles}>
-                <Typography variant="h3" sx={styles.locationTitleStyles}>
-                  Properties and Projects
-                </Typography>
-              </Divider>
-              <Paper sx={styles.mapCardContent}>
-                <DashBoardMap properties={properties} projects={projects} />
-              </Paper>
-            </Card>
-          </Box>
+          <Divider sx={styles.dividerStyles}>
+            <Typography variant="h3" sx={styles.mapTitleStyles}>
+              Properties and Projects
+            </Typography>
+          </Divider>
         </Container>
+        <Box sx={styles.mapCardPos}>
+          <DashBoardMap properties={properties} projects={projects} />
+        </Box>
       </Box>
     </>
   );
@@ -115,7 +118,8 @@ export const getStaticProps: GetStaticProps = async ({
   previewData,
 }) => {
   const propertyQuery = '*[_type == "property"]{..., location}';
-  const projectQuery = '*[_type == "projects"]{..., location}';
+  const projectQuery =
+    '*[_type == "projects"]{..., location, address->{street,city}}';
   const params = preview ? previewData : {};
   const client = preview ? previewClient : sanityClient;
   const [properties, projects] = await Promise.all([
