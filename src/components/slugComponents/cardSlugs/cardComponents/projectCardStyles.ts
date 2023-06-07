@@ -40,6 +40,20 @@ export const getProjectCardStyles = () => {
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
       ml: "20rem",
+      "@media (max-width: 1440px)": {
+        ml: 0,
+      },
+      "@media (max-width: 1280px)": {
+        ml: 0,
+      },
+      "@media (max-width: 1024px)": {
+        ml: "0rem",
+      },
+      "@media (max-width: 960px)": {},
+      "@media (max-width: 768px)": {},
+      "@media (max-width: 641px)": {},
+      "@media (max-width: 600px)": {},
+
       "@media (max-width: 481px)": {
         ml: 0,
       },

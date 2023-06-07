@@ -49,26 +49,6 @@ function SearchBar(props: SearchBarProps) {
     }
   };
 
-  // const getLabel = (type: string) => {
-  //   if (type === "All") {
-  //     return `Total Properties: ${properties.length} | Total Projects: ${projects.length}`;
-  //   } else if (type === "Properties") {
-  //     return `Total Properties: ${properties.length}`;
-  //   } else {
-  //     return `Total Projects: ${projects.length}`;
-  //   }
-  // };
-
-  // const getButtonLabel = (type: string[]) => {
-  //   if (type.includes("All")) {
-  //     return `${properties.length} ${projects.length}`;
-  //   } else if (type.includes("Properties")) {
-  //     return `${properties.length}`;
-  //   } else {
-  //     return `${projects.length}`;
-  //   }
-  // };
-
   const propertyOptions = properties.map((property) => property.title);
   const projectOptions = projects.map((project) => project.title);
   const options = ["All", "Properties", "Projects"];
@@ -175,6 +155,12 @@ function SearchBar(props: SearchBarProps) {
       top: "127%",
     },
     "@media (max-width: 1024px)": {
+      top: "80%",
+    },
+    "@media (max-width: 961px)": {
+      top: "100%",
+    },
+    "@media (max-width: 912px)": {
       top: "100%",
     },
     "@media (max-width: 600px)": {

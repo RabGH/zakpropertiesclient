@@ -41,11 +41,19 @@ export const getPropertyCardStyles = () => {
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
       ml: "8.5rem",
-      "@media (max-width: 1440px)": {},
-      "@media (max-width: 1280px)": {},
-      "@media (max-width: 1024px)": {},
+      "@media (max-width: 1440px)": {
+        ml: 0,
+      },
+      "@media (max-width: 1280px)": {
+        ml: 0,
+      },
+      "@media (max-width: 1024px)": {
+        ml: 0,
+      },
       "@media (max-width: 960px)": {},
-      "@media (max-width: 768px)": {},
+      "@media (max-width: 768px)": {
+        ml: 0,
+      },
       "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {},
       "@media (max-width: 481px)": {
@@ -109,7 +117,7 @@ export const getPropertyCardStyles = () => {
         width: "375px",
       },
       "@media (max-width: 375px)": {
-        width: "360px",
+        width: "325px",
       },
       "@media (max-width: 360px)": {
         width: "345px",

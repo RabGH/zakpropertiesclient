@@ -32,8 +32,14 @@ export const getHomePageStyles = () => {
       "@media (max-width: 1024px)": {
         minHeight: "65vh",
       },
-      "@media (max-width: 600px)": {
+      "@media (max-width: 961px)": {
         minHeight: "65vh",
+      },
+      "@media (max-width: 912px)": {
+        minHeight: "65vh",
+      },
+      "@media (max-width: 600px)": {
+        minHeight: "100vh",
         mt: "1rem",
       },
       "@media (max-width: 400px)": {
@@ -57,6 +63,13 @@ export const getHomePageStyles = () => {
       "@media (max-width: 1024px)": {
         fontSize: "1.3rem",
         mt: "12rem",
+      },
+      "@media (max-width: 961px)": {
+        mt: "5rem",
+      },
+      "@media (max-width: 912px)": {
+        fontSize: "1.3rem",
+        mt: "5rem",
       },
       "@media (max-width: 768px)": {
         fontSize: "1.2rem",
@@ -153,8 +166,12 @@ export const getHomePageStyles = () => {
       "@media (max-width: 1024px)": {
         height: "100vh",
       },
-      "@media (max-width: 961px)": {},
-      "@media (max-width: 768px)": {},
+      "@media (max-width: 961px)": {
+        height: "90vh",
+      },
+      "@media (max-width: 768px)": {
+        height: "115vh",
+      },
       "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
         height: "115vh",
