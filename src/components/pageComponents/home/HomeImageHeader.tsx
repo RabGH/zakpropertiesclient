@@ -22,6 +22,7 @@ const sliderSettings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  arrows: false,
   responsive: [
     {
       breakpoint: 1024,
@@ -108,6 +109,9 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
                       alt={project.title}
                       placeholder="blur"
                       blurDataURL="data:image/svg+xml;base64,..."
+                      style={{
+                        objectFit: "cover",
+                      }}
                     />
                     <Box sx={styles.imgOverlay} />
                     <Box sx={styles.contentContainer}>

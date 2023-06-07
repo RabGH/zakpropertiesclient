@@ -39,7 +39,7 @@ export const getProjectCardStyles = () => {
       overflowX: "auto",
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
-      ml: "20rem",
+      ml: "19rem",
       "@media (max-width: 1440px)": {
         ml: 0,
       },

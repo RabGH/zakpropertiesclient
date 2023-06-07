@@ -1,11 +1,14 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Project, Property } from "@lib/types";
-import L from "leaflet";
+import { Box, Typography } from "@mui/material";
+import { LatLngTuple } from "leaflet";
 
 interface DashBoardMapProps {
   properties: Property[];
   projects: Project[];
+  lat: number;
+  lng: number;
 }
 
 //! Mostly Only used in index.tsx currently
@@ -13,16 +16,29 @@ interface DashBoardMapProps {
 const DashBoardMap: React.FC<DashBoardMapProps> = ({
   properties,
   projects,
+  lat,
+  lng,
 }) => {
-  const center: L.LatLngExpression = [25.2697, 55.3095];
-  const zoom = 10;
+  const zoom = 9;
+  const position: LatLngTuple = [lat, lng];
 
   return (
-    <div>
+    <Box
+      sx={{
+        height: "500px",
+        width: "100%",
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 9999,
+        mb: "3rem",
+      }}
+    >
       <MapContainer
         scrollWheelZoom={false}
         style={{ height: "100%", width: "100%" }}
-        center={center}
+        center={position}
         zoom={zoom}
       >
         <TileLayer
@@ -38,7 +54,7 @@ const DashBoardMap: React.FC<DashBoardMapProps> = ({
           </Marker>
         ))}
       </MapContainer>
-    </div>
+    </Box>
   );
 };
 

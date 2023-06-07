@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Box, Grid, Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
-// import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
+import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
 import { Project } from "@lib/types";
 import { GetStaticProps } from "next";
 import { sanityClient } from "@lib/sanity";
@@ -25,7 +25,6 @@ function Developments({ projects }: DevelopmentsProps) {
       {projects &&
         projects.map((project) => (
           <React.Fragment key={project._id}>
-            {/* <ProjectCardSlug projects={[project]} /> */}
             <Typography variant="h4" component="h2" sx={styles.projectTitle}>
               {project.title}
             </Typography>

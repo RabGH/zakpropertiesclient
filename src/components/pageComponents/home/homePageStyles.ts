@@ -117,10 +117,7 @@ export const getHomePageStyles = () => {
     //! Inside of projectCardStyles.ts and projectCards folder
 
     //* index.tsx map section
-    mapCardPos: {
-      p: 3,
-      height: "400px",
-    },
+    mapCardPos: {},
 
     mapTitleStyles: {
       paddingBottom: "1rem",
