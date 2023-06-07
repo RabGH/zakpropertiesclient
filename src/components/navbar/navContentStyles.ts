@@ -23,7 +23,7 @@ export const getNavBarStyles = () => {
     // Burger Styles
     burgerNavBox: {
       backgroundColor: "transparent",
-      borderRadius: "50%",
+      borderRadius: "5%",
       width: "40px",
       height: "40px",
       display: "flex",
