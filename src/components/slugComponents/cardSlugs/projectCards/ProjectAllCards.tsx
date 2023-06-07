@@ -55,8 +55,8 @@ const ProjectAllCards = ({ project }: ProjectAllCardsProps) => {
           {project.address?.city}
         </Typography>
         {/* <Typography variant="body1" sx={styles.projectAreaTypeStyles}>
-          {`${project.areaType.join(" ⋅ ")}`}
-        </Typography> */}
+{`${project.areaType.join(" ⋅ ")}`}
+</Typography> */}
         <Typography variant="body1" sx={styles.projectBedroomsStyles}>
           {`${project.bedrooms} beds`}
         </Typography>

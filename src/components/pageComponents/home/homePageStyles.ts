@@ -101,7 +101,7 @@ export const getHomePageStyles = () => {
     //! Inside of propertyCardStyles.ts and homePropertyCards folder
 
     //* Project Section
-    homeProjectCardsPos: {},
+    //! Inside of projectCardStyles.ts and projectCards folder
 
     //* index.tsx map section
     mapCardPos: {

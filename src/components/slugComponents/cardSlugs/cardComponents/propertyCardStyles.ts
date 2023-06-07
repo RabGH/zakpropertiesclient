@@ -1,8 +1,21 @@
 import { useTheme } from "@mui/material";
 
-export const CardStyles = () => {
+export const getPropertyCardStyles = () => {
   const theme = useTheme();
   return {
+    //* PropertyAllCards and Box styles used in homePropertyCards
+    mainAll: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      mb: "1rem",
+    },
+
+    mainBox: {
+      display: "flex",
+      flexDirection: "row",
+    },
+
     //* PropertyAptCards Villa And Town styles
     homeItemCardBoxStyles: {
       justifyContent: "center",
@@ -19,24 +32,14 @@ export const CardStyles = () => {
       whiteSpace: "nowrap",
     },
 
-    //* PropertyAllCards and Box styles used in homePropertyCards
-    mainAll: {
+    //* index.tsx position and scroll styles for home property cards
+    homePropertyCardsPos: {
       display: "flex",
-      justifyContent: "center",
       alignItems: "center",
-      mb: "1rem",
-      "@media (max-width: 600px)": {
-        mb: "1rem",
-      },
-      "@media (max-width: 400px)": {
-        mb: "1rem",
-      },
-    },
-
-    mainBox: {
-      display: "flex",
-      flexDirection: "row",
-      "@media (max-width: 481px)": {},
+      width: "100%",
+      overflowX: "auto",
+      whiteSpace: "nowrap",
+      scrollSnapType: "x mandatory",
     },
 
     //* title for each property card grid in index.tsx from homePropertyCards folder
@@ -54,17 +57,6 @@ export const CardStyles = () => {
       },
     },
 
-    //* index.tsx position and scroll styles for home property cards
-    homePropertyCardsPos: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      width: "100%",
-      overflowX: "auto",
-      whiteSpace: "nowrap",
-      scrollSnapType: "x mandatory",
-    },
-
     //* Property all card styles
     allCardStyles: {
       maxWidth: "450px",
@@ -75,6 +67,7 @@ export const CardStyles = () => {
       transition: "all 0.3s ease-in-out",
       backgroundColor: "transparent",
       padding: "0.7rem",
+      cursor: "pointer",
       "&:hover": {
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 1)",
         backgroundColor: "rgba(255, 255, 255, 0.05)",

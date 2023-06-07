@@ -1,8 +1,9 @@
 import { useTheme } from "@mui/material";
+
 export const getProjectCardStyles = () => {
   const muiTheme = useTheme();
   return {
-    //* ProjectCardScroll.tsx
+    //* ProjectCardScroll.tsx ProjectAllCards.tsx
     main: {
       display: "flex",
       justifyContent: "center",
@@ -28,7 +29,16 @@ export const getProjectCardStyles = () => {
       width: "100%",
       overflowX: "auto",
       whiteSpace: "nowrap",
-      // gap: "1rem",
+    },
+
+    //* index.tsx position and scroll styles for home project cards
+    homeProjectCardsPos: {
+      display: "flex",
+      alignItems: "center",
+      width: "100%",
+      overflowX: "auto",
+      whiteSpace: "nowrap",
+      scrollSnapType: "x mandatory",
     },
 
     //* Information Box Under ProjectAddCards.tsx
@@ -66,40 +76,19 @@ export const getProjectCardStyles = () => {
         transform: "scale(1.05)",
       },
       "@media (max-width: 1440px)": {
-        width: 300,
-      },
-      "@media (max-width: 1280px)": {
-        width: 290,
-      },
-      "@media (max-width: 1024px)": {
-        width: 280,
-      },
-      "@media (max-width: 961px)": {
-        width: 270,
-      },
-      "@media (max-width: 912px)": {
-        width: 260,
-      },
-      "@media (max-width: 768px)": {
-        width: 250,
-      },
-      "@media (max-width: 600px)": {
-        width: 240,
-      },
-      "@media (max-width: 481px)": {
-        width: 230,
+        width: 320,
       },
       "@media (max-width: 400px)": {
-        width: 220,
+        width: 290,
       },
       "@media (max-width: 375px)": {
-        width: 210,
+        width: 285,
       },
       "@media (max-width: 360px)": {
-        width: 200,
+        width: 270,
       },
       "@media (max-width: 320px)": {
-        width: 190,
+        width: 230,
       },
     },
     imageBoxStyles: {

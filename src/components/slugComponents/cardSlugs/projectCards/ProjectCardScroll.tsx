@@ -2,7 +2,6 @@ import { Project } from "@lib/types";
 import Link from "next/link";
 import { Box } from "@mui/material";
 import { getProjectCardStyles } from "../cardComponents/projectCardStyles";
-import { CardStyles } from "../cardComponents/propertyCardStyles";
 import ProjectAllCards from "./ProjectAllCards";
 
 //! Only used in index.tsx currently
@@ -12,7 +11,6 @@ interface ProjectsCardBodyProps {
 }
 const ProjectsCardBodyData = ({ projects }: ProjectsCardBodyProps) => {
   const styles = getProjectCardStyles();
-  const cardStyles = CardStyles();
 
   return (
     <>

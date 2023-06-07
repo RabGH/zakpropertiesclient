@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { Property } from "@lib/types";
-import { CardStyles } from "../cardComponents/propertyCardStyles";
+import { getPropertyCardStyles } from "../cardComponents/propertyCardStyles";
 import PropertyAllCard from "@/components/slugComponents/cardSlugs/propertyCards/PropertyAllCards"; // import the component
 
 interface PropertyAptCardBodyProps {
@@ -8,7 +8,7 @@ interface PropertyAptCardBodyProps {
 }
 
 const PropertyAptCardBodyData = ({ properties }: PropertyAptCardBodyProps) => {
-  const styles = CardStyles();
+  const styles = getPropertyCardStyles();
   if (!properties) {
     return null;
   }
