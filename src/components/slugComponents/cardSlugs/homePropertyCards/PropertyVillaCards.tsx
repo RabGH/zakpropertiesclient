@@ -1,7 +1,7 @@
-import { Box, Typography, Card, Divider } from "@mui/material";
+import { Box } from "@mui/material";
 import { Property } from "@lib/types";
-import { CardStyles } from "../cardComponents/cardStyles";
-import PropertyAllCard from "@/components/slugComponents/cardSlugs/buyPropertiesCardComponents/PropertyAllCards"; // import the component
+import { CardStyles } from "../cardComponents/propertyCardStyles";
+import PropertyAllCard from "@/components/slugComponents/cardSlugs/propertyCards/PropertyAllCards"; // import the component
 
 interface PropertyVillaCardBodyProps {
   properties?: Property[];

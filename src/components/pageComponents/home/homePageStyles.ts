@@ -3,37 +3,23 @@ import { useTheme } from "@mui/material";
 export const getHomePageStyles = () => {
   const muiTheme = useTheme();
   return {
-    // Index Styles
-    mainBoxContainer: {},
-    contentHeader: {
-      fontSize: "1.4rem",
-      lineHeight: "1.5",
-      textAlign: "center",
-      maxWidth: "70ch",
-      fontStyle: "italic",
-      mt: "10rem",
-      "@media (max-width: 1440px)": {},
-      "@media (max-width: 1024px)": {
-        fontSize: "1.3rem",
-        mt: "10rem",
-      },
-      "@media (max-width: 768px)": {
-        fontSize: "1.2rem",
-        mt: "10rem",
-      },
-      "@media (max-width: 600px)": {
-        fontSize: "1.2rem",
-        mt: "10rem",
-      },
-      "@media (max-width: 481px)": {
-        fontSize: "1.2rem",
-        mt: "15rem",
-      },
-      "@media (max-width: 400px)": {
-        fontSize: "1.2rem",
-        mt: "10rem",
-      },
-      "@media (max-width: 360px)": {},
+    //! Index Styles
+    //* Header box Top of the file index.tsx
+    homeHeaderContainerBox: {
+      mb: "5rem",
+    },
+
+    //* for the entire content container under header index.tsx
+    indexMainContainer: {
+      display: "flex",
+      mt: "13rem",
+    },
+
+    mainBoxContainer: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
     },
 
     boxContentProject: {
@@ -59,183 +45,101 @@ export const getHomePageStyles = () => {
         mb: "5rem",
       },
     },
-
-    mapCardPos: {
-      m: 3,
-      display: {
-        xs: "none",
-        sm: "none",
-        md: "block",
-        lg: "block",
-        xl: "block",
+    //* Main Content Section Styles index.tsx
+    contentHeader: {
+      fontSize: "1.4rem",
+      lineHeight: "1.5",
+      textAlign: "center",
+      maxWidth: "70ch",
+      fontStyle: "italic",
+      mt: "14rem",
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1024px)": {
+        fontSize: "1.3rem",
+        mt: "12rem",
       },
-    },
-
-    mapCard: {
-      width: "100%",
-      height: "500px",
-      borderRadius: "15px",
-      overflow: "hidden",
-      padding: "1rem",
+      "@media (max-width: 768px)": {
+        fontSize: "1.2rem",
+        mt: "10rem",
+      },
       "@media (max-width: 600px)": {
-        width: "80%",
-        height: "300px",
+        fontSize: "1.2rem",
+        mt: "10rem",
+      },
+      "@media (max-width: 481px)": {
+        fontSize: "1.2rem",
+        mt: "16rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "1.2rem",
+        mt: "10rem",
+      },
+      "@media (max-width: 320px)": {
+        fontSize: "1.2rem",
+        mt: "1rem",
+      },
+      "@media (max-width: 360px)": {},
+    },
+
+    buyPropertiesButton: {
+      mt: "3rem",
+      maxWidth: "300px",
+      width: "100%",
+      fontSize: "1rem",
+    },
+
+    dividerStyles: {
+      mt: "1rem",
+      mb: "1rem",
+      width: "90%",
+      "&::before, &::after": {
+        borderWidth: 1,
+        borderColor: "white",
       },
     },
+    //* Property Home Cards Section
+    //! Inside of propertyCardStyles.ts and homePropertyCards folder
 
-    mapCardContent: {
-      backgroundColor: "#333",
-      border: "2px solid #fff",
+    //* Project Section
+    homeProjectCardsPos: {},
+
+    //* index.tsx map section
+    mapCardPos: {
+      p: 3,
+      height: "400px",
     },
 
-    locationTitleStyles: {
+    mapTitleStyles: {
       paddingBottom: "1rem",
       color: muiTheme.palette.primary.main,
       textAlign: "center",
       "@media (max-width: 600px)": {
         fontSize: "2rem",
       },
+      //? Title for the map OUTSIDE of container
     },
 
-    dividerStyles: {
-      mt: "1rem",
-      "&::before, &::after": {
-        borderWidth: 1,
-        borderColor: "white",
-      },
+    //* HomeImageHeader Styles
+    mainBox: {
+      position: "relative",
     },
 
-    homeFeaturedTitlePos: {
-      mt: "1rem",
-      ml: "1rem",
-      mb: "1rem",
-      mr: "1rem",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontSize: "1.5rem",
-      "@media (max-width: 600px)": {
-        fontSize: "1.3rem",
-        mb: "1rem",
-      },
-      "@media (max-width: 400px)": {
-        fontSize: "1.3rem",
-        mb: "1rem",
-      },
-    },
-    //! for the entire content container under header index.tsx
-    indexMainContainer: {
-      display: "flex",
-      mt: "13rem",
-      "@media (max-width: 1440px)": {},
-      "@media (max-width: 1281px)": {},
-      "@media (max-width: 1025px)": {},
-      "@media (max-width: 961px)": {},
-      "@media (max-width: 768px)": {},
-      "@media (max-width: 641px)": {},
-      "@media (max-width: 600px)": {},
-      "@media (max-width: 481px)": {},
-      "@media (max-width: 400px)": {},
-      "@media (max-width: 375px)": {},
-      "@media (max-width: 360px)": {},
-      "@media (max-width: 320px)": {},
+    chevRightBox: {
+      position: "absolute",
+      top: "50%",
+      right: "0",
+      transform: "translate(50%, -50%)",
+      zIndex: "2",
+      mr: "3rem",
     },
 
-    projectCards: {},
-
-    homeHeaderContainerBox: {
-      mb: "5rem",
-    },
-
-    // HomeImageHeader Styles
-    zakLearnMore: {
-      textAlign: "left",
-      "@media (max-width: 1024px)": {
-        fontSize: "1rem",
-      },
-      "@media (max-width: 600px)": {
-        fontSize: "1rem",
-        mt: "6rem",
-      },
-      "@media (max-width: 481px)": {
-        fontSize: "0.9rem",
-        mt: "9rem",
-      },
-      "@media (max-width: 400px)": {
-        fontSize: "0.8rem",
-        mt: "6rem",
-      },
-      "@media (max-width: 375px)": {
-        fontSize: "0.8rem",
-      },
-    },
-
-    zakTitle: {
-      fontSize: "5rem",
-      fontWeight: "bold",
-      mb: "2rem",
-      color: "white",
-      textAlign: "left",
-      transition: "color 0.3s ease-in-out",
-      ":hover": {
-        color: muiTheme.palette.error.light,
-      },
-      "@media (max-width: 1024px)": {
-        fontSize: "4.5rem",
-      },
-      "@media (max-width: 600px)": {
-        fontSize: "3.4rem",
-        mb: "0rem",
-      },
-      "@media (max-width: 481px)": {
-        fontSize: "2.3rem",
-        mb: "0rem",
-      },
-      "@media (max-width: 400px)": {
-        fontSize: "3rem",
-        mb: "0rem",
-      },
-      "@media (max-width: 375px)": {
-        fontSize: "2.5rem",
-      },
-      "@media (max-width: 360px)": {
-        fontSize: "2rem",
-        mb: "0rem",
-      },
-    },
-
-    zakSubTitle: {
-      fontSize: "1.3rem",
-      fontWeight: "400",
-      mt: "3rem",
-      color: "white",
-      textAlign: "left",
-      "@media (max-width: 1440px)": {
-        mb: "10rem",
-      },
-      "@media (max-width: 1024px)": {
-        mb: "3rem",
-      },
-      "@media (max-width: 600px)": {
-        mt: "2rem",
-        mb: "-1rem",
-      },
-      "@media (max-width: 481px)": {
-        fontSize: "1.2rem",
-        mb: "0rem",
-      },
-      "@media (max-width: 400px)": {
-        mt: "3rem",
-        fontSize: "1rem",
-      },
-      "@media (max-width: 375px)": {
-        fontSize: "1rem",
-        mt: "1rem",
-      },
-      "@media (max-width: 360px)": {
-        mt: "1rem",
-        fontSize: "1rem",
-      },
+    chevLeftBox: {
+      position: "absolute",
+      top: "50%",
+      left: "0",
+      transform: "translate(-50%, -50%)",
+      zIndex: "2",
+      ml: "3rem",
     },
 
     imgContainer: {
@@ -332,26 +236,94 @@ export const getHomePageStyles = () => {
       },
     },
 
-    chevRightBox: {
-      position: "absolute",
-      top: "50%",
-      right: "0",
-      transform: "translate(50%, -50%)",
-      zIndex: "2",
-      mr: "3rem",
+    zakLearnMore: {
+      textAlign: "left",
+      "@media (max-width: 1024px)": {
+        fontSize: "1rem",
+      },
+      "@media (max-width: 600px)": {
+        fontSize: "1rem",
+        mt: "6rem",
+      },
+      "@media (max-width: 481px)": {
+        fontSize: "0.9rem",
+        mt: "9rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "0.8rem",
+        mt: "6rem",
+      },
+      "@media (max-width: 375px)": {
+        fontSize: "0.8rem",
+      },
     },
 
-    chevLeftBox: {
-      position: "absolute",
-      top: "50%",
-      left: "0",
-      transform: "translate(-50%, -50%)",
-      zIndex: "2",
-      ml: "3rem",
+    zakTitle: {
+      fontSize: "5rem",
+      fontWeight: "bold",
+      mb: "2rem",
+      color: "white",
+      textAlign: "left",
+      transition: "color 0.3s ease-in-out",
+      ":hover": {
+        color: muiTheme.palette.error.light,
+      },
+      "@media (max-width: 1024px)": {
+        fontSize: "4.5rem",
+      },
+      "@media (max-width: 600px)": {
+        fontSize: "3.4rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 481px)": {
+        fontSize: "2.3rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "3rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 375px)": {
+        fontSize: "2.5rem",
+      },
+      "@media (max-width: 360px)": {
+        fontSize: "2rem",
+        mb: "0rem",
+      },
     },
 
-    mainBox: {
-      position: "relative",
+    zakSubTitle: {
+      fontSize: "1.3rem",
+      fontWeight: "400",
+      mt: "3rem",
+      color: "white",
+      textAlign: "left",
+      "@media (max-width: 1440px)": {
+        mb: "10rem",
+      },
+      "@media (max-width: 1024px)": {
+        mb: "3rem",
+      },
+      "@media (max-width: 600px)": {
+        mt: "2rem",
+        mb: "-1rem",
+      },
+      "@media (max-width: 481px)": {
+        fontSize: "1.2rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 400px)": {
+        mt: "3rem",
+        fontSize: "1rem",
+      },
+      "@media (max-width: 375px)": {
+        fontSize: "1rem",
+        mt: "1rem",
+      },
+      "@media (max-width: 360px)": {
+        mt: "1rem",
+        fontSize: "1rem",
+      },
     },
 
     // Home Header Styles (Holds HomeImageHeader and SearchBar)
