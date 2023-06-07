@@ -40,6 +40,17 @@ export const getPropertyCardStyles = () => {
       overflowX: "auto",
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
+      ml: "8.5rem",
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1280px)": {},
+      "@media (max-width: 1024px)": {},
+      "@media (max-width: 960px)": {},
+      "@media (max-width: 768px)": {},
+      "@media (max-width: 641px)": {},
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 481px)": {
+        ml: 0,
+      },
     },
 
     //* title for each property card grid in index.tsx from homePropertyCards folder

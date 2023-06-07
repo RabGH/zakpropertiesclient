@@ -39,6 +39,10 @@ export const getProjectCardStyles = () => {
       overflowX: "auto",
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
+      ml: "20rem",
+      "@media (max-width: 481px)": {
+        ml: 0,
+      },
     },
 
     //* Information Box Under ProjectAddCards.tsx
