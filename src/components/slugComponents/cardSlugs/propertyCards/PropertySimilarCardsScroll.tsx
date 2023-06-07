@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { Property } from "@lib/types";
 import { filterSimilarProperties } from "../cardComponents/filterSimilarPropertiesFunction"; // import the function
-import PropertyAllCard from "@/components/slugComponents/cardSlugs/buyPropertiesCardComponents/PropertyAllCards";
+import PropertyAllCard from "@/components/slugComponents/cardSlugs/propertyCards/PropertyAllCards";
 import { getSimilarPropertyGridCardStyles } from "../cardComponents/propertySimilarCardGridStyles";
 
 interface PropertySimilarCardsProps {

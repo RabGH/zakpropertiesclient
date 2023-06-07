@@ -20,7 +20,7 @@ import {
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import { getProjectPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/projectSlugStyles";
 import dynamic from "next/dynamic";
-import PropertyAllCard from "@/components/slugComponents/cardSlugs/buyPropertiesCardComponents/PropertyAllCards";
+import PropertyAllCard from "@/components/slugComponents/cardSlugs/propertyCards/PropertyAllCards";
 
 interface PageContext {
   query: {

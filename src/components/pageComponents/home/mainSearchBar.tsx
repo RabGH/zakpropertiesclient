@@ -4,6 +4,8 @@ import { Property, Project } from "@lib/types";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+//! Have the button not only be links but work with Auto Complete as well
+
 interface SearchBarProps {
   properties: Property[];
   projects: Project[];

@@ -47,8 +47,6 @@ const StyledAppBar = styled(AppBar)({
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
-  "@media (max-width: 600px)": {},
-  "@media (max-width: 400px)": {},
 });
 
 const StyledImage = styled(Image)({

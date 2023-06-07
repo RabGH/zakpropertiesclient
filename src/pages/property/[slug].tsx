@@ -15,7 +15,7 @@ import {
   viewPhotosBox,
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import PropertyReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyReferenceSlug";
-import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCardsGrid";
+import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCardsScroll";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
 
 interface PageContext {

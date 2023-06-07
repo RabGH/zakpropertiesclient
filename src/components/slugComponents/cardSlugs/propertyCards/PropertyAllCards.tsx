@@ -3,7 +3,7 @@ import { formatPrice, formatArea } from "@lib/utils";
 import Link from "next/link";
 import { Box, Typography, Card } from "@mui/material";
 import { Property } from "@lib/types";
-import { CardStyles } from "../cardComponents/cardStyles";
+import { CardStyles } from "../cardComponents/propertyCardStyles";
 import CardImageCarousel from "../cardComponents/CardImageCarousel";
 import moment from "moment";
 

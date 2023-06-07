@@ -21,25 +21,11 @@ const StyledAppBar = styled(AppBar)({
   boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)",
   position: "fixed",
   m: "0 auto",
-  "@media (max-width: 1440px)": {},
-  "@media (max-width: 1281px)": {},
-  "@media (max-width: 1025px)": {},
-  "@media (max-width: 961px)": {},
-  "@media (max-width: 768px)": {},
-  "@media (max-width: 641px)": {},
-  "@media (max-width: 600px)": {},
-  "@media (max-width: 481px)": {},
-  "@media (max-width: 400px)": {},
-  "@media (max-width: 375px)": {},
-  "@media (max-width: 360px)": {},
-  "@media (max-width: 320px)": {},
 });
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
-  "@media (max-width: 600px)": {},
-  "@media (max-width: 400px)": {},
 });
 
 const StyledImage = styled(Image)({
