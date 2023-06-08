@@ -6,16 +6,21 @@ import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 export default function ReadyToBuyBubble({
   search,
   setSearch,
+  readyToBuyOption,
+  setReadyToBuyOption,
 }: ReadyToBuyBubbleProps) {
   const styles = getBubbleStyles();
 
   const handleButtonClick = (option: string) => {
     if (option === "Any") {
       setSearch((prev) => ({ ...prev, propertyOffPlan: undefined }));
+      setReadyToBuyOption("Any");
     } else if (option === "Off-Plan") {
       setSearch((prev) => ({ ...prev, propertyOffPlan: true }));
+      setReadyToBuyOption("Off-Plan");
     } else if (option === "Ready to Buy") {
       setSearch((prev) => ({ ...prev, propertyOffPlan: false }));
+      setReadyToBuyOption("Ready to Buy");
     }
   };
 
@@ -28,21 +33,21 @@ export default function ReadyToBuyBubble({
       <Button
         onClick={() => handleButtonClick("Any")}
         sx={styles.readyButtonStyles}
-        color={search.propertyOffPlan === undefined ? "primary" : "inherit"}
+        color={readyToBuyOption === undefined ? "primary" : "inherit"}
       >
         Any
       </Button>
       <Button
         onClick={() => handleButtonClick("Ready to Buy")}
         sx={styles.readyButtonStyles}
-        color={search.propertyOffPlan === false ? "primary" : "inherit"}
+        color={readyToBuyOption === "Ready to Buy" ? "primary" : "inherit"}
       >
         Ready to Buy
       </Button>
       <Button
         onClick={() => handleButtonClick("Off-Plan")}
         sx={styles.readyButtonStyles}
-        color={search.propertyOffPlan === true ? "primary" : "inherit"}
+        color={readyToBuyOption === "Off-Plan" ? "primary" : "inherit"}
       >
         Off-Plan
       </Button>

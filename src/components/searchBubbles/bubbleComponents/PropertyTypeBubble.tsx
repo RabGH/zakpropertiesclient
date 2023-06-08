@@ -8,9 +8,22 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [readyToBuyOption, setReadyToBuyOption] = useState(search.readyToBuy);
+  const [selectedOptionsCount, setSelectedOptionsCount] = useState(0);
+
   useEffect(() => {
     setReadyToBuyOption(search.readyToBuy);
   }, [search.readyToBuy]);
+
+  useEffect(() => {
+    let count = 0;
+    if (search.propertyType.length > 0 && search.propertyType[0] !== "All") {
+      count += search.propertyType.length;
+    }
+    if (readyToBuyOption && readyToBuyOption !== "Any") {
+      count++;
+    }
+    setSelectedOptionsCount(count);
+  }, [search.propertyType, readyToBuyOption]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -51,8 +64,7 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
         sx={styles.typeButtonGroupStyles}
       >
         <Button onClick={handleClick} sx={styles.generalButtonStyles}>
-          Types:{" "}
-          {search.propertyType.length > 0 ? search.propertyType.length : "All"}
+          Types: {selectedOptionsCount > 0 ? selectedOptionsCount : "All"}{" "}
         </Button>
         <Menu
           anchorEl={anchorEl}
@@ -101,12 +113,14 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
             <MenuItem onClick={() => handlePropertyTypeChange("Plot")}>
               Plot
             </MenuItem>
-            <ReadyToBuyBubble
-              search={search}
-              setSearch={setSearch}
-              readyToBuyOption={readyToBuyOption}
-              setReadyToBuyOption={setReadyToBuyOption}
-            />
+            <Box sx={styles.typeReadyToBuyPos}>
+              <ReadyToBuyBubble
+                search={search}
+                setSearch={setSearch}
+                readyToBuyOption={readyToBuyOption}
+                setReadyToBuyOption={setReadyToBuyOption}
+              />
+            </Box>
           </Box>
         </Menu>
       </ButtonGroup>

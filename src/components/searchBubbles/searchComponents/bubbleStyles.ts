@@ -167,6 +167,9 @@ export const getBubbleStyles = () => {
     typeMenuStyles: {
       position: "absolute",
     },
+    typeReadyToBuyPos: {
+      mt: "0.5rem",
+    },
     typeMainMenuBoxStyles: {
       p: 2,
     },
