@@ -122,7 +122,7 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
                       </Typography>
                       <Link
                         key={project._id}
-                        href={`projects/${project.slug.current}`}
+                        href={`/projects/${project.slug.current}`}
                       >
                         <Typography variant="h1" sx={styles.zakTitle}>
                           {project.title}
