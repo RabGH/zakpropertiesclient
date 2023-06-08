@@ -38,6 +38,7 @@ function Developments({ projects }: DevelopmentsProps) {
                 {projects?.map((projects) => (
                   <Grid item key={projects._id} xs={12} sm={6} md={4} lg={3}>
                     <ProjectAllCards project={projects} />
+                    <Divider sx={styles.dividerStyles} />
                   </Grid>
                 ))}
               </Grid>
@@ -46,9 +47,6 @@ function Developments({ projects }: DevelopmentsProps) {
         </Box>
       )}
 
-      <Divider sx={styles.divider} />
-
-      <Divider />
       <Typography variant="h6" sx={{ mt: "1rem" }}>
         Contact us for development inquiries and off-plan development projects
       </Typography>

@@ -15,7 +15,12 @@ export const getDevelopmentStyles = () => {
       mb: "1rem",
       mt: "10rem",
     },
-    divider: {},
+    dividerStyles: {
+      mt: "1rem",
+      mb: "1rem",
+      width: "90%",
+      borderColor: "white",
+    },
     contactButton: {
       mt: "3rem",
       mb: "3rem",
