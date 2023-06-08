@@ -110,6 +110,8 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
                       placeholder="blur"
                       blurDataURL="data:image/svg+xml;base64,..."
                       style={{
+                        width: "100%",
+                        height: "100%",
                         objectFit: "cover",
                       }}
                     />

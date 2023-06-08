@@ -18,10 +18,11 @@ export const getProjectCardStyles = () => {
 
     projectItemCardBoxStyles: {
       justifyContent: "center",
-      scrollSnapAlign: "start",
+      // scrollSnapAlign: "start",
       flexShrink: 0,
       minWidth: "33%",
       mt: "1.5rem",
+      scrollSnapAlign: "center",
     },
 
     projectContainerBoxStyles: {
@@ -34,29 +35,10 @@ export const getProjectCardStyles = () => {
     //* index.tsx position and scroll styles for home project cards
     homeProjectCardsPos: {
       display: "flex",
-      alignItems: "center",
       width: "100%",
       overflowX: "auto",
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
-      ml: "19rem",
-      "@media (max-width: 1440px)": {
-        ml: 0,
-      },
-      "@media (max-width: 1280px)": {
-        ml: 0,
-      },
-      "@media (max-width: 1024px)": {
-        ml: "0rem",
-      },
-      "@media (max-width: 960px)": {},
-      "@media (max-width: 768px)": {},
-      "@media (max-width: 641px)": {},
-      "@media (max-width: 600px)": {},
-
-      "@media (max-width: 481px)": {
-        ml: 0,
-      },
     },
 
     //* Information Box Under ProjectAddCards.tsx
