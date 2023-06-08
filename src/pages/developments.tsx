@@ -1,13 +1,13 @@
 import React from "react";
 import { Typography, Box, Grid, Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import ProjectCardSlug from "@/components/pageComponents/developments/ProjectCardSlugs";
 import { Project } from "@lib/types";
 import { GetStaticProps } from "next";
 import { sanityClient } from "@lib/sanity";
 import { previewClient } from "@lib/client";
 import Link from "next/link";
 import { getDevelopmentStyles } from "@/components/pageComponents/developments/developmentStyles";
+import ProjectAllCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectAllCards";
 
 interface DevelopmentsProps {
   projects?: Project[];
@@ -22,18 +22,24 @@ function Developments({ projects }: DevelopmentsProps) {
         Featured Developments
       </Typography>
 
-      {projects &&
-        projects.map((project) => (
-          <React.Fragment key={project._id}>
-            <Typography variant="h4" component="h2" sx={styles.projectTitle}>
-              {project.title}
-            </Typography>
-            <Typography variant="body1" sx={styles.projectDesc}>
-              {project.description}
-            </Typography>
-            <Divider sx={styles.divider} />
-          </React.Fragment>
-        ))}
+      {projects && (
+        <Box sx={styles.main}>
+          <Box sx={styles.mainBox}>
+            <Box>
+              <Box>
+                {projects?.map((projects) => (
+                  <Box key={projects._id}>
+                    <ProjectAllCards project={projects} />
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      )}
+
+      <Divider sx={styles.divider} />
+
       <Divider />
       <Typography variant="h6" sx={{ mt: "1rem" }}>
         Contact us for development inquiries and off-plan development projects
