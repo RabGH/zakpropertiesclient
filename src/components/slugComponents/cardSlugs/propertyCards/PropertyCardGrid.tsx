@@ -19,7 +19,7 @@ const PropertyCardGrid: React.FC<Props> = ({
   setSearch,
   setFilteredProperties,
 }) => {
-  const styles = getPropertyGridCardStyles();
+  const styles: any = getPropertyGridCardStyles();
   const [page, setPage] = useState(1);
   const cardsPerPage = 9;
 

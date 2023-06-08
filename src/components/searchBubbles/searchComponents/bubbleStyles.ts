@@ -25,11 +25,14 @@ export const getBubbleStyles = () => {
     // SortByBubble.tsx Styles
     sortByButtonStyle: {},
     sortByMenuBoxStyles: {},
-    sortByMenuStyles: {},
+    sortByMenuStyles: {
+      position: "absolute",
+    },
     sortByButtonGroupStyles: {},
 
     // BedroomBubble.tsx Styles
     bedroomMenuStyles: {
+      position: "absolute",
       width: "500px",
       height: "180px",
       overflow: "visible",
@@ -75,7 +78,9 @@ export const getBubbleStyles = () => {
 
     // FeatureBubble.tsx Styles
     featureButtonGroupStyles: {},
-    featureMenuStyles: {},
+    featureMenuStyles: {
+      position: "absolute",
+    },
     featureMainMenuBoxStyles: {
       width: "315px",
       height: "215px",
@@ -87,6 +92,7 @@ export const getBubbleStyles = () => {
 
     // PriceRangeBubble.tsx Styles
     priceMenuStyles: {
+      position: "absolute",
       width: "1000px",
       height: "1000px",
       overflow: "visible",
@@ -158,7 +164,9 @@ export const getBubbleStyles = () => {
     // PropertyTypeBubble.tsx Styles
     typeButtonGroupStyles: {},
     typeButtonStyles: {},
-    typeMenuStyles: {},
+    typeMenuStyles: {
+      position: "absolute",
+    },
     typeMainMenuBoxStyles: {
       p: 2,
     },
@@ -172,6 +180,7 @@ export const getBubbleStyles = () => {
 
     // SizeBubble.tsx Styles
     sizeMenuStyles: {
+      position: "absolute",
       width: "1000px",
       height: "1000px",
       overflow: "visible",

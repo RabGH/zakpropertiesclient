@@ -295,7 +295,7 @@ function SearchBar(props: SearchBarProps) {
           </Link>
         </Box>
         <Box sx={mainSearchContainer}>
-          <Autocomplete
+          {/* <Autocomplete
             disablePortal
             options={options}
             value={selectedType}
@@ -305,7 +305,7 @@ function SearchBar(props: SearchBarProps) {
             renderInput={(params) => (
               <TextField {...params} label="Type" variant="outlined" />
             )}
-          />
+          /> */}
           <Autocomplete
             disablePortal
             options={
