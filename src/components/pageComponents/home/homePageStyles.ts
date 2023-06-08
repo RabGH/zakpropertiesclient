@@ -123,9 +123,7 @@ export const getHomePageStyles = () => {
       paddingBottom: "1rem",
       color: muiTheme.palette.primary.main,
       textAlign: "center",
-      "@media (max-width: 600px)": {
-        fontSize: "2rem",
-      },
+      "@media (max-width: 600px)": {},
       //? Title for the map OUTSIDE of container
     },
 
@@ -161,7 +159,7 @@ export const getHomePageStyles = () => {
       "@media (max-width: 1440px)": {},
       "@media (max-width: 1281px)": {},
       "@media (max-width: 1024px)": {
-        height: "100vh",
+        height: "105vh",
       },
       "@media (max-width: 961px)": {
         height: "90vh",
@@ -181,7 +179,7 @@ export const getHomePageStyles = () => {
         height: "100vh",
       },
       "@media (max-width: 360px)": {
-        height: "80vh",
+        height: "100vh",
       },
       "@media (max-width: 320px)": {},
     },
@@ -283,10 +281,13 @@ export const getHomePageStyles = () => {
         color: muiTheme.palette.error.light,
       },
       "@media (max-width: 1024px)": {
-        fontSize: "4.5rem",
+        fontSize: "3.5rem",
+      },
+      "@media (max-width: 960px)": {
+        fontSize: "3rem",
       },
       "@media (max-width: 600px)": {
-        fontSize: "3.4rem",
+        fontSize: "3rem",
         mb: "0rem",
       },
       "@media (max-width: 481px)": {

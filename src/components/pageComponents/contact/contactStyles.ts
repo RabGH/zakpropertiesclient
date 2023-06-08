@@ -9,18 +9,16 @@ export const getContactStyles = () => {
       justifyContent: "center",
       alignItems: "center",
       mt: "5rem",
-      ml: "10rem",
+      mr: "35rem",
       "@media (max-width: 1024px)": {
         height: "80vh",
-        ml: "5rem",
+        pl: "18rem",
       },
       "@media (max-width: 768px)": {
         height: "90vh",
-        ml: "2rem",
       },
       "@media (max-width: 480px)": {
         height: "95vh",
-        ml: "0rem",
       },
     },
     titleBox: {
@@ -117,9 +115,11 @@ export const getContactStyles = () => {
       flexDirection: "column",
       alignItems: "center",
     },
+
     logoStyles: {
-      width: "30vw",
-      height: "30vh",
+      "@media (max-width: 1024px)": {
+        display: "none",
+      },
       "@media (max-width: 600px)": {
         display: "none",
       },
@@ -127,6 +127,23 @@ export const getContactStyles = () => {
         display: "none",
       },
     },
+
+    imageStyles: {
+      filter: "invert(100%)",
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1280px)": {},
+      "@media (max-width: 1024px)": {},
+      "@media (max-width: 960px)": {},
+      "@media (max-width: 768px)": {},
+      "@media (max-width: 641px)": {},
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 481px)": {},
+      "@media (max-width: 400px)": {},
+      "@media (max-width: 375px)": {},
+      "@media (max-width: 360px)": {},
+      "@media (max-width: 320px)": {},
+    },
+
     formControl: {
       width: "100%",
     },

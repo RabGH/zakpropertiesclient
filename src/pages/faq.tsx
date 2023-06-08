@@ -30,25 +30,11 @@ const FAQ: React.FC = () => {
   const faqMainContainer = {
     display: "grid",
     justifyItems: "center",
-    "@media (max-width: 1440px)": {},
-    "@media (max-width: 1281px)": {},
-    "@media (max-width: 1025px)": {},
-    "@media (max-width: 961px)": {},
-    "@media (max-width: 768px)": {},
-    "@media (max-width: 641px)": {},
-    "@media (max-width: 600px)": {},
-    "@media (max-width: 481px)": {},
-    "@media (max-width: 400px)": {},
-    "@media (max-width: 375px)": {},
-    "@media (max-width: 360px)": {},
-    "@media (max-width: 320px)": {},
   };
 
   const faqMainContainerBox = {
     mt: 10,
     p: 1,
-    "@media (max-width: 600px)": {},
-    "@media (max-width: 400px)": {},
   };
 
   const faqLogoStyles = {
@@ -74,7 +60,7 @@ const FAQ: React.FC = () => {
   const faqContainerGridStyles = {
     width: "100%",
   };
-//! FIX MARGIN
+  //! FIX MARGIN
   return (
     <Container sx={faqMainContainer}>
       <Box sx={faqMainContainerBox}>

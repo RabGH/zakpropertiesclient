@@ -83,7 +83,7 @@ function Contact() {
           Contact Page, type in your name, email, subject, and message.
         </Typography>
         <Typography variant="body1">
-          W&apos;ll get back to you as soon as we can!
+          We&apos;ll get back to you as soon as we can!
         </Typography>
       </Box>
       <Container>
@@ -186,7 +186,7 @@ function Contact() {
                 <Image
                   src={logoContact}
                   alt="logo"
-                  style={{ filter: "invert(100%)" }}
+                  style={styles.imageStyles}
                   placeholder="blur"
                   blurDataURL="data:image/svg+xml;base64,..."
                 />
