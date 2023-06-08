@@ -8,7 +8,6 @@ export const getDevelopmentStyles = () => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      maxWidth: "1200px",
       margin: "0 auto",
     },
     titleStyles: {
@@ -29,6 +28,15 @@ export const getDevelopmentStyles = () => {
     mainBox: {
       display: "flex",
       flexDirection: "row",
+      mb: "2rem",
+    },
+    introText: {
+      fontSize: "1.2rem",
+      lineHeight: "1.5",
+      textAlign: "center",
+      maxWidth: "70ch",
+      margin: "0 auto",
+      mt: "2rem",
       mb: "2rem",
     },
   };

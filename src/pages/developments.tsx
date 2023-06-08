@@ -21,18 +21,26 @@ function Developments({ projects }: DevelopmentsProps) {
       <Typography variant="h3" component="h1" sx={styles.titleStyles}>
         Featured Developments
       </Typography>
+      <Typography variant="body1" sx={styles.introText}>
+        Welcome to our developments page, where you can find the latest and most
+        luxurious real estate projects in Dubai UAE. Whether you are looking for
+        apartments, villas, townhouses, or off-plan properties, we have
+        something for everyone. Browse through our featured developments and
+        discover their unique features, amenities, and locations. You can also
+        contact us for more information and inquiries about any of the projects.
+      </Typography>
 
       {projects && (
         <Box sx={styles.main}>
           <Box sx={styles.mainBox}>
             <Box>
-              <Box>
+              <Grid container spacing={2} sx={{ mt: "2rem" }}>
                 {projects?.map((projects) => (
-                  <Box key={projects._id}>
+                  <Grid item key={projects._id} xs={12} sm={6} md={4} lg={3}>
                     <ProjectAllCards project={projects} />
-                  </Box>
+                  </Grid>
                 ))}
-              </Box>
+              </Grid>
             </Box>
           </Box>
         </Box>
