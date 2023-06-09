@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 import PropertyTypeBubble from "./bubbleComponents/PropertyTypeBubble";
 import BedroomBubble from "./bubbleComponents/BedroomBubble";
@@ -7,7 +7,6 @@ import SizeBubble from "./bubbleComponents/SizeBubble";
 import PriceRangeBubble from "./bubbleComponents/PriceRangeBubble";
 import FeatureBubble from "./bubbleComponents/FeatureBubble";
 import SortByBubble from "./SortByBubble";
-import ResultsBubble from "./ResultsBubble";
 import ClearSelectionBubble from "./ClearSelectionBubble";
 
 import { SearchFieldBubblesProps } from "./searchComponents/bubbleInterfaces";
@@ -45,12 +44,9 @@ const SearchFieldBubbles = ({
         spacing={0}
         sx={styles.mainSearchFieldStack}
       >
-        <ResultsBubble
-          search={search}
-          setSearch={setSearch}
-          properties={properties}
-          setFilteredProperties={setFilteredProperties}
-        />
+        <Typography variant="h6" sx={styles.resultsTypography}>
+          Results: {search.filteredProperties.length}
+        </Typography>
         <PropertyTypeBubble search={search} setSearch={setSearch} />
         <BedroomBubble
           minBedrooms={1}

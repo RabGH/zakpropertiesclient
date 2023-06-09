@@ -49,12 +49,7 @@ export interface SizeBubbleProps {
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }
-export interface ResultsBubbleProps {
-  search: SearchInterface;
-  setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
-  properties: Property[];
-  setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
-}
+
 export interface SortByBubbleProps {
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;

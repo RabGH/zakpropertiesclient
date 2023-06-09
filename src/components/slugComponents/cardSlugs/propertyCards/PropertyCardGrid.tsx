@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Pagination, Divider } from "@mui/material";
+import { Box, Grid, Pagination, Divider, Typography } from "@mui/material";
 import { Property } from "@lib/types";
 import PropertyAllCard from "./PropertyAllCards";
 import SearchFieldBubbles from "../../../searchBubbles/SearchFieldBubbles";
@@ -34,7 +34,7 @@ const PropertyCardGrid: React.FC<Props> = ({
 
   useEffect(() => {
     setPage(1);
-  }, [search]);
+  }, [search.filteredProperties]);
 
   return (
     <Box sx={styles.mainBox}>
@@ -48,21 +48,31 @@ const PropertyCardGrid: React.FC<Props> = ({
       </Box>
       <Divider sx={styles.searchGridDividerStyles} />
       <Grid container spacing={1} sx={styles.cardGridStyles}>
-        {search.filteredProperties
-          .slice((page - 1) * cardsPerPage, page * cardsPerPage)
-          .map((property) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={6}
-              lg={4}
-              key={property._id}
-              sx={styles.cardAllGridStyles}
-            >
-              <PropertyAllCard property={property} />
-            </Grid>
-          ))}
+        {search.filteredProperties.length > 0 ? (
+          search.filteredProperties
+            .slice((page - 1) * cardsPerPage, page * cardsPerPage)
+            .map((property) => (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={6}
+                lg={4}
+                key={property._id}
+                sx={styles.cardAllGridStyles}
+              >
+                <PropertyAllCard property={property} />
+              </Grid>
+            ))
+        ) : (
+          <Typography
+            variant="h3"
+            sx={styles.noPropertiesFoundTypographyStyles}
+          >
+            The property search criteria you entered does not contain any
+            properties, please press on Clear Selection.
+          </Typography>
+        )}
       </Grid>
       <Box sx={styles.paginationBox}>
         <Pagination

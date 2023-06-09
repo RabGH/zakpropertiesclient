@@ -15,6 +15,8 @@ function Footer() {
     padding: "24px 0",
     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
     minWidth: "100%",
+    position: "relative",
+    bottom: 0,
   };
 
   const linkBox = {
@@ -81,7 +83,8 @@ function Footer() {
 
 export default Footer;
 
-{/* <Box sx={footerStyles}>
+{
+  /* <Box sx={footerStyles}>
         <Typography variant="body1" color="textSecondary">
           © 2023 by Zak Properties. All rights reserved.
         </Typography>
@@ -91,4 +94,5 @@ export default Footer;
         <Link href="/terms-of-service" color="inherit">
           Terms of Service
         </Link>
-      </Box> */}
+      </Box> */
+}

@@ -19,6 +19,8 @@ export const getBubbleStyles = () => {
       p: "8px",
     },
 
+    resultsTypography: {},
+
     // ResultsBubble.tsx Styles
     searchResultsButton: {},
 

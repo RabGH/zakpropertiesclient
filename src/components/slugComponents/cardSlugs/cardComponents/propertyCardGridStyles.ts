@@ -4,13 +4,20 @@ export const getPropertyGridCardStyles = () => {
   const muiTheme = useTheme();
 
   return {
-    // buyProperties grid styles
+    //  PropertyCardGrid.tsx grid styles for buyProperties.tsx Page
     mainBox: {
-      minHeight: "100vh",
+      flex: 1,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "column",
+    },
+
+    noPropertiesFoundTypographyStyles: {
+      m: "auto",
+      mt: "5rem",
+      mb: "5rem",
+      width: "50ch",
     },
 
     propertyCardGridSearchBarBox: {},
