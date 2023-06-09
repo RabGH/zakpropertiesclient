@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Box, Grid, Pagination, Divider, Typography } from "@mui/material";
 import { Property } from "@lib/types";
 import PropertyAllCard from "./PropertyAllCards";
 import SearchFieldBubbles from "../../../searchBubbles/SearchFieldBubbles";
 import { getPropertyGridCardStyles } from "../cardComponents/propertyCardGridStyles";
 import { SearchInterface } from "../../../searchBubbles/searchComponents/bubbleInterfaces";
+import useDebounce from "../cardComponents/paginationDebounceHook";
 
 interface Props {
   properties: Property[];
@@ -23,6 +24,8 @@ const PropertyCardGrid: React.FC<Props> = ({
   const [page, setPage] = useState(1);
   const cardsPerPage = 9;
 
+  const debouncedSearch = useDebounce(search, 500);
+
   const handleChangePage = (
     event: React.ChangeEvent<unknown>,
     value: number
@@ -34,7 +37,7 @@ const PropertyCardGrid: React.FC<Props> = ({
 
   useEffect(() => {
     setPage(1);
-  }, [search.filteredProperties]);
+  }, [debouncedSearch]);
 
   return (
     <Box sx={styles.mainBox}>
