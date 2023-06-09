@@ -105,44 +105,44 @@ function SearchBar(props: SearchBarProps) {
     },
   };
 
-  const autoSelectStyles = {
-    width: "155px",
-    flexGrow: 1,
-    "& .MuiInputBase-input": {
-      color: "black",
-    },
-    "& .MuiInputLabel-root": {
-      color: "black",
-    },
-    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "rgba(30, 59, 114, 1)",
-      borderWidth: "0px",
-    },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "black",
-    },
-    "& .MuiOutlinedInput-root": {
-      backgroundColor: "rgba(255, 255, 255, 0.7)",
-    },
-    "& .MuiInputLabel-root.Mui-focused": {
-      color: "black",
-    },
-    zIndex: 5,
-    "@media (max-width: 1440px)": {},
-    "@media (max-width: 1024px)": {
-      width: "115px",
-    },
-    "@media (max-width: 600px)": {
-      width: "90px",
-      display: "none",
-    },
-    "@media (max-width: 400px)": {
-      display: "none",
-    },
-    "@media (max-width: 360px)": {
-      display: "none",
-    },
-  };
+  // const autoSelectStyles = {
+  //   width: "155px",
+  //   flexGrow: 1,
+  //   "& .MuiInputBase-input": {
+  //     color: "black",
+  //   },
+  //   "& .MuiInputLabel-root": {
+  //     color: "black",
+  //   },
+  //   "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+  //     borderColor: "rgba(30, 59, 114, 1)",
+  //     borderWidth: "0px",
+  //   },
+  //   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+  //     borderColor: "black",
+  //   },
+  //   "& .MuiOutlinedInput-root": {
+  //     backgroundColor: "rgba(255, 255, 255, 0.7)",
+  //   },
+  //   "& .MuiInputLabel-root.Mui-focused": {
+  //     color: "black",
+  //   },
+  //   zIndex: 5,
+  //   "@media (max-width: 1440px)": {},
+  //   "@media (max-width: 1024px)": {
+  //     width: "115px",
+  //   },
+  //   "@media (max-width: 600px)": {
+  //     width: "90px",
+  //     display: "none",
+  //   },
+  //   "@media (max-width: 400px)": {
+  //     display: "none",
+  //   },
+  //   "@media (max-width: 360px)": {
+  //     display: "none",
+  //   },
+  // };
 
   const searchBarWrapper = {
     position: "absolute",
