@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
-import PropertyTypeBubble from "./bubbleComponents/PropertyTypeBubble";
+import PropertyTypeBubble from "./bubbleComponents/TypeBubble";
 import BedroomBubble from "./bubbleComponents/BedroomBubble";
 import SizeBubble from "./bubbleComponents/SizeBubble";
-import PriceRangeBubble from "./bubbleComponents/PriceRangeBubble";
+import PriceRangeBubble from "./bubbleComponents/PriceBubble";
 import FeatureBubble from "./bubbleComponents/FeatureBubble";
 import SortByBubble from "./SortByBubble";
 import ClearSelectionBubble from "./ClearSelectionBubble";
