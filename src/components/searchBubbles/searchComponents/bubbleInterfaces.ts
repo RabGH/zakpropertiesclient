@@ -60,3 +60,7 @@ export interface SortByBubbleProps {
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
   setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
 }
+export interface ClearSelectionBubbleProps {
+  search: SearchInterface;
+  setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
+}

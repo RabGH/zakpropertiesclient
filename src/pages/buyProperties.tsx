@@ -22,7 +22,7 @@ export default function PropertySearch({
     filteredProperties: properties,
     bedrooms: [1, 15],
     propertyFeatures: [],
-    readyToBuy: "ANY",
+    readyToBuy: "Any",
     sizeRange: [0, 10000],
   });
   const [filteredProperties, setFilteredProperties] =
@@ -32,7 +32,10 @@ export default function PropertySearch({
     <Box sx={styles.mainBox}>
       <Head>
         <title>Property Search</title>
-        <meta name="description" content="Zak Properties Buy and Search for Properties" />
+        <meta
+          name="description"
+          content="Zak Properties Buy and Search for Properties"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box sx={styles.contentMainBox}>

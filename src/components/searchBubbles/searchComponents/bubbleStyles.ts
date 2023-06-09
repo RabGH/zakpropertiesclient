@@ -30,6 +30,9 @@ export const getBubbleStyles = () => {
     },
     sortByButtonGroupStyles: {},
 
+    // ClearSelectionBubble.tsx Styles
+    clearSelectionButtonStyles: {},
+
     // BedroomBubble.tsx Styles
     bedroomMenuStyles: {
       position: "absolute",

@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import { Box, Stack } from "@mui/material";
-import { getBubbleStyles } from "./searchComponents/bubbleStyles";
-import { Property } from "@lib/types";
+
 import PropertyTypeBubble from "./bubbleComponents/PropertyTypeBubble";
 import BedroomBubble from "./bubbleComponents/BedroomBubble";
 import SizeBubble from "./bubbleComponents/SizeBubble";
 import PriceRangeBubble from "./bubbleComponents/PriceRangeBubble";
 import FeatureBubble from "./bubbleComponents/FeatureBubble";
 import SortByBubble from "./SortByBubble";
-import { SearchFieldBubblesProps } from "./searchComponents/bubbleInterfaces";
 import ResultsBubble from "./ResultsBubble";
+import ClearSelectionBubble from "./ClearSelectionBubble";
+
+import { SearchFieldBubblesProps } from "./searchComponents/bubbleInterfaces";
+import { getBubbleStyles } from "./searchComponents/bubbleStyles";
 import { filterProperties } from "./searchComponents/filterPropertiesFunction";
 
 const SearchFieldBubbles = ({
@@ -72,6 +74,7 @@ const SearchFieldBubbles = ({
           setSearch={setSearch}
           setFilteredProperties={setFilteredProperties}
         />
+        <ClearSelectionBubble search={search} setSearch={setSearch} />
       </Stack>
     </Box>
   );
