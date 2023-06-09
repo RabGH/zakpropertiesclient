@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import {
   Button,
   MenuItem,
@@ -23,6 +23,11 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   const [buttonText, setButtonText] = useState<string>("Any");
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
+
+  useEffect(() => {
+    setLow(search.priceRange[0]);
+    setHigh(search.priceRange[1]);
+  }, [search.priceRange]);
 
   const minPrice = 0;
   const maxPrice = 500000000;

@@ -15,6 +15,11 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
 
+  useEffect(() => {
+    setLow(search.bedrooms[0]);
+    setHigh(search.bedrooms[1]);
+  }, [search.bedrooms]);
+
   const handleApply = () => {
     setSearch((prev) => ({ ...prev, bedrooms: [low, high] }));
     setOpen(false);

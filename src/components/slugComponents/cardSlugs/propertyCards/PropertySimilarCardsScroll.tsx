@@ -4,6 +4,7 @@ import { Property } from "@lib/types";
 import { filterSimilarProperties } from "../cardComponents/filterSimilarPropertiesFunction"; // import the function
 import PropertyAllCard from "@/components/slugComponents/cardSlugs/propertyCards/PropertyAllCards";
 import { getSimilarPropertyGridCardStyles } from "../cardComponents/propertySimilarCardGridStyles";
+import Link from "next/link";
 
 interface PropertySimilarCardsProps {
   property: Property;
@@ -22,7 +23,7 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
   return (
     <Box sx={styles.similarMainBox}>
       <Typography variant="h3" sx={styles.similarMainTitleStyles}>
-        Similar Properties
+        <Link href="/buyProperties">Similar Properties</Link>
       </Typography>
 
       <Box sx={styles.similarCardGridContainerStyles}>

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import {
   Button,
   MenuItem,
@@ -23,6 +23,11 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
   const [buttonText, setButtonText] = useState<string>("Any");
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
+
+  useEffect(() => {
+    setLow(search.sizeRange[0]);
+    setHigh(search.sizeRange[1]);
+  }, [search.sizeRange]);
 
   const minSize = 0;
   const maxSize = 10000;
