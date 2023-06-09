@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Typography, Box, Button, Card, Paper } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import HomeHeader from "@/components/pageComponents/home/HomeHeader";
-import { GetStaticProps } from "next";
+
 import { sanityClient } from "@lib/sanity";
 import { previewClient } from "@lib/client";
 import { Property, Project } from "@lib/types";
@@ -13,6 +13,8 @@ import PropertyVillaCardBodyData from "@/components/slugComponents/cardSlugs/hom
 import ProjectsCardBodyData from "@/components/slugComponents/cardSlugs/projectCards/ProjectCardScroll";
 
 import dynamic from "next/dynamic";
+import Head from "next/head";
+import { GetStaticProps } from "next";
 
 import { getHomePageStyles } from "@/components/pageComponents/home/homePageStyles";
 import { getPropertyCardStyles } from "@/components/slugComponents/cardSlugs/cardComponents/propertyCardStyles";
@@ -39,6 +41,11 @@ function Home({ properties, projects }: HomeProps) {
   return (
     <>
       <Box sx={styles.homeHeaderContainerBox}>
+        <Head>
+          <title>ZakProperties Home Page</title>
+          <meta name="description" content="ZakProperties Home Page" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <HomeHeader properties={properties} projects={projects} />
       </Box>
       <Box sx={styles.indexMainContainer}>

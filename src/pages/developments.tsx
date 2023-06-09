@@ -6,6 +6,7 @@ import { GetStaticProps } from "next";
 import { sanityClient } from "@lib/sanity";
 import { previewClient } from "@lib/client";
 import Link from "next/link";
+import Head from "next/head";
 import { getDevelopmentStyles } from "@/components/pageComponents/developments/developmentStyles";
 import ProjectAllCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectAllCards";
 
@@ -18,6 +19,11 @@ function Developments({ projects }: DevelopmentsProps) {
 
   return (
     <Box sx={styles.mainContainer}>
+      <Head>
+        <title>ZakProperties Developments Page</title>
+        <meta name="description" content="ZakProperties Developments Page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Typography variant="h3" component="h1" sx={styles.titleStyles}>
         Featured Developments
       </Typography>

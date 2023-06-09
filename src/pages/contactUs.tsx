@@ -13,7 +13,7 @@ import {
 
 import Image from "next/image";
 import logoContact from "../../public/images/logo/logoNoBg.png";
-
+import Head from "next/head";
 import { getContactStyles } from "@/components/pageComponents/contact/contactStyles";
 
 function Contact() {
@@ -77,6 +77,11 @@ function Contact() {
 
   return (
     <Container sx={styles.mainContainer}>
+      <Head>
+        <title>ZakProperties Contact Page</title>
+        <meta name="description" content="ZakProperties Contact Page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Box sx={styles.titleBox}>
         <Typography variant="h4">Contact Us</Typography>
         <Typography variant="body1">

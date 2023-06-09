@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Box, Typography, Button } from "@mui/material";
 import { useTheme } from "@mui/material";
+import Head from "next/head";
 
 const Styles = {
   root: {
@@ -22,6 +23,11 @@ const Styles = {
 function Error() {
   return (
     <Container sx={Styles.root}>
+      <Head>
+        <title>ZakProperties Error Page</title>
+        <meta name="description" content="ZakProperties Error Page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Typography variant="h4" sx={Styles.title}>
         Error
       </Typography>

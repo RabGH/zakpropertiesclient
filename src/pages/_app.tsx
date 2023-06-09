@@ -11,6 +11,7 @@ import Footer from "../components/footer/Footer";
 import { useRouter } from "next/router";
 import "../../public/styles/global.css";
 import "../../public/styles/fonts.css";
+import Head from "next/head";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
@@ -24,6 +25,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <main>
+        <Head>
+          <title>ZakProperties Main Routing App</title>
+          <meta name="description" content="ZakProperties Main Routing App" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         {isHomePage ? (
           <ThemeProvider theme={theme}>
             <CssBaseline />

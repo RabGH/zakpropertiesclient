@@ -15,6 +15,7 @@ import WavingHandIcon from "@mui/icons-material/WavingHand";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import PublicIcon from "@mui/icons-material/Public";
+import Head from "next/head";
 
 const AboutPage: React.FC = () => {
   const aboutMainContainer = {
@@ -43,6 +44,11 @@ const AboutPage: React.FC = () => {
 
   return (
     <Container>
+      <Head>
+        <title>ZakProperties About Page</title>
+        <meta name="description" content="ZakProperties About Page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Box sx={aboutMainContainer}>
         <Typography variant="h2" align="center" sx={{ mb: "4rem", mt: "3rem" }}>
           About Us

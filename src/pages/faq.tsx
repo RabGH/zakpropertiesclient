@@ -12,8 +12,8 @@ import Link from "next/link";
 import HelpIcon from "@mui/icons-material/Help";
 import Image from "next/image";
 import logoContact from "../../public/images/logo/logoNoBg.png";
+import Head from "next/head";
 
-// Sources
 const source1 =
   "https://dubailand.gov.ae/en/frequently-asked-questions/#:~:text=How%20do%20I%20lease%20a%20property%20in%20UAE%3F";
 const source2 =
@@ -63,6 +63,14 @@ const FAQ: React.FC = () => {
   //! FIX MARGIN
   return (
     <Container sx={faqMainContainer}>
+      <Head>
+        <title>ZakProperties FAQ Page</title>
+        <meta
+          name="description"
+          content="ZakProperties FAQ Page (Frequently Asked Questions)"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Box sx={faqMainContainerBox}>
         <Typography variant="h2" align="center" sx={{ mb: "4rem", mt: "3rem" }}>
           Frequently Asked Questions
