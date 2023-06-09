@@ -88,9 +88,9 @@ const FeatureBubble = ({ search, setSearch }: FeatureBubbleProps) => {
               selected={search.propertyFeatures.includes(
                 "Fully Fitted Kitchen"
               )}
-              onClick={() => handleFeatureChange("Equipped Kitchen")}
+              onClick={() => handleFeatureChange("Fully Fitted Kitchen")}
             >
-              Equipped Kitchen
+              Fully Fitted Kitchen
             </MenuItem>
             <MenuItem
               selected={search.propertyFeatures.includes("Shared Gym")}

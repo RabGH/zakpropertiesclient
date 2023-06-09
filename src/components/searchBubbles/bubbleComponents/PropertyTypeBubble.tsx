@@ -8,6 +8,7 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [readyToBuyOption, setReadyToBuyOption] = useState(search.readyToBuy);
+
   const [selectedOptionsCount, setSelectedOptionsCount] = useState(0);
 
   useEffect(() => {
@@ -110,7 +111,10 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
             >
               Loft & Duplex
             </MenuItem>
-            <MenuItem onClick={() => handlePropertyTypeChange("Plot")}>
+            <MenuItem
+              onClick={() => handlePropertyTypeChange("Plot")}
+              selected={search.propertyType.includes("Plot")}
+            >
               Plot
             </MenuItem>
             <Box sx={styles.typeReadyToBuyPos}>

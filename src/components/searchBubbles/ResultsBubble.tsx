@@ -26,8 +26,8 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
       search.sizeRange
     ).length;
     setButtonText(`Results: ${results}`);
-    console.log("Search state:", search);
-    console.log("Results:", results);
+    // console.log("Search state:", search);
+    // console.log("Results:", results);
   }, [search]);
 
   const handleButtonClick = () => {

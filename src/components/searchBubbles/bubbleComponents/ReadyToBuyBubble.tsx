@@ -2,6 +2,7 @@ import React from "react";
 import { ButtonGroup, Button } from "@mui/material";
 import { ReadyToBuyBubbleProps } from "../searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "../searchComponents/bubbleStyles";
+import { useResultsButton } from "../searchComponents/useResultsButton";
 
 export default function ReadyToBuyBubble({
   search,
@@ -10,7 +11,7 @@ export default function ReadyToBuyBubble({
   setReadyToBuyOption,
 }: ReadyToBuyBubbleProps) {
   const styles = getBubbleStyles();
-
+  const resultsButtonClick = useResultsButton();
   const handleButtonClick = (option: string) => {
     if (option === "Any") {
       setSearch((prev) => ({ ...prev, propertyOffPlan: undefined }));
@@ -22,6 +23,7 @@ export default function ReadyToBuyBubble({
       setSearch((prev) => ({ ...prev, propertyOffPlan: false }));
       setReadyToBuyOption("Ready to Buy");
     }
+    resultsButtonClick();
   };
 
   return (
