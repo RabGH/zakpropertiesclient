@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Property } from "@lib/types";
-import { MutableRefObject } from "react";
 
 export interface SearchInterface {
   propertyType: string[];
