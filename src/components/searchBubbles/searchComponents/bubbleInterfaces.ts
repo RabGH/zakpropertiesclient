@@ -54,7 +54,6 @@ export interface ResultsBubbleProps {
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
   properties: Property[];
   setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
-  resultsButtonRef: MutableRefObject<() => void>;
 }
 export interface SortByBubbleProps {
   search: SearchInterface;

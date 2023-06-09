@@ -9,7 +9,6 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
   setSearch,
   properties,
   setFilteredProperties,
-  resultsButtonRef,
 }) => {
   const styles = getBubbleStyles();
 
@@ -42,12 +41,10 @@ const ResultsBubble: React.FC<ResultsBubbleProps> = ({
     setFilteredProperties(filteredProperties);
   };
 
-  resultsButtonRef.current = handleButtonClick;
-
   return (
     <Button
       onClick={handleButtonClick}
-      variant="contained"
+      variant="outlined"
       sx={styles.searchResultsButton}
     >
       {buttonText}
