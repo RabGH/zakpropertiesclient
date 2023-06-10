@@ -11,30 +11,9 @@ import ClearSelectionBubble from "./ClearSelectionBubble";
 
 import { SearchFieldBubblesProps } from "./searchComponents/bubbleInterfaces";
 import { getBubbleStyles } from "./searchComponents/bubbleStyles";
-import { filterProperties } from "./searchComponents/filterPropertiesFunction";
 
-const SearchFieldBubbles = ({
-  search,
-  setSearch,
-  properties,
-  setFilteredProperties,
-}: SearchFieldBubblesProps) => {
+const SearchFieldBubbles = ({ search, setSearch }: SearchFieldBubblesProps) => {
   const styles = getBubbleStyles();
-
-  const filteredProperties = filterProperties(
-    search.propertyFeatures,
-    search.propertyType,
-    search.propertyOffPlan,
-    properties,
-    search.priceRange,
-    search.bedrooms,
-    search.sizeRange
-  );
-
-  useEffect(() => {
-    setSearch({ ...search, filteredProperties });
-    setFilteredProperties(filteredProperties);
-  }, [search]);
 
   return (
     <Box sx={styles.searchFieldMainBox}>
@@ -44,9 +23,6 @@ const SearchFieldBubbles = ({
         spacing={0}
         sx={styles.mainSearchFieldStack}
       >
-        <Typography variant="h6" sx={styles.resultsTypography}>
-          Results: {search.filteredProperties.length}
-        </Typography>
         <PropertyTypeBubble search={search} setSearch={setSearch} />
         <BedroomBubble
           minBedrooms={1}
@@ -65,12 +41,8 @@ const SearchFieldBubbles = ({
           setSearch={setSearch}
         />
         <FeatureBubble search={search} setSearch={setSearch} />
-        <SortByBubble
-          search={search}
-          setSearch={setSearch}
-          setFilteredProperties={setFilteredProperties}
-        />
-        <ClearSelectionBubble search={search} setSearch={setSearch} />
+        <SortByBubble search={search} setSearch={setSearch} />
+        <ClearSelectionBubble setSearch={setSearch} />
       </Stack>
     </Box>
   );

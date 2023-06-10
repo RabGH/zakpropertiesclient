@@ -24,6 +24,7 @@ export default function PropertySearch({
     propertyFeatures: [],
     readyToBuy: "Any",
     sizeRange: [0, 10000],
+    sortBy: "Featured",
   });
   const [filteredProperties, setFilteredProperties] =
     useState<Property[]>(properties);

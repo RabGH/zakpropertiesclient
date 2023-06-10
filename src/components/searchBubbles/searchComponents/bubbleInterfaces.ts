@@ -10,13 +10,12 @@ export interface SearchInterface {
   propertyFeatures: string[];
   readyToBuy: string;
   sizeRange: [number, number];
+  sortBy: string;
 }
 
 export interface SearchFieldBubblesProps {
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
-  properties: Property[];
-  setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
 }
 export interface ReadyToBuyBubbleProps {
   readyToBuyOption: string;
@@ -52,9 +51,7 @@ export interface SizeBubbleProps {
 export interface SortByBubbleProps {
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
-  setFilteredProperties: React.Dispatch<React.SetStateAction<Property[]>>;
 }
 export interface ClearSelectionBubbleProps {
-  search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }
