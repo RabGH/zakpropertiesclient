@@ -9,7 +9,6 @@ const SortByBubble: React.FC<SortByBubbleProps> = ({ search, setSearch }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const buttonRef = React.useRef(null);
 
-
   const sortBy = (criterion: string) => {
     setAnchorEl(null);
     setButtonText(criterion);

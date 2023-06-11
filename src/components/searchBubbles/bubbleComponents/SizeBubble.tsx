@@ -20,13 +20,28 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
   const styles = getBubbleStyles();
   const [low, setLow] = useState<number>(sizeRange[0]);
   const [high, setHigh] = useState<number>(sizeRange[1]);
-  const [buttonText, setButtonText] = useState<string>("Any");
+  const [buttonText, setButtonText] = useState<string>(" ");
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
+
+  const [inputCount, setInputCount] = useState<number>(0);
 
   useEffect(() => {
     setLow(search.sizeRange[0]);
     setHigh(search.sizeRange[1]);
+  }, [search.sizeRange]);
+
+  useEffect(() => {
+    const minSize = 0;
+    const maxSize = 10000;
+    let count = 0;
+    if (search.sizeRange[0] > minSize) {
+      count++;
+    }
+    if (search.sizeRange[1] < maxSize) {
+      count++;
+    }
+    setInputCount(count);
   }, [search.sizeRange]);
 
   const minSize = 0;
@@ -40,35 +55,41 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setLow(Number(event.target.value));
+    if (Number(event.target.value) > minSize) {
+      setInputCount((prev) => Math.min(prev + 1, 2));
+    } else {
+      setInputCount((prev) => Math.max(prev - 1, 0));
+    }
   };
 
   const handleHighChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setHigh(Number(event.target.value));
+    if (Number(event.target.value) < maxSize) {
+      setInputCount((prev) => Math.min(prev + 1, 2));
+    } else {
+      setInputCount((prev) => Math.max(prev - 1, 0));
+    }
   };
 
   const handleApply = () => {
     setSearch((prev) => ({ ...prev, sizeRange: [low, high] }));
     setOpen(false);
-    if (low === search.sizeRange[0] && high === search.sizeRange[1]) {
-      setButtonText("Any");
-    } else if (low === minSize && high === maxSize) {
-      setButtonText("Any");
+    if (inputCount === 0) {
+      setButtonText(" ");
     } else {
-      setButtonText("Custom");
+      setButtonText(inputCount.toString());
     }
   };
 
   const handleClose = () => {
     setSearch((prev) => ({ ...prev, sizeRange: [low, high] }));
     setOpen(false);
-    if (low === search.sizeRange[0] && high === search.sizeRange[1]) {
-      setButtonText("Any");
-    } else if (low === minSize && high === maxSize) {
-      setButtonText("Any");
+    if (inputCount === 0) {
+      setButtonText(" ");
     } else {
-      setButtonText("Custom");
+      setButtonText(inputCount.toString());
     }
   };
 
@@ -79,7 +100,8 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
       ...prevSearch,
       sizeRange: [minSize, maxSize],
     }));
-    setButtonText("Any");
+    setButtonText(" ");
+    setInputCount(0);
   };
 
   const sizeOptions = [
@@ -94,7 +116,7 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
         sx={styles.generalButtonStyles}
         ref={buttonRef}
       >
-        Size Range: {buttonText}
+        Size Range {buttonText}
       </Button>
       <Box sx={styles.generalPopperBox}>
         <Menu

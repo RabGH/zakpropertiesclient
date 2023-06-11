@@ -20,13 +20,28 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
   const styles = getBubbleStyles();
   const [low, setLow] = useState<number>(priceRange[0]);
   const [high, setHigh] = useState<number>(priceRange[1]);
-  const [buttonText, setButtonText] = useState<string>("Any");
+  const [buttonText, setButtonText] = useState<string>(" ");
   const [open, setOpen] = useState<boolean>(false);
   const buttonRef = React.useRef(null);
+
+  const [inputCount, setInputCount] = useState<number>(0);
 
   useEffect(() => {
     setLow(search.priceRange[0]);
     setHigh(search.priceRange[1]);
+  }, [search.priceRange]);
+
+  useEffect(() => {
+    const minPrice = 0;
+    const maxPrice = 500000000;
+    let count = 0;
+    if (search.priceRange[0] > minPrice) {
+      count++;
+    }
+    if (search.priceRange[1] < maxPrice) {
+      count++;
+    }
+    setInputCount(count);
   }, [search.priceRange]);
 
   const minPrice = 0;
@@ -40,35 +55,41 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setLow(Number(event.target.value));
+    if (Number(event.target.value) > minPrice) {
+      setInputCount((prev) => Math.min(prev + 1, 2));
+    } else {
+      setInputCount((prev) => Math.max(prev - 1, 0));
+    }
   };
 
   const handleHighChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setHigh(Number(event.target.value));
+    if (Number(event.target.value) < maxPrice) {
+      setInputCount((prev) => Math.min(prev + 1, 2));
+    } else {
+      setInputCount((prev) => Math.max(prev - 1, 0));
+    }
   };
 
   const handleApply = () => {
     setSearch((prev) => ({ ...prev, priceRange: [low, high] }));
     setOpen(false);
-    if (low === search.priceRange[0] && high === search.priceRange[1]) {
-      setButtonText("Any");
-    } else if (low === minPrice && high === maxPrice) {
-      setButtonText("Any");
+    if (inputCount === 0) {
+      setButtonText(" ");
     } else {
-      setButtonText("Custom");
+      setButtonText(inputCount.toString());
     }
   };
 
   const handleClose = () => {
     setSearch((prev) => ({ ...prev, priceRange: [low, high] }));
     setOpen(false);
-    if (low === search.priceRange[0] && high === search.priceRange[1]) {
-      setButtonText("Any");
-    } else if (low === minPrice && high === maxPrice) {
-      setButtonText("Any");
+    if (inputCount === 0) {
+      setButtonText(" ");
     } else {
-      setButtonText("Custom");
+      setButtonText(inputCount.toString());
     }
   };
 
@@ -79,7 +100,8 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
       ...prevSearch,
       priceRange: [minPrice, maxPrice],
     }));
-    setButtonText("Any");
+    setButtonText(" ");
+    setInputCount(0);
   };
 
   const priceOptions = [
@@ -108,7 +130,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
         sx={styles.generalButtonStyles}
         ref={buttonRef}
       >
-        Price Range: {buttonText}
+        Price Range {buttonText}
       </Button>
       <Box sx={styles.generalPopperBox}>
         <Menu
