@@ -5,15 +5,20 @@ import { getBubbleStyles } from "./searchComponents/bubbleStyles";
 
 const SortByBubble: React.FC<SortByBubbleProps> = ({ search, setSearch }) => {
   const styles = getBubbleStyles();
-  const [buttonText, setButtonText] = useState<string>("Featured");
+  const [buttonText, setButtonText] = useState<string>("Latest"); // Change this to "Latest"
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const buttonRef = React.useRef(null);
+
 
   const sortBy = (criterion: string) => {
     setAnchorEl(null);
     setButtonText(criterion);
     const filteredProperties = search.filteredProperties;
     console.log("Filtered properties:", filteredProperties);
+
+    if (filteredProperties.length === 0) {
+      return [];
+    }
 
     switch (criterion) {
       case "High Price":
@@ -76,7 +81,6 @@ const SortByBubble: React.FC<SortByBubbleProps> = ({ search, setSearch }) => {
             sx={styles.sortByMenuStyles}
             disableScrollLock
           >
-            <MenuItem onClick={() => sortBy("Featured")}>Featured</MenuItem>
             <MenuItem onClick={() => sortBy("High Price")}>High Price</MenuItem>
             <MenuItem onClick={() => sortBy("Low Price")}>Low Price</MenuItem>
             <MenuItem onClick={() => sortBy("Latest Property")}>

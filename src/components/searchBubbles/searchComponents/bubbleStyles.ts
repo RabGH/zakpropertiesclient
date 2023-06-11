@@ -15,14 +15,10 @@ export const getBubbleStyles = () => {
       p: "0.5rem",
       mb: "2rem",
     },
+
     searchButtonBox: {
       p: "8px",
     },
-
-    resultsTypography: {},
-
-    // ResultsBubble.tsx Styles
-    searchResultsButton: {},
 
     // SortByBubble.tsx Styles
     sortByButtonStyle: {},
@@ -42,14 +38,28 @@ export const getBubbleStyles = () => {
       height: "180px",
       overflow: "visible",
       mt: "0.5rem",
+      justifyContent: "center",
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1280px)": {},
+      "@media (max-width: 1024px)": {},
+      "@media (max-width: 960px)": {},
+      "@media (max-width: 768px)": {
+        top: "100%",
+        left: "70%",
+        transform: "translate(-100%, -100%)",
+        mt: 0,
+      },
+      "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
-        width: "885px",
-        ml: "1.1rem",
+        width: "450px",
       },
-      "@media (max-width: 400px)": {
-        width: "885px",
-        ml: "1.1rem",
+      "@media (max-width: 481px)": {
+        width: "350px",
       },
+      "@media (max-width: 400px)": {},
+      "@media (max-width: 375px)": {},
+      "@media (max-width: 360px)": {},
+      "@media (max-width: 320px)": {},
     },
     bedroomMenuListStyles: {
       display: "flex",
@@ -102,13 +112,43 @@ export const getBubbleStyles = () => {
       height: "1000px",
       overflow: "visible",
       mt: "0.5rem",
+      justifyContent: "center",
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1280px)": {
+        width: "950px",
+      },
+      "@media (max-width: 1024px)": {
+        width: "700px",
+      },
+      "@media (max-width: 961px)": {
+        width: "600px",
+      },
+      "@media (max-width: 912px)": {
+        width: "600px",
+      },
+      "@media (max-width: 768px)": {
+        top: "68%",
+        left: "51%",
+        transform: "translate(-50%, -50%)",
+        width: "600px",
+      },
       "@media (max-width: 600px)": {
-        width: "885px",
-        ml: "1.1rem",
+        width: "550px",
+      },
+      "@media (max-width: 481px)": {
+        width: "430px",
       },
       "@media (max-width: 400px)": {
-        width: "885px",
-        ml: "1.1rem",
+        width: "435px",
+      },
+      "@media (max-width: 375px)": {
+        width: "360px",
+      },
+      "@media (max-width: 360px)": {
+        width: "345px",
+      },
+      "@media (max-width: 320px)": {
+        width: "260px",
       },
     },
     priceMenuListStyles: {
@@ -154,6 +194,20 @@ export const getBubbleStyles = () => {
           backgroundColor: muiTheme.palette.grey[900],
         },
       },
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1280px)": {},
+      "@media (max-width: 1024px)": {},
+      "@media (max-width: 960px)": {},
+      "@media (max-width: 768px)": {},
+      "@media (max-width: 641px)": {},
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 481px)": {
+        width: "150px",
+      },
+      "@media (max-width: 400px)": {},
+      "@media (max-width: 375px)": {},
+      "@media (max-width: 360px)": {},
+      "@media (max-width: 320px)": {},
     },
     priceButtonStackStyles: {
       display: "flex",
@@ -193,13 +247,43 @@ export const getBubbleStyles = () => {
       height: "1000px",
       overflow: "visible",
       mt: "0.5rem",
+      justifyContent: "center",
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1280px)": {
+        width: "950px",
+      },
+      "@media (max-width: 1024px)": {
+        width: "700px",
+      },
+      "@media (max-width: 961px)": {
+        width: "600px",
+      },
+      "@media (max-width: 912px)": {
+        width: "600px",
+      },
+      "@media (max-width: 768px)": {
+        top: "68%",
+        left: "51%",
+        transform: "translate(-50%, -50%)",
+        width: "600px",
+      },
       "@media (max-width: 600px)": {
-        width: "885px",
-        ml: "1.1rem",
+        width: "550px",
+      },
+      "@media (max-width: 481px)": {
+        width: "430px",
       },
       "@media (max-width: 400px)": {
-        width: "885px",
-        ml: "1.1rem",
+        width: "435px",
+      },
+      "@media (max-width: 375px)": {
+        width: "360px",
+      },
+      "@media (max-width: 360px)": {
+        width: "345px",
+      },
+      "@media (max-width: 320px)": {
+        width: "260px",
       },
     },
     sizeMenuListStyles: {
@@ -245,6 +329,20 @@ export const getBubbleStyles = () => {
           backgroundColor: muiTheme.palette.grey[900],
         },
       },
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1280px)": {},
+      "@media (max-width: 1024px)": {},
+      "@media (max-width: 960px)": {},
+      "@media (max-width: 768px)": {},
+      "@media (max-width: 641px)": {},
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 481px)": {
+        width: "150px",
+      },
+      "@media (max-width: 400px)": {},
+      "@media (max-width: 375px)": {},
+      "@media (max-width: 360px)": {},
+      "@media (max-width: 320px)": {},
     },
     sizeButtonStackStyles: {
       display: "flex",
@@ -280,6 +378,10 @@ export const getBubbleStyles = () => {
         backgroundColor: muiTheme.palette.grey[900],
       },
     },
-    generalPopperBox: {},
+    generalPopperBox: {
+      display: "flex",
+      position: "relative",
+      alignItems: "center",
+    },
   };
 };

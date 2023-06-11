@@ -16,7 +16,7 @@ export const getPropertyGridCardStyles = () => {
     noPropertiesFoundTypographyStyles: {
       m: "auto",
       mt: "5rem",
-      mb: "5rem",
+      mb: "15rem",
       width: "50ch",
     },
 

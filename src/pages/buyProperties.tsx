@@ -24,7 +24,7 @@ export default function PropertySearch({
     propertyFeatures: [],
     readyToBuy: "Any",
     sizeRange: [0, 10000],
-    sortBy: "Featured",
+    sortBy: "Latest",
   });
   const [filteredProperties, setFilteredProperties] =
     useState<Property[]>(properties);
@@ -62,6 +62,7 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const propertyQuery = `*[ _type == "property"]{
     ...,
+    id,
     createdAt,
     location,
     propertyType,
