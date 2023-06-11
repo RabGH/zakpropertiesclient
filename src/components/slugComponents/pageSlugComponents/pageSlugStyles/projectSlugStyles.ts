@@ -183,11 +183,11 @@ export const getProjectPageStyles = () => {
 
     dividerStyles: {
       width: "90%",
-      mt: "1rem",
-      mb: "1rem",
+      mt: "0.5rem",
+      mb: "0.5rem",
       "@media (max-width: 481px)": {
-        mt: "2rem",
-        mb: "2rem",
+        mt: "1rem",
+        mb: "1rem",
       },
     },
   };
