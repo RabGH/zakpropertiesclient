@@ -44,10 +44,10 @@ export const getBubbleStyles = () => {
       "@media (max-width: 1024px)": {},
       "@media (max-width: 960px)": {},
       "@media (max-width: 768px)": {
-        top: "100%",
-        left: "70%",
-        transform: "translate(-100%, -100%)",
         mt: 0,
+        top: "10%",
+        left: "35%",
+        transform: "translate(-50%, -120%)",
       },
       "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
@@ -55,9 +55,17 @@ export const getBubbleStyles = () => {
       },
       "@media (max-width: 481px)": {
         width: "350px",
+        top: "100%",
+        left: "70%",
+        transform: "translate(-100%, -100%)",
       },
       "@media (max-width: 400px)": {},
-      "@media (max-width: 375px)": {},
+      "@media (max-width: 375px)": {
+        width: "330px",
+        top: "40%",
+        left: "-15%",
+        transform: "translate(-50%, -117%)",
+      },
       "@media (max-width: 360px)": {},
       "@media (max-width: 320px)": {},
     },
@@ -84,6 +92,20 @@ export const getBubbleStyles = () => {
       "& .MuiSlider-thumb": {
         borderColor: "white",
       },
+      "@media (max-width: 1440px)": {},
+      "@media (max-width: 1280px)": {},
+      "@media (max-width: 1024px)": {},
+      "@media (max-width: 960px)": {},
+      "@media (max-width: 768px)": {},
+      "@media (max-width: 641px)": {},
+      "@media (max-width: 600px)": {},
+      "@media (max-width: 481px)": {},
+      "@media (max-width: 400px)": {},
+      "@media (max-width: 375px)": {
+        width: "200px",
+      },
+      "@media (max-width: 360px)": {},
+      "@media (max-width: 320px)": {},
     },
     bedroomButtonStackStyles: {
       display: "flex",
@@ -127,9 +149,9 @@ export const getBubbleStyles = () => {
         width: "600px",
       },
       "@media (max-width: 768px)": {
-        top: "68%",
-        left: "51%",
-        transform: "translate(-50%, -50%)",
+        top: "50%",
+        right: "50%",
+        transform: "translate(-5%, -51%)",
         width: "600px",
       },
       "@media (max-width: 600px)": {
@@ -137,12 +159,18 @@ export const getBubbleStyles = () => {
       },
       "@media (max-width: 481px)": {
         width: "430px",
+        top: "68%",
+        left: "51%",
+        transform: "translate(-50%, -50%)",
       },
       "@media (max-width: 400px)": {
         width: "435px",
       },
       "@media (max-width: 375px)": {
-        width: "360px",
+        width: "370px",
+        top: "62%",
+        left: "49%",
+        transform: "translate(-50%, -50%)",
       },
       "@media (max-width: 360px)": {
         width: "345px",
@@ -205,7 +233,9 @@ export const getBubbleStyles = () => {
         width: "150px",
       },
       "@media (max-width: 400px)": {},
-      "@media (max-width: 375px)": {},
+      "@media (max-width: 375px)": {
+        width: "130px",
+      },
       "@media (max-width: 360px)": {},
       "@media (max-width: 320px)": {},
     },
@@ -262,9 +292,9 @@ export const getBubbleStyles = () => {
         width: "600px",
       },
       "@media (max-width: 768px)": {
-        top: "68%",
-        left: "51%",
-        transform: "translate(-50%, -50%)",
+        top: "50%",
+        right: "50%",
+        transform: "translate(-5%, -51%)",
         width: "600px",
       },
       "@media (max-width: 600px)": {
@@ -272,12 +302,18 @@ export const getBubbleStyles = () => {
       },
       "@media (max-width: 481px)": {
         width: "430px",
+        top: "68%",
+        left: "51%",
+        transform: "translate(-50%, -50%)",
       },
       "@media (max-width: 400px)": {
         width: "435px",
       },
       "@media (max-width: 375px)": {
-        width: "360px",
+        width: "370px",
+        top: "62%",
+        left: "49%",
+        transform: "translate(-50%, -50%)",
       },
       "@media (max-width: 360px)": {
         width: "345px",
@@ -340,7 +376,9 @@ export const getBubbleStyles = () => {
         width: "150px",
       },
       "@media (max-width: 400px)": {},
-      "@media (max-width: 375px)": {},
+      "@media (max-width: 375px)": {
+        width: "130px",
+      },
       "@media (max-width: 360px)": {},
       "@media (max-width: 320px)": {},
     },
