@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Stack } from "@mui/material";
 import { getBubbleStyles } from "./searchComponents/bubbleStyles";
 import { ClearSelectionBubbleProps } from "./searchComponents/bubbleInterfaces";
+import { PropertiesContext } from "./searchComponents/bubbleInterfaces";
 
 const ClearSelectionBubble = ({ setSearch }: ClearSelectionBubbleProps) => {
   const styles = getBubbleStyles();
+  const properties = useContext(PropertiesContext);
 
   const handleClear = () => {
     setSearch({
       propertyType: [],
       priceRange: [0, 500000000],
       propertyOffPlan: undefined,
-      filteredProperties: [],
+      filteredProperties: properties,
       bedrooms: [1, 15],
       propertyFeatures: [],
       readyToBuy: "Any",

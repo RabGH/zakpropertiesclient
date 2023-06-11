@@ -13,6 +13,8 @@ export interface SearchInterface {
   sortBy: string;
 }
 
+export const PropertiesContext = React.createContext<Property[]>([]);
+
 export interface SearchFieldBubblesProps {
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;

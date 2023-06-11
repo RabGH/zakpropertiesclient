@@ -8,6 +8,7 @@ import { previewClient } from "@lib/client";
 import PropertyCardGrid from "@/components/slugComponents/cardSlugs/propertyCards/PropertyCardGrid";
 import { getBuyPropertiesPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/buyPropertiesStyles";
 import { SearchInterface } from "@/components/searchBubbles/searchComponents/bubbleInterfaces";
+import { PropertiesContext } from "@/components/searchBubbles/searchComponents/bubbleInterfaces";
 
 export default function PropertySearch({
   properties,
@@ -44,12 +45,14 @@ export default function PropertySearch({
           Featured Properties for Sale
         </Typography>
         <Box sx={styles.propertyAllCardBox}>
-          <PropertyCardGrid
-            properties={properties}
-            search={search}
-            setSearch={setSearch}
-            setFilteredProperties={setFilteredProperties}
-          />
+          <PropertiesContext.Provider value={properties}>
+            <PropertyCardGrid
+              properties={properties}
+              search={search}
+              setSearch={setSearch}
+              setFilteredProperties={setFilteredProperties}
+            />
+          </PropertiesContext.Provider>
         </Box>
       </Box>
     </Box>
