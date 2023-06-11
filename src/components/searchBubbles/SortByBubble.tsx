@@ -26,14 +26,14 @@ const SortByBubble: React.FC<SortByBubbleProps> = ({ search, setSearch }) => {
       case "Low Price":
         filteredProperties.sort((a, b) => a.totalPrice - b.totalPrice);
         break;
-      case "Latest Property":
+      case "Latest":
         filteredProperties.sort(
           (a, b) =>
             new Date(b.createdAt || new Date()).getTime() -
             new Date(a.createdAt || new Date()).getTime()
         );
         break;
-      case "Oldest Property":
+      case "Oldest":
         filteredProperties.sort(
           (a, b) =>
             new Date(a.createdAt || new Date(0)).getTime() -
@@ -82,12 +82,8 @@ const SortByBubble: React.FC<SortByBubbleProps> = ({ search, setSearch }) => {
           >
             <MenuItem onClick={() => sortBy("High Price")}>High Price</MenuItem>
             <MenuItem onClick={() => sortBy("Low Price")}>Low Price</MenuItem>
-            <MenuItem onClick={() => sortBy("Latest Property")}>
-              Latest
-            </MenuItem>
-            <MenuItem onClick={() => sortBy("Oldest Property")}>
-              Oldest
-            </MenuItem>
+            <MenuItem onClick={() => sortBy("Latest")}>Latest</MenuItem>
+            <MenuItem onClick={() => sortBy("Oldest")}>Oldest</MenuItem>
           </Menu>
         </ButtonGroup>
       </Box>
