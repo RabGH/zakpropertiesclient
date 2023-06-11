@@ -22,27 +22,27 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
         <Box sx={styles.mainAll}>
           <Box sx={styles.mainBox}>
             <Card sx={styles.allCardStyles}>
-              {property.mainPropertyImage && (
-                <CardImageCarousel
-                  images={[
-                    urlFor(property.mainPropertyImage)
-                      .auto("format")
-                      .url()
-                      .toString(),
-                    ...property.propertyImages
-                      .filter((img) => img != null)
-                      .map((img) =>
-                        urlFor(img).auto("format").url().toString()
-                      ),
-                  ]}
-                  alt={property.title}
-                />
-              )}
-              <Box sx={styles.cardInfoStyles}>
-                <Link
-                  key={property._id}
-                  href={`/property/${property.slug.current}`}
-                >
+              <Link
+                key={property._id}
+                href={`/property/${property.slug.current}`}
+              >
+                {property.mainPropertyImage && (
+                  <CardImageCarousel
+                    images={[
+                      urlFor(property.mainPropertyImage)
+                        .auto("format")
+                        .url()
+                        .toString(),
+                      ...property.propertyImages
+                        .filter((img) => img != null)
+                        .map((img) =>
+                          urlFor(img).auto("format").url().toString()
+                        ),
+                    ]}
+                    alt={property.title}
+                  />
+                )}
+                <Box sx={styles.cardInfoStyles}>
                   <Typography variant="body1" sx={styles.propertyTypeStyles}>
                     {property.propertyType}
                   </Typography>
@@ -84,8 +84,8 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                   <Typography variant="body1" sx={styles.propertyPriceCard}>
                     {formatPrice(property.totalPrice)}
                   </Typography>
-                </Link>
-              </Box>
+                </Box>
+              </Link>
             </Card>
           </Box>
         </Box>

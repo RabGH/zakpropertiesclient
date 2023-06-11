@@ -13,6 +13,7 @@ interface CardImageCarouselProps {
 
 const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
 
   const settings = {
     dots: true,
@@ -58,15 +59,23 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
     beforeChange: (prev: any, next: any) => {
       setCurrentSlide(next);
     },
+    onSwipe: () => {
+      setIsDragging(true);
+    },
+    afterChange: () => {
+      setIsDragging(false);
+    },
   };
 
   const sliderRef = useRef<Slider>(null);
 
-  const handleNext = () => {
+  const handleNext = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     sliderRef.current?.slickNext();
   };
 
-  const handlePrev = () => {
+  const handlePrev = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     sliderRef.current?.slickPrev();
   };
 
@@ -98,6 +107,7 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
           transform: "translateY(-50%)",
           zIndex: 1,
           color: "white",
+          p: 2,
         }}
         onClick={handlePrev}
       >
@@ -111,6 +121,7 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
           transform: "translateY(-50%)",
           zIndex: 1,
           color: "white",
+          p: 2,
         }}
         onClick={handleNext}
       >

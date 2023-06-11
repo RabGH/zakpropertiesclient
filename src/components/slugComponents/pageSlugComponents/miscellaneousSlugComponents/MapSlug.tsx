@@ -41,9 +41,11 @@ const MapSlug: React.FC<MapSlugProps> = ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: "25%",
+    gap: "-100%",
+    "@media (max-width: 2560px)": {
+    },
     "@media (max-width: 481px)": {
-      gap: "50%",
+      gap: "45%",
     },
   };
 
