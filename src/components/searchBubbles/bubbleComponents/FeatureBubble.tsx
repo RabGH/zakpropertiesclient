@@ -44,7 +44,7 @@ const FeatureBubble = ({ search, setSearch }: FeatureBubbleProps) => {
         sx={styles.featureButtonGroupStyles}
       >
         <Button onClick={handleClick} sx={styles.generalButtonStyles}>
-          Features: {selectedCount > 0 ? `${selectedCount} selected` : "Any"}
+          Features {selectedCount > 0 ? `${selectedCount}` : " "}
         </Button>
         <Menu
           anchorEl={anchorEl}
