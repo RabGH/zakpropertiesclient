@@ -63,6 +63,9 @@ export const getNavBarStyles = () => {
       "&:Hover": {
         color: "#5B5B5B",
       },
+      "@media (max-width: 360px)": {
+        display: "none",
+      },
     },
     signInButtonStyles: {
       m: 1,

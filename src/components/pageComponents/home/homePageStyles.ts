@@ -89,7 +89,7 @@ export const getHomePageStyles = () => {
       },
       "@media (max-width: 320px)": {
         fontSize: "1.2rem",
-        mt: "1rem",
+        mt: "10rem",
       },
       "@media (max-width: 360px)": {},
     },
@@ -123,7 +123,9 @@ export const getHomePageStyles = () => {
       paddingBottom: "1rem",
       color: muiTheme.palette.primary.main,
       textAlign: "center",
-      "@media (max-width: 600px)": {},
+      "@media (max-width: 600px)": {
+        fontSize: "1.2rem",
+      },
       //? Title for the map OUTSIDE of container
     },
 
