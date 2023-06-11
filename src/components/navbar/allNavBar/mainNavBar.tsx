@@ -41,6 +41,7 @@ const StyledImage = styled(Image)({
   },
 });
 
+//! Shouldn't be -4 and check container
 export default function MainNavBar(props: Props): JSX.Element {
   const styles = getNavBarStyles();
   return (
