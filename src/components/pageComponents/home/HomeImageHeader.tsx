@@ -14,6 +14,8 @@ import { getHomePageStyles } from "./homePageStyles";
 
 interface HomeImageHeaderProps {
   projects: Project[];
+  currentSlide: number;
+  setCurrentSlide: (value: number) => void;
 }
 
 const sliderSettings = {
@@ -58,10 +60,12 @@ const sliderSettings = {
   ],
 };
 
-function HomeImageHeader({ projects }: HomeImageHeaderProps) {
+function HomeImageHeader({
+  projects,
+  currentSlide,
+  setCurrentSlide,
+}: HomeImageHeaderProps) {
   const styles = getHomePageStyles();
-
-  const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef<Slider | null>(null);
 
   useEffect(() => {
@@ -96,6 +100,39 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
               ref={sliderRef}
               beforeChange={(_, next) => setCurrentSlide(next)}
             >
+              <Box key="static">
+                <Box sx={styles.imgContainer} data-slide-index={0}>
+                  <Image
+                    src="/images/static_images/TryMainImage.jpg"
+                    width={1920}
+                    height={1080}
+                    alt="ZakProperties"
+                    placeholder="blur"
+                    blurDataURL="data:image/svg+xml;base64,..."
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                  <Box sx={styles.imgOverlay} />
+                  <Box sx={styles.contentContainer}>
+                    <Typography variant="h1" sx={styles.zakStaticTitle}>
+                      Welcome to ZakProperties
+                    </Typography>
+                    <Typography variant="h3" sx={styles.zakStaticSubTitle}>
+                      Your Trusted Partner in Real Estate
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={styles.zakStaticSubSubTitle}
+                    >
+                      Explore Dubai&apos;s finest properties
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+
               {projects.map((project, index) => (
                 <Box key={project._id}>
                   <Box sx={styles.imgContainer} data-slide-index={index}>
@@ -124,11 +161,11 @@ function HomeImageHeader({ projects }: HomeImageHeaderProps) {
                         key={project._id}
                         href={`/projects/${project.slug.current}`}
                       >
-                        <Typography variant="h1" sx={styles.zakTitle}>
+                        <Typography variant="h2" sx={styles.zakTitle}>
                           {project.title}
                         </Typography>
                       </Link>
-                      <Typography variant="h1" sx={styles.zakSubTitle}>
+                      <Typography variant="body1" sx={styles.zakSubTitle}>
                         {project.description}
                       </Typography>
                     </Box>

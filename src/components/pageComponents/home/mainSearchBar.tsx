@@ -4,17 +4,16 @@ import { Property, Project } from "@lib/types";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-//! Have the button not only be links but work with Auto Complete as well
-
 interface SearchBarProps {
   properties: Property[];
   projects: Project[];
   handleToggle: (value: string, selectedType: string) => void;
+  currentSlide: number;
 }
 
 function SearchBar(props: SearchBarProps) {
   const router = useRouter();
-  const { properties, projects, handleToggle } = props;
+  const { properties, projects, handleToggle, currentSlide } = props;
   const [selectedType, setSelectedType] = useState("All");
 
   const handleTypeChange = (
@@ -105,78 +104,48 @@ function SearchBar(props: SearchBarProps) {
     },
   };
 
-  // const autoSelectStyles = {
-  //   width: "155px",
-  //   flexGrow: 1,
-  //   "& .MuiInputBase-input": {
-  //     color: "black",
-  //   },
-  //   "& .MuiInputLabel-root": {
-  //     color: "black",
-  //   },
-  //   "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-  //     borderColor: "rgba(30, 59, 114, 1)",
-  //     borderWidth: "0px",
-  //   },
-  //   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-  //     borderColor: "black",
-  //   },
-  //   "& .MuiOutlinedInput-root": {
-  //     backgroundColor: "rgba(255, 255, 255, 0.7)",
-  //   },
-  //   "& .MuiInputLabel-root.Mui-focused": {
-  //     color: "black",
-  //   },
-  //   zIndex: 5,
-  //   "@media (max-width: 1440px)": {},
-  //   "@media (max-width: 1024px)": {
-  //     width: "115px",
-  //   },
-  //   "@media (max-width: 600px)": {
-  //     width: "90px",
-  //     display: "none",
-  //   },
-  //   "@media (max-width: 400px)": {
-  //     display: "none",
-  //   },
-  //   "@media (max-width: 360px)": {
-  //     display: "none",
-  //   },
-  // };
-
   const searchBarWrapper = {
     position: "absolute",
-    top: "110%",
+    top: currentSlide === 0 ? "100%" : "110%",
     left: "0",
     right: "0",
     zIndex: "9999",
     flex: 1,
     "@media (max-width: 1440px)": {
-      top: "127%",
+      top: currentSlide === 0 ? "100%" : "127%",
+    },
+    "@media (max-width: 1280px)": {
+      top: currentSlide === 0 ? "110%" : "130%",
     },
     "@media (max-width: 1024px)": {
-      top: "100%",
+      top: currentSlide === 0 ? "105%" : "123%",
     },
     "@media (max-width: 961px)": {
-      top: "100%",
+      top: currentSlide === 0 ? "100%" : "100%",
     },
     "@media (max-width: 912px)": {
-      top: "100%",
+      top: currentSlide === 0 ? "100%" : "100%",
+    },
+    "@media (max-width: 768px)": {
+      top: currentSlide === 0 ? "100%" : "115%",
     },
     "@media (max-width: 600px)": {
-      top: "115%",
+      top: currentSlide === 0 ? "100%" : "115%",
+    },
+    "@media (max-width: 540px)": {
+      top: currentSlide === 0 ? "100%" : "145%",
     },
     "@media (max-width: 481px)": {
-      top: "112%",
+      top: currentSlide === 0 ? "100%" : "130%",
     },
     "@media (max-width: 400px)": {
-      top: "80%",
+      top: currentSlide === 0 ? "100%" : "115%",
     },
     "@media (max-width: 375px)": {
-      top: "83%",
+      top: currentSlide === 0 ? "95%" : "125%",
     },
     "@media (max-width: 360px)": {
-      top: "83%",
+      top: currentSlide === 0 ? "90%" : "110%",
     },
   };
 
@@ -204,18 +173,10 @@ function SearchBar(props: SearchBarProps) {
       textDecoration: "none",
     },
     "@media (max-width: 1440px)": {},
-    "@media (max-width: 1024px)": {
-      mt: "7rem",
-    },
-    "@media (max-width: 600px)": {
-      mt: "6rem",
-    },
-    "@media (max-width: 400px)": {
-      mt: "7rem",
-    },
+    "@media (max-width: 1024px)": {},
+    "@media (max-width: 600px)": {},
+    "@media (max-width: 400px)": {},
     "@media (max-width: 375px)": {
-      mt: "10rem",
-      mb: "-1.6rem",
       fontSize: "1.3rem",
     },
     "@media (max-width: 360px)": {
@@ -240,18 +201,10 @@ function SearchBar(props: SearchBarProps) {
       textDecoration: "none",
     },
     "@media (max-width: 1440px)": {},
-    "@media (max-width: 1024px)": {
-      mt: "7rem",
-    },
-    "@media (max-width: 600px)": {
-      mt: "6rem",
-    },
-    "@media (max-width: 400px)": {
-      mt: "7rem",
-    },
+    "@media (max-width: 1024px)": {},
+    "@media (max-width: 600px)": {},
+    "@media (max-width: 400px)": {},
     "@media (max-width: 375px)": {
-      mt: "10rem",
-      mb: "-1.6rem",
       fontSize: "1.3rem",
     },
     "@media (max-width: 360px)": {
@@ -268,7 +221,9 @@ function SearchBar(props: SearchBarProps) {
     display: "flex",
     flexDirection: "row",
     spaceBetween: "1rem",
-    mb: "2rem",
+    alignItems: "center",
+    justifyContent: "center",
+    mb: "1rem",
   };
 
   return (
@@ -290,22 +245,11 @@ function SearchBar(props: SearchBarProps) {
               sx={projectButtonStyles}
               variant="contained"
             >
-              {/* {getButtonLabel(["Projects"])} */}View Developments
+              {/* {getButtonLabel(["Projects"])} */}View Projects
             </Button>
           </Link>
         </Box>
         <Box sx={mainSearchContainer}>
-          {/* <Autocomplete
-            disablePortal
-            options={options}
-            value={selectedType}
-            onChange={handleTypeChange}
-            // inputValue={getLabel(selectedType)}
-            sx={autoSelectStyles}
-            renderInput={(params) => (
-              <TextField {...params} label="Type" variant="outlined" />
-            )}
-          /> */}
           <Autocomplete
             disablePortal
             options={

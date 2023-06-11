@@ -165,7 +165,7 @@ export const getHomePageStyles = () => {
         height: "90vh",
       },
       "@media (max-width: 768px)": {
-        height: "115vh",
+        height: "110vh",
       },
       "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
@@ -197,18 +197,26 @@ export const getHomePageStyles = () => {
       "@media (max-width: 1024px)": {
         height: "105vh",
       },
-      "@media (max-width: 961px)": {},
+      "@media (max-width: 961px)": {
+        height: "90vh",
+      },
       "@media (max-width: 768px)": {
         height: "110vh",
       },
       "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
-        height: "117vh",
+        height: "115vh",
       },
       "@media (max-width: 481px)": {},
-      "@media (max-width: 400px)": {},
-      "@media (max-width: 375px)": {},
-      "@media (max-width: 360px)": {},
+      "@media (max-width: 400px)": {
+        height: "90vh",
+      },
+      "@media (max-width: 375px)": {
+        height: "100vh",
+      },
+      "@media (max-width: 360px)": {
+        height: "100vh",
+      },
       "@media (max-width: 320px)": {},
     },
 
@@ -226,6 +234,10 @@ export const getHomePageStyles = () => {
         top: "47%",
         fontSize: "1rem",
       },
+      "@media (max-width: 1280px)": {
+        top: "47%",
+        fontSize: "1rem",
+      },
       "@media (max-width: 1024px)": {
         top: "43%",
         fontSize: "0.9rem",
@@ -234,8 +246,12 @@ export const getHomePageStyles = () => {
         top: "33%",
         fontSize: "0.8rem",
       },
+      "@media (max-width: 540px)": {
+        top: "37%",
+        fontSize: "0.6rem",
+      },
       "@media (max-width: 400px)": {
-        top: "30%",
+        top: "37%",
         fontSize: "0.6rem",
       },
       "@media (max-width: 375px)": {
@@ -314,7 +330,105 @@ export const getHomePageStyles = () => {
       color: "white",
       textAlign: "left",
       "@media (max-width: 1440px)": {
-        mb: "10rem",
+        mb: "7rem",
+      },
+      "@media (max-width: 1024px)": {
+        mb: "3rem",
+      },
+      "@media (max-width: 600px)": {
+        mt: "2rem",
+        mb: "-1rem",
+      },
+      "@media (max-width: 481px)": {
+        fontSize: "1.2rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 400px)": {
+        mt: "3rem",
+        fontSize: "1rem",
+      },
+      "@media (max-width: 375px)": {
+        fontSize: "1rem",
+        mt: "1rem",
+      },
+      "@media (max-width: 360px)": {
+        mt: "1rem",
+        fontSize: "1rem",
+      },
+    },
+    // Static Header Styles
+    zakStaticTitle: {
+      fontSize: "4.5rem",
+      fontWeight: "bold",
+      mb: "1rem",
+      textAlign: "center",
+      transition: "color 0.3s ease-in-out",
+      ":hover": {
+        color: muiTheme.palette.error.light,
+      },
+      "@media (max-width: 1024px)": {
+        fontSize: "3.5rem",
+      },
+      "@media (max-width: 960px)": {
+        fontSize: "3rem",
+      },
+      "@media (max-width: 600px)": {
+        fontSize: "3rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 481px)": {
+        fontSize: "2.3rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "3rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 375px)": {
+        fontSize: "2.5rem",
+      },
+      "@media (max-width: 360px)": {
+        fontSize: "2rem",
+        mb: "0rem",
+      },
+    },
+    zakStaticSubTitle: {
+      fontSize: "1.3rem",
+      fontWeight: "400",
+      mt: "1rem",
+      textAlign: "center",
+      "@media (max-width: 1440px)": {
+      },
+      "@media (max-width: 1024px)": {
+        mb: "1rem",
+      },
+      "@media (max-width: 600px)": {
+        mt: "2rem",
+      },
+      "@media (max-width: 481px)": {
+        fontSize: "1.2rem",
+        mb: "0rem",
+      },
+      "@media (max-width: 400px)": {
+        mt: "3rem",
+        fontSize: "1rem",
+      },
+      "@media (max-width: 375px)": {
+        fontSize: "1rem",
+        mt: "1rem",
+      },
+      "@media (max-width: 360px)": {
+        mt: "1rem",
+        fontSize: "1rem",
+      },
+    },
+    zakStaticSubSubTitle: {
+      fontSize: "1.3rem",
+      fontWeight: "400",
+      mt: "1rem",
+      textAlign: "center",
+      "@media (max-width: 1440px)": {
+        mb: "8rem",
       },
       "@media (max-width: 1024px)": {
         mb: "3rem",

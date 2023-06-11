@@ -13,6 +13,7 @@ interface HomeHeaderProps {
 function HomeHeader({ properties, projects }: HomeHeaderProps) {
   const styles = getHomePageStyles();
   const [open, setOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleToggle = () => {
     setOpen(!open);
@@ -20,22 +21,25 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
 
   return (
     <>
-      {/* <Container sx={{ maxWidth: "2200px" }}> */}
-        <Box sx={styles.mainContainer}>
-          <HomeImageHeader projects={projects} />
-          <Box sx={styles.homeComponentMainBox}>
-            <Box sx={styles.searchBarContainer}>
-              <Box sx={styles.searchBarBox}>
-                <SearchBar
-                  properties={properties}
-                  projects={projects}
-                  handleToggle={handleToggle}
-                />
-              </Box>
+      <Box sx={styles.mainContainer}>
+        <HomeImageHeader
+          projects={projects}
+          currentSlide={currentSlide}
+          setCurrentSlide={setCurrentSlide}
+        />
+        <Box sx={styles.homeComponentMainBox}>
+          <Box sx={styles.searchBarContainer}>
+            <Box sx={styles.searchBarBox}>
+              <SearchBar
+                properties={properties}
+                projects={projects}
+                handleToggle={handleToggle}
+                currentSlide={currentSlide}
+              />
             </Box>
           </Box>
         </Box>
-      {/* </Container> */}
+      </Box>
     </>
   );
 }
