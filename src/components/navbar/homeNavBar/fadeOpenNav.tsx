@@ -82,9 +82,7 @@ export default function OpenFadeNav() {
         color={trigger ? "inherit" : "primary"}
         sx={{
           fontWeight: "bold",
-          borderColor: trigger
-            ? theme.palette.primary.main
-            : theme.palette.grey[300],
+          borderColor: trigger ? "black" : theme.palette.grey[300],
           transition: "all 0.9s ease-out",
           "&:hover": {
             borderColor: trigger
