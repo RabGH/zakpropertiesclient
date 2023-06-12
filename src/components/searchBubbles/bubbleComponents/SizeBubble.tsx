@@ -147,6 +147,8 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
                     MenuProps: {
                       anchorOrigin: { vertical: "bottom", horizontal: "left" },
                       transformOrigin: { vertical: "top", horizontal: "left" },
+                      disableScrollLock: true,
+                      sx: styles.sizeMenuPropStyles,
                       PaperProps: {
                         sx: styles.sizeMenuPaperStyles,
                       },
@@ -178,6 +180,8 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
                     MenuProps: {
                       anchorOrigin: { vertical: "bottom", horizontal: "left" },
                       transformOrigin: { vertical: "top", horizontal: "left" },
+                      disableScrollLock: true,
+                      sx: styles.sizeMenuPropStyles,
                       PaperProps: {
                         sx: styles.sizeMenuPaperStyles,
                       },

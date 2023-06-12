@@ -252,6 +252,11 @@ export const getBubbleStyles = () => {
       overflow: "auto",
       zIndex: 9999,
     },
+
+    priceMenuPropStyles: {
+      position: "absolute",
+    },
+
     // PropertyTypeBubble.tsx Styles
     typeButtonGroupStyles: {},
     typeButtonStyles: {},
@@ -394,6 +399,10 @@ export const getBubbleStyles = () => {
       maxHeight: "400px",
       overflow: "auto",
       zIndex: 9999,
+    },
+
+    sizeMenuPropStyles: {
+      position: "absolute",
     },
 
     // General Bubble Styles

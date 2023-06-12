@@ -161,6 +161,8 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
                     MenuProps: {
                       anchorOrigin: { vertical: "bottom", horizontal: "left" },
                       transformOrigin: { vertical: "top", horizontal: "left" },
+                      disableScrollLock: true,
+                      sx: styles.priceMenuPropStyles,
                       PaperProps: {
                         sx: styles.priceMenuPaperStyles,
                       },
@@ -169,11 +171,7 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
                 >
                   <MenuItem value={minPrice}>Min</MenuItem>
                   {priceOptions.map((option) => (
-                    <MenuItem
-                      key={option}
-                      value={option}
-                      // sx={{ position: "absolute" }}
-                    >
+                    <MenuItem key={option} value={option}>
                       {valueLabelFormat(option)}
                     </MenuItem>
                   ))}
@@ -193,6 +191,8 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
                     MenuProps: {
                       anchorOrigin: { vertical: "bottom", horizontal: "left" },
                       transformOrigin: { vertical: "top", horizontal: "left" },
+                      disableScrollLock: true,
+                      sx: styles.priceMenuPropStyles,
                       PaperProps: {
                         sx: styles.priceMenuPaperStyles,
                       },
