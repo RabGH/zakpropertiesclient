@@ -136,7 +136,7 @@ function SearchBar(props: SearchBarProps) {
       top: currentSlide === 0 ? "100%" : "145%",
     },
     "@media (max-width: 481px)": {
-      top: currentSlide === 0 ? "100%" : "130%",
+      top: currentSlide === 0 ? "100%" : "125%",
     },
     "@media (max-width: 400px)": {
       top: currentSlide === 0 ? "100%" : "115%",

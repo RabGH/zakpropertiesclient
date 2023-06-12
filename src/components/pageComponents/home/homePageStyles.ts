@@ -253,7 +253,7 @@ export const getHomePageStyles = () => {
         fontSize: "0.6rem",
       },
       "@media (max-width: 425px)": {
-        top: "35%",
+        top: "33%",
         fontSize: "0.6rem",
       },
       "@media (max-width: 400px)": {
@@ -313,7 +313,7 @@ export const getHomePageStyles = () => {
         mb: "0rem",
       },
       "@media (max-width: 481px)": {
-        fontSize: "2.3rem",
+        fontSize: "3rem",
         mb: "0rem",
       },
       "@media (max-width: 400px)": {
