@@ -65,18 +65,7 @@ export default function OpenNav() {
       >
         Developments
       </Button>
-      <Button
-        variant="text"
-        color="secondary"
-        sx={{
-          ...styles.openButtonStyles,
-          backgroundColor:
-            router.pathname === "/buyProperties" ? "#1e657220" : "transparent",
-        }}
-        href="/buyProperties"
-      >
-        Buy Properties
-      </Button>
+
       <Button
         variant="text"
         color="secondary"
@@ -88,6 +77,18 @@ export default function OpenNav() {
         href="/faq"
       >
         FAQ
+      </Button>
+      <Button
+        variant="text"
+        color="secondary"
+        sx={{
+          ...styles.openButtonStyles,
+          backgroundColor:
+            router.pathname === "/buyProperties" ? "#1e657220" : "transparent",
+        }}
+        href="/buyProperties"
+      >
+        Buy Properties
       </Button>
       <Button
         variant="outlined"

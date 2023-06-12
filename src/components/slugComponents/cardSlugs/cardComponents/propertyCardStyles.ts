@@ -58,16 +58,51 @@ export const getPropertyCardStyles = () => {
 
     //* title for each property card grid in index.tsx from homePropertyCards folder
     featuredTitlePos: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      m: "1rem",
+      alignSelf: "flex-start",
+      pt: "1rem",
+      ml: "5rem",
+      fontSize: "1.4rem",
+      fontWeight: "400",
+      "@media (max-width: 1440px)": {
+        fontSize: "1.4rem",
+        ml: 5,
+      },
+      "@media (max-width: 1024px)": {
+        fontSize: "1.4rem",
+        ml: 1,
+      },
+      "@media (max-width: 768px)": {
+        fontSize: "1.3rem",
+        ml: 1,
+      },
+      "@media (max-width: 600px)": {
+        fontSize: "1.3rem",
+      },
+      "@media (max-width: 425px)": {
+        fontSize: "1.3rem",
+        ml: 1,
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "1.2rem",
+      },
+      "@media (max-width: 375px)": {
+        fontSize: "1.2rem",
+        ml: 1,
+      },
+      "@media (max-width: 320px)": {
+        fontSize: "1.2rem",
+        ml: 1,
+      },
+    },
+
+    developmentFeaturedTitlePos: {
+      p: "2rem",
       fontSize: "1.5rem",
       "@media (max-width: 600px)": {
         fontSize: "1.2rem",
       },
       "@media (max-width: 400px)": {
-        fontSize: "1rem",
+        fontSize: "1.3rem",
       },
     },
 
@@ -134,7 +169,8 @@ export const getPropertyCardStyles = () => {
     propertyAreaCard: {},
     propertyPriceCard: {
       paddingBottom: "0rem",
-      fontSize: "0.9rem",
+      fontSize: "1rem",
+      fontWeight: "bold",
     },
     cardInfoStyles: {
       display: "flex",

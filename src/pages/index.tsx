@@ -71,38 +71,38 @@ function Home({ properties, projects }: HomeProps) {
             </Button>
           </Box>
 
-          <Divider sx={styles.dividerStyles}>
-            <Typography variant="h5" sx={propCardStyles.featuredTitlePos}>
-              Featured Apartments
-            </Typography>
-          </Divider>
+          <Divider sx={styles.dividerStyles} />
+          <Typography variant="h3" sx={propCardStyles.featuredTitlePos}>
+            Featured apartments
+          </Typography>
+
           <Box sx={propCardStyles.homePropertyCardsPos}>
             <PropertyAptCardBodyData properties={properties} />
           </Box>
 
-          <Divider sx={styles.dividerStyles}>
-            <Typography variant="h5" sx={propCardStyles.featuredTitlePos}>
-              Featured Townhouses
-            </Typography>
-          </Divider>
+          <Divider sx={styles.dividerStyles} />
+          <Typography variant="h3" sx={propCardStyles.featuredTitlePos}>
+            Featured townhouses
+          </Typography>
           <Box sx={propCardStyles.homePropertyCardsPos}>
             <PropertyTownCardBodyData properties={properties} />
           </Box>
 
-          <Divider sx={styles.dividerStyles}>
-            <Typography variant="h5" sx={propCardStyles.featuredTitlePos}>
-              Featured Villas
-            </Typography>
-          </Divider>
+          <Divider sx={styles.dividerStyles} />
+          <Typography variant="h3" sx={propCardStyles.featuredTitlePos}>
+            Featured villas
+          </Typography>
           <Box sx={propCardStyles.homePropertyCardsPos}>
             <PropertyVillaCardBodyData properties={properties} />
           </Box>
 
-          <Divider sx={styles.dividerStyles}>
-            <Typography variant="h5" sx={propCardStyles.featuredTitlePos}>
-              Featured Developments
-            </Typography>
-          </Divider>
+          <Divider sx={styles.dividerStyles} />
+          <Typography
+            variant="h3"
+            sx={propCardStyles.developmentFeaturedTitlePos}
+          >
+            Featured Developments
+          </Typography>
           <Box sx={projCardStyles.homeProjectCardsPos}>
             <ProjectsCardBodyData projects={projects.slice(0, 3)} />
           </Box>
@@ -130,7 +130,8 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
   previewData,
 }) => {
-  const propertyQuery = '*[_type == "property"]{..., location}';
+  const propertyQuery =
+    '*[_type == "property"]{..., location,  address->{street,city}}';
   const projectQuery =
     '*[_type == "projects"]{..., location, address->{street,city}}';
   const params = preview ? previewData : {};

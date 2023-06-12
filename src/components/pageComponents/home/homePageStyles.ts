@@ -128,7 +128,9 @@ export const getHomePageStyles = () => {
     dividerStyles: {
       mt: "1rem",
       mb: "1rem",
-      width: "90%",
+      width: "99%",
+      borderWidth: 1,
+      borderColor: "rgba(255, 255, 255, 0.20)",
       "&::before, &::after": {
         borderWidth: 1,
         borderColor: "white",

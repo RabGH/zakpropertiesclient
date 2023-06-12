@@ -49,12 +49,6 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                   <Typography variant="h6" sx={styles.propertyTitleCard}>
                     {property.title}
                   </Typography>
-                  <Typography variant="body1" sx={styles.propertyAreaCard}>
-                    Area: {formatArea(property.squareFootage)}
-                  </Typography>
-                  <Typography variant="body1" sx={styles.bedroomStyles}>
-                    Bedrooms: {property.bedrooms}
-                  </Typography>
                   <Box sx={styles.offPlanStyles}>
                     {property.propertyOffPlan &&
                     typeof property.propertyOffPlan === "object" &&
@@ -65,7 +59,7 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                             variant="body1"
                             sx={styles.offPlanCompleteStyles}
                           >
-                            Completion Date:
+                            {property.address?.city} Completion Date:
                             {moment(
                               property.propertyOffPlan.propertyCompletionDate
                             ).format("YYYY-MM-DD")}{" "}
@@ -77,13 +71,20 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                         variant="body1"
                         sx={styles.offPlanReadyToBuyStyles}
                       >
-                        Ready to buy
+                        {property.address?.city} Ready to buy
                       </Typography>
                     )}
                   </Box>
+                  <Typography variant="body1" sx={styles.propertyAreaCard}>
+                    {property.bedrooms} Beds ⋅{" "}
+                    {formatArea(property.squareFootage)}
+                  </Typography>
                   <Typography variant="body1" sx={styles.propertyPriceCard}>
                     {formatPrice(property.totalPrice)}
                   </Typography>
+                  {/* <Typography variant="body1" sx={styles.bedroomStyles}>
+                    Bedrooms: 
+                  </Typography> */}
                 </Box>
               </Link>
             </Card>

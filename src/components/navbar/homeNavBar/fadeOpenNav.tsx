@@ -61,14 +61,7 @@ export default function OpenFadeNav() {
       >
         Developments
       </Button>
-      <Button
-        variant="text"
-        color={trigger ? "inherit" : "primary"}
-        sx={fadeButtonStyles}
-        href="/buyProperties"
-      >
-        Buy Properties
-      </Button>
+      
       <Button
         variant="text"
         color={trigger ? "inherit" : "primary"}
@@ -76,6 +69,14 @@ export default function OpenFadeNav() {
         href="/faq"
       >
         FAQ
+      </Button>
+      <Button
+        variant="text"
+        color={trigger ? "inherit" : "primary"}
+        sx={fadeButtonStyles}
+        href="/buyProperties"
+      >
+        Buy Properties
       </Button>
       <Button
         variant="outlined"
