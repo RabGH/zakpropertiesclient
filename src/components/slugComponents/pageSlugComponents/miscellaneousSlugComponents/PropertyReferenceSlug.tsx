@@ -21,7 +21,11 @@ const PropertyReference = ({
   squareFootage,
   bedrooms,
 }: PropertyReferenceProps) => {
-  const referenceMainBoxStyles = {};
+  const referenceMainBoxStyles = {
+    "@media (max-width: 425px)": {
+      display: "none",
+    },
+  };
   const stickyStyles = {
     position: "sticky",
     top: "120px",
@@ -34,22 +38,6 @@ const PropertyReference = ({
     flexDirection: "column",
     alignItems: "flex-start",
     width: "80%",
-    // "@media (max-width: 768px)": {
-    //   flexDirection: "column",
-    //   justifyContent: "space-between",
-    //   alignItems: "left",
-    //   borderRadius: 0,
-    //   boxShadow: "none",
-    //   width: "100%",
-    //   bottom: 0,
-    //   position: "fixed",
-    //   m: 0,
-    //   p: 0,
-    //   zIndex: 9999,
-    //   flexWrap: "wrap",
-    //   backgroundColor: "white",
-    //   borderTop: "1px solid gray",
-    // },
   };
 
   const buttonStyles = {

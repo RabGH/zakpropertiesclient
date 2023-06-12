@@ -4,7 +4,6 @@ import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 import { Box, Typography, Divider } from "@mui/material";
 import FeaturesSlug from "../../components/slugComponents/pageSlugComponents/amenitiesFeatures/FeaturesSlug";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { PropertyProps } from "@lib/types";
 import { getPropertyPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/propertySlugStyles";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
@@ -15,6 +14,7 @@ import {
   viewPhotosBox,
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import PropertyReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyReferenceSlug";
+import PropertyMobileReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyMobileReferenceSlug";
 import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCardsScroll";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
 
@@ -136,6 +136,14 @@ const Property = ({
           <PropertySimilarCards property={property} properties={properties} />
         </Box>
       </Box>
+      <PropertyMobileReference
+        totalPrice={totalPrice}
+        id={id}
+        _id={_id}
+        propertyOffPlan={propertyOffPlan}
+        squareFootage={squareFootage}
+        bedrooms={bedrooms}
+      />
     </>
   );
 };
