@@ -82,7 +82,7 @@ export const getHomePageStyles = () => {
         mt: "15rem",
       },
       "@media (max-width: 1440px)": {
-        mt: "27rem",
+        mt: "15rem",
       },
       "@media (max-width: 1024px)": {
         fontSize: "1.3rem",
