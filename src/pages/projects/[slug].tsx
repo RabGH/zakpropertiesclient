@@ -279,6 +279,10 @@ export async function getStaticProps(context: PageContext) {
       features,
       propertyOffPlan,
       slug,
+      address->{
+        street,
+        city,
+      },
     }
   }`;
 
