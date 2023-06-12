@@ -135,6 +135,18 @@ export const getHomePageStyles = () => {
         borderWidth: 1,
         borderColor: "white",
       },
+      "@media (max-width: 2560px)": {
+        width: "90%",
+      },
+      "@media (max-width: 1440px)": {
+        width: "94.5%",
+      },
+      "@media (max-width: 1024px)": {
+        width: "98.5%",
+      },
+      "@media (max-width: 768px)": {
+        width: "97.5%",
+      },
     },
     //* Property Home Cards Section
     //! Inside of propertyCardStyles.ts and homePropertyCards folder
