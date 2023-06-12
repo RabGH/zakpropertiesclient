@@ -3,10 +3,13 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
 import { getNavBarStyles } from "../navContentStyles";
+import { useRouter } from "next/router";
 
 export default function OpenNav() {
   const theme = useTheme();
   const styles = getNavBarStyles();
+  const router = useRouter();
+
   return (
     <Stack
       direction="row"
@@ -17,7 +20,11 @@ export default function OpenNav() {
       <Button
         variant="text"
         color="secondary"
-        sx={styles.openButtonStyles}
+        sx={{
+          ...styles.openButtonStyles,
+          backgroundColor:
+            router.pathname === "/" ? "#1e657220" : "transparent",
+        }}
         href="/"
       >
         Home
@@ -25,40 +32,60 @@ export default function OpenNav() {
       <Button
         variant="text"
         color="secondary"
-        sx={styles.openButtonStyles}
-        href="aboutUs"
+        sx={{
+          ...styles.openButtonStyles,
+          backgroundColor:
+            router.pathname === "/aboutUs" ? "#1e657220" : "transparent",
+        }}
+        href="/aboutUs"
       >
         About
       </Button>
       <Button
         variant="text"
         color="secondary"
-        sx={styles.openButtonStyles}
-        href="contactUs"
+        sx={{
+          ...styles.openButtonStyles,
+          backgroundColor:
+            router.pathname === "/contactUs" ? "#1e657220" : "transparent",
+        }}
+        href="/contactUs"
       >
         Contact
       </Button>
       <Button
         variant="text"
         color="secondary"
-        sx={styles.openButtonStyles}
-        href="developments"
+        sx={{
+          ...styles.openButtonStyles,
+          backgroundColor:
+            router.pathname === "/developments" ? "#1e657220" : "transparent",
+        }}
+        href="/developments"
       >
         Developments
       </Button>
       <Button
         variant="text"
         color="secondary"
-        sx={styles.openButtonStyles}
-        href="buyProperties"
+        sx={{
+          ...styles.openButtonStyles,
+          backgroundColor:
+            router.pathname === "/buyProperties" ? "#1e657220" : "transparent",
+        }}
+        href="/buyProperties"
       >
         Buy Properties
       </Button>
       <Button
         variant="text"
         color="secondary"
-        sx={styles.openButtonStyles}
-        href="faq"
+        sx={{
+          ...styles.openButtonStyles,
+          backgroundColor:
+            router.pathname === "/faq" ? "#1e657220" : "transparent",
+        }}
+        href="/faq"
       >
         FAQ
       </Button>
