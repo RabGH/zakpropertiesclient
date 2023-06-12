@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import React from "react";
+import { Box, Stack } from "@mui/material";
 
 import PropertyTypeBubble from "./bubbleComponents/TypeBubble";
 import BedroomBubble from "./bubbleComponents/BedroomBubble";

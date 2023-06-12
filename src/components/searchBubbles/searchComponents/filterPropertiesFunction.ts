@@ -1,5 +1,5 @@
 import { Property } from "@lib/types";
-//? Is used in ResultsBubble.tsx and SearchFieldBubbles.tsx
+//? Is used in PropertyCardGrid.tsx
 export const filterProperties = (
   propertyFeatures: string[],
   propertyType: string[],

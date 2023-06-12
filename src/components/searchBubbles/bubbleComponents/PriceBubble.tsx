@@ -169,7 +169,11 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
                 >
                   <MenuItem value={minPrice}>Min</MenuItem>
                   {priceOptions.map((option) => (
-                    <MenuItem key={option} value={option}>
+                    <MenuItem
+                      key={option}
+                      value={option}
+                      // sx={{ position: "absolute" }}
+                    >
                       {valueLabelFormat(option)}
                     </MenuItem>
                   ))}

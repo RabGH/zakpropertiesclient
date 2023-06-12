@@ -7,24 +7,20 @@ import ReadyToBuyBubble from "./ReadyToBuyBubble";
 const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
   const styles = getBubbleStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [readyToBuyOption, setReadyToBuyOption] = useState(search.readyToBuy);
 
   const [selectedOptionsCount, setSelectedOptionsCount] = useState(0);
 
-  useEffect(() => {
-    setReadyToBuyOption(search.readyToBuy);
-  }, [search.readyToBuy]);
 
   useEffect(() => {
     let count = 0;
     if (search.propertyType.length > 0 && search.propertyType[0] !== "All") {
       count += search.propertyType.length;
     }
-    if (readyToBuyOption && readyToBuyOption !== "Any") {
+    if (search.propertyOffPlan !== undefined) {
       count++;
     }
     setSelectedOptionsCount(count);
-  }, [search.propertyType, readyToBuyOption]);
+  }, [search.propertyType, search.propertyOffPlan]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -118,12 +114,7 @@ const PropertyTypeBubble = ({ search, setSearch }: PropertyTypeBubbleProps) => {
               Plot
             </MenuItem>
             <Box sx={styles.typeReadyToBuyPos}>
-              <ReadyToBuyBubble
-                search={search}
-                setSearch={setSearch}
-                readyToBuyOption={readyToBuyOption}
-                setReadyToBuyOption={setReadyToBuyOption}
-              />
+              <ReadyToBuyBubble search={search} setSearch={setSearch} />
             </Box>
           </Box>
         </Menu>

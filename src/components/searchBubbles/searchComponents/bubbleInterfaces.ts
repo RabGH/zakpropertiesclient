@@ -20,8 +20,6 @@ export interface SearchFieldBubblesProps {
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }
 export interface ReadyToBuyBubbleProps {
-  readyToBuyOption: string;
-  setReadyToBuyOption: React.Dispatch<React.SetStateAction<string>>;
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }

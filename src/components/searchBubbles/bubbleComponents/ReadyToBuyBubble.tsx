@@ -6,22 +6,11 @@ import { getBubbleStyles } from "../searchComponents/bubbleStyles";
 export default function ReadyToBuyBubble({
   search,
   setSearch,
-  readyToBuyOption,
-  setReadyToBuyOption,
 }: ReadyToBuyBubbleProps) {
   const styles = getBubbleStyles();
 
-  const handleButtonClick = (option: string) => {
-    if (option === "Any") {
-      setSearch((prev) => ({ ...prev, propertyOffPlan: undefined }));
-      setReadyToBuyOption("Any");
-    } else if (option === "Off-Plan") {
-      setSearch((prev) => ({ ...prev, propertyOffPlan: true }));
-      setReadyToBuyOption("Off-Plan");
-    } else if (option === "Ready to Buy") {
-      setSearch((prev) => ({ ...prev, propertyOffPlan: false }));
-      setReadyToBuyOption("Ready to Buy");
-    }
+  const handleButtonClick = (option: boolean | undefined) => {
+    setSearch((prev) => ({ ...prev, propertyOffPlan: option }));
   };
 
   return (
@@ -31,23 +20,23 @@ export default function ReadyToBuyBubble({
       sx={styles.readyButtonGroupStyles}
     >
       <Button
-        onClick={() => handleButtonClick("Any")}
+        onClick={() => handleButtonClick(undefined)}
         sx={styles.readyButtonStyles}
-        color={readyToBuyOption === undefined ? "primary" : "inherit"}
+        color={search.propertyOffPlan === undefined ? "primary" : "inherit"}
       >
         Any
       </Button>
       <Button
-        onClick={() => handleButtonClick("Ready to Buy")}
+        onClick={() => handleButtonClick(false)}
         sx={styles.readyButtonStyles}
-        color={readyToBuyOption === "Ready to Buy" ? "primary" : "inherit"}
+        color={search.propertyOffPlan === false ? "primary" : "inherit"}
       >
         Ready to Buy
       </Button>
       <Button
-        onClick={() => handleButtonClick("Off-Plan")}
+        onClick={() => handleButtonClick(true)}
         sx={styles.readyButtonStyles}
-        color={readyToBuyOption === "Off-Plan" ? "primary" : "inherit"}
+        color={search.propertyOffPlan === true ? "primary" : "inherit"}
       >
         Off-Plan
       </Button>
