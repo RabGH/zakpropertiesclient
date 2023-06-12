@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import { Box, Grid, Pagination, Divider, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Pagination,
+  Divider,
+  Typography,
+  Button,
+} from "@mui/material";
 import { Property } from "@lib/types";
 import PropertyAllCard from "./PropertyAllCards";
 import SearchFieldBubbles from "../../../searchBubbles/SearchFieldBubbles";
@@ -20,7 +27,7 @@ const PropertyCardGrid: React.FC<Props> = ({
   search,
   setSearch,
 }) => {
-  const styles: any = getPropertyGridCardStyles();
+  const styles = getPropertyGridCardStyles();
   const [page, setPage] = useState(1);
   const cardsPerPage = 9;
   const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
@@ -67,9 +74,9 @@ const PropertyCardGrid: React.FC<Props> = ({
       <Box sx={styles.propertyCardGridSearchBarBox}>
         <SearchFieldBubbles search={search} setSearch={setSearch} />
       </Box>
-      <Typography variant="h6" sx={styles.resultsTypography}>
+      <Button variant="outlined" sx={styles.resultsTypography}>
         Results: {filteredProperties.length}
-      </Typography>
+      </Button>
       <Divider sx={styles.searchGridDividerStyles} />
       <Grid container spacing={1} sx={styles.cardGridStyles}>
         {filteredProperties.length > 0 ? (

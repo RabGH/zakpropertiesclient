@@ -60,5 +60,10 @@ export const getPropertyGridCardStyles = () => {
     cardAllGridStyles: {
       justifyContent: "center",
     },
+
+    resultsTypography: {
+      mb: "1rem",
+      fontSize: "1.1rem",
+    },
   };
 };
