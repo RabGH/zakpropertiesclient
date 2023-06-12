@@ -53,14 +53,11 @@ const StyledImage = styled(Image)({
   height: "8rem",
   width: "auto",
   transition: "all 0.9s ease-out",
+  verticalAlign: "bottom",
   "@media (max-width: 600px)": {
-    width: "auto",
-    height: "7rem",
+    height: "7.5rem",
   },
-  "@media (max-width: 400px)": {
-    width: "10rem",
-    height: "7rem",
-  },
+  "@media (max-width: 400px)": {},
 });
 
 export default function ElevateAppBar(props: Props): JSX.Element {

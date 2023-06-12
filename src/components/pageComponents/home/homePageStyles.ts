@@ -47,7 +47,7 @@ export const getHomePageStyles = () => {
         minHeight: "65vh",
       },
       "@media (max-width: 768px)": {
-        minHeight: "65vh",
+        minHeight: "50vh",
         mt: "1rem",
       },
       "@media (max-width: 600px)": {
@@ -55,7 +55,7 @@ export const getHomePageStyles = () => {
         mt: "1rem",
       },
       "@media (max-width: 481px)": {
-        minHeight: "65vh",
+        minHeight: "55vh",
         mb: "3rem",
       },
       "@media (max-width: 400px)": {
@@ -76,7 +76,7 @@ export const getHomePageStyles = () => {
       fontStyle: "italic",
       mt: "14rem",
       "@media (max-width: 2560px)": {
-        mt: "57rem",
+        mt: "25rem",
       },
       "@media (max-width: 1920px)": {
         mt: "15rem",
@@ -86,7 +86,7 @@ export const getHomePageStyles = () => {
       },
       "@media (max-width: 1024px)": {
         fontSize: "1.3rem",
-        mt: "15rem",
+        mt: "7rem",
       },
       "@media (max-width: 961px)": {
         mt: "12rem",
@@ -97,15 +97,15 @@ export const getHomePageStyles = () => {
       },
       "@media (max-width: 768px)": {
         fontSize: "1.2rem",
-        mt: "10rem",
+        mt: "7rem",
       },
       "@media (max-width: 600px)": {
         fontSize: "1.2rem",
-        mt: "10rem",
+        mt: "13rem",
       },
       "@media (max-width: 481px)": {
         fontSize: "1.2rem",
-        mt: "16rem",
+        mt: "10rem",
       },
       "@media (max-width: 400px)": {
         fontSize: "1.2rem",
@@ -185,21 +185,21 @@ export const getHomePageStyles = () => {
       "@media (max-width: 1440px)": {},
       "@media (max-width: 1281px)": {},
       "@media (max-width: 1024px)": {
-        height: "105vh",
+        height: "100vh",
       },
       "@media (max-width: 961px)": {
-        height: "90vh",
+        height: "100vh",
       },
       "@media (max-width: 768px)": {
-        height: "110vh",
+        height: "100vh",
       },
       "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
-        height: "115vh",
+        height: "100vh",
       },
       "@media (max-width: 481px)": {},
       "@media (max-width: 400px)": {
-        height: "90vh",
+        height: "100vh",
       },
       "@media (max-width: 375px)": {
         height: "100vh",
@@ -221,21 +221,21 @@ export const getHomePageStyles = () => {
       "@media (max-width: 1440px)": {},
       "@media (max-width: 1281px)": {},
       "@media (max-width: 1024px)": {
-        height: "105vh",
+        height: "100vh",
       },
       "@media (max-width: 961px)": {
-        height: "90vh",
+        height: "100vh",
       },
       "@media (max-width: 768px)": {
-        height: "110vh",
+        height: "100vh",
       },
       "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
-        height: "115vh",
+        height: "100vh",
       },
       "@media (max-width: 481px)": {},
       "@media (max-width: 400px)": {
-        height: "90vh",
+        height: "100vh",
       },
       "@media (max-width: 375px)": {
         height: "100vh",

@@ -86,7 +86,7 @@ export default function BurgerNav() {
                     onClick={() => setOpen(false)}
                     onKeyDown={handleClose}
                   >
-                    Development Overview
+                    Developments
                   </MenuItem>
                 </Link>
                 <Link href="/buyProperties">

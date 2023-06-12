@@ -122,7 +122,7 @@ export default function FadeBurgerNav() {
                     onClick={() => setOpen(false)}
                     onKeyDown={handleClose}
                   >
-                    Development Overview
+                    Developments
                   </MenuItem>
                 </Link>
                 <Link href="/buyProperties">

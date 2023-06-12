@@ -31,14 +31,11 @@ const StyledToolbar = styled(Toolbar)({
 const StyledImage = styled(Image)({
   height: "8rem",
   width: "auto",
+  verticalAlign: "bottom",
   "@media (max-width: 600px)": {
-    width: "10rem",
-    height: "7rem",
+    height: "7.5rem",
   },
-  "@media (max-width: 400px)": {
-    width: "10rem",
-    height: "7rem",
-  },
+  "@media (max-width: 400px)": {},
 });
 
 //! Shouldn't be -4 and check container

@@ -8,7 +8,10 @@ export const getNavBarStyles = () => {
       alignItems: "center",
       justifyContent: "flex-end",
       gap: "1rem",
-      "@media (max-width: 600px)": {},
+      mb: "1rem",
+      "@media (max-width: 600px)": {
+        mb: "0.5rem",
+      },
       "@media (max-width: 400px)": {},
     },
     mainBox: {
