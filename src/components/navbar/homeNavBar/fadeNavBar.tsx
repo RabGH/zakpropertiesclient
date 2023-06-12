@@ -11,6 +11,7 @@ import FadeNavSocials from "./fadeNavSocials";
 import FadeBurgerNav from "../homeNavBar/fadeBurgerNav";
 import NoBgLogo from "../../../../public/images/logo/logoNoBg.png";
 import { getNavBarStyles } from "../navContentStyles";
+import OpenFadeNav from "./fadeOpenNav";
 
 interface Props {
   children?: React.ReactNode;
@@ -88,6 +89,7 @@ export default function ElevateAppBar(props: Props): JSX.Element {
                 />
               </Link>
               <Box sx={styles.navContents}>
+                <OpenFadeNav />
                 <FadeNavSocials />
                 <FadeBurgerNav />
               </Box>

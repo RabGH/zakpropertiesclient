@@ -3,12 +3,13 @@ import { useTheme } from "@mui/material";
 export const getNavBarStyles = () => {
   const theme = useTheme();
   return {
+    // Main and Fade Nav Bar Styles
     navContents: {
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-end",
       gap: "1rem",
-      mb: "1rem",
+      mb: "0.5rem",
       "@media (max-width: 600px)": {
         mb: "0.5rem",
       },
@@ -54,12 +55,22 @@ export const getNavBarStyles = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      "@media (min-width: 1025px)": {
+        display: "none",
+      },
       "@media (max-width: 600px)": {},
       "@media (max-width: 400px)": {},
     },
     popperStyles: {
       zIndex: 9999,
     },
+
+    signInButtonStyles: {
+      m: 1,
+      mb: 0.5,
+    },
+
+    // Nav Social Icon Styles
     iconSocialStyles: {
       transition: "color 0.4s ease-in-out",
       color: "#000000",
@@ -70,9 +81,33 @@ export const getNavBarStyles = () => {
         display: "none",
       },
     },
-    signInButtonStyles: {
-      m: 1,
-      mb: 0.5,
+    // open Nav Styles
+    mainOpenStackStyles: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      "@media (max-width: 1024px)": {
+        display: "none",
+      },
     },
+
+    fadeOpenStackStyles: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      "@media (max-width: 1024px)": {
+        display: "none",
+      },
+    },
+    // mainOpenNav Styles
+    openButtonStyles: {
+      fontWeight: "bold",
+      color: "#000000",
+      "&:hover": {
+        color: theme.palette.error.light,
+      },
+    },
+
+    // fadeOpenNav Styles
   };
 };

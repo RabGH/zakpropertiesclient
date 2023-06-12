@@ -8,8 +8,9 @@ import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import SocialIcons from "./mainNavSocials";
 import NoBgLogo from "../../../../public/images/logo/logoNoBg.png";
-import BurgerNav from "./burgerNav";
+import BurgerNav from "./mainBurgerNav";
 import { getNavBarStyles } from "../navContentStyles";
+import OpenNav from "./mainOpenNav";
 
 interface Props {
   children?: React.ReactNode;
@@ -51,6 +52,7 @@ export default function MainNavBar(props: Props): JSX.Element {
                 <StyledImage src={NoBgLogo} alt="Logo" />
               </Link>
               <Box sx={styles.navContents}>
+                <OpenNav />
                 <SocialIcons />
                 <BurgerNav />
               </Box>

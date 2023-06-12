@@ -1,6 +1,6 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
-import BurgerNav from "../allNavBar/burgerNav";
+import BurgerNav from "../allNavBar/mainBurgerNav";
 import SocialIcons from "../allNavBar/mainNavSocials";
 import { getNavBarStyles } from "../navContentStyles";
 import { useTheme, Box, Toolbar, AppBar, IconButton } from "@mui/material";

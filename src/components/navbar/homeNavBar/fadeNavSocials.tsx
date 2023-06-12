@@ -20,7 +20,7 @@ const FadeNavSocials = () => {
     if (trigger) {
       setVisible(true);
     } else {
-      setVisible(false);
+      setVisible(true);
     }
   }, [trigger]);
 
@@ -37,7 +37,13 @@ const FadeNavSocials = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconButton sx={styles.iconSocialStyles}>
+        <IconButton
+          sx={{
+            ...styles.iconSocialStyles,
+            color: trigger ? "black" : "white",
+          }}
+          color={trigger ? "inherit" : "primary"}
+        >
           <FaWhatsapp fontSize="2rem" />
         </IconButton>
       </Link>
@@ -46,7 +52,13 @@ const FadeNavSocials = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconButton sx={styles.iconSocialStyles}>
+        <IconButton
+          sx={{
+            ...styles.iconSocialStyles,
+            color: trigger ? "black" : "white",
+          }}
+          color={trigger ? "inherit" : "primary"}
+        >
           <FaEnvelope fontSize="2rem" />
         </IconButton>
       </Link>
