@@ -31,8 +31,6 @@ const PropertyMobileReference = ({
   const mobileStickyStyles = {
     p: "0.7rem",
     border: "none",
-    borderRadius: "0.5rem",
-    boxShadow: "0.2rem 0.2rem 0.2rem gray",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
