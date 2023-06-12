@@ -61,7 +61,7 @@ export const getPropertyCardStyles = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      m: "1.2rem",
+      m: "1rem",
       fontSize: "1.5rem",
       "@media (max-width: 600px)": {
         fontSize: "1.2rem",

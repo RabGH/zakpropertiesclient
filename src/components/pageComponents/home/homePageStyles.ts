@@ -23,24 +23,37 @@ export const getHomePageStyles = () => {
     },
 
     boxContentProject: {
-      minHeight: "65vh",
+      minHeight: "55vh",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      "@media (max-width: 1440px)": {},
+      "@media (max-width: 2560px)": {
+        minHeight: "55vh",
+      },
+      "@media (max-width: 1440px)": {
+        minHeight: "55vh",
+      },
       "@media (max-width: 1024px)": {
-        minHeight: "65vh",
+        minHeight: "55vh",
       },
       "@media (max-width: 961px)": {
-        minHeight: "65vh",
+        minHeight: "55vh",
       },
       "@media (max-width: 912px)": {
         minHeight: "65vh",
       },
-      "@media (max-width: 600px)": {
-        minHeight: "100vh",
+      "@media (max-width: 768px)": {
+        minHeight: "65vh",
         mt: "1rem",
+      },
+      "@media (max-width: 600px)": {
+        minHeight: "65vh",
+        mt: "1rem",
+      },
+      "@media (max-width: 481px)": {
+        minHeight: "65vh",
+        mb: "3rem",
       },
       "@media (max-width: 400px)": {
         minHeight: "35vh",
@@ -59,17 +72,22 @@ export const getHomePageStyles = () => {
       maxWidth: "70ch",
       fontStyle: "italic",
       mt: "14rem",
-      "@media (max-width: 1440px)": {},
+      "@media (max-width: 2560px)": {
+        mt: "57rem",
+      },
+      "@media (max-width: 1440px)": {
+        mt: "27rem",
+      },
       "@media (max-width: 1024px)": {
         fontSize: "1.3rem",
-        mt: "12rem",
+        mt: "15rem",
       },
       "@media (max-width: 961px)": {
-        mt: "5rem",
+        mt: "12rem",
       },
       "@media (max-width: 912px)": {
         fontSize: "1.3rem",
-        mt: "5rem",
+        mt: "12rem",
       },
       "@media (max-width: 768px)": {
         fontSize: "1.2rem",
@@ -405,8 +423,7 @@ export const getHomePageStyles = () => {
       fontWeight: "400",
       mt: "1rem",
       textAlign: "center",
-      "@media (max-width: 1440px)": {
-      },
+      "@media (max-width: 1440px)": {},
       "@media (max-width: 1024px)": {
         mb: "1rem",
       },
