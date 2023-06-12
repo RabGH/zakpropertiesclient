@@ -40,8 +40,8 @@ export const mainBox = {
 };
 
 export const imageBox = {
-  height: "30vw",
-  width: "30%",
+  height: "25vw",
+  width: "55%",
   "@media (max-width: 960px)": {
     height: "80vw",
     width: "100%",
