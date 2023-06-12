@@ -156,6 +156,12 @@ export const getPropertyCardStyles = () => {
         width: "270px",
       },
     },
+    // Card Body Styles PropertyAllCards.tsx
+    cardInfoStyles: {
+      display: "flex",
+      flexDirection: "column",
+      cursor: "pointer",
+    },
     offPlanReadyToBuyStyles: {},
 
     propertyTypeStyles: {
@@ -172,18 +178,7 @@ export const getPropertyCardStyles = () => {
       fontSize: "1rem",
       fontWeight: "bold",
     },
-    cardInfoStyles: {
-      display: "flex",
-      flexDirection: "column",
-      cursor: "pointer",
-    },
 
-    dividerStyles: {
-      "&::before, &::after": {
-        borderBottomWdith: 2,
-        borderColor: "white",
-      },
-    },
     bedroomStyles: {},
     offPlanStyles: {},
     offPlanTextStyles: {},

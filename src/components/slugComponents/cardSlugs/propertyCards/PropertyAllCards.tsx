@@ -44,7 +44,8 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                 )}
                 <Box sx={styles.cardInfoStyles}>
                   <Typography variant="body1" sx={styles.propertyTypeStyles}>
-                    {property.propertyType}
+                    {property.propertyType} ⋅ {property.bedrooms} Beds ⋅{" "}
+                    {formatArea(property.squareFootage)}
                   </Typography>
                   <Typography variant="h6" sx={styles.propertyTitleCard}>
                     {property.title}
@@ -59,10 +60,16 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                             variant="body1"
                             sx={styles.offPlanCompleteStyles}
                           >
-                            {property.address?.city} Completion Date:
-                            {moment(
-                              property.propertyOffPlan.propertyCompletionDate
-                            ).format("YYYY-MM-DD")}{" "}
+                            <span style={{ fontWeight: "bold" }}>
+                              {" "}
+                              {property.address?.city}
+                            </span>{" "}
+                            Ready Date:{" "}
+                            <span style={{ fontWeight: "bold" }}>
+                              {moment(
+                                property.propertyOffPlan.propertyCompletionDate
+                              ).format("YYYY-MM-DD")}{" "}
+                            </span>{" "}
                           </Typography>
                         )}
                       </Box>
@@ -71,20 +78,20 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                         variant="body1"
                         sx={styles.offPlanReadyToBuyStyles}
                       >
-                        {property.address?.city} Ready to buy
+                        <span style={{ fontWeight: "bold" }}>
+                          {" "}
+                          {property.address?.city}
+                        </span>{" "}
+                        Ready
                       </Typography>
                     )}
                   </Box>
                   <Typography variant="body1" sx={styles.propertyAreaCard}>
-                    {property.bedrooms} Beds ⋅{" "}
-                    {formatArea(property.squareFootage)}
+                    {property.address?.street}
                   </Typography>
                   <Typography variant="body1" sx={styles.propertyPriceCard}>
                     {formatPrice(property.totalPrice)}
                   </Typography>
-                  {/* <Typography variant="body1" sx={styles.bedroomStyles}>
-                    Bedrooms: 
-                  </Typography> */}
                 </Box>
               </Link>
             </Card>

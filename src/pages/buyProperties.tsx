@@ -82,6 +82,10 @@ export const getStaticProps: GetStaticProps = async ({
       name,
       features[],
     },
+    address->{
+      street,
+      city
+    },
     propertyOffPlan,    
   }`;
   const client = preview ? previewClient : sanityClient;
