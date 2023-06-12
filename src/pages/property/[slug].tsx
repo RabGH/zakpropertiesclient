@@ -213,7 +213,11 @@ export async function getStaticProps(context: PageContext) {
         name,
         features[],
       },
-      propertyOffPlan,    
+      propertyOffPlan,
+      address->{
+        street,
+        city,
+      },    
     }`);
     return {
       props: {
