@@ -25,7 +25,7 @@ function Contact() {
     subject: "",
     message: "",
   };
-
+//! Image Logo querries Media
   const [formData, setFormData] = useState(initialFormData);
 
   const [loading, setLoading] = useState(false);

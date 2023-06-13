@@ -118,6 +118,9 @@ export const getContactStyles = () => {
     },
 
     logoStyles: {
+      "@media (max-width: 1440px)": {
+        display: "none",
+      },
       "@media (max-width: 1024px)": {
         display: "none",
       },
