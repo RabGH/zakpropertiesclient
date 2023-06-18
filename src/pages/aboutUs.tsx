@@ -11,10 +11,6 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import logoContact from "../../public/images/logo/logoNoBg.png";
-import WavingHandIcon from "@mui/icons-material/WavingHand";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import DesignServicesIcon from "@mui/icons-material/DesignServices";
-import PublicIcon from "@mui/icons-material/Public";
 import Head from "next/head";
 
 const AboutPage: React.FC = () => {
@@ -58,9 +54,7 @@ const AboutPage: React.FC = () => {
           <Grid item xs={12} md={6}>
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
-                <Typography variant="h1">
-                  <DesignServicesIcon /> Our Services
-                </Typography>
+                <Typography variant="h1">Our Services</Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
                   We offer a wide range of services, including property sales,
                   management, valuation, consultancy, and marketing.
@@ -78,10 +72,7 @@ const AboutPage: React.FC = () => {
           <Grid item xs={12} md={6}>
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
-                <Typography variant="h1">
-                  <WavingHandIcon />
-                  Who We Are
-                </Typography>
+                <Typography variant="h1">Who We Are</Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
                   We are a leading real estate company based in the UAE,
                   specializing in the promotion and sale of properties, off-plan
@@ -100,9 +91,7 @@ const AboutPage: React.FC = () => {
           <Grid item xs={12} md={6}>
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
-                <Typography variant="h1">
-                  <RemoveRedEyeIcon /> Our Vision
-                </Typography>
+                <Typography variant="h1">Our Vision</Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
                   Our vision is to be the most trusted and respected real estate
                   company in the region, delivering exceptional value and
@@ -121,10 +110,7 @@ const AboutPage: React.FC = () => {
           <Grid item xs={12} md={6}>
             <Card sx={{ p: "1rem", "&:hover": { transform: "scale(1.05)" } }}>
               <CardContent>
-                <Typography variant="h1">
-                  <PublicIcon />
-                  Our Mission
-                </Typography>
+                <Typography variant="h1">Our Mission</Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
                   Our mission is to provide the best real estate services to our
                   clients, with a focus on integrity, honesty, and

@@ -48,7 +48,10 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                     {formatArea(property.squareFootage)}
                   </Typography>
                   <Typography variant="h6" sx={styles.propertyTitleCard}>
-                    {property.title}
+                    {property.title} ⋅{" "}
+                    <span style={{ fontWeight: 400 }}>
+                      {property.address?.city}
+                    </span>
                   </Typography>
                   <Box sx={styles.offPlanStyles}>
                     {property.propertyOffPlan &&
@@ -60,11 +63,7 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                             variant="body1"
                             sx={styles.offPlanCompleteStyles}
                           >
-                            <span style={{ fontWeight: "bold" }}>
-                              {" "}
-                              {property.address?.city}
-                            </span>{" "}
-                            Ready Date:{" "}
+                            Off-Plan Date:{" "}
                             <span style={{ fontWeight: "bold" }}>
                               {moment(
                                 property.propertyOffPlan.propertyCompletionDate
