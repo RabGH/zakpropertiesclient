@@ -77,10 +77,10 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                         variant="body1"
                         sx={styles.offPlanReadyToBuyStyles}
                       >
-                        <span style={{ fontWeight: "bold" }}>
+                        {/* <span style={{ fontWeight: "bold" }}>
                           {" "}
                           {property.address?.city}
-                        </span>{" "}
+                        </span>{" "} */}
                         Ready
                       </Typography>
                     )}
