@@ -123,7 +123,10 @@ function HomeImageHeader({
                     <Typography variant="h5" sx={styles.zakStaticSubTitle}>
                       Your Trusted Partner in Real Estate
                     </Typography>
-                    <Typography variant="h5" sx={styles.zakStaticSubSubTitle}>
+                    <Typography
+                      variant="h5"
+                      sx={styles.zakStaticSubSubTitle}
+                    >
                       Explore Dubai&apos;s finest properties
                     </Typography>
                   </Box>
