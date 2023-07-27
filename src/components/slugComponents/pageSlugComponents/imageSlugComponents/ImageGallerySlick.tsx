@@ -30,7 +30,7 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: images.length > 3 ? 3 : images.length,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -72,26 +72,27 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
             />
           )}
         </Box>
-        {images
-          .filter((image) => image != null)
-          .map((image, index) => {
-            const imageUrl = urlFor(image).auto("format").url().toString();
-            return (
-              <Box key={index} sx={imageBox}>
-                {image != null && (
-                  <Image
-                    src={imageUrl}
-                    alt={alt}
-                    width={1920}
-                    height={1080}
-                    style={imageStyles}
-                    placeholder="blur"
-                    blurDataURL="data:image/svg+xml;base64,..."
-                  />
-                )}
-              </Box>
-            );
-          })}
+        {images &&
+          images
+            .filter((image) => image != null)
+            .map((image, index) => {
+              const imageUrl = urlFor(image).auto("format").url().toString();
+              return (
+                <Box key={index} sx={imageBox}>
+                  {image != null && (
+                    <Image
+                      src={imageUrl}
+                      alt={alt}
+                      width={1920}
+                      height={1080}
+                      style={imageStyles}
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,..."
+                    />
+                  )}
+                </Box>
+              );
+            })}
       </Slider>
       <Box>
         <ButtonBase
