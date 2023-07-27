@@ -19,7 +19,14 @@ const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
       <Typography variant="h3" sx={mainTitle}>
         {features?.name ?? "Features"}
       </Typography>
-      <Box sx={boxStyles}>
+      <Box
+        sx={{
+          ...boxStyles,
+          gridTemplateColumns: "repeat(3, 3fr)",
+          justifyContent: "space-between",
+          gridColumnGap: "3rem",
+        }}
+      >
         {features?.features?.map((opt) => (
           <Typography key={opt} variant="body1" sx={mainStyles}>
             {opt}

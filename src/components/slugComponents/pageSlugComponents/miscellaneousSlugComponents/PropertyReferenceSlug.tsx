@@ -96,11 +96,13 @@ const PropertyReference = ({
     },
   };
 
+  // Reference ID: {_id}
+
   return (
     <Box sx={referenceMainBoxStyles}>
       <Card sx={stickyStyles}>
         <Typography variant="body1" sx={idStyles}>
-          Reference ID: {_id} ({id})
+          Reference ID: {id}
         </Typography>
         <Typography variant="h6" sx={priceStyles}>
           {formatPrice(totalPrice)}

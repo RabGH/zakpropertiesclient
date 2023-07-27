@@ -22,7 +22,7 @@ const AmenitiesSlug = ({ amenities }: AmenitiesSlugProps) => {
       <Box
         sx={{
           ...boxStyles,
-          gridTemplateColumns: "repeat(2, 2fr)",
+          gridTemplateColumns: "repeat(3, 3fr)",
           justifyContent: "space-between",
           gridColumnGap: "3rem",
         }}

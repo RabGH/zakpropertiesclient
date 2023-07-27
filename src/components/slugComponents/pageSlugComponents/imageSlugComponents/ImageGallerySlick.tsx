@@ -30,7 +30,7 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: images.length > 3 ? 3 : images.length,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,

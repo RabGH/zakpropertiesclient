@@ -65,13 +65,13 @@ const PropertyMobileReference = ({
   const mobileReadyToBuyStyles = {
     fontSize: "0.8rem",
   };
-
+  //{_id}
   return (
     <Box sx={mobileReferenceMainBoxStyles}>
       <Card sx={mobileStickyStyles}>
         <Box>
           <Typography variant="body1" sx={mobileIdStyles}>
-            Reference ID: {_id} ({id})
+            Reference ID: {id}
           </Typography>
           <Typography variant="h6" sx={mobilePriceStyles}>
             {formatPrice(totalPrice)}
