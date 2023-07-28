@@ -17,7 +17,7 @@ import PropertyReference from "@/components/slugComponents/pageSlugComponents/mi
 import PropertyMobileReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyMobileReferenceSlug";
 import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCardsScroll";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
-
+// New Sanity build
 interface PageContext {
   query: {
     slug: string;
