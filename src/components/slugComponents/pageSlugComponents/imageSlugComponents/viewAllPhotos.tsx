@@ -36,10 +36,11 @@ const ModalBox = styled(Box)(({ theme }) => ({
 }));
 
 const ImageBox = styled(Box)({
-  position: "relative",
-  width: "100%",
-  height: "100%",
-  minHeight: "100vh",
+  position: "fixed",
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0,
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -85,7 +86,7 @@ const ViewAllPhotos = ({ images, alt, mainImage }: ViewAllPhotosProps) => {
   const isPortrait = useMediaQuery("(orientation: portrait)");
   const imageWidth = isSmallScreen
     ? muiTheme.breakpoints.values.sm
-    : muiTheme.breakpoints.values.md;
+    : muiTheme.breakpoints.values.md * 1.75;
 
   const handleOpen = () => {
     setOpen(true);
@@ -148,7 +149,7 @@ const ViewAllPhotos = ({ images, alt, mainImage }: ViewAllPhotosProps) => {
                           src={urlFor(image).auto("format").url()}
                           alt={alt}
                           style={{
-                            objectFit: "cover",
+                            objectFit: "contain",
                             display: activeImageIndex === i ? "block" : "none",
                           }}
                           width={imageWidth}
