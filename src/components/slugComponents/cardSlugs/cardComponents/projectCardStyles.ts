@@ -109,6 +109,7 @@ export const getProjectCardStyles = () => {
         width: 230,
       },
     },
+
     imageBoxStyles: {
       "&::before": {
         content: "''",
@@ -118,7 +119,7 @@ export const getProjectCardStyles = () => {
         right: 0,
         bottom: 0,
         backgroundImage:
-          "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8))",
+          "linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4))",
         "&:hover": {
           boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
         },
