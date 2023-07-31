@@ -70,3 +70,4 @@ export const viewPhotosBox = {
   ml: "2rem",
   mt: "2rem",
 };
+// Add more buttons
