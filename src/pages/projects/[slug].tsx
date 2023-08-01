@@ -10,7 +10,7 @@ import Link from "next/link";
 import { Box, Divider, Typography, Button } from "@mui/material";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
-import AmenitiesCard from "@/components/slugComponents/pageSlugComponents/amenitiesFeatures/AmenitiesSlug";
+import AmenitiesCard from "@/components/slugComponents/pageSlugComponents/amenities/AmenitiesSlug";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
 import { Project, Property } from "@lib/types";
 import {

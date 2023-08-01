@@ -9,7 +9,8 @@ import { useScrollTrigger } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import FadeNavSocials from "./fadeNavSocials";
 import FadeBurgerNav from "../homeNavBar/fadeBurgerNav";
-import NoBgLogo from "../../../../public/images/logo/logoNoBg.png";
+// import NoBgLogo from "../../../../public/images/logo/logoNoBg.png";
+import NoBgLogo from "../../../../public/images/logo/New_Logo-nobg.png";
 import { getNavBarStyles } from "../navContentStyles";
 import OpenFadeNav from "./fadeOpenNav";
 
@@ -39,7 +40,7 @@ const ElevationScroll = ({ children }: ElevationScrollProps): JSX.Element => {
 };
 
 const StyledAppBar = styled(AppBar)({
-  height: "6rem",
+  height: "4rem",
   backgroundColor: "transparent",
   boxShadow: "none",
   position: "fixed",
@@ -51,7 +52,7 @@ const StyledToolbar = styled(Toolbar)({
 });
 
 const StyledImage = styled(Image)({
-  height: "8rem",
+  height: "2.5rem",
   width: "auto",
   transition: "all 0.9s ease-out",
   verticalAlign: "bottom",

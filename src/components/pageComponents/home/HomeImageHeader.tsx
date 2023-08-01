@@ -83,7 +83,7 @@ function HomeImageHeader({
       sliderRef.current?.slickNext();
     }
   };
-
+// change header 
   return (
     <>
       {projects.length > 0 && (

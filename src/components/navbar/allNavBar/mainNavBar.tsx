@@ -7,7 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import SocialIcons from "./mainNavSocials";
-import NoBgLogo from "../../../../public/images/logo/logoNoBg.png";
+// import NoBgLogo from "../../../../public/images/logo/logoNoBg.png";
+import NoBgLogo from "../../../../public/images/logo/New_Logo-nobg.png";
 import BurgerNav from "./mainBurgerNav";
 import { getNavBarStyles } from "../navContentStyles";
 import OpenNav from "./mainOpenNav";
@@ -17,7 +18,7 @@ interface Props {
 }
 
 const StyledAppBar = styled(AppBar)({
-  height: "6rem",
+  height: "4rem",
   backgroundColor: "#fff",
   boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)",
   position: "fixed",
@@ -30,7 +31,7 @@ const StyledToolbar = styled(Toolbar)({
 });
 
 const StyledImage = styled(Image)({
-  height: "8rem",
+  height: "2.5rem",
   width: "auto",
   verticalAlign: "bottom",
   "@media (max-width: 600px)": {
