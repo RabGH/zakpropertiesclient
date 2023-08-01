@@ -4,20 +4,20 @@ import {
   cardStyles,
   boxStyles,
   mainTitle,
-} from "./amenitiesFeaturesStyles";
+} from "./amenitiesStyles";
 
-interface FeaturesSlugProps {
-  features: {
+interface AmenitiesSlugProps {
+  amenities: {
     name: string;
-    features: string[];
+    amenities: string[];
   };
 }
 
-const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
+const AmenitiesSlug = ({ amenities }: AmenitiesSlugProps) => {
   return (
-    <Box sx={cardStyles}>
+    <Box sx={{ ...cardStyles, alignItems: "left" }}>
       <Typography variant="h3" sx={mainTitle}>
-        {features?.name ?? "Features"}
+        {amenities?.name ?? "Amenities"}
       </Typography>
       <Box
         sx={{
@@ -27,7 +27,7 @@ const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
           gridColumnGap: "3rem",
         }}
       >
-        {features?.features?.map((opt) => (
+        {amenities?.amenities?.map((opt) => (
           <Typography key={opt} variant="body1" sx={mainStyles}>
             {opt}
           </Typography>
@@ -37,4 +37,4 @@ const FeaturesSlug = ({ features }: FeaturesSlugProps) => {
   );
 };
 
-export default FeaturesSlug;
+export default AmenitiesSlug;
