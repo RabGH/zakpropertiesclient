@@ -16,7 +16,34 @@ import {
   mainImageContainer,
   viewPhotosBox,
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
+import { getDeveloperPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/developerSlugStyles";
+import dynamic from "next/dynamic"; // map for project mapping
 
+interface ProjectList {
+  projects: Project[];
+}
+
+type DeveloperProps = Developer & ProjectList;
+
+const Developer = ({
+  id,
+  _id,
+  name,
+  logo,
+  description,
+  website,
+  averagePricing,
+  developerBuiltUpArea,
+  addresses,
+  propertyTypes,
+  projects,
+  areaType,
+  slug,
+}: DeveloperProps) => {
+  const styles = getDeveloperPageStyles();
+
+  return <> </>;
+};
 export async function getStaticProps(context: PageContext) {
   const slug = context.params.slug;
   const query = `*[ _type == "developer" && slug.current == $slug][0]{
