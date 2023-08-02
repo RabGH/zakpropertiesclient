@@ -100,26 +100,26 @@ export interface Developer {
   averagePricing?: number[];
   developerBuiltUpArea?: number[];
   addresses?: Address[];
-  propertyTypes?: String[];
+  propertyTypes?: string[];
   projects?: Project[];
-  areaType?: String[];
+  areaType?: string[];
   slug: Slug;
 }
 
 export interface PaymentPlan {
-  _id: String;
+  _id: string;
   createdAt?: Date;
-  name: String;
-  type: String;
-  reference: String;
+  name: string;
+  type: string;
+  reference: string;
   description?: string;
-  validity?: Object;
-  timeline?: Object[];
-  amountType: String;
+  validity?: any;
+  timeline?: any[];
+  amountType: string;
   amountAbsolute?: number;
   amountPercentage?: number;
   interestRate?: number;
-  penalty?: Object;
+  penalty?: any;
   developer?: Developer;
   project?: Project;
   properties?: Property[];
