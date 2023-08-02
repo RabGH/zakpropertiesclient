@@ -15,7 +15,7 @@ const ClearSelectionBubble = ({ setSearch }: ClearSelectionBubbleProps) => {
       propertyOffPlan: undefined,
       filteredProperties: properties,
       bedrooms: [1, 15],
-      propertyFeatures: [],
+      propertyAmenities: [],
       readyToBuy: "Any",
       sizeRange: [0, 10000],
       sortBy: "Latest",

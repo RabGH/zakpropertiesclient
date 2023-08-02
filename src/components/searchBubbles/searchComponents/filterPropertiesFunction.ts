@@ -28,7 +28,7 @@ export const filterProperties = (
     const sizeMatch =
       property.squareFootage >= sizeRange[0] &&
       property.squareFootage <= sizeRange[1];
-    const featureMatch =
+    const amenityMatch =
       propertyAmenities.length === 0 ||
       propertyAmenities.filter((amenities) =>
         property.amenities?.amenities?.includes(amenities)
@@ -39,7 +39,7 @@ export const filterProperties = (
       offPlanMatch &&
       bedroomMatch &&
       sizeMatch &&
-      featureMatch
+      amenityMatch
     ) {
       filteredProperties.push(property);
     }

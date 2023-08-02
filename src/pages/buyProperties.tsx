@@ -84,7 +84,7 @@ export const getStaticProps: GetStaticProps = async ({
     },
     address->{
       street,
-      city
+      city,
     },
     propertyOffPlan,    
   }`;

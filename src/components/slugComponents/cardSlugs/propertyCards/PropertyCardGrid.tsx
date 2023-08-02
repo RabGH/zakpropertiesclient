@@ -47,7 +47,7 @@ const PropertyCardGrid: React.FC<Props> = ({
 
   useEffect(() => {
     const filteredProperties = filterProperties(
-      search.propertyFeatures,
+      search.propertyAmenities,
       search.propertyType,
       search.propertyOffPlan,
       properties,
@@ -61,7 +61,7 @@ const PropertyCardGrid: React.FC<Props> = ({
   useEffect(() => {
     setPage(1);
   }, [
-    search.propertyFeatures,
+    search.propertyAmenities,
     search.propertyType,
     search.propertyOffPlan,
     search.priceRange,
