@@ -7,7 +7,7 @@ export interface SearchInterface {
   propertyOffPlan: boolean | undefined;
   filteredProperties: Property[];
   bedrooms: [number, number];
-  propertyFeatures: string[];
+  propertyAmenities: string[];
   readyToBuy: string;
   sizeRange: [number, number];
   sortBy: string;
@@ -27,7 +27,7 @@ export interface PropertyTypeBubbleProps {
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }
-export interface FeatureBubbleProps {
+export interface AmenitiesBubbleProps {
   search: SearchInterface;
   setSearch: React.Dispatch<React.SetStateAction<SearchInterface>>;
 }

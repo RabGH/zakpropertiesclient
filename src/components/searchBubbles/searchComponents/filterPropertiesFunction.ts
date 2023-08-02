@@ -1,7 +1,7 @@
 import { Property } from "@lib/types";
 //? Is used in PropertyCardGrid.tsx
 export const filterProperties = (
-  propertyFeatures: string[],
+  propertyAmenities: string[],
   propertyType: string[],
   propertyOffPlan: boolean | undefined,
   properties: Property[],
@@ -29,10 +29,10 @@ export const filterProperties = (
       property.squareFootage >= sizeRange[0] &&
       property.squareFootage <= sizeRange[1];
     const featureMatch =
-      propertyFeatures.length === 0 ||
-      propertyFeatures.filter((feature) =>
-        property.features?.features?.includes(feature)
-      ).length === propertyFeatures.length;
+      propertyAmenities.length === 0 ||
+      propertyAmenities.filter((amenities) =>
+        property.amenities?.amenities?.includes(amenities)
+      ).length === propertyAmenities.length;
     if (
       typeMatch &&
       priceMatch &&

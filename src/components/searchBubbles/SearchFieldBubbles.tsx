@@ -5,7 +5,7 @@ import PropertyTypeBubble from "./bubbleComponents/TypeBubble";
 import BedroomBubble from "./bubbleComponents/BedroomBubble";
 import SizeBubble from "./bubbleComponents/SizeBubble";
 import PriceRangeBubble from "./bubbleComponents/PriceBubble";
-import FeatureBubble from "./bubbleComponents/FeatureBubble";
+import AmenitiesBubble from "./bubbleComponents/AmenitiesBubble";
 import SortByBubble from "./SortByBubble";
 import ClearSelectionBubble from "./ClearSelectionBubble";
 
@@ -40,7 +40,7 @@ const SearchFieldBubbles = ({ search, setSearch }: SearchFieldBubblesProps) => {
           search={search}
           setSearch={setSearch}
         />
-        <FeatureBubble search={search} setSearch={setSearch} />
+        <AmenitiesBubble search={search} setSearch={setSearch} />
         <SortByBubble search={search} setSearch={setSearch} />
         <ClearSelectionBubble setSearch={setSearch} />
       </Stack>
