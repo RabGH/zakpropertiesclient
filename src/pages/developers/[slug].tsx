@@ -9,6 +9,13 @@ import {
 import Link from "next/link";
 import { Box, Divider, Typography, Button } from "@mui/material";
 import { Project, Property, Developer, PageContext } from "@lib/types";
+import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
+import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
+import {
+  mainContainer,
+  mainImageContainer,
+  viewPhotosBox,
+} from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 
 export async function getStaticProps(context: PageContext) {
   const slug = context.params.slug;
