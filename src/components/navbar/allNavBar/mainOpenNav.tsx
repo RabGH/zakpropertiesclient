@@ -88,7 +88,7 @@ export default function OpenNav() {
         }}
         href="/buyProperties"
       >
-        Buy Properties
+        Properties
       </Button>
       <Button
         variant="outlined"
@@ -96,6 +96,7 @@ export default function OpenNav() {
         sx={{
           fontWeight: "bold",
           borderColor: theme.palette.primary.main,
+          maxHeight: "50px",
           "&:hover": {
             borderColor: theme.palette.error.light,
             color: theme.palette.error.light,
@@ -104,7 +105,7 @@ export default function OpenNav() {
         }}
         href="/signIn"
       >
-        Sign In
+        Login
       </Button>
     </Stack>
   );

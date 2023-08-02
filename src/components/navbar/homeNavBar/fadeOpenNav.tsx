@@ -61,7 +61,7 @@ export default function OpenFadeNav() {
       >
         Developments
       </Button>
-      
+
       <Button
         variant="text"
         color={trigger ? "inherit" : "primary"}
@@ -76,7 +76,7 @@ export default function OpenFadeNav() {
         sx={fadeButtonStyles}
         href="/buyProperties"
       >
-        Buy Properties
+        Properties
       </Button>
       <Button
         variant="outlined"
@@ -85,6 +85,7 @@ export default function OpenFadeNav() {
           fontWeight: "bold",
           borderColor: trigger ? "black" : theme.palette.grey[300],
           transition: "all 0.9s ease-out",
+          maxHeight: "50px",
           "&:hover": {
             borderColor: trigger
               ? theme.palette.error.light
@@ -96,7 +97,7 @@ export default function OpenFadeNav() {
         }}
         href="/signIn"
       >
-        Sign In
+        Login
       </Button>
     </Stack>
   );
