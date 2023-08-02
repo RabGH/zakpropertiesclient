@@ -7,7 +7,9 @@ interface PropertyMobileReferenceProps {
   totalPrice: number;
   id: string;
   _id: string;
-  squareFootage: number;
+  squareFootage?: number;
+  builtUpArea?: number;
+  plottedArea?: number;
   bedrooms: number;
   propertyOffPlan:
     | boolean
@@ -19,6 +21,9 @@ const PropertyMobileReference = ({
   id,
   _id,
   propertyOffPlan,
+  squareFootage,
+  builtUpArea,
+  plottedArea,
 }: PropertyMobileReferenceProps) => {
   const mobileReferenceMainBoxStyles = {
     position: "sticky",
