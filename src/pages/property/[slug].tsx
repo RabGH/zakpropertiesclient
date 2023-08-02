@@ -4,7 +4,7 @@ import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 import { Box, Typography, Divider } from "@mui/material";
 import AmenitiesSlug from "../../components/slugComponents/pageSlugComponents/amenities/AmenitiesSlug";
 import dynamic from "next/dynamic";
-import { PropertyProps } from "@lib/types";
+import { PropertyProps, PageContext } from "@lib/types";
 import { getPropertyPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/propertySlugStyles";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
@@ -17,15 +17,6 @@ import PropertyReference from "@/components/slugComponents/pageSlugComponents/mi
 import PropertyMobileReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyMobileReferenceSlug";
 import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCardsScroll";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
-
-interface PageContext {
-  query: {
-    slug: string;
-  };
-  params: {
-    slug: string;
-  };
-}
 
 const MapSlug = dynamic(
   () =>
@@ -102,10 +93,10 @@ const Property = ({
             <Box sx={styles.mapSlug}>
               <MapSlug
                 title={title}
-                lat={location?.lat || 0}
-                lng={location?.lng || 0}
+                lat={location?.lat ?? 0}
+                lng={location?.lng ?? 0}
                 address={address}
-                specificAddress={specificAddress}
+                specificAddress={specificAddress ?? ""}
               />
             </Box>
 
@@ -125,7 +116,7 @@ const Property = ({
             totalPrice={totalPrice}
             id={id}
             _id={_id}
-            propertyOffPlan={propertyOffPlan}
+            propertyOffPlan={propertyOffPlan ?? {}}
             squareFootage={squareFootage}
             bedrooms={bedrooms}
           />
@@ -141,7 +132,7 @@ const Property = ({
         totalPrice={totalPrice}
         id={id}
         _id={_id}
-        propertyOffPlan={propertyOffPlan}
+        propertyOffPlan={propertyOffPlan ?? {}}
         squareFootage={squareFootage}
         bedrooms={bedrooms}
       />
@@ -163,6 +154,7 @@ export async function getStaticProps(context: PageContext) {
     _id,
     title,
     location,
+    createdAt,
     specificAddress,
     propertyType,
     mainPropertyImage,
@@ -176,16 +168,38 @@ export async function getStaticProps(context: PageContext) {
     builtUpArea,
     areaType[],
     propertyOffPlan,
-    projectId{
+    paymentPlan->{
+      name,
+      type,
+      reference,
+      description,
+      validity,
+      timeline,
+      amountType,
+      amountAbsolute,
+      amountPercentage,
+      interestRate,
+      penalty,
+      createdAt,
+    },
+    projectId->{
       _id,
+      title,
+    },
+    developer->{
+      _id,
+      name,
     },
     amenities->{
       name,
       amenities[],
+      reference,
     },
     address->{
       street,
       city,
+      reference,
+      createdAt,
     },
   }`;
 
@@ -218,12 +232,15 @@ export async function getStaticProps(context: PageContext) {
       address->{
         street,
         city,
+        reference,
+        createdAt,
       },    
     }`);
     return {
       props: {
         id: property.id,
         _id: property._id,
+        createdAt: property.createdAt ?? null,
         title: property.title,
         location: property.location,
         propertyType: property.propertyType,
@@ -241,6 +258,9 @@ export async function getStaticProps(context: PageContext) {
         propertyOffPlan: property.propertyOffPlan ?? null,
         address: property.address ?? null,
         specificAddress: property.specificAddress ?? null,
+        paymentPlan: property.paymentPlan ?? null,
+        projectId: property.projectId ?? null,
+        developer: property.developer ?? null,
         property,
         properties,
       },

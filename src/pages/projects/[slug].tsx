@@ -12,7 +12,8 @@ import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageS
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
 import AmenitiesCard from "@/components/slugComponents/pageSlugComponents/amenities/AmenitiesSlug";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
-import { Project, Property } from "@lib/types";
+import { Project, Property, Developer, PageContext } from "@lib/types";
+// check why you are importing these styles instead of having them directly inside a function
 import {
   mainContainer,
   mainImageContainer,
@@ -21,15 +22,6 @@ import {
 import { getProjectPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/projectSlugStyles";
 import dynamic from "next/dynamic";
 import PropertyAllCard from "@/components/slugComponents/cardSlugs/propertyCards/PropertyAllCards";
-
-interface PageContext {
-  query: {
-    slug: string;
-  };
-  params: {
-    slug: string;
-  };
-}
 
 const MapSlug = dynamic(
   () =>
@@ -50,11 +42,12 @@ type ProjectsProps = Project & PropertyList;
 const Projects = ({
   id,
   _id,
+  createdAt,
   title,
   projectType,
   projectPropertyTypes,
   projectOffPlan,
-  mainDeveloper,
+  projectReadyToBuy,
   mainProjectImage,
   totalPrice,
   averagePrice,
@@ -72,6 +65,8 @@ const Projects = ({
   address,
   specificAddress,
   properties,
+  developer,
+  paymentPlans,
 }: ProjectsProps) => {
   const styles = getProjectPageStyles();
 
@@ -96,7 +91,7 @@ const Projects = ({
       </Box>
       <Box sx={styles.mainSection}>
         <Typography variant="h1" sx={styles.titleStyle}>
-          {title} by {mainDeveloper} ID: ({id})
+          {title} by {developer?.name} ID: ({id})
         </Typography>
         <Typography variant="body1" sx={styles.descriptionStyles}>
           {description}
@@ -235,9 +230,9 @@ export async function getStaticProps(context: PageContext) {
   const query = `*[ _type == "projects" && slug.current == $slug][0]{
     id,
     _id,
+    createdAt,
     title,
-    projectPropertyTypes,
-    unitType,
+    projectPropertyTypes[],
     projectOffPlan,
     mainDeveloper,
     mainProjectImage,
@@ -247,14 +242,10 @@ export async function getStaticProps(context: PageContext) {
     presentation,
     projectImages,
     location,
-    address->{
-      street,
-      city,
-    },
     areaType,
     specificAddress,
-    projectBuiltUpArea,
     projectType,
+    projectBuiltUpArea,
     numFloors,
     numUnits,
     numOfHouses,
@@ -262,26 +253,123 @@ export async function getStaticProps(context: PageContext) {
     amenities->{
       name,
       amenities[],
+      reference,
+      createdAt,
     },
-    properties[]->{
-      title,
-      location,
-      propertyType,
-      mainPropertyImage,
-      propertyImages,
-      totalPrice,
-      bathrooms,
-      bedrooms,
+    address->{
+      street,
+      city,
+      reference,
+      createdAt,
+    },
+    developer->{
+      id,
+      _id,
+      name,
+      logo,
       description,
-      squareFootage,
-      plottedArea,
-      builtUpArea,
-      features,
-      propertyOffPlan,
+      website,
+      averagePricing,
+      developerBuiltUpArea[],
+      addresses[],
+      projects[],
+      areaType[],
       slug,
-      address->{
-        street,
-        city,
+      createdAt,
+    },
+    paymentPlans[]->{
+      name, 
+      type, 
+      reference, 
+      description, 
+      validity, 
+      timeline, 
+      amountType, 
+      amountAbsolute, 
+      amountPercentage, 
+      interestRate, 
+      penalty,
+      createdAt,
+    },
+      projectOffPlan?: {
+          offplan,
+          completionDate, 
+          address->{
+            street,
+            city,
+            reference,
+            createdAt,
+          },
+          amenities->{
+            name,
+            amenities[],
+            reference,
+            createdAt,
+          },
+          paymentPlan->{
+            name,
+            type,
+            reference,
+            createdAt,
+          },
+          properties[]->{
+            id,
+            _id,
+            title,
+            location,
+            propertyType,
+            mainPropertyImage,
+            propertyImages,
+            totalPrice,
+            bathrooms,
+            bedrooms,
+            description,
+            squareFootage,
+            plottedArea,
+            builtUpArea,
+            propertyOffPlan,
+            slug, 
+          }
+        }
+      },
+      projectReadyToBuy?: {
+          address->{
+            street, 
+            city,
+            reference,
+            createdAt,
+          },
+          amenities->{
+            name,
+            amenities[],
+            reference,
+            createdAt,
+          },
+          paymentPlan->{
+            name, 
+            type, 
+            reference,
+            createdAt,
+          },
+          properties[]->{
+            id,
+            _id,
+            title,
+            location,
+            propertyType,
+            mainPropertyImage,
+            propertyImages,
+            totalPrice,
+            bathrooms,
+            bedrooms,
+            description,
+            squareFootage,
+            plottedArea,
+            builtUpArea,
+            propertyOffPlan,
+            slug, 
+          },
+        }
       },
     }
   }`;
@@ -298,29 +386,31 @@ export async function getStaticProps(context: PageContext) {
       props: {
         id: project.id,
         _id: project._id,
+        createdAt: project.createdAt ?? null,
         title: project.title,
         location: project.location ?? null,
         projectPropertyTypes: project.projectPropertyTypes ?? null,
-        mainDeveloper: project.mainDeveloper ?? null,
+        developer: project.developer ?? null,
         projectOffPlan: project.projectOffPlan ?? null,
-        unitType: project.unitType ?? null,
+        projectReadyToBuy: project.projectReadyToBuy ?? null,
+        mainProjectImage: project.mainProjectImage ?? null,
         projectImages: project.projectImages ?? null,
         totalPrice: project.totalPrice ?? null,
         averagePrice: project.averagePrice ?? null,
-        description: project.description,
-        presentation: project.presentation,
-        amenities: project.amenities ?? [],
+        description: project.description ?? null,
+        presentation: project.presentation ?? null,
         areaType: project.areaType ?? [],
-        specificAddress: project.specificAddress ?? null,
-        address: project.address ?? null,
+        amenities: project.amenities ?? [],
         projectBuiltUpArea: project.projectBuiltUpArea,
         projectType: project.projectType,
-        mainProjectImage: project.mainProjectImage ?? null,
-        properties: project.properties ?? null,
         numFloors: project.numFloors ?? null,
         numUnits: project.numUnits ?? null,
         numOfHouses: project.numOfHouses ?? null,
         bedrooms: project.bedrooms ?? null,
+        specificAddress: project.specificAddress ?? null,
+        address: project.address ?? null,
+        slug: project.slug ?? null,
+        paymentPlans: project.paymentPlans ?? [],
       },
       revalidate: 60,
     };
