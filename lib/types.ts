@@ -103,7 +103,7 @@ export interface Developer {
   propertyTypes?: String[];
   projects?: Project[];
   areaType?: String[];
-  slug?: Slug;
+  slug: Slug;
 }
 
 export interface PaymentPlan {
