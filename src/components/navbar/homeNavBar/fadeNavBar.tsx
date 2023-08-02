@@ -40,10 +40,13 @@ const ElevationScroll = ({ children }: ElevationScrollProps): JSX.Element => {
 };
 
 const StyledAppBar = styled(AppBar)({
-  height: "4rem",
+  height: "3.5rem",
   backgroundColor: "transparent",
   boxShadow: "none",
   position: "fixed",
+  "@media (max-width: 600px)": {
+    height: "3rem",
+  },
 });
 
 const StyledToolbar = styled(Toolbar)({
@@ -55,11 +58,12 @@ const StyledImage = styled(Image)({
   height: "2.5rem",
   width: "auto",
   transition: "all 0.9s ease-out",
-  verticalAlign: "bottom",
   "@media (max-width: 600px)": {
-    height: "7.5rem",
+    height: "2.2rem",
   },
-  "@media (max-width: 400px)": {},
+  "@media (max-width: 400px)": {
+    height: "2rem",
+  },
 });
 
 export default function ElevateAppBar(props: Props): JSX.Element {
