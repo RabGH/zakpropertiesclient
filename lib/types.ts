@@ -1,7 +1,7 @@
 export interface Property {
   id: string;
   _id: string;
-  createdAt: Date;
+  createdAt?: Date;
   title: string;
   propertyType: string;
   mainPropertyImage: string;
@@ -10,27 +10,19 @@ export interface Property {
   bedrooms: number;
   description: string;
   squareFootage: number;
-  plottedArea: number;
-  builtUpArea: number;
+  plottedArea?: number;
+  builtUpArea?: number;
   propertyImages: string[];
-  specificAddress: string;
+  address: Address;
+  specificAddress?: string;
   areaType: string[];
-  address: {
-    street: string;
-    city: string;
-  };
-  features: {
-    name: string;
-    features: string[];
-  };
-  propertyOffPlan: {
+  amenities: Amenities;
+  propertyOffPlan?: {
     offplan?: boolean;
     propertyCompletionDate?: string;
   };
-  slug: {
-    current: string;
-  };
-  location: {
+  slug: Slug;
+  location?: {
     lat?: number;
     lng?: number;
   };
@@ -53,42 +45,38 @@ export interface Project {
   createdAt?: Date;
   title: string;
   projectPropertyTypes: string[];
-  mainDeveloper: string;
-  projectOffPlan: {
-    offplan?: boolean;
-    propertyCompletionDate?: string;
-  };
+  developer?: Developer;
+  paymentPlans?: PaymentPlan[];
   mainProjectImage: string;
   totalPrice: number;
   description: string;
   presentation: string;
   projectImages: string[];
   areaType: string[];
-  amenities: {
-    name: string;
-    amenities: string[];
-  };
+  amenities: Amenities;
   projectType: string;
   numFloors?: number;
   numUnits?: number;
   numOfHouses?: number;
-  bedrooms?: string;
-  projectBuiltUpArea?: number[];
-  averagePrice?: number[];
-  properties?: {
-    properties: Property[];
-  };
-  slug: {
-    current: string;
-  };
+  bedrooms?: string[];
+  slug: Slug;
+  address: Address;
   specificAddress: string;
-  address: {
-    street: string;
-    city: string;
-  };
-  location: {
+  averagePrice?: number[];
+  projectBuiltUpArea?: number[];
+  location?: {
     lat?: number;
     lng?: number;
+  };
+  projectOffPlan?: {
+    offplan?: boolean[];
+    completionDate?: Date[];
+    properties?: Property[];
+  };
+  projectReadyToBuy?: {
+    offplan?: boolean[];
+    completionDate?: Date[];
+    properties?: Property[];
   };
 }
 
@@ -99,4 +87,74 @@ export interface PageContext {
   params: {
     slug: string;
   };
+}
+
+export interface Developer {
+  id: string;
+  _id: string;
+  createdAt?: Date;
+  name: string;
+  logo?: string;
+  description?: string;
+  website?: Url;
+  averagePricing?: number[];
+  developerBuiltUpArea?: number[];
+  addresses?: Address[];
+  propertyTypes?: String[];
+  projects?: Project[];
+  areaType?: String[];
+  slug?: Slug;
+}
+
+export interface PaymentPlan {
+  _id: String;
+  createdAt?: Date;
+  name: String;
+  type: String;
+  reference: String;
+  description?: string;
+  validity?: Object;
+  timeline?: Object[];
+  amountType: String;
+  amountAbsolute?: number;
+  amountPercentage?: number;
+  interestRate?: number;
+  penalty?: Object;
+  developer?: Developer;
+  project?: Project;
+  properties?: Property[];
+}
+
+export interface Image {
+  asset: {
+    _id: string;
+    url: string;
+  };
+  caption?: string;
+}
+
+export interface Text {
+  _en: string;
+  _ar: string;
+}
+
+export interface Url {
+  _en: string;
+  _ar: string;
+}
+
+export interface Address {
+  street: string;
+  city: string;
+  reference: string;
+}
+
+export interface Slug {
+  current: String;
+}
+
+export interface Amenities {
+  name: string;
+  amenities: string[];
+  reference: string;
 }
