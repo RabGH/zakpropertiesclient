@@ -39,10 +39,24 @@ const Developer = ({
   projects,
   areaType,
   slug,
+  mainDeveloperImage,
+  developerImages,
 }: DeveloperProps) => {
   const styles = getDeveloperPageStyles();
 
-  return <> </>;
+  return (
+    <>
+      <Box sx={mainContainer}>
+        <Box sx={mainImageContainer}>
+          <ImageCarousel
+            mainImage={mainDeveloperImage}
+            images={developerImages}
+            alt={name}
+          />
+        </Box>
+      </Box>
+    </>
+  );
 };
 export async function getStaticProps(context: PageContext) {
   const slug = context.params.slug;
