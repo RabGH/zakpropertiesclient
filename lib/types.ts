@@ -104,6 +104,8 @@ export interface Developer {
   projects?: Project[];
   areaType?: string[];
   slug: Slug;
+  mainDeveloperImage: string;
+  developerImages: string[];
 }
 
 export interface PaymentPlan {
