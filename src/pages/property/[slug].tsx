@@ -193,13 +193,10 @@ export async function getStaticProps(context: PageContext) {
     amenities->{
       name,
       amenities[],
-      reference,
     },
     address->{
       street,
       city,
-      reference,
-      createdAt,
     },
   }`;
 
@@ -232,8 +229,6 @@ export async function getStaticProps(context: PageContext) {
       address->{
         street,
         city,
-        reference,
-        createdAt,
       },    
     }`);
     return {

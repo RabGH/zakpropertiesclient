@@ -148,7 +148,6 @@ export interface Url {
 export interface Address {
   street: string;
   city: string;
-  reference: string;
 }
 
 export interface Slug {

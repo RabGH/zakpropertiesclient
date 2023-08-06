@@ -93,8 +93,6 @@ export async function getStaticProps(context: PageContext) {
           amenities->{
             name,
             amenities[],
-            reference,
-            createdAt,
           },
           projectOffPlan->{
             offplan,
@@ -120,8 +118,6 @@ export async function getStaticProps(context: PageContext) {
               address->{
                 street,
                 city,
-                reference,
-                createdAt,
               },
               paymentPlan->{
                 name,
@@ -155,8 +151,6 @@ export async function getStaticProps(context: PageContext) {
               address->{
                 street, 
                 city,
-                reference,
-                createdAt,
               },
               paymentPlan->{
                 name, 
