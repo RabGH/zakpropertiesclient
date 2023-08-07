@@ -13,7 +13,6 @@ import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageS
 import AmenitiesCard from "@/components/slugComponents/pageSlugComponents/amenities/AmenitiesSlug";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
 import { Project, Property, Developer, PageContext } from "@lib/types";
-// check why you are importing these styles instead of having them directly inside a function
 import {
   mainContainer,
   mainImageContainer,

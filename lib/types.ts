@@ -17,6 +17,7 @@ export interface Property {
   specificAddress?: string;
   areaType: string[];
   amenities: Amenities;
+  paymentPlans?: PaymentPlan[];
   propertyOffPlan?: {
     offplan?: boolean;
     propertyCompletionDate?: string;

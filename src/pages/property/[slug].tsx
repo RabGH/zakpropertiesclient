@@ -17,6 +17,7 @@ import PropertyReference from "@/components/slugComponents/pageSlugComponents/mi
 import PropertyMobileReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyMobileReferenceSlug";
 import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCardsScroll";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
+import PaymentPlanSlug from "@/components/slugComponents/pageSlugComponents/paymentPlanSlug/paymentPlan";
 
 const MapSlug = dynamic(
   () =>
@@ -50,6 +51,7 @@ const Property = ({
   specificAddress,
   property,
   properties,
+  paymentPlans,
 }: PropertyProps) => {
   const styles = getPropertyPageStyles();
 
@@ -111,6 +113,14 @@ const Property = ({
             <Box sx={styles.featuresSlugPos}>
               <AmenitiesSlug amenities={amenities} />
             </Box>
+
+            <Divider sx={styles.dividerStyles} />
+{/* 
+            {paymentPlans && (
+              <Box>
+                <PaymentPlanSlug paymentPlans={paymentPlans} />
+              </Box>
+            )} */}
           </Box>
           <PropertyReference
             totalPrice={totalPrice}
@@ -168,7 +178,7 @@ export async function getStaticProps(context: PageContext) {
     builtUpArea,
     areaType[],
     propertyOffPlan,
-    paymentPlan->{
+    paymentPlans->{
       name,
       type,
       reference,
