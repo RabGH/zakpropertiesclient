@@ -125,6 +125,7 @@ export interface PaymentPlan {
   developer?: Developer;
   project?: Project;
   properties?: Property[];
+  customType?: string;
 }
 
 export interface Image {
