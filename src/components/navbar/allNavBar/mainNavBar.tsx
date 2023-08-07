@@ -24,23 +24,27 @@ const StyledAppBar = styled(AppBar)({
   position: "fixed",
   m: "0 auto",
   "@media (max-width: 600px)": {
-    height: "3.1rem",
+    height: "3rem",
   },
 });
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
+  "@media (max-width: 600px)": {
+    gap: "1rem",
+  },
 });
 
 const StyledImage = styled(Image)({
   height: "2.5rem",
   width: "auto",
-  verticalAlign: "bottom",
   "@media (max-width: 600px)": {
     height: "1.8rem",
   },
-  "@media (max-width: 400px)": {},
+  "@media (max-width: 400px)": {
+    height: "1.6rem",
+  },
 });
 
 //! Shouldn't be -4 and check container

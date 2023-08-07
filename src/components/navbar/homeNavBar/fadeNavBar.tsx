@@ -44,6 +44,7 @@ const StyledAppBar = styled(AppBar)({
   backgroundColor: "transparent",
   boxShadow: "none",
   position: "fixed",
+  m: "0 auto",
   "@media (max-width: 600px)": {
     height: "3rem",
   },
@@ -52,6 +53,9 @@ const StyledAppBar = styled(AppBar)({
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
+  "@media (max-width: 600px)": {
+    gap: "1rem",
+  },
 });
 
 const StyledImage = styled(Image)({
@@ -59,10 +63,10 @@ const StyledImage = styled(Image)({
   width: "auto",
   transition: "all 0.9s ease-out",
   "@media (max-width: 600px)": {
-    height: "2.2rem",
+    height: "1.8rem",
   },
   "@media (max-width: 400px)": {
-    height: "2rem",
+    height: "1.6rem",
   },
 });
 
