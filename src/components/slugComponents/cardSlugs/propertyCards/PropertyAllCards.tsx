@@ -58,7 +58,7 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                     typeof property.propertyOffPlan === "object" &&
                     property.propertyOffPlan.offplan ? (
                       <Box>
-                        {property.propertyOffPlan.propertyCompletionDate && (
+                        {/* {property.propertyOffPlan.propertyCompletionDate && (
                           <Typography
                             variant="body1"
                             sx={styles.offPlanCompleteStyles}
@@ -70,7 +70,8 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                               ).format("YYYY-MM-DD")}{" "}
                             </span>{" "}
                           </Typography>
-                        )}
+                        )} */}
+                        <Typography variant="body1" sx={styles.offPlanCompleteStyles}>Off plan</Typography>
                       </Box>
                     ) : (
                       <Typography

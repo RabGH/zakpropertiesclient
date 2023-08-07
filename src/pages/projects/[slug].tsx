@@ -397,7 +397,6 @@ export async function getStaticProps(context: PageContext) {
         bedrooms: project.bedrooms ?? null,
         specificAddress: project.specificAddress ?? null,
         address: project.address ?? null,
-        slug: project.slug ?? null,
         paymentPlans: project.paymentPlans ?? [],
       },
       revalidate: 60,

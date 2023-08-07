@@ -1,5 +1,6 @@
 // developer page
 import { sanityClient } from "@lib/sanity";
+import { getAllDeveloperSlugs } from "@lib/getStaticPaths";
 import {
   formatPrice,
   formatArea,
@@ -17,7 +18,7 @@ import {
   viewPhotosBox,
 } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import { getDeveloperPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/developerSlugStyles";
-import dynamic from "next/dynamic"; // map for project mapping
+import dynamic from "next/dynamic";
 
 interface ProjectList {
   projects: Project[];
@@ -25,7 +26,7 @@ interface ProjectList {
 
 type DeveloperProps = Developer & ProjectList;
 
-const Developer = ({
+const Developers = ({
   id,
   _id,
   name,
@@ -58,123 +59,31 @@ const Developer = ({
     </>
   );
 };
+
+export async function getStaticPaths() {
+  const paths = await getAllDeveloperSlugs();
+
+  return { paths, fallback: false };
+}
+
 export async function getStaticProps(context: PageContext) {
   const slug = context.params.slug;
   const query = `*[ _type == "developer" && slug.current == $slug][0]{
-        id,
-        _id,
-        createdAt,
-        name,
-        logo,
-        description,
-        website,
-        averagePricing,
-        developerBuiltUpArea[],
-        addresses[],
-        propertyTypes[],
-        projects[]->{
-          id,
-          _id,
-          createdAt,
-          title,
-          projectPropertyTypes[],
-          projectBuiltUpArea,
-          mainProjectImage,
-          totalPrice,
-          averagePrice,
-          projectImages,
-          location,
-          areaType,
-          specificAddress,
-          projectType,
-          bedrooms,
-          areaType[],
-          slug,
-          amenities->{
-            name,
-            amenities[],
-          },
-          projectOffPlan->{
-            offplan,
-            completionDate,
-            properties[]->{
-              _id,
-              title,
-              createdAt,
-              location,
-              propertyType,
-              mainPropertyImage,
-              propertyImages,
-              totalPrice,
-              bathrooms,
-              bedrooms,
-              description,
-              squareFootage,
-              plottedArea,
-              builtUpArea,
-              features,
-              propertyOffPlan,
-              slug,
-              address->{
-                street,
-                city,
-              },
-              paymentPlan->{
-                name,
-                type,
-                reference,
-                createdAt,
-              }
-            }
-          },
-          projectReadyToBuy?: {
-            offplan,
-            completionDate,
-            properties[]->{
-              _id,
-              title,
-              createdAt,
-              location,
-              propertyType,
-              mainPropertyImage,
-              propertyImages,
-              totalPrice,
-              bathrooms,
-              bedrooms,
-              description, 
-              squareFootage, 
-              plottedArea, 
-              builtUpArea, 
-              features, 
-              propertyOffPlan, 
-              slug, 
-              address->{
-                street, 
-                city,
-              },
-              paymentPlan->{
-                name, 
-                type, 
-                reference,
-                createdAt,
-              }
-            }
-          },
-          paymentPlans[]->{
-            name, 
-            type, 
-            reference, 
-            description, 
-            validity, 
-            timeline, 
-            amountType, 
-            amountAbsolute, 
-            amountPercentage, 
-            interestRate, 
-            penalty,
-          },
-        },
-      }`;
+    id,
+    _id,
+    createdAt,
+    name,
+    logo,
+    description,
+    website,
+    averagePricing,
+    developerBuiltUpArea[],
+    addresses[],
+    propertyTypes[],
+    projects[],
+    developerImages[],
+    mainDeveloperImage,
+  }`;
 
   const developer = await sanityClient.fetch(query, { slug });
 
@@ -199,12 +108,12 @@ export async function getStaticProps(context: PageContext) {
         propertyTypes: developer.propertyTypes ?? [],
         projects: developer.projects ?? [],
         areaType: developer.areaType ?? [],
-        slug: developer.slug ?? null,
-        amenities: developer.projects.amenities ?? [], // check if this works
+        mainDeveloperImage: developer.mainDeveloperImage ?? null,
+        developerImages: developer.developerImages ?? null,
       },
       revalidate: 60,
     };
   }
 }
 
-export default Developer;
+export default Developers;
