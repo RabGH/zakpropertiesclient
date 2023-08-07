@@ -23,6 +23,9 @@ const StyledAppBar = styled(AppBar)({
   boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)",
   position: "fixed",
   m: "0 auto",
+  "@media (max-width: 600px)": {
+    height: "3.1rem",
+  },
 });
 
 const StyledToolbar = styled(Toolbar)({
@@ -35,7 +38,7 @@ const StyledImage = styled(Image)({
   width: "auto",
   verticalAlign: "bottom",
   "@media (max-width: 600px)": {
-    height: "7.5rem",
+    height: "1.8rem",
   },
   "@media (max-width: 400px)": {},
 });
