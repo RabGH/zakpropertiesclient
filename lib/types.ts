@@ -17,7 +17,7 @@ export interface Property {
   specificAddress?: string;
   areaType: string[];
   amenities: Amenities;
-  paymentPlans?: PaymentPlan[];
+  paymentPlan?: PaymentPlan;
   propertyOffPlan?: {
     offplan?: boolean;
     propertyCompletionDate?: string;
@@ -47,7 +47,7 @@ export interface Project {
   title: string;
   projectPropertyTypes: string[];
   developer?: Developer;
-  paymentPlans?: PaymentPlan[];
+  paymentPlan?: PaymentPlan[];
   mainProjectImage: string;
   totalPrice: number;
   description: string;

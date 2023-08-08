@@ -51,7 +51,7 @@ const Property = ({
   specificAddress,
   property,
   properties,
-  paymentPlans,
+  paymentPlan,
 }: PropertyProps) => {
   const styles = getPropertyPageStyles();
 
@@ -115,12 +115,12 @@ const Property = ({
             </Box>
 
             <Divider sx={styles.dividerStyles} />
-{/* 
-            {paymentPlans && (
+
+            {paymentPlan && (
               <Box>
-                <PaymentPlanSlug paymentPlans={paymentPlans} />
+                <PaymentPlanSlug paymentPlan={paymentPlan} />
               </Box>
-            )} */}
+            )}
           </Box>
           <PropertyReference
             totalPrice={totalPrice}
@@ -178,7 +178,7 @@ export async function getStaticProps(context: PageContext) {
     builtUpArea,
     areaType[],
     propertyOffPlan,
-    paymentPlans->{
+    paymentPlan->{
       name,
       type,
       reference,
@@ -190,7 +190,6 @@ export async function getStaticProps(context: PageContext) {
       amountPercentage,
       interestRate,
       penalty,
-      createdAt,
     },
     projectId->{
       _id,
@@ -231,6 +230,7 @@ export async function getStaticProps(context: PageContext) {
       squareFootage,
       plottedArea,
       builtUpArea,
+      paymentPlan,
       amenities->{
         name,
         amenities[],

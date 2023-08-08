@@ -1,5 +1,3 @@
-// payment plan page and frequently asked questions
-// /pages/paymentPlanFAQ.tsx
 import * as React from "react";
 import {
   Container,
