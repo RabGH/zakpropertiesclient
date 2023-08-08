@@ -1,6 +1,7 @@
-import { createTheme } from "@mui/material/styles";
+import { ThemeOptions, createTheme } from "@mui/material/styles";
+import { breakpoints } from "./MuiBreakPoints";
 
-const slugTheme = createTheme({
+export const themeOptions: ThemeOptions = {
   palette: {
     mode: "light",
     background: {
@@ -96,6 +97,9 @@ const slugTheme = createTheme({
       fontSize: "1rem",
     },
   },
-});
+  breakpoints,
+};
+
+const slugTheme = createTheme(themeOptions);
 
 export default slugTheme;

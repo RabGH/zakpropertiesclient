@@ -1,4 +1,5 @@
 import { ThemeOptions, createTheme } from "@mui/material";
+import { breakpoints } from "./MuiBreakPoints";
 
 export const themeOptions: ThemeOptions = {
   palette: {
@@ -95,6 +96,7 @@ export const themeOptions: ThemeOptions = {
       margin: "0",
     },
   },
+  breakpoints,
 };
 
 const theme = createTheme(themeOptions);
