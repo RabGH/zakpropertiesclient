@@ -272,8 +272,20 @@ export async function getStaticProps(context: PageContext) {
       slug,
       createdAt,
     },
-    paymentPlans[],
-        }`;
+    paymentPlans[]->{
+      name,
+      type,
+      reference,
+      description,
+      validity,
+      timeline,
+      amountType,
+      amountAbsolute,
+      amountPercentage,
+      interestRate,
+      penalty,
+    },
+  }`;
 
   const project = await sanityClient.fetch(query, { slug });
 
@@ -310,7 +322,7 @@ export async function getStaticProps(context: PageContext) {
         bedrooms: project.bedrooms ?? null,
         specificAddress: project.specificAddress ?? null,
         address: project.address ?? null,
-        paymentPlans: project.paymentPlans ?? [],
+        paymentPlan: project.paymentPlan ?? [],
       },
       revalidate: 60,
     };

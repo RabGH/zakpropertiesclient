@@ -47,7 +47,7 @@ export interface Project {
   title: string;
   projectPropertyTypes: string[];
   developer?: Developer;
-  paymentPlan?: PaymentPlan[];
+  paymentPlans?: PaymentPlan[];
   mainProjectImage: string;
   totalPrice: number;
   description: string;
