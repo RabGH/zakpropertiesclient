@@ -2,7 +2,7 @@ import { sanityClient } from "@lib/sanity";
 import { getAllPropertySlugs } from "@lib/getStaticPaths";
 import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 import { Box, Typography, Divider } from "@mui/material";
-import AmenitiesSlug from "../../components/slugComponents/pageSlugComponents/amenities/AmenitiesSlug";
+import AmenitiesSlug from "../../components/slugComponents/pageSlugComponents/amenities/PropertyAmenities";
 import dynamic from "next/dynamic";
 import { PropertyProps, PageContext } from "@lib/types";
 import { getPropertyPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/propertySlugStyles";
@@ -30,7 +30,6 @@ const MapSlug = dynamic(
 );
 
 const Property = ({
-  id,
   _id,
   title,
   propertyType,
@@ -39,12 +38,11 @@ const Property = ({
   bathrooms,
   bedrooms,
   description,
-  squareFootage,
   plottedArea,
   builtUpArea,
-  areaType,
+  propertyAreaTypes,
   propertyImages,
-  amenities,
+  propertyAmenities,
   location,
   propertyOffPlan,
   address,
@@ -82,7 +80,6 @@ const Property = ({
             <Typography variant="body1" sx={styles.propertyTypeStyles}>
               {propertyType} ⋅ {bedrooms} bedroom{isMultiple(bedrooms)} ⋅{" "}
               {bathrooms} bathroom{isMultiple(bathrooms)} ⋅{" "}
-              {squareFootage && formatArea(squareFootage)} ⋅{" "}
               {builtUpArea && formatArea(builtUpArea)} ⋅{" "}
               {plottedArea && formatArea(plottedArea)}
             </Typography>
@@ -105,13 +102,13 @@ const Property = ({
             <Divider sx={styles.dividerStyles} />
 
             <Box sx={styles.lifeBoxStyles}>
-              <LifeStyle areaType={areaType} />
+              <LifeStyle areaType={propertyAreaTypes} />
             </Box>
 
             <Divider sx={styles.dividerStyles} />
 
             <Box sx={styles.featuresSlugPos}>
-              <AmenitiesSlug amenities={amenities} />
+              <AmenitiesSlug propertyAmenities={propertyAmenities} />
             </Box>
 
             <Divider sx={styles.dividerStyles} />
@@ -124,11 +121,11 @@ const Property = ({
           </Box>
           <PropertyReference
             totalPrice={totalPrice}
-            id={id}
             _id={_id}
             propertyOffPlan={propertyOffPlan ?? {}}
-            squareFootage={squareFootage}
+            builtUpArea={builtUpArea}
             bedrooms={bedrooms}
+            plottedArea={plottedArea}
           />
         </Box>
       </Box>
@@ -140,10 +137,9 @@ const Property = ({
       </Box>
       <PropertyMobileReference
         totalPrice={totalPrice}
-        id={id}
         _id={_id}
         propertyOffPlan={propertyOffPlan ?? {}}
-        squareFootage={squareFootage}
+        builtUpArea={builtUpArea}
         bedrooms={bedrooms}
       />
     </>
@@ -160,53 +156,38 @@ export async function getStaticProps(context: PageContext) {
   const slug = context.params.slug;
 
   const query = `*[ _type == "property" && slug.current == $slug][0]{
-    id,
     _id,
     title,
-    location,
     createdAt,
-    specificAddress,
-    propertyType,
-    mainPropertyImage,
-    propertyImages,
-    totalPrice,
-    bathrooms,
-    bedrooms,
-    description,
-    squareFootage,
-    plottedArea,
-    builtUpArea,
-    areaType[],
-    propertyOffPlan,
-    paymentPlan->{
-      name,
-      type,
-      reference,
-      description,
-      validity,
-      timeline,
-      amountType,
-      amountAbsolute,
-      amountPercentage,
-      interestRate,
-      penalty,
-    },
-    projectId->{
-      _id,
-      title,
-    },
-    developer->{
-      _id,
-      name,
-    },
-    amenities->{
-      name,
-      amenities[],
+    location->{
+      lat,
+      lng,
     },
     address->{
       street,
       city,
     },
+    specificAddress,
+    propertyAreaTypes[],
+    propertyType,
+    mainPropertyImage,
+    propertyImages[],
+    totalPrice,
+    builtUpArea,
+    plottedArea,
+    propertyOffPlan->{
+      offplan,
+      propertyCompletionDate,
+    },
+    propertyAmenities->{
+      name,
+      propertiesAmenities[],
+    },
+    bedrooms,
+    bathrooms,
+    description,
+    projectId,
+    paymentPlan,
   }`;
 
   const property = await sanityClient.fetch(query, { slug });
@@ -227,13 +208,12 @@ export async function getStaticProps(context: PageContext) {
       bathrooms,
       bedrooms,
       description,
-      squareFootage,
       plottedArea,
       builtUpArea,
       paymentPlan,
-      amenities->{
+      propertyAmenities->{
         name,
-        amenities[],
+        propertiesAmenities[],
       },
       propertyOffPlan,
       address->{
@@ -243,7 +223,6 @@ export async function getStaticProps(context: PageContext) {
     }`);
     return {
       props: {
-        id: property.id,
         _id: property._id,
         createdAt: property.createdAt ?? null,
         title: property.title,
@@ -255,17 +234,15 @@ export async function getStaticProps(context: PageContext) {
         bathrooms: property.bathrooms,
         bedrooms: property.bedrooms,
         description: property.description,
-        squareFootage: property.squareFootage ?? null,
         plottedArea: property.plottedArea ?? null,
         builtUpArea: property.builtUpArea ?? null,
-        areaType: property.areaType ?? [],
-        amenities: property.amenities ?? [],
+        propertyAreaTypes: property.areaType ?? [],
+        propertyAmenities: property.propertyAmenities ?? [],
         propertyOffPlan: property.propertyOffPlan ?? null,
         address: property.address ?? null,
         specificAddress: property.specificAddress ?? null,
         paymentPlan: property.paymentPlan ?? null,
         projectId: property.projectId ?? null,
-        developer: property.developer ?? null,
         property,
         properties,
       },

@@ -37,7 +37,7 @@ export interface Development {
 
 export interface DevelopmentAmenities {
   name: string;
-  amenities: string[];
+  developmentsAmenities: string[];
 }
 
 export interface DevelopmentProps extends Development {
@@ -133,9 +133,6 @@ export interface PaymentPlan {
   name: string;
   type: string;
   description?: string;
-  developer?: Developer;
-  project?: Project;
-  properties?: Property[];
   customType?: string;
 }
 
