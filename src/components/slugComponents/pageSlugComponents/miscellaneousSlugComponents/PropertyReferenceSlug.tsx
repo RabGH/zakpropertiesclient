@@ -5,10 +5,8 @@ import Link from "next/link";
 
 interface PropertyReferenceProps {
   totalPrice: number;
-  id: string;
   _id: string;
-  squareFootage?: number;
-  builtUpArea?: number;
+  builtUpArea: number;
   plottedArea?: number;
   bedrooms: number;
   propertyOffPlan:
@@ -17,10 +15,8 @@ interface PropertyReferenceProps {
 }
 const PropertyReference = ({
   totalPrice,
-  id,
   _id,
   propertyOffPlan,
-  squareFootage,
   builtUpArea,
   plottedArea,
   bedrooms,
@@ -106,7 +102,7 @@ const PropertyReference = ({
     <Box sx={referenceMainBoxStyles}>
       <Card sx={stickyStyles}>
         <Typography variant="body1" sx={idStyles}>
-          Reference ID: {id}
+          Reference ID: {_id}
         </Typography>
         <Typography variant="h6" sx={priceStyles}>
           {formatPrice(totalPrice)}
@@ -115,7 +111,7 @@ const PropertyReference = ({
           {bedrooms} Bedroom{isMultiple(bedrooms)}
         </Typography>
         <Typography variant="body1" sx={areaStyles}>
-          Area {formatArea(squareFootage)}
+          Area {formatArea(builtUpArea)}
         </Typography>
         <Box sx={mainOffPlanBoxStyles}>
           {propertyOffPlan &&
