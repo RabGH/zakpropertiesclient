@@ -1,36 +1,48 @@
-export interface Property {
+export interface Developer {
+  _id: string;
+  name: string;
+  createdAt?: Date;
+  logo?: string;
+  mainDeveloperImage: string;
+  developerImages: string[];
+  description?: string;
+  website?: Url;
+  developerDevelopments: Development[];
+  slug: Slug;
+}
+
+export interface Development {
   _id: string;
   title: string;
+  description: string;
   createdAt?: Date;
   location?: {
     lat?: number;
     lng?: number;
   };
-  address: Address;
-  specificAddress?: string;
-  propertyAreaTypes: string[];
-  propertyType: string;
-  mainPropertyImage: string;
-  propertyImages: string[];
-  totalPrice: number;
-  builtUpArea: number;
-  plottedArea?: number;
-  propertyOffPlan?: {
-    offplan?: boolean;
-    propertyCompletionDate?: string;
-  };
-  propertyAmenities: PropertyAmenities;
-  bedrooms: number;
-  bathrooms: number;
-  description: string;
-  projectId: Project;
-  paymentPlan?: PaymentPlan;
+  developmentPropertyTypes: string[];
+  mainDevelopmentImage: string;
+  developmentImages: string[];
+  developmentsDeveloper: Developer;
+  offplanProjects: Project[];
+  readyProjects: Project[];
+  developmentAveragePrice: number[];
+  addresses: Address[];
+  developmentBuiltUpArea: number[];
+  bulletPoints: string[];
+  developmentAmenities: DevelopmentAmenities;
+  presentation: string;
   slug: Slug;
 }
 
-export interface PropertyProps extends Property {
-  property: Property;
-  properties: Property[];
+export interface DevelopmentAmenities {
+  name: string;
+  amenities: string[];
+}
+
+export interface DevelopmentProps extends Development {
+  development: Development;
+  developments: Development[];
 }
 
 export interface Project {
@@ -66,51 +78,54 @@ export interface Project {
   slug: Slug;
 }
 
+export interface ProjectAmenities {
+  name: string;
+  projectsAmenities: string[];
+}
+
 export interface ProjectProps extends Project {
   project: Project;
   projects: Project[];
 }
 
-export interface Development {
+export interface Property {
   _id: string;
   title: string;
-  description: string;
   createdAt?: Date;
   location?: {
     lat?: number;
     lng?: number;
   };
-  developmentPropertyTypes: string[];
-  mainDevelopmentImage: string;
-  developmentImages: string[];
-  developmentsDeveloper: Developer;
-  offplanProjects: Project[];
-  readyProjects: Project[];
-  developmentAveragePrice: number[];
-  addresses: Address[];
-  developmentBuiltUpArea: number[];
-  bulletPoints: string[];
-  developmentAmenities: DevelopmentAmenities;
-  presentation: string;
+  address: Address;
+  specificAddress?: string;
+  propertyAreaTypes: string[];
+  propertyType: string;
+  mainPropertyImage: string;
+  propertyImages: string[];
+  totalPrice: number;
+  builtUpArea: number;
+  plottedArea?: number;
+  propertyOffPlan?: {
+    offplan?: boolean;
+    propertyCompletionDate?: string;
+  };
+  propertyAmenities: PropertyAmenities;
+  bedrooms: number;
+  bathrooms: number;
+  description: string;
+  projectId: Project;
+  paymentPlan?: PaymentPlan;
   slug: Slug;
 }
 
-export interface DevelopmentProps extends Development {
-  development: Development;
-  developments: Development[];
-}
-
-export interface Developer {
-  _id: string;
+export interface PropertyAmenities {
   name: string;
-  createdAt?: Date;
-  logo?: string;
-  mainDeveloperImage: string;
-  developerImages: string[];
-  description?: string;
-  website?: Url;
-  developerDevelopments: Development[];
-  slug: Slug;
+  propertiesAmenities: string[];
+}
+
+export interface PropertyProps extends Property {
+  property: Property;
+  properties: Property[];
 }
 
 export interface PaymentPlan {
@@ -132,23 +147,9 @@ export interface Image {
   caption?: string;
 }
 
-export interface Text {
-  _en: string;
-  _ar: string;
-}
-
-export interface Url {
-  _en: string;
-  _ar: string;
-}
-
 export interface Address {
   street: string;
   city: string;
-}
-
-export interface Slug {
-  current: string;
 }
 
 export interface PageContext {
@@ -160,22 +161,16 @@ export interface PageContext {
   };
 }
 
-export interface ProjectAmenities {
-  name: string;
-  projectsAmenities: string[];
+export interface Text {
+  _en: string;
+  _ar: string;
 }
 
-export interface PropertyAmenities {
-  name: string;
-  propertiesAmenities: string[];
+export interface Url {
+  _en: string;
+  _ar: string;
 }
 
-export interface DeveloperAmenities {
-  name: string;
-  amenities: string[];
-}
-
-export interface DevelopmentAmenities {
-  name: string;
-  amenities: string[];
+export interface Slug {
+  current: string;
 }
