@@ -42,19 +42,6 @@ export const getPropertyPageStyles = () => {
       ml: "5%",
     },
 
-    lifeStyles: {
-      mt: "1rem",
-    },
-
-    lifeBoxStyles: {
-      mr: 3,
-      ml: 3,
-      "@media (max-width: 481px)": {
-        mr: 0,
-        ml: 0,
-      },
-    },
-
     titleStyle: {
       mr: 1,
       ml: 3,
@@ -109,7 +96,24 @@ export const getPropertyPageStyles = () => {
       "@media (max-width: 320px)": {},
     },
     propertySimilarCardsPos: {},
+    paymentPlanPos: {
+      mr: 3,
+      ml: 3,
+      "@media (max-width: 481px)": {
+        mr: 0,
+        ml: 0,
+      },
+    },
     featuresSlugPos: {
+      mr: 3,
+      ml: 3,
+      "@media (max-width: 481px)": {
+        mr: 0,
+        ml: 0,
+      },
+    },
+
+    lifeBoxStyles: {
       mr: 3,
       ml: 3,
       "@media (max-width: 481px)": {
