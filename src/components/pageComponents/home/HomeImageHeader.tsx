@@ -83,7 +83,7 @@ function HomeImageHeader({
       sliderRef.current?.slickNext();
     }
   };
-// change header 
+  // change header
   return (
     <>
       {projects.length > 0 && (
@@ -118,17 +118,15 @@ function HomeImageHeader({
                   <Box sx={styles.imgOverlay} />
                   <Box sx={styles.contentContainer}>
                     <Typography variant="h1" sx={styles.zakStaticTitle}>
-                      Welcome to ZakProperties
+                      Your Path to Luxury Residences. Exquisite Homes, Unmatched
+                      Professional Insight.
                     </Typography>
-                    <Typography variant="h5" sx={styles.zakStaticSubTitle}>
+                    {/* <Typography variant="h5" sx={styles.zakStaticSubTitle}>
                       Your Trusted Partner in Real Estate
-                    </Typography>
-                    <Typography
-                      variant="h5"
-                      sx={styles.zakStaticSubSubTitle}
-                    >
+                    </Typography> */}
+                    {/* <Typography variant="h5" sx={styles.zakStaticSubSubTitle}>
                       Explore Dubai&apos;s finest properties
-                    </Typography>
+                    </Typography> */}
                   </Box>
                 </Box>
               </Box>
@@ -154,9 +152,6 @@ function HomeImageHeader({
                     />
                     <Box sx={styles.imgOverlay} />
                     <Box sx={styles.contentContainer}>
-                      <Typography variant="body1" sx={styles.zakLearnMore}>
-                        Learn More
-                      </Typography>
                       <Link
                         key={project._id}
                         href={`/projects/${project.slug.current}`}
