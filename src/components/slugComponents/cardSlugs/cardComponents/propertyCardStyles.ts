@@ -162,7 +162,9 @@ export const getPropertyCardStyles = () => {
       flexDirection: "column",
       cursor: "pointer",
     },
-    offPlanReadyToBuyStyles: {},
+    offPlanReadyToBuyStyles: {
+      fontWeight: "bold",
+    },
 
     propertyTypeStyles: {
       fontSize: "1.2rem",
@@ -182,6 +184,8 @@ export const getPropertyCardStyles = () => {
     bedroomStyles: {},
     offPlanStyles: {},
     offPlanTextStyles: {},
-    offPlanCompleteStyles: {},
+    offPlanCompleteStyles: {
+      fontWeight: "bold",
+    },
   };
 };
