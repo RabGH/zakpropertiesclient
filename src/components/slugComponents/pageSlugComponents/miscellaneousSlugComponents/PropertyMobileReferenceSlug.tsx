@@ -5,9 +5,7 @@ import Link from "next/link";
 
 interface PropertyMobileReferenceProps {
   totalPrice: number;
-  id: string;
   _id: string;
-  squareFootage?: number;
   builtUpArea?: number;
   plottedArea?: number;
   bedrooms: number;
@@ -18,10 +16,8 @@ interface PropertyMobileReferenceProps {
 
 const PropertyMobileReference = ({
   totalPrice,
-  id,
   _id,
   propertyOffPlan,
-  squareFootage,
   builtUpArea,
   plottedArea,
 }: PropertyMobileReferenceProps) => {
@@ -70,13 +66,13 @@ const PropertyMobileReference = ({
   const mobileReadyToBuyStyles = {
     fontSize: "0.8rem",
   };
-  //{_id}
+
   return (
     <Box sx={mobileReferenceMainBoxStyles}>
       <Card sx={mobileStickyStyles}>
         <Box>
           <Typography variant="body1" sx={mobileIdStyles}>
-            Reference ID: {id}
+            Reference ID: {_id}
           </Typography>
           <Typography variant="h6" sx={mobilePriceStyles}>
             {formatPrice(totalPrice)}
