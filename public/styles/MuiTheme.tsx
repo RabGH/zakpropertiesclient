@@ -15,7 +15,7 @@ export const themeOptions: ThemeOptions = {
       main: "#CCCCCC", // Medium Shade of Gray
     },
     error: {
-      main: "#1e6572", // Turquoise #1e6572, light #4B838E , dark #15464F
+      main: "#9B9B9B", // Darker Gray ~ white
     },
     warning: {
       main: "#F7F7F7", // White

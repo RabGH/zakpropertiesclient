@@ -73,7 +73,7 @@ export const getHomePageStyles = () => {
       lineHeight: "1.5",
       textAlign: "center",
       maxWidth: "70ch",
-      fontStyle: "italic",
+      // fontStyle: "italic",
       mt: "14rem",
       "@media (max-width: 2560px)": {
         mt: "25rem",
@@ -307,29 +307,6 @@ export const getHomePageStyles = () => {
         fontSize: "0.6rem",
       },
     },
-
-    zakLearnMore: {
-      textAlign: "left",
-      "@media (max-width: 1024px)": {
-        fontSize: "1rem",
-      },
-      "@media (max-width: 600px)": {
-        fontSize: "1rem",
-        mt: "6rem",
-      },
-      "@media (max-width: 481px)": {
-        fontSize: "0.9rem",
-        mt: "9rem",
-      },
-      "@media (max-width: 400px)": {
-        fontSize: "0.8rem",
-        mt: "6rem",
-      },
-      "@media (max-width: 375px)": {
-        fontSize: "0.8rem",
-      },
-    },
-
     zakTitle: {
       fontSize: "5rem",
       fontWeight: "bold",
@@ -404,7 +381,7 @@ export const getHomePageStyles = () => {
     },
     // Static Header Styles
     zakStaticTitle: {
-      fontSize: "4.5rem",
+      fontSize: "2.5rem",
       fontWeight: "bold",
       mb: "1rem",
       textAlign: "center",
@@ -413,13 +390,13 @@ export const getHomePageStyles = () => {
         color: muiTheme.palette.error.light,
       },
       "@media (max-width: 1024px)": {
-        fontSize: "3.5rem",
+        fontSize: "2.5rem",
       },
       "@media (max-width: 960px)": {
-        fontSize: "3rem",
+        fontSize: "2rem",
       },
       "@media (max-width: 600px)": {
-        fontSize: "3rem",
+        fontSize: "2rem",
         mb: "0rem",
       },
       "@media (max-width: 481px)": {
@@ -427,14 +404,14 @@ export const getHomePageStyles = () => {
         mb: "0rem",
       },
       "@media (max-width: 400px)": {
-        fontSize: "3rem",
+        fontSize: "1.5rem",
         mb: "0rem",
       },
       "@media (max-width: 375px)": {
-        fontSize: "2.5rem",
+        fontSize: "1rem",
       },
       "@media (max-width: 360px)": {
-        fontSize: "2rem",
+        fontSize: "1rem",
         mb: "0rem",
       },
     },
