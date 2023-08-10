@@ -8,7 +8,7 @@ export const mainBox = {
   width: "100%",
   position: "relative",
   overflow: "hidden",
-  paddingTop: "5vh",
+  paddingTop: "2vh",
   paddingBottom: "3vh",
   mt: "3.5rem",
   mr: "3.5rem",
