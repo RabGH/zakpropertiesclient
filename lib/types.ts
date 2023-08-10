@@ -1,38 +1,31 @@
 export interface Property {
-  id: string;
   _id: string;
-  createdAt?: Date;
   title: string;
-  propertyType: string;
-  mainPropertyImage: string;
-  totalPrice: number;
-  bathrooms: number;
-  bedrooms: number;
-  description: string;
-  squareFootage: number;
-  plottedArea?: number;
-  builtUpArea?: number;
-  propertyImages: string[];
-  address: Address;
-  specificAddress?: string;
-  areaType: string[];
-  amenities: Amenities;
-  paymentPlan?: PaymentPlan;
-  propertyOffPlan?: {
-    offplan?: boolean;
-    propertyCompletionDate?: string;
-  };
-  slug: Slug;
+  createdAt?: Date;
   location?: {
     lat?: number;
     lng?: number;
   };
-  projectId?: {
-    _id?: string;
-    _type?: "reference";
-    _weak?: boolean;
-    projectId: Project;
+  address: Address;
+  specificAddress?: string;
+  propertyAreaTypes: string[];
+  propertyType: string;
+  mainPropertyImage: string;
+  propertyImages: string[];
+  totalPrice: number;
+  builtUpArea: number;
+  plottedArea?: number;
+  propertyOffPlan?: {
+    offplan?: boolean;
+    propertyCompletionDate?: string;
   };
+  propertyAmenities: PropertyAmenities;
+  bedrooms: number;
+  bathrooms: number;
+  description: string;
+  projectId: Project;
+  paymentPlan?: PaymentPlan;
+  slug: Slug;
 }
 
 export interface PropertyProps extends Property {
@@ -41,88 +34,90 @@ export interface PropertyProps extends Property {
 }
 
 export interface Project {
-  id: string;
   _id: string;
-  createdAt?: Date;
   title: string;
-  projectPropertyTypes: string[];
-  developer?: Developer;
-  paymentPlans?: PaymentPlan[];
-  mainProjectImage: string;
-  totalPrice: number;
   description: string;
-  presentation: string;
+  createdAt?: Date;
+  location?: {
+    lat?: number;
+    lng?: number;
+  };
+  projectPropertyTypes: string[];
+  mainProjectImage: string;
   projectImages: string[];
-  areaType: string[];
-  amenities: Amenities;
+  projectDeveloper?: Developer;
+  projectAreaTypes: string[];
+  totalPrice: number;
+  averagePrice?: number[];
+  address: Address;
+  specificAddress: string;
+  projectBuiltUpArea?: number[];
   projectType: string;
   numFloors?: number;
   numUnits?: number;
   numOfHouses?: number;
   bedrooms?: string[];
+  projectAmenities: ProjectAmenities;
+  presentation: string;
+  projectDevelopment: Development;
+  propertiesOffPlan: Property[];
+  propertiesReadyToBuy: Property[];
+  paymentPlans?: PaymentPlan[];
   slug: Slug;
-  address: Address;
-  specificAddress: string;
-  averagePrice?: number[];
-  projectBuiltUpArea?: number[];
+}
+
+export interface ProjectProps extends Project {
+  project: Project;
+  projects: Project[];
+}
+
+export interface Development {
+  _id: string;
+  title: string;
+  description: string;
+  createdAt?: Date;
   location?: {
     lat?: number;
     lng?: number;
   };
-  projectOffPlan?: {
-    offplan?: boolean[];
-    completionDate?: Date[];
-    properties?: Property[];
-  };
-  projectReadyToBuy?: {
-    offplan?: boolean[];
-    completionDate?: Date[];
-    properties?: Property[];
-  };
+  developmentPropertyTypes: string[];
+  mainDevelopmentImage: string;
+  developmentImages: string[];
+  developmentsDeveloper: Developer;
+  offplanProjects: Project[];
+  readyProjects: Project[];
+  developmentAveragePrice: number[];
+  addresses: Address[];
+  developmentBuiltUpArea: number[];
+  bulletPoints: string[];
+  developmentAmenities: DevelopmentAmenities;
+  presentation: string;
+  slug: Slug;
 }
 
-export interface PageContext {
-  query: {
-    slug: string;
-  };
-  params: {
-    slug: string;
-  };
+export interface DevelopmentProps extends Development {
+  development: Development;
+  developments: Development[];
 }
 
 export interface Developer {
-  id: string;
   _id: string;
-  createdAt?: Date;
   name: string;
+  createdAt?: Date;
   logo?: string;
-  description?: string;
-  website?: Url;
-  averagePricing?: number[];
-  developerBuiltUpArea?: number[];
-  addresses?: Address[];
-  propertyTypes?: string[];
-  projects?: Project[];
-  areaType?: string[];
-  slug: Slug;
   mainDeveloperImage: string;
   developerImages: string[];
+  description?: string;
+  website?: Url;
+  developerDevelopments: Development[];
+  slug: Slug;
 }
 
 export interface PaymentPlan {
   _id: string;
-  createdAt?: Date;
   name: string;
   type: string;
-  reference: string;
   description?: string;
-  validity?: any;
-  timeline?: any[];
-  amountType: string;
-  amountAbsolute?: number;
-  amountPercentage?: number;
-  interestRate?: number;
-  penalty?: any;
   developer?: Developer;
   project?: Project;
   properties?: Property[];
@@ -153,11 +148,34 @@ export interface Address {
 }
 
 export interface Slug {
-  current: String;
+  current: string;
 }
 
-export interface Amenities {
+export interface PageContext {
+  query: {
+    slug: string;
+  };
+  params: {
+    slug: string;
+  };
+}
+
+export interface ProjectAmenities {
+  name: string;
+  projectsAmenities: string[];
+}
+
+export interface PropertyAmenities {
+  name: string;
+  propertiesAmenities: string[];
+}
+
+export interface DeveloperAmenities {
   name: string;
   amenities: string[];
-  reference: string;
+}
+
+export interface DevelopmentAmenities {
+  name: string;
+  amenities: string[];
 }
