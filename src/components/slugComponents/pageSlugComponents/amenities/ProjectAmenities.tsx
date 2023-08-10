@@ -5,19 +5,17 @@ import {
   boxStyles,
   mainTitle,
 } from "./amenitiesStyles";
+import { ProjectAmenities } from "@lib/types";
 
 interface AmenitiesSlugProps {
-  amenities: {
-    name: string;
-    amenities: string[];
-  };
+  projectAmenities: ProjectAmenities;
 }
 
-const AmenitiesSlug = ({ amenities }: AmenitiesSlugProps) => {
+const AmenitiesSlug = ({ projectAmenities }: AmenitiesSlugProps) => {
   return (
     <Box sx={{ ...cardStyles, alignItems: "left" }}>
       <Typography variant="h3" sx={mainTitle}>
-        {amenities?.name ?? "Amenities"}
+        {projectAmenities?.name ?? "Amenities"}
       </Typography>
       <Box
         sx={{
@@ -27,7 +25,7 @@ const AmenitiesSlug = ({ amenities }: AmenitiesSlugProps) => {
           gridColumnGap: "3rem",
         }}
       >
-        {amenities?.amenities?.map((opt) => (
+        {projectAmenities?.projectsAmenities?.map((opt) => (
           <Typography key={opt} variant="body1" sx={mainStyles}>
             {opt}
           </Typography>
