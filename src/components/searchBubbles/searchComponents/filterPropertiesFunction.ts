@@ -26,12 +26,14 @@ export const filterProperties = (
       property.bedrooms >= bedrooms[0] &&
       (property.bedrooms <= bedrooms[1] || bedrooms[1] === 15);
     const sizeMatch =
-      property.squareFootage >= sizeRange[0] &&
-      property.squareFootage <= sizeRange[1];
+      property.builtUpArea >= sizeRange[0] &&
+      property.builtUpArea <= sizeRange[1];
     const amenityMatch =
       propertyAmenities.length === 0 ||
-      propertyAmenities.filter((amenities) =>
-        property.amenities?.amenities?.includes(amenities)
+      propertyAmenities.filter((propertiesAmenities) =>
+        property.propertyAmenities?.propertiesAmenities?.includes(
+          propertiesAmenities
+        )
       ).length === propertyAmenities.length;
     if (
       typeMatch &&

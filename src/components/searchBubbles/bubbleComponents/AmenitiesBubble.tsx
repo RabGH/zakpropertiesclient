@@ -85,9 +85,7 @@ const AmenitiesBubble = ({ search, setSearch }: AmenitiesBubbleProps) => {
               Covered Parking
             </MenuItem>
             <MenuItem
-              selected={search.propertyAmenities.includes(
-                "Fully Fitted Kitchen"
-              )}
+              selected={search.propertyAmenities.includes("Fully Fitted Kitchen")}
               onClick={() => handleFeatureChange("Fully Fitted Kitchen")}
             >
               Fully Fitted Kitchen
