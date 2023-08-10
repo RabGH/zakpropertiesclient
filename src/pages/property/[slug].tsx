@@ -2,7 +2,7 @@ import { sanityClient } from "@lib/sanity";
 import { getAllPropertySlugs } from "@lib/getStaticPaths";
 import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 import { Box, Typography, Divider } from "@mui/material";
-import AmenitiesSlug from "../../components/slugComponents/pageSlugComponents/amenities/PropertyAmenities";
+import PropertyAmenities from "../../components/slugComponents/pageSlugComponents/amenities/PropertyAmenities";
 import dynamic from "next/dynamic";
 import { PropertyProps, PageContext } from "@lib/types";
 import { getPropertyPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/propertySlugStyles";
@@ -108,13 +108,13 @@ const Property = ({
             <Divider sx={styles.dividerStyles} />
 
             <Box sx={styles.featuresSlugPos}>
-              <AmenitiesSlug propertyAmenities={propertyAmenities} />
+              <PropertyAmenities propertyAmenities={propertyAmenities} />
             </Box>
 
             <Divider sx={styles.dividerStyles} />
 
             {paymentPlan && (
-              <Box>
+              <Box sx={styles.paymentPlanPos}>
                 <PaymentPlanSlug paymentPlan={paymentPlan} />
               </Box>
             )}
@@ -236,7 +236,7 @@ export async function getStaticProps(context: PageContext) {
         description: property.description,
         plottedArea: property.plottedArea ?? null,
         builtUpArea: property.builtUpArea ?? null,
-        propertyAreaTypes: property.areaType ?? [],
+        propertyAreaTypes: property.propertyAreaTypes ?? [],
         propertyAmenities: property.propertyAmenities ?? [],
         propertyOffPlan: property.propertyOffPlan ?? null,
         address: property.address ?? null,
