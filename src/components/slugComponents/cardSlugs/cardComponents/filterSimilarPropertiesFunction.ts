@@ -11,8 +11,8 @@ export const filterSimilarProperties = (
     property.totalPrice, // * 1.2, // 20% higher
   ];
   const sizeRange = [
-    property.squareFootage, // * 0.8, // 20% smaller
-    property.squareFootage, // * 1.2, // 20% larger
+    property.builtUpArea, // * 0.8, // 20% smaller
+    property.builtUpArea, // * 1.2, // 20% larger
   ];
   for (let prop of properties) {
     if (prop._id === property._id) continue;
@@ -21,10 +21,12 @@ export const filterSimilarProperties = (
       prop.totalPrice >= priceRange[0] && prop.totalPrice <= priceRange[1];
     const bedroomMatch = prop.bedrooms === property.bedrooms;
     const sizeMatch =
-      prop.squareFootage >= sizeRange[0] && prop.squareFootage <= sizeRange[1];
+      prop.builtUpArea >= sizeRange[0] && prop.builtUpArea <= sizeRange[1];
     const areaMatch =
-      prop.areaType.length > 0 &&
-      prop.areaType.some((area) => property.areaType.includes(area));
+      prop.propertyAreaTypes?.length > 0 &&
+      prop.propertyAreaTypes?.some((area) =>
+        property.propertyAreaTypes?.includes(area)
+      );
     const cityMatch = prop.address?.city === property.address?.city;
     if (
       typeMatch
