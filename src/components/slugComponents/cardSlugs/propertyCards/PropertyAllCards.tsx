@@ -45,7 +45,7 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                 <Box sx={styles.cardInfoStyles}>
                   <Typography variant="body1" sx={styles.propertyTypeStyles}>
                     {property.propertyType} ⋅ {property.bedrooms} Beds ⋅{" "}
-                    {formatArea(property.squareFootage)}
+                    {formatArea(property.builtUpArea)}
                   </Typography>
                   <Typography variant="h6" sx={styles.propertyTitleCard}>
                     {property.title} ⋅{" "}
@@ -71,7 +71,12 @@ const PropertyAllCardBodyData = ({ property }: PropertyAllCardBodyProps) => {
                             </span>{" "}
                           </Typography>
                         )} */}
-                        <Typography variant="body1" sx={styles.offPlanCompleteStyles}>Off plan</Typography>
+                        <Typography
+                          variant="body1"
+                          sx={styles.offPlanCompleteStyles}
+                        >
+                          Off plan
+                        </Typography>
                       </Box>
                     ) : (
                       <Typography
