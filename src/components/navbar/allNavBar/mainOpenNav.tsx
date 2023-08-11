@@ -59,13 +59,12 @@ export default function OpenNav() {
         sx={{
           ...styles.openButtonStyles,
           backgroundColor:
-            router.pathname === "/developments" ? "#1e657220" : "transparent",
+            router.pathname === "/projects" ? "#1e657220" : "transparent",
         }}
-        href="/developments"
+        href="/projects"
       >
-        Developments
+        Projects
       </Button>
-
       <Button
         variant="text"
         color="secondary"
