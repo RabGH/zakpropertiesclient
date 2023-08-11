@@ -42,39 +42,6 @@ const PaymentPlanFAQ: React.FC<PaymentPlanList> = ({ paymentPlans }) => {
                   <Typography variant="h4" sx={styles.paymentPlanNameStyles}>
                     {paymentPlan.name}
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={styles.paymentPlanDescriptionStyles}
-                  >
-                    {paymentPlan.description}
-                  </Typography>
-                  <Typography variant="body2" sx={styles.paymentPlanInfoStyles}>
-                    Type: {paymentPlan.type}
-                  </Typography>
-                  <Typography variant="body2" sx={styles.paymentPlanInfoStyles}>
-                    Reference: {paymentPlan.reference}
-                  </Typography>
-                  <Typography variant="body2" sx={styles.paymentPlanInfoStyles}>
-                    Validity: {paymentPlan.validity}
-                  </Typography>
-                  <Typography variant="body2" sx={styles.paymentPlanInfoStyles}>
-                    Timeline: {paymentPlan.timeline}
-                  </Typography>
-                  <Typography variant="body2" sx={styles.paymentPlanInfoStyles}>
-                    Amount Type: {paymentPlan.amountType}
-                  </Typography>
-                  <Typography variant="body2" sx={styles.paymentPlanInfoStyles}>
-                    Amount Absolute: {paymentPlan.amountAbsolute}
-                  </Typography>
-                  <Typography variant="body2" sx={styles.paymentPlanInfoStyles}>
-                    Amount Percentage: {paymentPlan.amountPercentage}
-                  </Typography>
-                  <Typography variant="body2" sx={styles.paymentPlanInfoStyles}>
-                    Interest Rate: {paymentPlan.interestRate}
-                  </Typography>
-                  <Typography variant="body2" sx={styles.paymentPlanInfoStyles}>
-                    Penalty: {paymentPlan.penalty}
-                  </Typography>
                 </CardContent>
               </Card>
             </Grid>
@@ -86,19 +53,12 @@ const PaymentPlanFAQ: React.FC<PaymentPlanList> = ({ paymentPlans }) => {
 };
 
 export async function getStaticProps() {
-  const query = `*[_type == "paymentPlans"]{
+  const query = `*[_type == "paymentPlan"]{
             _id,
             name,
             type,
-            reference,
-            description,
-            validity,
-            timeline,
-            amountType,
-            amountAbsolute,
-            amountPercentage,
-            interestRate,
-            penalty
+            customType,
+            paymentPlanPoints[]
         }`;
 
   const paymentPlans = await sanityClient.fetch<PaymentPlan[]>(query);
