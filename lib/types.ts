@@ -24,8 +24,7 @@ export interface Development {
   mainDevelopmentImage: string;
   developmentImages: string[];
   developmentsDeveloper: Developer;
-  offplanProjects: Project[];
-  readyProjects: Project[];
+  developmentProjects: Project[];
   developmentAveragePrice: number[];
   addresses: Address[];
   developmentBuiltUpArea: number[];
@@ -72,13 +71,8 @@ export interface Project {
   projectAmenities: ProjectAmenities;
   presentation: string;
   projectDevelopment: Development;
-  projectStatus: {
-    offplan: string;
-    ready: string;
-    hybrid: string;
-  };
-  propertiesOffPlan: Property[];
-  propertiesReadyToBuy: Property[];
+  projectStatus: string;
+  properties: Property[];
   paymentPlans?: PaymentPlan[];
   slug: Slug;
 }
