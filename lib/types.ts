@@ -132,8 +132,8 @@ export interface PaymentPlan {
   _id: string;
   name: string;
   type: string;
-  description?: string;
   customType?: string;
+  paymentPlanPoints: string[];
 }
 
 export interface Image {
