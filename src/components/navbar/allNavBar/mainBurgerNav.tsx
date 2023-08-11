@@ -81,7 +81,7 @@ export default function BurgerNav() {
                     Contact
                   </MenuItem>
                 </Link>
-                <Link href="/projects">
+                <Link href="/viewProjects">
                   <MenuItem
                     onClick={() => setOpen(false)}
                     onKeyDown={handleClose}

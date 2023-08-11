@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 
-export const getDevelopmentStyles = () => {
+export const getAllProjectStyles = () => {
   const muiTheme = useTheme();
   return {
     mainContainer: {

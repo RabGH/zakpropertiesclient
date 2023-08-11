@@ -117,7 +117,7 @@ export default function FadeBurgerNav() {
                     Contact
                   </MenuItem>
                 </Link>
-                <Link href="/projects">
+                <Link href="/viewProjects">
                   <MenuItem
                     onClick={() => setOpen(false)}
                     onKeyDown={handleClose}
