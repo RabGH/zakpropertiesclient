@@ -1,4 +1,3 @@
-// developer page
 import { sanityClient } from "@lib/sanity";
 import { getAllDeveloperSlugs } from "@lib/getStaticPaths";
 import {
@@ -9,7 +8,7 @@ import {
 } from "@lib/utils";
 import Link from "next/link";
 import { Box, Divider, Typography, Button } from "@mui/material";
-import { Project, Property, Developer, PageContext } from "@lib/types";
+import { Development, Developer, PageContext } from "@lib/types";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
 import {
@@ -20,28 +19,22 @@ import {
 import { getDeveloperPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/developerSlugStyles";
 import dynamic from "next/dynamic";
 
-interface ProjectList {
-  projects: Project[];
+interface DevelopmentList {
+  developments: Development[];
 }
 
-type DeveloperProps = Developer & ProjectList;
+type DeveloperProps = Developer & DevelopmentList;
 
 const Developers = ({
-  id,
   _id,
   name,
+  createdAt,
   logo,
-  description,
-  website,
-  averagePricing,
-  developerBuiltUpArea,
-  addresses,
-  propertyTypes,
-  projects,
-  areaType,
-  slug,
   mainDeveloperImage,
   developerImages,
+  description,
+  website,
+  developerDevelopments,
 }: DeveloperProps) => {
   const styles = getDeveloperPageStyles();
 
@@ -69,20 +62,15 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: PageContext) {
   const slug = context.params.slug;
   const query = `*[ _type == "developer" && slug.current == $slug][0]{
-    id,
     _id,
-    createdAt,
     name,
+    createdAt,
     logo,
+    mainDeveloperImage,
+    developerImages[],
     description,
     website,
-    averagePricing,
-    developerBuiltUpArea[],
-    addresses[],
-    propertyTypes[],
-    projects[],
-    developerImages[],
-    mainDeveloperImage,
+    developerDevelopments[],
   }`;
 
   const developer = await sanityClient.fetch(query, { slug });
@@ -95,21 +83,15 @@ export async function getStaticProps(context: PageContext) {
   } else {
     return {
       props: {
-        id: developer.id,
         _id: developer._id,
-        createdAt: developer.createdAt ?? null,
         name: developer.name,
+        createdAt: developer.createdAt ?? null,
         logo: developer.logo ?? null,
+        mainDeveloperImage: developer.mainDeveloperImage ?? null,
+        developerImages: developer.developerImages ?? [],
         description: developer.description ?? null,
         website: developer.website ?? null,
-        averagePricing: developer.averagePricing ?? null,
-        developerBuiltUpArea: developer.developerBuiltUpArea ?? [],
-        addresses: developer.addresses ?? [],
-        propertyTypes: developer.propertyTypes ?? [],
-        projects: developer.projects ?? [],
-        areaType: developer.areaType ?? [],
-        mainDeveloperImage: developer.mainDeveloperImage ?? null,
-        developerImages: developer.developerImages ?? null,
+        developerDevelopments: developer.developerDevelopments ?? [],
       },
       revalidate: 60,
     };

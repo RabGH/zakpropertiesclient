@@ -46,8 +46,6 @@ const Projects = ({
   location,
   projectType,
   projectPropertyTypes,
-  propertiesOffPlan,
-  propertiesReadyToBuy,
   mainProjectImage,
   totalPrice,
   averagePrice,
@@ -195,29 +193,14 @@ const Projects = ({
           Contact for more
         </Button>
       </Box>
-
       <Box sx={styles.projectPropertiesTitleStyles}>
         <Divider>
-          <Typography variant="h3">Project Ready Properties</Typography>
-        </Divider>
-      </Box>
-
-      <Box sx={styles.projectPropertyContainer}>
-        {propertiesReadyToBuy.map((property: Property) => (
-          <Box key={property._id} sx={styles.projectPropertyItem}>
-            <PropertyAllCard property={property} />
-          </Box>
-        ))}
-      </Box>
-
-      <Box sx={styles.projectPropertiesTitleStyles}>
-        <Divider>
-          <Typography variant="h3">Project Off-plan Properties</Typography>
+          <Typography variant="h3">Project Properties</Typography>
         </Divider>
       </Box>
       <Box sx={styles.projectPropertyContainer}>
-        {propertiesOffPlan.map((property: Property) => (
-          <Box key={property._id} sx={styles.projectPropertyItem}>
+        {properties?.slice(0, 3).map((property: Property) => (
+          <Box key={property._id}>
             <PropertyAllCard property={property} />
           </Box>
         ))}
@@ -273,40 +256,7 @@ export async function getStaticProps(context: PageContext) {
     presentation,
     projectDevelopment->{},
     projectStatus,
-    propertiesOffPlan->{
-      _id,
-      title,
-      address->{
-        street,
-        city,
-      },
-      propertyType,
-      mainPropertyImage,
-      builtUpArea,
-      propertyOffPlan-{
-        offplan,
-        projectCompletionDate,
-      },
-      bedrooms,
-      totalPrice
-    },
-    propertiesReadyToBuy->{
-      _id,
-      title,
-      address->{
-        street,
-        city,
-      },
-      propertyType,
-      mainPropertyImage,
-      builtUpArea,
-      propertyOffPlan-{
-        offplan,
-        projectCompletionDate,
-      },
-      bedrooms,
-      totalPrice
-    },
+    properties[],
     paymentPlans[],
   }`;
 
@@ -344,8 +294,7 @@ export async function getStaticProps(context: PageContext) {
         presentation: project.presentation ?? null,
         projectDevelopment: project.projectDevelopment ?? null,
         projectStatus: project.projectStatus ?? null,
-        propertiesOffPlan: project.propertiesOffPlan ?? null,
-        propertiesReadyToBuy: project.propertiesReadyToBuy ?? null,
+        properties: project.properties ?? [],
         paymentPlans: project.paymentPlan ?? [],
       },
       revalidate: 60,
