@@ -10,7 +10,7 @@ import Link from "next/link";
 import { Box, Divider, Typography, Button } from "@mui/material";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
-import AmenitiesCard from "@/components/slugComponents/pageSlugComponents/amenities/AmenitiesSlug";
+import ProjectAmenities from "@/components/slugComponents/pageSlugComponents/amenities/ProjectAmenities";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
 import { Project, Property, Developer, PageContext } from "@lib/types";
 import {
@@ -39,33 +39,34 @@ interface PropertyList {
 type ProjectsProps = Project & PropertyList;
 
 const Projects = ({
-  id,
   _id,
-  createdAt,
   title,
+  description,
+  createdAt,
+  location,
   projectType,
   projectPropertyTypes,
-  projectOffPlan,
-  projectReadyToBuy,
+  propertiesOffPlan,
+  propertiesReadyToBuy,
   mainProjectImage,
   totalPrice,
   averagePrice,
-  description,
   presentation,
   projectImages,
   projectBuiltUpArea,
   numFloors,
   numUnits,
   numOfHouses,
-  areaType,
+  projectAreaTypes,
   bedrooms,
-  amenities,
-  location,
+  projectAmenities,
   address,
   specificAddress,
   properties,
-  developer,
+  projectDevelopment,
+  projectDeveloper,
   paymentPlans,
+  projectStatus,
 }: ProjectsProps) => {
   const styles = getProjectPageStyles();
 
@@ -90,7 +91,7 @@ const Projects = ({
       </Box>
       <Box sx={styles.mainSection}>
         <Typography variant="h1" sx={styles.titleStyle}>
-          {title} by {developer?.name} ID: ({id})
+          {title} by {projectDeveloper?.name} ID: ({_id})
         </Typography>
         <Typography variant="body1" sx={styles.descriptionStyles}>
           {description}
@@ -165,11 +166,11 @@ const Projects = ({
         </Typography>
         <Divider sx={styles.dividerStyles} />
         <Box sx={styles.lifeBoxStyles}>
-          <LifeStyle areaType={areaType} />
+          <LifeStyle areaType={projectAreaTypes} />
         </Box>
         <Divider sx={styles.dividerStyles} />
         <Box sx={styles.amenitiesSlugPos}>
-          <AmenitiesCard amenities={amenities} />
+          <ProjectAmenities projectAmenities={projectAmenities} />
         </Box>
         <Divider sx={styles.dividerStyles} />
         <Box sx={styles.projectLocationPos}>
@@ -194,14 +195,29 @@ const Projects = ({
           Contact for more
         </Button>
       </Box>
+
       <Box sx={styles.projectPropertiesTitleStyles}>
         <Divider>
-          <Typography variant="h3">Project Properties</Typography>
+          <Typography variant="h3">Project Ready Properties</Typography>
+        </Divider>
+      </Box>
+
+      <Box sx={styles.projectPropertyContainer}>
+        {propertiesReadyToBuy.map((property: Property) => (
+          <Box key={property._id} sx={styles.projectPropertyItem}>
+            <PropertyAllCard property={property} />
+          </Box>
+        ))}
+      </Box>
+
+      <Box sx={styles.projectPropertiesTitleStyles}>
+        <Divider>
+          <Typography variant="h3">Project Off-plan Properties</Typography>
         </Divider>
       </Box>
       <Box sx={styles.projectPropertyContainer}>
-        {properties?.slice(0, 3).map((property: Property) => (
-          <Box sx={styles.projectPropertyItem}>
+        {propertiesOffPlan.map((property: Property) => (
+          <Box key={property._id} sx={styles.projectPropertyItem}>
             <PropertyAllCard property={property} />
           </Box>
         ))}
@@ -227,64 +243,71 @@ export async function getStaticProps(context: PageContext) {
   const slug = context.params.slug;
 
   const query = `*[ _type == "projects" && slug.current == $slug][0]{
-    id,
     _id,
-    createdAt,
     title,
-    projectPropertyTypes[],
-    projectOffPlan,
-    mainDeveloper,
-    mainProjectImage,
-    totalPrice,
-    averagePrice,
     description,
-    presentation,
-    projectImages,
+    createdAt,
     location,
-    areaType,
-    specificAddress,
-    projectType,
-    projectBuiltUpArea,
-    numFloors,
-    numUnits,
-    numOfHouses,
-    bedrooms,
-    amenities->{
-      name,
-      amenities[],
-    },
+    projectPropertyTypes[],
+    mainProjectImage,
+    projectImages,
+    projectDeveloper,
+    projectAreaTypes[],
+    totalPrice,
+    averagePrice[],
     address->{
       street,
       city,
     },
-    developer->{
-      id,
+    specificAddress,
+    projectBuiltUpArea,
+    projectType,
+    numFloors,
+    numUnits,
+    numOfHouses,
+    bedrooms,
+    projectAmenities->{
+      name,
+      projectsAmenities[],
+    },
+    presentation,
+    projectDevelopment->{},
+    projectStatus,
+    propertiesOffPlan->{
       _id,
-      name,
-      logo,
-      description,
-      website,
-      averagePricing,
-      developerBuiltUpArea[],
-      addresses[],
-      projects[],
-      areaType[],
-      slug,
-      createdAt,
+      title,
+      address->{
+        street,
+        city,
+      },
+      propertyType,
+      mainPropertyImage,
+      builtUpArea,
+      propertyOffPlan-{
+        offplan,
+        projectCompletionDate,
+      },
+      bedrooms,
+      totalPrice
     },
-    paymentPlans[]->{
-      name,
-      type,
-      reference,
-      description,
-      validity,
-      timeline,
-      amountType,
-      amountAbsolute,
-      amountPercentage,
-      interestRate,
-      penalty,
+    propertiesReadyToBuy->{
+      _id,
+      title,
+      address->{
+        street,
+        city,
+      },
+      propertyType,
+      mainPropertyImage,
+      builtUpArea,
+      propertyOffPlan-{
+        offplan,
+        projectCompletionDate,
+      },
+      bedrooms,
+      totalPrice
     },
+    paymentPlans[],
   }`;
 
   const project = await sanityClient.fetch(query, { slug });
@@ -297,32 +320,33 @@ export async function getStaticProps(context: PageContext) {
   } else {
     return {
       props: {
-        id: project.id,
         _id: project._id,
-        createdAt: project.createdAt ?? null,
         title: project.title,
+        description: project.description ?? null,
+        createdAt: project.createdAt ?? null,
         location: project.location ?? null,
         projectPropertyTypes: project.projectPropertyTypes ?? null,
-        developer: project.developer ?? null,
-        projectOffPlan: project.projectOffPlan ?? null,
-        projectReadyToBuy: project.projectReadyToBuy ?? null,
         mainProjectImage: project.mainProjectImage ?? null,
         projectImages: project.projectImages ?? null,
+        projectDeveloper: project.projectDeveloper ?? null,
+        projectAreaTypes: project.projectAreaTypes ?? [],
         totalPrice: project.totalPrice ?? null,
         averagePrice: project.averagePrice ?? null,
-        description: project.description ?? null,
-        presentation: project.presentation ?? null,
-        areaType: project.areaType ?? [],
-        amenities: project.amenities ?? [],
-        projectBuiltUpArea: project.projectBuiltUpArea,
-        projectType: project.projectType,
+        address: project.address ?? null,
+        specificAddress: project.specificAddress ?? null,
+        projectBuiltUpArea: project.projectBuiltUpArea ?? null,
+        projectType: project.projectType ?? null,
         numFloors: project.numFloors ?? null,
         numUnits: project.numUnits ?? null,
         numOfHouses: project.numOfHouses ?? null,
         bedrooms: project.bedrooms ?? null,
-        specificAddress: project.specificAddress ?? null,
-        address: project.address ?? null,
-        paymentPlan: project.paymentPlan ?? [],
+        projectAmenities: project.projectAmenities ?? [],
+        presentation: project.presentation ?? null,
+        projectDevelopment: project.projectDevelopment ?? null,
+        projectStatus: project.projectStatus ?? null,
+        propertiesOffPlan: project.propertiesOffPlan ?? null,
+        propertiesReadyToBuy: project.propertiesReadyToBuy ?? null,
+        paymentPlans: project.paymentPlan ?? [],
       },
       revalidate: 60,
     };
