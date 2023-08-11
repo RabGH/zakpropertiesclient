@@ -25,11 +25,17 @@ const AmenitiesSlug = ({ propertyAmenities }: AmenitiesSlugProps) => {
           gridColumnGap: "3rem",
         }}
       >
-        {propertyAmenities?.propertiesAmenities?.map((opt) => (
-          <Typography key={opt} variant="body1" sx={mainStyles}>
-            {opt}
+        {propertyAmenities?.propertiesAmenities ? (
+          propertyAmenities.propertiesAmenities.map((opt) => (
+            <Typography key={opt} variant="body1" sx={mainStyles}>
+              {opt}
+            </Typography>
+          ))
+        ) : (
+          <Typography variant="body1" sx={mainStyles}>
+            No amenities available
           </Typography>
-        ))}
+        )}
       </Box>
     </Box>
   );

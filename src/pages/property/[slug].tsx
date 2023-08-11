@@ -130,7 +130,7 @@ const Property = ({
         </Box>
       </Box>
       <Box>
-        <Divider sx={styles.outterDividerStyles} />
+        {/* <Divider sx={styles.outterDividerStyles} /> */}
         <Box sx={styles.propertySimilarCardsPos}>
           <PropertySimilarCards property={property} properties={properties} />
         </Box>
@@ -187,7 +187,12 @@ export async function getStaticProps(context: PageContext) {
     bathrooms,
     description,
     projectId,
-    paymentPlan,
+    paymentPlan->{
+      name, 
+      type, 
+      customType, 
+      paymentPlanPoints[]
+    },
   }`;
 
   const property = await sanityClient.fetch(query, { slug });
@@ -207,14 +212,8 @@ export async function getStaticProps(context: PageContext) {
       totalPrice,
       bathrooms,
       bedrooms,
-      description,
-      plottedArea,
       builtUpArea,
       paymentPlan,
-      propertyAmenities->{
-        name,
-        propertiesAmenities[],
-      },
       propertyOffPlan,
       address->{
         street,
