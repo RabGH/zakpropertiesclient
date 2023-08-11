@@ -19,17 +19,21 @@ const LifeStyle = ({ areaType }: LifeStyleProps) => {
           alignItems: "flex-start",
         }}
       >
-        {areaType.map((type, i) => (
-          <Link
-            key={i}
-            href={"/buyProperties"}
-            variant="body1"
-            sx={{ cursor: "pointer", mr: "3rem" }}
-            color="primary"
-          >
-            {type}
-          </Link>
-        ))}
+        {areaType && areaType.length > 0 ? (
+          areaType.map((type, i) => (
+            <Link
+              key={i}
+              href={"/buyProperties"}
+              variant="body1"
+              sx={{ cursor: "pointer", mr: "3rem" }}
+              color="primary"
+            >
+              {type}
+            </Link>
+          ))
+        ) : (
+          <Typography variant="body1">No Life Styles</Typography>
+        )}
       </Box>
     </Box>
   );
