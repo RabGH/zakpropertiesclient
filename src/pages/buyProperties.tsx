@@ -75,12 +75,11 @@ export const getStaticProps: GetStaticProps = async ({
     bathrooms,
     bedrooms,
     description,
-    squareFootage,
     plottedArea,
     builtUpArea,
-    amenities->{
+    propertyAmenities->{
       name,
-      amenities[],
+      propertiesAmenities[],
     },
     address->{
       street,
