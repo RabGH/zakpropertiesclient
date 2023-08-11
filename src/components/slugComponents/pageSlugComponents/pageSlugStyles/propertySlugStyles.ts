@@ -37,9 +37,10 @@ export const getPropertyPageStyles = () => {
     },
 
     outterDividerStyles: {
-      width: "50%",
+      width: "90%",
       mb: "3rem",
       ml: "5%",
+      mr: "2rem",
     },
 
     titleStyle: {

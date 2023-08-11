@@ -28,9 +28,17 @@ const PaymentPlanSlug = ({ paymentPlan }: PaymentPlanSlugProps) => {
         }}
       >
         <Box sx={mainStyles}>
-          <Typography variant="body1">
-            {plan.description ?? "No description provided"}
-          </Typography>
+          {plan.paymentPlanPoints ? (
+            plan.paymentPlanPoints?.map((paymentPlanPoint) => (
+              <Typography key={paymentPlanPoint} variant="body1">
+                {paymentPlanPoint}
+              </Typography>
+            ))
+          ) : (
+            <Typography variant="body1" sx={mainStyles}>
+              No Payment Plan Available
+            </Typography>
+          )}
         </Box>
       </Box>
     </Box>
