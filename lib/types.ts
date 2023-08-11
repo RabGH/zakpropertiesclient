@@ -72,6 +72,11 @@ export interface Project {
   projectAmenities: ProjectAmenities;
   presentation: string;
   projectDevelopment: Development;
+  projectStatus: {
+    offplan: string;
+    ready: string;
+    hybrid: string;
+  };
   propertiesOffPlan: Property[];
   propertiesReadyToBuy: Property[];
   paymentPlans?: PaymentPlan[];
