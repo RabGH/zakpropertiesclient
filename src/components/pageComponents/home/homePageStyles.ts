@@ -160,7 +160,7 @@ export const getHomePageStyles = () => {
 
     contentContainer: {
       position: "absolute",
-      top: "40%",
+      top: "46%",
       left: "50%",
       transform: "translate(-50%, -50%)",
       zIndex: 1,
@@ -168,23 +168,8 @@ export const getHomePageStyles = () => {
       color: "white",
       maxWidth: "1300px",
       margin: "0 auto",
-      [muiTheme.breakpoints.down("xl")]: {
-        top: "40%",
-        fontSize: "1rem",
-      },
-      [muiTheme.breakpoints.down("lg")]: {
-        top: "40%",
-      },
-      [muiTheme.breakpoints.down("md")]: {
-        top: "40%",
-      },
-      [muiTheme.breakpoints.down("sm")]: {
-        top: "40%",
-      },
-      [muiTheme.breakpoints.down("xs")]: {
-        top: "40%",
-      },
     },
+
     zakTitle: {
       fontSize: "5rem",
       fontWeight: "bold",
@@ -195,30 +180,20 @@ export const getHomePageStyles = () => {
       ":hover": {
         color: muiTheme.palette.error.light,
       },
-      "@media (max-width: 1024px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         fontSize: "3.5rem",
       },
-      "@media (max-width: 960px)": {
+      [muiTheme.breakpoints.down("md")]: {
         fontSize: "3rem",
       },
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         fontSize: "3rem",
-        mb: "0rem",
       },
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("xs")]: {
         fontSize: "2.8rem",
-        mb: "0rem",
       },
-      "@media (max-width: 400px)": {
-        fontSize: "2.7rem",
-        mb: "0rem",
-      },
-      "@media (max-width: 375px)": {
-        fontSize: "2.5rem",
-      },
-      "@media (max-width: 360px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         fontSize: "2rem",
-        mb: "0rem",
       },
     },
 
@@ -228,35 +203,11 @@ export const getHomePageStyles = () => {
       mt: "3rem",
       color: "white",
       textAlign: "left",
-      "@media (max-width: 1440px)": {
-        mb: "7rem",
-      },
-      "@media (max-width: 1024px)": {
-        mb: "3rem",
-      },
-      "@media (max-width: 768px)": {
-        mt: "2rem",
-        fontSize: "1rem",
-      },
-      "@media (max-width: 600px)": {
-        mt: "2rem",
-      },
-      "@media (max-width: 481px)": {
-        mb: "0rem",
-      },
-      "@media (max-width: 400px)": {
-        mt: "3rem",
-        fontSize: "1rem",
-      },
-      "@media (max-width: 375px)": {
-        fontSize: "1rem",
-        mt: "1rem",
-      },
-      "@media (max-width: 360px)": {
-        mt: "1rem",
-        fontSize: "1rem",
+      [muiTheme.breakpoints.down("md")]: {
+        fontSize: "1.1rem",
       },
     },
+
     // Static Header Styles
     zakStaticTitle: {
       fontSize: "2.5rem",
@@ -267,30 +218,20 @@ export const getHomePageStyles = () => {
       ":hover": {
         color: muiTheme.palette.error.light,
       },
-      "@media (max-width: 1024px)": {
-        fontSize: "2.5rem",
+      [muiTheme.breakpoints.down("lg")]: {
+        fontSize: "3.5rem",
       },
-      "@media (max-width: 960px)": {
+      [muiTheme.breakpoints.down("md")]: {
+        fontSize: "2.1rem",
+      },
+      [muiTheme.breakpoints.down("sm")]: {
         fontSize: "2rem",
       },
-      "@media (max-width: 600px)": {
-        fontSize: "2rem",
-        mb: "0rem",
+      [muiTheme.breakpoints.down("xs")]: {
+        fontSize: "1.8rem",
       },
-      "@media (max-width: 481px)": {
-        fontSize: "2.3rem",
-        mb: "0rem",
-      },
-      "@media (max-width: 400px)": {
-        fontSize: "1.5rem",
-        mb: "0rem",
-      },
-      "@media (max-width: 375px)": {
-        fontSize: "1rem",
-      },
-      "@media (max-width: 360px)": {
-        fontSize: "1rem",
-        mb: "0rem",
+      [muiTheme.breakpoints.down("smallphones")]: {
+        fontSize: "1.7rem",
       },
     },
     zakStaticSubTitle: {
@@ -298,61 +239,41 @@ export const getHomePageStyles = () => {
       fontWeight: "400",
       mt: "1rem",
       textAlign: "center",
-      "@media (max-width: 1024px)": {
-        mb: "1rem",
-      },
-      "@media (max-width: 768px)": {
-        mt: "2rem",
+      [muiTheme.breakpoints.down("lg")]: {
         fontSize: "1rem",
       },
-      "@media (max-width: 600px)": {
-        mt: "2rem",
-      },
-      "@media (max-width: 481px)": {
-        mb: "0rem",
-      },
-      "@media (max-width: 400px)": {
-        mt: "3rem",
+      [muiTheme.breakpoints.down("md")]: {
         fontSize: "1rem",
       },
-      "@media (max-width: 375px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         fontSize: "1rem",
-        mt: "1rem",
       },
-      "@media (max-width: 360px)": {
-        mt: "1rem",
+      [muiTheme.breakpoints.down("xs")]: {
+        fontSize: "1rem",
+      },
+      [muiTheme.breakpoints.down("smallphones")]: {
         fontSize: "1rem",
       },
     },
+
     zakStaticSubSubTitle: {
       fontSize: "1.3rem",
       fontWeight: "400",
       mt: "1rem",
       textAlign: "center",
-      "@media (max-width: 1440px)": {
-        mb: "8rem",
-      },
-      "@media (max-width: 1024px)": {
-        mb: "3rem",
-      },
-      "@media (max-width: 600px)": {
-        mt: "2rem",
-        mb: "-1rem",
-      },
-      "@media (max-width: 481px)": {
-        fontSize: "1.2rem",
-        mb: "0rem",
-      },
-      "@media (max-width: 400px)": {
-        mt: "3rem",
+      [muiTheme.breakpoints.down("lg")]: {
         fontSize: "1rem",
       },
-      "@media (max-width: 375px)": {
+      [muiTheme.breakpoints.down("md")]: {
         fontSize: "1rem",
-        mt: "1rem",
       },
-      "@media (max-width: 360px)": {
-        mt: "1rem",
+      [muiTheme.breakpoints.down("sm")]: {
+        fontSize: "1rem",
+      },
+      [muiTheme.breakpoints.down("xs")]: {
+        fontSize: "1rem",
+      },
+      [muiTheme.breakpoints.down("smallphones")]: {
         fontSize: "1rem",
       },
     },
