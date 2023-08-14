@@ -82,7 +82,7 @@ export async function getStaticProps(context: PageContext) {
     mainDevelopmentImage,
     developmentImages[],
     developmentDeveloper,
-    developmentProjects,
+    developmentProjects[],
     developmentAveragePrice[],
     addresses[],
     developmentBuildUpArea[],

@@ -225,7 +225,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: PageContext) {
   const slug = context.params.slug;
 
-  const query = `*[ _type == "projects" && slug.current == $slug][0]{
+  const query = `*[ _type == "project" && slug.current == $slug][0]{
     _id,
     title,
     description,

@@ -14,7 +14,7 @@ export async function getAllDevelopmentSlugs() {
 }
 
 export async function getAllProjectSlugs() {
-  const query = `*[_type == "projects"]{slug}`;
+  const query = `*[_type == "project"]{slug}`;
   const slugs = await sanityClient.fetch<Project[]>(query);
   return slugs.map((slug) => ({ params: { slug: slug.slug.current } }));
 }
