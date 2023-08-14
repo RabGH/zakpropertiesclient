@@ -105,47 +105,29 @@ function SearchBar(props: SearchBarProps) {
 
   const searchBarWrapper = {
     position: "absolute",
-    top: currentSlide === 0 ? "100%" : "110%",
+    top: currentSlide === 0 ? "100%" : "105%",
     left: "0",
     right: "0",
     zIndex: "9999",
     flex: 1,
-    "@media (max-width: 1440px)": {
-      top: currentSlide === 0 ? "100%" : "127%",
-    },
-    "@media (max-width: 1280px)": {
-      top: currentSlide === 0 ? "110%" : "130%",
-    },
-    "@media (max-width: 1024px)": {
-      top: currentSlide === 0 ? "105%" : "123%",
-    },
-    "@media (max-width: 961px)": {
-      top: currentSlide === 0 ? "100%" : "100%",
-    },
-    "@media (max-width: 912px)": {
-      top: currentSlide === 0 ? "100%" : "100%",
-    },
-    "@media (max-width: 768px)": {
-      top: currentSlide === 0 ? "100%" : "115%",
-    },
-    "@media (max-width: 600px)": {
-      top: currentSlide === 0 ? "100%" : "115%",
-    },
-    "@media (max-width: 540px)": {
-      top: currentSlide === 0 ? "100%" : "145%",
-    },
-    "@media (max-width: 481px)": {
-      top: currentSlide === 0 ? "100%" : "125%",
-    },
-    "@media (max-width: 400px)": {
-      top: currentSlide === 0 ? "100%" : "115%",
-    },
-    "@media (max-width: 375px)": {
-      top: currentSlide === 0 ? "95%" : "125%",
-    },
-    "@media (max-width: 360px)": {
-      top: currentSlide === 0 ? "90%" : "110%",
-    },
+    // [muiTheme.breakpoints.down("xl")]: {
+    //   top: currentSlide === 0 ? "100%" : "127%",
+    // },
+    // [muiTheme.breakpoints.down("lg")]: {
+    //   top: currentSlide === 0 ? "105%" : "123%",
+    // },
+    // [muiTheme.breakpoints.down("md")]: {
+    //   top: currentSlide === 0 ? "100%" : "100%",
+    // },
+    // [muiTheme.breakpoints.down("sm")]: {
+    //   top: currentSlide === 0 ? "100%" : "115%",
+    // },
+    // [muiTheme.breakpoints.down("smallphones")]: {
+    //   top: currentSlide === 0 ? "100%" : "115%",
+    // },
+    // [muiTheme.breakpoints.down("xs")]: {
+    //   top: currentSlide === 0 ? "90%" : "110%",
+    // },
   };
 
   const mainBox = {
