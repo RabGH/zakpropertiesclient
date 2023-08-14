@@ -106,7 +106,7 @@ export const getHomePageStyles = () => {
       paddingBottom: "1rem",
       color: muiTheme.palette.primary.main,
       textAlign: "center",
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         fontSize: "1.2rem",
       },
       //? Title for the map OUTSIDE of container
