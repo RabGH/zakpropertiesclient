@@ -256,7 +256,10 @@ export async function getStaticProps(context: PageContext) {
     presentation,
     projectDevelopment->{},
     projectStatus,
-    properties[],
+    properties[]->{
+      _id,
+      slug,
+    },
     paymentPlans[],
   }`;
 
