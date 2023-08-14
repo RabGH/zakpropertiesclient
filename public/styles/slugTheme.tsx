@@ -1,5 +1,16 @@
 import { ThemeOptions, createTheme } from "@mui/material/styles";
 
+declare module "@mui/material/styles" {
+  interface BreakpointOverrides {
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    smallphones: true;
+  }
+}
+
 export const themeOptions: ThemeOptions = {
   palette: {
     mode: "light",
@@ -94,6 +105,16 @@ export const themeOptions: ThemeOptions = {
       lineHeight: 1.5,
       margin: "0",
       fontSize: "1rem",
+    },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+      smallphones: 400,
     },
   },
 };
