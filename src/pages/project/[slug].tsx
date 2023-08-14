@@ -234,7 +234,9 @@ export async function getStaticProps(context: PageContext) {
     projectPropertyTypes[],
     mainProjectImage,
     projectImages,
-    projectDeveloper,
+    projectDeveloper->{
+      
+    },
     projectAreaTypes[],
     totalPrice,
     averagePrice[],
@@ -259,6 +261,24 @@ export async function getStaticProps(context: PageContext) {
     properties[]->{
       _id,
       slug,
+      mainPropertyImage,
+      propertyImages[],
+      propertyType,
+      title,
+      address->{
+        street,
+        city,
+      },
+      specificAddress,
+      propertyOffPlan->{
+        offplan,
+        propertyCompletionDate,
+      },
+      totalPrice,
+      paymentPlan,
+      bedrooms,
+      bathrooms,
+      builtUpArea,
     },
     paymentPlans[],
   }`;
