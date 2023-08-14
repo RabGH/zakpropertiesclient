@@ -20,9 +20,9 @@ const AmenitiesSlug = ({ propertyAmenities }: AmenitiesSlugProps) => {
       <Box
         sx={{
           ...boxStyles,
-          gridTemplateColumns: "repeat(3, 3fr)",
+          gridTemplateColumns: "repeat(2, 2fr)",
           justifyContent: "space-between",
-          gridColumnGap: "3rem",
+          gridColumnGap: "2rem",
         }}
       >
         {propertyAmenities?.propertiesAmenities ? (
