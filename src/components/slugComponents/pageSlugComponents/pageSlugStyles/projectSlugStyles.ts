@@ -13,19 +13,19 @@ export const getProjectPageStyles = () => {
       justifyContent: "center",
       pl: "20%",
       pr: "20%",
-      "@media (max-width: 768px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         pl: "10%",
         pr: "10%",
       },
-      "@media (max-width: 641px)": {
+      [muiTheme.breakpoints.down("md")]: {
         pl: "5%",
         pr: "5%",
       },
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         pl: "2%",
         pr: "2%",
       },
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         pl: "1%",
         pr: "1%",
       },
@@ -48,19 +48,19 @@ export const getProjectPageStyles = () => {
       alignItems: "flex-start",
       pl: "20%",
       pr: "20%",
-      "@media (max-width: 768px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         pl: "10%",
         pr: "10%",
       },
-      "@media (max-width: 641px)": {
+      [muiTheme.breakpoints.down("md")]: {
         pl: "5%",
         pr: "5%",
       },
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         pl: "2%",
         pr: "2%",
       },
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         pl: "1%",
         pr: "1%",
       },
@@ -109,19 +109,19 @@ export const getProjectPageStyles = () => {
       m: 1,
       pl: "15%",
       pr: "15%",
-      "@media (max-width: 768px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         pl: "10%",
         pr: "10%",
       },
-      "@media (max-width: 641px)": {
+      [muiTheme.breakpoints.down("md")]: {
         pl: "5%",
         pr: "5%",
       },
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         pl: "2%",
         pr: "2%",
       },
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         pl: "1%",
         pr: "1%",
       },
@@ -132,19 +132,19 @@ export const getProjectPageStyles = () => {
       pl: "15%",
       pr: "15%",
       fontSize: "1.2rem",
-      "@media (max-width: 768px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         pl: "10%",
         pr: "10%",
       },
-      "@media (max-width: 641px)": {
+      [muiTheme.breakpoints.down("md")]: {
         pl: "5%",
         pr: "5%",
       },
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         pl: "2%",
         pr: "2%",
       },
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         pl: "1%",
         pr: "1%",
       },
@@ -170,7 +170,7 @@ export const getProjectPageStyles = () => {
       overflowX: "auto",
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
-      p: "1%",
+      p: "4.5%",
     },
 
     viewMoreProperties: {
@@ -183,7 +183,7 @@ export const getProjectPageStyles = () => {
       width: "90%",
       mt: "0.5rem",
       mb: "0.5rem",
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         mt: "1rem",
         mb: "1rem",
       },
