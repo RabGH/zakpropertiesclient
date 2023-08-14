@@ -89,7 +89,7 @@ const Projects = ({
       </Box>
       <Box sx={styles.mainSection}>
         <Typography variant="h1" sx={styles.titleStyle}>
-          {title} by {projectDeveloper?.name} ID: ({_id})
+          {title} by {projectDeveloper?.name}
         </Typography>
         <Typography variant="body1" sx={styles.descriptionStyles}>
           {description}
@@ -235,7 +235,10 @@ export async function getStaticProps(context: PageContext) {
     mainProjectImage,
     projectImages,
     projectDeveloper->{
-      
+      _id,
+      name,
+      logo,
+      website,
     },
     projectAreaTypes[],
     totalPrice,
@@ -256,7 +259,9 @@ export async function getStaticProps(context: PageContext) {
       projectsAmenities[],
     },
     presentation,
-    projectDevelopment->{},
+    projectDevelopment->{
+
+    },
     projectStatus,
     properties[]->{
       _id,
