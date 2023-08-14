@@ -140,28 +140,9 @@ export const getHomePageStyles = () => {
       height: "110vh",
       width: "100%",
       zIndex: 1,
-      "@media (max-width: 1024px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         height: "100vh",
       },
-      "@media (max-width: 961px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 768px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 600px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 400px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 375px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 360px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 320px)": {},
     },
 
     imgOverlay: {
@@ -172,34 +153,14 @@ export const getHomePageStyles = () => {
       bottom: 0,
       height: "110vh",
       backgroundColor: "rgba(0, 0, 0, 0.5)",
-      "@media (max-width: 1024px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         height: "100vh",
       },
-      "@media (max-width: 961px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 768px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 600px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 481px)": {},
-      "@media (max-width: 400px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 375px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 360px)": {
-        height: "100vh",
-      },
-      "@media (max-width: 320px)": {},
     },
 
     contentContainer: {
       position: "absolute",
-      top: "37%",
+      top: "40%",
       left: "50%",
       transform: "translate(-50%, -50%)",
       zIndex: 1,
@@ -207,41 +168,21 @@ export const getHomePageStyles = () => {
       color: "white",
       maxWidth: "1300px",
       margin: "0 auto",
-      "@media (max-width: 1440px)": {
-        top: "47%",
+      [muiTheme.breakpoints.down("xl")]: {
+        top: "40%",
         fontSize: "1rem",
       },
-      "@media (max-width: 1280px)": {
-        top: "47%",
-        fontSize: "1rem",
+      [muiTheme.breakpoints.down("lg")]: {
+        top: "40%",
       },
-      "@media (max-width: 1024px)": {
-        top: "43%",
-        fontSize: "0.9rem",
+      [muiTheme.breakpoints.down("md")]: {
+        top: "40%",
       },
-      "@media (max-width: 600px)": {
-        top: "33%",
-        fontSize: "0.8rem",
+      [muiTheme.breakpoints.down("sm")]: {
+        top: "40%",
       },
-      "@media (max-width: 540px)": {
-        top: "37%",
-        fontSize: "0.6rem",
-      },
-      "@media (max-width: 425px)": {
-        top: "33%",
-        fontSize: "0.6rem",
-      },
-      "@media (max-width: 400px)": {
-        top: "37%",
-        fontSize: "0.6rem",
-      },
-      "@media (max-width: 375px)": {
-        top: "37%",
-        fontSize: "0.6rem",
-      },
-      "@media (max-width: 360px)": {
-        top: "35%",
-        fontSize: "0.6rem",
+      [muiTheme.breakpoints.down("xs")]: {
+        top: "40%",
       },
     },
     zakTitle: {

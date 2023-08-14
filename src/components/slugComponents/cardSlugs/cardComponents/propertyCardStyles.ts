@@ -121,10 +121,10 @@ export const getPropertyCardStyles = () => {
         width: "420px",
       },
       [muiTheme.breakpoints.down("sm")]: {
-        width: "480px",
+        width: "370px",
       },
-      [muiTheme.breakpoints.down("xs")]: {
-        width: "270px",
+      [muiTheme.breakpoints.down("smallphones")]: {
+        width: "330px",
       },
     },
     // Card Body Styles PropertyAllCards.tsx
