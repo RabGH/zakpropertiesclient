@@ -1,5 +1,5 @@
 import { sanityClient } from "./sanity";
-import { Property, Project, Developer } from "./types";
+import { Property, Project, Developer, Development } from "./types";
 
 export async function getAllDeveloperSlugs() {
   const query = `*[_type == "developer"]{slug}`;
@@ -9,7 +9,7 @@ export async function getAllDeveloperSlugs() {
 
 export async function getAllDevelopmentSlugs() {
   const query = `*[_type == "development"]{slug}`;
-  const slugs = await sanityClient.fetch<Developer[]>(query);
+  const slugs = await sanityClient.fetch<Development[]>(query);
   return slugs.map((slug) => ({ params: { slug: slug.slug.current } }));
 }
 

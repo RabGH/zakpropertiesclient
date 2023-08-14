@@ -239,7 +239,7 @@ function SearchBar(props: SearchBarProps) {
               {/* {getButtonLabel(["Properties"])} */}Buy Properties
             </Button>
           </Link>
-          <Link href="/developments" passHref>
+          <Link href="/viewProjects" passHref>
             <Button
               onClick={handleProjectsClick}
               sx={projectButtonStyles}
