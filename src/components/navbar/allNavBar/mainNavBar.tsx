@@ -18,11 +18,14 @@ interface Props {
 }
 
 const StyledAppBar = styled(AppBar)({
-  height: "4rem",
+  height: "3.5rem",
   backgroundColor: "#fff",
   boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)",
   position: "fixed",
   m: "0 auto",
+  "@media (max-width: 600px)": {
+    height: "3rem",
+  },
 });
 
 const StyledToolbar = styled(Toolbar)({
