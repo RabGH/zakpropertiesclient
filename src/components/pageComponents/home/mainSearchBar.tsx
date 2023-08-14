@@ -35,7 +35,7 @@ function SearchBar(props: SearchBarProps) {
     } else if (selectedType === "Projects") {
       const project = projects.find((project) => project.title === value);
       if (project) {
-        router.push(`/projects/${project.slug.current}`);
+        router.push(`/project/${project.slug.current}`);
       }
     } else {
       const property = properties.find((property) => property.title === value);

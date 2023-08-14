@@ -14,7 +14,7 @@ const ProjectAllCards = ({ project }: ProjectAllCardsProps) => {
 
   return (
     <>
-      <Link href={`/projects/${project.slug.current}`}>
+      <Link href={`/project/${project.slug.current}`}>
         <Card sx={styles.cardStyles}>
           {project.mainProjectImage && (
             <Box sx={styles.imageBoxStyles}>

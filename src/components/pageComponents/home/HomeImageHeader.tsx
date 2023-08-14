@@ -154,7 +154,7 @@ function HomeImageHeader({
                     <Box sx={styles.contentContainer}>
                       <Link
                         key={project._id}
-                        href={`/projects/${project.slug.current}`}
+                        href={`/project/${project.slug.current}`}
                       >
                         <Typography variant="h2" sx={styles.zakTitle}>
                           {project.title}
