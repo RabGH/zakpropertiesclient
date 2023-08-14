@@ -45,17 +45,11 @@ const StyledAppBar = styled(AppBar)({
   boxShadow: "none",
   position: "fixed",
   m: "0 auto",
-  "@media (max-width: 600px)": {
-    height: "3rem",
-  },
 });
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
-  "@media (max-width: 600px)": {
-    gap: "1rem",
-  },
 });
 
 const StyledImage = styled(Image)({

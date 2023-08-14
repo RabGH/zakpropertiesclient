@@ -10,9 +10,6 @@ export const getNavBarStyles = () => {
       justifyContent: "flex-end",
       gap: "1rem",
       mb: "0.5rem",
-      "@media (max-width: 600px)": {
-        mb: "0.5rem",
-      },
     },
     mainBox: {
       display: "flex",
@@ -50,7 +47,7 @@ export const getNavBarStyles = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      "@media (min-width: 1025px)": {
+      [theme.breakpoints.up("lg")]: {
         display: "none",
       },
     },
@@ -70,7 +67,7 @@ export const getNavBarStyles = () => {
       "&:Hover": {
         color: "#5B5B5B",
       },
-      "@media (max-width: 360px)": {
+      [theme.breakpoints.down("xs")]: {
         display: "none",
       },
     },
@@ -79,7 +76,7 @@ export const getNavBarStyles = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      "@media (max-width: 1024px)": {
+      [theme.breakpoints.down("lg")]: {
         display: "none",
       },
     },
@@ -88,7 +85,7 @@ export const getNavBarStyles = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      "@media (max-width: 1024px)": {
+      [theme.breakpoints.down("lg")]: {
         display: "none",
       },
     },
