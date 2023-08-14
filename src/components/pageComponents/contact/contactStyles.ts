@@ -5,64 +5,78 @@ export const getContactStyles = () => {
     mainContainer: {
       display: "flex",
       flexDirection: "column",
-      height: "75vh",
+      height: "90vh",
       justifyContent: "center",
       alignItems: "center",
-      mt: "5rem",
-      mr: "35rem",
-      "@media (max-width: 1024px)": {
-        height: "80vh",
-        pl: "18rem",
-      },
-      "@media (max-width: 768px)": {
+      [muiTheme.breakpoints.down("xl")]: {
         height: "90vh",
-        pl: 0,
       },
-      "@media (max-width: 480px)": {
-        height: "95vh",
+      [muiTheme.breakpoints.down("lg")]: {
+        height: "100vh",
+      },
+      [muiTheme.breakpoints.down("md")]: {
+        height: "100vh",
+      },
+      [muiTheme.breakpoints.down("sm")]: {
+        height: "100vh",
+      },
+      [muiTheme.breakpoints.down("xs")]: {
+        height: "100vh",
       },
     },
+
     titleBox: {
       display: "flex",
       flexDirection: "column",
-      alignItems: "left",
-      justifyContent: "center",
-      width: "70%",
-      mb: "1rem",
-      mr: "18rem",
-      "@media (max-width: 1024px)": {
-        mr: "10rem",
+      width: "100%",
+      mt: "4rem",
+      [muiTheme.breakpoints.down("xl")]: {
+        width: "87%",
       },
-      "@media (max-width: 768px)": {
-        mr: "8rem",
+      [muiTheme.breakpoints.down("lg")]: {
+        width: "100%",
       },
-      "@media (max-width: 480px)": {
-        mr: "5rem",
+      [muiTheme.breakpoints.down("md")]: {
+        width: "93%",
+      },
+      [muiTheme.breakpoints.down("sm")]: {
+        width: "90%",
+      },
+      [muiTheme.breakpoints.down("xs")]: {
+        width: "80%",
       },
     },
+
     contactGrid: {
       display: "flex",
       flexDirection: "row",
+      mt: "2rem",
     },
+
     formBox: {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
     },
+
     textField: {
       display: "flex",
       flexDirection: "row",
       marginBottom: "1rem",
     },
+
     contactField: {
       width: "50vw",
-      "@media (max-width: 1024px)": {
+      [muiTheme.breakpoints.down("xl")]: {
         width: "40vw",
       },
-      "@media (max-width: 768px)": {
-        width: "50vw",
+      [muiTheme.breakpoints.down("lg")]: {
+        width: "40vw",
       },
-      "@media (max-width: 480px)": {
+      [muiTheme.breakpoints.down("md")]: {
+        width: "87vw",
+      },
+      [muiTheme.breakpoints.down("sm")]: {
         width: "80vw",
       },
       "& .MuiFilledInput-input": {
@@ -92,19 +106,20 @@ export const getContactStyles = () => {
     buttonBox: {
       display: "flex",
       flexDirection: "row",
-      marginTop: "1rem",
     },
     sendButtonStyles: {
-      marginTop: "1rem",
+      mt: "1rem",
       mr: "1rem",
+      mb: "1rem",
       fontWeight: "bold",
       "&:hover": {
         color: "#f5f5f5",
       },
     },
     resetButtonStyles: {
-      marginTop: "1rem",
+      mt: "1rem",
       ml: "1rem",
+      mb: "1rem",
       fontWeight: "bold",
       "&:hover": {
         color: "#f5f5f5",
@@ -118,34 +133,14 @@ export const getContactStyles = () => {
     },
 
     logoStyles: {
-      "@media (max-width: 1440px)": {
-        display: "none",
-      },
-      "@media (max-width: 1024px)": {
-        display: "none",
-      },
-      "@media (max-width: 600px)": {
-        display: "none",
-      },
-      "@media (max-width: 400px)": {
+      [muiTheme.breakpoints.down("md")]: {
         display: "none",
       },
     },
 
     imageStyles: {
       filter: "invert(100%)",
-      "@media (max-width: 1440px)": {},
-      "@media (max-width: 1280px)": {},
-      "@media (max-width: 1024px)": {},
-      "@media (max-width: 960px)": {},
-      "@media (max-width: 768px)": {},
-      "@media (max-width: 641px)": {},
-      "@media (max-width: 600px)": {},
-      "@media (max-width: 481px)": {},
-      "@media (max-width: 400px)": {},
-      "@media (max-width: 375px)": {},
-      "@media (max-width: 360px)": {},
-      "@media (max-width: 320px)": {},
+      maxWidth: "100%",
     },
 
     formControl: {

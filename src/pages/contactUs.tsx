@@ -25,7 +25,7 @@ function Contact() {
     subject: "",
     message: "",
   };
-//! Image Logo querries Media
+  //! Image Logo querries Media
   const [formData, setFormData] = useState(initialFormData);
 
   const [loading, setLoading] = useState(false);
@@ -76,7 +76,7 @@ function Contact() {
   };
 
   return (
-    <Container sx={styles.mainContainer}>
+    <Container sx={styles.mainContainer} maxWidth="xl">
       <Head>
         <title>ZakProperties Contact Page</title>
         <meta name="description" content="ZakProperties Contact Page" />
@@ -91,115 +91,113 @@ function Contact() {
           We&apos;ll get back to you as soon as we can!
         </Typography>
       </Box>
-      <Container>
-        <Grid sx={styles.contactGrid}>
-          <Box sx={styles.formBox}>
-            <form id="ContactForm" ref={formRef} onSubmit={handleSubmit}>
-              <FormControl sx={styles.formControl} variant="outlined">
-                <Box sx={styles.textField}>
-                  <TextField
-                    id="name"
-                    label="name"
-                    name="name"
-                    type="text"
-                    variant="outlined"
-                    size="medium"
-                    multiline={false}
-                    rows={1}
-                    sx={styles.contactField}
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
-                </Box>
-                <Box sx={styles.textField}>
-                  <TextField
-                    id="email"
-                    label="Email"
-                    name="email"
-                    type="email"
-                    variant="outlined"
-                    size="medium"
-                    multiline={false}
-                    rows={1}
-                    sx={styles.contactField}
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </Box>
-                <Box sx={styles.textField}>
-                  <TextField
-                    id="subject"
-                    label="Subject"
-                    name="subject"
-                    type="text"
-                    variant="outlined"
-                    size="medium"
-                    multiline={false}
-                    rows={1}
-                    sx={styles.contactField}
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
-                  />
-                </Box>
-                <Box sx={styles.textField}>
-                  <TextField
-                    id="message"
-                    label="Message"
-                    name="message"
-                    type="multiline"
-                    variant="outlined"
-                    size="medium"
-                    multiline={true}
-                    rows={5}
-                    sx={styles.contactField}
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                  />
-                </Box>
-              </FormControl>
-              <Box sx={styles.buttonBox}>
-                <Button
-                  variant="contained"
-                  size="large"
-                  type="submit"
-                  sx={styles.sendButtonStyles}
-                >
-                  {loading ? <CircularProgress size={24} /> : "Send"}
-                </Button>
-                <Button
+      <Grid sx={styles.contactGrid}>
+        <Box sx={styles.formBox}>
+          <form id="ContactForm" ref={formRef} onSubmit={handleSubmit}>
+            <FormControl sx={styles.formControl} variant="outlined">
+              <Box sx={styles.textField}>
+                <TextField
+                  id="name"
+                  label="name"
+                  name="name"
+                  type="text"
                   variant="outlined"
-                  size="large"
-                  type="reset"
-                  sx={styles.resetButtonStyles}
-                  onClick={() => {
-                    formRef.current?.reset();
-                    setFormData(initialFormData);
-                  }}
-                >
-                  Clear
-                </Button>
-              </Box>
-            </form>
-          </Box>
-          <Grid sx={styles.imgGrid}>
-            <Box sx={styles.logoStyles}>
-              {Image != null && (
-                <Image
-                  src={logoContact}
-                  alt="logo"
-                  style={styles.imageStyles}
-                  placeholder="blur"
-                  blurDataURL="data:image/svg+xml;base64,..."
+                  size="medium"
+                  multiline={false}
+                  rows={1}
+                  sx={styles.contactField}
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
                 />
-              )}
+              </Box>
+              <Box sx={styles.textField}>
+                <TextField
+                  id="email"
+                  label="Email"
+                  name="email"
+                  type="email"
+                  variant="outlined"
+                  size="medium"
+                  multiline={false}
+                  rows={1}
+                  sx={styles.contactField}
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </Box>
+              <Box sx={styles.textField}>
+                <TextField
+                  id="subject"
+                  label="Subject"
+                  name="subject"
+                  type="text"
+                  variant="outlined"
+                  size="medium"
+                  multiline={false}
+                  rows={1}
+                  sx={styles.contactField}
+                  required
+                  value={formData.subject}
+                  onChange={handleChange}
+                />
+              </Box>
+              <Box sx={styles.textField}>
+                <TextField
+                  id="message"
+                  label="Message"
+                  name="message"
+                  type="multiline"
+                  variant="outlined"
+                  size="medium"
+                  multiline={true}
+                  rows={5}
+                  sx={styles.contactField}
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                />
+              </Box>
+            </FormControl>
+            <Box sx={styles.buttonBox}>
+              <Button
+                variant="contained"
+                size="large"
+                type="submit"
+                sx={styles.sendButtonStyles}
+              >
+                {loading ? <CircularProgress size={24} /> : "Send"}
+              </Button>
+              <Button
+                variant="outlined"
+                size="large"
+                type="reset"
+                sx={styles.resetButtonStyles}
+                onClick={() => {
+                  formRef.current?.reset();
+                  setFormData(initialFormData);
+                }}
+              >
+                Clear
+              </Button>
             </Box>
-          </Grid>
+          </form>
+        </Box>
+        <Grid sx={styles.imgGrid}>
+          <Box sx={styles.logoStyles}>
+            {Image != null && (
+              <Image
+                src={logoContact}
+                alt="logo"
+                style={styles.imageStyles}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,..."
+              />
+            )}
+          </Box>
         </Grid>
-      </Container>
+      </Grid>
       <Snackbar
         open={snackOpen}
         autoHideDuration={6000}

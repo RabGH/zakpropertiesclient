@@ -1,5 +1,4 @@
 import { ThemeOptions, createTheme } from "@mui/material/styles";
-// import { breakpoints } from "./MuiBreakPoints";
 
 export const themeOptions: ThemeOptions = {
   palette: {
@@ -97,7 +96,6 @@ export const themeOptions: ThemeOptions = {
       fontSize: "1rem",
     },
   },
-  // breakpoints,
 };
 
 const slugTheme = createTheme(themeOptions);
