@@ -86,7 +86,6 @@ function SearchBar(props: SearchBarProps) {
     },
     zIndex: 5,
 
-    "@media (max-width: 1440px)": {},
     "@media (max-width: 1024px)": {
       width: "470px",
     },
@@ -172,10 +171,6 @@ function SearchBar(props: SearchBarProps) {
       boxShadow: "none",
       textDecoration: "none",
     },
-    "@media (max-width: 1440px)": {},
-    "@media (max-width: 1024px)": {},
-    "@media (max-width: 600px)": {},
-    "@media (max-width: 400px)": {},
     "@media (max-width: 375px)": {
       fontSize: "1.3rem",
     },
@@ -200,10 +195,6 @@ function SearchBar(props: SearchBarProps) {
       boxShadow: "none",
       textDecoration: "none",
     },
-    "@media (max-width: 1440px)": {},
-    "@media (max-width: 1024px)": {},
-    "@media (max-width: 600px)": {},
-    "@media (max-width: 400px)": {},
     "@media (max-width: 375px)": {
       fontSize: "1.3rem",
     },

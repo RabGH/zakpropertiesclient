@@ -8,7 +8,6 @@ export const getPropertyPageStyles = () => {
       display: "grid",
       gridTemplateColumns: "2fr 1fr",
       m: "0 auto",
-      "@media (max-width: 960px)": {},
       "@media (max-width: 481px)": {
         gridTemplateColumns: "1fr",
       },
@@ -76,25 +75,15 @@ export const getPropertyPageStyles = () => {
       alignItems: "flex-start",
       p: "5%",
       maxWidth: "80%",
-      "@media (max-width: 1440px)": {},
-      "@media (max-width: 1280px)": {},
-      "@media (max-width: 1024px)": {},
-      "@media (max-width: 960px)": {},
-      "@media (max-width: 768px)": {},
       "@media (max-width: 640px)": {
         p: "1%",
         mt: "2rem",
       },
-      "@media (max-width: 600px)": {},
       "@media (max-width: 481px)": {
         p: "0%",
         mt: "2rem",
         ml: "1rem",
       },
-      "@media (max-width: 400px)": {},
-      "@media (max-width: 375px)": {},
-      "@media (max-width: 360px)": {},
-      "@media (max-width: 320px)": {},
     },
     propertySimilarCardsPos: {},
     paymentPlanPos: {

@@ -19,8 +19,6 @@ const AboutPage: React.FC = () => {
     justifyItems: "center",
     mt: 10,
     p: 1,
-    "@media (max-width: 600px)": {},
-    "@media (max-width: 400px)": {},
   };
 
   const aboutLogoStyles = {

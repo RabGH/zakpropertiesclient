@@ -92,11 +92,9 @@ export const getProjectPageStyles = () => {
     },
     amenitiesSlugPos: {
       m: 1,
-      "@media (max-width: 481px)": {},
     },
     projectLocationPos: {
       m: 1,
-      "@media (max-width: 481px)": {},
     },
 
     projectPresentationBoxStyles: {

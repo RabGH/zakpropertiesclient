@@ -16,7 +16,6 @@ export const cardStyles = {
 export const boxStyles = {
   display: "grid",
   gap: "0px",
-  "@media (max-width: 481px)": {},
 };
 
 export const mainTitle = {
