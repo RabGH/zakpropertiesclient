@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material";
 
 export const getPropertyCardStyles = () => {
-  const theme = useTheme();
+  const muiTheme = useTheme();
   return {
     //* PropertyAllCards and Box styles used in homePropertyCards
     mainAll: {
@@ -42,17 +42,10 @@ export const getPropertyCardStyles = () => {
       scrollSnapType: "x mandatory",
       pl: "4.3rem",
       pr: "4.3rem",
-      "@media (max-width: 1440px)": {
-        pl: "2rem",
-        pr: "2rem",
-      },
-      "@media (max-width: 1280px)": {
-        pl: "1rem",
-        pr: "1rem",
-      },
-      "@media (max-width: 1024px)": {
-        pl: 0,
-        pr: 0,
+      [muiTheme.breakpoints.down("md")]: {
+        fontSize: "1.2rem",
+        pl: "0rem",
+        pr: "0rem",
       },
     },
 
@@ -60,49 +53,46 @@ export const getPropertyCardStyles = () => {
     featuredTitlePos: {
       alignSelf: "flex-start",
       pt: "1rem",
-      ml: "5rem",
-      fontSize: "1.4rem",
+      fontSize: "1.5rem",
       fontWeight: "400",
-      "@media (max-width: 1440px)": {
+      pl: "4.3rem",
+      pr: "4.3rem",
+      [muiTheme.breakpoints.down("xl")]: {
         fontSize: "1.4rem",
-        ml: 5,
       },
-      "@media (max-width: 1024px)": {
-        fontSize: "1.4rem",
-        ml: 1,
-      },
-      "@media (max-width: 768px)": {
-        fontSize: "1.3rem",
-        ml: 1,
-      },
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         fontSize: "1.3rem",
       },
-      "@media (max-width: 425px)": {
-        fontSize: "1.3rem",
-        ml: 1,
-      },
-      "@media (max-width: 400px)": {
+      [muiTheme.breakpoints.down("md")]: {
         fontSize: "1.2rem",
+        pl: "0rem",
+        pr: "0rem",
       },
-      "@media (max-width: 375px)": {
-        fontSize: "1.2rem",
-        ml: 1,
+      [muiTheme.breakpoints.down("sm")]: {
+        fontSize: "1.1rem",
       },
-      "@media (max-width: 320px)": {
-        fontSize: "1.2rem",
-        ml: 1,
+      [muiTheme.breakpoints.down("xs")]: {
+        fontSize: "2rem",
       },
     },
 
     developmentFeaturedTitlePos: {
       p: "2rem",
       fontSize: "1.5rem",
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("xl")]: {
+        fontSize: "1.4rem",
+      },
+      [muiTheme.breakpoints.down("lg")]: {
+        fontSize: "1.3rem",
+      },
+      [muiTheme.breakpoints.down("md")]: {
         fontSize: "1.2rem",
       },
-      "@media (max-width: 400px)": {
-        fontSize: "1.3rem",
+      [muiTheme.breakpoints.down("sm")]: {
+        fontSize: "1.1rem",
+      },
+      [muiTheme.breakpoints.down("xs")]: {
+        fontSize: "2rem",
       },
     },
 
@@ -121,38 +111,19 @@ export const getPropertyCardStyles = () => {
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 1)",
         backgroundColor: "rgba(255, 255, 255, 0.05)",
       },
-      "@media (max-width: 1440px)": {},
-      "@media (max-width: 1280px)": {
+      [muiTheme.breakpoints.down("xl")]: {
         width: "420px",
       },
-      "@media (max-width: 1024px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         width: "480px",
       },
-      "@media (max-width: 961px)": {
-        width: "400px",
+      [muiTheme.breakpoints.down("md")]: {
+        width: "420px",
       },
-      "@media (max-width: 912px)": {
-        width: "440px",
-      },
-      "@media (max-width: 768px)": {
-        width: "380px",
-      },
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         width: "480px",
       },
-      "@media (max-width: 481px)": {
-        width: "365px",
-      },
-      "@media (max-width: 400px)": {
-        width: "375px",
-      },
-      "@media (max-width: 375px)": {
-        width: "325px",
-      },
-      "@media (max-width: 360px)": {
-        width: "345px",
-      },
-      "@media (max-width: 320px)": {
+      [muiTheme.breakpoints.down("xs")]: {
         width: "270px",
       },
     },

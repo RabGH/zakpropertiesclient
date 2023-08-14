@@ -23,48 +23,27 @@ export const getHomePageStyles = () => {
     },
 
     boxContentProject: {
-      minHeight: "55vh",
+      minHeight: "65vh",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      "@media (max-width: 2560px)": {
+      mt: "1rem",
+      mb: "1rem",
+      [muiTheme.breakpoints.down("xl")]: {
+        minHeight: "60vh",
+      },
+      [muiTheme.breakpoints.down("lg")]: {
         minHeight: "55vh",
       },
-      "@media (max-width: 1920px)": {
-        minHeight: "65vh",
-      },
-      "@media (max-width: 1440px)": {
-        minHeight: "65vh",
-      },
-      "@media (max-width: 1024px)": {
-        minHeight: "55vh",
-      },
-      "@media (max-width: 961px)": {
-        minHeight: "55vh",
-      },
-      "@media (max-width: 912px)": {
-        minHeight: "65vh",
-      },
-      "@media (max-width: 768px)": {
+      [muiTheme.breakpoints.down("md")]: {
         minHeight: "50vh",
-        mt: "1rem",
       },
-      "@media (max-width: 600px)": {
-        minHeight: "65vh",
-        mt: "1rem",
+      [muiTheme.breakpoints.down("sm")]: {
+        minHeight: "45vh",
       },
-      "@media (max-width: 481px)": {
-        minHeight: "55vh",
-        mb: "3rem",
-      },
-      "@media (max-width: 400px)": {
-        minHeight: "35vh",
-        mb: "3rem",
-      },
-      "@media (max-width: 375px)": {
-        minHeight: "35vh",
-        mb: "5rem",
+      [muiTheme.breakpoints.down("xs")]: {
+        minHeight: "40vh",
       },
     },
     //* Main Content Section Styles index.tsx
@@ -73,49 +52,12 @@ export const getHomePageStyles = () => {
       lineHeight: "1.5",
       textAlign: "center",
       maxWidth: "70ch",
-      // fontStyle: "italic",
       mt: "14rem",
-      "@media (max-width: 2560px)": {
-        mt: "25rem",
-      },
-      "@media (max-width: 1920px)": {
-        mt: "15rem",
-      },
-      "@media (max-width: 1440px)": {
-        mt: "15rem",
-      },
-      "@media (max-width: 1024px)": {
-        fontSize: "1.3rem",
-        mt: "7rem",
-      },
-      "@media (max-width: 961px)": {
-        mt: "12rem",
-      },
-      "@media (max-width: 912px)": {
-        fontSize: "1.3rem",
-        mt: "12rem",
-      },
-      "@media (max-width: 768px)": {
-        fontSize: "1.2rem",
-        mt: "7rem",
-      },
-      "@media (max-width: 600px)": {
-        fontSize: "1.2rem",
-        mt: "13rem",
-      },
-      "@media (max-width: 481px)": {
-        fontSize: "1.2rem",
-        mt: "10rem",
-      },
-      "@media (max-width: 400px)": {
-        fontSize: "1.2rem",
-        mt: "10rem",
-      },
-      "@media (max-width: 320px)": {
-        fontSize: "1.2rem",
-        mt: "10rem",
-      },
-      "@media (max-width: 360px)": {},
+      [muiTheme.breakpoints.down("xl")]: {},
+      [muiTheme.breakpoints.down("lg")]: {},
+      [muiTheme.breakpoints.down("md")]: {},
+      [muiTheme.breakpoints.down("sm")]: {},
+      [muiTheme.breakpoints.down("xs")]: {},
     },
 
     buyPropertiesButton: {
@@ -135,17 +77,20 @@ export const getHomePageStyles = () => {
         borderWidth: 1,
         borderColor: "white",
       },
-      "@media (max-width: 2560px)": {
+      [muiTheme.breakpoints.down("xl")]: {
         width: "90%",
       },
-      "@media (max-width: 1440px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         width: "94.5%",
       },
-      "@media (max-width: 1024px)": {
+      [muiTheme.breakpoints.down("md")]: {
         width: "98.5%",
       },
-      "@media (max-width: 768px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         width: "97.5%",
+      },
+      [muiTheme.breakpoints.down("xs")]: {
+        width: "96.5%",
       },
     },
     //* Property Home Cards Section
@@ -195,9 +140,6 @@ export const getHomePageStyles = () => {
       height: "110vh",
       width: "100%",
       zIndex: 1,
-
-      "@media (max-width: 1440px)": {},
-      "@media (max-width: 1281px)": {},
       "@media (max-width: 1024px)": {
         height: "100vh",
       },
@@ -207,11 +149,9 @@ export const getHomePageStyles = () => {
       "@media (max-width: 768px)": {
         height: "100vh",
       },
-      "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
         height: "100vh",
       },
-      "@media (max-width: 481px)": {},
       "@media (max-width: 400px)": {
         height: "100vh",
       },
@@ -232,8 +172,6 @@ export const getHomePageStyles = () => {
       bottom: 0,
       height: "110vh",
       backgroundColor: "rgba(0, 0, 0, 0.5)",
-      "@media (max-width: 1440px)": {},
-      "@media (max-width: 1281px)": {},
       "@media (max-width: 1024px)": {
         height: "100vh",
       },
@@ -243,7 +181,6 @@ export const getHomePageStyles = () => {
       "@media (max-width: 768px)": {
         height: "100vh",
       },
-      "@media (max-width: 641px)": {},
       "@media (max-width: 600px)": {
         height: "100vh",
       },
@@ -420,7 +357,6 @@ export const getHomePageStyles = () => {
       fontWeight: "400",
       mt: "1rem",
       textAlign: "center",
-      "@media (max-width: 1440px)": {},
       "@media (max-width: 1024px)": {
         mb: "1rem",
       },
