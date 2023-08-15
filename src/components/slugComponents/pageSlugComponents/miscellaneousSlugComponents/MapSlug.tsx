@@ -24,7 +24,7 @@ const MapSlug: React.FC<MapSlugProps> = ({
   address,
   specificAddress,
 }) => {
-  const theme = useTheme();
+  const muiTheme = useTheme();
   const position: LatLngTuple = [lat, lng];
   const [open, setOpen] = useState(false);
 
@@ -42,9 +42,7 @@ const MapSlug: React.FC<MapSlugProps> = ({
     alignItems: "center",
     justifyContent: "space-between",
     gap: "-100%",
-    "@media (max-width: 2560px)": {
-    },
-    "@media (max-width: 481px)": {
+    [muiTheme.breakpoints.down("smallphones")]: {
       gap: "45%",
     },
   };
@@ -69,7 +67,7 @@ const MapSlug: React.FC<MapSlugProps> = ({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.8)",
-    zIndex: theme.zIndex.modal + 1,
+    zIndex: muiTheme.zIndex.modal + 1,
     overflow: "hidden",
   };
 
@@ -82,7 +80,7 @@ const MapSlug: React.FC<MapSlugProps> = ({
     top: "1rem",
     right: "1rem",
     color: "#000",
-    zIndex: theme.zIndex.modal + 2,
+    zIndex: muiTheme.zIndex.modal + 2,
   };
 
   const modalBoxContainer = {
