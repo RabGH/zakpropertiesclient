@@ -13,11 +13,7 @@ import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageS
 import ProjectAmenities from "@/components/slugComponents/pageSlugComponents/amenities/ProjectAmenities";
 import LifeStyle from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/LifeStyle";
 import { Project, Property, Developer, PageContext } from "@lib/types";
-import {
-  mainContainer,
-  mainImageContainer,
-  viewPhotosBox,
-} from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
+import { getImageCarouselStyles } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import { getProjectPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/projectSlugStyles";
 import dynamic from "next/dynamic";
 import PropertyAllCard from "@/components/slugComponents/cardSlugs/propertyCards/PropertyAllCards";
@@ -67,11 +63,12 @@ const Projects = ({
   projectStatus,
 }: ProjectsProps) => {
   const styles = getProjectPageStyles();
+  const imageStyles = getImageCarouselStyles();
 
   return (
     <>
-      <Box sx={mainContainer}>
-        <Box sx={mainImageContainer}>
+      <Box sx={imageStyles.mainContainer}>
+        <Box sx={imageStyles.mainImageContainer}>
           <ImageCarousel
             mainImage={mainProjectImage}
             images={projectImages}
@@ -79,7 +76,7 @@ const Projects = ({
           />
         </Box>
 
-        <Box sx={viewPhotosBox}>
+        <Box sx={imageStyles.viewPhotosBox}>
           <ViewAllPhotos
             mainImage={mainProjectImage}
             images={projectImages}

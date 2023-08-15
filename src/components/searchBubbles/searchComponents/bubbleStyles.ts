@@ -38,6 +38,7 @@ export const getBubbleStyles = () => {
       height: "250px",
       overflow: "visible",
       mt: "0.5rem",
+      [muiTheme.breakpoints.down("smallphones")]: {},
     },
 
     bedroomMenuListStyles: {
@@ -96,19 +97,19 @@ export const getBubbleStyles = () => {
       mt: "0.5rem",
       justifyContent: "center",
       [muiTheme.breakpoints.down("xl")]: {
-        width: "950px",
+        width: "850px",
       },
       [muiTheme.breakpoints.down("lg")]: {
-        width: "700px",
+        width: "650px",
       },
       [muiTheme.breakpoints.down("md")]: {
-        width: "600px",
-      },
-      [muiTheme.breakpoints.down("sm")]: {
         width: "550px",
       },
+      [muiTheme.breakpoints.down("sm")]: {
+        width: "430px",
+      },
       [muiTheme.breakpoints.down("smallphones")]: {
-        width: "435px",
+        width: "370px",
       },
       [muiTheme.breakpoints.down("xs")]: {
         width: "260px",
@@ -162,10 +163,10 @@ export const getBubbleStyles = () => {
         },
       },
       [muiTheme.breakpoints.down("smallphones")]: {
-        width: "150px",
+        width: "100px",
       },
       [muiTheme.breakpoints.down("xs")]: {
-        width: "130px",
+        width: "90px",
       },
     },
 
@@ -215,19 +216,19 @@ export const getBubbleStyles = () => {
       mt: "0.5rem",
       justifyContent: "center",
       [muiTheme.breakpoints.down("xl")]: {
-        width: "950px",
+        width: "850px",
       },
       [muiTheme.breakpoints.down("lg")]: {
-        width: "700px",
+        width: "650px",
       },
       [muiTheme.breakpoints.down("md")]: {
-        width: "600px",
-      },
-      [muiTheme.breakpoints.down("sm")]: {
         width: "550px",
       },
+      [muiTheme.breakpoints.down("sm")]: {
+        width: "430px",
+      },
       [muiTheme.breakpoints.down("smallphones")]: {
-        width: "435px",
+        width: "370px",
       },
       [muiTheme.breakpoints.down("xs")]: {
         width: "260px",
@@ -278,10 +279,10 @@ export const getBubbleStyles = () => {
         },
       },
       [muiTheme.breakpoints.down("smallphones")]: {
-        width: "150px",
+        width: "100px",
       },
       [muiTheme.breakpoints.down("xs")]: {
-        width: "130px",
+        width: "90px",
       },
     },
 

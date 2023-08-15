@@ -41,19 +41,15 @@ export const getProjectCardStyles = () => {
       scrollSnapType: "x mandatory",
       pl: "10rem",
       pr: "10rem",
-      "@media (max-width: 1440px)": {
-        pl: "9rem",
-        pr: "9rem",
+      [muiTheme.breakpoints.down("xl")]: {
+        pl: "6rem",
+        pr: "6rem",
       },
-      "@media (max-width: 1320px)": {
-        pl: "7rem",
-        pr: "7rem",
-      },
-      "@media (max-width: 1280px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         pl: "3rem",
         pr: "3rem",
       },
-      "@media (max-width: 1024px)": {
+      [muiTheme.breakpoints.down("md")]: {
         pl: "0rem",
         pr: "0rem",
       },
@@ -93,19 +89,13 @@ export const getProjectCardStyles = () => {
         boxShadow: "0px 4px 20px rgba(255, 255, 255, 0.3)",
         transform: "scale(1.05)",
       },
-      "@media (max-width: 1440px)": {
+      [muiTheme.breakpoints.down("xl")]: {
         width: 320,
       },
-      "@media (max-width: 400px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         width: 290,
       },
-      "@media (max-width: 375px)": {
-        width: 285,
-      },
-      "@media (max-width: 360px)": {
-        width: 270,
-      },
-      "@media (max-width: 320px)": {
+      [muiTheme.breakpoints.down("xs")]: {
         width: 230,
       },
     },

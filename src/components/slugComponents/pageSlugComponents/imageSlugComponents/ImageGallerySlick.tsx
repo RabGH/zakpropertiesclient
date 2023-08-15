@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { Box, useTheme, ButtonBase } from "@mui/material";
 import { urlFor } from "@lib/sanity";
-import { mainBox, imageBox, imageStyles } from "./imageCarouselStyles";
+import { getImageCarouselStyles } from "./imageCarouselStyles";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 interface ImageCarouselProps {
@@ -16,6 +16,7 @@ interface ImageCarouselProps {
 
 const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
   const muiTheme = useTheme();
+  const style = getImageCarouselStyles();
   const sliderRef = useRef<Slider>(null);
 
   const handleNext = () => {
@@ -56,16 +57,16 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
   }
 
   return (
-    <Box sx={mainBox}>
+    <Box sx={style.mainBox}>
       <Slider {...settings} ref={sliderRef}>
-        <Box key="main" sx={imageBox}>
+        <Box key="main" sx={style.imageBox}>
           {images != null && (
             <Image
               src={mainImageUrl}
               alt={alt}
               width={1920}
               height={1080}
-              style={imageStyles}
+              style={style.imageStyles}
               objectFit="contain"
               placeholder="blur"
               blurDataURL="data:image/svg+xml;base64,..."
@@ -78,14 +79,14 @@ const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
             .map((image, index) => {
               const imageUrl = urlFor(image).auto("format").url().toString();
               return (
-                <Box key={index} sx={imageBox}>
+                <Box key={index} sx={style.imageBox}>
                   {image != null && (
                     <Image
                       src={imageUrl}
                       alt={alt}
                       width={1920}
                       height={1080}
-                      style={imageStyles}
+                      style={style.imageStyles}
                       placeholder="blur"
                       blurDataURL="data:image/svg+xml;base64,..."
                     />

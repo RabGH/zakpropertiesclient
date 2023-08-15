@@ -12,11 +12,7 @@ import { Project, Developer, Development, PageContext } from "@lib/types";
 import DevelopmentAmenities from "@/components/slugComponents/pageSlugComponents/amenities/DevelopmentAmenities";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
-import {
-  mainContainer,
-  mainImageContainer,
-  viewPhotosBox,
-} from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
+import { getImageCarouselStyles } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import { getDevelopmentPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/developmentSlugStyles";
 import dynamic from "next/dynamic";
 
@@ -45,12 +41,21 @@ const Developments = ({
   presentation,
 }: DevelopmentProps) => {
   const styles = getDevelopmentPageStyles();
+  const imageStyles = getImageCarouselStyles();
 
   return (
     <>
-      <Box sx={mainContainer}>
-        <Box sx={mainImageContainer}>
+      <Box sx={imageStyles.mainContainer}>
+        <Box sx={imageStyles.mainImageContainer}>
           <ImageCarousel
+            mainImage={mainDevelopmentImage}
+            images={developmentImages}
+            alt={title}
+          />
+        </Box>
+
+        <Box sx={imageStyles.viewPhotosBox}>
+          <ViewAllPhotos
             mainImage={mainDevelopmentImage}
             images={developmentImages}
             alt={title}

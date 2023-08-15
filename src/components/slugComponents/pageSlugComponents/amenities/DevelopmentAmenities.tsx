@@ -1,10 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import {
-  mainStyles,
-  cardStyles,
-  boxStyles,
-  mainTitle,
-} from "./amenitiesStyles";
+import { getAmenitiesStyles } from "./amenitiesStyles";
 import { DevelopmentAmenities } from "@lib/types";
 
 interface AmenitiesSlugProps {
@@ -12,21 +7,23 @@ interface AmenitiesSlugProps {
 }
 
 const AmenitiesSlug = ({ developmentAmenities }: AmenitiesSlugProps) => {
+  const styles = getAmenitiesStyles();
+
   return (
-    <Box sx={{ ...cardStyles, alignItems: "left" }}>
-      <Typography variant="h3" sx={mainTitle}>
+    <Box sx={{ ...styles.cardStyles, alignItems: "left" }}>
+      <Typography variant="h3" sx={styles.mainTitle}>
         {developmentAmenities?.name ?? "Amenities"}
       </Typography>
       <Box
         sx={{
-          ...boxStyles,
+          ...styles.boxStyles,
           gridTemplateColumns: "repeat(2, 2fr)",
           justifyContent: "space-between",
           gridColumnGap: "2rem",
         }}
       >
         {developmentAmenities?.developmentsAmenities?.map((opt) => (
-          <Typography key={opt} variant="body1" sx={mainStyles}>
+          <Typography key={opt} variant="body1" sx={styles.mainStyles}>
             {opt}
           </Typography>
         ))}

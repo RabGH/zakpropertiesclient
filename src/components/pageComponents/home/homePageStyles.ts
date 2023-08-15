@@ -52,11 +52,13 @@ export const getHomePageStyles = () => {
       lineHeight: "1.5",
       textAlign: "center",
       maxWidth: "70ch",
-      mt: "14rem",
+      mt: "7rem",
       [muiTheme.breakpoints.down("xl")]: {},
       [muiTheme.breakpoints.down("lg")]: {},
       [muiTheme.breakpoints.down("md")]: {},
-      [muiTheme.breakpoints.down("sm")]: {},
+      [muiTheme.breakpoints.down("sm")]: {
+        fontSize: "1.1rem",
+      },
       [muiTheme.breakpoints.down("xs")]: {},
     },
 

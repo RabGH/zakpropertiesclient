@@ -9,8 +9,9 @@ export const getSimilarPropertyGridCardStyles = () => {
       overflowX: "auto",
       whiteSpace: "nowrap",
       scrollSnapType: "x mandatory",
-      p: "1%",
+      p: "3%",
     },
+
     similarCardGridItemStyles: {
       scrollSnapAlign: "start",
       flexBasis: "33%",
@@ -21,34 +22,37 @@ export const getSimilarPropertyGridCardStyles = () => {
       flexDirection: "column",
       p: "1rem",
     },
+
     similarViewMoreBoxStyles: {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
     },
+
     similarNoPropMsgStyles: {
       width: "50%",
       maxWidth: "300px",
       margin: "0 auto",
     },
+
     similarPropBtnStyles: {
       maxWidth: "300px",
       margin: "0 auto",
       mt: "2rem",
       mb: "2rem",
     },
+
     similarViewMoreBtnStyles: {
       margin: "0 auto",
       mt: "2rem",
       mb: "2rem",
       ml: "4rem",
     },
+
     similarMainTitleStyles: {
-      mb: "1rem",
-      ml: "5rem",
       display: "flex",
-      justifyContent: "flex-start",
+      justifyContent: "center",
     },
   };
 };

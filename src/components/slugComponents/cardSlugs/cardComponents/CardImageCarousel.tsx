@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { Box, ButtonBase } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { useTheme } from "@mui/material";
 
 interface CardImageCarouselProps {
   images: string[];
@@ -14,6 +15,7 @@ interface CardImageCarouselProps {
 const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const muiTheme = useTheme();
 
   const settings = {
     dots: true,
@@ -44,10 +46,7 @@ const CardImageCarousel = ({ images, alt }: CardImageCarouselProps) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            "@media (max-width: 600px)": {
-              top: "80%",
-            },
-            "@media (max-width: 400px)": {
+            [muiTheme.breakpoints.down("sm")]: {
               top: "80%",
             },
           }}

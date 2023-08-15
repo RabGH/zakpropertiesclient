@@ -2,10 +2,13 @@ import { Typography, Box, Button, Card } from "@mui/material";
 import { isMultiple, formatPrice, formatArea } from "@lib/utils";
 import moment from "moment";
 import Link from "next/link";
+import { useTheme } from "@mui/material";
+import slugTheme from "@styles/slugTheme";
 
 interface PropertyReferenceProps {
+  title?: string;
   totalPrice: number;
-  _id: string;
+  _id?: string;
   builtUpArea: number;
   plottedArea?: number;
   bedrooms: number;
@@ -14,6 +17,7 @@ interface PropertyReferenceProps {
     | { offplan?: boolean; propertyCompletionDate?: string };
 }
 const PropertyReference = ({
+  title,
   totalPrice,
   _id,
   propertyOffPlan,
@@ -21,11 +25,14 @@ const PropertyReference = ({
   plottedArea,
   bedrooms,
 }: PropertyReferenceProps) => {
+  const muiTheme = useTheme();
+
   const referenceMainBoxStyles = {
-    "@media (max-width: 425px)": {
+    [muiTheme.breakpoints.down("smallphones")]: {
       display: "none",
     },
   };
+
   const stickyStyles = {
     position: "sticky",
     top: "120px",
@@ -42,7 +49,7 @@ const PropertyReference = ({
 
   const buttonStyles = {
     mt: "1rem",
-    "@media (max-width: 768px)": {
+    [muiTheme.breakpoints.down("sm")]: {
       mt: 1,
       alignSelfSelf: "flex-end",
       order: 1,
@@ -50,7 +57,7 @@ const PropertyReference = ({
   };
 
   const idStyles = {
-    "@media (max-width: 768px)": {
+    [muiTheme.breakpoints.down("sm")]: {
       mt: 1,
       lineHeight: 1.2,
     },
@@ -58,7 +65,7 @@ const PropertyReference = ({
   const priceStyles = {
     mt: "0.5rem",
     mb: "0.5rem",
-    "@media (max-width: 768px)": {
+    [muiTheme.breakpoints.down("sm")]: {
       lineHeight: 1.2,
     },
   };
@@ -68,30 +75,30 @@ const PropertyReference = ({
   const offPlanProjectBoxStyles = {};
 
   const offPlanCompletionStyles = {
-    "@media (max-width: 768px)": {
+    [muiTheme.breakpoints.down("sm")]: {
       lineHeight: 1.2,
     },
   };
 
   const readyToBuyStyles = {
-    "@media (max-width: 768px)": {
+    [muiTheme.breakpoints.down("sm")]: {
       lineHeight: 1.2,
     },
   };
 
   const offPlanTypeStyles = {
-    "@media (max-width: 768px)": {
+    [muiTheme.breakpoints.down("smallphones")]: {
       display: "none",
     },
   };
 
   const bedroomStyles = {
-    "@media (max-width: 768px)": {
+    [muiTheme.breakpoints.down("smallphones")]: {
       display: "none",
     },
   };
   const areaStyles = {
-    "@media (max-width: 768px)": {
+    [muiTheme.breakpoints.down("smallphones")]: {
       display: "none",
     },
   };
@@ -102,7 +109,7 @@ const PropertyReference = ({
     <Box sx={referenceMainBoxStyles}>
       <Card sx={stickyStyles}>
         <Typography variant="body1" sx={idStyles}>
-          Reference ID: {_id}
+          Reference ID: {title}
         </Typography>
         <Typography variant="h6" sx={priceStyles}>
           {formatPrice(totalPrice)}

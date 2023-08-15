@@ -34,16 +34,16 @@ export const getPropertyGridCardStyles = () => {
       },
       "& .Mui-selected": {
         color: muiTheme.palette.primary.main,
-        backgroundColor: muiTheme.palette.success.light,
+        backgroundColor: muiTheme.palette.warning.dark,
       },
       mb: "3rem",
-      "@media (max-width: 1440px)": {
+      [muiTheme.breakpoints.down("xl")]: {
         itemsPerPage: 9,
       },
-      "@media (max-width: 1024px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         itemsPerPage: 6,
       },
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("md")]: {
         itemsPerPage: 9,
       },
     },

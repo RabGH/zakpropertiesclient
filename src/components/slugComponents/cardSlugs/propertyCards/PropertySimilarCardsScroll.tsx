@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Container, Divider } from "@mui/material";
 import { Property } from "@lib/types";
 import { filterSimilarProperties } from "../cardComponents/filterSimilarPropertiesFunction"; // import the function
 import PropertyAllCard from "@/components/slugComponents/cardSlugs/propertyCards/PropertyAllCards";
@@ -21,10 +21,12 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
   const viewButton = 1;
 
   return (
-    <Box sx={styles.similarMainBox}>
-      <Typography variant="h3" sx={styles.similarMainTitleStyles}>
-        <Link href="/buyProperties">Similar Properties</Link>
-      </Typography>
+    <Container maxWidth="xl" sx={styles.similarMainBox}>
+      <Divider>
+        <Typography variant="h3" sx={styles.similarMainTitleStyles}>
+          <Link href="/buyProperties">Similar Properties</Link>
+        </Typography>
+      </Divider>
 
       <Box sx={styles.similarCardGridContainerStyles}>
         {similarProperties.length > 0 ? (
@@ -57,7 +59,7 @@ const PropertySimilarCards: React.FC<PropertySimilarCardsProps> = ({
           View similar properties
         </Button>
       )}
-    </Box>
+    </Container>
   );
 };
 

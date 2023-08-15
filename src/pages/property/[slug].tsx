@@ -8,11 +8,7 @@ import { PropertyProps, PageContext } from "@lib/types";
 import { getPropertyPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/propertySlugStyles";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
-import {
-  mainContainer,
-  mainImageContainer,
-  viewPhotosBox,
-} from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
+import { getImageCarouselStyles } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import PropertyReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyReferenceSlug";
 import PropertyMobileReference from "@/components/slugComponents/pageSlugComponents/miscellaneousSlugComponents/PropertyMobileReferenceSlug";
 import PropertySimilarCards from "@/components/slugComponents/cardSlugs/propertyCards/PropertySimilarCardsScroll";
@@ -52,11 +48,12 @@ const Property = ({
   paymentPlan,
 }: PropertyProps) => {
   const styles = getPropertyPageStyles();
+  const imageStyles = getImageCarouselStyles();
 
   return (
     <>
-      <Box sx={mainContainer}>
-        <Box sx={mainImageContainer}>
+      <Box sx={imageStyles.mainContainer}>
+        <Box sx={imageStyles.mainImageContainer}>
           <ImageCarousel
             mainImage={mainPropertyImage}
             images={propertyImages}
@@ -64,7 +61,7 @@ const Property = ({
           />
         </Box>
 
-        <Box sx={viewPhotosBox}>
+        <Box sx={imageStyles.viewPhotosBox}>
           <ViewAllPhotos
             mainImage={mainPropertyImage}
             images={propertyImages}
@@ -122,6 +119,7 @@ const Property = ({
           <PropertyReference
             totalPrice={totalPrice}
             _id={_id}
+            title={title}
             propertyOffPlan={propertyOffPlan ?? {}}
             builtUpArea={builtUpArea}
             bedrooms={bedrooms}

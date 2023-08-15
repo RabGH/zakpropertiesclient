@@ -11,11 +11,7 @@ import { Box, Divider, Typography, Button } from "@mui/material";
 import { Development, Developer, PageContext } from "@lib/types";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
-import {
-  mainContainer,
-  mainImageContainer,
-  viewPhotosBox,
-} from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
+import { getImageCarouselStyles } from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/imageCarouselStyles";
 import { getDeveloperPageStyles } from "@/components/slugComponents/pageSlugComponents/pageSlugStyles/developerSlugStyles";
 import dynamic from "next/dynamic";
 
@@ -37,12 +33,21 @@ const Developers = ({
   developerDevelopments,
 }: DeveloperProps) => {
   const styles = getDeveloperPageStyles();
+  const imageStyles = getImageCarouselStyles();
 
   return (
     <>
-      <Box sx={mainContainer}>
-        <Box sx={mainImageContainer}>
+      <Box sx={imageStyles.mainContainer}>
+        <Box sx={imageStyles.mainImageContainer}>
           <ImageCarousel
+            mainImage={mainDeveloperImage}
+            images={developerImages}
+            alt={name}
+          />
+        </Box>
+
+        <Box sx={imageStyles.viewPhotosBox}>
+          <ViewAllPhotos
             mainImage={mainDeveloperImage}
             images={developerImages}
             alt={name}
