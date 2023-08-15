@@ -125,6 +125,9 @@ const SizeBubble: React.FC<SizeBubbleProps> = ({
           anchorEl={buttonRef.current}
           sx={styles.sizeMenuStyles}
           disableScrollLock
+          disablePortal={false}
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+          transformOrigin={{ vertical: "top", horizontal: "left" }}
         >
           <MenuList sx={styles.sizeMenuListStyles}>
             <Box sx={styles.sizeSearchBoxStyles}>

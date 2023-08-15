@@ -139,6 +139,9 @@ const PriceRangeBubble: React.FC<PriceRangeBubbleProps> = ({
           anchorEl={buttonRef.current}
           sx={styles.priceMenuStyles}
           disableScrollLock
+          disablePortal={false}
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+          transformOrigin={{ vertical: "top", horizontal: "left" }}
         >
           <MenuList sx={styles.priceMenuListStyles}>
             <Box sx={styles.priceSearchBoxStyles}>

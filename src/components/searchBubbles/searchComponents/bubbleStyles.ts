@@ -38,31 +38,8 @@ export const getBubbleStyles = () => {
       height: "250px",
       overflow: "visible",
       mt: "0.5rem",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-120%, -85%)",
-      "@media (max-width: 768px)": {
-        mt: 0,
-        top: "10%",
-        left: "35%",
-        transform: "translate(-50%, -120%)",
-      },
-      "@media (max-width: 600px)": {
-        width: "450px",
-      },
-      "@media (max-width: 481px)": {
-        width: "350px",
-        top: "100%",
-        left: "70%",
-        transform: "translate(-100%, -100%)",
-      },
-      "@media (max-width: 375px)": {
-        width: "330px",
-        top: "40%",
-        left: "-15%",
-        transform: "translate(-50%, -117%)",
-      },
     },
+
     bedroomMenuListStyles: {
       display: "flex",
       flexDirection: "column",
@@ -86,7 +63,7 @@ export const getBubbleStyles = () => {
       "& .MuiSlider-thumb": {
         borderColor: "white",
       },
-      "@media (max-width: 375px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         width: "200px",
       },
     },
@@ -118,62 +95,42 @@ export const getBubbleStyles = () => {
       overflow: "visible",
       mt: "0.5rem",
       justifyContent: "center",
-      "@media (max-width: 1280px)": {
+      [muiTheme.breakpoints.down("xl")]: {
         width: "950px",
       },
-      "@media (max-width: 1024px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         width: "700px",
       },
-      "@media (max-width: 961px)": {
+      [muiTheme.breakpoints.down("md")]: {
         width: "600px",
       },
-      "@media (max-width: 912px)": {
-        width: "600px",
-      },
-      "@media (max-width: 768px)": {
-        top: "50%",
-        right: "50%",
-        transform: "translate(-5%, -51%)",
-        width: "600px",
-      },
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         width: "550px",
       },
-      "@media (max-width: 481px)": {
-        width: "430px",
-        top: "68%",
-        left: "51%",
-        transform: "translate(-50%, -50%)",
-      },
-      "@media (max-width: 400px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         width: "435px",
       },
-      "@media (max-width: 375px)": {
-        width: "370px",
-        top: "62%",
-        left: "49%",
-        transform: "translate(-50%, -50%)",
-      },
-      "@media (max-width: 360px)": {
-        width: "345px",
-      },
-      "@media (max-width: 320px)": {
+      [muiTheme.breakpoints.down("xs")]: {
         width: "260px",
       },
     },
+
     priceMenuListStyles: {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "space-between",
     },
+
     priceSearchBoxStyles: {
       pr: 2,
       pl: 2,
     },
+
     priceSelectStackStyles: {
       alignItems: "center",
     },
+
     priceSelectStyles: {
       width: "170px",
       "& .MuiInputLabel-root": {
@@ -204,19 +161,21 @@ export const getBubbleStyles = () => {
           backgroundColor: muiTheme.palette.grey[900],
         },
       },
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         width: "150px",
       },
-      "@media (max-width: 375px)": {
+      [muiTheme.breakpoints.down("xs")]: {
         width: "130px",
       },
     },
+
     priceButtonStackStyles: {
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
       mt: "1rem",
     },
+
     priceMenuPaperStyles: {
       maxHeight: "400px",
       overflow: "auto",
@@ -255,49 +214,26 @@ export const getBubbleStyles = () => {
       overflow: "visible",
       mt: "0.5rem",
       justifyContent: "center",
-      "@media (max-width: 1280px)": {
+      [muiTheme.breakpoints.down("xl")]: {
         width: "950px",
       },
-      "@media (max-width: 1024px)": {
+      [muiTheme.breakpoints.down("lg")]: {
         width: "700px",
       },
-      "@media (max-width: 961px)": {
+      [muiTheme.breakpoints.down("md")]: {
         width: "600px",
       },
-      "@media (max-width: 912px)": {
-        width: "600px",
-      },
-      "@media (max-width: 768px)": {
-        top: "50%",
-        right: "50%",
-        transform: "translate(-5%, -51%)",
-        width: "600px",
-      },
-      "@media (max-width: 600px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         width: "550px",
       },
-      "@media (max-width: 481px)": {
-        width: "430px",
-        top: "68%",
-        left: "51%",
-        transform: "translate(-50%, -50%)",
-      },
-      "@media (max-width: 400px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         width: "435px",
       },
-      "@media (max-width: 375px)": {
-        width: "370px",
-        top: "62%",
-        left: "49%",
-        transform: "translate(-50%, -50%)",
-      },
-      "@media (max-width: 360px)": {
-        width: "345px",
-      },
-      "@media (max-width: 320px)": {
+      [muiTheme.breakpoints.down("xs")]: {
         width: "260px",
       },
     },
+
     sizeMenuListStyles: {
       display: "flex",
       flexDirection: "column",
@@ -341,13 +277,14 @@ export const getBubbleStyles = () => {
           backgroundColor: muiTheme.palette.grey[900],
         },
       },
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         width: "150px",
       },
-      "@media (max-width: 375px)": {
+      [muiTheme.breakpoints.down("xs")]: {
         width: "130px",
       },
     },
+
     sizeButtonStackStyles: {
       display: "flex",
       flexDirection: "row",

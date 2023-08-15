@@ -68,7 +68,7 @@ const BedroomBubble: React.FC<BedroomBubbleProps> = ({
           anchorEl={buttonRef.current}
           sx={styles.bedroomMenuStyles}
           disableScrollLock
-          disablePortal
+          disablePortal={false}
           anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
           transformOrigin={{ vertical: "top", horizontal: "left" }}
         >
