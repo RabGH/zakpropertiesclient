@@ -173,9 +173,9 @@ export const getHomePageStyles = () => {
     zakTitle: {
       fontSize: "5rem",
       fontWeight: "bold",
-      mb: "2rem",
+      mb: "1rem",
       color: "white",
-      textAlign: "left",
+      textAlign: "center",
       transition: "color 0.3s ease-in-out",
       ":hover": {
         color: muiTheme.palette.error.light,
@@ -200,9 +200,9 @@ export const getHomePageStyles = () => {
     zakSubTitle: {
       fontSize: "1.3rem",
       fontWeight: "400",
-      mt: "3rem",
+      // mt: "3rem",
       color: "white",
-      textAlign: "left",
+      textAlign: "center",
       [muiTheme.breakpoints.down("md")]: {
         fontSize: "1.1rem",
       },

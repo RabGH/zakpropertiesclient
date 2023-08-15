@@ -86,26 +86,20 @@ function SearchBar(props: SearchBarProps) {
     },
     zIndex: 5,
 
-    "@media (max-width: 1024px)": {
+    [muiTheme.breakpoints.down("lg")]: {
       width: "470px",
     },
-    "@media (max-width: 600px)": {
+    [muiTheme.breakpoints.down("md")]: {
       width: "370px",
     },
-    "@media (max-width: 400px)": {
-      width: "300px",
-    },
-    "@media (max-width: 375px)": {
-      width: "300px",
-    },
-    "@media (max-width: 360px)": {
+    [muiTheme.breakpoints.down("smallphones")]: {
       width: "300px",
     },
   };
 
   const searchBarWrapper = {
     position: "absolute",
-    top: currentSlide === 0 ? "100%" : "105%",
+    top: currentSlide === 0 ? "100%" : "100%",
     left: "0",
     right: "0",
     zIndex: "9999",
@@ -153,10 +147,10 @@ function SearchBar(props: SearchBarProps) {
       boxShadow: "none",
       textDecoration: "none",
     },
-    "@media (max-width: 375px)": {
+    [muiTheme.breakpoints.down("sm")]: {
       fontSize: "1.3rem",
     },
-    "@media (max-width: 360px)": {
+    [muiTheme.breakpoints.down("xs")]: {
       mb: "0.7rem",
       fontSize: "1.2rem",
     },
@@ -177,10 +171,10 @@ function SearchBar(props: SearchBarProps) {
       boxShadow: "none",
       textDecoration: "none",
     },
-    "@media (max-width: 375px)": {
+    [muiTheme.breakpoints.down("sm")]: {
       fontSize: "1.3rem",
     },
-    "@media (max-width: 360px)": {
+    [muiTheme.breakpoints.down("xs")]: {
       mb: "0.7rem",
       fontSize: "1.2rem",
     },
