@@ -8,7 +8,7 @@ export const getPropertyPageStyles = () => {
       display: "grid",
       gridTemplateColumns: "2fr 1fr",
       m: "0 auto",
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         gridTemplateColumns: "1fr",
       },
     },
@@ -19,7 +19,7 @@ export const getPropertyPageStyles = () => {
       mt: "0.5rem",
       mr: 3,
       ml: 3,
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         mr: 0,
         ml: 0,
       },
@@ -29,7 +29,7 @@ export const getPropertyPageStyles = () => {
       width: "100%",
       mt: "3rem",
       mb: "3rem",
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         mt: "2rem",
         mb: "2rem",
       },
@@ -45,7 +45,7 @@ export const getPropertyPageStyles = () => {
     titleStyle: {
       mr: 1,
       ml: 3,
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         mr: 0,
         ml: 0,
       },
@@ -54,7 +54,7 @@ export const getPropertyPageStyles = () => {
     descriptionStyles: {
       mr: 3,
       ml: 3,
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         mr: 0,
         ml: 0,
       },
@@ -63,7 +63,7 @@ export const getPropertyPageStyles = () => {
     mapSlug: {
       mr: 3,
       ml: 3,
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         mr: 0,
         ml: 0,
       },
@@ -75,11 +75,11 @@ export const getPropertyPageStyles = () => {
       alignItems: "flex-start",
       p: "5%",
       maxWidth: "80%",
-      "@media (max-width: 640px)": {
+      [muiTheme.breakpoints.down("sm")]: {
         p: "1%",
         mt: "2rem",
       },
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         p: "0%",
         mt: "2rem",
         ml: "1rem",
@@ -89,7 +89,7 @@ export const getPropertyPageStyles = () => {
     paymentPlanPos: {
       mr: 3,
       ml: 3,
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         mr: 0,
         ml: 0,
       },
@@ -97,7 +97,7 @@ export const getPropertyPageStyles = () => {
     featuresSlugPos: {
       mr: 3,
       ml: 3,
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         mr: 0,
         ml: 0,
       },
