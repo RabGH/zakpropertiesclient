@@ -1,3 +1,6 @@
+import { useTheme } from "@mui/material";
+const muiTheme = useTheme();
+
 export const mainStyles = {
   display: "flex",
   flexWrap: "wrap",
@@ -23,7 +26,7 @@ export const mainTitle = {
   display: "flex",
   alignItems: "flex-start",
   justifyContent: "left",
-  "@media (max-width: 481px)": {
+  [muiTheme.breakpoints.down("smallphones")]: {
     mr: "3rem",
   },
 };
