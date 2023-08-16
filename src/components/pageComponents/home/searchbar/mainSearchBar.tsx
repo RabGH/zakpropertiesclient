@@ -3,7 +3,7 @@ import { Autocomplete, TextField, Box, useTheme, Button } from "@mui/material";
 import { Property, Project } from "@lib/types";
 import { useRouter } from "next/router";
 import Link from "next/link";
-
+import { getSearchbarStyles } from "./searchbarStyles";
 
 interface SearchBarProps {
   properties: Property[];
@@ -62,41 +62,7 @@ function SearchBar(props: SearchBarProps) {
   };
 
   const muiTheme = useTheme();
-
-  const autoSearchStyles = {
-    width: "600px",
-    flexGrow: 1,
-    "& .MuiInputBase-input": {
-      color: "black",
-    },
-    "& .MuiInputLabel-root": {
-      color: "black",
-    },
-    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "rgba(30, 59, 114, 1)",
-      borderWidth: "0px",
-    },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "white",
-    },
-    "& .MuiOutlinedInput-root": {
-      backgroundColor: "rgba(255, 255, 255, 0.7)",
-    },
-    "& .MuiInputLabel-root.Mui-focused": {
-      color: "black",
-    },
-    zIndex: 5,
-
-    [muiTheme.breakpoints.down("lg")]: {
-      width: "470px",
-    },
-    [muiTheme.breakpoints.down("md")]: {
-      width: "370px",
-    },
-    [muiTheme.breakpoints.down("smallphones")]: {
-      width: "300px",
-    },
-  };
+  const styles = getSearchbarStyles();
 
   const searchBarWrapper = {
     position: "absolute",
@@ -125,99 +91,30 @@ function SearchBar(props: SearchBarProps) {
     // },
   };
 
-  const mainBox = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  };
-
-  const autoTextField = {};
-
-  const propertiesButtonStyles = {
-    backgroundColor: "transparent",
-    boxShadow: "none",
-    color: "white",
-    textDecoration: "underline",
-    fontWeight: "bold",
-    textTransform: "capitalize",
-    fontSize: "22px",
-    margin: "0 0px",
-    "&:hover": {
-      color: muiTheme.palette.error.light,
-      backgroundColor: "transparent",
-      boxShadow: "none",
-      textDecoration: "none",
-    },
-    [muiTheme.breakpoints.down("sm")]: {
-      fontSize: "1.3rem",
-    },
-    [muiTheme.breakpoints.down("xs")]: {
-      mb: "0.7rem",
-      fontSize: "1.2rem",
-    },
-  };
-
-  const projectButtonStyles = {
-    backgroundColor: "transparent",
-    boxShadow: "none",
-    color: "white",
-    textDecoration: "underline",
-    fontWeight: "bold",
-    textTransform: "capitalize",
-    fontSize: "22px",
-    margin: "0 0px",
-    "&:hover": {
-      color: muiTheme.palette.error.light,
-      backgroundColor: "transparent",
-      boxShadow: "none",
-      textDecoration: "none",
-    },
-    [muiTheme.breakpoints.down("sm")]: {
-      fontSize: "1.3rem",
-    },
-    [muiTheme.breakpoints.down("xs")]: {
-      mb: "0.7rem",
-      fontSize: "1.2rem",
-    },
-  };
-
-  const mainSearchContainer = {
-    display: "flex",
-  };
-
-  const mainButtonContainer = {
-    display: "flex",
-    flexDirection: "row",
-    spaceBetween: "1rem",
-    alignItems: "center",
-    justifyContent: "center",
-    mb: "1rem",
-  };
-
   return (
     <Box sx={searchBarWrapper}>
-      <Box sx={mainBox}>
-        <Box sx={mainButtonContainer}>
+      <Box sx={styles.mainBox}>
+        <Box sx={styles.mainButtonContainer}>
           <Link href="/buyProperties" passHref>
             <Button
               onClick={handlePropertiesClick}
-              sx={propertiesButtonStyles}
+              sx={styles.propertiesButtonStyles}
               variant="contained"
             >
-              {/* {getButtonLabel(["Properties"])} */}Buy Properties
+              Buy Properties
             </Button>
           </Link>
           <Link href="/viewProjects" passHref>
             <Button
               onClick={handleProjectsClick}
-              sx={projectButtonStyles}
+              sx={styles.projectButtonStyles}
               variant="contained"
             >
-              {/* {getButtonLabel(["Projects"])} */}View Projects
+              View Projects
             </Button>
           </Link>
         </Box>
-        <Box sx={mainSearchContainer}>
+        <Box sx={styles.mainSearchContainer}>
           <Autocomplete
             disablePortal
             options={
@@ -227,13 +124,13 @@ function SearchBar(props: SearchBarProps) {
                 ? propertyOptions
                 : projectOptions
             }
-            sx={autoSearchStyles}
+            sx={styles.autoSearchStyles}
             renderInput={(params) => (
               <TextField
                 {...params}
                 label="Search"
                 variant="outlined"
-                sx={autoTextField}
+                sx={styles.autoTextField}
               />
             )}
             onInputChange={handleSearch}
