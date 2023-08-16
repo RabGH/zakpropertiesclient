@@ -28,10 +28,10 @@ function AllProjects({ projects }: AllProjectsProps) {
         Featured Projects
       </Typography>
       <Typography variant="body1" sx={styles.introText}>
-        Welcome to our developments page, where you can find the latest and most
+        Welcome to our projects page, where you can find the latest and most
         luxurious real estate projects in Dubai UAE. Whether you are looking for
         apartments, villas, townhouses, or off-plan properties, we have
-        something for everyone. Browse through our featured developments and
+        something for everyone. Browse through our featured projects and
         discover their unique features, amenities, and locations. You can also
         contact us for more information and inquiries about any of the projects.
       </Typography>
@@ -54,7 +54,7 @@ function AllProjects({ projects }: AllProjectsProps) {
       )}
 
       <Typography variant="h6" sx={{ mt: "1rem" }}>
-        Contact us for development inquiries and off-plan development projects
+        Contact us for project inquiries and off-plan projects
       </Typography>
       <Link href="/contactUs">
         <Button variant="contained" size="large" sx={styles.contactButton}>

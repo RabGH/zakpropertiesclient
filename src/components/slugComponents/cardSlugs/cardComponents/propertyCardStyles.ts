@@ -76,7 +76,7 @@ export const getPropertyCardStyles = () => {
       },
     },
 
-    developmentFeaturedTitlePos: {
+    projectFeaturedTitlePos: {
       p: "2rem",
       fontSize: "1.5rem",
       [muiTheme.breakpoints.down("xl")]: {

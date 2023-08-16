@@ -97,11 +97,8 @@ function Home({ properties, projects }: HomeProps) {
           </Box>
 
           <Divider sx={styles.dividerStyles} />
-          <Typography
-            variant="h3"
-            sx={propCardStyles.developmentFeaturedTitlePos}
-          >
-            Featured Developments
+          <Typography variant="h3" sx={propCardStyles.projectFeaturedTitlePos}>
+            Featured Projects
           </Typography>
           <Box sx={projCardStyles.homeProjectCardsPos}>
             <ProjectsCardBodyData projects={projects.slice(0, 3)} />
