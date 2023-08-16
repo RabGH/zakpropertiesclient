@@ -52,18 +52,29 @@ export const getHomePageStyles = () => {
       lineHeight: "1.5",
       textAlign: "center",
       maxWidth: "70ch",
-      mt: "7rem",
+      mt: "14rem",
       [muiTheme.breakpoints.down("xl")]: {},
-      [muiTheme.breakpoints.down("lg")]: {},
-      [muiTheme.breakpoints.down("md")]: {},
+      [muiTheme.breakpoints.down("lg")]: {
+        mt: "6rem",
+      },
+      [muiTheme.breakpoints.down("md")]: {
+        mt: "12rem",
+      },
       [muiTheme.breakpoints.down("sm")]: {
         fontSize: "1.1rem",
+        mt: "6rem",
       },
-      [muiTheme.breakpoints.down("xs")]: {},
+      [muiTheme.breakpoints.down("smallphones")]: {
+        mt: "5rem",
+      },
+      [muiTheme.breakpoints.down("xs")]: {
+        mt: "5rem",
+      },
     },
 
     buyPropertiesButton: {
       mt: "3rem",
+      mb: "1rem",
       maxWidth: "300px",
       width: "100%",
       fontSize: "1rem",
