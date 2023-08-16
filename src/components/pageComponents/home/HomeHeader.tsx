@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Container } from "@mui/material";
-import { Property, Project } from "@lib/types";
+import { Property, Project, Development, Developer } from "@lib/types";
 import SearchBar from "./searchbar/mainSearchBar";
 import MainButtonBar from "./buttonbar/mainButtonBar";
 import HomeImageHeader from "./HomeImageHeader";
@@ -9,6 +9,8 @@ import { getHomePageStyles } from "./homePageStyles";
 interface HomeHeaderProps {
   properties: Property[];
   projects: Project[];
+  developments: Development[];
+  developers: Developer[];
 }
 
 function HomeHeader({ properties, projects }: HomeHeaderProps) {
@@ -32,11 +34,11 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
           <Box sx={styles.searchBarContainer}>
             <Box sx={styles.searchBarBox}>
               {/* <SearchBar
-                properties={properties}
-                projects={projects}
-                handleToggle={handleToggle}
-                currentSlide={currentSlide}
-              /> */}
+properties={properties}
+projects={projects}
+handleToggle={handleToggle}
+currentSlide={currentSlide}
+/> */}
               <MainButtonBar properties={properties} projects={projects} />
             </Box>
           </Box>
