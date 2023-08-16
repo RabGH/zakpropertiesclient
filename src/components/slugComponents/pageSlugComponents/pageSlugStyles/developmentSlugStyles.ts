@@ -16,7 +16,7 @@ export const getDevelopmentPageStyles = () => {
       width: "90%",
       mt: "0.5rem",
       mb: "0.5rem",
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         mt: "1rem",
         mb: "1rem",
       },

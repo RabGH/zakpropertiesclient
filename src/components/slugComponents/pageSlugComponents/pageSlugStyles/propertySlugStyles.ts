@@ -106,7 +106,7 @@ export const getPropertyPageStyles = () => {
     lifeBoxStyles: {
       mr: 3,
       ml: 3,
-      "@media (max-width: 481px)": {
+      [muiTheme.breakpoints.down("smallphones")]: {
         mr: 0,
         ml: 0,
       },
