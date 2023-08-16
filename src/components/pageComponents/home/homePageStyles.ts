@@ -236,7 +236,7 @@ export const getHomePageStyles = () => {
         color: muiTheme.palette.error.light,
       },
       [muiTheme.breakpoints.down("lg")]: {
-        fontSize: "3.5rem",
+        fontSize: "2.5rem",
       },
       [muiTheme.breakpoints.down("md")]: {
         fontSize: "2.1rem",
