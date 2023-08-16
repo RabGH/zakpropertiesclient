@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Container } from "@mui/material";
 import { Property, Project } from "@lib/types";
 import SearchBar from "./searchbar/mainSearchBar";
+import MainButtonBar from "./buttonbar/mainButtonBar";
 import HomeImageHeader from "./HomeImageHeader";
 import { getHomePageStyles } from "./homePageStyles";
 
@@ -36,6 +37,7 @@ function HomeHeader({ properties, projects }: HomeHeaderProps) {
                 handleToggle={handleToggle}
                 currentSlide={currentSlide}
               /> */}
+              <MainButtonBar properties={properties} projects={projects} />
             </Box>
           </Box>
         </Box>
