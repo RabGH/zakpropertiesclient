@@ -4,6 +4,7 @@ import { Property, Project } from "@lib/types";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+
 interface SearchBarProps {
   properties: Property[];
   projects: Project[];
