@@ -7,7 +7,7 @@ import { sanityClient } from "@lib/sanity";
 import { previewClient } from "@lib/client";
 import Link from "next/link";
 import Head from "next/head";
-import { getAllProjectStyles } from "@/components/pageComponents/developments/allProjectStyles";
+import { getAllProjectStyles } from "@/components/pageComponents/projects/allProjectStyles";
 import ProjectAllCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectAllCards";
 
 interface AllProjectsProps {
