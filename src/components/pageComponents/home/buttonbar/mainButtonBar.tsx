@@ -1,5 +1,5 @@
-import { Property, Project } from "@lib/types";
-import { Box, useTheme, Button } from "@mui/material";
+import { Property, Project, Development, Developer } from "@lib/types";
+import { Box, useTheme, Button, Grid } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 import { getButtonbarStyles } from "./buttonbarStyles";
@@ -7,6 +7,8 @@ import { getButtonbarStyles } from "./buttonbarStyles";
 interface mainButtonBarProps {
   properties: Property[];
   projects: Project[];
+  developments: Development[];
+  developers: Developer[];
 }
 
 function MainButtonBar(props: mainButtonBarProps) {
@@ -14,30 +16,36 @@ function MainButtonBar(props: mainButtonBarProps) {
 
   return (
     <Box sx={styles.buttonBarWrapper}>
-      <Box sx={styles.mainBox}>
-        <Box sx={styles.mainButtonContainer}>
-          <Link href="/viewDevelopers" passHref>
-            <Button sx={styles.developerButtonStyles} variant="outlined">
+      <Grid container spacing={2} sx={styles.mainGridBox}>
+        <Link href="/viewDevelopers" passHref>
+          <Grid item xs={6} sm={4} md={3} sx={styles.developerButtonStyles}>
+            <Button variant="outlined">
               {/* {getButtonLabel(["Developers"])} */}Developers
             </Button>
-          </Link>
-          <Link href="/viewDevelopments" passHref>
-            <Button sx={styles.developerButtonStyles} variant="outlined">
+          </Grid>
+        </Link>
+        <Link href="/viewDevelopments" passHref>
+          <Grid item xs={6} sm={4} md={3} sx={styles.developmentButtonStyles}>
+            <Button variant="outlined">
               {/* {getButtonLabel(["Developments"])} */}Developments
             </Button>
-          </Link>
-          <Link href="/viewProjects" passHref>
-            <Button sx={styles.projectButtonStyles} variant="outlined">
+          </Grid>
+        </Link>
+        <Link href="/viewProjects" passHref>
+          <Grid item xs={6} sm={4} md={3} sx={styles.projectButtonStyles}>
+            <Button variant="outlined">
               {/* {getButtonLabel(["Projects"])} */}Projects
             </Button>
-          </Link>
-          <Link href="/buyProperties" passHref>
-            <Button sx={styles.propertiesButtonStyles} variant="outlined">
+          </Grid>
+        </Link>
+        <Link href="/buyProperties" passHref>
+          <Grid item xs={6} sm={4} md={3} sx={styles.propertiesButtonStyles}>
+            <Button variant="outlined">
               {/* {getButtonLabel(["Properties"])} */}Properties
             </Button>
-          </Link>
-        </Box>
-      </Box>
+          </Grid>
+        </Link>
+      </Grid>
     </Box>
   );
 }

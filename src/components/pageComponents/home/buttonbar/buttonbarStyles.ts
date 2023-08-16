@@ -12,15 +12,13 @@ export const getButtonbarStyles = () => {
       flex: 1,
     },
 
-    mainBox: {
+    mainGridBox: {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
     },
 
     mainButtonContainer: {
-      display: "flex",
-      flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",
       gap: "3rem",
