@@ -9,8 +9,6 @@ import { getHomePageStyles } from "./homePageStyles";
 interface HomeHeaderProps {
   properties: Property[];
   projects: Project[];
-  developments: Development[];
-  developers: Developer[];
 }
 
 function HomeHeader({ properties, projects }: HomeHeaderProps) {
