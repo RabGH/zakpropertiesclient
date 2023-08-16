@@ -1,44 +1,81 @@
-import { Container, Box, Typography, Button } from "@mui/material";
-import { useTheme } from "@mui/material";
+import React from "react";
+import { Typography, Box, Grid, Button } from "@mui/material";
+import Divider from "@mui/material/Divider";
+import { Developer } from "@lib/types";
+import { GetStaticProps } from "next";
+import { sanityClient } from "@lib/sanity";
+import { previewClient } from "@lib/client";
+import Link from "next/link";
 import Head from "next/head";
+import { getAllDeveloperStyles } from "@/components/pageComponents/developers/allDeveloperStyles";
+// import ProjectAllCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectAllCards";
 
-const Styles = {
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100vh",
-  },
-  title: {
-    marginBottom: "1rem",
-  },
-  buttons: {
-    display: "flex",
-    gap: "1rem",
-  },
-};
+interface AllDeveloperProps {
+  developers?: Developer[];
+}
 
-function Error() {
+function AllDevelopers({ developers }: AllDeveloperProps) {
+  const styles = getAllDeveloperStyles();
+
   return (
-    <Container sx={Styles.root}>
+    <Box sx={styles.mainContainer}>
       <Head>
-        <title>ZakProperties Error Page</title>
-        <meta name="description" content="ZakProperties Error Page" />
+        <title>ZakProperties Developer Page</title>
+        <meta name="description" content="ZakProperties Developer Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Typography variant="h4" sx={Styles.title}>
-        Error
+      <Typography variant="h3" component="h1" sx={styles.titleStyles}>
+        Featured Developers
       </Typography>
-      <Typography variant="body1">Error, return to home page.</Typography>
-      <Box sx={Styles.buttons}>
-        <Button onClick={() => (window.location.href = "/")}>Home</Button>
-        <Button onClick={() => (window.location.href = "/contactUs")}>
-          Contact Us
+      <Typography variant="body1" sx={styles.introText}>
+        Welcome to our developers page!
+      </Typography>
+
+      {developers && (
+        <Box sx={styles.main}>
+          <Box sx={styles.mainBox}>
+            <Box>
+              <Grid container spacing={2} sx={{ mt: "2rem" }}>
+                {developers?.map((developers) => (
+                  <Grid item key={developers._id} xs={12} sm={6} md={4} lg={3}>
+                    {/* <ProjectAllCards project={projects} /> */}
+                    <Divider sx={styles.dividerStyles} />
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          </Box>
+        </Box>
+      )}
+
+      <Typography variant="h6" sx={{ mt: "1rem" }}>
+        Contact us for developer inquiries
+      </Typography>
+      <Link href="/contactUs">
+        <Button variant="contained" size="large" sx={styles.contactButton}>
+          Learn More
         </Button>
-      </Box>
-    </Container>
+      </Link>
+    </Box>
   );
 }
 
-export default Error;
+export const getStaticProps: GetStaticProps = async ({
+  preview = false,
+  previewData,
+}) => {
+  const developerQuery = '*[_type == "developer"]';
+  const client = preview ? previewClient : sanityClient;
+  const params = preview ? previewData : {};
+  const developers = await client.fetch(developerQuery, params);
+
+  return {
+    props: {
+      developers,
+      preview,
+    },
+    revalidate: 60,
+  };
+};
+
+export default AllDevelopers;
