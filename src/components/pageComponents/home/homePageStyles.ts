@@ -72,7 +72,7 @@ export const getHomePageStyles = () => {
     dividerStyles: {
       mt: "1rem",
       mb: "1rem",
-      width: "99%",
+      width: "100%",
       borderWidth: 1,
       borderColor: "rgba(255, 255, 255, 0.20)",
       "&::before, &::after": {
@@ -102,7 +102,11 @@ export const getHomePageStyles = () => {
     //! Inside of projectCardStyles.ts and projectCards folder
 
     //* index.tsx map section
-    mapCardPos: {},
+    mapCardPos: {
+      [muiTheme.breakpoints.down("sm")]: {
+        display: "none",
+      },
+    },
 
     mapTitleStyles: {
       paddingBottom: "1rem",

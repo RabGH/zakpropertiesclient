@@ -103,15 +103,14 @@ function Home({ properties, projects }: HomeProps) {
           <Box sx={projCardStyles.homeProjectCardsPos}>
             <ProjectsCardBodyData projects={projects.slice(0, 3)} />
           </Box>
-
-          <Divider sx={styles.dividerStyles}>
-            <Typography variant="h3" sx={styles.mapTitleStyles}>
-              Properties and Projects
-            </Typography>
-          </Divider>
         </Container>
       </Box>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box sx={styles.mapCardPos}>
+        <Divider sx={styles.dividerStyles}>
+          <Typography variant="h3" sx={styles.mapTitleStyles}>
+            Properties and Projects
+          </Typography>
+        </Divider>
         <DashBoardMap
           properties={properties}
           projects={projects}
