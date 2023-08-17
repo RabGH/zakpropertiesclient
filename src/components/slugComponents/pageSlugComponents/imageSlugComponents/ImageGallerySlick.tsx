@@ -13,7 +13,7 @@ interface ImageCarouselProps {
   mainImage: string;
   alt: string;
 }
-
+// add link to open the image user presses and opens in view all photos
 const ImageCarousel = ({ images = [], alt, mainImage }: ImageCarouselProps) => {
   const muiTheme = useTheme();
   const style = getImageCarouselStyles();
