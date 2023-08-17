@@ -17,6 +17,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   const { pathname } = router;
 
+  const isDevelopersPage = pathname.startsWith("/developer");
+  const isDevelopmentsPage = pathname.startsWith("/development");
   const isProjectsPage = pathname.startsWith("/project");
   const isPropertiesPage = pathname.startsWith("/property");
   const isBuyPropertiesPage = pathname.startsWith("/buyProperties");
@@ -42,7 +44,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <>
             <ThemeProvider
               theme={
-                isProjectsPage || isPropertiesPage || isBuyPropertiesPage
+                isProjectsPage ||
+                isPropertiesPage ||
+                isBuyPropertiesPage ||
+                isDevelopersPage ||
+                isDevelopmentsPage
                   ? slugTheme
                   : theme
               }
