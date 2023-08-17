@@ -8,7 +8,7 @@ interface mainButtonBarProps {
   properties: Property[];
   projects: Project[];
 }
-
+// make all the boxes the same size
 function MainButtonBar(props: mainButtonBarProps) {
   const styles = getButtonbarStyles();
 
