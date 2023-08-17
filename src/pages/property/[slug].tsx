@@ -39,7 +39,6 @@ const Property = ({
   propertyAreaTypes,
   propertyImages,
   propertyAmenities,
-  location,
   propertyOffPlan,
   address,
   specificAddress,
@@ -89,8 +88,8 @@ const Property = ({
             <Box sx={styles.mapSlug}>
               <MapSlug
                 title={title}
-                lat={location?.lat ?? 0}
-                lng={location?.lng ?? 0}
+                lat={address?.location?.lat ?? 0}
+                lng={address?.location?.lng ?? 0}
                 address={address}
                 specificAddress={specificAddress ?? ""}
               />
@@ -157,13 +156,13 @@ export async function getStaticProps(context: PageContext) {
     _id,
     title,
     createdAt,
-    location->{
-      lat,
-      lng,
-    },
     address->{
       street,
       city,
+      location->{
+        lat,
+        lng,
+      },
     },
     specificAddress,
     propertyAreaTypes[],
@@ -216,6 +215,10 @@ export async function getStaticProps(context: PageContext) {
       address->{
         street,
         city,
+        location->{
+          lat,
+          lng,
+        },
       },    
     }`);
     return {
@@ -236,7 +239,7 @@ export async function getStaticProps(context: PageContext) {
         propertyAreaTypes: property.propertyAreaTypes ?? [],
         propertyAmenities: property.propertyAmenities ?? [],
         propertyOffPlan: property.propertyOffPlan ?? null,
-        address: property.address ?? null,
+        address: property.address ?? (null || []),
         specificAddress: property.specificAddress ?? null,
         paymentPlan: property.paymentPlan ?? null,
         projectId: property.projectId ?? null,

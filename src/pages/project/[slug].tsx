@@ -39,7 +39,6 @@ const Projects = ({
   title,
   description,
   createdAt,
-  location,
   projectType,
   projectPropertyTypes,
   mainProjectImage,
@@ -171,8 +170,8 @@ const Projects = ({
         <Box sx={styles.projectLocationPos}>
           <MapSlug
             title={title}
-            lat={location?.lat || 0}
-            lng={location?.lng || 0}
+            lat={address?.location?.lat || 0}
+            lng={address?.location?.lng || 0}
             address={address}
             specificAddress={specificAddress}
           />
@@ -227,7 +226,6 @@ export async function getStaticProps(context: PageContext) {
     title,
     description,
     createdAt,
-    location,
     projectPropertyTypes[],
     mainProjectImage,
     projectImages,
@@ -243,7 +241,11 @@ export async function getStaticProps(context: PageContext) {
     address->{
       street,
       city,
-    },
+      location->{
+        lat,
+        lng,
+      },
+    }
     specificAddress,
     projectBuiltUpArea,
     projectType,
@@ -270,7 +272,11 @@ export async function getStaticProps(context: PageContext) {
       address->{
         street,
         city,
-      },
+        location->{
+          lat,
+          lng,
+        },
+      }
       specificAddress,
       propertyOffPlan->{
         offplan,

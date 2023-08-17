@@ -16,10 +16,6 @@ export interface Development {
   title: string;
   description: string;
   createdAt?: Date;
-  location?: {
-    lat?: number;
-    lng?: number;
-  };
   developmentPropertyTypes: string[];
   mainDevelopmentImage: string;
   developmentImages: string[];
@@ -49,10 +45,6 @@ export interface Project {
   title: string;
   description: string;
   createdAt?: Date;
-  location?: {
-    lat?: number;
-    lng?: number;
-  };
   projectPropertyTypes: string[];
   mainProjectImage: string;
   projectImages: string[];
@@ -91,10 +83,6 @@ export interface Property {
   _id: string;
   title: string;
   createdAt?: Date;
-  location?: {
-    lat?: number;
-    lng?: number;
-  };
   address: Address;
   specificAddress?: string;
   propertyAreaTypes: string[];
@@ -146,6 +134,10 @@ export interface Image {
 export interface Address {
   street: string;
   city: string;
+  location?: {
+    lat?: number;
+    lng?: number;
+  };
 }
 
 export interface PageContext {

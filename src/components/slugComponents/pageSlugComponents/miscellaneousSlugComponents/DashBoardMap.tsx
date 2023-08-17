@@ -48,7 +48,10 @@ const DashBoardMap: React.FC<DashBoardMapProps> = ({
         {[...properties, ...projects].map((item) => (
           <Marker
             key={item._id}
-            position={[item.location?.lat ?? 0, item.location?.lng ?? 0]}
+            position={[
+              item.address?.location?.lat ?? 0,
+              item.address?.location?.lng ?? 0,
+            ]}
           >
             <Popup>{item.title}</Popup>
           </Marker>

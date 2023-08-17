@@ -53,6 +53,7 @@ const Developers = ({
             alt={name}
           />
         </Box>
+        
       </Box>
     </>
   );

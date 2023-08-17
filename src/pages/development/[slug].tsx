@@ -27,7 +27,6 @@ const Developments = ({
   title,
   description,
   createdAt,
-  location,
   developmentPropertyTypes,
   mainDevelopmentImage,
   developmentImages,
@@ -79,17 +78,20 @@ export async function getStaticProps(context: PageContext) {
     title,
     description,
     createdAt,
-    location->{
-        lat,
-        lng,
-    },
     developmentPropertyTypes[],
     mainDevelopmentImage,
     developmentImages[],
     developmentDeveloper,
     developmentProjects[],
     developmentAveragePrice[],
-    addresses[],
+    addresses[]->{
+    street,
+      city,
+      location->{
+        lat,
+        lng,
+      },
+    },
     developmentBuildUpArea[],
     bulletPoints[],
     developmentAmenities->{
