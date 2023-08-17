@@ -30,7 +30,7 @@ export const getButtonbarStyles = () => {
       color: "white",
       // fontWeight: "bold",
       textTransform: "capitalize",
-      fontSize: { xs: "18px", sm: "20px", md: "22px" },
+      fontSize: { xs: "16px", sm: "18px", md: "20px" },
       m: "1rem",
       "&:hover": {
         color: muiTheme.palette.error.light,
