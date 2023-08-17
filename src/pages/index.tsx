@@ -127,9 +127,9 @@ export const getStaticProps: GetStaticProps = async ({
   previewData,
 }) => {
   const propertyQuery =
-    '*[_type == "property"]{..., location,  address->{street,city},}';
+    '*[_type == "property"]{...,address->{street,city,location->{lat,lng}},}';
   const projectQuery =
-    '*[_type == "project"]{..., location, address->{street,city},}';
+    '*[_type == "project"]{...,address->{street,city,location->{lat,lng}},}';
   const params = preview ? previewData : {};
   const client = preview ? previewClient : sanityClient;
   const [properties, projects] = await Promise.all([
