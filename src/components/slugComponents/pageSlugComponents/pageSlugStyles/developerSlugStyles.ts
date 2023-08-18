@@ -68,17 +68,24 @@ export const getDeveloperPageStyles = () => {
         pr: "1%",
       },
     },
+
     logoBox: {
-      [muiTheme.breakpoints.down("smallphones")]: {
+      [muiTheme.breakpoints.down("md")]: {
         display: "none",
       },
     },
+
     nameStyle: {
       mb: "1rem",
     },
     bodyContent: {},
     descriptionStyle: {
       fontSize: "1.2rem",
+      [muiTheme.breakpoints.down("md")]: {
+        fontSize: "1rem",
+        pl: "0.5rem",
+        pr: "0.5rem",
+      },
     },
     websiteLinkStyle: {},
     mainProjectBox: {},
