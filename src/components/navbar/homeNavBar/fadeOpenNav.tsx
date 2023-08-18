@@ -57,6 +57,14 @@ export default function OpenFadeNav() {
         variant="text"
         color={trigger ? "inherit" : "primary"}
         sx={fadeButtonStyles}
+        href="/viewDevelopers"
+      >
+        Developers
+      </Button>
+      <Button
+        variant="text"
+        color={trigger ? "inherit" : "primary"}
+        sx={fadeButtonStyles}
         href="/viewProjects"
       >
         Projects
