@@ -2,11 +2,11 @@ export interface Developer {
   _id: string;
   name: string;
   createdAt?: Date;
-  logo?: string;
+  logo: string;
   mainDeveloperImage: string;
   developerImages: string[];
   description?: string;
-  website?: Url;
+  website?: string;
   developerDevelopments: Development[];
   developerProjects: Project[];
   slug: Slug;
