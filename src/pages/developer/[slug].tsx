@@ -31,6 +31,7 @@ const Developers = ({
   description,
   website,
   developerDevelopments,
+  developerProjects,
 }: DeveloperProps) => {
   const styles = getDeveloperPageStyles();
   const imageStyles = getImageCarouselStyles();
@@ -53,7 +54,6 @@ const Developers = ({
             alt={name}
           />
         </Box>
-        
       </Box>
     </>
   );
@@ -77,6 +77,7 @@ export async function getStaticProps(context: PageContext) {
     description,
     website,
     developerDevelopments[],
+    developerProjects[],
   }`;
 
   const developer = await sanityClient.fetch(query, { slug });
@@ -98,6 +99,7 @@ export async function getStaticProps(context: PageContext) {
         description: developer.description ?? null,
         website: developer.website ?? null,
         developerDevelopments: developer.developerDevelopments ?? [],
+        developerProjects: developer.developerProjects ?? [],
       },
       revalidate: 60,
     };

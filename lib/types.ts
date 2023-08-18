@@ -8,6 +8,7 @@ export interface Developer {
   description?: string;
   website?: Url;
   developerDevelopments: Development[];
+  developerProjects: Project[];
   slug: Slug;
 }
 
