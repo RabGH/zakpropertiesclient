@@ -121,10 +121,10 @@ function HomeImageHeader({
                       Your Path to Luxury Residences. Exquisite Homes, Unmatched
                       Professional Insight.
                     </Typography>
-                    {/* <Typography variant="h5" sx={styles.zakStaticSubTitle}>
+                    {/* <Typography variant="h1" sx={styles.zakStaticSubTitle}>
                       Your Trusted Partner in Real Estate
                     </Typography> */}
-                    {/* <Typography variant="h5" sx={styles.zakStaticSubSubTitle}>
+                    {/* <Typography variant="h1" sx={styles.zakStaticSubSubTitle}>
                       Explore Dubai&apos;s finest properties
                     </Typography> */}
                   </Box>
