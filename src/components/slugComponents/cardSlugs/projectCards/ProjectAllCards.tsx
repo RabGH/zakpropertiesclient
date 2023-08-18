@@ -41,7 +41,7 @@ const ProjectAllCards = ({ project }: ProjectAllCardsProps) => {
             </Box>
           )}
           <Box sx={styles.cardInfoStyles}>
-            <Typography variant="h6" sx={styles.projectTitleCard}>
+            <Typography variant="h5" sx={styles.projectTitleCard}>
               {project.title}
             </Typography>
           </Box>
