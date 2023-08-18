@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
   previewData,
 }) => {
-  const projectQuery = '*[_type == "project"]{..., location}';
+  const projectQuery = '*[_type == "project"]{..., address->{location}}';
   const client = preview ? previewClient : sanityClient;
   const params = preview ? previewData : {};
   const projects = await client.fetch(projectQuery, params);
