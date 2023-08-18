@@ -183,6 +183,7 @@ const Projects = ({
             />
           </Box>
         )}
+        <Divider sx={styles.dividerStyles} />
       </Box>
 
       <Box sx={styles.projectPresentationBoxStyles}>
