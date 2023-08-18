@@ -75,10 +75,10 @@ export const themeOptions: ThemeOptions = {
       margin: "0",
     },
     h5: {
-      fontFamily: "Roboto",
-      fontSize: "1rem",
+      fontFamily: "Lato",
+      fontSize: "1.2rem",
       fontWeight: 400,
-      color: "#000",
+      color: "#fff",
       lineHeight: 1.2,
       margin: "0",
       letterSpacing: "0.1rem",
