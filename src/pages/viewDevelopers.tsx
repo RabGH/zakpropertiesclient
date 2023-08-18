@@ -31,22 +31,19 @@ function AllDevelopers({ developers }: AllDeveloperProps) {
       <Typography variant="body1" sx={styles.introText}>
         Welcome to our developers page!
       </Typography>
-
+      <Divider sx={styles.dividerStyles} />
       {developers && (
-        <Box sx={styles.main}>
-          <Box sx={styles.mainBox}>
-            <Box>
-              <Grid container spacing={1} sx={{ mt: "2rem" }}>
-                {developers?.map((developers) => (
-                  <Grid item key={developers._id} xs={12} sm={6} md={6} lg={6}>
-                    <DeveloperAllCards developer={developers} />
-                  </Grid>
-                ))}
+        <Box sx={styles.mainBox}>
+          <Grid container spacing={1} sx={{ mt: "2rem" }}>
+            {developers?.map((developers) => (
+              <Grid item key={developers._id} xs={12} sm={6} md={6} lg={6}>
+                <DeveloperAllCards developer={developers} />
               </Grid>
-            </Box>
-          </Box>
+            ))}
+          </Grid>
         </Box>
       )}
+      <Divider sx={styles.dividerStyles} />
       <Box sx={styles.contactBox}>
         <Typography variant="h6" sx={{ mt: "1rem" }}>
           Contact us for developer inquiries

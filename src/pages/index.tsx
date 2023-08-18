@@ -18,7 +18,7 @@ import { GetStaticProps } from "next";
 
 import { getHomePageStyles } from "@/components/pageComponents/home/homePageStyles";
 import { getPropertyCardStyles } from "@/components/slugComponents/cardSlugs/cardComponents/propertyCardStyles";
-import { getProjectCardStyles } from "@/components/slugComponents/cardSlugs/cardComponents/projectCardStyles";
+import { getProjectCardStyles } from "@/components/slugComponents/cardSlugs/projectCards/projectCardStyles";
 const DashBoardMap = dynamic(
   () =>
     import(
