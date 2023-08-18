@@ -86,15 +86,11 @@ const Developers = ({
       <Box sx={styles.secondSection}>
         {developerProjects && (
           <Box sx={styles.mainProjectBox}>
-            <Box sx={styles.innerProjectBox}>
-              <Grid container spacing={2} sx={{ mt: "2rem" }}>
-                {developerProjects?.map((projects) => (
-                  <Grid item key={projects._id} xs={12} sm={12} md={12} lg={12}>
-                    <ProjectAllCards project={projects} />
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
+            {developerProjects?.map((projects) => (
+              <Box key={projects._id} sx={{ m: "1rem" }}>
+                <ProjectAllCards project={projects} />
+              </Box>
+            ))}
           </Box>
         )}
 

@@ -88,8 +88,12 @@ export const getDeveloperPageStyles = () => {
       },
     },
     websiteLinkStyle: {},
-    mainProjectBox: {},
-    innerProjectBox: {},
+    mainProjectBox: {
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      
+    },
     contactButton: {
       m: "1rem",
       mb: "2rem",
