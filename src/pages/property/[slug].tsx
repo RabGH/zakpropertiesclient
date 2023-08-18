@@ -85,15 +85,22 @@ const Property = ({
 
             <Divider sx={styles.dividerStyles} />
 
-            <Box sx={styles.mapSlug}>
-              <MapSlug
-                title={title}
-                lat={address?.location?.lat ?? 0}
-                lng={address?.location?.lng ?? 0}
-                address={address}
-                specificAddress={specificAddress ?? ""}
-              />
-            </Box>
+            {address && (
+              <Box sx={styles.mapSlug}>
+                <MapSlug
+                  title={title}
+                  address={{
+                    street: address.street,
+                    city: address.city,
+                    location: {
+                      lat: address.location?.lat ?? 0,
+                      lng: address.location?.lng ?? 0,
+                    },
+                  }}
+                  specificAddress={specificAddress ?? ""}
+                />
+              </Box>
+            )}
 
             <Divider sx={styles.dividerStyles} />
 
@@ -159,10 +166,7 @@ export async function getStaticProps(context: PageContext) {
     address->{
       street,
       city,
-      location->{
-        lat,
-        lng,
-      },
+      location,
     },
     specificAddress,
     propertyAreaTypes[],
@@ -215,10 +219,7 @@ export async function getStaticProps(context: PageContext) {
       address->{
         street,
         city,
-        location->{
-          lat,
-          lng,
-        },
+        location,
       },    
     }`);
     return {
@@ -226,7 +227,6 @@ export async function getStaticProps(context: PageContext) {
         _id: property._id,
         createdAt: property.createdAt ?? null,
         title: property.title,
-        location: property.location,
         propertyType: property.propertyType,
         mainPropertyImage: property.mainPropertyImage ?? null,
         propertyImages: property.propertyImages ?? null,

@@ -7,7 +7,7 @@ import {
   isMultiple,
 } from "@lib/utils";
 import Link from "next/link";
-import { Box, Divider, Typography, Button } from "@mui/material";
+import { Box, Divider, Typography, Button, Container } from "@mui/material";
 import { Development, Developer, PageContext } from "@lib/types";
 import ImageCarousel from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/ImageGallerySlick";
 import ViewAllPhotos from "@/components/slugComponents/pageSlugComponents/imageSlugComponents/viewAllPhotos";
@@ -55,6 +55,7 @@ const Developers = ({
           />
         </Box>
       </Box>
+      <Container></Container>
     </>
   );
 };

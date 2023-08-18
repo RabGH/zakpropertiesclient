@@ -167,15 +167,22 @@ const Projects = ({
           <ProjectAmenities projectAmenities={projectAmenities} />
         </Box>
         <Divider sx={styles.dividerStyles} />
-        <Box sx={styles.projectLocationPos}>
-          <MapSlug
-            title={title}
-            lat={address?.location?.lat || 0}
-            lng={address?.location?.lng || 0}
-            address={address}
-            specificAddress={specificAddress}
-          />
-        </Box>
+        {address && (
+          <Box sx={styles.projectLocationPos}>
+            <MapSlug
+              title={title}
+              address={{
+                street: address.street,
+                city: address.city,
+                location: {
+                  lat: address.location?.lat ?? 0,
+                  lng: address.location?.lng ?? 0,
+                },
+              }}
+              specificAddress={specificAddress ?? ""}
+            />
+          </Box>
+        )}
       </Box>
 
       <Box sx={styles.projectPresentationBoxStyles}>
@@ -241,10 +248,7 @@ export async function getStaticProps(context: PageContext) {
     address->{
       street,
       city,
-      location->{
-        lat,
-        lng,
-      },
+      location,
     }
     specificAddress,
     projectBuiltUpArea,
@@ -272,10 +276,7 @@ export async function getStaticProps(context: PageContext) {
       address->{
         street,
         city,
-        location->{
-          lat,
-          lng,
-        },
+        location,
       }
       specificAddress,
       propertyOffPlan->{
