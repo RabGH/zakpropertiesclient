@@ -28,6 +28,8 @@ const Developers = ({
   developerImages,
   description,
   website,
+  yearEstablished,
+  countryOfOrigin,
   developerDevelopments,
   developerProjects,
 }: DeveloperProps) => {
@@ -76,23 +78,22 @@ const Developers = ({
             {description}, {website}
           </Typography>
         </Box>
-        <Divider sx={styles.dividerStyles} />
+        <Divider sx={styles.dividerStyles}>
+          <Typography variant="h1">Developer Projects</Typography>
+        </Divider>
       </Box>
 
       <Box sx={styles.secondSection}>
         {developerProjects && (
           <Box sx={styles.mainProjectBox}>
             <Box sx={styles.innerProjectBox}>
-              <Box>
-                <Grid container spacing={2} sx={{ mt: "2rem" }}>
-                  {developerProjects?.map((projects) => (
-                    <Grid item key={projects._id} xs={12} sm={6} md={4} lg={3}>
-                      <ProjectAllCards project={projects} />
-                      <Divider sx={styles.dividerStyles} />
-                    </Grid>
-                  ))}
-                </Grid>
-              </Box>
+              <Grid container spacing={2} sx={{ mt: "2rem" }}>
+                {developerProjects?.map((projects) => (
+                  <Grid item key={projects._id} xs={12} sm={12} md={12} lg={12}>
+                    <ProjectAllCards project={projects} />
+                  </Grid>
+                ))}
+              </Grid>
             </Box>
           </Box>
         )}
@@ -127,6 +128,8 @@ export async function getStaticProps(context: PageContext) {
     developerImages[],
     description,
     website,
+    yearEstablished,
+    countryOfOrigin,
     developerDevelopments[],
     developerProjects[]->{
       _id,
@@ -136,6 +139,11 @@ export async function getStaticProps(context: PageContext) {
       bedrooms,
       totalPrice,
       projectPropertyTypes,
+      address->{
+        city,
+        street,
+        location,
+      }
     },
   }`;
 
@@ -157,6 +165,8 @@ export async function getStaticProps(context: PageContext) {
         developerImages: developer.developerImages ?? [],
         description: developer.description ?? null,
         website: developer.website ?? null,
+        yearEstablished: developer.yearEstablished ?? null,
+        countryOfOrigin: developer.countryOfOrigin ?? null,
         developerDevelopments: developer.developerDevelopments ?? [],
         developerProjects: developer.developerProjects ?? [],
       },

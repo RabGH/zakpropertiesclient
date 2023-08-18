@@ -69,7 +69,9 @@ export const getDeveloperPageStyles = () => {
       },
     },
     logoBox: {},
-    nameStyle: {},
+    nameStyle: {
+      mb: "1rem",
+    },
     bodyContent: {},
     descriptionStyle: {
       fontSize: "1.2rem",
