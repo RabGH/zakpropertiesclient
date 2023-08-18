@@ -42,12 +42,12 @@ export const getProjectCardStyles = () => {
       pl: "10rem",
       pr: "10rem",
       [muiTheme.breakpoints.down("xl")]: {
-        pl: "6rem",
-        pr: "6rem",
+        pl: "5rem",
+        pr: "5rem",
       },
       [muiTheme.breakpoints.down("lg")]: {
-        pl: "3rem",
-        pr: "3rem",
+        pl: "2rem",
+        pr: "2rem",
       },
       [muiTheme.breakpoints.down("md")]: {
         pl: "0rem",

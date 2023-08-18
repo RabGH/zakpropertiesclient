@@ -7,25 +7,26 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
 
 interface MapSlugProps {
-  lat: number;
-  lng: number;
   title: string;
   address: {
     street: string;
     city: string;
+    location: {
+      lat: number;
+      lng: number;
+    };
   };
   specificAddress: string;
 }
 
 const MapSlug: React.FC<MapSlugProps> = ({
-  lat,
-  lng,
   title,
   address,
   specificAddress,
 }) => {
   const muiTheme = useTheme();
-  const position: LatLngTuple = [lat, lng];
+  console.log("Address:", address);
+  const position: LatLngTuple = [address.location.lat, address.location.lng];
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -95,9 +96,15 @@ const MapSlug: React.FC<MapSlugProps> = ({
         <Typography variant="h3" sx={titleStyles}>
           Location
         </Typography>
-        <Typography variant="body1">{specificAddress}</Typography>
-        <Typography variant="body1">{address?.street}</Typography>
-        <Typography variant="body1">{address?.city}</Typography>
+        {address ? (
+          <Box>
+            <Typography variant="body1">{specificAddress}</Typography>
+            <Typography variant="body1">{address?.street}</Typography>
+            <Typography variant="body1">{address?.city}</Typography>
+          </Box>
+        ) : (
+          <Typography variant="body1">No address</Typography>
+        )}
       </Box>
       <Box sx={mapIconBox}>
         <IconButton onClick={handleOpen}>
