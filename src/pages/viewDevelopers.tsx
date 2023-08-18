@@ -34,13 +34,11 @@ function AllDevelopers({ developers }: AllDeveloperProps) {
       <Divider sx={styles.dividerStyles} />
       {developers && (
         <Box sx={styles.mainBox}>
-          <Grid container spacing={1} sx={{ mt: "2rem" }}>
-            {developers?.map((developers) => (
-              <Grid item key={developers._id} xs={12} sm={6} md={6} lg={6}>
-                <DeveloperAllCards developer={developers} />
-              </Grid>
-            ))}
-          </Grid>
+          {developers?.map((developers) => (
+            <Box key={developers._id} sx={{ m: "1rem" }}>
+              <DeveloperAllCards developer={developers} />
+            </Box>
+          ))}
         </Box>
       )}
       <Divider sx={styles.dividerStyles} />

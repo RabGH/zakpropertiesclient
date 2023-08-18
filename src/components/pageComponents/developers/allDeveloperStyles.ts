@@ -26,8 +26,11 @@ export const getAllDeveloperStyles = () => {
     },
 
     mainBox: {
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      mt: "2rem",
       mb: "2rem",
-      
     },
 
     introText: {
@@ -39,6 +42,7 @@ export const getAllDeveloperStyles = () => {
       mt: "2rem",
       mb: "2rem",
     },
+
     contactBox: {
       display: "flex",
       flexDirection: "column",
