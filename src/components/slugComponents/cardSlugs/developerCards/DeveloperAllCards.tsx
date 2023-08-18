@@ -3,7 +3,7 @@ import { formatPrice, formatArea } from "@lib/utils";
 import { Developer } from "@lib/types";
 import Image from "next/image";
 import { Box, Typography, Card, Link, Container } from "@mui/material";
-import { getDeveloperCardStyles } from "@/components/slugComponents/cardSlugs/cardComponents/developerCardStyles";
+import { getDeveloperCardStyles } from "@/components/slugComponents/cardSlugs/developerCards/developerCardStyles";
 
 interface ProjectAllCardsProps {
   developer: Developer;

@@ -8,12 +8,11 @@ export const getAllDeveloperStyles = () => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      margin: "0 auto",
     },
     titleStyles: {
       fontWeight: "bold",
       mb: "1rem",
-      mt: "10rem",
+      mt: "8rem",
     },
     dividerStyles: {
       mt: "1rem",
@@ -25,16 +24,12 @@ export const getAllDeveloperStyles = () => {
       mt: "3rem",
       mb: "3rem",
     },
-    main: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    },
+
     mainBox: {
-      display: "flex",
-      flexDirection: "row",
       mb: "2rem",
+      
     },
+
     introText: {
       fontSize: "1.2rem",
       lineHeight: "1.5",
