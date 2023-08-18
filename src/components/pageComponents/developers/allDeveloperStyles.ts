@@ -44,5 +44,11 @@ export const getAllDeveloperStyles = () => {
       mt: "2rem",
       mb: "2rem",
     },
+    contactBox: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      m: "3rem",
+    },
   };
 };

@@ -56,18 +56,12 @@ export const getProjectCardStyles = () => {
     },
 
     //* Information Box Under ProjectAddCards.tsx
-    infoBoxStyles: {
+    projectInfoStyles: {
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
-      padding: "1rem",
-      backgroundColor: muiTheme.palette.primary.main,
-    },
-
-    projectInfoStyles: {
-      mt: "1rem",
-      ml: "1rem",
-      mr: "1rem",
+      pt: "1rem",
+      pl: "1rem",
+      pr: "1rem",
     },
 
     //* ProjectAllCards.tsx
@@ -130,6 +124,7 @@ export const getProjectCardStyles = () => {
     projectCityStyles: {},
     projectAreaTypeStyles: {},
     projectBedroomsStyles: {},
-    projectPriceCard: {},
+    projectPriceCard: {
+    },
   };
 };
