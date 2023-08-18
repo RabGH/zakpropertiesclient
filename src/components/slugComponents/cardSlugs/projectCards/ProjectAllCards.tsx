@@ -48,15 +48,12 @@ const ProjectAllCards = ({ project }: ProjectAllCardsProps) => {
         </Card>
       </Link>
       <Box sx={styles.projectInfoStyles}>
-        <Typography variant="h4" sx={styles.projectTypeStyles}>
+        <Typography variant="h3" sx={styles.projectTypeStyles}>
           {`${project.projectPropertyTypes.join(" ")}`}
         </Typography>
         <Typography variant="body1" sx={styles.projectCityStyles}>
           {project.address?.city}
         </Typography>
-        {/* <Typography variant="body1" sx={styles.projectAreaTypeStyles}>
-{`${project.areaType.join(" ⋅ ")}`}
-</Typography> */}
         <Typography variant="body1" sx={styles.projectBedroomsStyles}>
           {`${project.bedrooms} beds`}
         </Typography>

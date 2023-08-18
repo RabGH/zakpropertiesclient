@@ -8,6 +8,7 @@ import { previewClient } from "@lib/client";
 import Link from "next/link";
 import Head from "next/head";
 import { getAllDeveloperStyles } from "@/components/pageComponents/developers/allDeveloperStyles";
+import DeveloperAllCards from "@/components/slugComponents/cardSlugs/developerCards/DeveloperAllCards";
 // import ProjectAllCards from "@/components/slugComponents/cardSlugs/projectCards/ProjectAllCards";
 
 interface AllDeveloperProps {
@@ -35,11 +36,10 @@ function AllDevelopers({ developers }: AllDeveloperProps) {
         <Box sx={styles.main}>
           <Box sx={styles.mainBox}>
             <Box>
-              <Grid container spacing={2} sx={{ mt: "2rem" }}>
+              <Grid container spacing={1} sx={{ mt: "2rem" }}>
                 {developers?.map((developers) => (
-                  <Grid item key={developers._id} xs={12} sm={6} md={4} lg={3}>
-                    {/* <ProjectAllCards project={projects} /> */}
-                    <Divider sx={styles.dividerStyles} />
+                  <Grid item key={developers._id} xs={12} sm={6} md={6} lg={6}>
+                    <DeveloperAllCards developer={developers} />
                   </Grid>
                 ))}
               </Grid>
@@ -47,15 +47,16 @@ function AllDevelopers({ developers }: AllDeveloperProps) {
           </Box>
         </Box>
       )}
-
-      <Typography variant="h6" sx={{ mt: "1rem" }}>
-        Contact us for developer inquiries
-      </Typography>
-      <Link href="/contactUs">
-        <Button variant="contained" size="large" sx={styles.contactButton}>
-          Learn More
-        </Button>
-      </Link>
+      <Box sx={styles.contactBox}>
+        <Typography variant="h6" sx={{ mt: "1rem" }}>
+          Contact us for developer inquiries
+        </Typography>
+        <Link href="/contactUs">
+          <Button variant="contained" size="large" sx={styles.contactButton}>
+            Learn More
+          </Button>
+        </Link>
+      </Box>
     </Box>
   );
 }

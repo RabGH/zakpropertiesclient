@@ -42,7 +42,7 @@ function AllProjects({ projects }: AllProjectsProps) {
             <Box>
               <Grid container spacing={2} sx={{ mt: "2rem" }}>
                 {projects?.map((projects) => (
-                  <Grid item key={projects._id} xs={12} sm={6} md={4} lg={3}>
+                  <Grid item key={projects._id} xs={12} sm={12} md={12} lg={12}>
                     <ProjectAllCards project={projects} />
                     <Divider sx={styles.dividerStyles} />
                   </Grid>
@@ -69,7 +69,8 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
   previewData,
 }) => {
-  const projectQuery = '*[_type == "project"]{..., address->{location}}';
+  const projectQuery =
+    '*[_type == "project"]{..., address->{street,city,location}}';
   const client = preview ? previewClient : sanityClient;
   const params = preview ? previewData : {};
   const projects = await client.fetch(projectQuery, params);
