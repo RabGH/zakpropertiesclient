@@ -8,7 +8,7 @@ export const getPropertyPageStyles = () => {
       display: "grid",
       gridTemplateColumns: "2fr 1fr",
       m: "0 auto",
-      [muiTheme.breakpoints.down("smallphones")]: {
+      [muiTheme.breakpoints.down("sm")]: {
         gridTemplateColumns: "1fr",
       },
     },

@@ -28,7 +28,7 @@ const PropertyReference = ({
   const muiTheme = useTheme();
 
   const referenceMainBoxStyles = {
-    [muiTheme.breakpoints.down("smallphones")]: {
+    [muiTheme.breakpoints.down("sm")]: {
       display: "none",
     },
   };
