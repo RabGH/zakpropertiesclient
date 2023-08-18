@@ -249,7 +249,7 @@ export async function getStaticProps(context: PageContext) {
       street,
       city,
       location,
-    }
+    },
     specificAddress,
     projectBuiltUpArea,
     projectType,
@@ -277,7 +277,7 @@ export async function getStaticProps(context: PageContext) {
         street,
         city,
         location,
-      }
+      },
       specificAddress,
       propertyOffPlan->{
         offplan,
