@@ -103,7 +103,11 @@ const Projects = ({
           Price
         </Typography>
         <Typography variant="h4" sx={styles.projectPriceStyles}>
-          {formatPrice(totalPrice)}
+          {averagePrice
+            ? `${formatPrice(averagePrice[0])} - ${formatNumberWithCommas(
+                averagePrice[1]
+              )}`
+            : `${formatPrice(totalPrice)}`}
         </Typography>
         <Divider sx={styles.dividerStyles} />
         <Typography variant="h3" sx={styles.projectBedroomStyles}>
